@@ -113,6 +113,21 @@
         });
     };
 
+    let canvasWrap: HTMLElement;
+    let isFullscreen = false;
+
+    const toggleFullscreen = () => {
+        if (!document.fullscreenElement) {
+            canvasWrap.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    };
+
+    const onFullscreenChange = () => {
+        isFullscreen = !!document.fullscreenElement;
+    };
+
     let frameIndex = 0;
     const updateFrame = () => {
         if (buffer.length - 1 > frameIndex) {
@@ -127,7 +142,11 @@
         }
     };
 
-    onMount(loadWorker);
+    onMount(() => {
+        loadWorker();
+        document.addEventListener('fullscreenchange', onFullscreenChange);
+        return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
+    });
     onDestroy(() => worker?.terminate());
 </script>
 
@@ -219,7 +238,7 @@
     </div>
 
     <!-- Canvas -->
-    <div class="canvas-wrap">
+    <div class="canvas-wrap" bind:this={canvasWrap}>
         <Canvas {cells} {worldSize} {cellSize} {showColors} drewFrame={updateFrame} {maxFPS} />
     </div>
 
@@ -244,6 +263,9 @@
             max={buffer?.length ? buffer.length - 1 : 0}
             bind:value={frameIndex}
         />
+        <button class="icon-btn" on:click={toggleFullscreen} title={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}>
+            {isFullscreen ? '⊡' : '⛶'}
+        </button>
         <div class="tl-stats">
             <span class="stat"
                 ><span class="stat-label">buf</span> {(buffer?.length || 0) - frameIndex}</span
@@ -298,6 +320,23 @@
 
     .canvas-wrap {
         width: 100%;
+    }
+
+    .canvas-wrap:fullscreen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #1a2327;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .canvas-wrap:fullscreen :global(canvas) {
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
     }
 
     /* ── Timeline ───────────────────────────── */
