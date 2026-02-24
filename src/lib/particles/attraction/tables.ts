@@ -396,5 +396,16 @@ export const tables: StoredTable[] = [
             green: { white: -1, red: 1, green: -2, blue: -1 },
             blue: { white: 0, red: 1, green: -1, blue: 0 }
         }
+    },
+    {
+        name: 'Wall crawlers',
+        description:
+            'Stable chaos - White islands pushed by blob vessels of red green and blue. When a blob vessel reaches a border it keeps following it indefinitely',
+        table: {
+            white: { white: 0, red: 0, green: 0, blue: -1 },
+            red: { white: 1, red: 2, green: 1, blue: -1 },
+            green: { white: -2, red: 1, green: 2, blue: 2 },
+            blue: { white: 0, red: 1, green: 0, blue: 0 }
+        }
     }
 ];
