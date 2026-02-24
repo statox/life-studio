@@ -26,7 +26,8 @@
         red: '#fc2a51',
         green: '#8ff97c',
         blue: '#77cfff',
-        background: '#383b3d'
+        //background: '#383b3d'
+        background: '#000000'
     };
     const n = colors.length;
     const r = cellSize;
