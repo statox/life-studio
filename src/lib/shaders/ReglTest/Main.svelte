@@ -7,7 +7,9 @@
     import REGL from 'regl';
     // import mouse from 'mouse-change';
 
-    interface DrawSpritesProps { count: number; }
+    interface DrawSpritesProps {
+        count: number;
+    }
     const regl = REGL({
         extensions: ['OES_texture_float']
     });

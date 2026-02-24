@@ -4,13 +4,14 @@ This page contains my experiementations aroud [reaction-diffusion systems](https
 
 The system I am considering is a mathematical model of a physical system in which two chemical substances react with each other while also diffusing in the environment. The simulation allows to compute the concentration of these chemical on a virtual grid and visualize these concentrations over time. This representation shows how the reactions create various pattern with different properties.
 
-The main parameters for the simulation are the `f` and `k` variables. They correspond to the `f` and `k` parameters found in the litterature ([[1]](https://www.mrob.com/pub/comp/xmorphia/index.html#formula), [[2]](https://karlsims.com/rd.html)). I chose to constrain these parameters to the following intervals `f: [0, 0.12]` `k: [0.03, 0.07]`  which is a slighty larger parameters space than the [uskate world](https://mrob.com/pub/comp/xmorphia/uskate-world.html) characterized by Robert Munafo.
+The main parameters for the simulation are the `f` and `k` variables. They correspond to the `f` and `k` parameters found in the litterature ([[1]](https://www.mrob.com/pub/comp/xmorphia/index.html#formula), [[2]](https://karlsims.com/rd.html)). I chose to constrain these parameters to the following intervals `f: [0, 0.12]` `k: [0.03, 0.07]` which is a slighty larger parameters space than the [uskate world](https://mrob.com/pub/comp/xmorphia/uskate-world.html) characterized by Robert Munafo.
 
 The next sections explain more about these parameters, for now if you don't know what they are just keep in mind that varying `f` and `k` make the simulation generate different kinds of patterns.
 
 The application contains 4 tabs you can explore.
 
 ### Manual
+
 This is an interactive view of the model.
 
 The menu on the left allows the user to change the `f` and `k` parameters of the simulation and see how they influence the reaction. It is also possible to select a preset with the drop down menu.
@@ -27,9 +28,9 @@ Finally the menu on the right allows the user to tweak various parameters like t
 
 Unlike the Auto tab, this simulation lets the user tweak the parameters as they want. This is a good tool to understand how each parameter impacts the simulation. A few tips to get interesting patterns:
 
-- Don't change the `f` and `k` values too quickly, abrupt changes tend to stabilize the system very quickly.
-- If the simulation stabilize completely either use the mouse to add new chemical, hit `r` to reset the world or move `fk` around.
-- In the selection menu on the left the orange area of the parameters map is the area which tends to produce more patterns. By moving around you'll find that there are a few different areas: the bottom left tends to produce largely chaotic patterns, a little bit higher and on the right we find patterns ressembling cells divisions, higher up are worms on the left and dots on the right with different characteristics as we go higher on the `f` axis. On his website Robert Munafo represents these areas like this:
+-   Don't change the `f` and `k` values too quickly, abrupt changes tend to stabilize the system very quickly.
+-   If the simulation stabilize completely either use the mouse to add new chemical, hit `r` to reset the world or move `fk` around.
+-   In the selection menu on the left the orange area of the parameters map is the area which tends to produce more patterns. By moving around you'll find that there are a few different areas: the bottom left tends to produce largely chaotic patterns, a little bit higher and on the right we find patterns ressembling cells divisions, higher up are worms on the left and dots on the right with different characteristics as we go higher on the `f` axis. On his website Robert Munafo represents these areas like this:
 
 ![pearsons-parameter-space1.jpg]({baseUrl}/reaction_diffusion_about/pearsons-parameter-space1.jpg)
 ![pearsons-parameter-space2.png]({baseUrl}/reaction_diffusion_about/pearsons-parameter-space2.png)
@@ -43,6 +44,7 @@ You can try to find many different patterns like the following:
 ![pattern3]({baseUrl}/reaction_diffusion_about/pattern3.png)
 
 ### Auto
+
 This is my "artistic" stake at this simulation. My goal was to explore infinite simulation. I wanted to have a screen which would be infinitely smoothly evolving.
 
 The `f` and `k` parameters are contiually changing to automatically generate different kinds of patterns. A mecanism also regularly regenerates some amount of solution so that there is as few stable states as possible. The user doesn't have to do anything, just load the tab and watch funny colors move on the screen.
@@ -53,11 +55,12 @@ You can use the menu on the left to tweak how fast the `f` and `k` parameters ch
 
 There are several configurations to try out and which give various results:
 
-- Increasing the change magnitude impacts the stability of the system. Small change magnitudes keeps `f` and `k` in a smaller area so the diversity of patterns generated is reduced, on the other hand larger magnitudes will create larger changes in the parameters space so it might create situations where the one of the chemical reacts with all of the other leaving a uniform colored texture.
+-   Increasing the change magnitude impacts the stability of the system. Small change magnitudes keeps `f` and `k` in a smaller area so the diversity of patterns generated is reduced, on the other hand larger magnitudes will create larger changes in the parameters space so it might create situations where the one of the chemical reacts with all of the other leaving a uniform colored texture.
 
-- Increasing the change rate update the parameters more often which might give more time for configurations to stabilize and display all of their features.
+-   Increasing the change rate update the parameters more often which might give more time for configurations to stabilize and display all of their features.
 
 ### Parameters map
+
 I used this tab to generate the parameters map used in the parameters selection menu. Here the difference with the other tabs is that the `f` and `k` parameters are not uniform accross the grid, they vary accross the screen to show the different possible patterns.
 
 At the top of the page there is an input allowing to change the size of the underlying simulation. Increasing this parameter increases the definition of the simulation and gives a more detailled parameter map, naturally that also increases the load on the GPU runing the simulation. By default this setting is set lower than what I used to generate the final parameter map. To generate the parameters map in the `fk` selector of the other tabs I used a world size of 12 (which makes a texture of 4096x4096 pixels) and the simulation ran for ~140.000 iterations. I was curious to see what would happen with more iterations but it turns out the evolution is not significant after the first hundred thousands iterations:
@@ -68,8 +71,8 @@ At the top of the page there is an input allowing to change the size of the unde
 ![parameters_map_timelapse_3]({baseUrl}/reaction_diffusion_about/parameters_map_timelapse_3.png)
 ![parameters_map_timelapse_4]({baseUrl}/reaction_diffusion_about/parameters_map_timelapse_4.png)
 
-
 ### Previous versions
+
 It took me several iterations to get the results shown in the other tabs. This tab regroups my different iterations and a section later in this page describes the different versions.
 
 ## Gray-Scott model
@@ -84,18 +87,18 @@ The chemical reaction section shows that when 1 unit of U and 2 units of V are i
 
 The equations show 3 things:
 
-- Both chemicals diffuse over time and the diffusion from one spot depends on the concentration of the chemical in the surrounding spots
-- The chemicals react together and that impacts their concentration (which makes sense if 1 U and 2 V create 3 V then during the reaction the concentration of U diminishes and the concentration of P increases)
-- `f` and `k` are respectively a "feed rate" at which we add some U and a "kill rate" at we we remove some V. This allows the model to keep evolving.
+-   Both chemicals diffuse over time and the diffusion from one spot depends on the concentration of the chemical in the surrounding spots
+-   The chemicals react together and that impacts their concentration (which makes sense if 1 U and 2 V create 3 V then during the reaction the concentration of U diminishes and the concentration of P increases)
+-   `f` and `k` are respectively a "feed rate" at which we add some U and a "kill rate" at we we remove some V. This allows the model to keep evolving.
 
 [Karlsims](https://karlsims.com/rd.html) has the clearest explaination of these equations.
 [mrob](https://www.mrob.com/pub/comp/xmorphia/index.html#formula) also has a good explanation.
 
 The way that I represents this system in my mind is as follow:
 
-- Let's have two tanks containing the solutions one on top of the other.
-- Both tanks are separated by a semi porous membrane which only allow the U solution from the bottom to go the tank above containing V.
-- What we see in my simulation is the surface of the top tank while the U solution is slowly introduced to the V and both react together.
+-   Let's have two tanks containing the solutions one on top of the other.
+-   Both tanks are separated by a semi porous membrane which only allow the U solution from the bottom to go the tank above containing V.
+-   What we see in my simulation is the surface of the top tank while the U solution is slowly introduced to the V and both react together.
 
 ## Turing patterns
 
@@ -133,33 +136,35 @@ A fish [from shutterstock](https://www.shutterstock.com/image-photo/goldspotted-
 Here are some resources which I found useful while making this project.
 
 ### Gray-Scott model
-- Karlsims tutorial about Reaction-diffusion, very good introduction and good explanation of the formula
-  https://karlsims.com/rd.html
-- Mrob list of a lot of interesting parameter classes
-  https://www.mrob.com/pub/comp/xmorphia/pearson-classes.html#eta
-- Mrob Uskate parameter space
-  https://mrob.com/pub/comp/xmorphia/uskate-world.html
-- A very good high level introduction to reaction diffusion with some great analogies with the particule approach. Lot of interesting links.
-  https://www.redblobgames.com/x/2202-turing-patterns/
-- Redblobgames implementation of the parameter map visualisation
-  https://www.redblobgames.com/x/2203-reaction-diffusion/art/parameter-map.html
-- Good schema of the experience, one clue about the color map and a parameter space graph visualisation
-  https://itp.uni-frankfurt.de/~gros/StudentProjects/Applets_2014_GrayScott/
-- A scientific paper "Spatially localized structures in the Gray-Scott model"
-  https://royalsocietypublishing.org/doi/10.1098/rsta.2017.0375
+
+-   Karlsims tutorial about Reaction-diffusion, very good introduction and good explanation of the formula
+    https://karlsims.com/rd.html
+-   Mrob list of a lot of interesting parameter classes
+    https://www.mrob.com/pub/comp/xmorphia/pearson-classes.html#eta
+-   Mrob Uskate parameter space
+    https://mrob.com/pub/comp/xmorphia/uskate-world.html
+-   A very good high level introduction to reaction diffusion with some great analogies with the particule approach. Lot of interesting links.
+    https://www.redblobgames.com/x/2202-turing-patterns/
+-   Redblobgames implementation of the parameter map visualisation
+    https://www.redblobgames.com/x/2203-reaction-diffusion/art/parameter-map.html
+-   Good schema of the experience, one clue about the color map and a parameter space graph visualisation
+    https://itp.uni-frankfurt.de/~gros/StudentProjects/Applets_2014_GrayScott/
+-   A scientific paper "Spatially localized structures in the Gray-Scott model"
+    https://royalsocietypublishing.org/doi/10.1098/rsta.2017.0375
 
 ### Color maps
-- General approach to color maps. Lot of visual representations of colormaps. The interesting one here is the diverging method.
-  https://matplotlib.org/stable/tutorials/colors/colormaps.html#diverging
-- A lot of colormaps implemented in glsl, I reused a few of them in my code.
-  https://github.com/Polymole/glsl-colormap
+
+-   General approach to color maps. Lot of visual representations of colormaps. The interesting one here is the diverging method.
+    https://matplotlib.org/stable/tutorials/colors/colormaps.html#diverging
+-   A lot of colormaps implemented in glsl, I reused a few of them in my code.
+    https://github.com/Polymole/glsl-colormap
 
 ### Other implementations
 
-- [Redblobgames](https://www.redblobgames.com/x/2203-reaction-diffusion/) Various configurations with creative results.
-- [Robert Munafo](https://www.mrob.com/pub/comp/xmorphia/ogl/index.html) Lots of presets to play with and a very good color picker.
-- [pmneila](https://pmneila.github.io/jsexp/grayscott/) About the same set of features as Robert's implementation, with a dark theme.
-- [Karlsims](https://www.karlsims.com/rdtool.html) Very good looking 3D like effect, flows applied to the whole grid and great interface.
+-   [Redblobgames](https://www.redblobgames.com/x/2203-reaction-diffusion/) Various configurations with creative results.
+-   [Robert Munafo](https://www.mrob.com/pub/comp/xmorphia/ogl/index.html) Lots of presets to play with and a very good color picker.
+-   [pmneila](https://pmneila.github.io/jsexp/grayscott/) About the same set of features as Robert's implementation, with a dark theme.
+-   [Karlsims](https://www.karlsims.com/rdtool.html) Very good looking 3D like effect, flows applied to the whole grid and great interface.
 
 ## History of the project
 
@@ -183,8 +188,8 @@ For each pixel we only generate a value on the red and green channels. Each valu
 
 Once this is done we create two regl commands:
 
-- The `update` command which is responsible for reading from one of the created texture and updating the new state in the other texture.
-- The `draw` command which simply takes the last updated texture and draws it directly on the canvas. The texture is drawn "raw" as in the red and green channels are used directly in the shader.
+-   The `update` command which is responsible for reading from one of the created texture and updating the new state in the other texture.
+-   The `draw` command which simply takes the last updated texture and draws it directly on the canvas. The texture is drawn "raw" as in the red and green channels are used directly in the shader.
 
 ```glsl
 precision mediump float;
@@ -204,10 +209,10 @@ It was the opportunity to play with [dat.gui](https://github.com/dataarts/dat.gu
 
 In this simulation I added the following settings:
 
-- A very crude manual selection of `f` and `k` parameters, allowing me to better grasp the impact of the feed rate and kill rate.
-- Some additional presets seletions for `f` and `k`. I took these presets from the examples in [Robert Munafo's extended pearsons classification](https://www.mrob.com/pub/comp/xmorphia/pearson-classes.html). The fact that the classes I took from Robert's website were producing results similar to his own implementation was an encouraging sign that I was going in the right direction.
-- A setting allowing to use different initial conditions for the world. It is useful because this version doesn't allow to modify the world with the mouse so having different starting worlds allowed me to test different `f` and `k` parameters.
-- Some basic settings like the ability to pause and reset the simulation or see the current iteration number.
+-   A very crude manual selection of `f` and `k` parameters, allowing me to better grasp the impact of the feed rate and kill rate.
+-   Some additional presets seletions for `f` and `k`. I took these presets from the examples in [Robert Munafo's extended pearsons classification](https://www.mrob.com/pub/comp/xmorphia/pearson-classes.html). The fact that the classes I took from Robert's website were producing results similar to his own implementation was an encouraging sign that I was going in the right direction.
+-   A setting allowing to use different initial conditions for the world. It is useful because this version doesn't allow to modify the world with the mouse so having different starting worlds allowed me to test different `f` and `k` parameters.
+-   Some basic settings like the ability to pause and reset the simulation or see the current iteration number.
 
 ### Using the mouse to change the world (v6)
 
@@ -225,10 +230,10 @@ The graphic pipeline is pretty different:
 
 This version introduce a system where I use several texture to apply different transformations to the simulation texture before displaying it on the screen:
 
-- Step 1 "Zoom": In the vertex shader of the graphical pipeline I pass as uniforms the state of the zoom (i.e. the zoom level and the pan on the x and y axis). These uniforms allows me to draw only the parts of the texture which are currently in a zoomed in area.
-- Step 2 "Colors": To make the simulation more visally appealing the first stage takes the raw red and green channels of the simulation texture and transform them to use a wider spectrum of colors. Since regl makes the glsl code quite modular I was able to create different fragment shaders applying different color palettes.
-- Step 3 "Grid": To help me debugging the implementation of my zoom mecanism I added a step which overlays a grid on the resulting texture. The goal was to have a grid with a fixed sized which would better show the resolution of the zoom.
-- Step 4 "Cursor": To make the mouse drawing more intuitive I add another overlay showing the area which the cursor will drawn on.
+-   Step 1 "Zoom": In the vertex shader of the graphical pipeline I pass as uniforms the state of the zoom (i.e. the zoom level and the pan on the x and y axis). These uniforms allows me to draw only the parts of the texture which are currently in a zoomed in area.
+-   Step 2 "Colors": To make the simulation more visally appealing the first stage takes the raw red and green channels of the simulation texture and transform them to use a wider spectrum of colors. Since regl makes the glsl code quite modular I was able to create different fragment shaders applying different color palettes.
+-   Step 3 "Grid": To help me debugging the implementation of my zoom mecanism I added a step which overlays a grid on the resulting texture. The goal was to have a grid with a fixed sized which would better show the resolution of the zoom.
+-   Step 4 "Cursor": To make the mouse drawing more intuitive I add another overlay showing the area which the cursor will drawn on.
 
 This approach has the big advantage of keeping my code very modular and making it easier to implement the different steps. The main drawback is that it requires to keep one texture for each step of the pipeline which has an impact on the GPU. An alternative solution would be to do all the transformations in the same shader but I haven't experimented with that already and I'm not sure what are the best practices for this topic.
 
@@ -238,8 +243,8 @@ I also created the interface to select `f` and `k` on the parameters map. To do 
 
 Some inpsiration I had for the parameters map:
 
-- [mrob](https://mrob.com/pub/comp/xmorphia/uskate-world.html)
-- [RebBlobGames](https://www.redblobgames.com/x/2203-reaction-diffusion/art/parameter-map.html)
+-   [mrob](https://mrob.com/pub/comp/xmorphia/uskate-world.html)
+-   [RebBlobGames](https://www.redblobgames.com/x/2203-reaction-diffusion/art/parameter-map.html)
 
 ### "Auto Visualizer" (v8)
 

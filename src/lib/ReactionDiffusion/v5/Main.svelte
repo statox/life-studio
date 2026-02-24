@@ -95,7 +95,12 @@
             canvas
         });
 
-        interface SimProps { Da: number; Db: number; f: number; k: number; }
+        interface SimProps {
+            Da: number;
+            Db: number;
+            f: number;
+            k: number;
+        }
         const prop = <K extends keyof SimProps>(name: K) => regl.prop<SimProps, K>(name);
 
         info.iteration = 0;

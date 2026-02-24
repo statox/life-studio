@@ -113,7 +113,10 @@
         });
 
         interface SimProps {
-            Da: number; Db: number; f: number; k: number;
+            Da: number;
+            Db: number;
+            f: number;
+            k: number;
             pauseSimulation: boolean;
             mousePosition: [number, number];
             penRadius: number;

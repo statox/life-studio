@@ -75,5 +75,5 @@ export const runProgram = (params: {
 
     // Draw the texture
     gl.drawArrays(gl.TRIANGLES, 0, 6);
-    return screenTex
+    return screenTex;
 };

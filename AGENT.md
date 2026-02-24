@@ -50,13 +50,13 @@ src/
 
 ### 3.1 Types (`engine/types.ts`)
 
-| Type | Fields | Notes |
-|---|---|---|
-| `Coordinates` | `x: number, y: number` | Used for positions, velocities, world size |
-| `WorldSize` | alias of `Coordinates` | |
-| `Color` | `'white' \| 'red' \| 'green' \| 'blue'` | Exactly 4 colours |
-| `Cell` | `id, pos, nextPos, vel, color` | `nextPos` exists but is unused in current code |
-| `AttractionTable` | `{ [selfColor]: { [otherColor]: number } }` | 4×4 matrix of integers in **[-2, 2]** |
+| Type              | Fields                                      | Notes                                          |
+| ----------------- | ------------------------------------------- | ---------------------------------------------- |
+| `Coordinates`     | `x: number, y: number`                      | Used for positions, velocities, world size     |
+| `WorldSize`       | alias of `Coordinates`                      |                                                |
+| `Color`           | `'white' \| 'red' \| 'green' \| 'blue'`     | Exactly 4 colours                              |
+| `Cell`            | `id, pos, nextPos, vel, color`              | `nextPos` exists but is unused in current code |
+| `AttractionTable` | `{ [selfColor]: { [otherColor]: number } }` | 4×4 matrix of integers in **[-2, 2]**          |
 
 ### 3.2 AttractionTable semantics
 
@@ -92,7 +92,7 @@ Engine.step()
           6. cellsMap.updateCell(cell)                      // keep spatial index current
 ```
 
-**Important design choice**: position is updated *during* the loop (not after all forces are computed). This produces richer emergent patterns compared to a strict "gather then update" approach, at the cost of order-dependency.
+**Important design choice**: position is updated _during_ the loop (not after all forces are computed). This produces richer emergent patterns compared to a strict "gather then update" approach, at the cost of order-dependency.
 
 ### 4.1 Force scalar (`attraction/computer.ts`)
 
@@ -106,8 +106,9 @@ getAttractionForce(table, maxR², minDist², distSqrd, colorA, colorB):
 ```
 
 `triangleMap` is a piecewise linear function that:
-- rises from 0 → `attractionValue` over `[maxR²/2, midpoint]`
-- falls back from `attractionValue` → 0 over `[midpoint, maxR²]`
+
+-   rises from 0 → `attractionValue` over `[maxR²/2, midpoint]`
+-   falls back from `attractionValue` → 0 over `[midpoint, maxR²]`
 
 This means the force peaks at ¾ of `maxAttractionRadius` (in squared-distance space) and tapers to 0 at the boundary. Short-range hard repulsion (`distSqrd < minDist²`) always overrides.
 
@@ -124,10 +125,11 @@ The world wraps. `distanceSqrd` computes the shortest path on a torus. However t
 The naive O(N²) all-pairs loop would be too slow for thousands of particles. `CellsMap` is a custom grid-based spatial index (see `cellsMap/README.md`).
 
 **Structure**:
-- The world is divided into a grid of squares, each of size `maxAttractionRadius × maxAttractionRadius`.
-- Grid dimensions: `(worldSize.x / maxAttractionRadius) × (worldSize.y / maxAttractionRadius)`.
-- Each square stores a `Set<number>` of cell IDs.
-- A reverse map `squareByCellId: Map<number, Coordinates>` gives O(1) square lookup by cell ID.
+
+-   The world is divided into a grid of squares, each of size `maxAttractionRadius × maxAttractionRadius`.
+-   Grid dimensions: `(worldSize.x / maxAttractionRadius) × (worldSize.y / maxAttractionRadius)`.
+-   Each square stores a `Set<number>` of cell IDs.
+-   A reverse map `squareByCellId: Map<number, Coordinates>` gives O(1) square lookup by cell ID.
 
 **Constraint**: `worldSize` must be an exact multiple of `maxAttractionRadius` in both dimensions. The UI enforces this by computing `worldSize = { x: maxAttractionRadius * horizontalResolution, y: maxAttractionRadius * verticalResolution }`.
 
@@ -154,13 +156,13 @@ Main thread (Simulation.svelte)
 
 Other messages supported by the worker:
 
-| Message | Effect |
-|---|---|
-| `start` | Destroys any existing engine, creates a new one, starts the loop |
-| `pause` | Sets `Engine._running = false` |
-| `unpause` | Sets `Engine._running = true` |
-| `updateTable` | Swaps the attraction table mid-simulation |
-| `destroy` | Clears the `setTimeout` loop |
+| Message       | Effect                                                           |
+| ------------- | ---------------------------------------------------------------- |
+| `start`       | Destroys any existing engine, creates a new one, starts the loop |
+| `pause`       | Sets `Engine._running = false`                                   |
+| `unpause`     | Sets `Engine._running = true`                                    |
+| `updateTable` | Swaps the attraction table mid-simulation                        |
+| `destroy`     | Clears the `setTimeout` loop                                     |
 
 The engine's run loop uses `setTimeout` (with no delay) rather than `requestAnimationFrame`, meaning it runs as fast as possible, decoupled from the render rate.
 
@@ -172,12 +174,12 @@ The worker sends only `positions: Coordinates[]` per frame (not the full `Cell[]
 
 `Simulation.svelte` maintains a `buffer: Coordinates[][]` — an ordered array of position snapshots. The worker pushes frames into it asynchronously. The render side reads from `buffer[frameIndex]`.
 
-- `frameIndex` advances by 1 each time `Canvas.svelte` calls `drewFrame()` (= `updateFrame()`).
-- If the worker is faster than the renderer, the buffer grows and acts as a time-shifting queue.
-- A slider lets the user scrub to any buffered frame.
-- `renderPaused` freezes `frameIndex`, letting the worker keep filling the buffer.
-- "Replay from start" resets `frameIndex = 0`.
-- "Catchup last frame" jumps to the most recent computed frame.
+-   `frameIndex` advances by 1 each time `Canvas.svelte` calls `drewFrame()` (= `updateFrame()`).
+-   If the worker is faster than the renderer, the buffer grows and acts as a time-shifting queue.
+-   A slider lets the user scrub to any buffered frame.
+-   `renderPaused` freezes `frameIndex`, letting the worker keep filling the buffer.
+-   "Replay from start" resets `frameIndex = 0`.
+-   "Catchup last frame" jumps to the most recent computed frame.
 
 > ⚠️ The buffer is never trimmed — it grows indefinitely. Long-running simulations will consume significant memory.
 
@@ -185,12 +187,12 @@ The worker sends only `positions: Coordinates[]` per frame (not the full `Cell[]
 
 ## 8. Renderer: Canvas.svelte
 
-- Fixed canvas resolution: **1600 × 960** logical pixels, displayed at **1000 × 700** CSS pixels.
-- Uses an **offscreen canvas** as a sprite sheet: 4 pre-drawn circles (one per colour) at `cellSize * 2` diameter. Each frame, particles are drawn with `ctx.drawImage(off, ...)` which is faster than re-issuing arc commands per particle.
-- Particle positions are mapped from world coordinates to canvas coordinates with `linearMap`.
-- FPS is capped (default **25 FPS**) via the `elapsed / fpsInterval` pattern on `requestAnimationFrame`.
-- `showColors` toggle: when false, all particles use sprite index 0 (white).
-- `cellSize = 1` in current config → circles are 2px diameter.
+-   Fixed canvas resolution: **1600 × 960** logical pixels, displayed at **1000 × 700** CSS pixels.
+-   Uses an **offscreen canvas** as a sprite sheet: 4 pre-drawn circles (one per colour) at `cellSize * 2` diameter. Each frame, particles are drawn with `ctx.drawImage(off, ...)` which is faster than re-issuing arc commands per particle.
+-   Particle positions are mapped from world coordinates to canvas coordinates with `linearMap`.
+-   FPS is capped (default **25 FPS**) via the `elapsed / fpsInterval` pattern on `requestAnimationFrame`.
+-   `showColors` toggle: when false, all particles use sprite index 0 (white).
+-   `cellSize = 1` in current config → circles are 2px diameter.
 
 ---
 
@@ -198,35 +200,35 @@ The worker sends only `positions: Coordinates[]` per frame (not the full `Cell[]
 
 ### World settings (trigger full restart)
 
-| Control | Variable | Default | Effect |
-|---|---|---|---|
-| Simulation definition | `maxAttractionRadius` | 32 | Controls interaction range & grid granularity |
-| Horizontal resolution | `horizontalResolution` | 30 | World width = resolution × radius |
-| Vertical resolution | `verticalResolution` | 20 | World height = resolution × radius |
-| Number of particles | `nbParticles` | 4000 | Total particle count |
+| Control               | Variable               | Default | Effect                                        |
+| --------------------- | ---------------------- | ------- | --------------------------------------------- |
+| Simulation definition | `maxAttractionRadius`  | 32      | Controls interaction range & grid granularity |
+| Horizontal resolution | `horizontalResolution` | 30      | World width = resolution × radius             |
+| Vertical resolution   | `verticalResolution`   | 20      | World height = resolution × radius            |
+| Number of particles   | `nbParticles`          | 4000    | Total particle count                          |
 
 Default world size: **960 × 640** (32×30, 32×20).
 
 ### Simulation controls
 
-| Button | Action |
-|---|---|
-| Replay from start | `frameIndex = 0` |
-| Catchup last frame | `frameIndex = buffer.length - 1` |
-| Play / Pause | Toggles `renderPaused` |
-| Show / Hide colors | Toggles `showColors` |
-| Reset cells | Re-generates cells & table, restarts worker |
-| Center cells | Re-positions all cells in a tiny circle at world centre (r ≤ 2) |
-| Large Center cells | Re-positions all cells in a circle at world centre (r ≤ 200) |
-| Rainbow cells | Re-assigns colours by X position (4 vertical bands: white / red / green / blue) |
+| Button             | Action                                                                          |
+| ------------------ | ------------------------------------------------------------------------------- |
+| Replay from start  | `frameIndex = 0`                                                                |
+| Catchup last frame | `frameIndex = buffer.length - 1`                                                |
+| Play / Pause       | Toggles `renderPaused`                                                          |
+| Show / Hide colors | Toggles `showColors`                                                            |
+| Reset cells        | Re-generates cells & table, restarts worker                                     |
+| Center cells       | Re-positions all cells in a tiny circle at world centre (r ≤ 2)                 |
+| Large Center cells | Re-positions all cells in a circle at world centre (r ≤ 200)                    |
+| Rainbow cells      | Re-assigns colours by X position (4 vertical bands: white / red / green / blue) |
 
 ### Attraction table controls
 
-- **AttractionTableChoice**: dropdown to select preset tables or "Random".
-- **AttractionTableComponent**: 4×4 interactive grid showing current values. Each cell has `+` / `−` / click-to-cycle buttons. Values cycle in `[-2, 2]`.
-  - "Randomize table": fills all 16 values from `[-2, 2]` uniformly at random.
-  - "Zero table": sets all values to 0.
-  - "Mutate table": changes a single random entry to a random value.
+-   **AttractionTableChoice**: dropdown to select preset tables or "Random".
+-   **AttractionTableComponent**: 4×4 interactive grid showing current values. Each cell has `+` / `−` / click-to-cycle buttons. Values cycle in `[-2, 2]`.
+    -   "Randomize table": fills all 16 values from `[-2, 2]` uniformly at random.
+    -   "Zero table": sets all values to 0.
+    -   "Mutate table": changes a single random entry to a random value.
 
 ---
 
@@ -242,18 +244,18 @@ When the worker starts, `Engine` runs **100 iterations with a zeroed attraction 
 
 10 curated presets are stored in `attraction/tables.ts`. Each has a `name` and `description`:
 
-| Name | Description |
-|---|---|
-| Negs | All -1: maximum repulsion |
-| Infinite motion | Reds chase whites in seemingly infinite randomness |
-| No cohesion | Same-colour repulsion only |
-| Spray around | All mutual repulsion → even spatial spread |
-| Simple snake | Circular attraction chain → moving snakes |
-| Fishes | White/red heads + blue/green tails forming gliders |
-| Movers and stills | Moving objects + static living clusters |
-| White pushers | Movers propelled by groups of white cells |
-| Large vessels | Large gliders with branches |
-| Universe | Galaxy-like structures with rotating rings in green background |
+| Name              | Description                                                    |
+| ----------------- | -------------------------------------------------------------- |
+| Negs              | All -1: maximum repulsion                                      |
+| Infinite motion   | Reds chase whites in seemingly infinite randomness             |
+| No cohesion       | Same-colour repulsion only                                     |
+| Spray around      | All mutual repulsion → even spatial spread                     |
+| Simple snake      | Circular attraction chain → moving snakes                      |
+| Fishes            | White/red heads + blue/green tails forming gliders             |
+| Movers and stills | Moving objects + static living clusters                        |
+| White pushers     | Movers propelled by groups of white cells                      |
+| Large vessels     | Large gliders with branches                                    |
+| Universe          | Galaxy-like structures with rotating rings in green background |
 
 ---
 
@@ -272,9 +274,9 @@ When the worker starts, `Engine` runs **100 iterations with a zeroed attraction 
 
 ## 13. Key Invariants for Future Development
 
-- `worldSize.x % maxAttractionRadius === 0` and `worldSize.y % maxAttractionRadius === 0` — enforced in `CellsMap` constructor; violating this throws.
-- Cell IDs are array indices (0 to N-1), stable for the lifetime of a simulation run.
-- All force values in `AttractionTable` should stay in `[-2, 2]` — the UI cycles and colours are mapped at those discrete values.
-- The worker must be terminated before creating a new one: `postMessage({ msg: 'destroy' })` then `worker.terminate()`.
-- `cellsMap.updateCell()` must be called after every `updateCellPos()` to keep the spatial index consistent.
-- Positions updated *mid-loop* (not double-buffered) — this is intentional and affects emergent behaviour. Changing to a double-buffer approach would alter the dynamics.
+-   `worldSize.x % maxAttractionRadius === 0` and `worldSize.y % maxAttractionRadius === 0` — enforced in `CellsMap` constructor; violating this throws.
+-   Cell IDs are array indices (0 to N-1), stable for the lifetime of a simulation run.
+-   All force values in `AttractionTable` should stay in `[-2, 2]` — the UI cycles and colours are mapped at those discrete values.
+-   The worker must be terminated before creating a new one: `postMessage({ msg: 'destroy' })` then `worker.terminate()`.
+-   `cellsMap.updateCell()` must be called after every `updateCellPos()` to keep the spatial index consistent.
+-   Positions updated _mid-loop_ (not double-buffered) — this is intentional and affects emergent behaviour. Changing to a double-buffer approach would alter the dynamics.

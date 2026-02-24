@@ -42,7 +42,7 @@ export const runProgram = (params: {
     screenTex: WebGLTexture;
     worldDimensions: { width: number; height: number };
     zoom: number;
-    zoomPoint: { x: number, y: number };
+    zoomPoint: { x: number; y: number };
 }) => {
     const { gl, screenTex, zoom, zoomPoint } = params;
 
