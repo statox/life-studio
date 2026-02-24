@@ -3,6 +3,7 @@
 
     import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
     import Canvas from '$lib/particles/components/Canvas.svelte';
+    import ExportModal from '$lib/particles/components/ExportModal.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
     import type { Cell, Color, Coordinates, UpdateCellsResponse } from '$lib/particles/engine';
     import { getRandomAttractionTable, tables } from '$lib/particles/attraction';
@@ -115,6 +116,7 @@
 
     let canvasWrap: HTMLElement;
     let isFullscreen = false;
+    let showExportModal = false;
 
     const toggleFullscreen = () => {
         if (!document.fullscreenElement) {
@@ -277,7 +279,12 @@
 
     <!-- Preset selector -->
     <div class="card preset-card">
-        <div class="card-title">Preset</div>
+        <div class="preset-row">
+            <div class="card-title">Preset</div>
+            <button class="export-btn" on:click={() => (showExportModal = true)} title="Export current table">
+                ↗ Export
+            </button>
+        </div>
         <select
             on:change={(e) => {
                 const v = e.currentTarget.value;
@@ -305,6 +312,10 @@
         {/if}
     </details>
 </div>
+
+{#if showExportModal}
+    <ExportModal {attractionTable} on:close={() => (showExportModal = false)} />
+{/if}
 
 <style>
     /* ── Layout ─────────────────────────────── */
@@ -565,4 +576,23 @@
     .table-body {
         margin-top: 14px;
     }
+
+    /* ── Preset row ───────────────────────────── */
+    .preset-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+
+    .preset-row .card-title {
+        margin-bottom: 0;
+    }
+
+    .export-btn {
+        font-size: 0.75rem;
+        padding: 4px 9px;
+        color: #90a4ae;
+    }
+
 </style>
