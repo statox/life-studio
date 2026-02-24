@@ -16,7 +16,7 @@
     let timeToFrame = 0;
     let renderPaused = false;
     let showColors = true;
-    let maxFPS = 25;
+    let maxFPS = 60;
 
     const cellSize = 1;
 
@@ -162,7 +162,7 @@
                 <span class="dim">{verticalResolution * maxAttractionRadius}px</span>
             </div>
             <div class="field">
-                <label for="radius">Radius</label>
+                <label for="radius">Max attraction radius</label>
                 <input
                     id="radius"
                     type="number"
