@@ -54,10 +54,6 @@ const empty = (radius: number) => {
         .flat();
 };
 
-const full = (radius: number) => {
-    return empty(radius).map((_) => 1);
-};
-
 const randomSpots = (radius: number, birthChance: number) => {
     return Array(radius * radius)
         .fill(0)

@@ -16,10 +16,6 @@
         length: number;
     };
 
-    const applyGravity = (point: Point) => {
-        point.acc.y += 1;
-    };
-
     const applyConnection = (connection: Connection) => {
         const { pointA, pointB, length } = connection;
         const { x: x1, y: y1 } = pointA.pos;

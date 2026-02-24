@@ -3,7 +3,6 @@
  -  https://regl-project.github.io/regl/www/gallery/sprites.js.html
 -->
 <script lang="ts">
-    // @ts-nocheck
     import REGL from 'regl';
     // import mouse from 'mouse-change';
 
@@ -65,8 +64,8 @@
 
         uniforms: {
             state: ({ tick }) => SPRITES[tick % 2],
-            shapeX: regl.context('viewportWidth'),
-            shapeY: regl.context('viewportHeight'),
+            shapeX: regl.context<REGL.DefaultContext, 'viewportWidth'>('viewportWidth'),
+            shapeY: regl.context<REGL.DefaultContext, 'viewportHeight'>('viewportHeight'),
             deltaT: 0.1,
             gravity: -0.5
         },
@@ -158,9 +157,10 @@
                 BLOCK.data[4 * i + 2] = 0.25 * (Math.random() - 0.5);
                 BLOCK.data[4 * i + 3] = Math.random();
             }
+            // @ts-expect-error TODO Check the type error
             SPRITES[tick % 2].color[0].subimage(BLOCK, count % N, ((count / N) | 0) % N);
             count += BLOCK_SIZE;
-            COUNT_DIV.innerText = Math.min(count, N * N);
+            COUNT_DIV.innerText = Math.min(count, N * N).toString();
         }
 
         updateSprites();

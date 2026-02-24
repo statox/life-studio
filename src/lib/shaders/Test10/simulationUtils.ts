@@ -14,7 +14,7 @@ export function getInitialData(params: {
     const { texDimensions, worldDimensions, mode } = params;
     const nbParticles = texDimensions.width * texDimensions.height;
     const ids = new Array(nbParticles).fill(0).map((_, i) => i);
-    const colors = new Array(nbParticles).fill(0).map((_) => Math.floor(Math.random() * 4));
+    const colors = new Array(nbParticles).fill(0).map(() => Math.floor(Math.random() * 4));
 
     const positions = ids
         .map((id) => {

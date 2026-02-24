@@ -8,7 +8,7 @@ type ProgramInfo = {
     resolutionUniformLocation: WebGLUniformLocation | null;
 };
 let programInfo: ProgramInfo;
-let program: any;
+let program: WebGLProgram;
 
 export const initProgram = (gl: WebGLRenderingContext) => {
     program = webglUtils.createProgramFromSources(gl, [drawPositionsVS, drawPositionsFS]);

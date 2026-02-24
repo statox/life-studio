@@ -78,7 +78,9 @@ export const tokensToMatrix = (params: {
     const mat: number[][] = [[]];
 
     while (tokens.length) {
-        const { count, tag } = tokens.shift()!;
+        const token = tokens.shift();
+        if (!token) break;
+        const { count, tag } = token;
 
         if (tag === '!') {
             throw new Error('Invalid token. ! should not have been sent here');

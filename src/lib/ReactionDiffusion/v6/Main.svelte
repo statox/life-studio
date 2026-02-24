@@ -207,15 +207,16 @@
         });
     };
 
-    const handleMousemove = (event: any) => {
+    const handleMousemove = (event: MouseEvent) => {
         if (!event.currentTarget) {
             throw new Error('No target for the onmousemove event');
         }
-        if (!event.currentTarget.width || !event.currentTarget.height) {
+        const currentTarget = event.currentTarget as HTMLCanvasElement;
+        if (!currentTarget.width || !currentTarget.height) {
             throw new Error('No target dimensions for the onmousemove event target');
         }
         const { x, y } = event;
-        const { width, height } = event.currentTarget;
+        const { width, height } = currentTarget;
         const relX = x / width;
         const relY = (height - y) / height;
         mouseState.x = relX;
