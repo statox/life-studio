@@ -17,6 +17,12 @@ const config = {
         // This build target is necessary to make top-level await work
         // and I use top-level await to load workers
         target: 'esnext'
+    },
+    worker: {
+        // Build workers as ES modules so import.meta.url is supported natively.
+        // The default IIFE format polyfills import.meta.url with document.currentScript,
+        // which throws "document is not defined" inside Web Worker scope.
+        format: 'es'
     }
 };
 
