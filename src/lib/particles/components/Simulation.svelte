@@ -19,7 +19,7 @@
     let showColors = true;
     let maxFPS = 60;
 
-    const cellSize = 1;
+    const cellSize = 3;
 
     let maxAttractionRadius = 32;
     let nbParticles = 4000;
