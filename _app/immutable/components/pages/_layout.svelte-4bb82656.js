@@ -1,9 +1,0 @@
-import{S as M,i as Q,s as U,C as W,k as _,q as o,a as I,l as h,m as c,r as n,h as i,c as J,n as L,b as K,D as t,E as X,F as Y,G as Z,f as x,t as ee}from"../../chunks/index-f5250df5.js";import{b as P}from"../../chunks/paths-b4419565.js";function te(d){let l,u,y,m,a,p,G,R,v,g,q,E,C,D,$,H,O,b,T,k,S,A;const F=d[1].default,s=W(F,d,d[0],null);return{c(){l=_("header"),u=_("h1"),y=o("Particles Life"),m=I(),a=_("nav"),p=_("a"),G=o("Particles life"),R=o(` |
-        `),v=_("a"),g=o("Game Of Life"),q=o(` |
-        `),E=_("a"),C=o("Reaction-diffusion"),D=o(` |
-        `),$=_("a"),H=o("Test shaders"),O=o(` |
-        `),b=_("a"),T=o("Soft bodies"),k=o(" |"),S=I(),s&&s.c(),this.h()},l(e){l=h(e,"HEADER",{});var r=c(l);u=h(r,"H1",{});var N=c(u);y=n(N,"Particles Life"),N.forEach(i),m=J(r),a=h(r,"NAV",{});var f=c(a);p=h(f,"A",{href:!0});var V=c(p);G=n(V,"Particles life"),V.forEach(i),R=n(f,` |
-        `),v=h(f,"A",{href:!0});var j=c(v);g=n(j,"Game Of Life"),j.forEach(i),q=n(f,` |
-        `),E=h(f,"A",{href:!0});var w=c(E);C=n(w,"Reaction-diffusion"),w.forEach(i),D=n(f,` |
-        `),$=h(f,"A",{href:!0});var z=c($);H=n(z,"Test shaders"),z.forEach(i),O=n(f,` |
-        `),b=h(f,"A",{href:!0});var B=c(b);T=n(B,"Soft bodies"),B.forEach(i),k=n(f," |"),f.forEach(i),r.forEach(i),S=J(e),s&&s.l(e),this.h()},h(){L(p,"href",P+"/"),L(v,"href",P+"/gameoflife"),L(E,"href",P+"/reaction-diffusion"),L($,"href",P+"/shaders"),L(b,"href",P+"/soft-bodies")},m(e,r){K(e,l,r),t(l,u),t(u,y),t(l,m),t(l,a),t(a,p),t(p,G),t(a,R),t(a,v),t(v,g),t(a,q),t(a,E),t(E,C),t(a,D),t(a,$),t($,H),t(a,O),t(a,b),t(b,T),t(a,k),K(e,S,r),s&&s.m(e,r),A=!0},p(e,[r]){s&&s.p&&(!A||r&1)&&X(s,F,e,e[0],A?Z(F,e[0],r,null):Y(e[0]),null)},i(e){A||(x(s,e),A=!0)},o(e){ee(s,e),A=!1},d(e){e&&i(l),e&&i(S),s&&s.d(e)}}}function ae(d,l,u){let{$$slots:y={},$$scope:m}=l;return d.$$set=a=>{"$$scope"in a&&u(0,m=a.$$scope)},[m,y]}class re extends M{constructor(l){super(),Q(this,l,ae,te,U,{})}}export{re as default};

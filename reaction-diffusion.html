@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/particles-life/favicon.png" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" />
-    <meta http-equiv="content-security-policy" content="">
-		<link href="/particles-life/_app/immutable/assets/_layout-2d7f1649.css" rel="stylesheet">
-		<link href="/particles-life/_app/immutable/assets/_page-8760b20d.css" rel="stylesheet">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="/particles-life/favicon.png" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+        />
+        <meta http-equiv="content-security-policy" content="">
+		<link href="/particles-life/_app/immutable/assets/_layout-053e06f5.css" rel="stylesheet">
+		<link href="/particles-life/_app/immutable/assets/_page-945cba4d.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/TabPanel-6417fb07.css" rel="stylesheet">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/start-e3cb3eb3.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-f5250df5.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-b1a9df44.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-08cb7802.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-a37f2bba.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-79e7ee7e.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-06a985b0.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-13a2a431.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/paths-b4419565.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/preload-helper-41c905a7.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-4bb82656.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-2cb31b78.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/reaction-diffusion/_page.svelte-d29bb78a.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/TabPanel-ab0d47d6.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/P5-3180d94f.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/reaction-diffusion/_page.svelte-9a5daa09.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/TabPanel-fd6a3173.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/P5-bb404ae6.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/regl-787a2c81.js">
-</head>
+    </head>
 
-<body data-sveltekit-preload-data="hover">
-    <div style="display: contents">
+    <body data-sveltekit-preload-data="hover">
+        <div style="display: contents">
 
 
-<header><h1>Particles Life</h1>
+<header class="svelte-12plrf"><h1>Particles Life</h1>
 
     <nav><a href="/particles-life/">Particles life</a> |
         <a href="/particles-life/gameoflife">Game Of Life</a> |
@@ -45,7 +47,7 @@
             <li role="tab" id="svelte-tabs-18" aria-selected="false" tabindex="-1" class="svelte-tabs__tab svelte-1fbofsd">Parameters map</li>
             <li role="tab" id="svelte-tabs-19" aria-selected="false" tabindex="-1" class="svelte-tabs__tab svelte-1fbofsd">Previous versions</li></ul>
 
-        <div id="svelte-tabs-20" class="svelte-tabs__tab-panel svelte-epfyet" role="tabpanel"><h1 id="gray-scott-model-for-reaction-diffusion-systems">Gray-Scott model for Reaction-Diffusion systems</h1><p>This page contains my experiementations aroud <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Reaction%E2%80%93diffusion_system">reaction-diffusion systems</a>.</p><p>The system I am considering is a mathematical model of a physical system in which two chemical substances react with each other while also diffusing in the environment. The simulation allows to compute the concentration of these chemical on a virtual grid and visualize these concentrations over time. This representation shows how the reactions create various pattern with different properties.</p><p>The main parameters for the simulation are the <code>f</code> and <code>k</code> variables. They correspond to the <code>f</code> and <code>k</code> parameters found in the litterature (<a target="_blank" rel="noopener noreferrer" href="https://www.mrob.com/pub/comp/xmorphia/index.html#formula">[1]</a>, <a target="_blank" rel="noopener noreferrer" href="https://karlsims.com/rd.html">[2]</a>). I chose to constrain these parameters to the following intervals <code>f: [0, 0.12]</code> <code>k: [0.03, 0.07]</code>  which is a slighty larger parameters space than the <a target="_blank" rel="noopener noreferrer" href="https://mrob.com/pub/comp/xmorphia/uskate-world.html">uskate world</a> characterized by Robert Munafo.</p><p>The next sections explain more about these parameters, for now if you don't know what they are just keep in mind that varying <code>f</code> and <code>k</code> make the simulation generate different kinds of patterns.</p><p>The application contains 4 tabs you can explore.</p><h3 id="manual">Manual</h3><p>This is an interactive view of the model.</p><p>The menu on the left allows the user to change the <code>f</code> and <code>k</code> parameters of the simulation and see how they influence the reaction. It is also possible to select a preset with the drop down menu.</p><p><img src="/particles-life/reaction_diffusion_about/fkselector.gif" alt="fkselector" class="svelte-1pemytu"></p><p>In the center screen the user can drop some amout of solution by moving the mouse around and clicking the left mouse button, the solution can also be removed with the right mouse button. The user can also zoom in the simulation by holding the <code>Ctrl</code> button and scrolling with the mouse wheel (note that there is a bug in the zoom mecanism which move the simulation around when zooming in/out).</p><p><img src="/particles-life/reaction_diffusion_about/interface.gif" alt="interface" class="svelte-1pemytu"></p><p>Finally the menu on the right allows the user to tweak various parameters like the color scheme used, the speed of the simulation (which you might want to adjust proportionally to <code>f</code>), the initial conditions, the pen setting to add or remove the solution, etc...</p><p><img src="/particles-life/reaction_diffusion_about/settings.png" alt="settings" class="svelte-1pemytu"></p><p>Unlike the Auto tab, this simulation lets the user tweak the parameters as they want. This is a good tool to understand how each parameter impacts the simulation. A few tips to get interesting patterns:</p><ul><li>Don't change the <code>f</code> and <code>k</code> values too quickly, abrupt changes tend to stabilize the system very quickly.
+        <div id="svelte-tabs-20" class="svelte-tabs__tab-panel svelte-epfyet" role="tabpanel"><h1 id="gray-scott-model-for-reaction-diffusion-systems">Gray-Scott model for Reaction-Diffusion systems</h1><p>This page contains my experiementations aroud <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Reaction%E2%80%93diffusion_system">reaction-diffusion systems</a>.</p><p>The system I am considering is a mathematical model of a physical system in which two chemical substances react with each other while also diffusing in the environment. The simulation allows to compute the concentration of these chemical on a virtual grid and visualize these concentrations over time. This representation shows how the reactions create various pattern with different properties.</p><p>The main parameters for the simulation are the <code>f</code> and <code>k</code> variables. They correspond to the <code>f</code> and <code>k</code> parameters found in the litterature (<a target="_blank" rel="noopener noreferrer" href="https://www.mrob.com/pub/comp/xmorphia/index.html#formula">[1]</a>, <a target="_blank" rel="noopener noreferrer" href="https://karlsims.com/rd.html">[2]</a>). I chose to constrain these parameters to the following intervals <code>f: [0, 0.12]</code> <code>k: [0.03, 0.07]</code> which is a slighty larger parameters space than the <a target="_blank" rel="noopener noreferrer" href="https://mrob.com/pub/comp/xmorphia/uskate-world.html">uskate world</a> characterized by Robert Munafo.</p><p>The next sections explain more about these parameters, for now if you don't know what they are just keep in mind that varying <code>f</code> and <code>k</code> make the simulation generate different kinds of patterns.</p><p>The application contains 4 tabs you can explore.</p><h3 id="manual">Manual</h3><p>This is an interactive view of the model.</p><p>The menu on the left allows the user to change the <code>f</code> and <code>k</code> parameters of the simulation and see how they influence the reaction. It is also possible to select a preset with the drop down menu.</p><p><img src="/particles-life/reaction_diffusion_about/fkselector.gif" alt="fkselector" class="svelte-1pemytu"></p><p>In the center screen the user can drop some amout of solution by moving the mouse around and clicking the left mouse button, the solution can also be removed with the right mouse button. The user can also zoom in the simulation by holding the <code>Ctrl</code> button and scrolling with the mouse wheel (note that there is a bug in the zoom mecanism which move the simulation around when zooming in/out).</p><p><img src="/particles-life/reaction_diffusion_about/interface.gif" alt="interface" class="svelte-1pemytu"></p><p>Finally the menu on the right allows the user to tweak various parameters like the color scheme used, the speed of the simulation (which you might want to adjust proportionally to <code>f</code>), the initial conditions, the pen setting to add or remove the solution, etc...</p><p><img src="/particles-life/reaction_diffusion_about/settings.png" alt="settings" class="svelte-1pemytu"></p><p>Unlike the Auto tab, this simulation lets the user tweak the parameters as they want. This is a good tool to understand how each parameter impacts the simulation. A few tips to get interesting patterns:</p><ul><li>Don't change the <code>f</code> and <code>k</code> values too quickly, abrupt changes tend to stabilize the system very quickly.
             </li><li>If the simulation stabilize completely either use the mouse to add new chemical, hit <code>r</code> to reset the world or move <code>fk</code> around.
             </li><li>In the selection menu on the left the orange area of the parameters map is the area which tends to produce more patterns. By moving around you'll find that there are a few different areas: the bottom left tends to produce largely chaotic patterns, a little bit higher and on the right we find patterns ressembling cells divisions, higher up are worms on the left and dots on the right with different characteristics as we go higher on the <code>f</code> axis. On his website Robert Munafo represents these areas like this:
             </li></ul><p><img src="/particles-life/reaction_diffusion_about/pearsons-parameter-space1.jpg" alt="pearsons-parameter-space1.jpg" class="svelte-1pemytu">
@@ -122,14 +124,14 @@ void main() {
         <div id="svelte-tabs-24" class="svelte-tabs__tab-panel svelte-epfyet" role="tabpanel"></div></div></div>
 
 
-		<script type="module" data-sveltekit-hydrate="qzfxqt">
-			import { start } from "/particles-life/_app/immutable/start-e3cb3eb3.js";
+		<script type="module" data-sveltekit-hydrate="86xrfh">
+			import { start } from "/particles-life/_app/immutable/start-a37f2bba.js";
 
 			start({
 				env: {},
 				paths: {"base":"/particles-life","assets":"/particles-life"},
-				target: document.querySelector('[data-sveltekit-hydrate="qzfxqt"]').parentNode,
-				version: "1694422178081",
+				target: document.querySelector('[data-sveltekit-hydrate="86xrfh"]').parentNode,
+				version: "1771948062656",
 				hydrate: {
 					node_ids: [0, 4],
 					data: [null,null],
@@ -138,35 +140,35 @@ void main() {
 			});
 		</script>
 	</div>
-</body>
+    </body>
 
-<!-- Override newcss -->
-<style>
-    body {
-        max-width: 900px;
-    }
+    <!-- Override newcss -->
+    <style>
+        body {
+            max-width: 100%;
+            padding: 0;
+        }
 
-    :root {
-        --nc-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-            Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
-            'Segoe UI Emoji', 'Segoe UI Symbol';
-        --nc-font-mono: Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New',
-            Courier, monospace;
-        --is-light-theme: 1;
+        :root {
+            --nc-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
+                'Segoe UI Emoji', 'Segoe UI Symbol';
+            --nc-font-mono: Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New',
+                Courier, monospace;
+            --is-light-theme: 1;
 
-        /* Dark theme */
-        --nc-tx-1: #ffffff;
-        --nc-tx-2: #b7b7b7;
-        --nc-tx-3: #8a8d87;
-        --nc-bg-1: #1e272c;
-        --nc-bg-2: #161d21;
-        --nc-bg-3: #263238;
-        --nc-lk-1: #5e92ff;
-        --nc-lk-2: #99b2e8;
-        --nc-lk-tx: #2e3c43;
-        --nc-ac-1: #c3e88d;
-        --nc-ac-tx: #263238;
-    }
-</style>
-
+            /* Dark theme */
+            --nc-tx-1: #ffffff;
+            --nc-tx-2: #b7b7b7;
+            --nc-tx-3: #8a8d87;
+            --nc-bg-1: #1e272c;
+            --nc-bg-2: #161d21;
+            --nc-bg-3: #263238;
+            --nc-lk-1: #5e92ff;
+            --nc-lk-2: #99b2e8;
+            --nc-lk-tx: #2e3c43;
+            --nc-ac-1: #c3e88d;
+            --nc-ac-tx: #263238;
+        }
+    </style>
 </html>
