@@ -42,12 +42,7 @@
 
         <div class="field">
             <label for="export-name">Name</label>
-            <input
-                id="export-name"
-                type="text"
-                placeholder="My table"
-                bind:value={name}
-            />
+            <input id="export-name" type="text" placeholder="My table" bind:value={name} />
         </div>
         <div class="field">
             <label for="export-desc">Description</label>
@@ -72,8 +67,8 @@
             <a
                 href="https://github.com/statox/particles-life/blob/main/src/lib/particles/attraction/tables.ts"
                 target="_blank"
-                rel="noopener noreferrer"
-            ><code>src/lib/particles/attraction/tables.ts</code></a>.
+                rel="noopener noreferrer"><code>src/lib/particles/attraction/tables.ts</code></a
+            >.
         </p>
     </div>
 </div>

@@ -352,14 +352,7 @@
 
     <!-- Keyboard shortcuts -->
     <div class="shortcuts">
-        {#each [
-            { key: 'Q', label: 'Reset random' },
-            { key: 'W', label: 'Wide center' },
-            { key: 'E', label: 'Center' },
-            { key: 'R', label: 'Rainbow' },
-            { key: 'T', label: 'Random table' },
-            { key: 'M', label: 'Mutate table' }
-        ] as s}
+        {#each [{ key: 'Q', label: 'Reset random' }, { key: 'W', label: 'Wide center' }, { key: 'E', label: 'Center' }, { key: 'R', label: 'Rainbow' }, { key: 'T', label: 'Random table' }, { key: 'M', label: 'Mutate table' }] as s}
             <span class="shortcut"><kbd>{s.key}</kbd>{s.label}</span>
         {/each}
     </div>
