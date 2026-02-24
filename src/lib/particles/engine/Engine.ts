@@ -7,7 +7,7 @@ import type { Cell, Coordinates, WorldSize } from './types';
 
 const COLORS = ['white', 'red', 'green', 'blue'] as const;
 const colorToIndex = (color: string): number => {
-    const idx = COLORS.indexOf(color as (typeof COLORS)[number]);
+    const idx = COLORS.indexOf(color as typeof COLORS[number]);
     return idx === -1 ? 0 : idx;
 };
 

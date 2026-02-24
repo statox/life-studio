@@ -21,4 +21,11 @@
         background-color: #bfbec6;
         margin-right: 4px;
     }
+
+    header {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 8px 16px;
+        box-sizing: border-box;
+    }
 </style>

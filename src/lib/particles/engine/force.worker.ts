@@ -2,7 +2,7 @@ import { getAttractionForce } from '$lib/particles/attraction';
 import type { AttractionTable } from '$lib/particles/attraction';
 
 const COLORS = ['white', 'red', 'green', 'blue'] as const;
-type Color = (typeof COLORS)[number];
+type Color = typeof COLORS[number];
 
 type ForceWorkerRequest = {
     positions: Float32Array; // [x0, y0, x1, y1, ...]
@@ -121,5 +121,5 @@ onmessage = (event: MessageEvent<ForceWorkerRequest>) => {
         velY[i - startIdx] = vy;
     }
 
-    postMessage({ velX, velY, startIdx }, [velX.buffer, velY.buffer]);
+    postMessage({ velX, velY, startIdx }, { transfer: [velX.buffer, velY.buffer] });
 };

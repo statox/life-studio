@@ -231,9 +231,16 @@
 </main>
 
 <style>
+    main {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
     #canvas {
-        position: absolute;
-        margin-bottom: 50px;
+        display: block;
         cursor: none;
     }
 

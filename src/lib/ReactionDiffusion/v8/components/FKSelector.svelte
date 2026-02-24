@@ -159,8 +159,8 @@
     #container {
         position: fixed;
         bottom: 0;
-        left: 25px;
-        width: 400px;
+        left: 0;
+        width: min(400px, 100vw);
         z-index: 1;
         background-color: black;
     }
