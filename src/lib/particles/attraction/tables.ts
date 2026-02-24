@@ -364,5 +364,26 @@ export const tables: StoredTable[] = [
                 blue: 2
             }
         }
+    },
+    {
+        name: 'Infinite vessels',
+        description: 'Do not converge. Create fast moving vessels which grow until they explode.',
+        table: {
+            white: { white: 1, red: 0, green: 0, blue: -1 },
+            red: { white: 1, red: 1, green: -1, blue: -1 },
+            green: { white: -1, red: -1, green: 0, blue: 1 },
+            blue: { white: 2, red: 2, green: -1, blue: -1 }
+        }
+    },
+    {
+        name: 'Infinite vessels 2',
+        description:
+            'Do not converge. Some stable green, red, blue structures and some green, red, blue white vessels',
+        table: {
+            white: { white: 1, red: -1, green: -1, blue: -2 },
+            red: { white: -1, red: 0, green: -1, blue: 1 },
+            green: { white: 0, red: 2, green: -1, blue: -1 },
+            blue: { white: 1, red: 1, green: -1, blue: -1 }
+        }
     }
 ];
