@@ -3,8 +3,18 @@ import cursorVS from './glsl/cursor.vert.glsl';
 import cursorFS from './glsl/cursor.frag.glsl';
 import type { MouseState } from '../../types';
 
+interface CursorProps {
+    outputBuffer: REGL.Framebuffer2D | null;
+    inputBuffer: REGL.Framebuffer2D;
+    mousePosition: [number, number];
+    penRadius: number;
+    zoomLevel: number;
+    pan: [number, number];
+}
+
 let command: REGL.DrawCommand;
 export const initCursorCommand = (regl: REGL.Regl) => {
+    const prop = <K extends keyof CursorProps>(name: K) => regl.prop<CursorProps, K>(name);
     command = regl({
         frag: cursorFS,
         vert: cursorVS,
@@ -20,13 +30,13 @@ export const initCursorCommand = (regl: REGL.Regl) => {
             ]
         },
         count: 6,
-        framebuffer: regl.prop('outputBuffer'),
+        framebuffer: prop('outputBuffer'),
         uniforms: {
-            mousePosition: regl.prop('mousePosition'),
-            penRadius: regl.prop('penRadius'),
-            zoomLevel: regl.prop('zoomLevel'),
-            pan: regl.prop('pan'),
-            prevState: regl.prop('inputBuffer')
+            mousePosition: prop('mousePosition'),
+            penRadius: prop('penRadius'),
+            zoomLevel: prop('zoomLevel'),
+            pan: prop('pan'),
+            prevState: prop('inputBuffer')
         }
     });
 };

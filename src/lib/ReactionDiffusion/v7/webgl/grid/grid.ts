@@ -3,9 +3,17 @@ import type REGL from 'regl';
 import gridVS from './glsl/grid.vert.glsl';
 import gridFS from './glsl/grid.frag.glsl';
 
+interface GridProps {
+    outputBuffer: REGL.Framebuffer2D | null;
+    inputBuffer: REGL.Framebuffer2D;
+    zoomLevel: number;
+    pan: [number, number];
+}
+
 let command: REGL.DrawCommand;
 
 export const initGridCommands = (regl: REGL.Regl) => {
+    const prop = <K extends keyof GridProps>(name: K) => regl.prop<GridProps, K>(name);
     command = regl({
         vert: gridVS,
         frag: gridFS,
@@ -21,11 +29,11 @@ export const initGridCommands = (regl: REGL.Regl) => {
             ]
         },
         count: 6,
-        framebuffer: regl.prop('outputBuffer'),
+        framebuffer: prop('outputBuffer'),
         uniforms: {
-            prevState: regl.prop('inputBuffer'),
-            zoomLevel: regl.prop('zoomLevel'),
-            pan: regl.prop('pan')
+            prevState: prop('inputBuffer'),
+            zoomLevel: prop('zoomLevel'),
+            pan: prop('pan')
         }
     });
 };

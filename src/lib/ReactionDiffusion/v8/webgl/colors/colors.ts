@@ -36,11 +36,20 @@ export type ColorMode =
     | 'raw'
     | 'timebasedblue'
     | 'mrob';
+interface ColorsProps {
+    outputBuffer: REGL.Framebuffer2D | null;
+    inputBuffer: REGL.Framebuffer2D;
+    iteration: number;
+    zoomLevel: number;
+    pan: [number, number];
+}
+
 const colorCommands: {
     [k: string]: REGL.DrawCommand;
 } = {};
 
 export const initColorsCommands = (regl: REGL.Regl) => {
+    const prop = <K extends keyof ColorsProps>(name: K) => regl.prop<ColorsProps, K>(name);
     const commonSettings = {
         vert: colorsVS,
 
@@ -55,12 +64,12 @@ export const initColorsCommands = (regl: REGL.Regl) => {
             ]
         },
         count: 6,
-        framebuffer: regl.prop('outputBuffer'),
+        framebuffer: prop('outputBuffer'),
         uniforms: {
-            iteration: regl.prop('iteration'),
-            zoomLevel: regl.prop('zoomLevel'),
-            pan: regl.prop('pan'),
-            prevState: regl.prop('inputBuffer')
+            iteration: prop('iteration'),
+            zoomLevel: prop('zoomLevel'),
+            pan: prop('pan'),
+            prevState: prop('inputBuffer')
         }
     };
 

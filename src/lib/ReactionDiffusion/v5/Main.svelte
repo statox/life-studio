@@ -95,6 +95,9 @@
             canvas
         });
 
+        interface SimProps { Da: number; Db: number; f: number; k: number; }
+        const prop = <K extends keyof SimProps>(name: K) => regl.prop<SimProps, K>(name);
+
         info.iteration = 0;
 
         const RADIUS = 2 ** 11;
@@ -177,10 +180,10 @@ void main() {
 
             framebuffer: (params: { tick: number }) => state[(params.tick + 1) % 2],
             uniforms: {
-                Da: regl.prop('Da'),
-                Db: regl.prop('Db'),
-                f: regl.prop('f'),
-                k: regl.prop('k')
+                Da: prop('Da'),
+                Db: prop('Db'),
+                f: prop('f'),
+                k: prop('k')
             }
         });
 

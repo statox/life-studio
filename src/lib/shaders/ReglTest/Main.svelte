@@ -7,6 +7,7 @@
     import REGL from 'regl';
     // import mouse from 'mouse-change';
 
+    interface DrawSpritesProps { count: number; }
     const regl = REGL({
         extensions: ['OES_texture_float']
     });
@@ -117,7 +118,7 @@
         primitive: 'points',
         offset: (_, params: { count: number }) => N * N - params.count,
         elements: null,
-        count: regl.prop('count')
+        count: regl.prop<DrawSpritesProps, 'count'>('count')
     });
 
     let count = 0;
