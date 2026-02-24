@@ -83,6 +83,7 @@
         start(true, true);
     };
 
+    const MAX_BUFFER_SIZE = 1000;
     const start = (keepCells?: boolean, keepTable?: boolean) => {
         if (WorkerConstructor === undefined) throw new Error('Worker is not initialized');
         if (worker) {
@@ -92,6 +93,12 @@
         worker = new WorkerConstructor();
         worker.onmessage = (response: MessageEvent<UpdateCellsResponse>) => {
             buffer.push(response.data.positions);
+            // Limit the buffer size to avoid memory overflow
+            if (buffer.length >= MAX_BUFFER_SIZE) {
+                buffer.shift();
+                frameIndex = Math.max(frameIndex - 1, 0);
+                console.log('Cleanup');
+            }
         };
         if (!keepCells) cells = getNewCells(worldSize, nbParticles);
         if (!keepTable) attractionTable = getRandomAttractionTable();
