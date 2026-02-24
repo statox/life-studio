@@ -114,6 +114,34 @@
         });
     };
 
+    const tableColors = ['white', 'red', 'green', 'blue'] as const;
+
+    const mutateTable = () => {
+        const mutated = { ...attractionTable };
+        for (const from of tableColors) {
+            mutated[from] = { ...mutated[from] };
+            for (const to of tableColors) {
+                const delta = Math.random() < 0.4 ? (Math.random() < 0.5 ? 1 : -1) : 0;
+                mutated[from][to] = Math.max(-2, Math.min(2, mutated[from][to] + delta));
+            }
+        }
+        updateAttractionTable(mutated);
+    };
+
+    const handleKeydown = (e: KeyboardEvent) => {
+        const tag = (e.target as HTMLElement).tagName;
+        if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+        const actions: Record<string, () => void> = {
+            q: () => start(false, true),
+            w: largeCenterCells,
+            e: centerCells,
+            r: rainbowCells,
+            t: () => updateAttractionTable(getRandomAttractionTable()),
+            m: mutateTable
+        };
+        actions[e.key]?.();
+    };
+
     let canvasWrap: HTMLElement;
     let isFullscreen = false;
     let showExportModal = false;
@@ -151,6 +179,8 @@
     });
     onDestroy(() => worker?.terminate());
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <div class="sim">
     <!-- Control panels -->
@@ -265,7 +295,11 @@
             max={buffer?.length ? buffer.length - 1 : 0}
             bind:value={frameIndex}
         />
-        <button class="icon-btn" on:click={toggleFullscreen} title={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}>
+        <button
+            class="icon-btn"
+            on:click={toggleFullscreen}
+            title={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
+        >
             {isFullscreen ? '⊡' : '⛶'}
         </button>
         <div class="tl-stats">
@@ -281,7 +315,11 @@
     <div class="card preset-card">
         <div class="preset-row">
             <div class="card-title">Preset</div>
-            <button class="export-btn" on:click={() => (showExportModal = true)} title="Export current table">
+            <button
+                class="export-btn"
+                on:click={() => (showExportModal = true)}
+                title="Export current table"
+            >
                 ↗ Export
             </button>
         </div>
@@ -311,6 +349,20 @@
             </div>
         {/if}
     </details>
+
+    <!-- Keyboard shortcuts -->
+    <div class="shortcuts">
+        {#each [
+            { key: 'Q', label: 'Reset random' },
+            { key: 'W', label: 'Wide center' },
+            { key: 'E', label: 'Center' },
+            { key: 'R', label: 'Rainbow' },
+            { key: 'T', label: 'Random table' },
+            { key: 'M', label: 'Mutate table' }
+        ] as s}
+            <span class="shortcut"><kbd>{s.key}</kbd>{s.label}</span>
+        {/each}
+    </div>
 </div>
 
 {#if showExportModal}
@@ -595,4 +647,31 @@
         color: #90a4ae;
     }
 
+    /* ── Keyboard shortcuts ───────────────────── */
+    .shortcuts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 16px;
+        justify-content: center;
+        padding: 4px 0;
+    }
+
+    .shortcut {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.72rem;
+        color: #546e7a;
+    }
+
+    kbd {
+        font-family: 'Fira Mono', 'Consolas', monospace;
+        font-size: 0.7rem;
+        color: #78909c;
+        background: #1a2327;
+        border: 1px solid #37474f;
+        border-radius: 4px;
+        padding: 1px 6px;
+        line-height: 1.6;
+    }
 </style>
