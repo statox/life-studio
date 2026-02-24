@@ -385,5 +385,16 @@ export const tables: StoredTable[] = [
             green: { white: 0, red: 2, green: -1, blue: -1 },
             blue: { white: 1, red: 1, green: -1, blue: -1 }
         }
+    },
+    {
+        name: 'Petry Dish',
+        description:
+            'Stable chaos - Islands of white, semi stable blue, red, green star-like structures, many single green red and blue floaters',
+        table: {
+            white: { white: 0, red: -1, green: -2, blue: -2 },
+            red: { white: -2, red: 0, green: -1, blue: 0 },
+            green: { white: -1, red: 1, green: -2, blue: -1 },
+            blue: { white: 0, red: 1, green: -1, blue: 0 }
+        }
     }
 ];
