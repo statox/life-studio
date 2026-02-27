@@ -12,8 +12,8 @@
         tables
     } from '$lib/particles/attraction';
     import { getNewCells } from '$lib/particles/engine/cells';
-    import { Cell, COLORS, Coordinates, UpdateCellsResponse } from '../engine';
-    import { PARTICLE_COLORS } from '../engine/Engine';
+    import { COLORS, PARTICLE_COLORS } from '../engine';
+    import type { Cell, Coordinates, UpdateCellsResponse } from '../engine';
 
     let worker: Worker;
     let cells: Cell[];

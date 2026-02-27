@@ -5,8 +5,7 @@
         getZeroedAttractionTable,
         type AttractionTable
     } from '$lib/particles/attraction';
-    import { COLORS, type Color } from '$lib/particles/engine';
-    import { PARTICLE_COLORS } from '../engine/Engine';
+    import { COLORS, type Color, PARTICLE_COLORS } from '$lib/particles/engine';
 
     export let attractionTable: AttractionTable;
     export let onUpdateTable: (attractionTable: AttractionTable) => void;

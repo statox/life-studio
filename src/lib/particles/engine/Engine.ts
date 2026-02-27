@@ -2,24 +2,11 @@ import type { Callback } from '$lib/tsUtils';
 import { getZeroedAttractionTable } from '$lib/particles/attraction';
 import type { AttractionTable } from '$lib/particles/attraction';
 import { CellsMap } from '$lib/particles/cellsMap';
+import { colorToIndex } from './colors';
 import { updateCellPos } from './math';
 import type { Cell, WorldSize } from './types';
 
-import { COLORS } from './types';
-
 export const CELL_RADIUS = 3;
-
-export const PARTICLE_COLORS: Record<typeof COLORS[number], string> = {
-    white: '#ffedff',
-    red: '#fc2a51',
-    green: '#8ff97c',
-    blue: '#77cfff'
-};
-
-export const colorToIndex = (color: string): number => {
-    const idx = COLORS.indexOf(color as typeof COLORS[number]);
-    return idx === -1 ? 0 : idx;
-};
 
 export class Engine {
     _stepTimeout: ReturnType<typeof setTimeout> | undefined;

@@ -2,7 +2,8 @@ import { getAttractionForce } from '$lib/particles/attraction';
 import type { AttractionTable } from '$lib/particles/attraction';
 import { getNeighborCoords } from '$lib/particles/cellsMap';
 import { wrappedDistance } from './math';
-import { COLORS, type Color } from './types';
+import { COLORS } from './colors';
+import type { Color } from './colors';
 
 type ForceWorkerRequest = {
     positions: Float32Array; // [x0, y0, x1, y1, ...]

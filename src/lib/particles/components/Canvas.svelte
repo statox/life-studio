@@ -8,8 +8,8 @@
 
     import { onMount } from 'svelte';
     import { linearMap } from '$lib/particles/attraction';
-    import { colorToIndex, PARTICLE_COLORS } from '../engine/Engine';
-    import { Cell, COLORS, Coordinates } from '../engine';
+    import { COLORS, colorToIndex, PARTICLE_COLORS } from '../engine';
+    import type { Cell, Coordinates } from '../engine';
 
     export let cellSize: number;
     export let cells: Cell[];
