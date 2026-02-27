@@ -40,7 +40,9 @@ export const getZeroedAttractionTable = (): AttractionTable => {
 };
 
 export const getMutatedAttractionTable = (original: AttractionTable): AttractionTable => {
-    const mutated = { ...original } as AttractionTable;
+    const mutated = Object.fromEntries(
+        Object.entries(original).map(([k, v]) => [k, { ...v }])
+    ) as AttractionTable;
     const sc = COLORS[Math.floor(Math.random() * 4)];
     const oc = COLORS[Math.floor(Math.random() * 4)];
     const originalValue = mutated[sc][oc];
