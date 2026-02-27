@@ -17,3 +17,4 @@ yarn.lock
 
 # Third-party vendor files
 static/webglUtils.js
+docs/
