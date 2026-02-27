@@ -1,6 +1,7 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
+    import { COLORS } from '../engine';
 
     export let attractionTable: AttractionTable;
 
@@ -10,15 +11,11 @@
     let description = '';
     let copied = false;
 
-    const colors = ['white', 'red', 'green', 'blue'] as const;
-
     $: code = (() => {
-        const rows = colors
-            .map((from) => {
-                const vals = colors.map((to) => `${to}: ${attractionTable[from][to]}`).join(', ');
-                return `            ${from}: { ${vals} }`;
-            })
-            .join(',\n');
+        const rows = COLORS.map((from) => {
+            const vals = COLORS.map((to) => `${to}: ${attractionTable[from][to]}`).join(', ');
+            return `            ${from}: { ${vals} }`;
+        }).join(',\n');
         const safeName = name.replace(/'/g, "\\'");
         const safeDesc = description.replace(/'/g, "\\'");
         return `    {\n        name: '${safeName}',\n        description: '${safeDesc}',\n        table: {\n${rows}\n        }\n    },`;

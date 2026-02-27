@@ -3,12 +3,11 @@ import { getNeighborsIds, type CellsMap } from '$lib/particles/cellsMap';
 import type { Cell, Color, Coordinates } from './types';
 import { distanceSqaredNoWrap, distanceSqrd } from './math';
 import { attractionForce } from './forces';
-
-const colors: Color[] = ['white', 'red', 'green', 'blue'];
+import { COLORS } from './Engine';
 
 const randColor = (): Color => {
-    const randIndex = Math.floor(Math.random() * colors.length);
-    return colors[randIndex];
+    const randIndex = Math.floor(Math.random() * COLORS.length);
+    return COLORS[randIndex];
 };
 
 export const getNewCells = (worldSize: Coordinates, nbParticles: number): Cell[] => {

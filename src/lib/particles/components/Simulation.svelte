@@ -5,7 +5,9 @@
     import Canvas from '$lib/particles/components/Canvas.svelte';
     import ExportModal from '$lib/particles/components/ExportModal.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
-    import type { Cell, Color, Coordinates, UpdateCellsResponse } from '$lib/particles/engine';
+    import type { Cell, Coordinates, UpdateCellsResponse } from '$lib/particles/engine';
+    import { COLORS } from '$lib/particles/engine/Engine';
+
     import {
         getMutatedAttractionTable,
         getRandomAttractionTable,
@@ -80,10 +82,9 @@
     };
 
     const rainbowCells = () => {
-        const colors: Color[] = ['white', 'red', 'green', 'blue'];
         const sectionWidth = worldSize.x / 4;
         for (const cell of cells) {
-            cell.color = colors[Math.min(Math.floor(cell.pos.x / sectionWidth), 3)];
+            cell.color = COLORS[Math.min(Math.floor(cell.pos.x / sectionWidth), 3)];
         }
         start(true, true);
     };

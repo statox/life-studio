@@ -7,7 +7,7 @@
      */
 
     import { onMount } from 'svelte';
-    import type { Cell, Color, Coordinates } from '$lib/particles/engine';
+    import { COLORS, type Cell, type Coordinates } from '$lib/particles/engine';
     import { linearMap } from '$lib/particles/attraction';
 
     export let cellSize: number;
@@ -19,7 +19,6 @@
 
     let canvas: HTMLCanvasElement;
     let off: HTMLCanvasElement | undefined;
-    const colors: Color[] = ['white', 'red', 'green', 'blue'];
     const colorsIndex = { white: 0, red: 1, green: 2, blue: 3 };
     const realColors = {
         white: '#ffedff',
@@ -29,7 +28,7 @@
         //background: '#383b3d'
         background: '#000000'
     };
-    const n = colors.length;
+    const n = COLORS.length;
     const r = cellSize;
     const d = r * 2;
 
@@ -76,7 +75,7 @@
         if (!offCtx) throw new Error('Offscreen canvas context unavailable');
 
         for (let i = 0; i < n; i++) {
-            offCtx.fillStyle = realColors[colors[i]];
+            offCtx.fillStyle = realColors[COLORS[i]];
             offCtx.beginPath();
             offCtx.arc(i * d + r, r, r, 0, 2 * Math.PI);
             offCtx.closePath();

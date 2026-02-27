@@ -5,12 +5,10 @@
         getZeroedAttractionTable,
         type AttractionTable
     } from '$lib/particles/attraction';
-    import type { Color } from '$lib/particles/engine';
+    import { COLORS, type Color } from '$lib/particles/engine';
 
     export let attractionTable: AttractionTable;
     export let onUpdateTable: (attractionTable: AttractionTable) => void;
-
-    const colors: Color[] = ['white', 'red', 'green', 'blue'];
 
     const particleColors: Record<Color, string> = {
         white: '#ffedff',
@@ -76,7 +74,7 @@
                 <span class="corner-label">other →</span>
             </div>
             <!-- Column headers -->
-            {#each colors as c}
+            {#each COLORS as c}
                 <div class="col-header">
                     <span class="dot" style="background:{particleColors[c]}" />
                     <span class="col-label">{c}</span>
@@ -84,12 +82,12 @@
             {/each}
 
             <!-- Rows -->
-            {#each colors as selfColor}
+            {#each COLORS as selfColor}
                 <div class="row-header">
                     <span class="dot" style="background:{particleColors[selfColor]}" />
                     <span class="col-label">{selfColor}</span>
                 </div>
-                {#each colors as otherColor}
+                {#each COLORS as otherColor}
                     {@const val = attractionTable[selfColor][otherColor]}
                     <div class="cell">
                         <button class="adj" on:click={() => decrease(selfColor, otherColor)}
