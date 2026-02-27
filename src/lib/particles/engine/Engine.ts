@@ -2,7 +2,6 @@ import type { Callback } from '$lib/tsUtils';
 import { getZeroedAttractionTable } from '$lib/particles/attraction';
 import type { AttractionTable } from '$lib/particles/attraction';
 import { CellsMap } from '$lib/particles/cellsMap';
-import { updateCells } from './cells';
 import { updateCellPos } from './math';
 import type { Cell, WorldSize } from './types';
 
@@ -28,6 +27,7 @@ export class Engine {
     _running: boolean;
     _cellsMap: CellsMap;
     _forceWorkers: Worker[];
+    _pullAppartAtStart: boolean;
     attractionTable: AttractionTable;
     worldSize: WorldSize;
     cells: Cell[];
@@ -44,6 +44,7 @@ export class Engine {
         this._stepTimeout = undefined;
         this._stepCb = console.log; // The actual function is provided to run()
         this._running = false;
+        this._pullAppartAtStart = params.pullAppartAtStart;
         this.cells = cells;
         this.attractionTable = attractionTable;
         this.worldSize = worldSize;
@@ -60,21 +61,21 @@ export class Engine {
             { length: numWorkers },
             () => new Worker(new URL('./force.worker.ts', import.meta.url), { type: 'module' })
         );
-
-        if (params.pullAppartAtStart) {
-            for (let i = 0; i < 100; i++) {
-                updateCells(
-                    getZeroedAttractionTable(),
-                    this._cellsMap.maxAttractionRadius,
-                    this.cells,
-                    this._cellsMap
-                );
-            }
-        }
     }
 
-    run(stepCallback: Callback<Cell[]>) {
+    async run(stepCallback: Callback<Cell[]>) {
         this._stepCb = stepCallback;
+
+        if (this._pullAppartAtStart) {
+            const realTable = this.attractionTable;
+            this.attractionTable = getZeroedAttractionTable();
+            for (let i = 0; i < 100; i++) {
+                await this.step();
+            }
+            this.attractionTable = realTable;
+        }
+
+        this._running = true;
         const runSteps = async () => {
             if (this._running) {
                 await this.step();
@@ -82,7 +83,6 @@ export class Engine {
             }
             this._stepTimeout = setTimeout(runSteps);
         };
-        this._running = true;
         runSteps();
     }
 
