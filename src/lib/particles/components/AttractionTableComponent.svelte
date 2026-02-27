@@ -5,17 +5,10 @@
         getZeroedAttractionTable,
         type AttractionTable
     } from '$lib/particles/attraction';
-    import { COLORS, type Color } from '$lib/particles/engine';
+    import { COLORS, PARTICLE_COLORS, type Color } from '$lib/particles/engine';
 
     export let attractionTable: AttractionTable;
     export let onUpdateTable: (attractionTable: AttractionTable) => void;
-
-    const particleColors: Record<Color, string> = {
-        white: '#ffedff',
-        red: '#fc2a51',
-        green: '#8ff97c',
-        blue: '#77cfff'
-    };
 
     const valueColor = (val: number): string => {
         if (val <= -2) return '#b71c1c';
@@ -76,7 +69,7 @@
             <!-- Column headers -->
             {#each COLORS as c}
                 <div class="col-header">
-                    <span class="dot" style="background:{particleColors[c]}" />
+                    <span class="dot" style="background:{PARTICLE_COLORS[c]}" />
                     <span class="col-label">{c}</span>
                 </div>
             {/each}
@@ -84,7 +77,7 @@
             <!-- Rows -->
             {#each COLORS as selfColor}
                 <div class="row-header">
-                    <span class="dot" style="background:{particleColors[selfColor]}" />
+                    <span class="dot" style="background:{PARTICLE_COLORS[selfColor]}" />
                     <span class="col-label">{selfColor}</span>
                 </div>
                 {#each COLORS as otherColor}
