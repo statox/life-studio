@@ -19,7 +19,6 @@ export const getNewCells = (worldSize: Coordinates, nbParticles: number): Cell[]
                 x: Math.random() * worldSize.x,
                 y: Math.random() * worldSize.y
             },
-            nextPos: { x: 0, y: 0 },
             vel: { x: 0, y: 0 },
             color: randColor()
         };
