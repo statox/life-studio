@@ -41,7 +41,7 @@
 </div>
 
 <!-- Attraction table editor (collapsible) -->
-<details class="card">
+<details class="card" open>
     <summary>
         <span class="card-title inline">Attraction table</span>
         <span class="summary-hint">— click to expand</span>

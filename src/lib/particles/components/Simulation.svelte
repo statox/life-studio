@@ -140,11 +140,92 @@
 </script>
 
 <div class="sim">
-    <!-- Control panels -->
     <div class="panels">
-        <!-- Simulation settings -->
+        <!-- Simulation controls -->
         <div class="card">
             <div class="card-title">Simulation</div>
+            <div class="field">
+                <label for="nb-particles">Particles</label>
+                <input
+                    id="nb-particles"
+                    type="number"
+                    bind:value={nbParticles}
+                    on:change={updateWorldSettings}
+                    min="1"
+                />
+            </div>
+            <div class="proportion-list">
+                {#each COLORS as c}
+                    <div class="field">
+                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
+                        <input
+                            type="range"
+                            bind:value={colorWeights[c]}
+                            min="0"
+                            max="1000"
+                            step="1"
+                        />
+                        <span class="dim" style="width:28px;text-align:right"
+                            >{colorWeights[c]}</span
+                        >
+                    </div>
+                {/each}
+            </div>
+            <button
+                class="toggle-btn"
+                class:active={showColors}
+                on:click={() => (showColors = !showColors)}
+            >
+                <span class="pdots">
+                    {#each COLORS as c}
+                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
+                    {/each}
+                </span>
+                {showColors ? 'Colors on' : 'Colors off'}
+            </button>
+        </div>
+        <div class="card">
+            <div class="card-title">Cells</div>
+            <div class="btn-stack">
+                <button on:click={() => startSim(false, true)}>↺ Uniform spread</button>
+                <button on:click={largeCenterCells}>◎ Centered circle</button>
+                <button on:click={rainbowCells}>≋ Rainbow</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline bar -->
+    <Timeline
+        bind:this={timeline}
+        bind:buffer
+        bind:frameIndex
+        {cells}
+        {isFullscreen}
+        onToggleFullscreen={toggleFullscreen}
+    />
+
+    <!-- Canvas -->
+    <div class="canvas-wrap" bind:this={canvasWrap}>
+        <Canvas
+            {cells}
+            {worldSize}
+            {cellSize}
+            {showColors}
+            drewFrame={() => timeline?.updateFrame()}
+            {maxFPS}
+        />
+    </div>
+
+    <!-- Attraction table panel -->
+    <AttractionTablePanel
+        {attractionTable}
+        on:updateTable={(e) => updateAttractionTable(e.detail)}
+    />
+
+    <!-- World settings -->
+    <div class="panels">
+        <div class="card">
+            <div class="card-title">World</div>
             <div class="field">
                 <label for="h-cells">H cells</label>
                 <input
@@ -170,7 +251,7 @@
                 <span class="dim">{verticalResolution * maxAttractionRadius}px</span>
             </div>
             <div class="field">
-                <label for="radius">Max attraction radius</label>
+                <label for="radius">Max radius</label>
                 <input
                     id="radius"
                     type="number"
@@ -181,94 +262,11 @@
                 />
             </div>
             <div class="field">
-                <label for="nb-particles">Particles</label>
-                <input
-                    id="nb-particles"
-                    type="number"
-                    bind:value={nbParticles}
-                    on:change={updateWorldSettings}
-                    min="1"
-                />
-            </div>
-            <div class="field">
                 <label for="fps-cap">FPS cap</label>
                 <input id="fps-cap" type="number" bind:value={maxFPS} min="1" max="120" />
             </div>
         </div>
-
-        <!-- Display -->
-        <div class="card">
-            <div class="card-title">Display</div>
-            <button
-                class="toggle-btn"
-                class:active={showColors}
-                on:click={() => (showColors = !showColors)}
-            >
-                <span class="pdots">
-                    {#each COLORS as c}
-                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
-                    {/each}
-                </span>
-                {showColors ? 'Colors on' : 'Colors off'}
-            </button>
-        </div>
-
-        <!-- Cells -->
-        <div class="card">
-            <div class="card-title">Cells</div>
-            <div class="proportion-list">
-                {#each COLORS as c}
-                    <div class="field">
-                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
-                        <input
-                            type="range"
-                            bind:value={colorWeights[c]}
-                            min="0"
-                            max="1000"
-                            step="1"
-                        />
-                        <span class="dim" style="width:28px;text-align:right"
-                            >{colorWeights[c]}</span
-                        >
-                    </div>
-                {/each}
-            </div>
-            <div class="btn-stack">
-                <button on:click={() => startSim(false, true)}>↺ Reset random</button>
-                <button on:click={centerCells}>◎ Center</button>
-                <button on:click={largeCenterCells}>⊙ Wide center</button>
-                <button on:click={rainbowCells}>≋ Rainbow</button>
-            </div>
-        </div>
     </div>
-
-    <!-- Canvas -->
-    <div class="canvas-wrap" bind:this={canvasWrap}>
-        <Canvas
-            {cells}
-            {worldSize}
-            {cellSize}
-            {showColors}
-            drewFrame={() => timeline?.updateFrame()}
-            {maxFPS}
-        />
-    </div>
-
-    <!-- Timeline bar -->
-    <Timeline
-        bind:this={timeline}
-        bind:buffer
-        bind:frameIndex
-        {cells}
-        {isFullscreen}
-        onToggleFullscreen={toggleFullscreen}
-    />
-
-    <!-- Attraction table panel -->
-    <AttractionTablePanel
-        {attractionTable}
-        on:updateTable={(e) => updateAttractionTable(e.detail)}
-    />
 
     <!-- Keyboard shortcuts legend -->
     <KeyboardShortcuts actions={keyActions} />
@@ -350,6 +348,10 @@
         margin-bottom: 0;
     }
 
+    .field input {
+        flex-grow: 2;
+    }
+
     .field label {
         font-size: 0.8rem;
         color: #90a4ae;
@@ -415,6 +417,7 @@
         justify-content: flex-start;
         gap: 10px;
         padding: 8px 12px;
+        margin-bottom: 8px;
     }
 
     .toggle-btn.active {
@@ -443,5 +446,17 @@
         flex: 1;
         min-width: 0;
         accent-color: #c3e88d;
+    }
+
+    /* ── World settings ──────────────────────── */
+    .world-fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 7px;
+        column-gap: 16px;
+    }
+
+    .world-fields .field {
+        margin-bottom: 0;
     }
 </style>
