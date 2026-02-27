@@ -1,42 +1,29 @@
 <script lang="ts">
     import { onDestroy, onMount } from 'svelte';
 
-    import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
+    import AttractionTablePanel from '$lib/particles/components/AttractionTablePanel.svelte';
     import Canvas from '$lib/particles/components/Canvas.svelte';
-    import ExportModal from '$lib/particles/components/ExportModal.svelte';
-    import type { AttractionTable } from '$lib/particles/attraction';
-
+    import KeyboardShortcuts from '$lib/particles/components/KeyboardShortcuts.svelte';
+    import Timeline from '$lib/particles/components/Timeline.svelte';
     import {
         getMutatedAttractionTable,
         getRandomAttractionTable,
-        tables
+        type AttractionTable
     } from '$lib/particles/attraction';
-    import { getNewCells } from '$lib/particles/engine/cells';
-    import { COLORS, PARTICLE_COLORS } from '../engine';
-    import type { Cell, Coordinates, UpdateCellsResponse } from '../engine';
+    import { createSimulationWorker } from '../engine/simulationWorker';
+    import { Cell, COLORS, Coordinates, PARTICLE_COLORS } from '../engine';
+    import { getNewCells } from '../engine/cells';
 
-    let worker: Worker;
-    let cells: Cell[];
+    const MAX_BUFFER_SIZE = 1000;
+    const sim = createSimulationWorker();
+
+    let cells: Cell[] = [];
+    let attractionTable: AttractionTable = getRandomAttractionTable();
     let buffer: Coordinates[][] = [];
-    let attractionTable: AttractionTable;
-    let lastFrameTimestamp = 0;
-    let timeToFrame = 0;
-    let renderPaused = false;
+    let frameIndex = 0;
+
     let showColors = true;
     let maxFPS = 60;
-    let fps = 0;
-
-    let fpsFrameCount = 0;
-    let fpsLastSecond = 0;
-    const tickFPS = () => {
-        const now = Date.now();
-        fpsFrameCount++;
-        if (now - fpsLastSecond >= 1000) {
-            fps = fpsFrameCount;
-            fpsFrameCount = 0;
-            fpsLastSecond = now;
-        }
-    };
 
     const cellSize = 3;
 
@@ -50,16 +37,29 @@
         y: maxAttractionRadius * verticalResolution
     };
 
-    let WorkerConstructor: new () => Worker;
-    const loadWorker = async () => {
-        const SimulationWorker = await import('$lib/particles/engine/simulation.worker?worker');
-        WorkerConstructor = SimulationWorker.default;
-        start();
+    const startSim = (keepCells = false, keepTable = false) => {
+        if (!keepCells) cells = getNewCells(worldSize, nbParticles);
+        if (!keepTable) attractionTable = getRandomAttractionTable();
+        buffer = [];
+        frameIndex = 0;
+        sim.start(
+            { worldSize, nbParticles, maxAttractionRadius },
+            cells,
+            attractionTable,
+            (positions) => {
+                buffer.push(positions);
+                if (buffer.length >= MAX_BUFFER_SIZE) {
+                    buffer.shift();
+                    frameIndex = Math.max(frameIndex - 1, 0);
+                }
+                buffer = buffer;
+            }
+        );
     };
 
-    const updateAttractionTable = (newAttractionTable: AttractionTable) => {
-        attractionTable = newAttractionTable;
-        worker.postMessage({ msg: 'updateTable', attractionTable });
+    const updateAttractionTable = (newTable: AttractionTable) => {
+        attractionTable = newTable;
+        sim.updateAttractionTable(newTable);
         buffer = [cells.map((c) => c.pos)];
         frameIndex = 0;
     };
@@ -67,7 +67,7 @@
     const updateWorldSettings = () => {
         worldSize.x = maxAttractionRadius * horizontalResolution;
         worldSize.y = maxAttractionRadius * verticalResolution;
-        start();
+        startSim();
     };
 
     const centerCells = () => {
@@ -79,7 +79,7 @@
                 y: worldSize.y / 2 + r * Math.sin(theta)
             };
         }
-        start(true, true);
+        startSim(true, true);
     };
 
     const largeCenterCells = () => {
@@ -91,7 +91,7 @@
                 y: worldSize.y / 2 + r * Math.sin(theta)
             };
         }
-        start(true, true);
+        startSim(true, true);
     };
 
     const rainbowCells = () => {
@@ -99,55 +99,21 @@
         for (const cell of cells) {
             cell.color = COLORS[Math.min(Math.floor(cell.pos.x / sectionWidth), 3)];
         }
-        start(true, true);
+        startSim(true, true);
     };
 
-    const MAX_BUFFER_SIZE = 1000;
-    const start = (keepCells?: boolean, keepTable?: boolean) => {
-        if (WorkerConstructor === undefined) throw new Error('Worker is not initialized');
-        if (worker) {
-            worker.postMessage({ msg: 'destroy' });
-            worker.terminate();
-        }
-        worker = new WorkerConstructor();
-        worker.onmessage = (response: MessageEvent<UpdateCellsResponse>) => {
-            buffer.push(response.data.positions);
-            // Limit the buffer size to avoid memory overflow
-            if (buffer.length >= MAX_BUFFER_SIZE) {
-                buffer.shift();
-                frameIndex = Math.max(frameIndex - 1, 0);
-            }
-        };
-        if (!keepCells) cells = getNewCells(worldSize, nbParticles);
-        if (!keepTable) attractionTable = getRandomAttractionTable();
-        buffer = [];
-        frameIndex = 0;
-        worker.postMessage({
-            msg: 'start',
-            cells,
-            attractionTable,
-            worldSize,
-            maxAttractionRadius
-        });
-    };
-
-    const handleKeydown = (e: KeyboardEvent) => {
-        const tag = (e.target as HTMLElement).tagName;
-        if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
-        const actions: Record<string, () => void> = {
-            q: () => start(false, true),
-            w: largeCenterCells,
-            e: centerCells,
-            r: rainbowCells,
-            t: () => updateAttractionTable(getRandomAttractionTable()),
-            m: () => updateAttractionTable(getMutatedAttractionTable(attractionTable))
-        };
-        actions[e.key]?.();
+    const keyActions: Record<string, () => void> = {
+        q: () => startSim(false, true),
+        w: largeCenterCells,
+        e: centerCells,
+        r: rainbowCells,
+        t: () => updateAttractionTable(getRandomAttractionTable()),
+        m: () => updateAttractionTable(getMutatedAttractionTable(attractionTable))
     };
 
     let canvasWrap: HTMLElement;
     let isFullscreen = false;
-    let showExportModal = false;
+    let timeline: Timeline;
 
     const toggleFullscreen = () => {
         if (!document.fullscreenElement) {
@@ -161,30 +127,14 @@
         isFullscreen = !!document.fullscreenElement;
     };
 
-    let frameIndex = 0;
-    const updateFrame = () => {
-        if (buffer.length - 1 > frameIndex) {
-            const now = Date.now();
-            timeToFrame = now - lastFrameTimestamp;
-            lastFrameTimestamp = now;
-            if (!renderPaused) frameIndex++;
-            tickFPS();
-            const positions = buffer[frameIndex];
-            buffer = buffer;
-            if (positions.length !== cells.length) return;
-            for (let i = 0; i < cells.length; i++) cells[i].pos = positions[i];
-        }
-    };
-
-    onMount(() => {
-        loadWorker();
+    onMount(async () => {
+        await sim.loadWorker();
+        startSim();
         document.addEventListener('fullscreenchange', onFullscreenChange);
         return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
     });
-    onDestroy(() => worker?.terminate());
+    onDestroy(() => sim.destroy());
 </script>
-
-<svelte:window on:keydown={handleKeydown} />
 
 <div class="sim">
     <!-- Control panels -->
@@ -264,7 +214,7 @@
         <div class="card">
             <div class="card-title">Cells</div>
             <div class="btn-stack">
-                <button on:click={() => start(false, true)}>↺ Reset random</button>
+                <button on:click={() => startSim(false, true)}>↺ Reset random</button>
                 <button on:click={centerCells}>◎ Center</button>
                 <button on:click={largeCenterCells}>⊙ Wide center</button>
                 <button on:click={rainbowCells}>≋ Rainbow</button>
@@ -274,97 +224,35 @@
 
     <!-- Canvas -->
     <div class="canvas-wrap" bind:this={canvasWrap}>
-        <Canvas {cells} {worldSize} {cellSize} {showColors} drewFrame={updateFrame} {maxFPS} />
+        <Canvas
+            {cells}
+            {worldSize}
+            {cellSize}
+            {showColors}
+            drewFrame={() => timeline?.updateFrame()}
+            {maxFPS}
+        />
     </div>
 
     <!-- Timeline bar -->
-    <div class="timeline">
-        <div class="tl-btns">
-            <button class="icon-btn" on:click={() => (frameIndex = 0)} title="Go to start">⏮</button
-            >
-            <button class="icon-btn" on:click={() => (renderPaused = !renderPaused)}>
-                {renderPaused ? '▶' : '⏸'}
-            </button>
-            <button
-                class="icon-btn"
-                on:click={() => (frameIndex = buffer?.length - 1 || 0)}
-                title="Catch up to latest">⏭</button
-            >
-        </div>
-        <input
-            type="range"
-            class="tl-slider"
-            min="1"
-            max={buffer?.length ? buffer.length - 1 : 0}
-            bind:value={frameIndex}
-        />
-        <button
-            class="icon-btn"
-            on:click={toggleFullscreen}
-            title={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
-        >
-            {isFullscreen ? '⊡' : '⛶'}
-        </button>
-        <div class="tl-stats">
-            <span class="stat"
-                ><span class="stat-label">buf</span> {(buffer?.length || 0) - frameIndex}</span
-            >
-            <span class="stat"><span class="stat-label">frame</span> {frameIndex}</span>
-            <span class="stat">{timeToFrame}<span class="stat-label">ms</span></span>
-            <span class="stat">{fps}<span class="stat-label">fps</span></span>
-        </div>
-    </div>
+    <Timeline
+        bind:this={timeline}
+        bind:buffer
+        bind:frameIndex
+        {cells}
+        {isFullscreen}
+        onToggleFullscreen={toggleFullscreen}
+    />
 
-    <!-- Preset selector -->
-    <div class="card preset-card">
-        <div class="preset-row">
-            <div class="card-title">Preset</div>
-            <button
-                class="export-btn"
-                on:click={() => (showExportModal = true)}
-                title="Export current table"
-            >
-                ↗ Export
-            </button>
-        </div>
-        <select
-            on:change={(e) => {
-                const v = e.currentTarget.value;
-                if (v === '__random__') updateAttractionTable(getRandomAttractionTable());
-                else updateAttractionTable(JSON.parse(v));
-            }}
-        >
-            <option value="__random__">✦ Random</option>
-            {#each tables as t}
-                <option value={JSON.stringify(t.table)}>{t.name} — {t.description}</option>
-            {/each}
-        </select>
-    </div>
+    <!-- Attraction table panel -->
+    <AttractionTablePanel
+        {attractionTable}
+        on:updateTable={(e) => updateAttractionTable(e.detail)}
+    />
 
-    <!-- Attraction table editor (collapsible) -->
-    <details class="card">
-        <summary>
-            <span class="card-title inline">Attraction table</span>
-            <span class="summary-hint">— click to expand</span>
-        </summary>
-        {#if attractionTable}
-            <div class="table-body">
-                <AttractionTableComponent {attractionTable} onUpdateTable={updateAttractionTable} />
-            </div>
-        {/if}
-    </details>
-
-    <!-- Keyboard shortcuts -->
-    <div class="shortcuts">
-        {#each [{ key: 'Q', label: 'Reset random' }, { key: 'W', label: 'Wide center' }, { key: 'E', label: 'Center' }, { key: 'R', label: 'Rainbow' }, { key: 'T', label: 'Random table' }, { key: 'M', label: 'Mutate table' }] as s}
-            <span class="shortcut"><kbd>{s.key}</kbd>{s.label}</span>
-        {/each}
-    </div>
+    <!-- Keyboard shortcuts legend -->
+    <KeyboardShortcuts actions={keyActions} />
 </div>
-
-{#if showExportModal}
-    <ExportModal {attractionTable} on:close={() => (showExportModal = false)} />
-{/if}
 
 <style>
     /* ── Layout ─────────────────────────────── */
@@ -399,51 +287,6 @@
         border-radius: 0;
     }
 
-    /* ── Timeline ───────────────────────────── */
-    .timeline {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 8px;
-        background: #263238;
-        border: 1px solid #37474f;
-        border-radius: 8px;
-        padding: 8px 12px;
-    }
-
-    .tl-btns {
-        display: flex;
-        gap: 4px;
-        flex-shrink: 0;
-    }
-
-    .tl-slider {
-        flex: 1;
-        min-width: 50px;
-        accent-color: #c3e88d;
-        cursor: pointer;
-    }
-
-    .tl-stats {
-        display: flex;
-        gap: 10px;
-        font-size: 0.75rem;
-        color: #eceff1;
-        flex-shrink: 0;
-        white-space: nowrap;
-    }
-
-    .stat {
-        display: flex;
-        align-items: baseline;
-        gap: 3px;
-    }
-
-    .stat-label {
-        font-size: 0.65rem;
-        color: #546e7a;
-    }
-
     /* ── Panels grid ─────────────────────────── */
     .panels {
         display: grid;
@@ -473,11 +316,6 @@
         margin-bottom: 12px;
         font-weight: 600;
         display: block;
-    }
-
-    .card-title.inline {
-        display: inline;
-        margin-bottom: 0;
     }
 
     /* ── Fields ──────────────────────────────── */
@@ -540,11 +378,6 @@
         color: #eceff1;
     }
 
-    .icon-btn {
-        padding: 5px 9px;
-        font-size: 0.88rem;
-    }
-
     .btn-stack {
         display: flex;
         flex-direction: column;
@@ -579,97 +412,5 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
-    }
-
-    /* ── Preset card ─────────────────────────── */
-    .preset-card select {
-        width: 100%;
-        background: #1a2327;
-        border: 1px solid #37474f;
-        border-radius: 6px;
-        color: #eceff1;
-        padding: 7px 10px;
-        font-size: 0.82rem;
-        cursor: pointer;
-        appearance: auto;
-    }
-
-    .preset-card select:focus {
-        outline: 1px solid #c3e88d;
-        border-color: #c3e88d;
-    }
-
-    /* ── Collapsible attraction table ────────── */
-    details > summary {
-        cursor: pointer;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        gap: 0;
-        user-select: none;
-    }
-
-    details > summary::-webkit-details-marker {
-        display: none;
-    }
-
-    .summary-hint {
-        font-size: 0.72rem;
-        color: #455a64;
-        margin-left: 6px;
-    }
-
-    details[open] .summary-hint {
-        display: none;
-    }
-
-    .table-body {
-        margin-top: 14px;
-    }
-
-    /* ── Preset row ───────────────────────────── */
-    .preset-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 8px;
-    }
-
-    .preset-row .card-title {
-        margin-bottom: 0;
-    }
-
-    .export-btn {
-        font-size: 0.75rem;
-        padding: 4px 9px;
-        color: #90a4ae;
-    }
-
-    /* ── Keyboard shortcuts ───────────────────── */
-    .shortcuts {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px 16px;
-        justify-content: center;
-        padding: 4px 0;
-    }
-
-    .shortcut {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.72rem;
-        color: #546e7a;
-    }
-
-    kbd {
-        font-family: 'Fira Mono', 'Consolas', monospace;
-        font-size: 0.7rem;
-        color: #78909c;
-        background: #1a2327;
-        border: 1px solid #37474f;
-        border-radius: 4px;
-        padding: 1px 6px;
-        line-height: 1.6;
     }
 </style>
