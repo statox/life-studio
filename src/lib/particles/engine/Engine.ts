@@ -8,6 +8,8 @@ import type { Cell, WorldSize } from './types';
 
 export const COLORS = ['white', 'red', 'green', 'blue'] as const;
 
+export const CELL_RADIUS = 3;
+
 export const PARTICLE_COLORS: Record<typeof COLORS[number], string> = {
     white: '#ffedff',
     red: '#fc2a51',
@@ -130,7 +132,7 @@ export class Engine {
         const halfWorldDistance = (smallestDimension * smallestDimension) / 2;
         const maxAttractionRadius = this._cellsMap.maxAttractionRadius;
         const maxAttractionRadiusSqrd = maxAttractionRadius * maxAttractionRadius;
-        const cellRadius = 3;
+        const cellRadius = CELL_RADIUS;
         const minDistanceSqrd = (2 * cellRadius) ** 2;
 
         // Dispatch each slice to a force worker in parallel

@@ -3,7 +3,7 @@ import { getNeighborsIds, type CellsMap } from '$lib/particles/cellsMap';
 import type { Cell, Color, Coordinates } from './types';
 import { updateCellPos, wrappedDistance } from './math';
 import { attractionForce } from './forces';
-import { COLORS } from './Engine';
+import { CELL_RADIUS, COLORS } from './Engine';
 
 const randColor = (): Color => {
     const randIndex = Math.floor(Math.random() * COLORS.length);
@@ -38,7 +38,7 @@ export const updateCells = (
         cellsMap.worldSize.x < cellsMap.worldSize.y ? cellsMap.worldSize.x : cellsMap.worldSize.y;
     const halfWorldDistance = (smallestDimension * smallestDimension) / 2;
     const maxAttractionRadiusSqrd = maxAttractionRadius * maxAttractionRadius;
-    const cellRadius = 3;
+    const cellRadius = CELL_RADIUS;
     const minDistanceSqrd = (2 * cellRadius) ** 2;
 
     for (let i = 0; i < cells.length; i++) {
