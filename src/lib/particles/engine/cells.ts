@@ -1,5 +1,5 @@
-import type { Cell, Color, Coordinates } from './types';
-import { COLORS } from './Engine';
+import type { Cell, Coordinates } from './types';
+import { COLORS, type Color } from './colors';
 
 const randColor = (): Color => {
     const randIndex = Math.floor(Math.random() * COLORS.length);
