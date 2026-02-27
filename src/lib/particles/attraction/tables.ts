@@ -40,6 +40,52 @@ export const getMutatedAttractionTable = (original: AttractionTable): Attraction
     return mutated;
 };
 
+export const getCycledUpAttractionTable = (
+    original: AttractionTable,
+    selfColor: Color,
+    otherColor: Color
+): AttractionTable => {
+    const mutated = Object.fromEntries(
+        Object.entries(original).map(([k, v]) => [k, { ...v }])
+    ) as AttractionTable;
+
+    let val = mutated[selfColor][otherColor];
+    val = val >= 2 ? -2 : val + 1;
+    mutated[selfColor][otherColor] = val;
+
+    return mutated;
+};
+
+export const getIncreasedAttractionTable = (
+    original: AttractionTable,
+    selfColor: Color,
+    otherColor: Color
+): AttractionTable => {
+    const mutated = Object.fromEntries(
+        Object.entries(original).map(([k, v]) => [k, { ...v }])
+    ) as AttractionTable;
+
+    const val = mutated[selfColor][otherColor];
+    if (val < 2) mutated[selfColor][otherColor] = val + 1;
+
+    return mutated;
+};
+
+export const getDecreasedAttractionTable = (
+    original: AttractionTable,
+    selfColor: Color,
+    otherColor: Color
+): AttractionTable => {
+    const mutated = Object.fromEntries(
+        Object.entries(original).map(([k, v]) => [k, { ...v }])
+    ) as AttractionTable;
+
+    const val = mutated[selfColor][otherColor];
+    if (val > -2) mutated[selfColor][otherColor] = val - 1;
+
+    return mutated;
+};
+
 export const tables: StoredTable[] = [
     {
         name: 'Negs',

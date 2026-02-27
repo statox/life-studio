@@ -1,5 +1,8 @@
 <script lang="ts">
     import {
+        getCycledUpAttractionTable,
+        getDecreasedAttractionTable,
+        getIncreasedAttractionTable,
         getMutatedAttractionTable,
         getRandomAttractionTable,
         getZeroedAttractionTable,
@@ -21,22 +24,15 @@
     const valueLabel = (val: number): string => (val > 0 ? `+${val}` : `${val}`);
 
     const cycleUp = (selfColor: Color, otherColor: Color) => {
-        let val = attractionTable[selfColor][otherColor];
-        val = val >= 2 ? -2 : val + 1;
-        attractionTable[selfColor][otherColor] = val;
-        onUpdateTable(attractionTable);
+        onUpdateTable(getCycledUpAttractionTable(attractionTable, selfColor, otherColor));
     };
 
     const increase = (selfColor: Color, otherColor: Color) => {
-        const val = attractionTable[selfColor][otherColor];
-        if (val < 2) attractionTable[selfColor][otherColor] = val + 1;
-        onUpdateTable(attractionTable);
+        onUpdateTable(getIncreasedAttractionTable(attractionTable, selfColor, otherColor));
     };
 
     const decrease = (selfColor: Color, otherColor: Color) => {
-        const val = attractionTable[selfColor][otherColor];
-        if (val > -2) attractionTable[selfColor][otherColor] = val - 1;
-        onUpdateTable(attractionTable);
+        onUpdateTable(getDecreasedAttractionTable(attractionTable, selfColor, otherColor));
     };
 
     const randomizeTable = () => {
