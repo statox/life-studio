@@ -4,7 +4,7 @@ import type { AttractionTable } from '$lib/particles/attraction';
 import { CellsMap } from '$lib/particles/cellsMap';
 import { updateCells } from './cells';
 import { updateCellPos } from './math';
-import type { Cell, Coordinates, WorldSize } from './types';
+import type { Cell, WorldSize } from './types';
 
 import { COLORS } from './types';
 

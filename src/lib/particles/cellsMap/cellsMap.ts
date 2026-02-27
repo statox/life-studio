@@ -81,6 +81,31 @@ export class CellsMap {
     }
 }
 
+// Pure function to compute the 9 neighbor square coordinates (with wrapping)
+export const getNeighborCoords = (
+    sx: number,
+    sy: number,
+    cols: number,
+    rows: number
+): { x: number; y: number }[] => {
+    const prevX = sx === 0 ? cols - 1 : sx - 1;
+    const nextX = sx === cols - 1 ? 0 : sx + 1;
+    const prevY = sy === 0 ? rows - 1 : sy - 1;
+    const nextY = sy === rows - 1 ? 0 : sy + 1;
+
+    return [
+        { x: prevX, y: prevY },
+        { x: sx, y: prevY },
+        { x: nextX, y: prevY },
+        { x: prevX, y: sy },
+        { x: sx, y: sy },
+        { x: nextX, y: sy },
+        { x: prevX, y: nextY },
+        { x: sx, y: nextY },
+        { x: nextX, y: nextY }
+    ];
+};
+
 // Not in the class because it needs to be used in the worker and can't be
 // serialized properly
 export const getNeighborsIds = (map: CellsMap, cell: Cell) => {
@@ -90,28 +115,15 @@ export const getNeighborsIds = (map: CellsMap, cell: Cell) => {
         throw new Error('Cell not in map');
     }
 
-    const { x, y } = currentSquare;
-    const prevX = x === 0 ? map.squares[0].length - 1 : x - 1;
-    const nextX = x === map.squares[0].length - 1 ? 0 : x + 1;
-    const prevY = y === 0 ? map.squares.length - 1 : y - 1;
-    const nextY = y === map.squares.length - 1 ? 0 : y + 1;
-
-    const neighborSquares = [
-        { x: prevX, y: prevY },
-        { x: x, y: prevY },
-        { x: nextX, y: prevY },
-
-        { x: prevX, y: y },
-        { x, y: y },
-        { x: nextX, y: y },
-
-        { x: prevX, y: nextY },
-        { x: x, y: nextY },
-        { x: nextX, y: nextY }
-    ];
+    const neighborSquaresCoords = getNeighborCoords(
+        currentSquare.x,
+        currentSquare.y,
+        map.squares[0].length,
+        map.squares.length
+    );
 
     const neighborsIds: number[] = [];
-    for (const { x, y } of neighborSquares) {
+    for (const { x, y } of neighborSquaresCoords) {
         neighborsIds.push(...map.squares[y][x]);
     }
     return neighborsIds;
