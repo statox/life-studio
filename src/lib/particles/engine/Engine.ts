@@ -3,6 +3,7 @@ import { getZeroedAttractionTable } from '$lib/particles/attraction';
 import type { AttractionTable } from '$lib/particles/attraction';
 import { CellsMap } from '$lib/particles/cellsMap';
 import { updateCells } from './cells';
+import { updateCellPos } from './math';
 import type { Cell, Coordinates, WorldSize } from './types';
 
 export const COLORS = ['white', 'red', 'green', 'blue'] as const;
@@ -10,21 +11,6 @@ export const COLORS = ['white', 'red', 'green', 'blue'] as const;
 const colorToIndex = (color: string): number => {
     const idx = COLORS.indexOf(color as typeof COLORS[number]);
     return idx === -1 ? 0 : idx;
-};
-
-const updateCellPos = (worldSize: Coordinates, cell: Cell) => {
-    cell.pos.x += cell.vel.x;
-    cell.pos.y += cell.vel.y;
-    if (cell.pos.x <= 0) {
-        cell.pos.x = worldSize.x + cell.pos.x;
-    } else if (cell.pos.x >= worldSize.x) {
-        cell.pos.x = cell.pos.x - worldSize.x;
-    }
-    if (cell.pos.y <= 0) {
-        cell.pos.y = worldSize.y + cell.pos.y;
-    } else if (cell.pos.y >= worldSize.y) {
-        cell.pos.y = cell.pos.y - worldSize.y;
-    }
 };
 
 export class Engine {
