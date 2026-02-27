@@ -1,5 +1,6 @@
 import { getAttractionForce } from '$lib/particles/attraction';
 import type { AttractionTable } from '$lib/particles/attraction';
+import { getNeighborCoords } from '$lib/particles/cellsMap';
 import { COLORS } from './Engine';
 import type { Color } from './types';
 
@@ -47,22 +48,9 @@ onmessage = (event: MessageEvent<ForceWorkerRequest>) => {
         const sx = Math.min(Math.floor((ix * squareCols) / worldSize.x), squareCols - 1);
         const sy = Math.min(Math.floor((iy * squareRows) / worldSize.y), squareRows - 1);
 
-        const prevX = sx === 0 ? squareCols - 1 : sx - 1;
-        const nextX = sx === squareCols - 1 ? 0 : sx + 1;
-        const prevY = sy === 0 ? squareRows - 1 : sy - 1;
-        const nextY = sy === squareRows - 1 ? 0 : sy + 1;
-
-        const neighborSquares = [
-            squaresFlat[prevY][prevX],
-            squaresFlat[prevY][sx],
-            squaresFlat[prevY][nextX],
-            squaresFlat[sy][prevX],
-            squaresFlat[sy][sx],
-            squaresFlat[sy][nextX],
-            squaresFlat[nextY][prevX],
-            squaresFlat[nextY][sx],
-            squaresFlat[nextY][nextX]
-        ];
+        const neighborSquares = getNeighborCoords(sx, sy, squareCols, squareRows).map(
+            ({ x, y }) => squaresFlat[y][x]
+        );
 
         let vx = 0;
         let vy = 0;
