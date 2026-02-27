@@ -110,7 +110,8 @@
         e: centerCells,
         r: rainbowCells,
         t: () => updateAttractionTable(getRandomAttractionTable()),
-        m: () => updateAttractionTable(getMutatedAttractionTable(attractionTable))
+        m: () => updateAttractionTable(getMutatedAttractionTable(attractionTable)),
+        f: () => toggleFullscreen()
     };
 
     let canvasWrap: HTMLElement;
