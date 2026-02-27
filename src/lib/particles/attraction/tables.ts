@@ -187,5 +187,26 @@ export const tables: StoredTable[] = [
             green: { white: -2, red: 1, green: 2, blue: 2 },
             blue: { white: 0, red: 1, green: 0, blue: 0 }
         }
+    },
+    {
+        name: 'Worms-ish',
+        description:
+            'Large moving worm-like structures converging to a big blob of blue, white and red',
+        table: {
+            white: { white: -1, red: 1, green: 1, blue: 0 },
+            red: { white: 0, red: -1, green: 1, blue: 1 },
+            green: { white: 0, red: -1, green: -1, blue: 1 },
+            blue: { white: 1, red: 0, green: 0, blue: -1 }
+        }
+    },
+    {
+        name: 'Worms',
+        description: 'Produces long worms which wrap around the edges and cut through each other',
+        table: {
+            white: { white: -1, red: 2, green: 1, blue: 0 },
+            red: { white: 0, red: -1, green: 1, blue: 1 },
+            green: { white: 0, red: -1, green: -2, blue: 1 },
+            blue: { white: 2, red: 0, green: -1, blue: -1 }
+        }
     }
 ];
