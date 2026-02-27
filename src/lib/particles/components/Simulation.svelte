@@ -102,7 +102,6 @@
             if (buffer.length >= MAX_BUFFER_SIZE) {
                 buffer.shift();
                 frameIndex = Math.max(frameIndex - 1, 0);
-                console.log('Cleanup');
             }
         };
         if (!keepCells) cells = getNewCells(worldSize, nbParticles);
@@ -388,6 +387,7 @@
     /* ── Timeline ───────────────────────────── */
     .timeline {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: 8px;
         background: #263238;
@@ -404,7 +404,7 @@
 
     .tl-slider {
         flex: 1;
-        min-width: 0;
+        min-width: 50px;
         accent-color: #c3e88d;
         cursor: pointer;
     }
