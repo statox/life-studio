@@ -105,26 +105,3 @@ export const getNeighborCoords = (
         { x: nextX, y: nextY }
     ];
 };
-
-// Not in the class because it needs to be used in the worker and can't be
-// serialized properly
-export const getNeighborsIds = (map: CellsMap, cell: Cell) => {
-    const currentSquare = map.squareByCellId.get(cell.id);
-
-    if (!currentSquare) {
-        throw new Error('Cell not in map');
-    }
-
-    const neighborSquaresCoords = getNeighborCoords(
-        currentSquare.x,
-        currentSquare.y,
-        map.squares[0].length,
-        map.squares.length
-    );
-
-    const neighborsIds: number[] = [];
-    for (const { x, y } of neighborSquaresCoords) {
-        neighborsIds.push(...map.squares[y][x]);
-    }
-    return neighborsIds;
-};
