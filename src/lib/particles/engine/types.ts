@@ -13,7 +13,6 @@ export type Color = typeof COLORS[number];
 export interface Cell {
     id: number;
     pos: Coordinates;
-    nextPos: Coordinates;
     vel: Coordinates;
     color: Color;
 }
