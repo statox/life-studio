@@ -5,14 +5,14 @@
     import Canvas from '$lib/particles/components/Canvas.svelte';
     import KeyboardShortcuts from '$lib/particles/components/KeyboardShortcuts.svelte';
     import Timeline from '$lib/particles/components/Timeline.svelte';
-    import {
-        getMutatedAttractionTable,
-        getRandomAttractionTable,
-        type AttractionTable
-    } from '$lib/particles/attraction';
     import { createSimulationWorker } from '../engine/simulationWorker';
     import { Cell, COLORS, Coordinates, PARTICLE_COLORS } from '../engine';
-    import { getNewCells } from '../engine/cells';
+    import {
+        AttractionTable,
+        getMutatedAttractionTable,
+        getRandomAttractionTable
+    } from '../attraction';
+    import { ColorProportions, getNewCells } from '../engine/cells';
 
     const MAX_BUFFER_SIZE = 1000;
     const sim = createSimulationWorker();
@@ -21,6 +21,8 @@
     let attractionTable: AttractionTable = getRandomAttractionTable();
     let buffer: Coordinates[][] = [];
     let frameIndex = 0;
+
+    let colorWeights: ColorProportions = { white: 500, red: 500, green: 500, blue: 500 };
 
     let showColors = true;
     let maxFPS = 60;
@@ -38,7 +40,7 @@
     };
 
     const startSim = (keepCells = false, keepTable = false) => {
-        if (!keepCells) cells = getNewCells(worldSize, nbParticles);
+        if (!keepCells) cells = getNewCells(worldSize, nbParticles, colorWeights);
         if (!keepTable) attractionTable = getRandomAttractionTable();
         buffer = [];
         frameIndex = 0;
@@ -213,6 +215,23 @@
         <!-- Cells -->
         <div class="card">
             <div class="card-title">Cells</div>
+            <div class="proportion-list">
+                {#each COLORS as c}
+                    <div class="field">
+                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
+                        <input
+                            type="range"
+                            bind:value={colorWeights[c]}
+                            min="0"
+                            max="1000"
+                            step="1"
+                        />
+                        <span class="dim" style="width:28px;text-align:right"
+                            >{colorWeights[c]}</span
+                        >
+                    </div>
+                {/each}
+            </div>
             <div class="btn-stack">
                 <button on:click={() => startSim(false, true)}>↺ Reset random</button>
                 <button on:click={centerCells}>◎ Center</button>
@@ -354,7 +373,7 @@
 
     .dim {
         font-size: 0.7rem;
-        color: #455a64;
+        color: #aeafb0;
     }
 
     /* ── Buttons ─────────────────────────────── */
@@ -412,5 +431,16 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .proportion-list {
+        margin-bottom: 10px;
+    }
+
+    .proportion-list .field input[type='range'] {
+        flex: 1;
+        min-width: 0;
+        accent-color: #c3e88d;
     }
 </style>
