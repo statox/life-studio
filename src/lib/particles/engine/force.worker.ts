@@ -2,6 +2,7 @@ import { getAttractionForce } from '$lib/particles/attraction';
 import type { AttractionTable } from '$lib/particles/attraction';
 import { getNeighborCoords } from '$lib/particles/cellsMap';
 import { COLORS } from './Engine';
+import { wrappedDistance } from './math';
 import type { Color } from './types';
 
 type ForceWorkerRequest = {
@@ -65,18 +66,13 @@ onmessage = (event: MessageEvent<ForceWorkerRequest>) => {
 
                 const dx = jx - ix;
                 const dy = jy - iy;
-                const distSqrdNoWrap = dx * dx + dy * dy;
 
-                let distSqrd = distSqrdNoWrap;
-                let wrapped = false;
-                if (distSqrdNoWrap > halfWorldDistance) {
-                    let wdx = Math.abs(dx);
-                    if (wdx > worldSize.x / 2) wdx = worldSize.x - wdx;
-                    let wdy = Math.abs(dy);
-                    if (wdy > worldSize.y / 2) wdy = worldSize.y - wdy;
-                    distSqrd = wdx * wdx + wdy * wdy;
-                    wrapped = true;
-                }
+                const { distSqrd, wrapped } = wrappedDistance(
+                    worldSize,
+                    { x: ix, y: iy },
+                    { x: jx, y: jy },
+                    halfWorldDistance
+                );
 
                 let force = getAttractionForce(
                     attractionTable,

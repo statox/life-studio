@@ -1,6 +1,6 @@
 import { getAttractionForce, type AttractionTable } from '$lib/particles/attraction';
 import { getNeighborsIds, type CellsMap } from '$lib/particles/cellsMap';
-import { distanceSqaredNoWrap, distanceSqrd } from './math';
+import { wrappedDistance } from './math';
 import type { Cell } from './types';
 
 export const attractionForce = (params: {
@@ -32,20 +32,12 @@ export const attractionForce = (params: {
             continue;
         }
 
-        const distSqrdNoWrap = distanceSqaredNoWrap(cell.pos, other.pos);
-
-        // IMPORTANT
-        // If other was in neigborIds it means that its distance on a wrap world
-        // is close enough.
-        // But if distanceSqaredNoWrap is big enough it means it is on the other side
-        // of the (not wraped) map so we need to invert the attractionForce to Take
-        // that into account
-        let distSqrd = distSqrdNoWrap;
-        let wrapped = false;
-        if (distSqrdNoWrap > halfWorldDistance) {
-            distSqrd = distanceSqrd(cellsMap.worldSize, cell.pos, other.pos);
-            wrapped = true;
-        }
+        const { distSqrd, wrapped } = wrappedDistance(
+            cellsMap.worldSize,
+            cell.pos,
+            other.pos,
+            halfWorldDistance
+        );
 
         let attractionForce = getAttractionForce(
             attractionTable,
