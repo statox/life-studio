@@ -6,7 +6,11 @@
     import ExportModal from '$lib/particles/components/ExportModal.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
     import type { Cell, Color, Coordinates, UpdateCellsResponse } from '$lib/particles/engine';
-    import { getRandomAttractionTable, tables } from '$lib/particles/attraction';
+    import {
+        getMutatedAttractionTable,
+        getRandomAttractionTable,
+        tables
+    } from '$lib/particles/attraction';
     import { getNewCells } from '$lib/particles/engine/cells';
 
     let worker: Worker;
@@ -114,20 +118,6 @@
         });
     };
 
-    const tableColors = ['white', 'red', 'green', 'blue'] as const;
-
-    const mutateTable = () => {
-        const mutated = { ...attractionTable };
-        for (const from of tableColors) {
-            mutated[from] = { ...mutated[from] };
-            for (const to of tableColors) {
-                const delta = Math.random() < 0.4 ? (Math.random() < 0.5 ? 1 : -1) : 0;
-                mutated[from][to] = Math.max(-2, Math.min(2, mutated[from][to] + delta));
-            }
-        }
-        updateAttractionTable(mutated);
-    };
-
     const handleKeydown = (e: KeyboardEvent) => {
         const tag = (e.target as HTMLElement).tagName;
         if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
@@ -137,7 +127,7 @@
             e: centerCells,
             r: rainbowCells,
             t: () => updateAttractionTable(getRandomAttractionTable()),
-            m: mutateTable
+            m: () => updateAttractionTable(getMutatedAttractionTable(attractionTable))
         };
         actions[e.key]?.();
     };

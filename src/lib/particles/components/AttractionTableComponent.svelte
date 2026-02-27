@@ -1,5 +1,10 @@
 <script lang="ts">
-    import type { AttractionTable } from '$lib/particles/attraction';
+    import {
+        getMutatedAttractionTable,
+        getRandomAttractionTable,
+        getZeroedAttractionTable,
+        type AttractionTable
+    } from '$lib/particles/attraction';
     import type { Color } from '$lib/particles/engine';
 
     export let attractionTable: AttractionTable;
@@ -44,21 +49,15 @@
     };
 
     const randomizeTable = () => {
-        for (const sc of colors)
-            for (const oc of colors) attractionTable[sc][oc] = Math.floor(Math.random() * 5) - 2;
-        onUpdateTable(attractionTable);
+        onUpdateTable(getRandomAttractionTable());
     };
 
     const zeroTable = () => {
-        for (const sc of colors) for (const oc of colors) attractionTable[sc][oc] = 0;
-        onUpdateTable(attractionTable);
+        onUpdateTable(getZeroedAttractionTable());
     };
 
     const mutateTable = () => {
-        const sc = colors[Math.floor(Math.random() * 4)];
-        const oc = colors[Math.floor(Math.random() * 4)];
-        attractionTable[sc][oc] = Math.floor(Math.random() * 5) - 2;
-        onUpdateTable(attractionTable);
+        onUpdateTable(getMutatedAttractionTable(attractionTable));
     };
 </script>
 

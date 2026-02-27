@@ -1,4 +1,7 @@
+import type { Color } from '../engine';
 import type { AttractionTable, StoredTable } from './types';
+
+export const colors: Color[] = ['white', 'red', 'green', 'blue'];
 
 export const getRandomAttractionTable = (): AttractionTable => {
     return {
@@ -37,6 +40,20 @@ export const getZeroedAttractionTable = (): AttractionTable => {
         blue: { white: 0, red: 0, green: 0, blue: 0 }
     };
 };
+
+export const getMutatedAttractionTable = (original: AttractionTable): AttractionTable => {
+    const mutated = { ...original } as AttractionTable;
+    const sc = colors[Math.floor(Math.random() * 4)];
+    const oc = colors[Math.floor(Math.random() * 4)];
+    const originalValue = mutated[sc][oc];
+
+    while (mutated[sc][oc] === originalValue) {
+        mutated[sc][oc] = Math.floor(Math.random() * 5) - 2;
+    }
+
+    return mutated;
+};
+
 export const tables: StoredTable[] = [
     {
         name: 'Negs',
