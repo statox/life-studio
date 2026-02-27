@@ -257,5 +257,16 @@ export const tables: StoredTable[] = [
             green: { white: 0, red: -1, green: -2, blue: 1 },
             blue: { white: 2, red: 0, green: -1, blue: -1 }
         }
+    },
+    {
+        name: 'Spliting gliders',
+        description:
+            'Islands of blue moved by gliders. Gliders are pushed by red chasing white which pushes fluid-like green',
+        table: {
+            white: { white: 0, red: 0, green: 1, blue: 0 },
+            red: { white: 2, red: 0, green: 1, blue: -1 },
+            green: { white: 0, red: -2, green: 0, blue: -1 },
+            blue: { white: -2, red: 0, green: 0, blue: 0 }
+        }
     }
 ];
