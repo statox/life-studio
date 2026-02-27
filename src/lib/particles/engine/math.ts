@@ -20,6 +20,21 @@ export const distanceSqaredNoWrap = (a: Coordinates, b: Coordinates) => {
     return dx * dx + dy * dy;
 };
 
+// Determines the effective squared distance between two points, detecting
+// whether the shortest path wraps around the world boundary.
+export const wrappedDistance = (
+    worldSize: Coordinates,
+    a: Coordinates,
+    b: Coordinates,
+    halfWorldDistance: number
+): { distSqrd: number; wrapped: boolean } => {
+    const noWrap = distanceSqaredNoWrap(a, b);
+    if (noWrap <= halfWorldDistance) {
+        return { distSqrd: noWrap, wrapped: false };
+    }
+    return { distSqrd: distanceSqrd(worldSize, a, b), wrapped: true };
+};
+
 export const updateCellPos = (worldSize: Coordinates, cell: Cell) => {
     cell.pos.x += cell.vel.x;
     cell.pos.y += cell.vel.y;
