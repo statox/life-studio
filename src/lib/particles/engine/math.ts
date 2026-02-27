@@ -14,7 +14,7 @@ export const distanceSqrd = (worldSize: Coordinates, a: Coordinates, b: Coordina
     return dx * dx + dy * dy;
 };
 
-export const distanceSqaredNoWrap = (a: Coordinates, b: Coordinates) => {
+export const distanceSquaredNoWrap = (a: Coordinates, b: Coordinates) => {
     const dx = Math.abs(b.x - a.x);
     const dy = Math.abs(b.y - a.y);
     return dx * dx + dy * dy;
@@ -28,7 +28,7 @@ export const wrappedDistance = (
     b: Coordinates,
     halfWorldDistance: number
 ): { distSqrd: number; wrapped: boolean } => {
-    const noWrap = distanceSqaredNoWrap(a, b);
+    const noWrap = distanceSquaredNoWrap(a, b);
     if (noWrap <= halfWorldDistance) {
         return { distSqrd: noWrap, wrapped: false };
     }
