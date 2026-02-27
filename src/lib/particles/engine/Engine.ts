@@ -8,7 +8,14 @@ import type { Cell, WorldSize } from './types';
 
 import { COLORS } from './types';
 
-const colorToIndex = (color: string): number => {
+export const PARTICLE_COLORS: Record<typeof COLORS[number], string> = {
+    white: '#ffedff',
+    red: '#fc2a51',
+    green: '#8ff97c',
+    blue: '#77cfff'
+};
+
+export const colorToIndex = (color: string): number => {
     const idx = COLORS.indexOf(color as typeof COLORS[number]);
     return idx === -1 ? 0 : idx;
 };

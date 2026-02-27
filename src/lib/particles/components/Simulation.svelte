@@ -5,7 +5,6 @@
     import Canvas from '$lib/particles/components/Canvas.svelte';
     import ExportModal from '$lib/particles/components/ExportModal.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
-    import { COLORS, type Cell, type Coordinates, type UpdateCellsResponse } from '$lib/particles/engine';
 
     import {
         getMutatedAttractionTable,
@@ -13,6 +12,8 @@
         tables
     } from '$lib/particles/attraction';
     import { getNewCells } from '$lib/particles/engine/cells';
+    import { Cell, COLORS, Coordinates, UpdateCellsResponse } from '../engine';
+    import { PARTICLE_COLORS } from '../engine/Engine';
 
     let worker: Worker;
     let cells: Cell[];
@@ -251,10 +252,9 @@
                 on:click={() => (showColors = !showColors)}
             >
                 <span class="pdots">
-                    <span class="pdot" style="background:#ffedff" />
-                    <span class="pdot" style="background:#fc2a51" />
-                    <span class="pdot" style="background:#8ff97c" />
-                    <span class="pdot" style="background:#77cfff" />
+                    {#each COLORS as c}
+                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
+                    {/each}
                 </span>
                 {showColors ? 'Colors on' : 'Colors off'}
             </button>

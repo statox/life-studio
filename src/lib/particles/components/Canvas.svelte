@@ -9,6 +9,7 @@
     import { onMount } from 'svelte';
     import { COLORS, type Cell, type Coordinates } from '$lib/particles/engine';
     import { linearMap } from '$lib/particles/attraction';
+    import { colorToIndex, PARTICLE_COLORS } from '../engine/Engine';
 
     export let cellSize: number;
     export let cells: Cell[];
@@ -19,15 +20,7 @@
 
     let canvas: HTMLCanvasElement;
     let off: HTMLCanvasElement | undefined;
-    const colorsIndex = { white: 0, red: 1, green: 2, blue: 3 };
-    const realColors = {
-        white: '#ffedff',
-        red: '#fc2a51',
-        green: '#8ff97c',
-        blue: '#77cfff',
-        //background: '#383b3d'
-        background: '#000000'
-    };
+    const backgroundColor = '#000000';
     const n = COLORS.length;
     const r = cellSize;
     const d = r * 2;
@@ -49,7 +42,7 @@
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
-        ctx.fillStyle = realColors.background;
+        ctx.fillStyle = backgroundColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         if (!cells?.length) return;
@@ -58,7 +51,7 @@
             const cell = cells[i];
             const x = Math.floor(linearMap(cell.pos.x, 0, worldSize.x, 0, canvas.width));
             const y = Math.floor(linearMap(cell.pos.y, 0, worldSize.y, 0, canvas.height));
-            const c = showColors ? colorsIndex[cell.color] : 0;
+            const c = showColors ? colorToIndex(cell.color) : 0;
             ctx.drawImage(off, c * d, 0, d, d, x - r, y - r, d, d);
         }
         drewFrame();
@@ -75,7 +68,7 @@
         if (!offCtx) throw new Error('Offscreen canvas context unavailable');
 
         for (let i = 0; i < n; i++) {
-            offCtx.fillStyle = realColors[COLORS[i]];
+            offCtx.fillStyle = PARTICLE_COLORS[COLORS[i]];
             offCtx.beginPath();
             offCtx.arc(i * d + r, r, r, 0, 2 * Math.PI);
             offCtx.closePath();
