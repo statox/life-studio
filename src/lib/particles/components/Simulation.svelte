@@ -23,6 +23,19 @@
     let renderPaused = false;
     let showColors = true;
     let maxFPS = 60;
+    let fps = 0;
+
+    let fpsFrameCount = 0;
+    let fpsLastSecond = 0;
+    const tickFPS = () => {
+        const now = Date.now();
+        fpsFrameCount++;
+        if (now - fpsLastSecond >= 1000) {
+            fps = fpsFrameCount;
+            fpsFrameCount = 0;
+            fpsLastSecond = now;
+        }
+    };
 
     const cellSize = 3;
 
@@ -154,6 +167,7 @@
             timeToFrame = now - lastFrameTimestamp;
             lastFrameTimestamp = now;
             if (!renderPaused) frameIndex++;
+            tickFPS();
             const positions = buffer[frameIndex];
             buffer = buffer;
             if (positions.length !== cells.length) return;
@@ -297,6 +311,7 @@
             >
             <span class="stat"><span class="stat-label">frame</span> {frameIndex}</span>
             <span class="stat">{timeToFrame}<span class="stat-label">ms</span></span>
+            <span class="stat">{fps}<span class="stat-label">fps</span></span>
         </div>
     </div>
 
