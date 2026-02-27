@@ -1,42 +1,28 @@
-import { COLORS } from '../engine';
+import { COLORS, type Color } from '../engine';
 import type { AttractionTable, StoredTable } from './types';
 
 export const getRandomAttractionTable = (): AttractionTable => {
-    return {
-        white: {
-            white: Math.floor(Math.random() * 4 - 1),
-            red: Math.floor(Math.random() * 4 - 1),
-            green: Math.floor(Math.random() * 4 - 1),
-            blue: Math.floor(Math.random() * 4 - 1)
-        },
-        red: {
-            white: Math.floor(Math.random() * 4 - 1),
-            red: Math.floor(Math.random() * 4 - 1),
-            green: Math.floor(Math.random() * 4 - 1),
-            blue: Math.floor(Math.random() * 4 - 1)
-        },
-        green: {
-            white: Math.floor(Math.random() * 4 - 1),
-            red: Math.floor(Math.random() * 4 - 1),
-            green: Math.floor(Math.random() * 4 - 1),
-            blue: Math.floor(Math.random() * 4 - 1)
-        },
-        blue: {
-            white: Math.floor(Math.random() * 4 - 1),
-            red: Math.floor(Math.random() * 4 - 1),
-            green: Math.floor(Math.random() * 4 - 1),
-            blue: Math.floor(Math.random() * 4 - 1)
-        }
-    };
+    const table = {} as AttractionTable;
+    COLORS.forEach((c) => {
+        table[c] = {} as Record<Color, number>;
+        COLORS.forEach((c2) => {
+            table[c][c2] = Math.floor(Math.random() * 4 - 1);
+        });
+    });
+
+    return table;
 };
 
 export const getZeroedAttractionTable = (): AttractionTable => {
-    return {
-        white: { white: 0, red: 0, green: 0, blue: 0 },
-        red: { white: 0, red: 0, green: 0, blue: 0 },
-        green: { white: 0, red: 0, green: 0, blue: 0 },
-        blue: { white: 0, red: 0, green: 0, blue: 0 }
-    };
+    const table = {} as AttractionTable;
+    COLORS.forEach((c) => {
+        table[c] = {} as Record<Color, number>;
+        COLORS.forEach((c2) => {
+            table[c][c2] = 0;
+        });
+    });
+
+    return table;
 };
 
 export const getMutatedAttractionTable = (original: AttractionTable): AttractionTable => {
