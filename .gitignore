@@ -9,3 +9,6 @@ node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 docs/
+
+# Local screenshots TODO Use git LFS? Store in the repo and don't care?
+screenshots/
