@@ -446,16 +446,4 @@
         min-width: 0;
         accent-color: #c3e88d;
     }
-
-    /* ── World settings ──────────────────────── */
-    .world-fields {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        row-gap: 7px;
-        column-gap: 16px;
-    }
-
-    .world-fields .field {
-        margin-bottom: 0;
-    }
 </style>
