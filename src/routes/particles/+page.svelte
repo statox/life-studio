@@ -1,5 +1,7 @@
 <script>
-    import Simulation from '$lib/particles/components/Simulation.svelte';
+    import Demonstration from '$lib/particles/components/Demonstration.svelte';
 </script>
 
-<Simulation />
+<Demonstration />
+
+<a href="/particles/dev">Dev page</a>
