@@ -38,9 +38,17 @@ export function createSimulationWorker() {
         worker?.postMessage({ msg: 'updateTable', attractionTable: table });
     };
 
+    const pause = () => {
+        worker?.postMessage({ msg: 'pause' });
+    };
+
+    const unpause = () => {
+        worker?.postMessage({ msg: 'unpause' });
+    };
+
     const destroy = () => {
         worker?.terminate();
     };
 
-    return { loadWorker, start, updateAttractionTable, destroy };
+    return { loadWorker, start, updateAttractionTable, pause, unpause, destroy };
 }

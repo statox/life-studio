@@ -18,13 +18,13 @@
     import { createSimulationWorker } from '$lib/particles/engine/simulationWorker';
     import type { Cell, Coordinates } from '$lib/particles/engine';
 
-    const MAX_BUFFER_SIZE = 1000;
     const sim = createSimulationWorker();
 
     let cells: Cell[] = [];
     let attractionTable: AttractionTable = getRandomAttractionTable();
     let buffer: Coordinates[][] = [];
-    let frameIndex = 0;
+    let displayIndex = 0;
+    let absoluteFrameOffset = 0;
 
     let colorWeights: ColorProportions = { white: 500, red: 500, green: 500, blue: 500 };
 
@@ -47,13 +47,10 @@
         if (!keepCells) cells = getNewCells(worldSize, nbParticles, colorWeights);
         if (!keepTable) attractionTable = getRandomAttractionTable();
         buffer = [];
-        frameIndex = 0;
+        displayIndex = 0;
+        absoluteFrameOffset = 0;
         sim.start({ worldSize, maxAttractionRadius, cells, attractionTable }, (positions) => {
             buffer.push(positions);
-            if (buffer.length >= MAX_BUFFER_SIZE) {
-                buffer.shift();
-                frameIndex = Math.max(frameIndex - 1, 0);
-            }
             buffer = buffer;
         });
     };
@@ -62,7 +59,8 @@
         attractionTable = newTable;
         sim.updateAttractionTable(newTable);
         buffer = [cells.map((c) => c.pos)];
-        frameIndex = 0;
+        displayIndex = 0;
+        absoluteFrameOffset = 0;
     };
 
     const updateWorldSettings = () => {
@@ -180,10 +178,13 @@
     <Timeline
         bind:this={timeline}
         bind:buffer
-        bind:frameIndex
+        bind:displayIndex
+        bind:absoluteFrameOffset
         {cells}
         {isFullscreen}
         onToggleFullscreen={toggleFullscreen}
+        onPauseEngine={() => sim.pause()}
+        onUnpauseEngine={() => sim.unpause()}
     />
 
     <!-- Canvas -->

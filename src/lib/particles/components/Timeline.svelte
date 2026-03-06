@@ -1,15 +1,21 @@
 <script lang="ts">
     import type { Coordinates, Cell } from '$lib/particles/engine';
 
+    const MAX_PAST_FRAMES = 1000;
+    const MAX_UPCOMING_FRAMES = 180;
+    const RESUME_UPCOMING_THRESHOLD = 60;
+
     export let buffer: Coordinates[][];
-    export let frameIndex: number;
+    export let displayIndex: number;
+    export let absoluteFrameOffset: number;
     export let cells: Cell[];
     export let isFullscreen: boolean;
     export let onToggleFullscreen: () => void;
+    export let onPauseEngine: () => void;
+    export let onUnpauseEngine: () => void;
 
-    let renderPaused = false;
-    let lastFrameTimestamp = 0;
-    let timeToFrame = 0;
+    let displayPaused = false;
+    let enginePaused = false;
     let fps = 0;
 
     let fpsFrameCount = 0;
@@ -24,39 +30,66 @@
         }
     };
 
-    export const updateFrame = () => {
-        if (buffer.length - 1 > frameIndex) {
-            const now = Date.now();
-            timeToFrame = now - lastFrameTimestamp;
-            lastFrameTimestamp = now;
-            if (!renderPaused) frameIndex++;
-            tickFPS();
-            const positions = buffer[frameIndex];
-            buffer = buffer;
-            if (positions.length !== cells.length) return;
-            for (let i = 0; i < cells.length; i++) cells[i].pos = positions[i];
+    const manageEngine = () => {
+        const upcomingCount = buffer.length - 1 - displayIndex;
+        if (!enginePaused && upcomingCount >= MAX_UPCOMING_FRAMES) {
+            enginePaused = true;
+            onPauseEngine();
+        } else if (enginePaused && upcomingCount < RESUME_UPCOMING_THRESHOLD) {
+            enginePaused = false;
+            onUnpauseEngine();
         }
+    };
+
+    export const updateFrame = () => {
+        // Advance display cursor if playing and upcoming frames exist
+        if (!displayPaused && displayIndex < buffer.length - 1) {
+            displayIndex++;
+            tickFPS();
+
+            // Trim old frames (only during playback, not manual scrub)
+            if (displayIndex > MAX_PAST_FRAMES) {
+                const trimCount = displayIndex - MAX_PAST_FRAMES;
+                buffer.splice(0, trimCount);
+                displayIndex -= trimCount;
+                absoluteFrameOffset += trimCount;
+            }
+        }
+
+        // Apply current frame positions to cells
+        if (buffer.length > 0 && displayIndex < buffer.length) {
+            const positions = buffer[displayIndex];
+            if (positions && positions.length === cells.length) {
+                for (let i = 0; i < cells.length; i++) cells[i].pos = positions[i];
+            }
+        }
+
+        // Engine backpressure check
+        manageEngine();
+
+        // Trigger Svelte reactivity
+        buffer = buffer;
     };
 </script>
 
 <div class="timeline">
     <div class="tl-btns">
-        <button class="icon-btn" on:click={() => (frameIndex = 0)} title="Go to start">⏮</button>
-        <button class="icon-btn" on:click={() => (renderPaused = !renderPaused)}>
-            {renderPaused ? '▶' : '⏸'}
+        <button class="icon-btn" on:click={() => (displayIndex = 0)} title="Go to start">⏮</button>
+        <button class="icon-btn" on:click={() => (displayPaused = !displayPaused)}>
+            {displayPaused ? '▶' : '⏸'}
         </button>
         <button
             class="icon-btn"
-            on:click={() => (frameIndex = buffer?.length - 1 || 0)}
+            on:click={() => (displayIndex = Math.max(0, (buffer?.length || 1) - 1))}
             title="Catch up to latest">⏭</button
         >
     </div>
     <input
         type="range"
         class="tl-slider"
-        min="1"
+        min="0"
         max={buffer?.length ? buffer.length - 1 : 0}
-        bind:value={frameIndex}
+        bind:value={displayIndex}
     />
     <button
         class="icon-btn"
@@ -66,11 +99,14 @@
         {isFullscreen ? '⊡' : '⛶'}
     </button>
     <div class="tl-stats">
-        <span class="stat"
-            ><span class="stat-label">buf</span> {(buffer?.length || 0) - frameIndex}</span
-        >
-        <span class="stat"><span class="stat-label">frame</span> {frameIndex}</span>
-        <span class="stat">{timeToFrame}<span class="stat-label">ms</span></span>
+        <span class="stat">
+            <span class="stat-label">frame</span>
+            {absoluteFrameOffset + displayIndex}
+        </span>
+        <span class="stat">
+            <span class="stat-label">upcoming</span>
+            {Math.max(0, (buffer?.length || 0) - 1 - displayIndex)}
+        </span>
         <span class="stat">{fps}<span class="stat-label">fps</span></span>
     </div>
 </div>
