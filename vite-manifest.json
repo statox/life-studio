@@ -3,10 +3,6 @@
     "file": "_app/immutable/assets/_layout-053e06f5.css",
     "src": "src/routes/+layout.css"
   },
-  "src/routes/gameoflife/+page.css": {
-    "file": "_app/immutable/assets/_page-ce665811.css",
-    "src": "src/routes/gameoflife/+page.css"
-  },
   "TabPanel.css": {
     "file": "_app/immutable/assets/TabPanel-6417fb07.css",
     "src": "TabPanel.css"
@@ -15,121 +11,104 @@
     "file": "_app/immutable/assets/_page-945cba4d.css",
     "src": "src/routes/reaction-diffusion/+page.css"
   },
-  "src/routes/+page.css": {
-    "file": "_app/immutable/assets/_page-5cc2d0fd.css",
-    "src": "src/routes/+page.css"
+  "src/routes/gameoflife/+page.css": {
+    "file": "_app/immutable/assets/_page-ce665811.css",
+    "src": "src/routes/gameoflife/+page.css"
+  },
+  "src/routes/particles-life/+page.css": {
+    "file": "_app/immutable/assets/_page-5bdb2033.css",
+    "src": "src/routes/particles-life/+page.css"
+  },
+  "_index-6c68835d.js": {
+    "file": "_app/immutable/chunks/index-6c68835d.js",
+    "imports": [
+      "_index-4a055f23.js"
+    ]
   },
   "_paths-b4419565.js": {
     "file": "_app/immutable/chunks/paths-b4419565.js"
   },
-  "__layout-da46b06b.js": {
-    "file": "_app/immutable/chunks/_layout-da46b06b.js"
-  },
-  "_singletons-dc286778.js": {
-    "file": "_app/immutable/chunks/singletons-dc286778.js",
+  "_singletons-51d06f53.js": {
+    "file": "_app/immutable/chunks/singletons-51d06f53.js",
     "imports": [
-      "_index-cbd1dec3.js",
+      "_index-6c68835d.js",
       "_paths-b4419565.js"
     ]
   },
   "_preload-helper-41c905a7.js": {
     "file": "_app/immutable/chunks/preload-helper-41c905a7.js"
   },
-  "_index-cbd1dec3.js": {
-    "file": "_app/immutable/chunks/index-cbd1dec3.js",
+  ".svelte-kit/generated/nodes/6.js": {
+    "file": "_app/immutable/chunks/6-b6ce2c8a.js",
+    "src": ".svelte-kit/generated/nodes/6.js",
+    "isDynamicEntry": true,
     "imports": [
-      "_index-99f53af9.js"
+      "src/routes/shaders/+page.svelte"
+    ]
+  },
+  "_index-4a055f23.js": {
+    "file": "_app/immutable/chunks/index-4a055f23.js"
+  },
+  ".svelte-kit/generated/nodes/5.js": {
+    "file": "_app/immutable/chunks/5-78c1a4dc.js",
+    "src": ".svelte-kit/generated/nodes/5.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/routes/reaction-diffusion/+page.svelte"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
-    "file": "_app/immutable/components/error.svelte-081868ff.js",
+    "file": "_app/immutable/components/error.svelte-d51a761a.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte",
     "isEntry": true,
     "imports": [
-      "_index-99f53af9.js",
-      "_singletons-dc286778.js"
+      "_index-4a055f23.js",
+      "_singletons-51d06f53.js"
     ]
   },
-  "_P5-d90f1ce9.js": {
-    "file": "_app/immutable/chunks/P5-d90f1ce9.js",
-    "imports": [
-      "_preload-helper-41c905a7.js",
-      "_index-99f53af9.js"
-    ],
-    "dynamicImports": [
-      "_p5.min-bfbd1c19.js"
-    ]
-  },
-  "_index-99f53af9.js": {
-    "file": "_app/immutable/chunks/index-99f53af9.js"
-  },
-  "__commonjsHelpers-725317a4.js": {
-    "file": "_app/immutable/chunks/_commonjsHelpers-725317a4.js"
-  },
-  ".svelte-kit/generated/nodes/2.js": {
-    "file": "_app/immutable/chunks/2-f350f740.js",
-    "src": ".svelte-kit/generated/nodes/2.js",
+  ".svelte-kit/generated/nodes/4.js": {
+    "file": "_app/immutable/chunks/4-c3378650.js",
+    "src": ".svelte-kit/generated/nodes/4.js",
     "isDynamicEntry": true,
     "imports": [
-      "src/routes/+page.svelte"
+      "src/routes/particles-life/+page.svelte"
+    ]
+  },
+  ".svelte-kit/generated/nodes/7.js": {
+    "file": "_app/immutable/chunks/7-60dc543e.js",
+    "src": ".svelte-kit/generated/nodes/7.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/routes/soft-bodies/+page.svelte"
     ]
   },
   ".svelte-kit/generated/nodes/3.js": {
-    "file": "_app/immutable/chunks/3-19799a5a.js",
+    "file": "_app/immutable/chunks/3-17fe01ba.js",
     "src": ".svelte-kit/generated/nodes/3.js",
     "isDynamicEntry": true,
     "imports": [
       "src/routes/gameoflife/+page.svelte"
     ]
   },
-  ".svelte-kit/generated/nodes/4.js": {
-    "file": "_app/immutable/chunks/4-393784bd.js",
-    "src": ".svelte-kit/generated/nodes/4.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "src/routes/reaction-diffusion/+page.svelte"
-    ]
-  },
-  ".svelte-kit/generated/nodes/5.js": {
-    "file": "_app/immutable/chunks/5-df5772c0.js",
-    "src": ".svelte-kit/generated/nodes/5.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "src/routes/shaders/+page.svelte"
-    ]
+  "__commonjsHelpers-725317a4.js": {
+    "file": "_app/immutable/chunks/_commonjsHelpers-725317a4.js"
   },
   "src/lib/particles/engine/simulation.worker.ts?worker": {
-    "file": "_app/immutable/chunks/simulation.worker-13c75173.js",
+    "file": "_app/immutable/chunks/simulation.worker-dd77f81e.js",
     "src": "src/lib/particles/engine/simulation.worker.ts?worker",
     "isDynamicEntry": true
   },
-  ".svelte-kit/generated/nodes/1.js": {
-    "file": "_app/immutable/chunks/1-6ca8f05f.js",
-    "src": ".svelte-kit/generated/nodes/1.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "node_modules/@sveltejs/kit/src/runtime/components/error.svelte"
-    ]
-  },
-  ".svelte-kit/generated/nodes/6.js": {
-    "file": "_app/immutable/chunks/6-53ab378d.js",
-    "src": ".svelte-kit/generated/nodes/6.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "src/routes/soft-bodies/+page.svelte"
-    ]
-  },
-  "src/routes/soft-bodies/+page.svelte": {
-    "file": "_app/immutable/components/pages/soft-bodies/_page.svelte-6a517671.js",
-    "src": "src/routes/soft-bodies/+page.svelte",
+  "src/routes/+page.svelte": {
+    "file": "_app/immutable/components/pages/_page.svelte-a8669f37.js",
+    "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index-99f53af9.js",
-      "_P5-d90f1ce9.js"
+      "_index-4a055f23.js",
+      "_paths-b4419565.js"
     ]
   },
   ".svelte-kit/generated/nodes/0.js": {
-    "file": "_app/immutable/chunks/0-b5039671.js",
+    "file": "_app/immutable/chunks/0-f86a5a26.js",
     "src": ".svelte-kit/generated/nodes/0.js",
     "isDynamicEntry": true,
     "imports": [
@@ -137,24 +116,33 @@
       "src/routes/+layout.svelte"
     ]
   },
-  "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-ec9c5cdc.js",
-    "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
-    "isEntry": true,
+  ".svelte-kit/generated/nodes/1.js": {
+    "file": "_app/immutable/chunks/1-e7be94bd.js",
+    "src": ".svelte-kit/generated/nodes/1.js",
+    "isDynamicEntry": true,
     "imports": [
-      "_index-99f53af9.js",
-      "_singletons-dc286778.js",
-      "_preload-helper-41c905a7.js",
-      "_paths-b4419565.js"
+      "node_modules/@sveltejs/kit/src/runtime/components/error.svelte"
+    ]
+  },
+  "__layout-da46b06b.js": {
+    "file": "_app/immutable/chunks/_layout-da46b06b.js"
+  },
+  ".svelte-kit/generated/nodes/2.js": {
+    "file": "_app/immutable/chunks/2-5ffc5d79.js",
+    "src": ".svelte-kit/generated/nodes/2.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/routes/+page.svelte"
+    ]
+  },
+  "_TabPanel-54635f47.js": {
+    "file": "_app/immutable/chunks/TabPanel-54635f47.js",
+    "imports": [
+      "_index-4a055f23.js",
+      "_index-6c68835d.js"
     ],
-    "dynamicImports": [
-      ".svelte-kit/generated/nodes/0.js",
-      ".svelte-kit/generated/nodes/1.js",
-      ".svelte-kit/generated/nodes/2.js",
-      ".svelte-kit/generated/nodes/3.js",
-      ".svelte-kit/generated/nodes/4.js",
-      ".svelte-kit/generated/nodes/5.js",
-      ".svelte-kit/generated/nodes/6.js"
+    "css": [
+      "_app/immutable/assets/TabPanel-6417fb07.css"
     ]
   },
   "src/routes/+layout.js": {
@@ -165,31 +153,76 @@
       "__layout-da46b06b.js"
     ]
   },
+  "_P5-f4aeb288.js": {
+    "file": "_app/immutable/chunks/P5-f4aeb288.js",
+    "imports": [
+      "_preload-helper-41c905a7.js",
+      "_index-4a055f23.js"
+    ],
+    "dynamicImports": [
+      "_p5.min-bfbd1c19.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
+    "file": "_app/immutable/start-a9e90898.js",
+    "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
+    "isEntry": true,
+    "imports": [
+      "_index-4a055f23.js",
+      "_singletons-51d06f53.js",
+      "_preload-helper-41c905a7.js",
+      "_paths-b4419565.js"
+    ],
+    "dynamicImports": [
+      ".svelte-kit/generated/nodes/0.js",
+      ".svelte-kit/generated/nodes/1.js",
+      ".svelte-kit/generated/nodes/2.js",
+      ".svelte-kit/generated/nodes/3.js",
+      ".svelte-kit/generated/nodes/4.js",
+      ".svelte-kit/generated/nodes/5.js",
+      ".svelte-kit/generated/nodes/6.js",
+      ".svelte-kit/generated/nodes/7.js"
+    ]
+  },
   "src/routes/+layout.svelte": {
-    "file": "_app/immutable/components/pages/_layout.svelte-a619edcc.js",
+    "file": "_app/immutable/components/pages/_layout.svelte-35ad5ee1.js",
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "imports": [
-      "_index-99f53af9.js",
+      "_index-4a055f23.js",
       "_paths-b4419565.js"
     ],
     "css": [
       "_app/immutable/assets/_layout-053e06f5.css"
     ]
   },
-  "src/routes/+page.svelte": {
-    "file": "_app/immutable/components/pages/_page.svelte-47e99339.js",
-    "src": "src/routes/+page.svelte",
+  "node_modules/dat.gui/build/dat.gui.module.js": {
+    "file": "_app/immutable/chunks/dat.gui.module-69d90d27.js",
+    "src": "node_modules/dat.gui/build/dat.gui.module.js",
+    "isDynamicEntry": true
+  },
+  "src/routes/soft-bodies/+page.svelte": {
+    "file": "_app/immutable/components/pages/soft-bodies/_page.svelte-ff342fe0.js",
+    "src": "src/routes/soft-bodies/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index-99f53af9.js",
+      "_index-4a055f23.js",
+      "_P5-f4aeb288.js"
+    ]
+  },
+  "src/routes/particles-life/+page.svelte": {
+    "file": "_app/immutable/components/pages/particles-life/_page.svelte-b6a6473f.js",
+    "src": "src/routes/particles-life/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index-4a055f23.js",
       "_preload-helper-41c905a7.js"
     ],
     "dynamicImports": [
       "src/lib/particles/engine/simulation.worker.ts?worker"
     ],
     "css": [
-      "_app/immutable/assets/_page-5cc2d0fd.css"
+      "_app/immutable/assets/_page-5bdb2033.css"
     ]
   },
   "_regl-787a2c81.js": {
@@ -199,12 +232,12 @@
     ]
   },
   "src/routes/gameoflife/+page.svelte": {
-    "file": "_app/immutable/components/pages/gameoflife/_page.svelte-7b0047f0.js",
+    "file": "_app/immutable/components/pages/gameoflife/_page.svelte-32986de1.js",
     "src": "src/routes/gameoflife/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index-99f53af9.js",
-      "_TabPanel-cb135262.js",
+      "_index-4a055f23.js",
+      "_TabPanel-54635f47.js",
       "_preload-helper-41c905a7.js"
     ],
     "dynamicImports": [
@@ -217,41 +250,26 @@
       "_app/immutable/assets/_page-ce665811.css"
     ]
   },
-  "_TabPanel-cb135262.js": {
-    "file": "_app/immutable/chunks/TabPanel-cb135262.js",
-    "imports": [
-      "_index-99f53af9.js",
-      "_index-cbd1dec3.js"
-    ],
-    "css": [
-      "_app/immutable/assets/TabPanel-6417fb07.css"
-    ]
-  },
   "src/routes/shaders/+page.svelte": {
-    "file": "_app/immutable/components/pages/shaders/_page.svelte-da393e97.js",
+    "file": "_app/immutable/components/pages/shaders/_page.svelte-44948b7c.js",
     "src": "src/routes/shaders/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index-99f53af9.js",
-      "_TabPanel-cb135262.js",
+      "_index-4a055f23.js",
+      "_TabPanel-54635f47.js",
       "_regl-787a2c81.js"
     ]
   },
-  "node_modules/dat.gui/build/dat.gui.module.js": {
-    "file": "_app/immutable/chunks/dat.gui.module-69d90d27.js",
-    "src": "node_modules/dat.gui/build/dat.gui.module.js",
-    "isDynamicEntry": true
-  },
   "src/routes/reaction-diffusion/+page.svelte": {
-    "file": "_app/immutable/components/pages/reaction-diffusion/_page.svelte-ea4f3e44.js",
+    "file": "_app/immutable/components/pages/reaction-diffusion/_page.svelte-799abe81.js",
     "src": "src/routes/reaction-diffusion/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index-99f53af9.js",
-      "_TabPanel-cb135262.js",
+      "_index-4a055f23.js",
+      "_TabPanel-54635f47.js",
       "_paths-b4419565.js",
       "_preload-helper-41c905a7.js",
-      "_P5-d90f1ce9.js",
+      "_P5-f4aeb288.js",
       "_regl-787a2c81.js"
     ],
     "dynamicImports": [
