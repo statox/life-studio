@@ -5,8 +5,7 @@
     import Canvas from '$lib/particles/components/Canvas.svelte';
     import ExportModal from '$lib/particles/components/ExportModal.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
-    import type { Cell, Coordinates, UpdateCellsResponse } from '$lib/particles/engine';
-    import { COLORS } from '$lib/particles/engine/Engine';
+    import { COLORS, type Cell, type Coordinates, type UpdateCellsResponse } from '$lib/particles/engine';
 
     import {
         getMutatedAttractionTable,

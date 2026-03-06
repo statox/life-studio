@@ -5,7 +5,7 @@ import { CellsMap } from '$lib/particles/cellsMap';
 import { updateCells } from './cells';
 import type { Cell, Coordinates, WorldSize } from './types';
 
-export const COLORS = ['white', 'red', 'green', 'blue'] as const;
+import { COLORS } from './types';
 
 const colorToIndex = (color: string): number => {
     const idx = COLORS.indexOf(color as typeof COLORS[number]);

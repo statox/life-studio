@@ -3,7 +3,7 @@ import { getNeighborsIds, type CellsMap } from '$lib/particles/cellsMap';
 import type { Cell, Color, Coordinates } from './types';
 import { distanceSqaredNoWrap, distanceSqrd } from './math';
 import { attractionForce } from './forces';
-import { COLORS } from './Engine';
+import { COLORS } from './types';
 
 const randColor = (): Color => {
     const randIndex = Math.floor(Math.random() * COLORS.length);

@@ -1,5 +1,4 @@
 import type { AttractionTable } from '$lib/particles/attraction';
-import type { COLORS } from './Engine';
 
 export type Coordinates = {
     x: number;
@@ -8,6 +7,7 @@ export type Coordinates = {
 
 export type WorldSize = Coordinates;
 
+export const COLORS = ['white', 'red', 'green', 'blue'] as const;
 export type Color = typeof COLORS[number];
 
 export interface Cell {

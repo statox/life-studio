@@ -1,7 +1,6 @@
 import { getAttractionForce } from '$lib/particles/attraction';
 import type { AttractionTable } from '$lib/particles/attraction';
-import { COLORS } from './Engine';
-import type { Color } from './types';
+import { COLORS, type Color } from './types';
 
 type ForceWorkerRequest = {
     positions: Float32Array; // [x0, y0, x1, y1, ...]
