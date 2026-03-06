@@ -1,12 +1,34 @@
 <script lang="ts">
+    // TO KEEP
+    // 4000 particles¶
+    // even proportions¶
+    // uniform spread¶
+    // ¶
+    // {¶
+    //     name: '',¶
+    //     description: '',¶
+    //     table: {¶
+    //         white: { white: 0, red: 0, green: -1, blue: -1 },¶
+    //         red: { white: -1, red: 0, green: 0, blue: -1 },¶
+    //         green: { white: -1, red: -1, green: 0, blue: 0 },¶
+    //         blue: { white: 0, red: -1, green: -1, blue: 0 }¶
+    //     }¶
+    // },¶
+    // ¶
+    // World:.¶
+    // H Cells 12¶
+    // V Cells 12¶
+    // Max radius 32¶
+    // FPS 60¶
+
     import { onDestroy, onMount } from 'svelte';
 
-    import AttractionTablePanel from '$lib/particles/components/AttractionTablePanel.svelte';
+    import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
     import Canvas from '$lib/particles/components/Canvas.svelte';
-    import KeyboardShortcuts from '$lib/particles/components/KeyboardShortcuts.svelte';
     import Timeline from '$lib/particles/components/Timeline.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
     import { getMutatedAttractionTable, getRandomAttractionTable } from '$lib/particles/attraction';
+    import { presets } from '$lib/particles/presets';
     import { COLORS, PARTICLE_COLORS } from '$lib/particles/engine';
     import { getNewCells } from '$lib/particles/engine/cells';
     import type { ColorProportions } from '$lib/particles/engine/cells';
@@ -103,14 +125,19 @@
         startSim(true, true);
     };
 
-    const keyActions: Record<string, () => void> = {
-        q: () => startSim(false, true),
-        w: largeCenterCells,
-        e: centerCells,
-        r: rainbowCells,
-        t: () => updateAttractionTable(getRandomAttractionTable()),
-        m: () => updateAttractionTable(getMutatedAttractionTable(attractionTable)),
-        f: () => toggleFullscreen()
+    const loadPreset = (name: string) => {
+        const p = presets.find((p) => p.name === name);
+        if (!p) return;
+        nbParticles = p.nbParticles;
+        colorWeights = { ...p.colorWeights };
+        attractionTable = p.table;
+        cells = getNewCells(worldSize, p.nbParticles, p.colorWeights);
+        if (p.resetType === 'centered') {
+            centerCells();
+        } else {
+            largeCenterCells();
+        }
+        startSim(true, true);
     };
 
     let canvasWrap: HTMLElement;
@@ -131,156 +158,227 @@
 
     onMount(async () => {
         await sim.loadWorker();
-        startSim();
+        const fishesPreset = presets.find((p) => p.name === 'Fishes');
+        if (fishesPreset) {
+            nbParticles = fishesPreset.nbParticles;
+            colorWeights = { ...fishesPreset.colorWeights };
+            attractionTable = fishesPreset.table;
+        }
+        startSim(false, true);
         document.addEventListener('fullscreenchange', onFullscreenChange);
         return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
     });
     onDestroy(() => sim.destroy());
 </script>
 
-<div class="sim">
-    <div class="panels">
-        <!-- Simulation controls -->
-        <div class="card">
-            <div class="card-title">Simulation</div>
-            <div class="field">
-                <label for="nb-particles">Particles</label>
-                <input
-                    id="nb-particles"
-                    type="number"
-                    bind:value={nbParticles}
-                    on:change={updateWorldSettings}
-                    min="1"
-                />
+<div class="demo">
+    <!-- Left column: narrative -->
+    <div class="narrative">
+        <!-- Section 1: Hero -->
+        <section class="hero">
+            <h1>Particle Life</h1>
+            <p class="placeholder">[Introduction text goes here]</p>
+        </section>
+
+        <!-- Section 2: The Basics -->
+        <section>
+            <h2>The Basics</h2>
+            <p class="placeholder">[Basics explanation goes here]</p>
+            <div class="preset-btns">
+                <button on:click={() => loadPreset('Spray around')}>Spray around</button>
+                <button on:click={() => loadPreset('Bubbles')}>Bubbles</button>
+                <button on:click={() => loadPreset('Simple snake')}>Simple snake</button>
             </div>
-            <div class="proportion-list">
-                {#each COLORS as c}
-                    <div class="field">
-                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
-                        <input
-                            type="range"
-                            bind:value={colorWeights[c]}
-                            min="0"
-                            max="1000"
-                            step="1"
-                        />
-                        <span class="dim" style="width:28px;text-align:right"
-                            >{colorWeights[c]}</span
-                        >
-                    </div>
-                {/each}
-            </div>
-            <button
-                class="toggle-btn"
-                class:active={showColors}
-                on:click={() => (showColors = !showColors)}
-            >
-                <span class="pdots">
-                    {#each COLORS as c}
-                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
-                    {/each}
-                </span>
-                {showColors ? 'Colors on' : 'Colors off'}
-            </button>
-        </div>
-        <div class="card">
-            <div class="card-title">Cells</div>
-            <div class="btn-stack">
+            <p class="placeholder">[Reset explanation goes here]</p>
+            <div class="preset-btns">
                 <button on:click={() => startSim(false, true)}>↺ Uniform spread</button>
                 <button on:click={largeCenterCells}>◎ Centered circle</button>
-                <button on:click={rainbowCells}>≋ Rainbow</button>
             </div>
+        </section>
+
+        <!-- Section 3: Emergent Complexity -->
+        <section>
+            <h2>Emergent Complexity</h2>
+            <p class="placeholder">[Complexity explanation goes here]</p>
+            <div class="preset-btns">
+                <button on:click={() => loadPreset('Fishes')}>Fishes</button>
+                <button on:click={() => loadPreset('Worms')}>Worms</button>
+                <button on:click={() => loadPreset('Universe')}>Universe</button>
+                <button on:click={() => loadPreset('Large vessels')}>Large vessels</button>
+                <button on:click={() => loadPreset('Wall crawlers')}>Wall crawlers</button>
+                <button on:click={() => loadPreset('Two tribes')}>Two tribes</button>
+                <button on:click={() => loadPreset('Predator-prey')}>Predator-prey</button>
+            </div>
+        </section>
+
+        <!-- Section 4: The Attraction Table -->
+        <section>
+            <h2>The Attraction Table</h2>
+            <p class="placeholder">[Attraction table explanation goes here]</p>
+            <div class="card">
+                <AttractionTableComponent {attractionTable} onUpdateTable={updateAttractionTable} />
+            </div>
+        </section>
+
+        <!-- Section 5: Tuning the Mix -->
+        <section>
+            <h2>Tuning the Mix</h2>
+            <p class="placeholder">[Mix explanation goes here]</p>
+            <div class="card">
+                <div class="card-title">Particles</div>
+                <div class="field">
+                    <label for="nb-particles">Count</label>
+                    <input
+                        id="nb-particles"
+                        type="number"
+                        bind:value={nbParticles}
+                        on:change={updateWorldSettings}
+                        min="1"
+                    />
+                </div>
+                <div class="card-title" style="margin-top:12px">Color proportions</div>
+                <div class="proportion-list">
+                    {#each COLORS as c}
+                        <div class="field">
+                            <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
+                            <input
+                                type="range"
+                                bind:value={colorWeights[c]}
+                                min="0"
+                                max="1000"
+                                step="1"
+                            />
+                            <span class="dim" style="width:28px;text-align:right"
+                                >{colorWeights[c]}</span
+                            >
+                        </div>
+                    {/each}
+                </div>
+                <div class="preset-btns">
+                    <button on:click={() => startSim(false, true)}>↺ Uniform spread</button>
+                    <button on:click={largeCenterCells}>◎ Centered circle</button>
+                    <button on:click={rainbowCells}>≋ Rainbow</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer">
+            <p class="placeholder">[Footer — link to /particles/dev for the full sandbox]</p>
+        </section>
+    </div>
+
+    <!-- Right column: sticky canvas -->
+    <div class="canvas-col">
+        <div class="canvas-sticky">
+            <div class="canvas-wrap" bind:this={canvasWrap}>
+                <Canvas
+                    {cells}
+                    {worldSize}
+                    {cellSize}
+                    {showColors}
+                    drewFrame={() => timeline?.updateFrame()}
+                    {maxFPS}
+                />
+            </div>
+            <Timeline
+                bind:this={timeline}
+                bind:buffer
+                bind:frameIndex
+                {cells}
+                {isFullscreen}
+                onToggleFullscreen={toggleFullscreen}
+            />
         </div>
     </div>
-
-    <!-- Timeline bar -->
-    <Timeline
-        bind:this={timeline}
-        bind:buffer
-        bind:frameIndex
-        {cells}
-        {isFullscreen}
-        onToggleFullscreen={toggleFullscreen}
-    />
-
-    <!-- Canvas -->
-    <div class="canvas-wrap" bind:this={canvasWrap}>
-        <Canvas
-            {cells}
-            {worldSize}
-            {cellSize}
-            {showColors}
-            drewFrame={() => timeline?.updateFrame()}
-            {maxFPS}
-        />
-    </div>
-
-    <!-- Attraction table panel -->
-    <AttractionTablePanel
-        {attractionTable}
-        on:updateTable={(e) => updateAttractionTable(e.detail)}
-    />
-
-    <!-- World settings -->
-    <div class="panels">
-        <div class="card">
-            <div class="card-title">World</div>
-            <div class="field">
-                <label for="h-cells">H cells</label>
-                <input
-                    id="h-cells"
-                    type="number"
-                    bind:value={horizontalResolution}
-                    on:change={updateWorldSettings}
-                    min="1"
-                    max="100"
-                />
-                <span class="dim">{horizontalResolution * maxAttractionRadius}px</span>
-            </div>
-            <div class="field">
-                <label for="v-cells">V cells</label>
-                <input
-                    id="v-cells"
-                    type="number"
-                    bind:value={verticalResolution}
-                    on:change={updateWorldSettings}
-                    min="1"
-                    max="100"
-                />
-                <span class="dim">{verticalResolution * maxAttractionRadius}px</span>
-            </div>
-            <div class="field">
-                <label for="radius">Max radius</label>
-                <input
-                    id="radius"
-                    type="number"
-                    bind:value={maxAttractionRadius}
-                    on:change={updateWorldSettings}
-                    min="8"
-                    max="128"
-                />
-            </div>
-            <div class="field">
-                <label for="fps-cap">FPS cap</label>
-                <input id="fps-cap" type="number" bind:value={maxFPS} min="1" max="120" />
-            </div>
-        </div>
-    </div>
-
-    <!-- Keyboard shortcuts legend -->
-    <KeyboardShortcuts actions={keyActions} />
 </div>
 
 <style>
     /* ── Layout ─────────────────────────────── */
-    .sim {
+    .demo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: 768px) {
+        .demo {
+            grid-template-columns: 1fr;
+            padding: 16px 12px 48px;
+            gap: 16px;
+        }
+    }
+
+    /* ── Narrative column ────────────────────── */
+    .narrative {
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        padding: 12px 16px 32px;
-        max-width: 1200px;
-        margin: 0 auto;
-        box-sizing: border-box;
+        gap: 0;
+    }
+
+    .narrative section {
+        padding: 48px 0;
+        border-bottom: 1px solid #37474f22;
+    }
+
+    .narrative section:first-child {
+        padding-top: 0;
+    }
+
+    .narrative section:last-child {
+        border-bottom: none;
+    }
+
+    .narrative h1 {
+        font-size: 1.8rem;
+        color: #eceff1;
+        margin: 0 0 16px;
+        font-weight: 700;
+    }
+
+    .narrative h2 {
+        font-size: 1.2rem;
+        color: #eceff1;
+        margin: 0 0 12px;
+        font-weight: 600;
+    }
+
+    .narrative p {
+        color: #90a4ae;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0 0 16px;
+    }
+
+    /* ── Sticky canvas column ────────────────── */
+    .canvas-col {
+        min-width: 0;
+    }
+
+    .canvas-sticky {
+        position: sticky;
+        top: 16px;
+        align-self: start;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+        .canvas-col {
+            order: -1;
+        }
+        .canvas-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: #1a2327;
+            padding: 8px 0;
+        }
     }
 
     .canvas-wrap {
@@ -304,17 +402,22 @@
         border-radius: 0;
     }
 
-    /* ── Panels grid ─────────────────────────── */
-    .panels {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+    /* ── Preset buttons ──────────────────────── */
+    .preset-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 16px;
     }
 
-    @media (max-width: 640px) {
-        .panels {
-            grid-template-columns: 1fr;
-        }
+    /* ── Placeholder text ────────────────────── */
+    .placeholder {
+        background: #1a232744;
+        border-left: 3px solid #546e7a;
+        padding: 12px 16px;
+        border-radius: 0 6px 6px 0;
+        font-style: italic;
+        color: #546e7a;
     }
 
     /* ── Card ────────────────────────────────── */
@@ -399,37 +502,7 @@
         color: #eceff1;
     }
 
-    .btn-stack {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .btn-stack button {
-        width: 100%;
-        justify-content: flex-start;
-    }
-
-    /* ── Toggle button ───────────────────────── */
-    .toggle-btn {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 10px;
-        padding: 8px 12px;
-        margin-bottom: 8px;
-    }
-
-    .toggle-btn.active {
-        border-color: #c3e88d55;
-        color: #c3e88d;
-    }
-
-    .pdots {
-        display: flex;
-        gap: 3px;
-        flex-shrink: 0;
-    }
-
+    /* ── Particle dots ───────────────────────── */
     .pdot {
         width: 8px;
         height: 8px;

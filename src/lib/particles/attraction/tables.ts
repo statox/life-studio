@@ -376,5 +376,33 @@ export const tables: StoredTable[] = [
             green: { white: 1, red: -1, green: 2, blue: -1 },
             blue: { white: -1, red: 1, green: -1, blue: 2 }
         }
+    },
+    {
+        name: 'Infinite waves',
+        description: '4000 particles - even props - World 12x12, radius 32, FPS 60',
+        // 4000 particles¶
+        // even proportions¶
+        // uniform spread¶
+        // World:.¶
+        // H Cells 12¶
+        // V Cells 12¶
+        // Max radius 32¶
+        // FPS 60¶
+        table: {
+            white: { white: 0, red: 0, green: -1, blue: -1 },
+            red: { white: -1, red: 0, green: 0, blue: -1 },
+            green: { white: -1, red: -1, green: 0, blue: 0 },
+            blue: { white: 0, red: -1, green: -1, blue: 0 }
+        }
+    },
+    {
+        name: 'tmp',
+        description: '',
+        table: {
+            white: { white: 1, red: -1, green: 0, blue: 0 },
+            red: { white: -1, red: -1, green: -1, blue: 2 },
+            green: { white: 1, red: 1, green: -1, blue: 1 },
+            blue: { white: 1, red: 1, green: 2, blue: 1 }
+        }
     }
 ];

@@ -26,7 +26,7 @@
     let showColors = true;
     let maxFPS = 60;
 
-    const cellSize = 3;
+    const cellSize = 5;
 
     let maxAttractionRadius = 32;
     let nbParticles = 4000;
@@ -68,7 +68,7 @@
     const updateWorldSettings = () => {
         worldSize.x = maxAttractionRadius * horizontalResolution;
         worldSize.y = maxAttractionRadius * verticalResolution;
-        startSim();
+        startSim(false, true);
     };
 
     const centerCells = () => {
@@ -160,6 +160,7 @@
                         <input
                             type="range"
                             bind:value={colorWeights[c]}
+                            on:change={() => startSim(false, true)}
                             min="0"
                             max="1000"
                             step="1"
