@@ -5,14 +5,18 @@
     import Canvas from '$lib/particles/components/Canvas.svelte';
     import KeyboardShortcuts from '$lib/particles/components/KeyboardShortcuts.svelte';
     import Timeline from '$lib/particles/components/Timeline.svelte';
-    import { createSimulationWorker } from '../engine/simulationWorker';
-    import { Cell, COLORS, Coordinates, PARTICLE_COLORS } from '../engine';
+    import type { AttractionTable } from '$lib/particles/attraction';
+    import { getMutatedAttractionTable, getRandomAttractionTable } from '$lib/particles/attraction';
+    import { COLORS, PARTICLE_COLORS } from '$lib/particles/engine';
     import {
-        AttractionTable,
-        getMutatedAttractionTable,
-        getRandomAttractionTable
-    } from '../attraction';
-    import { ColorProportions, getNewCells } from '../engine/cells';
+        centerCellsInPlace,
+        getNewCells,
+        largeCenterCellsInPlace,
+        rainbowCellsInPlace
+    } from '$lib/particles/engine/cells';
+    import type { ColorProportions } from '$lib/particles/engine/cells';
+    import { createSimulationWorker } from '$lib/particles/engine/simulationWorker';
+    import type { Cell, Coordinates } from '$lib/particles/engine';
 
     const MAX_BUFFER_SIZE = 1000;
     const sim = createSimulationWorker();
@@ -68,34 +72,17 @@
     };
 
     const centerCells = () => {
-        for (const cell of cells) {
-            const r = 2 * Math.random();
-            const theta = Math.random() * 2 * Math.PI;
-            cell.pos = {
-                x: worldSize.x / 2 + r * Math.cos(theta),
-                y: worldSize.y / 2 + r * Math.sin(theta)
-            };
-        }
+        centerCellsInPlace(cells, worldSize);
         startSim(true, true);
     };
 
     const largeCenterCells = () => {
-        for (const cell of cells) {
-            const r = 200 * Math.random();
-            const theta = Math.random() * 2 * Math.PI;
-            cell.pos = {
-                x: worldSize.x / 2 + r * Math.cos(theta),
-                y: worldSize.y / 2 + r * Math.sin(theta)
-            };
-        }
+        largeCenterCellsInPlace(cells, worldSize);
         startSim(true, true);
     };
 
     const rainbowCells = () => {
-        const sectionWidth = worldSize.x / 4;
-        for (const cell of cells) {
-            cell.color = COLORS[Math.min(Math.floor(cell.pos.x / sectionWidth), 3)];
-        }
+        rainbowCellsInPlace(cells, worldSize);
         startSim(true, true);
     };
 

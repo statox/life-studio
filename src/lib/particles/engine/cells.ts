@@ -42,3 +42,32 @@ export const getNewCells = (
     }
     return cells;
 };
+
+export const centerCellsInPlace = (cells: Cell[], worldSize: { x: number; y: number }) => {
+    for (const cell of cells) {
+        const r = 2 * Math.random();
+        const theta = Math.random() * 2 * Math.PI;
+        cell.pos = {
+            x: worldSize.x / 2 + r * Math.cos(theta),
+            y: worldSize.y / 2 + r * Math.sin(theta)
+        };
+    }
+};
+
+export const largeCenterCellsInPlace = (cells: Cell[], worldSize: { x: number; y: number }) => {
+    for (const cell of cells) {
+        const r = 200 * Math.random();
+        const theta = Math.random() * 2 * Math.PI;
+        cell.pos = {
+            x: worldSize.x / 2 + r * Math.cos(theta),
+            y: worldSize.y / 2 + r * Math.sin(theta)
+        };
+    }
+};
+
+export const rainbowCellsInPlace = (cells: Cell[], worldSize: { x: number; y: number }) => {
+    const sectionWidth = worldSize.x / 4;
+    for (const cell of cells) {
+        cell.color = COLORS[Math.min(Math.floor(cell.pos.x / sectionWidth), 3)];
+    }
+};
