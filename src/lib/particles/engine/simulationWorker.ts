@@ -13,11 +13,16 @@ export function createSimulationWorker() {
     let WorkerConstructor: (new () => Worker) | undefined;
 
     const loadWorker = async () => {
+        if (worker) return; // Worker already loaded
         const mod = await import('$lib/particles/engine/simulation.worker?worker');
         WorkerConstructor = mod.default;
     };
 
-    const start = (params: SimulationParameters, onFrame: (positions: Coordinates[]) => void) => {
+    const start = async (
+        params: SimulationParameters,
+        onFrame: (positions: Coordinates[]) => void
+    ) => {
+        await loadWorker();
         const { worldSize, maxAttractionRadius, attractionTable, cells } = params;
 
         if (!WorkerConstructor) throw new Error('Worker is not initialized');

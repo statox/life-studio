@@ -1,5 +1,5 @@
 <script>
-    import Simulation from '$lib/particles/components/Simulation.svelte';
+    import WorkBench from '$lib/particles/components/WorkBench.svelte';
 </script>
 
-<Simulation />
+<WorkBench />
