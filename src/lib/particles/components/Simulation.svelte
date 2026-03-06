@@ -44,19 +44,14 @@
         if (!keepTable) attractionTable = getRandomAttractionTable();
         buffer = [];
         frameIndex = 0;
-        sim.start(
-            { worldSize, nbParticles, maxAttractionRadius },
-            cells,
-            attractionTable,
-            (positions) => {
-                buffer.push(positions);
-                if (buffer.length >= MAX_BUFFER_SIZE) {
-                    buffer.shift();
-                    frameIndex = Math.max(frameIndex - 1, 0);
-                }
-                buffer = buffer;
+        sim.start({ worldSize, maxAttractionRadius, cells, attractionTable }, (positions) => {
+            buffer.push(positions);
+            if (buffer.length >= MAX_BUFFER_SIZE) {
+                buffer.shift();
+                frameIndex = Math.max(frameIndex - 1, 0);
             }
-        );
+            buffer = buffer;
+        });
     };
 
     const updateAttractionTable = (newTable: AttractionTable) => {

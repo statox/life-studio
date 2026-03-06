@@ -1,6 +1,13 @@
 import type { AttractionTable } from '$lib/particles/attraction';
 import type { Cell, Coordinates, UpdateCellsResponse } from './types';
 
+export type SimulationParameters = {
+    worldSize: Coordinates;
+    maxAttractionRadius: number;
+    attractionTable: AttractionTable;
+    cells: Cell[];
+};
+
 export function createSimulationWorker() {
     let worker: Worker | undefined;
     let WorkerConstructor: (new () => Worker) | undefined;
@@ -10,12 +17,9 @@ export function createSimulationWorker() {
         WorkerConstructor = mod.default;
     };
 
-    const start = (
-        params: { worldSize: Coordinates; nbParticles: number; maxAttractionRadius: number },
-        cells: Cell[],
-        attractionTable: AttractionTable,
-        onFrame: (positions: Coordinates[]) => void
-    ) => {
+    const start = (params: SimulationParameters, onFrame: (positions: Coordinates[]) => void) => {
+        const { worldSize, maxAttractionRadius, attractionTable, cells } = params;
+
         if (!WorkerConstructor) throw new Error('Worker is not initialized');
         worker?.postMessage({ msg: 'destroy' });
         worker?.terminate();
@@ -25,8 +29,8 @@ export function createSimulationWorker() {
             msg: 'start',
             cells,
             attractionTable,
-            worldSize: params.worldSize,
-            maxAttractionRadius: params.maxAttractionRadius
+            worldSize,
+            maxAttractionRadius
         });
     };
 
