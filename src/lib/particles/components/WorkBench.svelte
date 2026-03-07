@@ -93,6 +93,19 @@
 
 <div class="sim">
     <div class="panels">
+        <div class="card">
+            <div class="card-title">Cells</div>
+            <div class="btn-stack">
+                <button on:click={randomCells}>↺ Uniform spread</button>
+                <button on:click={largeCenterCells}>◎ Centered circle</button>
+                <button on:click={rainbowCells}>≋ Rainbow</button>
+            </div>
+        </div>
+    </div>
+
+    <Simulation bind:this={simulationComponent} />
+
+    <div class="panels">
         <!-- Simulation controls -->
         <div class="card">
             <div class="card-title">Simulation</div>
@@ -139,20 +152,14 @@
         <div class="card">
             <div class="card-title">Cells</div>
             <div class="btn-stack">
-                <button on:click={randomCells}>↺ Uniform spread</button>
-                <button on:click={largeCenterCells}>◎ Centered circle</button>
-                <button on:click={rainbowCells}>≋ Rainbow</button>
+                <!-- Attraction table panel -->
+                <AttractionTablePanel
+                    {attractionTable}
+                    on:updateTable={(e) => updateAttractionTable(e.detail)}
+                />
             </div>
         </div>
     </div>
-
-    <Simulation bind:this={simulationComponent} />
-
-    <!-- Attraction table panel -->
-    <AttractionTablePanel
-        {attractionTable}
-        on:updateTable={(e) => updateAttractionTable(e.detail)}
-    />
 
     <!-- World settings -->
     <div class="panels">
@@ -219,7 +226,7 @@
     /* ── Panels grid ─────────────────────────── */
     .panels {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr auto;
         gap: 10px;
     }
 

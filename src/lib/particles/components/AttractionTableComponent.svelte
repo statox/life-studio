@@ -151,6 +151,7 @@
     .col-header,
     .row-header {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
         align-items: center;
         gap: 4px;
@@ -159,7 +160,7 @@
 
     .row-header {
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: flex-start;
         padding-right: 6px;
     }
 
@@ -176,11 +177,19 @@
         text-transform: capitalize;
     }
 
+    @media (max-width: 640px) {
+        .col-label {
+            display: none;
+        }
+    }
+
     .cell {
         display: grid;
-        grid-template-columns: 18px 1fr 18px;
-        gap: 2px;
+        grid-template-columns: 30% 1fr 30%;
+        gap: 0px;
         align-items: stretch;
+        justify-content: baseline;
+        /* justify-items: center; */
     }
 
     .adj {
@@ -190,7 +199,7 @@
         border-radius: 4px;
         padding: 0;
         cursor: pointer;
-        font-size: 0.95rem;
+        font-size: 1.05rem;
         line-height: 1;
         display: flex;
         align-items: center;
