@@ -67,6 +67,7 @@
 
     export const updateAttractionTable = (newTable: AttractionTable) => {
         sim.updateAttractionTable(newTable);
+        savedAttractionTable = newTable;
         buffer = [cells.map((c) => c.pos)];
         displayIndex = 0;
         absoluteFrameOffset = 0;
