@@ -70,12 +70,29 @@
         // Trigger Svelte reactivity
         buffer = buffer;
     };
+
+    let debounceTs = Date.now();
+    const handleKeydown = (e: KeyboardEvent) => {
+        const now = Date.now();
+        if (now - debounceTs < 50) return;
+        debounceTs = now;
+
+        const tag = (e.target as HTMLElement).tagName;
+        if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+        if (e.key != ' ') return;
+        e.preventDefault();
+        togglePlayPause();
+    };
+
+    const togglePlayPause = () => (displayPaused = !displayPaused);
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <div class="timeline">
     <div class="tl-btns">
         <button class="icon-btn" on:click={() => (displayIndex = 0)} title="Go to start">⏮</button>
-        <button class="icon-btn" on:click={() => (displayPaused = !displayPaused)}>
+        <button class="icon-btn" on:click={togglePlayPause}>
             {displayPaused ? '▶' : '⏸'}
         </button>
         <button
