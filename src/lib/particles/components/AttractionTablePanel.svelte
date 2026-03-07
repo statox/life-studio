@@ -1,7 +1,7 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
     import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
-    import ExportModal from '$lib/particles/components/ExportModal.svelte';
+    import TableExportModal from '$lib/particles/components/TableExportModal.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
     import { getRandomAttractionTable, tables } from '$lib/particles/attraction';
 
@@ -53,7 +53,7 @@
 </details>
 
 {#if showExportModal}
-    <ExportModal {attractionTable} on:close={() => (showExportModal = false)} />
+    <TableExportModal {attractionTable} on:close={() => (showExportModal = false)} />
 {/if}
 
 <style>
