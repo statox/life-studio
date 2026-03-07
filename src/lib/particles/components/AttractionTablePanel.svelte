@@ -14,32 +14,6 @@
     let showExportModal = false;
 </script>
 
-<!-- Preset selector -->
-<div class="card preset-card">
-    <div class="preset-row">
-        <div class="card-title">Preset</div>
-        <button
-            class="export-btn"
-            on:click={() => (showExportModal = true)}
-            title="Export current table"
-        >
-            ↗ Export
-        </button>
-    </div>
-    <select
-        on:change={(e) => {
-            const v = e.currentTarget.value;
-            if (v === '__random__') update(getRandomAttractionTable());
-            else update(JSON.parse(v));
-        }}
-    >
-        <option value="__random__">✦ Random</option>
-        {#each tables as t}
-            <option value={JSON.stringify(t.table)}>{t.name} — {t.description}</option>
-        {/each}
-    </select>
-</div>
-
 <!-- Attraction table editor (collapsible) -->
 <details class="card" open>
     <summary>
@@ -47,6 +21,31 @@
         <span class="summary-hint">— click to expand</span>
     </summary>
     {#if attractionTable}
+        <!-- Preset selector -->
+        <div class="card preset-card">
+            <div class="preset-row">
+                <div class="card-title">Preset</div>
+                <button
+                    class="export-btn"
+                    on:click={() => (showExportModal = true)}
+                    title="Export current table"
+                >
+                    ↗ Export
+                </button>
+            </div>
+            <select
+                on:change={(e) => {
+                    const v = e.currentTarget.value;
+                    if (v === '__random__') update(getRandomAttractionTable());
+                    else update(JSON.parse(v));
+                }}
+            >
+                <option value="__random__">✦ Random</option>
+                {#each tables as t}
+                    <option value={JSON.stringify(t.table)}>{t.name} — {t.description}</option>
+                {/each}
+            </select>
+        </div>
         <div class="table-body">
             <AttractionTableComponent {attractionTable} onUpdateTable={update} />
         </div>
