@@ -15,6 +15,7 @@
     import type { ColorProportions } from '$lib/particles/engine/cells';
     import type { Cell } from '$lib/particles/engine';
     import Simulation from './Simulation.svelte';
+    import UniverseExportModal from './UniverseExportModal.svelte';
 
     let simulationComponent: Simulation;
 
@@ -34,6 +35,15 @@
     const worldSize = {
         x: maxAttractionRadius * horizontalResolution,
         y: maxAttractionRadius * verticalResolution
+    };
+
+    $: universe = {
+        attractionTable,
+        colorWeights,
+        nbParticles,
+        maxAttractionRadius,
+        horizontalResolution,
+        verticalResolution
     };
 
     const startSim = () => {
@@ -89,6 +99,8 @@
         attractionTable = getRandomAttractionTable();
         startSim();
     });
+
+    let showExportModal = false;
 </script>
 
 <div class="sim">
@@ -100,6 +112,14 @@
                 <button on:click={largeCenterCells}>◎ Centered circle</button>
                 <button on:click={rainbowCells}>≋ Rainbow</button>
             </div>
+
+            <button
+                class="export-btn"
+                on:click={() => (showExportModal = true)}
+                title="Export current table"
+            >
+                ↗ Export
+            </button>
         </div>
     </div>
 
@@ -210,6 +230,10 @@
     <!-- Keyboard shortcuts legend -->
     <KeyboardShortcuts actions={keyActions} />
 </div>
+
+{#if showExportModal}
+    <UniverseExportModal {universe} on:close={() => (showExportModal = false)} />
+{/if}
 
 <style>
     /* ── Layout ─────────────────────────────── */
