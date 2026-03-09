@@ -53,6 +53,9 @@ export class Engine {
     async run(stepCallback: Callback<Cell[]>) {
         this._stepCb = stepCallback;
 
+        // This is legacy from the first version of the code but it seems mostly useless
+        // as the simulation runs well without this initial pull appart
+        // Simulations are now started with pullAppartAtStart set to false
         if (this._pullAppartAtStart) {
             const realTable = this.attractionTable;
             this.attractionTable = getZeroedAttractionTable();

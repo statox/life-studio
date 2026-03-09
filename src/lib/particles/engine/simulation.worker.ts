@@ -12,7 +12,7 @@ onmessage = (request: MessageEvent<EngineRequest>) => {
             engine.destroy();
         }
         engine = new Engine(cells, attractionTable, worldSize, maxAttractionRadius, {
-            pullAppartAtStart: true
+            pullAppartAtStart: false
         });
         engine.run(onUpdatedCells);
     }
