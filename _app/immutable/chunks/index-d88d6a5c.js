@@ -20,7 +20,7 @@ We quickly end up in groups of white which coagulated. Around them there is a bo
 
 The simulation takes a long time to stabilize completely because some isolated white cells keep being attracted by all the red cells around them but when they get close of a white group, the empty border because big enough so that the group attraction doesn't reach the isolated cell.
 
-Eventually they still end up merging and the universe becomes stable.`,preferredInitialConfig:"center",attractionTable:{white:{white:1,red:1,green:0,blue:0},red:{white:-1,red:0,green:0,blue:0},green:{white:0,red:0,green:0,blue:0},blue:{white:0,red:0,green:0,blue:0}},colorWeights:{white:500,red:500,green:0,blue:0},nbParticles:2e3,maxAttractionRadius:32,horizontalResolution:30,verticalResolution:20},{name:"2 Colors - Vessels",description:`From the 2 colors chase add red self-attraction.
+Eventually they still end up merging when the corona of red around a white group spreads a bit and let them get closer to the group. Then the universe becomes stable.`,preferredInitialConfig:"center",attractionTable:{white:{white:1,red:1,green:0,blue:0},red:{white:-1,red:0,green:0,blue:0},green:{white:0,red:0,green:0,blue:0},blue:{white:0,red:0,green:0,blue:0}},colorWeights:{white:500,red:500,green:0,blue:0},nbParticles:2e3,maxAttractionRadius:32,horizontalResolution:30,verticalResolution:20},{name:"2 Colors - Vessels",description:`From the 2 colors chase add red self-attraction.
 
 Suddenly we start to see some kind off dynamic cohesion. The red cells attract each other forming groups which attract groups of white cells chasing them.
 
@@ -38,4 +38,14 @@ TODO Document the differences more precisely. It seems to create a slightly more
 
 Expands quickly into a stable universe with organic shapes of red-blue and white-green separated by empty strips.`,preferredInitialConfig:"center",attractionTable:{white:{white:0,red:-1,green:0,blue:0},red:{white:0,red:0,green:-1,blue:0},green:{white:0,red:0,green:0,blue:-1},blue:{white:-1,red:0,green:0,blue:0}},colorWeights:{white:495,red:500,green:495,blue:505},nbParticles:4e3,maxAttractionRadius:32,horizontalResolution:30,verticalResolution:20},{name:"Cellular strips 2",description:"It seems that the additional repulsions create thinner strips.",preferredInitialConfig:"center",attractionTable:{white:{white:0,red:-1,green:0,blue:-1},red:{white:-1,red:0,green:-1,blue:0},green:{white:0,red:-1,green:0,blue:-1},blue:{white:-1,red:0,green:-1,blue:0}},colorWeights:{white:495,red:500,green:495,blue:505},nbParticles:4e3,maxAttractionRadius:32,horizontalResolution:30,verticalResolution:20},{name:"Cellular strips 2",description:`Shifted the matrix of repulsion horizontally.
 
-There is much more spread (Probably due to the lack of internal group cohesion) to the full universe and that makes much more and thinner paths`,preferredInitialConfig:"center",attractionTable:{white:{white:-1,red:0,green:-1,blue:0},red:{white:0,red:-1,green:0,blue:-1},green:{white:-1,red:0,green:-1,blue:0},blue:{white:0,red:-1,green:0,blue:-1}},colorWeights:{white:495,red:500,green:495,blue:505},nbParticles:4e3,maxAttractionRadius:32,horizontalResolution:30,verticalResolution:20}],t=()=>e;export{t as g};
+There is much more spread (Probably due to the lack of internal group cohesion) to the full universe and that makes much more and thinner paths`,preferredInitialConfig:"center",attractionTable:{white:{white:-1,red:0,green:-1,blue:0},red:{white:0,red:-1,green:0,blue:-1},green:{white:-1,red:0,green:-1,blue:0},blue:{white:0,red:-1,green:0,blue:-1}},colorWeights:{white:495,red:500,green:495,blue:505},nbParticles:4e3,maxAttractionRadius:32,horizontalResolution:30,verticalResolution:20},{name:"4 colors worms",description:`This universe creates moving structures of red, green, blue, white alternating small groups with lots of cells.
+
+This creates strong worms which often merge together but also sometime split with a larger worm and a small one.
+
+Since the groups are strong the strucutre resist well the wall wrapping.
+
+The universe doesn't stabilize but keep an infinitely consistent configurations.
+
+Starting from center helps creating stronger structure earlier on.
+
+Sometime a worm eats its own tail and becomes a spinning structure absorbing other worms when they get too close.`,preferredInitialConfig:"center",attractionTable:{white:{white:0,red:0,green:-1,blue:1},red:{white:1,red:0,green:0,blue:-1},green:{white:-1,red:1,green:0,blue:0},blue:{white:0,red:-1,green:1,blue:0}},colorWeights:{white:500,red:515,green:485,blue:505},nbParticles:4e3,maxAttractionRadius:32,horizontalResolution:30,verticalResolution:20}],t=()=>e;export{t as g};

@@ -13,7 +13,7 @@
 		<link href="/particles-life/_app/immutable/assets/_layout-053e06f5.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/_page-36cb3eda.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/Simulation-6ae675b1.css" rel="stylesheet">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/start-44eda6df.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-798ed55e.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-b2d96575.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-632ab094.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-734cd9c3.js">
@@ -22,9 +22,9 @@
 		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-1f26bfca.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/galery/_page.svelte-69ab44ec.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/Simulation-364dd099.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-0ceeb914.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/galery/_page.svelte-387d6b99.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/Simulation-9864768d.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-d88d6a5c.js">
     </head>
 
     <body data-sveltekit-preload-data="hover">
@@ -76,7 +76,7 @@ We quickly end up in groups of white which coagulated. Around them there is a bo
 
 The simulation takes a long time to stabilize completely because some isolated white cells keep being attracted by all the red cells around them but when they get close of a white group, the empty border because big enough so that the group attraction doesn't reach the isolated cell.
 
-Eventually they still end up merging and the universe becomes stable.</span>
+Eventually they still end up merging when the corona of red around a white group spreads a bit and let them get closer to the group. Then the universe becomes stable.</span>
             </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">2 Colors - Vessels</span>
                 <span class="universe-item-desc dim svelte-1j10mlt">From the 2 colors chase add red self-attraction.
 
@@ -107,6 +107,18 @@ Expands quickly into a stable universe with organic shapes of red-blue and white
                 <span class="universe-item-desc dim svelte-1j10mlt">Shifted the matrix of repulsion horizontally.
 
 There is much more spread (Probably due to the lack of internal group cohesion) to the full universe and that makes much more and thinner paths</span>
+            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 colors worms</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">This universe creates moving structures of red, green, blue, white alternating small groups with lots of cells.
+
+This creates strong worms which often merge together but also sometime split with a larger worm and a small one.
+
+Since the groups are strong the strucutre resist well the wall wrapping.
+
+The universe doesn't stabilize but keep an infinitely consistent configurations.
+
+Starting from center helps creating stronger structure earlier on.
+
+Sometime a worm eats its own tail and becomes a spinning structure absorbing other worms when they get too close.</span>
             </li></ul>
 
     
@@ -222,14 +234,14 @@ There is much more spread (Probably due to the lack of internal group cohesion) 
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="1rg6dzx">
-			import { start } from "/particles-life/_app/immutable/start-44eda6df.js";
+		<script type="module" data-sveltekit-hydrate="hr9rx8">
+			import { start } from "/particles-life/_app/immutable/start-798ed55e.js";
 
 			start({
 				env: {},
 				paths: {"base":"/particles-life","assets":"/particles-life"},
-				target: document.querySelector('[data-sveltekit-hydrate="1rg6dzx"]').parentNode,
-				version: "1773098560978",
+				target: document.querySelector('[data-sveltekit-hydrate="hr9rx8"]').parentNode,
+				version: "1773100492402",
 				hydrate: {
 					node_ids: [0, 6],
 					data: [null,null],
