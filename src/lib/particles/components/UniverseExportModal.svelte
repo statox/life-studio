@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
-    import type { Universe } from '../universe';
+    import type { Universe, InitialConfig } from '../universe';
 
     export let universe: Universe;
 
@@ -8,11 +8,16 @@
 
     let name = '';
     let description = '';
+    let preferredInitialConfig: InitialConfig = 'uniform';
     let copied = false;
 
     $: result = (() => {
         try {
-            return JSON.stringify({ name, description, ...universe }, null, 2);
+            return JSON.stringify(
+                { name, description, preferredInitialConfig, ...universe },
+                null,
+                2
+            );
         } catch {
             return 'Error';
         }
@@ -46,6 +51,14 @@
                 placeholder="What does it do?"
                 bind:value={description}
             />
+        </div>
+        <div class="field">
+            <label for="export-config">Initial spread</label>
+            <select id="export-config" bind:value={preferredInitialConfig}>
+                <option value="uniform">↺ Uniform spread</option>
+                <option value="center">◎ Centered circle</option>
+                <option value="rainbow">≋ Rainbow</option>
+            </select>
         </div>
 
         <div class="code-block">
@@ -108,7 +121,8 @@
         flex-shrink: 0;
     }
 
-    .field input {
+    .field input,
+    .field select {
         flex: 1;
         background: #1a2327;
         border: 1px solid #37474f;
@@ -122,7 +136,8 @@
         flex: 1;
     }
 
-    .field input:focus {
+    .field input:focus,
+    .field select:focus {
         outline: 1px solid #c3e88d;
         border-color: #c3e88d;
     }
