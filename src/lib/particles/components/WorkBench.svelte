@@ -55,10 +55,19 @@
         simulationComponent?.updateAttractionTable(newTable);
     };
 
-    const updateWorldSettings = () => {
-        worldSize.x = maxAttractionRadius * horizontalResolution;
-        worldSize.y = maxAttractionRadius * verticalResolution;
-        startSim();
+    let updateWorldSettingsTimer: ReturnType<typeof setTimeout> | undefined;
+    const updateWorldSettings = (resetCells?: boolean) => {
+        clearTimeout(updateWorldSettingsTimer);
+
+        updateWorldSettingsTimer = setTimeout(() => {
+            worldSize.x = maxAttractionRadius * horizontalResolution;
+            worldSize.y = maxAttractionRadius * verticalResolution;
+            if (resetCells) {
+                randomCells();
+                simulationComponent?.updateCells(cells);
+            }
+            startSim();
+        }, 750);
     };
 
     const randomCells = () => {
@@ -135,7 +144,7 @@
                     id="nb-particles"
                     type="number"
                     bind:value={nbParticles}
-                    on:change={updateWorldSettings}
+                    on:change={() => updateWorldSettings(true)}
                     min="1"
                 />
             </div>
@@ -144,6 +153,7 @@
                     <div class="field">
                         <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
                         <input
+                            on:change={() => updateWorldSettings(true)}
                             type="range"
                             bind:value={colorWeights[c]}
                             min="0"
@@ -191,7 +201,7 @@
                     id="h-cells"
                     type="number"
                     bind:value={horizontalResolution}
-                    on:change={updateWorldSettings}
+                    on:change={() => updateWorldSettings(true)}
                     min="1"
                     max="100"
                 />
@@ -203,7 +213,7 @@
                     id="v-cells"
                     type="number"
                     bind:value={verticalResolution}
-                    on:change={updateWorldSettings}
+                    on:change={() => updateWorldSettings(true)}
                     min="1"
                     max="100"
                 />
@@ -215,7 +225,7 @@
                     id="radius"
                     type="number"
                     bind:value={maxAttractionRadius}
-                    on:change={updateWorldSettings}
+                    on:change={() => updateWorldSettings(true)}
                     min="8"
                     max="128"
                 />
