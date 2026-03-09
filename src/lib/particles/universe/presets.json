@@ -408,5 +408,128 @@
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
         "verticalResolution": 20
+    },
+    {
+        "name": "Cellular strips",
+        "description": "I'm not sure which analogy to use here.\n\nExpands quickly into a stable universe with organic shapes of red-blue and white-green separated by empty strips.",
+        "preferredInitialConfig": "center",
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": -1,
+                "green": 0,
+                "blue": 0
+            },
+            "red": {
+                "white": 0,
+                "red": 0,
+                "green": -1,
+                "blue": 0
+            },
+            "green": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": -1
+            },
+            "blue": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 495,
+            "red": 500,
+            "green": 495,
+            "blue": 505
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Cellular strips 2",
+        "description": "It seems that the additional repulsions create thinner strips.",
+        "preferredInitialConfig": "center",
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": -1,
+                "green": 0,
+                "blue": -1
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": -1,
+                "blue": 0
+            },
+            "green": {
+                "white": 0,
+                "red": -1,
+                "green": 0,
+                "blue": -1
+            },
+            "blue": {
+                "white": -1,
+                "red": 0,
+                "green": -1,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 495,
+            "red": 500,
+            "green": 495,
+            "blue": 505
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Cellular strips 2",
+        "description": "Shifted the matrix of repulsion horizontally.\n\nThere is much more spread (Probably due to the lack of internal group cohesion) to the full universe and that makes much more and thinner paths",
+        "preferredInitialConfig": "center",
+        "attractionTable": {
+            "white": {
+                "white": -1,
+                "red": 0,
+                "green": -1,
+                "blue": 0
+            },
+            "red": {
+                "white": 0,
+                "red": -1,
+                "green": 0,
+                "blue": -1
+            },
+            "green": {
+                "white": -1,
+                "red": 0,
+                "green": -1,
+                "blue": 0
+            },
+            "blue": {
+                "white": 0,
+                "red": -1,
+                "green": 0,
+                "blue": -1
+            }
+        },
+        "colorWeights": {
+            "white": 495,
+            "red": 500,
+            "green": 495,
+            "blue": 505
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
     }
 ]
