@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="/particles-life/favicon.png" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+        />
+        <meta http-equiv="content-security-policy" content="">
+		<link href="/particles-life/_app/immutable/assets/_layout-053e06f5.css" rel="stylesheet">
+		<link href="/particles-life/_app/immutable/assets/_page-26e3719a.css" rel="stylesheet">
+		<link href="/particles-life/_app/immutable/assets/AttractionTableComponent-5a48387f.css" rel="stylesheet">
+		<link href="/particles-life/_app/immutable/assets/Simulation-6ae675b1.css" rel="stylesheet">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-1fb87014.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-b2d96575.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-632ab094.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-734cd9c3.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/paths-b4419565.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/preload-helper-41c905a7.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-1f26bfca.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/demo/_page.svelte-39c29267.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/AttractionTableComponent-d4c68b61.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/Simulation-364dd099.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-34aa15a1.js">
+    </head>
+
+    <body data-sveltekit-preload-data="hover">
+        <div style="display: contents">
+
+
+<header class="svelte-12plrf"><h1>Particles Life</h1>
+
+    <nav><a href="/particles-life/particles-life">Particles life</a> |
+        <a href="/particles-life/gameoflife">Game Of Life</a> |
+        <a href="/particles-life/reaction-diffusion">Reaction-diffusion</a> |
+        <a href="/particles-life/shaders">Test shaders</a> |
+        <a href="/particles-life/soft-bodies">Soft bodies</a> |
+    </nav></header>
+
+<div class="demo svelte-14rq5tp">
+    <div class="narrative svelte-14rq5tp">
+        <section class="hero svelte-14rq5tp"><h1 class="svelte-14rq5tp">Particle Life</h1>
+            <p class="placeholder svelte-14rq5tp">[Introduction text goes here]</p></section>
+
+        
+        <section class="svelte-14rq5tp"><h2 class="svelte-14rq5tp">The Basics</h2>
+            <p class="placeholder svelte-14rq5tp">[Basics explanation goes here]</p>
+            <div class="preset-btns svelte-14rq5tp"><button class="svelte-14rq5tp">Still</button>
+                <button class="svelte-14rq5tp">Uniform repulsion</button>
+                <button class="svelte-14rq5tp">2 colors own attraction</button></div>
+            <p class="placeholder svelte-14rq5tp">[Reset explanation goes here]</p>
+            <div class="preset-btns svelte-14rq5tp"><button class="svelte-14rq5tp">↺ Uniform spread</button>
+                <button class="svelte-14rq5tp">◎ Centered circle</button></div></section>
+
+        
+        <section class="svelte-14rq5tp"><h2 class="svelte-14rq5tp">Emergent Complexity</h2>
+            <p class="placeholder svelte-14rq5tp">[Complexity explanation goes here]</p>
+            <div class="preset-btns svelte-14rq5tp"><button class="svelte-14rq5tp">2 colors own repulsion</button>
+                <button class="svelte-14rq5tp">Central circle spread</button></div></section>
+
+        
+        <section class="svelte-14rq5tp"><h2 class="svelte-14rq5tp">The Attraction Table</h2>
+            <p class="placeholder svelte-14rq5tp">[Attraction table explanation goes here]</p>
+            <div class="card svelte-14rq5tp"><div class="actions svelte-2jauyn"><button class="svelte-2jauyn">Randomize</button>
+        <button class="svelte-2jauyn">Zero</button>
+        <button class="svelte-2jauyn">Mutate</button></div>
+
+    <div class="scroll-wrap svelte-2jauyn"><div class="matrix svelte-2jauyn">
+            <div class="corner svelte-2jauyn"><span class="corner-label svelte-2jauyn">self ↓</span>
+                <span class="corner-label svelte-2jauyn">other →</span></div>
+            
+            <div class="col-header svelte-2jauyn"><span class="dot svelte-2jauyn" style="background:#ffedff"></span>
+                    <span class="col-label svelte-2jauyn">white</span>
+                </div><div class="col-header svelte-2jauyn"><span class="dot svelte-2jauyn" style="background:#fc2a51"></span>
+                    <span class="col-label svelte-2jauyn">red</span>
+                </div><div class="col-header svelte-2jauyn"><span class="dot svelte-2jauyn" style="background:#8ff97c"></span>
+                    <span class="col-label svelte-2jauyn">green</span>
+                </div><div class="col-header svelte-2jauyn"><span class="dot svelte-2jauyn" style="background:#77cfff"></span>
+                    <span class="col-label svelte-2jauyn">blue</span>
+                </div>
+
+            
+            <div class="row-header svelte-2jauyn"><span class="dot svelte-2jauyn" style="background:#ffedff"></span>
+                    <span class="col-label svelte-2jauyn">white</span></div>
+                
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · white → white">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div>
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · white → red">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div>
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · white → green">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div>
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · white → blue">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div><div class="row-header svelte-2jauyn"><span class="dot svelte-2jauyn" style="background:#fc2a51"></span>
+                    <span class="col-label svelte-2jauyn">red</span></div>
+                
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · red → white">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div>
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · red → red">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div>
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · red → green">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div>
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · red → blue">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div><div class="row-header svelte-2jauyn"><span class="dot svelte-2jauyn" style="background:#8ff97c"></span>
+                    <span class="col-label svelte-2jauyn">green</span></div>
+                
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · green → white">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div>
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · green → red">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div>
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · green → green">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div>
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · green → blue">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div><div class="row-header svelte-2jauyn"><span class="dot svelte-2jauyn" style="background:#77cfff"></span>
+                    <span class="col-label svelte-2jauyn">blue</span></div>
+                
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · blue → white">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div>
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · blue → red">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div>
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · blue → green">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div>
+                    <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · blue → blue">0</button>
+                        <button class="adj svelte-2jauyn">+</button>
+                    </div></div></div></div></section>
+
+        
+        <section class="svelte-14rq5tp"><h2 class="svelte-14rq5tp">Tuning the Mix</h2>
+            <p class="placeholder svelte-14rq5tp">[Mix explanation goes here]</p>
+            <div class="card svelte-14rq5tp"><div class="card-title svelte-14rq5tp">Color proportions</div>
+                <div class="proportion-list svelte-14rq5tp"><div class="field svelte-14rq5tp"><span class="pdot svelte-14rq5tp" style="background:#ffedff"></span>
+                            <input type="range" min="0" max="1000" step="1" class="svelte-14rq5tp" value="500">
+                            <span class="dim svelte-14rq5tp" style="width:28px;text-align:right">500</span>
+                        </div><div class="field svelte-14rq5tp"><span class="pdot svelte-14rq5tp" style="background:#fc2a51"></span>
+                            <input type="range" min="0" max="1000" step="1" class="svelte-14rq5tp" value="500">
+                            <span class="dim svelte-14rq5tp" style="width:28px;text-align:right">500</span>
+                        </div><div class="field svelte-14rq5tp"><span class="pdot svelte-14rq5tp" style="background:#8ff97c"></span>
+                            <input type="range" min="0" max="1000" step="1" class="svelte-14rq5tp" value="500">
+                            <span class="dim svelte-14rq5tp" style="width:28px;text-align:right">500</span>
+                        </div><div class="field svelte-14rq5tp"><span class="pdot svelte-14rq5tp" style="background:#77cfff"></span>
+                            <input type="range" min="0" max="1000" step="1" class="svelte-14rq5tp" value="500">
+                            <span class="dim svelte-14rq5tp" style="width:28px;text-align:right">500</span>
+                        </div></div>
+                <div class="preset-btns svelte-14rq5tp"><button class="svelte-14rq5tp">↺ Uniform spread</button>
+                    <button class="svelte-14rq5tp">◎ Centered circle</button>
+                    <button class="svelte-14rq5tp">≋ Rainbow</button></div></div></section>
+
+        
+        <section class="footer svelte-14rq5tp"><p class="placeholder svelte-14rq5tp">[Footer — link to /particles/dev for the full sandbox]</p></section></div>
+
+    
+    <div class="canvas-col svelte-14rq5tp"><div class="canvas-sticky svelte-14rq5tp"><div class="sim svelte-17eke7l">
+    <div class="canvas-wrap svelte-17eke7l"><canvas class="svelte-mxo1ki"></canvas></div>
+    
+    
+
+<div class="timeline svelte-md0x9i"><div class="tl-btns svelte-md0x9i"><button class="icon-btn svelte-md0x9i" title="Go to start">⏮</button>
+        <button class="icon-btn svelte-md0x9i">⏸</button>
+        <button class="icon-btn svelte-md0x9i" title="Catch up to latest">⏭</button></div>
+    <input type="range" class="tl-slider svelte-md0x9i" min="0" max="0" value="0">
+    <button class="icon-btn svelte-md0x9i" title="Enter fullscreen">⛶</button>
+    <div class="tl-stats svelte-md0x9i"><span class="stat svelte-md0x9i"><span class="stat-label svelte-md0x9i">frame</span>
+            0</span>
+        <span class="stat svelte-md0x9i"><span class="stat-label svelte-md0x9i">upcoming</span>
+            0</span>
+        <span class="stat svelte-md0x9i">0<span class="stat-label svelte-md0x9i">fps</span></span></div>
+</div>
+</div></div></div>
+</div>
+
+
+		<script type="module" data-sveltekit-hydrate="1837qkn">
+			import { start } from "/particles-life/_app/immutable/start-1fb87014.js";
+
+			start({
+				env: {},
+				paths: {"base":"/particles-life","assets":"/particles-life"},
+				target: document.querySelector('[data-sveltekit-hydrate="1837qkn"]').parentNode,
+				version: "1773093452070",
+				hydrate: {
+					node_ids: [0, 5],
+					data: [null,null],
+					form: null
+				}
+			});
+		</script>
+	</div>
+    </body>
+
+    <!-- Override newcss -->
+    <style>
+        body {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        :root {
+            --nc-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
+                'Segoe UI Emoji', 'Segoe UI Symbol';
+            --nc-font-mono: Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New',
+                Courier, monospace;
+            --is-light-theme: 1;
+
+            /* Dark theme */
+            --nc-tx-1: #ffffff;
+            --nc-tx-2: #b7b7b7;
+            --nc-tx-3: #8a8d87;
+            --nc-bg-1: #1e272c;
+            --nc-bg-2: #161d21;
+            --nc-bg-3: #263238;
+            --nc-lk-1: #5e92ff;
+            --nc-lk-2: #99b2e8;
+            --nc-lk-tx: #2e3c43;
+            --nc-ac-1: #c3e88d;
+            --nc-ac-tx: #263238;
+        }
+    </style>
+</html>
