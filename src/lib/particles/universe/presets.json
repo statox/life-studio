@@ -247,7 +247,7 @@
     },
     {
         "name": "2 colors chase - White attraction",
-        "description": "From the 2 colors chase make white attract white.\n\nWe quickly end up in groups of white which coagulated. Around them there is a border empty of cells caused by the repulsion of red.\n\nThe simulation takes a long time to stabilize completely because some isolated white cells keep being attracted by all the red cells around them but when they get close of a white group, the empty border because big enough so that the group attraction doesn't reach the isolated cell.\n\nEventually they still end up merging and the universe becomes stable.",
+        "description": "From the 2 colors chase make white attract white.\n\nWe quickly end up in groups of white which coagulated. Around them there is a border empty of cells caused by the repulsion of red.\n\nThe simulation takes a long time to stabilize completely because some isolated white cells keep being attracted by all the red cells around them but when they get close of a white group, the empty border because big enough so that the group attraction doesn't reach the isolated cell.\n\nEventually they still end up merging when the corona of red around a white group spreads a bit and let them get closer to the group. Then the universe becomes stable.",
         "preferredInitialConfig": "center",
         "attractionTable": {
             "white": {
@@ -525,6 +525,47 @@
             "white": 495,
             "red": 500,
             "green": 495,
+            "blue": 505
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "4 colors worms",
+        "description": "This universe creates moving structures of red, green, blue, white alternating small groups with lots of cells.\n\nThis creates strong worms which often merge together but also sometime split with a larger worm and a small one.\n\nSince the groups are strong the strucutre resist well the wall wrapping.\n\nThe universe doesn't stabilize but keep an infinitely consistent configurations.\n\nStarting from center helps creating stronger structure earlier on.\n\nSometime a worm eats its own tail and becomes a spinning structure absorbing other worms when they get too close.",
+        "preferredInitialConfig": "center",
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 0,
+                "green": -1,
+                "blue": 1
+            },
+            "red": {
+                "white": 1,
+                "red": 0,
+                "green": 0,
+                "blue": -1
+            },
+            "green": {
+                "white": -1,
+                "red": 1,
+                "green": 0,
+                "blue": 0
+            },
+            "blue": {
+                "white": 0,
+                "red": -1,
+                "green": 1,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 515,
+            "green": 485,
             "blue": 505
         },
         "nbParticles": 4000,
