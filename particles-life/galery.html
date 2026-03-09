@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="/particles-life/favicon.png" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+        />
+        <meta http-equiv="content-security-policy" content="">
+		<link href="/particles-life/_app/immutable/assets/_layout-053e06f5.css" rel="stylesheet">
+		<link href="/particles-life/_app/immutable/assets/_page-36cb3eda.css" rel="stylesheet">
+		<link href="/particles-life/_app/immutable/assets/Simulation-6ae675b1.css" rel="stylesheet">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-f10f3cbf.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-b2d96575.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-632ab094.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-734cd9c3.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/paths-b4419565.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/preload-helper-41c905a7.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-1f26bfca.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/galery/_page.svelte-b60b7216.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/Simulation-364dd099.js">
+    </head>
+
+    <body data-sveltekit-preload-data="hover">
+        <div style="display: contents">
+
+
+<header class="svelte-12plrf"><h1>Particles Life</h1>
+
+    <nav><a href="/particles-life/particles-life">Particles life</a> |
+        <a href="/particles-life/gameoflife">Game Of Life</a> |
+        <a href="/particles-life/reaction-diffusion">Reaction-diffusion</a> |
+        <a href="/particles-life/shaders">Test shaders</a> |
+        <a href="/particles-life/soft-bodies">Soft bodies</a> |
+    </nav></header>
+
+<div class="sim svelte-1j10mlt">
+    <ul class="universe-list svelte-1j10mlt"><li class="universe-item svelte-1j10mlt active"><span class="universe-item-name svelte-1j10mlt">Still</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">No forces in the universe, everything is still</span>
+            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">Uniform repulsion</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">This is a test universe with a simple all negative attraction table</span>
+            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">Central circle spread</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">Cells neither attract or repulse each others. When initially placed in a circle they will just spread until none of them has a neighbor touching it.
+
+This replicates the initial phase of the simulation where we try to avoid cells overlaping each other. At the beginning of the simulation we let a few frames running like this before we start applying the attraction table. This is to add some stability to the system.
+
+The simulation stabilize in approximately 2700 frames (which is about 45 seconds at 60fps)</span>
+            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">2 colors own attraction</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">Red and White form groups of their color.
+
+The universe stabilize quickly.
+
+We can see some groups at the border moving which is probably the symptom of a wrapping bug</span>
+            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">2 colors own repulsion</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">Red and White repulse their color.
+
+The universe stabilize quickly.
+
+We can see some groups at the border moving which is probably the symptom of a wrapping bug</span>
+            </li></ul>
+
+    
+    <div class="sim svelte-17eke7l">
+    <div class="canvas-wrap svelte-17eke7l"><canvas class="svelte-mxo1ki"></canvas></div>
+    
+    
+
+<div class="timeline svelte-md0x9i"><div class="tl-btns svelte-md0x9i"><button class="icon-btn svelte-md0x9i" title="Go to start">⏮</button>
+        <button class="icon-btn svelte-md0x9i">⏸</button>
+        <button class="icon-btn svelte-md0x9i" title="Catch up to latest">⏭</button></div>
+    <input type="range" class="tl-slider svelte-md0x9i" min="0" max="0" value="0">
+    <button class="icon-btn svelte-md0x9i" title="Enter fullscreen">⛶</button>
+    <div class="tl-stats svelte-md0x9i"><span class="stat svelte-md0x9i"><span class="stat-label svelte-md0x9i">frame</span>
+            0</span>
+        <span class="stat svelte-md0x9i"><span class="stat-label svelte-md0x9i">upcoming</span>
+            0</span>
+        <span class="stat svelte-md0x9i">0<span class="stat-label svelte-md0x9i">fps</span></span></div>
+</div>
+</div>
+
+    
+    <div class="spread-btns svelte-1j10mlt"><button class="svelte-1j10mlt">↺ Uniform spread</button>
+        <button class="svelte-1j10mlt">◎ Centered circle</button>
+        <button class="svelte-1j10mlt">≋ Rainbow</button></div>
+
+    
+    <div class="panels svelte-1j10mlt">
+        <div class="card svelte-1j10mlt"><div class="card-title svelte-1j10mlt">Universe</div>
+            <div class="universe-header svelte-1j10mlt"><span class="universe-name-lg svelte-1j10mlt">Still</span>
+                <span class="dim svelte-1j10mlt">No forces in the universe, everything is still</span></div>
+            <div class="field svelte-1j10mlt"><label class="svelte-1j10mlt">Particles</label>
+                <input type="number" value="4000" disabled class="svelte-1j10mlt"></div>
+            <div class="field svelte-1j10mlt"><label class="svelte-1j10mlt">H cells</label>
+                <input type="number" value="30" disabled class="svelte-1j10mlt">
+                <span class="dim svelte-1j10mlt">960px</span></div>
+            <div class="field svelte-1j10mlt"><label class="svelte-1j10mlt">V cells</label>
+                <input type="number" value="20" disabled class="svelte-1j10mlt">
+                <span class="dim svelte-1j10mlt">640px</span></div>
+            <div class="field svelte-1j10mlt"><label class="svelte-1j10mlt">Max radius</label>
+                <input type="number" value="32" disabled class="svelte-1j10mlt"></div>
+            <div class="proportion-list svelte-1j10mlt"><div class="field svelte-1j10mlt"><span class="pdot svelte-1j10mlt" style="background:#ffedff"></span>
+                        <input type="range" min="0" max="1000" step="1" disabled class="svelte-1j10mlt" value="500">
+                        <span class="dim svelte-1j10mlt" style="width:28px;text-align:right">500</span>
+                    </div><div class="field svelte-1j10mlt"><span class="pdot svelte-1j10mlt" style="background:#fc2a51"></span>
+                        <input type="range" min="0" max="1000" step="1" disabled class="svelte-1j10mlt" value="500">
+                        <span class="dim svelte-1j10mlt" style="width:28px;text-align:right">500</span>
+                    </div><div class="field svelte-1j10mlt"><span class="pdot svelte-1j10mlt" style="background:#8ff97c"></span>
+                        <input type="range" min="0" max="1000" step="1" disabled class="svelte-1j10mlt" value="500">
+                        <span class="dim svelte-1j10mlt" style="width:28px;text-align:right">500</span>
+                    </div><div class="field svelte-1j10mlt"><span class="pdot svelte-1j10mlt" style="background:#77cfff"></span>
+                        <input type="range" min="0" max="1000" step="1" disabled class="svelte-1j10mlt" value="500">
+                        <span class="dim svelte-1j10mlt" style="width:28px;text-align:right">500</span>
+                    </div></div></div>
+
+        
+        <div class="card svelte-1j10mlt"><div class="card-title svelte-1j10mlt">Attraction</div>
+            <div class="scroll-wrap svelte-1j10mlt"><div class="matrix svelte-1j10mlt">
+                    <div class="corner svelte-1j10mlt"><span class="corner-label svelte-1j10mlt">self ↓</span>
+                        <span class="corner-label svelte-1j10mlt">other →</span></div>
+                    
+                    <div class="col-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#ffedff"></span>
+                            <span class="col-label svelte-1j10mlt">white</span>
+                        </div><div class="col-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#fc2a51"></span>
+                            <span class="col-label svelte-1j10mlt">red</span>
+                        </div><div class="col-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#8ff97c"></span>
+                            <span class="col-label svelte-1j10mlt">green</span>
+                        </div><div class="col-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#77cfff"></span>
+                            <span class="col-label svelte-1j10mlt">blue</span>
+                        </div>
+                    
+                    <div class="row-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#ffedff"></span>
+                            <span class="col-label svelte-1j10mlt">white</span></div>
+                        
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="white → white">0
+                            </div>
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="white → red">0
+                            </div>
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="white → green">0
+                            </div>
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="white → blue">0
+                            </div><div class="row-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#fc2a51"></span>
+                            <span class="col-label svelte-1j10mlt">red</span></div>
+                        
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="red → white">0
+                            </div>
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="red → red">0
+                            </div>
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="red → green">0
+                            </div>
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="red → blue">0
+                            </div><div class="row-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#8ff97c"></span>
+                            <span class="col-label svelte-1j10mlt">green</span></div>
+                        
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="green → white">0
+                            </div>
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="green → red">0
+                            </div>
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="green → green">0
+                            </div>
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="green → blue">0
+                            </div><div class="row-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#77cfff"></span>
+                            <span class="col-label svelte-1j10mlt">blue</span></div>
+                        
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="blue → white">0
+                            </div>
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="blue → red">0
+                            </div>
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="blue → green">0
+                            </div>
+                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="blue → blue">0
+                            </div></div></div></div></div>
+</div>
+
+
+		<script type="module" data-sveltekit-hydrate="14ear5z">
+			import { start } from "/particles-life/_app/immutable/start-f10f3cbf.js";
+
+			start({
+				env: {},
+				paths: {"base":"/particles-life","assets":"/particles-life"},
+				target: document.querySelector('[data-sveltekit-hydrate="14ear5z"]').parentNode,
+				version: "1773092535218",
+				hydrate: {
+					node_ids: [0, 5],
+					data: [null,null],
+					form: null
+				}
+			});
+		</script>
+	</div>
+    </body>
+
+    <!-- Override newcss -->
+    <style>
+        body {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        :root {
+            --nc-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
+                'Segoe UI Emoji', 'Segoe UI Symbol';
+            --nc-font-mono: Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New',
+                Courier, monospace;
+            --is-light-theme: 1;
+
+            /* Dark theme */
+            --nc-tx-1: #ffffff;
+            --nc-tx-2: #b7b7b7;
+            --nc-tx-3: #8a8d87;
+            --nc-bg-1: #1e272c;
+            --nc-bg-2: #161d21;
+            --nc-bg-3: #263238;
+            --nc-lk-1: #5e92ff;
+            --nc-lk-2: #99b2e8;
+            --nc-lk-tx: #2e3c43;
+            --nc-ac-1: #c3e88d;
+            --nc-ac-tx: #263238;
+        }
+    </style>
+</html>

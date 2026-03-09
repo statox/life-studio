@@ -11,17 +11,19 @@
         />
         <meta http-equiv="content-security-policy" content="">
 		<link href="/particles-life/_app/immutable/assets/_layout-053e06f5.css" rel="stylesheet">
-		<link href="/particles-life/_app/immutable/assets/_page-622bd00b.css" rel="stylesheet">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/start-5af7b03b.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-4a055f23.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-51d06f53.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-6c68835d.js">
+		<link href="/particles-life/_app/immutable/assets/_page-92f31889.css" rel="stylesheet">
+		<link href="/particles-life/_app/immutable/assets/Simulation-6ae675b1.css" rel="stylesheet">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-f10f3cbf.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-b2d96575.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-632ab094.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-734cd9c3.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/paths-b4419565.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/preload-helper-41c905a7.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-35ad5ee1.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-1f26bfca.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/_page.svelte-f6afa509.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/_page.svelte-a6186141.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/Simulation-364dd099.js">
     </head>
 
     <body data-sveltekit-preload-data="hover">
@@ -40,7 +42,10 @@
 <div class="sim svelte-4gpco7"><div class="panels svelte-4gpco7"><div class="card svelte-4gpco7"><div class="card-title svelte-4gpco7">Cells</div>
             <div class="btn-stack svelte-4gpco7"><button class="svelte-4gpco7">↺ Uniform spread</button>
                 <button class="svelte-4gpco7">◎ Centered circle</button>
-                <button class="svelte-4gpco7">≋ Rainbow</button></div></div></div>
+                <button class="svelte-4gpco7">≋ Rainbow</button></div>
+
+            <button class="export-btn svelte-4gpco7" title="Export current table">↗ Export
+            </button></div></div>
 
     <div class="sim svelte-17eke7l">
     <div class="canvas-wrap svelte-17eke7l"><canvas class="svelte-mxo1ki"></canvas></div>
@@ -112,25 +117,25 @@
                     <span class="col-label svelte-2jauyn">white</span></div>
                 
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
-                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · white → white">0</button>
+                        <button class="swatch svelte-2jauyn" style="background:#2e7d32" title="Click to cycle · white → white">+1</button>
                         <button class="adj svelte-2jauyn">+</button>
                     </div>
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
-                        <button class="swatch svelte-2jauyn" style="background:#c62828" title="Click to cycle · white → red">-1</button>
+                        <button class="swatch svelte-2jauyn" style="background:#1b5e20" title="Click to cycle · white → red">+2</button>
                         <button class="adj svelte-2jauyn">+</button>
                     </div>
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
-                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · white → green">0</button>
+                        <button class="swatch svelte-2jauyn" style="background:#c62828" title="Click to cycle · white → green">-1</button>
                         <button class="adj svelte-2jauyn">+</button>
                     </div>
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
-                        <button class="swatch svelte-2jauyn" style="background:#1b5e20" title="Click to cycle · white → blue">+2</button>
+                        <button class="swatch svelte-2jauyn" style="background:#2e7d32" title="Click to cycle · white → blue">+1</button>
                         <button class="adj svelte-2jauyn">+</button>
                     </div><div class="row-header svelte-2jauyn"><span class="dot svelte-2jauyn" style="background:#fc2a51"></span>
                     <span class="col-label svelte-2jauyn">red</span></div>
                 
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
-                        <button class="swatch svelte-2jauyn" style="background:#1b5e20" title="Click to cycle · red → white">+2</button>
+                        <button class="swatch svelte-2jauyn" style="background:#c62828" title="Click to cycle · red → white">-1</button>
                         <button class="adj svelte-2jauyn">+</button>
                     </div>
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
@@ -138,17 +143,17 @@
                         <button class="adj svelte-2jauyn">+</button>
                     </div>
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
-                        <button class="swatch svelte-2jauyn" style="background:#1b5e20" title="Click to cycle · red → green">+2</button>
+                        <button class="swatch svelte-2jauyn" style="background:#2e7d32" title="Click to cycle · red → green">+1</button>
                         <button class="adj svelte-2jauyn">+</button>
                     </div>
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
-                        <button class="swatch svelte-2jauyn" style="background:#2e7d32" title="Click to cycle · red → blue">+1</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · red → blue">0</button>
                         <button class="adj svelte-2jauyn">+</button>
                     </div><div class="row-header svelte-2jauyn"><span class="dot svelte-2jauyn" style="background:#8ff97c"></span>
                     <span class="col-label svelte-2jauyn">green</span></div>
                 
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
-                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · green → white">0</button>
+                        <button class="swatch svelte-2jauyn" style="background:#2e7d32" title="Click to cycle · green → white">+1</button>
                         <button class="adj svelte-2jauyn">+</button>
                     </div>
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
@@ -156,11 +161,11 @@
                         <button class="adj svelte-2jauyn">+</button>
                     </div>
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
-                        <button class="swatch svelte-2jauyn" style="background:#2e7d32" title="Click to cycle · green → green">+1</button>
+                        <button class="swatch svelte-2jauyn" style="background:#1b5e20" title="Click to cycle · green → green">+2</button>
                         <button class="adj svelte-2jauyn">+</button>
                     </div>
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
-                        <button class="swatch svelte-2jauyn" style="background:#2e7d32" title="Click to cycle · green → blue">+1</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · green → blue">0</button>
                         <button class="adj svelte-2jauyn">+</button>
                     </div><div class="row-header svelte-2jauyn"><span class="dot svelte-2jauyn" style="background:#77cfff"></span>
                     <span class="col-label svelte-2jauyn">blue</span></div>
@@ -174,11 +179,11 @@
                         <button class="adj svelte-2jauyn">+</button>
                     </div>
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
-                        <button class="swatch svelte-2jauyn" style="background:#c62828" title="Click to cycle · blue → green">-1</button>
+                        <button class="swatch svelte-2jauyn" style="background:#1b5e20" title="Click to cycle · blue → green">+2</button>
                         <button class="adj svelte-2jauyn">+</button>
                     </div>
                     <div class="cell svelte-2jauyn"><button class="adj svelte-2jauyn">−</button>
-                        <button class="swatch svelte-2jauyn" style="background:#2e7d32" title="Click to cycle · blue → blue">+1</button>
+                        <button class="swatch svelte-2jauyn" style="background:#37474f" title="Click to cycle · blue → blue">0</button>
                         <button class="adj svelte-2jauyn">+</button>
                     </div></div></div></div></details>
 
@@ -201,18 +206,19 @@
     
 
 <div class="shortcuts svelte-qk43pe"><span class="shortcut svelte-qk43pe"><kbd class="svelte-qk43pe">Q</kbd>Reset random</span><span class="shortcut svelte-qk43pe"><kbd class="svelte-qk43pe">W</kbd>Wide center</span><span class="shortcut svelte-qk43pe"><kbd class="svelte-qk43pe">E</kbd>Center</span><span class="shortcut svelte-qk43pe"><kbd class="svelte-qk43pe">R</kbd>Rainbow</span><span class="shortcut svelte-qk43pe"><kbd class="svelte-qk43pe">T</kbd>Random table</span><span class="shortcut svelte-qk43pe"><kbd class="svelte-qk43pe">M</kbd>Mutate table</span>
-</div>
-</div>
+</div></div>
 
 
-		<script type="module" data-sveltekit-hydrate="v0o1no">
-			import { start } from "/particles-life/_app/immutable/start-5af7b03b.js";
+
+
+		<script type="module" data-sveltekit-hydrate="1theqn0">
+			import { start } from "/particles-life/_app/immutable/start-f10f3cbf.js";
 
 			start({
 				env: {},
 				paths: {"base":"/particles-life","assets":"/particles-life"},
-				target: document.querySelector('[data-sveltekit-hydrate="v0o1no"]').parentNode,
-				version: "1772924845828",
+				target: document.querySelector('[data-sveltekit-hydrate="1theqn0"]').parentNode,
+				version: "1773092535218",
 				hydrate: {
 					node_ids: [0, 4],
 					data: [null,null],
