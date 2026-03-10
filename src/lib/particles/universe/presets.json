@@ -533,6 +533,47 @@
         "verticalResolution": 20
     },
     {
+        "name": "Cellular strips - Inner islands",
+        "description": "White is repulsed by other colors and other colors are all repulsed by white.\n\nThis create organic patterns of multi colors groups surrounding white islands",
+        "preferredInitialConfig": "center",
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": -1,
+                "green": -1,
+                "blue": -1
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "green": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "blue": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
         "name": "4 colors worms",
         "description": "This universe creates moving structures of red, green, blue, white alternating small groups with lots of cells.\n\nThis creates strong worms which often merge together but also sometime split with a larger worm and a small one.\n\nSince the groups are strong the strucutre resist well the wall wrapping.\n\nThe universe doesn't stabilize but keep an infinitely consistent configurations.\n\nStarting from center helps creating stronger structure earlier on.\n\nSometime a worm eats its own tail and becomes a spinning structure absorbing other worms when they get too close.",
         "preferredInitialConfig": "center",
@@ -567,6 +608,252 @@
             "red": 515,
             "green": 485,
             "blue": 505
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "4 Colors - worms - single stage",
+        "description": "Looks a lot like \"4 Colors - worms\" but without enough cohesion to form full worms as they slip soon after they create a single stage.",
+        "preferredInitialConfig": "uniform",
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 1,
+                "green": 1,
+                "blue": 1
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": 1,
+                "blue": 1
+            },
+            "green": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 1
+            },
+            "blue": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 505,
+            "red": 485,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "4 Colors - Slowly merging 2-colors blobs",
+        "description": "TODO Improve this description.\n\nBlobs of red-blue and blobs of green-white move around and regularly merge creating bigger blobs. Sometimes they stop moving.\n\nI think it should converge to a still state because there doesn't seemm to have splits but if it does it takes a very long time. The simulation might be artificially kept moving by the inaccurate computations of walls wrapping.",
+        "preferredInitialConfig": "uniform",
+        "attractionTable": {
+            "white": {
+                "white": 1,
+                "red": -1,
+                "green": -1,
+                "blue": 1
+            },
+            "red": {
+                "white": -1,
+                "red": 1,
+                "green": 1,
+                "blue": -1
+            },
+            "green": {
+                "white": 1,
+                "red": -1,
+                "green": -1,
+                "blue": 1
+            },
+            "blue": {
+                "white": -1,
+                "red": 1,
+                "green": 1,
+                "blue": -1
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "4 Colors - spreading pattern",
+        "description": "TODO Describe this one",
+        "preferredInitialConfig": "center",
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": -1,
+                "green": 0,
+                "blue": 0
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": -1,
+                "blue": -1
+            },
+            "green": {
+                "white": 0,
+                "red": -1,
+                "green": -1,
+                "blue": 0
+            },
+            "blue": {
+                "white": -1,
+                "red": -1,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 149,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "4 Colors - Inifnite moving low cohesion groups",
+        "description": "TODO Improve description\n\nGreen-Blue chasing red-white but with lots of low cohesion groups and probably a more complex relationship to describe.",
+        "preferredInitialConfig": "uniform",
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": -1,
+                "green": -1,
+                "blue": -1
+            },
+            "red": {
+                "white": 1,
+                "red": 0,
+                "green": 1,
+                "blue": -1
+            },
+            "green": {
+                "white": 1,
+                "red": -1,
+                "green": 0,
+                "blue": 0
+            },
+            "blue": {
+                "white": 1,
+                "red": 1,
+                "green": 1,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 149,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "4 colors - Waves",
+        "description": "White is attracted to all other colors which all are repulsed by white.\n\nThis creates waves of white floats pushing incoherent masses of red, green and blue.",
+        "preferredInitialConfig": "uniform",
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 1,
+                "green": 1,
+                "blue": 1
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "green": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "blue": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 1000,
+            "red": 485,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "3 Colors - Stable islands",
+        "description": "TODO Find a good analogy\n\nThe universe converges to many small islands with a green-white core surrounded by red bands.\n\nSometimes more complex structures emerge but they are rare they often collapse into simpler forms.",
+        "preferredInitialConfig": "uniform",
+        "attractionTable": {
+            "white": {
+                "white": 1,
+                "red": 2,
+                "green": 2,
+                "blue": 0
+            },
+            "red": {
+                "white": 1,
+                "red": -1,
+                "green": 2,
+                "blue": 0
+            },
+            "green": {
+                "white": 2,
+                "red": 2,
+                "green": 1,
+                "blue": 0
+            },
+            "blue": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 0
         },
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
