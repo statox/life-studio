@@ -11,9 +11,9 @@
         />
         <meta http-equiv="content-security-policy" content="">
 		<link href="/particles-life/_app/immutable/assets/_layout-053e06f5.css" rel="stylesheet">
-		<link href="/particles-life/_app/immutable/assets/_page-36cb3eda.css" rel="stylesheet">
+		<link href="/particles-life/_app/immutable/assets/_page-acbe8c0e.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/Simulation-6ae675b1.css" rel="stylesheet">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/start-a102c058.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-e14a3ebf.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-b2d96575.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-632ab094.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-734cd9c3.js">
@@ -22,9 +22,9 @@
 		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-1f26bfca.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/gallery/_page.svelte-fab39f31.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/gallery/_page.svelte-349dfcd7.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/Simulation-9864768d.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-7f7cd326.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-c0301d19.js">
     </head>
 
     <body data-sveltekit-preload-data="hover">
@@ -40,45 +40,69 @@
         <a href="/particles-life/soft-bodies">Soft bodies</a> |
     </nav></header>
 
-<div class="sim svelte-1j10mlt">
-    <ul class="universe-list svelte-1j10mlt"><li class="universe-item svelte-1j10mlt active"><span class="universe-item-name svelte-1j10mlt">Still</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">No forces in the universe, everything is still</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">Uniform repulsion</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">This is a test universe with a simple all negative attraction table</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">Central circle spread</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">Cells neither attract or repulse each others. When initially placed in a circle they will just spread until none of them has a neighbor touching it.
+<div class="sim svelte-1eulsat">
+    <ul class="universe-list svelte-1eulsat"><li class="universe-item svelte-1eulsat active"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">Still</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#546e7a">still</span>
+                        <span class="stars svelte-1eulsat">★☆☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">No forces in the universe, everything is still</span>
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">Uniform repulsion</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#1565c0">converges</span>
+                        <span class="stars svelte-1eulsat">★☆☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">This is a test universe with a simple all negative attraction table</span>
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">Central circle spread</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#1565c0">converges</span>
+                        <span class="stars svelte-1eulsat">★☆☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">Cells neither attract or repulse each others. When initially placed in a circle they will just spread until none of them has a neighbor touching it.
 
 This replicates the initial phase of the simulation where we try to avoid cells overlaping each other. At the beginning of the simulation we let a few frames running like this before we start applying the attraction table. This is to add some stability to the system.
 
 The simulation stabilize in approximately 2700 frames (which is about 45 seconds at 60fps)</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">2 colors own attraction</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">Red and White form groups of their color.
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">2 colors own attraction</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#1565c0">converges</span>
+                        <span class="stars svelte-1eulsat">★☆☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">Red and White form groups of their color.
 
 The universe stabilize quickly.
 
 We can see some groups at the border moving which is probably the symptom of a wrapping bug</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">2 colors own repulsion</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">Red and White repulse their color.
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">2 colors own repulsion</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#1565c0">converges</span>
+                        <span class="stars svelte-1eulsat">★☆☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">Red and White repulse their color.
 
 The universe stabilize quickly.
 
 We can see some groups at the border moving which is probably the symptom of a wrapping bug</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">2 colors chase</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">White is attracted to red which is repulsed by white.
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">2 colors chase</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#e65100">chaotic</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">White is attracted to red which is repulsed by white.
 
 We start seeing some chaotic motion, swarms of red are pushed by swarms of white.
 
 Since the only attraction force has a corresponding repulsion force the system remains chaotic because we are creating constant energy and no equilibrium.</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">2 colors chase - White attraction</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">From the 2 colors chase make white attract white.
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">2 colors chase - White attraction</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#1565c0">converges</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">From the 2 colors chase make white attract white.
 
 We quickly end up in groups of white which coagulated. Around them there is a border empty of cells caused by the repulsion of red.
 
 The simulation takes a long time to stabilize completely because some isolated white cells keep being attracted by all the red cells around them but when they get close of a white group, the empty border because big enough so that the group attraction doesn't reach the isolated cell.
 
 Eventually they still end up merging when the corona of red around a white group spreads a bit and let them get closer to the group. Then the universe becomes stable.</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">2 Colors - Vessels</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">From the 2 colors chase add red self-attraction.
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">2 Colors - Vessels</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#2e7d32">cyclic</span>
+                        <span class="stars svelte-1eulsat">★★★</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">From the 2 colors chase add red self-attraction.
 
 Suddenly we start to see some kind off dynamic cohesion. The red cells attract each other forming groups which attract groups of white cells chasing them.
 
@@ -87,32 +111,53 @@ But since there is no strong structures the vessels are fragile and approaching 
 As time goes by vessels become bigger and more stable.
 
 It seems the only thing which keeps them disassembling are the wrapping inaccuracies.</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">2 Colors - Red self repulsion</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">From 2 Colors Chase add red self repulsion.
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">2 Colors - Red self repulsion</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#e65100">chaotic</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">From 2 Colors Chase add red self repulsion.
 
 The universe never stabilize. We don't see the waves of white chasing red anymore because red tends to spread more, which in turns also spreads white more.
 
 Note that add white self repulsion of red gives a similar pattern</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">2 Colors - White self repulsion</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">See "2 Colors - Red self repulsion"
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">2 Colors - White self repulsion</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#e65100">chaotic</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">See "2 Colors - Red self repulsion"
 
 TODO Document the differences more precisely. It seems to create a slightly more structured universe but I'm not sure why.</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">Cellular strips</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">I'm not sure which analogy to use here.
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">Cellular strips</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#1565c0">converges</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">I'm not sure which analogy to use here.
 
 Expands quickly into a stable universe with organic shapes of red-blue and white-green separated by empty strips.</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">Cellular strips 2</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">It seems that the additional repulsions create thinner strips.</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">Cellular strips 2</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">Shifted the matrix of repulsion horizontally.
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">Cellular strips 2</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#1565c0">converges</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">It seems that the additional repulsions create thinner strips.</span>
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">Cellular strips 2</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#1565c0">converges</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">Shifted the matrix of repulsion horizontally.
 
 There is much more spread (Probably due to the lack of internal group cohesion) to the full universe and that makes much more and thinner paths</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">Cellular strips - Inner islands</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">White is repulsed by other colors and other colors are all repulsed by white.
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">Cellular strips - Inner islands</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#1565c0">converges</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">White is repulsed by other colors and other colors are all repulsed by white.
 
 This create organic patterns of multi colors groups surrounding white islands</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 colors worms</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">This universe creates moving structures of red, green, blue, white alternating small groups with lots of cells.
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">4 colors worms</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#2e7d32">cyclic</span>
+                        <span class="stars svelte-1eulsat">★★★</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">This universe creates moving structures of red, green, blue, white alternating small groups with lots of cells.
 
 This creates strong worms which often merge together but also sometime split with a larger worm and a small one.
 
@@ -123,26 +168,44 @@ The universe doesn't stabilize but keep an infinitely consistent configurations.
 Starting from center helps creating stronger structure earlier on.
 
 Sometime a worm eats its own tail and becomes a spinning structure absorbing other worms when they get too close.</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 Colors - worms - single stage</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">Looks a lot like "4 Colors - worms" but without enough cohesion to form full worms as they slip soon after they create a single stage.</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 Colors - Slowly merging 2-colors blobs</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">TODO Improve this description.
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">4 Colors - worms - single stage</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#2e7d32">cyclic</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">Looks a lot like "4 Colors - worms" but without enough cohesion to form full worms as they slip soon after they create a single stage.</span>
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">4 Colors - Slowly merging 2-colors blobs</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#e65100">converge</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">TODO Improve this description.
 
 Blobs of red-blue and blobs of green-white move around and regularly merge creating bigger blobs. Sometimes they stop moving.
 
 I think it should converge to a still state because there doesn't seemm to have splits but if it does it takes a very long time. The simulation might be artificially kept moving by the inaccurate computations of walls wrapping.</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 Colors - spreading pattern</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">TODO Describe this one</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 Colors - Inifnite moving low cohesion groups</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">TODO Improve description
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">4 Colors - spreading pattern</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#1565c0">converges</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">TODO Describe this one</span>
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">4 Colors - Inifnite moving low cohesion groups</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#e65100">chaotic</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">TODO Improve description
 
 Green-Blue chasing red-white but with lots of low cohesion groups and probably a more complex relationship to describe.</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 colors - Waves</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">White is attracted to all other colors which all are repulsed by white.
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">4 colors - Waves</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#e65100">chaotic</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">White is attracted to all other colors which all are repulsed by white.
 
 This creates waves of white floats pushing incoherent masses of red, green and blue.</span>
-            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">3 Colors - Stable islands</span>
-                <span class="universe-item-desc dim svelte-1j10mlt">TODO Find a good analogy
+            </li><li class="universe-item svelte-1eulsat"><div class="universe-item-row svelte-1eulsat"><span class="universe-item-name svelte-1eulsat">3 Colors - Stable islands</span>
+                    <div class="badges svelte-1eulsat"><span class="badge svelte-1eulsat" style="background:#1565c0">converges</span>
+                        <span class="stars svelte-1eulsat">★★☆</span>
+                    </div></div>
+                <span class="universe-item-desc dim svelte-1eulsat">TODO Find a good analogy
 
 The universe converges to many small islands with a green-white core surrounded by red bands.
 
@@ -169,107 +232,121 @@ Sometimes more complex structures emerge but they are rare they often collapse i
 </div>
 
     
-    <div class="spread-btns svelte-1j10mlt"><button class="svelte-1j10mlt">↺ Uniform spread</button>
-        <button class="svelte-1j10mlt">◎ Centered circle</button>
-        <button class="svelte-1j10mlt">≋ Rainbow</button></div>
+    <div class="spread-btns svelte-1eulsat"><button class="svelte-1eulsat">↺ Uniform spread</button>
+        <button class="svelte-1eulsat">◎ Centered circle</button>
+        <button class="svelte-1eulsat">≋ Rainbow</button></div>
 
     
-    <div class="panels svelte-1j10mlt">
-        <div class="card svelte-1j10mlt"><div class="card-title svelte-1j10mlt">Universe</div>
-            <div class="universe-header svelte-1j10mlt"><span class="universe-name-lg svelte-1j10mlt">Still</span>
-                <span class="dim svelte-1j10mlt">No forces in the universe, everything is still</span></div>
-            <div class="field svelte-1j10mlt"><label class="svelte-1j10mlt">Particles</label>
-                <input type="number" value="4000" disabled class="svelte-1j10mlt"></div>
-            <div class="field svelte-1j10mlt"><label class="svelte-1j10mlt">H cells</label>
-                <input type="number" value="30" disabled class="svelte-1j10mlt">
-                <span class="dim svelte-1j10mlt">960px</span></div>
-            <div class="field svelte-1j10mlt"><label class="svelte-1j10mlt">V cells</label>
-                <input type="number" value="20" disabled class="svelte-1j10mlt">
-                <span class="dim svelte-1j10mlt">640px</span></div>
-            <div class="field svelte-1j10mlt"><label class="svelte-1j10mlt">Max radius</label>
-                <input type="number" value="32" disabled class="svelte-1j10mlt"></div>
-            <div class="proportion-list svelte-1j10mlt"><div class="field svelte-1j10mlt"><span class="pdot svelte-1j10mlt" style="background:#ffedff"></span>
-                        <input type="range" min="0" max="1000" step="1" disabled class="svelte-1j10mlt" value="500">
-                        <span class="dim svelte-1j10mlt" style="width:28px;text-align:right">500</span>
-                    </div><div class="field svelte-1j10mlt"><span class="pdot svelte-1j10mlt" style="background:#fc2a51"></span>
-                        <input type="range" min="0" max="1000" step="1" disabled class="svelte-1j10mlt" value="500">
-                        <span class="dim svelte-1j10mlt" style="width:28px;text-align:right">500</span>
-                    </div><div class="field svelte-1j10mlt"><span class="pdot svelte-1j10mlt" style="background:#8ff97c"></span>
-                        <input type="range" min="0" max="1000" step="1" disabled class="svelte-1j10mlt" value="500">
-                        <span class="dim svelte-1j10mlt" style="width:28px;text-align:right">500</span>
-                    </div><div class="field svelte-1j10mlt"><span class="pdot svelte-1j10mlt" style="background:#77cfff"></span>
-                        <input type="range" min="0" max="1000" step="1" disabled class="svelte-1j10mlt" value="500">
-                        <span class="dim svelte-1j10mlt" style="width:28px;text-align:right">500</span>
+    <div class="panels svelte-1eulsat">
+        <div class="card svelte-1eulsat"><div class="card-title svelte-1eulsat">Universe</div>
+            <div class="universe-header svelte-1eulsat"><span class="universe-name-lg svelte-1eulsat">Still</span>
+                <span class="dim svelte-1eulsat">No forces in the universe, everything is still</span></div>
+            <div class="card-subtitle svelte-1eulsat">Classification</div>
+            <div class="field svelte-1eulsat"><label class="svelte-1eulsat">Behavior</label>
+                <span class="meta-pill svelte-1eulsat" style="background:#546e7a">still</span></div>
+            <div class="field svelte-1eulsat"><label class="svelte-1eulsat">Structure</label>
+                <span class="meta-value svelte-1eulsat">none</span></div>
+            <div class="field svelte-1eulsat"><label class="svelte-1eulsat">Colors</label>
+                <span class="meta-value svelte-1eulsat">4</span></div>
+            <div class="field svelte-1eulsat"><label class="svelte-1eulsat">Convergence</label>
+                <span class="meta-value svelte-1eulsat">instant</span></div>
+            <div class="field svelte-1eulsat"><label class="svelte-1eulsat">Energy</label>
+                <span class="meta-value svelte-1eulsat" style="color:#78909c">low</span></div>
+            <div class="field svelte-1eulsat"><label class="svelte-1eulsat">Complexity</label>
+                <span class="meta-stars svelte-1eulsat">★☆☆</span></div>
+            <div class="card-subtitle svelte-1eulsat">Properties</div>
+            <div class="field svelte-1eulsat"><label class="svelte-1eulsat">Particles</label>
+                <input type="number" value="4000" disabled class="svelte-1eulsat"></div>
+            <div class="field svelte-1eulsat"><label class="svelte-1eulsat">H cells</label>
+                <input type="number" value="30" disabled class="svelte-1eulsat">
+                <span class="dim svelte-1eulsat">960px</span></div>
+            <div class="field svelte-1eulsat"><label class="svelte-1eulsat">V cells</label>
+                <input type="number" value="20" disabled class="svelte-1eulsat">
+                <span class="dim svelte-1eulsat">640px</span></div>
+            <div class="field svelte-1eulsat"><label class="svelte-1eulsat">Max radius</label>
+                <input type="number" value="32" disabled class="svelte-1eulsat"></div>
+            <div class="proportion-list svelte-1eulsat"><div class="field svelte-1eulsat"><span class="pdot svelte-1eulsat" style="background:#ffedff"></span>
+                        <input type="range" min="0" max="1000" step="1" disabled class="svelte-1eulsat" value="500">
+                        <span class="dim svelte-1eulsat" style="width:28px;text-align:right">500</span>
+                    </div><div class="field svelte-1eulsat"><span class="pdot svelte-1eulsat" style="background:#fc2a51"></span>
+                        <input type="range" min="0" max="1000" step="1" disabled class="svelte-1eulsat" value="500">
+                        <span class="dim svelte-1eulsat" style="width:28px;text-align:right">500</span>
+                    </div><div class="field svelte-1eulsat"><span class="pdot svelte-1eulsat" style="background:#8ff97c"></span>
+                        <input type="range" min="0" max="1000" step="1" disabled class="svelte-1eulsat" value="500">
+                        <span class="dim svelte-1eulsat" style="width:28px;text-align:right">500</span>
+                    </div><div class="field svelte-1eulsat"><span class="pdot svelte-1eulsat" style="background:#77cfff"></span>
+                        <input type="range" min="0" max="1000" step="1" disabled class="svelte-1eulsat" value="500">
+                        <span class="dim svelte-1eulsat" style="width:28px;text-align:right">500</span>
                     </div></div></div>
 
         
-        <div class="card svelte-1j10mlt"><div class="card-title svelte-1j10mlt">Attraction</div>
-            <div class="scroll-wrap svelte-1j10mlt"><div class="matrix svelte-1j10mlt">
-                    <div class="corner svelte-1j10mlt"><span class="corner-label svelte-1j10mlt">self ↓</span>
-                        <span class="corner-label svelte-1j10mlt">other →</span></div>
+        <div class="card svelte-1eulsat"><div class="card-title svelte-1eulsat">Attraction</div>
+            <div class="scroll-wrap svelte-1eulsat"><div class="matrix svelte-1eulsat">
+                    <div class="corner svelte-1eulsat"><span class="corner-label svelte-1eulsat">self ↓</span>
+                        <span class="corner-label svelte-1eulsat">other →</span></div>
                     
-                    <div class="col-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#ffedff"></span>
-                            <span class="col-label svelte-1j10mlt">white</span>
-                        </div><div class="col-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#fc2a51"></span>
-                            <span class="col-label svelte-1j10mlt">red</span>
-                        </div><div class="col-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#8ff97c"></span>
-                            <span class="col-label svelte-1j10mlt">green</span>
-                        </div><div class="col-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#77cfff"></span>
-                            <span class="col-label svelte-1j10mlt">blue</span>
+                    <div class="col-header svelte-1eulsat"><span class="dot svelte-1eulsat" style="background:#ffedff"></span>
+                            <span class="col-label svelte-1eulsat">white</span>
+                        </div><div class="col-header svelte-1eulsat"><span class="dot svelte-1eulsat" style="background:#fc2a51"></span>
+                            <span class="col-label svelte-1eulsat">red</span>
+                        </div><div class="col-header svelte-1eulsat"><span class="dot svelte-1eulsat" style="background:#8ff97c"></span>
+                            <span class="col-label svelte-1eulsat">green</span>
+                        </div><div class="col-header svelte-1eulsat"><span class="dot svelte-1eulsat" style="background:#77cfff"></span>
+                            <span class="col-label svelte-1eulsat">blue</span>
                         </div>
                     
-                    <div class="row-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#ffedff"></span>
-                            <span class="col-label svelte-1j10mlt">white</span></div>
+                    <div class="row-header svelte-1eulsat"><span class="dot svelte-1eulsat" style="background:#ffedff"></span>
+                            <span class="col-label svelte-1eulsat">white</span></div>
                         
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="white → white">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="white → white">0
                             </div>
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="white → red">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="white → red">0
                             </div>
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="white → green">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="white → green">0
                             </div>
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="white → blue">0
-                            </div><div class="row-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#fc2a51"></span>
-                            <span class="col-label svelte-1j10mlt">red</span></div>
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="white → blue">0
+                            </div><div class="row-header svelte-1eulsat"><span class="dot svelte-1eulsat" style="background:#fc2a51"></span>
+                            <span class="col-label svelte-1eulsat">red</span></div>
                         
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="red → white">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="red → white">0
                             </div>
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="red → red">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="red → red">0
                             </div>
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="red → green">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="red → green">0
                             </div>
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="red → blue">0
-                            </div><div class="row-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#8ff97c"></span>
-                            <span class="col-label svelte-1j10mlt">green</span></div>
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="red → blue">0
+                            </div><div class="row-header svelte-1eulsat"><span class="dot svelte-1eulsat" style="background:#8ff97c"></span>
+                            <span class="col-label svelte-1eulsat">green</span></div>
                         
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="green → white">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="green → white">0
                             </div>
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="green → red">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="green → red">0
                             </div>
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="green → green">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="green → green">0
                             </div>
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="green → blue">0
-                            </div><div class="row-header svelte-1j10mlt"><span class="dot svelte-1j10mlt" style="background:#77cfff"></span>
-                            <span class="col-label svelte-1j10mlt">blue</span></div>
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="green → blue">0
+                            </div><div class="row-header svelte-1eulsat"><span class="dot svelte-1eulsat" style="background:#77cfff"></span>
+                            <span class="col-label svelte-1eulsat">blue</span></div>
                         
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="blue → white">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="blue → white">0
                             </div>
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="blue → red">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="blue → red">0
                             </div>
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="blue → green">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="blue → green">0
                             </div>
-                            <div class="swatch svelte-1j10mlt" style="background:#37474f" title="blue → blue">0
+                            <div class="swatch svelte-1eulsat" style="background:#37474f" title="blue → blue">0
                             </div></div></div></div></div>
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="1yq2bl">
-			import { start } from "/particles-life/_app/immutable/start-a102c058.js";
+		<script type="module" data-sveltekit-hydrate="x358c5">
+			import { start } from "/particles-life/_app/immutable/start-e14a3ebf.js";
 
 			start({
 				env: {},
 				paths: {"base":"/particles-life","assets":"/particles-life"},
-				target: document.querySelector('[data-sveltekit-hydrate="1yq2bl"]').parentNode,
-				version: "1773165444295",
+				target: document.querySelector('[data-sveltekit-hydrate="x358c5"]').parentNode,
+				version: "1773174146297",
 				hydrate: {
 					node_ids: [0, 6],
 					data: [null,null],
