@@ -83,6 +83,21 @@
 
     const valueLabel = (val: number): string => (val > 0 ? `+${val}` : `${val}`);
 
+    const behaviorColor = (b: string): string => {
+        if (b === 'still') return '#546e7a';
+        if (b === 'converges') return '#1565c0';
+        if (b === 'cyclic') return '#2e7d32';
+        return '#e65100';
+    };
+
+    const energyColor = (e: string): string => {
+        if (e === 'low') return '#78909c';
+        if (e === 'medium') return '#c3e88d';
+        return '#fc2a51';
+    };
+
+    const stars = (n: number): string => '★'.repeat(n) + '☆'.repeat(3 - n);
+
     $: selected = universes[selectedIndex];
 </script>
 
@@ -95,7 +110,15 @@
                 class:active={i === selectedIndex}
                 on:click={() => selectUniverse(i)}
             >
-                <span class="universe-item-name">{u.name}</span>
+                <div class="universe-item-row">
+                    <span class="universe-item-name">{u.name}</span>
+                    <div class="badges">
+                        <span class="badge" style="background:{behaviorColor(u.behavior)}"
+                            >{u.behavior}</span
+                        >
+                        <span class="stars">{stars(u.complexity)}</span>
+                    </div>
+                </div>
                 <span class="universe-item-desc dim">{u.description}</span>
             </li>
         {/each}
@@ -120,6 +143,36 @@
                 <span class="universe-name-lg">{selected.name}</span>
                 <span class="dim">{selected.description}</span>
             </div>
+            <div class="card-subtitle">Classification</div>
+            <div class="field">
+                <label>Behavior</label>
+                <span class="meta-pill" style="background:{behaviorColor(selected.behavior)}"
+                    >{selected.behavior}</span
+                >
+            </div>
+            <div class="field">
+                <label>Structure</label>
+                <span class="meta-value">{selected.structure}</span>
+            </div>
+            <div class="field">
+                <label>Colors</label>
+                <span class="meta-value">{selected.activeColors}</span>
+            </div>
+            <div class="field">
+                <label>Convergence</label>
+                <span class="meta-value">{selected.convergenceSpeed}</span>
+            </div>
+            <div class="field">
+                <label>Energy</label>
+                <span class="meta-value" style="color:{energyColor(selected.energyLevel)}"
+                    >{selected.energyLevel}</span
+                >
+            </div>
+            <div class="field">
+                <label>Complexity</label>
+                <span class="meta-stars">{stars(selected.complexity)}</span>
+            </div>
+            <div class="card-subtitle">Properties</div>
             <div class="field">
                 <label>Particles</label>
                 <input type="number" value={nbParticles} disabled />
@@ -245,6 +298,13 @@
         background: #1e2e1a;
     }
 
+    .universe-item-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+    }
+
     .universe-item-name {
         font-size: 0.85rem;
         font-weight: 700;
@@ -260,6 +320,29 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    .badges {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        flex-shrink: 0;
+    }
+
+    .badge {
+        font-size: 0.62rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+        padding: 2px 6px;
+        border-radius: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+
+    .stars {
+        font-size: 0.72rem;
+        color: #c3e88d;
+        letter-spacing: 1px;
     }
 
     /* ── Spread buttons ─────────────────────── */
@@ -324,6 +407,38 @@
         flex-direction: column;
         gap: 4px;
         margin-bottom: 12px;
+    }
+
+    .card-subtitle {
+        font-size: 0.63rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #546e7a;
+        font-weight: 600;
+        margin: 10px 0 6px;
+        padding-top: 8px;
+        border-top: 1px solid #37474f;
+    }
+
+    .meta-pill {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+        padding: 2px 8px;
+        border-radius: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+
+    .meta-value {
+        font-size: 0.82rem;
+        color: #b0bec5;
+    }
+
+    .meta-stars {
+        font-size: 0.82rem;
+        color: #c3e88d;
+        letter-spacing: 1px;
     }
 
     .universe-name-lg {

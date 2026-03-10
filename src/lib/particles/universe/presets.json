@@ -3,6 +3,12 @@
         "name": "Still",
         "description": "No forces in the universe, everything is still",
         "preferredInitialConfig": "uniform",
+        "behavior": "still",
+        "structure": "none",
+        "activeColors": 4,
+        "convergenceSpeed": "instant",
+        "energyLevel": "low",
+        "complexity": 1,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -44,6 +50,12 @@
         "name": "Uniform repulsion",
         "description": "This is a test universe with a simple all negative attraction table",
         "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "none",
+        "activeColors": 4,
+        "convergenceSpeed": "fast",
+        "energyLevel": "low",
+        "complexity": 1,
         "attractionTable": {
             "white": {
                 "white": -1,
@@ -85,6 +97,12 @@
         "name": "Central circle spread",
         "description": "Cells neither attract or repulse each others. When initially placed in a circle they will just spread until none of them has a neighbor touching it.\n\nThis replicates the initial phase of the simulation where we try to avoid cells overlaping each other. At the beginning of the simulation we let a few frames running like this before we start applying the attraction table. This is to add some stability to the system.\n\nThe simulation stabilize in approximately 2700 frames (which is about 45 seconds at 60fps)",
         "preferredInitialConfig": "center",
+        "behavior": "converges",
+        "structure": "none",
+        "activeColors": 4,
+        "convergenceSpeed": "slow",
+        "energyLevel": "low",
+        "complexity": 1,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -126,6 +144,12 @@
         "name": "2 colors own attraction",
         "description": "Red and White form groups of their color.\n\nThe universe stabilize quickly.\n\nWe can see some groups at the border moving which is probably the symptom of a wrapping bug",
         "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "clusters",
+        "activeColors": 2,
+        "convergenceSpeed": "fast",
+        "energyLevel": "low",
+        "complexity": 1,
         "attractionTable": {
             "white": {
                 "white": 1,
@@ -167,6 +191,12 @@
         "name": "2 colors own repulsion",
         "description": "Red and White repulse their color.\n\nThe universe stabilize quickly.\n\nWe can see some groups at the border moving which is probably the symptom of a wrapping bug",
         "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "none",
+        "activeColors": 2,
+        "convergenceSpeed": "fast",
+        "energyLevel": "low",
+        "complexity": 1,
         "attractionTable": {
             "white": {
                 "white": -1,
@@ -208,6 +238,12 @@
         "name": "2 colors chase",
         "description": "White is attracted to red which is repulsed by white.\n\nWe start seeing some chaotic motion, swarms of red are pushed by swarms of white.\n\nSince the only attraction force has a corresponding repulsion force the system remains chaotic because we are creating constant energy and no equilibrium.",
         "preferredInitialConfig": "center",
+        "behavior": "chaotic",
+        "structure": "none",
+        "activeColors": 2,
+        "convergenceSpeed": "never",
+        "energyLevel": "high",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -249,6 +285,12 @@
         "name": "2 colors chase - White attraction",
         "description": "From the 2 colors chase make white attract white.\n\nWe quickly end up in groups of white which coagulated. Around them there is a border empty of cells caused by the repulsion of red.\n\nThe simulation takes a long time to stabilize completely because some isolated white cells keep being attracted by all the red cells around them but when they get close of a white group, the empty border because big enough so that the group attraction doesn't reach the isolated cell.\n\nEventually they still end up merging when the corona of red around a white group spreads a bit and let them get closer to the group. Then the universe becomes stable.",
         "preferredInitialConfig": "center",
+        "behavior": "converges",
+        "structure": "clusters",
+        "activeColors": 2,
+        "convergenceSpeed": "slow",
+        "energyLevel": "medium",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": 1,
@@ -290,6 +332,12 @@
         "name": "2 Colors - Vessels",
         "description": "From the 2 colors chase add red self-attraction.\n\nSuddenly we start to see some kind off dynamic cohesion. The red cells attract each other forming groups which attract groups of white cells chasing them.\n\nBut since there is no strong structures the vessels are fragile and approaching other vessels tends to create chaos which disperse them.\n\nAs time goes by vessels become bigger and more stable.\n\nIt seems the only thing which keeps them disassembling are the wrapping inaccuracies.",
         "preferredInitialConfig": "uniform",
+        "behavior": "cyclic",
+        "structure": "organisms",
+        "activeColors": 2,
+        "convergenceSpeed": "never",
+        "energyLevel": "medium",
+        "complexity": 3,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -331,6 +379,12 @@
         "name": "2 Colors - Red self repulsion",
         "description": "From 2 Colors Chase add red self repulsion.\n\nThe universe never stabilize. We don't see the waves of white chasing red anymore because red tends to spread more, which in turns also spreads white more.\n\nNote that add white self repulsion of red gives a similar pattern",
         "preferredInitialConfig": "uniform",
+        "behavior": "chaotic",
+        "structure": "none",
+        "activeColors": 2,
+        "convergenceSpeed": "never",
+        "energyLevel": "high",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -372,6 +426,12 @@
         "name": "2 Colors - White self repulsion",
         "description": "See \"2 Colors - Red self repulsion\"\n\nTODO Document the differences more precisely. It seems to create a slightly more structured universe but I'm not sure why.",
         "preferredInitialConfig": "uniform",
+        "behavior": "chaotic",
+        "structure": "clusters",
+        "activeColors": 2,
+        "convergenceSpeed": "never",
+        "energyLevel": "medium",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": -1,
@@ -413,6 +473,12 @@
         "name": "Cellular strips",
         "description": "I'm not sure which analogy to use here.\n\nExpands quickly into a stable universe with organic shapes of red-blue and white-green separated by empty strips.",
         "preferredInitialConfig": "center",
+        "behavior": "converges",
+        "structure": "patterns",
+        "activeColors": 4,
+        "convergenceSpeed": "medium",
+        "energyLevel": "low",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -454,6 +520,12 @@
         "name": "Cellular strips 2",
         "description": "It seems that the additional repulsions create thinner strips.",
         "preferredInitialConfig": "center",
+        "behavior": "converges",
+        "structure": "patterns",
+        "activeColors": 4,
+        "convergenceSpeed": "medium",
+        "energyLevel": "low",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -495,6 +567,12 @@
         "name": "Cellular strips 2",
         "description": "Shifted the matrix of repulsion horizontally.\n\nThere is much more spread (Probably due to the lack of internal group cohesion) to the full universe and that makes much more and thinner paths",
         "preferredInitialConfig": "center",
+        "behavior": "converges",
+        "structure": "patterns",
+        "activeColors": 4,
+        "convergenceSpeed": "medium",
+        "energyLevel": "low",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": -1,
@@ -536,6 +614,12 @@
         "name": "Cellular strips - Inner islands",
         "description": "White is repulsed by other colors and other colors are all repulsed by white.\n\nThis create organic patterns of multi colors groups surrounding white islands",
         "preferredInitialConfig": "center",
+        "behavior": "converges",
+        "structure": "patterns",
+        "activeColors": 4,
+        "convergenceSpeed": "medium",
+        "energyLevel": "low",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -577,6 +661,12 @@
         "name": "4 colors worms",
         "description": "This universe creates moving structures of red, green, blue, white alternating small groups with lots of cells.\n\nThis creates strong worms which often merge together but also sometime split with a larger worm and a small one.\n\nSince the groups are strong the strucutre resist well the wall wrapping.\n\nThe universe doesn't stabilize but keep an infinitely consistent configurations.\n\nStarting from center helps creating stronger structure earlier on.\n\nSometime a worm eats its own tail and becomes a spinning structure absorbing other worms when they get too close.",
         "preferredInitialConfig": "center",
+        "behavior": "cyclic",
+        "structure": "organisms",
+        "activeColors": 4,
+        "convergenceSpeed": "never",
+        "energyLevel": "medium",
+        "complexity": 3,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -618,6 +708,12 @@
         "name": "4 Colors - worms - single stage",
         "description": "Looks a lot like \"4 Colors - worms\" but without enough cohesion to form full worms as they slip soon after they create a single stage.",
         "preferredInitialConfig": "uniform",
+        "behavior": "cyclic",
+        "structure": "clusters",
+        "activeColors": 4,
+        "convergenceSpeed": "never",
+        "energyLevel": "medium",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -659,6 +755,12 @@
         "name": "4 Colors - Slowly merging 2-colors blobs",
         "description": "TODO Improve this description.\n\nBlobs of red-blue and blobs of green-white move around and regularly merge creating bigger blobs. Sometimes they stop moving.\n\nI think it should converge to a still state because there doesn't seemm to have splits but if it does it takes a very long time. The simulation might be artificially kept moving by the inaccurate computations of walls wrapping.",
         "preferredInitialConfig": "uniform",
+        "behavior": "converge",
+        "structure": "clusters",
+        "activeColors": 4,
+        "convergenceSpeed": "slow",
+        "energyLevel": "low",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": 1,
@@ -700,6 +802,12 @@
         "name": "4 Colors - spreading pattern",
         "description": "TODO Describe this one",
         "preferredInitialConfig": "center",
+        "behavior": "converges",
+        "structure": "patterns",
+        "activeColors": 4,
+        "convergenceSpeed": "medium",
+        "energyLevel": "medium",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -741,6 +849,12 @@
         "name": "4 Colors - Inifnite moving low cohesion groups",
         "description": "TODO Improve description\n\nGreen-Blue chasing red-white but with lots of low cohesion groups and probably a more complex relationship to describe.",
         "preferredInitialConfig": "uniform",
+        "behavior": "chaotic",
+        "structure": "clusters",
+        "activeColors": 4,
+        "convergenceSpeed": "never",
+        "energyLevel": "high",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -782,6 +896,12 @@
         "name": "4 colors - Waves",
         "description": "White is attracted to all other colors which all are repulsed by white.\n\nThis creates waves of white floats pushing incoherent masses of red, green and blue.",
         "preferredInitialConfig": "uniform",
+        "behavior": "chaotic",
+        "structure": "none",
+        "activeColors": 4,
+        "convergenceSpeed": "never",
+        "energyLevel": "high",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": 0,
@@ -823,6 +943,12 @@
         "name": "3 Colors - Stable islands",
         "description": "TODO Find a good analogy\n\nThe universe converges to many small islands with a green-white core surrounded by red bands.\n\nSometimes more complex structures emerge but they are rare they often collapse into simpler forms.",
         "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "patterns",
+        "activeColors": 3,
+        "convergenceSpeed": "medium",
+        "energyLevel": "low",
+        "complexity": 2,
         "attractionTable": {
             "white": {
                 "white": 1,

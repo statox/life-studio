@@ -1,6 +1,13 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
-    import type { Universe, InitialConfig } from '../universe';
+    import type {
+        Universe,
+        InitialConfig,
+        UniverseBehavior,
+        UniverseStructure,
+        ConvergenceSpeed,
+        EnergyLevel
+    } from '../universe';
 
     export let universe: Universe;
 
@@ -9,12 +16,59 @@
     let name = '';
     let description = '';
     let preferredInitialConfig: InitialConfig = 'uniform';
+    let behavior: UniverseBehavior = 'cyclic';
+    let structure: UniverseStructure = 'none';
+    let activeColors: 1 | 2 | 3 | 4 = 4;
+    let convergenceSpeed: ConvergenceSpeed = 'never';
+    let energyLevel: EnergyLevel = 'medium';
+    let complexity: 1 | 2 | 3 = 2;
     let copied = false;
+
+    const behaviorHints: Record<UniverseBehavior, string> = {
+        still: 'Zero forces — particles never move',
+        converges: 'Reaches a stable resting state',
+        cyclic: 'Persistent dynamic patterns, never fully settles',
+        chaotic: 'Turbulent, unpredictable motion'
+    };
+    const structureHints: Record<UniverseStructure, string> = {
+        none: 'No visible grouping or patterns',
+        clusters: 'Distinct blobs or groups of same/paired colours',
+        patterns: 'Repeating geometric motifs: strips, rings, islands',
+        organisms: 'Moving, self-maintaining structures (worms, vessels…)'
+    };
+    const convergenceHints: Record<ConvergenceSpeed, string> = {
+        instant: 'Stable within a few frames',
+        fast: 'Stable within ~100 frames',
+        medium: 'Stable within ~500–1 000 frames',
+        slow: 'Takes thousands of frames or more',
+        never: 'Never converges — use for cyclic or chaotic universes'
+    };
+    const energyHints: Record<EnergyLevel, string> = {
+        low: 'Particles barely move once settled',
+        medium: 'Moderate sustained motion',
+        high: 'Fast, turbulent motion'
+    };
+    const complexityHints: Record<1 | 2 | 3, string> = {
+        1: 'Trivial — zero forces or a single same-colour rule',
+        2: 'A few interaction rules between 2–4 colours',
+        3: 'Rich multi-colour dynamics with emergent structures'
+    };
 
     $: result = (() => {
         try {
             return JSON.stringify(
-                { name, description, preferredInitialConfig, ...universe },
+                {
+                    name,
+                    description,
+                    preferredInitialConfig,
+                    behavior,
+                    structure,
+                    activeColors,
+                    convergenceSpeed,
+                    energyLevel,
+                    complexity,
+                    ...universe
+                },
                 null,
                 2
             );
@@ -61,6 +115,80 @@
             </select>
         </div>
 
+        <div class="section-label">Classification</div>
+
+        <div class="field-group">
+            <div class="field">
+                <label for="export-behavior">Behavior</label>
+                <select id="export-behavior" bind:value={behavior}>
+                    <option value="still">still</option>
+                    <option value="converges">converges</option>
+                    <option value="cyclic">cyclic</option>
+                    <option value="chaotic">chaotic</option>
+                </select>
+            </div>
+            <p class="hint">{behaviorHints[behavior]}</p>
+        </div>
+        <div class="field-group">
+            <div class="field">
+                <label for="export-structure">Structure</label>
+                <select id="export-structure" bind:value={structure}>
+                    <option value="none">none</option>
+                    <option value="clusters">clusters</option>
+                    <option value="patterns">patterns</option>
+                    <option value="organisms">organisms</option>
+                </select>
+            </div>
+            <p class="hint">{structureHints[structure]}</p>
+        </div>
+        <div class="field-group">
+            <div class="field">
+                <label for="export-colors">Colors</label>
+                <select id="export-colors" bind:value={activeColors}>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                </select>
+            </div>
+            <p class="hint">Number of colours with a non-zero weight</p>
+        </div>
+        <div class="field-group">
+            <div class="field">
+                <label for="export-convergence">Convergence</label>
+                <select id="export-convergence" bind:value={convergenceSpeed}>
+                    <option value="instant">instant</option>
+                    <option value="fast">fast</option>
+                    <option value="medium">medium</option>
+                    <option value="slow">slow</option>
+                    <option value="never">never</option>
+                </select>
+            </div>
+            <p class="hint">{convergenceHints[convergenceSpeed]}</p>
+        </div>
+        <div class="field-group">
+            <div class="field">
+                <label for="export-energy">Energy</label>
+                <select id="export-energy" bind:value={energyLevel}>
+                    <option value="low">low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                </select>
+            </div>
+            <p class="hint">{energyHints[energyLevel]}</p>
+        </div>
+        <div class="field-group">
+            <div class="field">
+                <label for="export-complexity">Complexity</label>
+                <select id="export-complexity" bind:value={complexity}>
+                    <option value={1}>★☆☆</option>
+                    <option value={2}>★★☆</option>
+                    <option value={3}>★★★</option>
+                </select>
+            </div>
+            <p class="hint">{complexityHints[complexity]}</p>
+        </div>
+
         <div class="code-block">
             <pre>{result}</pre>
         </div>
@@ -92,6 +220,7 @@
         flex-direction: column;
         gap: 12px;
         max-height: 95vh;
+        overflow-y: auto;
     }
 
     .modal-header {
@@ -106,6 +235,30 @@
         letter-spacing: 0.12em;
         color: #78909c;
         font-weight: 600;
+    }
+
+    .section-label {
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #78909c;
+        font-weight: 600;
+        padding-top: 4px;
+        border-top: 1px solid #37474f;
+    }
+
+    .field-group {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .hint {
+        margin: 0;
+        padding-left: 68px;
+        font-size: 0.72rem;
+        color: #546e7a;
+        font-style: italic;
     }
 
     .field {
