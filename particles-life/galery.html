@@ -13,7 +13,7 @@
 		<link href="/particles-life/_app/immutable/assets/_layout-053e06f5.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/_page-36cb3eda.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/Simulation-6ae675b1.css" rel="stylesheet">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/start-798ed55e.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-3f9aae64.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-b2d96575.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-632ab094.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-734cd9c3.js">
@@ -22,9 +22,9 @@
 		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-1f26bfca.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/galery/_page.svelte-387d6b99.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/galery/_page.svelte-fab39f31.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/Simulation-9864768d.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-d88d6a5c.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-7f7cd326.js">
     </head>
 
     <body data-sveltekit-preload-data="hover">
@@ -107,6 +107,10 @@ Expands quickly into a stable universe with organic shapes of red-blue and white
                 <span class="universe-item-desc dim svelte-1j10mlt">Shifted the matrix of repulsion horizontally.
 
 There is much more spread (Probably due to the lack of internal group cohesion) to the full universe and that makes much more and thinner paths</span>
+            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">Cellular strips - Inner islands</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">White is repulsed by other colors and other colors are all repulsed by white.
+
+This create organic patterns of multi colors groups surrounding white islands</span>
             </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 colors worms</span>
                 <span class="universe-item-desc dim svelte-1j10mlt">This universe creates moving structures of red, green, blue, white alternating small groups with lots of cells.
 
@@ -119,6 +123,30 @@ The universe doesn't stabilize but keep an infinitely consistent configurations.
 Starting from center helps creating stronger structure earlier on.
 
 Sometime a worm eats its own tail and becomes a spinning structure absorbing other worms when they get too close.</span>
+            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 Colors - worms - single stage</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">Looks a lot like "4 Colors - worms" but without enough cohesion to form full worms as they slip soon after they create a single stage.</span>
+            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 Colors - Slowly merging 2-colors blobs</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">TODO Improve this description.
+
+Blobs of red-blue and blobs of green-white move around and regularly merge creating bigger blobs. Sometimes they stop moving.
+
+I think it should converge to a still state because there doesn't seemm to have splits but if it does it takes a very long time. The simulation might be artificially kept moving by the inaccurate computations of walls wrapping.</span>
+            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 Colors - spreading pattern</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">TODO Describe this one</span>
+            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 Colors - Inifnite moving low cohesion groups</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">TODO Improve description
+
+Green-Blue chasing red-white but with lots of low cohesion groups and probably a more complex relationship to describe.</span>
+            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">4 colors - Waves</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">White is attracted to all other colors which all are repulsed by white.
+
+This creates waves of white floats pushing incoherent masses of red, green and blue.</span>
+            </li><li class="universe-item svelte-1j10mlt"><span class="universe-item-name svelte-1j10mlt">3 Colors - Stable islands</span>
+                <span class="universe-item-desc dim svelte-1j10mlt">TODO Find a good analogy
+
+The universe converges to many small islands with a green-white core surrounded by red bands.
+
+Sometimes more complex structures emerge but they are rare they often collapse into simpler forms.</span>
             </li></ul>
 
     
@@ -234,14 +262,14 @@ Sometime a worm eats its own tail and becomes a spinning structure absorbing oth
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="hr9rx8">
-			import { start } from "/particles-life/_app/immutable/start-798ed55e.js";
+		<script type="module" data-sveltekit-hydrate="1yq2bl">
+			import { start } from "/particles-life/_app/immutable/start-3f9aae64.js";
 
 			start({
 				env: {},
 				paths: {"base":"/particles-life","assets":"/particles-life"},
-				target: document.querySelector('[data-sveltekit-hydrate="hr9rx8"]').parentNode,
-				version: "1773100492402",
+				target: document.querySelector('[data-sveltekit-hydrate="1yq2bl"]').parentNode,
+				version: "1773163930091",
 				hydrate: {
 					node_ids: [0, 6],
 					data: [null,null],
