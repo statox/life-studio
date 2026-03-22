@@ -48,6 +48,12 @@
         if (u) loadUniverse(u);
     };
 
+    const loadRandomUniverse = () => {
+        const randI = Math.floor(Math.random() * universes.length);
+        const u = universes[randI];
+        if (u) loadUniverse(u);
+    };
+
     const updateAttractionTable = (newTable: AttractionTable) => {
         attractionTable = newTable;
         simulationComponent?.updateAttractionTable(newTable);
@@ -82,6 +88,7 @@
         <section class="hero">
             <h1>Particle Life</h1>
             <p class="placeholder">[Introduction text goes here]</p>
+            <button on:click={() => loadRandomUniverse()}>Try a random universe</button>
         </section>
 
         <!-- Section 2: The Basics -->

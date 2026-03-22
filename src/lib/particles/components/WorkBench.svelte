@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { base } from '$app/paths';
 
     import AttractionTablePanel from '$lib/particles/components/AttractionTablePanel.svelte';
     import KeyboardShortcuts from '$lib/particles/components/KeyboardShortcuts.svelte';
