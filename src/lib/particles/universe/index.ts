@@ -1,6 +1,7 @@
 import type { AttractionTable } from '../attraction';
 import type { ColorProportions } from '../engine/cells';
 import presets from './presets.json';
+import demoPresets from './demo_presets.json';
 
 export type Universe = {
     attractionTable: AttractionTable;
@@ -77,3 +78,4 @@ export type EnergyLevel = 'low' | 'medium' | 'high';
 export type StoredUniverse = Universe & UniverseMetadata;
 
 export const getAllUniverses = (): StoredUniverse[] => presets as StoredUniverse[];
+export const getAllDemoUniverses = (): StoredUniverse[] => demoPresets as StoredUniverse[];

@@ -12,11 +12,16 @@
     import type { ColorProportions } from '$lib/particles/engine/cells';
     import type { Cell } from '$lib/particles/engine';
     import Simulation from './Simulation.svelte';
-    import { getAllUniverses, type StoredUniverse } from '$lib/particles/universe';
+    import {
+        getAllDemoUniverses,
+        getAllUniverses,
+        type StoredUniverse
+    } from '$lib/particles/universe';
 
     let simulationComponent: Simulation;
 
     const universes: StoredUniverse[] = getAllUniverses();
+    const demoUniverses: StoredUniverse[] = getAllDemoUniverses();
 
     let cells: Cell[] = [];
     let attractionTable: AttractionTable = universes[0].attractionTable;
@@ -44,7 +49,7 @@
     };
 
     const loadByName = (name: string) => {
-        const u = universes.find((u) => u.name === name);
+        const u = demoUniverses.find((u) => u.name === name);
         if (u) loadUniverse(u);
     };
 
@@ -84,7 +89,7 @@
 <div class="demo">
     <!-- Left column: narrative -->
     <div class="narrative">
-        <!-- Section 1: Hero -->
+        <!-- Hero -->
         <section class="hero">
             <h1>Particle Life</h1>
             <p>
@@ -105,31 +110,138 @@
                     rel="noopener noreferrer"
                     target="none"
                     href="https://sandbox-science.com/particle-life">this tool</a
-                >. You should definitely check it out because makes everything you will see here
+                >. You should definitely check it out because it makes everything you will see here
                 more spectacular. And reading this page first will allow you to better appreciate
                 how truly amazing this other tool is.
             </p>
         </section>
 
-        <!-- Section 2: The Basics -->
+        <!-- The Basics -->
         <section>
             <h2>The Basics</h2>
-            <p class="placeholder">[Basics explanation goes here]</p>
-            <div class="preset-btns">
-                <button on:click={() => loadByName('Still')}>Still</button>
-                <button on:click={() => loadByName('Uniform repulsion')}>Uniform repulsion</button>
-                <button on:click={() => loadByName('2 colors own attraction')}
-                    >2 colors own attraction</button
-                >
-            </div>
-            <p class="placeholder">[Reset explanation goes here]</p>
-            <div class="preset-btns">
-                <button on:click={uniformSpread}>↺ Uniform spread</button>
-                <button on:click={centerSpread}>◎ Centered circle</button>
-            </div>
+            <p>Let's start by making a cleaner universe.</p>
+            <button on:click={() => loadByName('1 color still')}>Click me 1</button>
+            <p>
+                Here we have a bunch of white particles initially spread in a circle and without any
+                force applied to them. Notice that at the very begining the cells in the center push
+                each other until everyone is far enough to not bother its neighbor. Then nothing
+                more happens...
+            </p>
+            <p>So let's add our first force: Repulsion!</p>
+            <button on:click={() => loadByName('1 color repulsion circle')}>Click me 2</button>
+            <p>
+                Now every particle is repulsed by its neighbors, that makes the specie covering as
+                much space as need to have sufficient space between each individual so that no one
+                repulse the other.
+            </p>
+            <p>
+                Notice that this setup creates clusters: Some particles get repulsed into small
+                groups which keep expanding. This is also visible when particles are initially
+                spread uniformly.
+            </p>
+            <button on:click={() => loadByName('1 color repulsion uniform')}>Click me 3</button>
+            <p>Inversely we can make particles attract each other</p>
+            <button on:click={() => loadByName('1 color attraction uniform')}>Click me 4</button>
+            <p>
+                Here clusters are much bigger and more compact as particles are grouped because they
+                attract each other and not because they are pushed against each other into a group.
+                Everything stabilize once all groups have attracted all the particles in they
+                attraction radius.
+            </p>
         </section>
 
-        <!-- Section 3: Emergent Complexity -->
+        <!-- The Basics -->
+        <section>
+            <h2>The Basics</h2>
+            <p>Let's start by making a cleaner universe.</p>
+            <button on:click={() => loadByName('1 color still')}>Click me 1</button>
+            <p>
+                Here we have a bunch of white particles initially spread in a circle and without any
+                force applied to them. Notice that at the very begining the cells in the center push
+                each other until everyone is far enough to not bother its neighbor. Then nothing
+                more happens...
+            </p>
+            <p>So let's add our first force: Repulsion!</p>
+            <button on:click={() => loadByName('1 color repulsion circle')}>Click me 2</button>
+            <p>
+                Now every particle is repulsed by its neighbors, that makes the specie covering as
+                much space as need to have sufficient space between each individual so that no one
+                repulse the other.
+            </p>
+            <p>
+                Notice that this setup creates clusters: Some particles get repulses into small
+                groups which keep expanding. This is also visible when particles are initially
+                spread uniformly.
+            </p>
+            <button on:click={() => loadByName('1 color repulsion uniform')}>Click me 3</button>
+            <p>Inversely we can make particles attract each other</p>
+            <button on:click={() => loadByName('1 color attraction uniform')}>Click me 4</button>
+            <p>
+                Here clusters are much bigger and more compact as particles are groupes because they
+                attract each other and not because they are pushed against each other into a group.
+                Everything stabilize once all groups have attracted all the particles in they
+                attraction radius.
+            </p>
+        </section>
+
+        <!-- Species -->
+        <section>
+            <h2>Species</h2>
+            <p>
+                To make all of this more interesting we need to add more particle species we
+                differenciate with their color. Click to introduce red!
+            </p>
+            <button on:click={() => loadByName('2 colors still')}>Click me 5</button>
+            <p>
+                To begin, particles will only actively interact with other particles of the same
+                specy. White gets attracted by white by red is repulsed by red.
+            </p>
+            <button on:click={() => loadByName('2 colors inverse forces')}>Click me 6</button>
+            <p>
+                We find the same white clusters forming as seen before but this time they move
+                through masses of self repulsing red.
+            </p>
+            <p>
+                Now let's create inter-species attraction! Here red is attracted by white and white
+                is attracted by red but particles don't interact with their own specie. This create
+                filament-like structure which quickly converge into bi-color clusters: Inter-species
+                rules can create more complex structures.
+            </p>
+            <button on:click={() => loadByName('2 colors stable attraction')}>Click me 7</button>
+            <p>
+                And if we combine inter-species attraction with intra-specie repulsion the particles
+                will pave the space trying to get as close as possible to their prefered color while
+                pushing away their siblings.
+            </p>
+            <button on:click={() => loadByName('2 colors stable attraction inner repulsion')}
+                >Click me 9</button
+            >
+            <p>
+                But let's add some motion here! If white is very attracted to red but red is
+                strongly repulsed by white we create a trusting force: When a binome of cells of
+                different colors is close to each other the chasing starts! And with enough
+                particles we see appearing waves of white chasing waves of red. While everythings
+                looks pretty random we can still clearly see a common pattern.
+            </p>
+            <button on:click={() => loadByName('2 colors chase')}>Click me 8</button>
+            <p>
+                Let's add some order in this chaos by enabling intra-species attraction: We keep the
+                white-red trusting force we created because but we add clusters of self-attracting
+                species. And we end up with our most simple moving structures!
+            </p>
+            <button on:click={() => loadByName('2 colors structured chase')}>Click me 9</button>
+            <p>
+                See these small, inefficient white-red organism moving around their universe and
+                gobbling each other. Since everything is strongly attracted the universe shortly
+                stabilize as the red-white groups get sufficiently faw away from each other.
+            </p>
+            <p>
+                But this is the very begining of what we want to obverse with this tool: Complex
+                behaviors emerging of simple rules
+            </p>
+        </section>
+
+        <!-- Emergent Complexity -->
         <section>
             <h2>Emergent Complexity</h2>
             <p class="placeholder">[Complexity explanation goes here]</p>
@@ -143,7 +255,7 @@
             </div>
         </section>
 
-        <!-- Section 4: The Attraction Table -->
+        <!-- The Attraction Table -->
         <section>
             <h2>The Attraction Table</h2>
             <p class="placeholder">[Attraction table explanation goes here]</p>
@@ -152,7 +264,7 @@
             </div>
         </section>
 
-        <!-- Section 5: Tuning the Mix -->
+        <!-- Tuning the Mix -->
         <section>
             <h2>Tuning the Mix</h2>
             <p class="placeholder">[Mix explanation goes here]</p>
