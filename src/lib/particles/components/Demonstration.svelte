@@ -77,7 +77,7 @@
     };
 
     onMount(() => {
-        loadUniverse(universes[0]);
+        loadRandomUniverse();
     });
 </script>
 
@@ -87,8 +87,28 @@
         <!-- Section 1: Hero -->
         <section class="hero">
             <h1>Particle Life</h1>
-            <p class="placeholder">[Introduction text goes here]</p>
+            <p>
+                This is Particles Life. This is the simulation of a small universe where a few
+                thoushands particles move freely and interract with each other.
+            </p>
+            <p>Press the next button a few times and observe these new universes coming to life.</p>
             <button on:click={() => loadRandomUniverse()}>Try a random universe</button>
+            <p>
+                While all these universes follow a small set of physicial rules applied with
+                different parameters they produce a wide range of emergent behaviors. I made this
+                page to explain how this type of simulation works and provide some insights to
+                better understand how different parameters affect the outcomme in a reproducible
+                way.
+            </p>
+            <p>
+                This whole page is a less performent and less polished version of <a
+                    rel="noopener noreferrer"
+                    target="none"
+                    href="https://sandbox-science.com/particle-life">this tool</a
+                >. You should definitely check it out because makes everything you will see here
+                more spectacular. And reading this page first will allow you to better appreciate
+                how truly amazing this other tool is.
+            </p>
         </section>
 
         <!-- Section 2: The Basics -->
