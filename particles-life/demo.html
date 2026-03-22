@@ -14,7 +14,7 @@
 		<link href="/particles-life/_app/immutable/assets/_page-26e3719a.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/AttractionTableComponent-5a48387f.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/Simulation-6ae675b1.css" rel="stylesheet">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/start-45dae894.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-46bc5080.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-b2d96575.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-632ab094.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-734cd9c3.js">
@@ -23,10 +23,10 @@
 		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-1f26bfca.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/demo/_page.svelte-db1de210.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/demo/_page.svelte-6f847b16.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/AttractionTableComponent-9693fc18.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/Simulation-9864768d.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-9f97cd81.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-e19fce15.js">
     </head>
 
     <body data-sveltekit-preload-data="hover">
@@ -63,13 +63,103 @@
 
         
         <section class="svelte-14rq5tp"><h2 class="svelte-14rq5tp">The Basics</h2>
-            <p class="placeholder svelte-14rq5tp">[Basics explanation goes here]</p>
-            <div class="preset-btns svelte-14rq5tp"><button class="svelte-14rq5tp">Still</button>
-                <button class="svelte-14rq5tp">Uniform repulsion</button>
-                <button class="svelte-14rq5tp">2 colors own attraction</button></div>
-            <p class="placeholder svelte-14rq5tp">[Reset explanation goes here]</p>
-            <div class="preset-btns svelte-14rq5tp"><button class="svelte-14rq5tp">↺ Uniform spread</button>
-                <button class="svelte-14rq5tp">◎ Centered circle</button></div></section>
+            <p class="svelte-14rq5tp">Let&#39;s start by making a cleaner universe.</p>
+            <button class="svelte-14rq5tp">Click me 1</button>
+            <p class="svelte-14rq5tp">Here we have a bunch of white particles initially spread in a circle and without any
+                force applied to them. Notice that at the very begining the cells in the center push
+                each other until everyone is far enough to not bother its neighbor. Then nothing
+                more happens...
+            </p>
+            <p class="svelte-14rq5tp">So let&#39;s add our first force: Repulsion!</p>
+            <button class="svelte-14rq5tp">Click me 2</button>
+            <p class="svelte-14rq5tp">Now every particle is repulsed by its neighbors, that makes the specie covering as
+                much space as need to have sufficient space between each individual so that no one
+                repulse the other.
+            </p>
+            <p class="svelte-14rq5tp">Notice that this setup creates clusters: Some particles get repulses into small
+                groups which keep expanding. This is also visible when particles are initially
+                spread uniformly.
+            </p>
+            <button class="svelte-14rq5tp">Click me 3</button>
+            <p class="svelte-14rq5tp">Inversely we can make particles attract each other</p>
+            <button class="svelte-14rq5tp">Click me 4</button>
+            <p class="svelte-14rq5tp">Here clusters are much bigger and more compact as particles are groupes because they
+                attract each other and not because they are pushed against each other into a group.
+                Everything stabilize once all groups have attracted all the particles in they
+                attraction radius.
+            </p></section>
+
+        
+        <section class="svelte-14rq5tp"><h2 class="svelte-14rq5tp">The Basics</h2>
+            <p class="svelte-14rq5tp">Let&#39;s start by making a cleaner universe.</p>
+            <button class="svelte-14rq5tp">Click me 1</button>
+            <p class="svelte-14rq5tp">Here we have a bunch of white particles initially spread in a circle and without any
+                force applied to them. Notice that at the very begining the cells in the center push
+                each other until everyone is far enough to not bother its neighbor. Then nothing
+                more happens...
+            </p>
+            <p class="svelte-14rq5tp">So let&#39;s add our first force: Repulsion!</p>
+            <button class="svelte-14rq5tp">Click me 2</button>
+            <p class="svelte-14rq5tp">Now every particle is repulsed by its neighbors, that makes the specie covering as
+                much space as need to have sufficient space between each individual so that no one
+                repulse the other.
+            </p>
+            <p class="svelte-14rq5tp">Notice that this setup creates clusters: Some particles get repulses into small
+                groups which keep expanding. This is also visible when particles are initially
+                spread uniformly.
+            </p>
+            <button class="svelte-14rq5tp">Click me 3</button>
+            <p class="svelte-14rq5tp">Inversely we can make particles attract each other</p>
+            <button class="svelte-14rq5tp">Click me 4</button>
+            <p class="svelte-14rq5tp">Here clusters are much bigger and more compact as particles are groupes because they
+                attract each other and not because they are pushed against each other into a group.
+                Everything stabilize once all groups have attracted all the particles in they
+                attraction radius.
+            </p></section>
+
+        
+        <section class="svelte-14rq5tp"><h2 class="svelte-14rq5tp">Species</h2>
+            <p class="svelte-14rq5tp">To make all of this more interesting we need to add more particle species we
+                differenciate with their color. Click to introduce red!
+            </p>
+            <button class="svelte-14rq5tp">Click me 5</button>
+            <p class="svelte-14rq5tp">To begin particles will only actively interact with other particles of the same
+                specy. White gets attracted by white by red is repulsed by red.
+            </p>
+            <button class="svelte-14rq5tp">Click me 6</button>
+            <p class="svelte-14rq5tp">We find the same white clusters forming as seen before but this time they move
+                through masses of self repulsing red.
+            </p>
+            <p class="svelte-14rq5tp">Now let&#39;s create inter-species attraction! Here red is attracted by white and white
+                is attracted by red but particles don&#39;t interact with their own specie. This create
+                filament-like structure which quickly converge into bi-color clusters: Inter-species
+                rules can create more complex structures.
+            </p>
+            <button class="svelte-14rq5tp">Click me 7</button>
+            <p class="svelte-14rq5tp">And if we combine inter-species attraction with intra-specie repulsion the particles
+                will pave the space trying to get as close as possible to their preffered color
+                while pushing away their siblings.
+            </p>
+            <button class="svelte-14rq5tp">Click me 9</button>
+            <p class="svelte-14rq5tp">But let&#39;s add some motion here! If white is very attracted to red but red is
+                strongly repulsed by white we create a trusting force: When a binome of cells of
+                differnt colors is close to each other the chasing starts! And we enough particles
+                we see appearing waves of white chasing waves of red. While everythings looks pretty
+                random we can still clearly see a common pattern.
+            </p>
+            <button class="svelte-14rq5tp">Click me 8</button>
+            <p class="svelte-14rq5tp">Let&#39;s add some order in this chaos by enabling intra-species attraction: We keep the
+                white-red trusting force we created because but we add clusters of self-attracting
+                species. And we end up with our most simple moving structures!
+            </p>
+            <button class="svelte-14rq5tp">Click me 9</button>
+            <p class="svelte-14rq5tp">See these small, inefficient white-red organism moving around their universe and
+                gobbling each other. Since everything is strongly attracted the universe shortly
+                stabilize as the red-white groups get sufficiently faw away from each other.
+            </p>
+            <p class="svelte-14rq5tp">But this is the very begining of what we want to obverse with this tool: Complex
+                behaviors emerging of simple rules
+            </p></section>
 
         
         <section class="svelte-14rq5tp"><h2 class="svelte-14rq5tp">Emergent Complexity</h2>
@@ -218,14 +308,14 @@
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="ahfy9g">
-			import { start } from "/particles-life/_app/immutable/start-45dae894.js";
+		<script type="module" data-sveltekit-hydrate="18ovogl">
+			import { start } from "/particles-life/_app/immutable/start-46bc5080.js";
 
 			start({
 				env: {},
 				paths: {"base":"/particles-life","assets":"/particles-life"},
-				target: document.querySelector('[data-sveltekit-hydrate="ahfy9g"]').parentNode,
-				version: "1774216439546",
+				target: document.querySelector('[data-sveltekit-hydrate="18ovogl"]').parentNode,
+				version: "1774221555593",
 				hydrate: {
 					node_ids: [0, 5],
 					data: [null,null],
