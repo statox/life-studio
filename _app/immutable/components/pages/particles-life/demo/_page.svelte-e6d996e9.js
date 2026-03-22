@@ -3,16 +3,16 @@ import{S as Lr,i as zr,s as Vr,k as a,q as i,a as n,w as _a,l as r,m as l,r as c
                 different parameters they produce a wide range of emergent behaviors. I made this
                 page to explain how this type of simulation works and provide some insights to
                 better understand how different parameters affect the outcomme in a reproducible
-                way.`),ct=n(),R=a("p"),ht=i("This whole page is a less performent and less polished version of "),W=a("a"),pt=i("this tool"),ut=i(`. You should definitely check it out because makes everything you will see here
+                way.`),ct=n(),R=a("p"),ht=i("This whole page is a less performent and less polished version of "),W=a("a"),pt=i("this tool"),ut=i(`. You should definitely check it out because it makes everything you will see here
                 more spectacular. And reading this page first will allow you to better appreciate
                 how truly amazing this other tool is.`),dt=n(),g=a("section"),X=a("h2"),vt=i("The Basics"),ft=n(),Z=a("p"),mt=i("Let's start by making a cleaner universe."),gt=n(),Y=a("button"),bt=i("Click me 1"),wt=n(),ee=a("p"),_t=i(`Here we have a bunch of white particles initially spread in a circle and without any
                 force applied to them. Notice that at the very begining the cells in the center push
                 each other until everyone is far enough to not bother its neighbor. Then nothing
                 more happens...`),yt=n(),te=a("p"),w=i("So let's add our first force: Repulsion!"),J=n(),j=a("button"),Pt=i("Click me 2"),Nt=n(),ke=a("p"),It=i(`Now every particle is repulsed by its neighbors, that makes the specie covering as
                 much space as need to have sufficient space between each individual so that no one
-                repulse the other.`),St=n(),Ee=a("p"),Ot=i(`Notice that this setup creates clusters: Some particles get repulses into small
+                repulse the other.`),St=n(),Ee=a("p"),Ot=i(`Notice that this setup creates clusters: Some particles get repulsed into small
                 groups which keep expanding. This is also visible when particles are initially
-                spread uniformly.`),Bt=n(),re=a("button"),Ut=i("Click me 3"),At=n(),Te=a("p"),$t=i("Inversely we can make particles attract each other"),Ht=n(),le=a("button"),Rt=i("Click me 4"),Wt=n(),qe=a("p"),Dt=i(`Here clusters are much bigger and more compact as particles are groupes because they
+                spread uniformly.`),Bt=n(),re=a("button"),Ut=i("Click me 3"),At=n(),Te=a("p"),$t=i("Inversely we can make particles attract each other"),Ht=n(),le=a("button"),Rt=i("Click me 4"),Wt=n(),qe=a("p"),Dt=i(`Here clusters are much bigger and more compact as particles are grouped because they
                 attract each other and not because they are pushed against each other into a group.
                 Everything stabilize once all groups have attracted all the particles in they
                 attraction radius.`),xt=n(),_=a("section"),Ce=a("h2"),Lt=i("The Basics"),zt=n(),Pe=a("p"),Vt=i("Let's start by making a cleaner universe."),Mt=n(),ne=a("button"),Ft=i("Click me 1"),Yt=n(),Ne=a("p"),Jt=i(`Here we have a bunch of white particles initially spread in a circle and without any
@@ -26,18 +26,18 @@ import{S as Lr,i as zr,s as Vr,k as a,q as i,a as n,w as _a,l as r,m as l,r as c
                 attract each other and not because they are pushed against each other into a group.
                 Everything stabilize once all groups have attracted all the particles in they
                 attraction radius.`),hs=n(),v=a("section"),Ae=a("h2"),ps=i("Species"),us=n(),$e=a("p"),ds=i(`To make all of this more interesting we need to add more particle species we
-                differenciate with their color. Click to introduce red!`),vs=n(),he=a("button"),fs=i("Click me 5"),ms=n(),He=a("p"),gs=i(`To begin particles will only actively interact with other particles of the same
+                differenciate with their color. Click to introduce red!`),vs=n(),he=a("button"),fs=i("Click me 5"),ms=n(),He=a("p"),gs=i(`To begin, particles will only actively interact with other particles of the same
                 specy. White gets attracted by white by red is repulsed by red.`),bs=n(),pe=a("button"),ws=i("Click me 6"),_s=n(),Re=a("p"),ys=i(`We find the same white clusters forming as seen before but this time they move
                 through masses of self repulsing red.`),ks=n(),We=a("p"),Es=i(`Now let's create inter-species attraction! Here red is attracted by white and white
                 is attracted by red but particles don't interact with their own specie. This create
                 filament-like structure which quickly converge into bi-color clusters: Inter-species
                 rules can create more complex structures.`),Ts=n(),ue=a("button"),qs=i("Click me 7"),Cs=n(),De=a("p"),Ps=i(`And if we combine inter-species attraction with intra-specie repulsion the particles
-                will pave the space trying to get as close as possible to their preffered color
-                while pushing away their siblings.`),Ns=n(),de=a("button"),Is=i("Click me 9"),Ss=n(),xe=a("p"),Os=i(`But let's add some motion here! If white is very attracted to red but red is
+                will pave the space trying to get as close as possible to their prefered color while
+                pushing away their siblings.`),Ns=n(),de=a("button"),Is=i("Click me 9"),Ss=n(),xe=a("p"),Os=i(`But let's add some motion here! If white is very attracted to red but red is
                 strongly repulsed by white we create a trusting force: When a binome of cells of
-                differnt colors is close to each other the chasing starts! And we enough particles
-                we see appearing waves of white chasing waves of red. While everythings looks pretty
-                random we can still clearly see a common pattern.`),Bs=n(),ve=a("button"),Us=i("Click me 8"),As=n(),Le=a("p"),$s=i(`Let's add some order in this chaos by enabling intra-species attraction: We keep the
+                different colors is close to each other the chasing starts! And with enough
+                particles we see appearing waves of white chasing waves of red. While everythings
+                looks pretty random we can still clearly see a common pattern.`),Bs=n(),ve=a("button"),Us=i("Click me 8"),As=n(),Le=a("p"),$s=i(`Let's add some order in this chaos by enabling intra-species attraction: We keep the
                 white-red trusting force we created because but we add clusters of self-attracting
                 species. And we end up with our most simple moving structures!`),Hs=n(),fe=a("button"),Rs=i("Click me 9"),Ws=n(),ze=a("p"),Ds=i(`See these small, inefficient white-red organism moving around their universe and
                 gobbling each other. Since everything is strongly attracted the universe shortly
@@ -47,16 +47,16 @@ import{S as Lr,i as zr,s as Vr,k as a,q as i,a as n,w as _a,l as r,m as l,r as c
                 different parameters they produce a wide range of emergent behaviors. I made this
                 page to explain how this type of simulation works and provide some insights to
                 better understand how different parameters affect the outcomme in a reproducible
-                way.`),Ia.forEach(s),ct=o(U),R=r(U,"P",{class:!0});var Tt=l(R);ht=c(Tt,"This whole page is a less performent and less polished version of "),W=r(Tt,"A",{rel:!0,target:!0,href:!0});var Sa=l(W);pt=c(Sa,"this tool"),Sa.forEach(s),ut=c(Tt,`. You should definitely check it out because makes everything you will see here
+                way.`),Ia.forEach(s),ct=o(U),R=r(U,"P",{class:!0});var Tt=l(R);ht=c(Tt,"This whole page is a less performent and less polished version of "),W=r(Tt,"A",{rel:!0,target:!0,href:!0});var Sa=l(W);pt=c(Sa,"this tool"),Sa.forEach(s),ut=c(Tt,`. You should definitely check it out because it makes everything you will see here
                 more spectacular. And reading this page first will allow you to better appreciate
                 how truly amazing this other tool is.`),Tt.forEach(s),U.forEach(s),dt=o(q),g=r(q,"SECTION",{class:!0});var E=l(g);X=r(E,"H2",{class:!0});var Oa=l(X);vt=c(Oa,"The Basics"),Oa.forEach(s),ft=o(E),Z=r(E,"P",{class:!0});var Ba=l(Z);mt=c(Ba,"Let's start by making a cleaner universe."),Ba.forEach(s),gt=o(E),Y=r(E,"BUTTON",{class:!0});var Ua=l(Y);bt=c(Ua,"Click me 1"),Ua.forEach(s),wt=o(E),ee=r(E,"P",{class:!0});var Aa=l(ee);_t=c(Aa,`Here we have a bunch of white particles initially spread in a circle and without any
                 force applied to them. Notice that at the very begining the cells in the center push
                 each other until everyone is far enough to not bother its neighbor. Then nothing
                 more happens...`),Aa.forEach(s),yt=o(E),te=r(E,"P",{class:!0});var $a=l(te);w=c($a,"So let's add our first force: Repulsion!"),$a.forEach(s),J=o(E),j=r(E,"BUTTON",{class:!0});var Ha=l(j);Pt=c(Ha,"Click me 2"),Ha.forEach(s),Nt=o(E),ke=r(E,"P",{class:!0});var Ra=l(ke);It=c(Ra,`Now every particle is repulsed by its neighbors, that makes the specie covering as
                 much space as need to have sufficient space between each individual so that no one
-                repulse the other.`),Ra.forEach(s),St=o(E),Ee=r(E,"P",{class:!0});var Wa=l(Ee);Ot=c(Wa,`Notice that this setup creates clusters: Some particles get repulses into small
+                repulse the other.`),Ra.forEach(s),St=o(E),Ee=r(E,"P",{class:!0});var Wa=l(Ee);Ot=c(Wa,`Notice that this setup creates clusters: Some particles get repulsed into small
                 groups which keep expanding. This is also visible when particles are initially
-                spread uniformly.`),Wa.forEach(s),Bt=o(E),re=r(E,"BUTTON",{class:!0});var Da=l(re);Ut=c(Da,"Click me 3"),Da.forEach(s),At=o(E),Te=r(E,"P",{class:!0});var xa=l(Te);$t=c(xa,"Inversely we can make particles attract each other"),xa.forEach(s),Ht=o(E),le=r(E,"BUTTON",{class:!0});var La=l(le);Rt=c(La,"Click me 4"),La.forEach(s),Wt=o(E),qe=r(E,"P",{class:!0});var za=l(qe);Dt=c(za,`Here clusters are much bigger and more compact as particles are groupes because they
+                spread uniformly.`),Wa.forEach(s),Bt=o(E),re=r(E,"BUTTON",{class:!0});var Da=l(re);Ut=c(Da,"Click me 3"),Da.forEach(s),At=o(E),Te=r(E,"P",{class:!0});var xa=l(Te);$t=c(xa,"Inversely we can make particles attract each other"),xa.forEach(s),Ht=o(E),le=r(E,"BUTTON",{class:!0});var La=l(le);Rt=c(La,"Click me 4"),La.forEach(s),Wt=o(E),qe=r(E,"P",{class:!0});var za=l(qe);Dt=c(za,`Here clusters are much bigger and more compact as particles are grouped because they
                 attract each other and not because they are pushed against each other into a group.
                 Everything stabilize once all groups have attracted all the particles in they
                 attraction radius.`),za.forEach(s),E.forEach(s),xt=o(q),_=r(q,"SECTION",{class:!0});var T=l(_);Ce=r(T,"H2",{class:!0});var Va=l(Ce);Lt=c(Va,"The Basics"),Va.forEach(s),zt=o(T),Pe=r(T,"P",{class:!0});var Ma=l(Pe);Vt=c(Ma,"Let's start by making a cleaner universe."),Ma.forEach(s),Mt=o(T),ne=r(T,"BUTTON",{class:!0});var Fa=l(ne);Ft=c(Fa,"Click me 1"),Fa.forEach(s),Yt=o(T),Ne=r(T,"P",{class:!0});var Ya=l(Ne);Jt=c(Ya,`Here we have a bunch of white particles initially spread in a circle and without any
@@ -70,18 +70,18 @@ import{S as Lr,i as zr,s as Vr,k as a,q as i,a as n,w as _a,l as r,m as l,r as c
                 attract each other and not because they are pushed against each other into a group.
                 Everything stabilize once all groups have attracted all the particles in they
                 attraction radius.`),er.forEach(s),T.forEach(s),hs=o(q),v=r(q,"SECTION",{class:!0});var m=l(v);Ae=r(m,"H2",{class:!0});var tr=l(Ae);ps=c(tr,"Species"),tr.forEach(s),us=o(m),$e=r(m,"P",{class:!0});var sr=l($e);ds=c(sr,`To make all of this more interesting we need to add more particle species we
-                differenciate with their color. Click to introduce red!`),sr.forEach(s),vs=o(m),he=r(m,"BUTTON",{class:!0});var ar=l(he);fs=c(ar,"Click me 5"),ar.forEach(s),ms=o(m),He=r(m,"P",{class:!0});var rr=l(He);gs=c(rr,`To begin particles will only actively interact with other particles of the same
+                differenciate with their color. Click to introduce red!`),sr.forEach(s),vs=o(m),he=r(m,"BUTTON",{class:!0});var ar=l(he);fs=c(ar,"Click me 5"),ar.forEach(s),ms=o(m),He=r(m,"P",{class:!0});var rr=l(He);gs=c(rr,`To begin, particles will only actively interact with other particles of the same
                 specy. White gets attracted by white by red is repulsed by red.`),rr.forEach(s),bs=o(m),pe=r(m,"BUTTON",{class:!0});var lr=l(pe);ws=c(lr,"Click me 6"),lr.forEach(s),_s=o(m),Re=r(m,"P",{class:!0});var nr=l(Re);ys=c(nr,`We find the same white clusters forming as seen before but this time they move
                 through masses of self repulsing red.`),nr.forEach(s),ks=o(m),We=r(m,"P",{class:!0});var or=l(We);Es=c(or,`Now let's create inter-species attraction! Here red is attracted by white and white
                 is attracted by red but particles don't interact with their own specie. This create
                 filament-like structure which quickly converge into bi-color clusters: Inter-species
                 rules can create more complex structures.`),or.forEach(s),Ts=o(m),ue=r(m,"BUTTON",{class:!0});var ir=l(ue);qs=c(ir,"Click me 7"),ir.forEach(s),Cs=o(m),De=r(m,"P",{class:!0});var cr=l(De);Ps=c(cr,`And if we combine inter-species attraction with intra-specie repulsion the particles
-                will pave the space trying to get as close as possible to their preffered color
-                while pushing away their siblings.`),cr.forEach(s),Ns=o(m),de=r(m,"BUTTON",{class:!0});var hr=l(de);Is=c(hr,"Click me 9"),hr.forEach(s),Ss=o(m),xe=r(m,"P",{class:!0});var pr=l(xe);Os=c(pr,`But let's add some motion here! If white is very attracted to red but red is
+                will pave the space trying to get as close as possible to their prefered color while
+                pushing away their siblings.`),cr.forEach(s),Ns=o(m),de=r(m,"BUTTON",{class:!0});var hr=l(de);Is=c(hr,"Click me 9"),hr.forEach(s),Ss=o(m),xe=r(m,"P",{class:!0});var pr=l(xe);Os=c(pr,`But let's add some motion here! If white is very attracted to red but red is
                 strongly repulsed by white we create a trusting force: When a binome of cells of
-                differnt colors is close to each other the chasing starts! And we enough particles
-                we see appearing waves of white chasing waves of red. While everythings looks pretty
-                random we can still clearly see a common pattern.`),pr.forEach(s),Bs=o(m),ve=r(m,"BUTTON",{class:!0});var ur=l(ve);Us=c(ur,"Click me 8"),ur.forEach(s),As=o(m),Le=r(m,"P",{class:!0});var dr=l(Le);$s=c(dr,`Let's add some order in this chaos by enabling intra-species attraction: We keep the
+                different colors is close to each other the chasing starts! And with enough
+                particles we see appearing waves of white chasing waves of red. While everythings
+                looks pretty random we can still clearly see a common pattern.`),pr.forEach(s),Bs=o(m),ve=r(m,"BUTTON",{class:!0});var ur=l(ve);Us=c(ur,"Click me 8"),ur.forEach(s),As=o(m),Le=r(m,"P",{class:!0});var dr=l(Le);$s=c(dr,`Let's add some order in this chaos by enabling intra-species attraction: We keep the
                 white-red trusting force we created because but we add clusters of self-attracting
                 species. And we end up with our most simple moving structures!`),dr.forEach(s),Hs=o(m),fe=r(m,"BUTTON",{class:!0});var vr=l(fe);Rs=c(vr,"Click me 9"),vr.forEach(s),Ws=o(m),ze=r(m,"P",{class:!0});var fr=l(ze);Ds=c(fr,`See these small, inefficient white-red organism moving around their universe and
                 gobbling each other. Since everything is strongly attracted the universe shortly
