@@ -103,12 +103,16 @@
 
 <div class="sim">
     <!-- Universe selector -->
-    <ul class="universe-list">
+    <ul class="universe-list" role="listbox" aria-label="Universe selector">
         {#each universes as u, i}
             <li
                 class="universe-item"
                 class:active={i === selectedIndex}
+                role="option"
+                aria-selected={i === selectedIndex}
+                tabindex="0"
                 on:click={() => selectUniverse(i)}
+                on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectUniverse(i); } }}
             >
                 <div class="universe-item-row">
                     <span class="universe-item-name">{u.name}</span>
@@ -145,51 +149,51 @@
             </div>
             <div class="card-subtitle">Classification</div>
             <div class="field">
-                <label>Behavior</label>
+                <span class="field-label">Behavior</span>
                 <span class="meta-pill" style="background:{behaviorColor(selected.behavior)}"
                     >{selected.behavior}</span
                 >
             </div>
             <div class="field">
-                <label>Structure</label>
+                <span class="field-label">Structure</span>
                 <span class="meta-value">{selected.structure}</span>
             </div>
             <div class="field">
-                <label>Colors</label>
+                <span class="field-label">Colors</span>
                 <span class="meta-value">{selected.activeColors}</span>
             </div>
             <div class="field">
-                <label>Convergence</label>
+                <span class="field-label">Convergence</span>
                 <span class="meta-value">{selected.convergenceSpeed}</span>
             </div>
             <div class="field">
-                <label>Energy</label>
+                <span class="field-label">Energy</span>
                 <span class="meta-value" style="color:{energyColor(selected.energyLevel)}"
                     >{selected.energyLevel}</span
                 >
             </div>
             <div class="field">
-                <label>Complexity</label>
+                <span class="field-label">Complexity</span>
                 <span class="meta-stars">{stars(selected.complexity)}</span>
             </div>
             <div class="card-subtitle">Properties</div>
             <div class="field">
-                <label>Particles</label>
-                <input type="number" value={nbParticles} disabled />
+                <label for="gallery-particles">Particles</label>
+                <input id="gallery-particles" type="number" value={nbParticles} disabled />
             </div>
             <div class="field">
-                <label>H cells</label>
-                <input type="number" value={horizontalResolution} disabled />
+                <label for="gallery-hcells">H cells</label>
+                <input id="gallery-hcells" type="number" value={horizontalResolution} disabled />
                 <span class="dim">{horizontalResolution * maxAttractionRadius}px</span>
             </div>
             <div class="field">
-                <label>V cells</label>
-                <input type="number" value={verticalResolution} disabled />
+                <label for="gallery-vcells">V cells</label>
+                <input id="gallery-vcells" type="number" value={verticalResolution} disabled />
                 <span class="dim">{verticalResolution * maxAttractionRadius}px</span>
             </div>
             <div class="field">
-                <label>Max radius</label>
-                <input type="number" value={maxAttractionRadius} disabled />
+                <label for="gallery-maxradius">Max radius</label>
+                <input id="gallery-maxradius" type="number" value={maxAttractionRadius} disabled />
             </div>
             <div class="proportion-list">
                 {#each COLORS as c}
@@ -459,7 +463,8 @@
         margin-bottom: 0;
     }
 
-    .field label {
+    .field label,
+    .field .field-label {
         font-size: 0.8rem;
         color: #90a4ae;
         width: 60px;
