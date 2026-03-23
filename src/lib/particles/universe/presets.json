@@ -564,7 +564,7 @@
         "verticalResolution": 20
     },
     {
-        "name": "Cellular strips 2",
+        "name": "Cellular strips 3",
         "description": "Shifted the matrix of repulsion horizontally.\n\nThere is much more spread (Probably due to the lack of internal group cohesion) to the full universe and that makes much more and thinner paths",
         "preferredInitialConfig": "center",
         "behavior": "converges",
