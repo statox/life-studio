@@ -53,10 +53,21 @@
         if (u) loadUniverse(u);
     };
 
+    const randomUniversesForDemo = [
+        '2 colors chase',
+        '2 colors chase - White attraction',
+        'Cellular strips 2',
+        'Cellular strips - Inner islands',
+        '4 colors worms',
+        '3 Colors - Stable islands',
+        'spatial repartition'
+    ].sort((_a, _b) => Math.random() - 1);
+    let randUniverseIndex = 0;
+
     const loadRandomUniverse = () => {
-        const randI = Math.floor(Math.random() * universes.length);
-        const u = universes[randI];
-        if (u) loadUniverse(u);
+        const name = randomUniversesForDemo[randUniverseIndex];
+        randUniverseIndex = (randUniverseIndex + 1) % randomUniversesForDemo.length;
+        loadByName(name);
     };
 
     const updateAttractionTable = (newTable: AttractionTable) => {
