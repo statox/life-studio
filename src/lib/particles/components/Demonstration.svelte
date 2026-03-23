@@ -105,19 +105,18 @@
             <h1>Particle Life</h1>
             <p>
                 This is Particles Life. This is the simulation of a small universe where a few
-                thoushands particles move freely and interract with each other.
+                thousand particles move freely and interact with each other.
             </p>
             <p>Press the next button a few times and observe these new universes coming to life.</p>
             <button on:click={() => loadRandomUniverse()}>Try a random universe</button>
             <p>
-                While all these universes follow a small set of physicial rules applied with
-                different parameters they produce a wide range of emergent behaviors. I made this
+                While all these universes follow a small set of physical rules applied with
+                different parameters, they produce a wide range of emergent behaviors. I made this
                 page to explain how this type of simulation works and provide some insights to
-                better understand how different parameters affect the outcomme in a reproducible
-                way.
+                better understand how different parameters affect the outcome in a reproducible way.
             </p>
             <p>
-                This whole page is a less performent and less polished version of <a
+                This whole page is a less performant and less polished version of <a
                     rel="noopener noreferrer"
                     target="none"
                     href="https://sandbox-science.com/particle-life">this tool</a
@@ -134,16 +133,16 @@
             <button on:click={() => loadByName('1 color still')}>Click me 1</button>
             <p>
                 Here we have a bunch of white particles initially spread in a circle and without any
-                force applied to them. Notice that at the very begining the cells in the center push
-                each other until everyone is far enough to not bother its neighbor. Then nothing
-                more happens...
+                force applied to them. Notice that at the very beginning the cells in the center
+                push each other until everyone is far enough to not bother its neighbors. Then
+                nothing more happens...
             </p>
             <p>So let's add our first force: Repulsion!</p>
             <button on:click={() => loadByName('1 color repulsion circle')}>Click me 2</button>
             <p>
-                Now every particle is repulsed by its neighbors, that makes the specie covering as
-                much space as need to have sufficient space between each individual so that no one
-                repulse the other.
+                Now every particle is repulsed by its neighbors, that makes the species covering as
+                much space as needed to have sufficient space between each individual so that no one
+                repulses the other.
             </p>
             <p>
                 Notice that this setup creates clusters: Some particles get repulsed into small
@@ -151,46 +150,12 @@
                 spread uniformly.
             </p>
             <button on:click={() => loadByName('1 color repulsion uniform')}>Click me 3</button>
-            <p>Inversely we can make particles attract each other</p>
+            <p>Inversely, we can make particles attract each other.</p>
             <button on:click={() => loadByName('1 color attraction uniform')}>Click me 4</button>
             <p>
                 Here clusters are much bigger and more compact as particles are grouped because they
                 attract each other and not because they are pushed against each other into a group.
-                Everything stabilize once all groups have attracted all the particles in they
-                attraction radius.
-            </p>
-        </section>
-
-        <!-- The Basics -->
-        <section>
-            <h2>The Basics</h2>
-            <p>Let's start by making a cleaner universe.</p>
-            <button on:click={() => loadByName('1 color still')}>Click me 1</button>
-            <p>
-                Here we have a bunch of white particles initially spread in a circle and without any
-                force applied to them. Notice that at the very begining the cells in the center push
-                each other until everyone is far enough to not bother its neighbor. Then nothing
-                more happens...
-            </p>
-            <p>So let's add our first force: Repulsion!</p>
-            <button on:click={() => loadByName('1 color repulsion circle')}>Click me 2</button>
-            <p>
-                Now every particle is repulsed by its neighbors, that makes the specie covering as
-                much space as need to have sufficient space between each individual so that no one
-                repulse the other.
-            </p>
-            <p>
-                Notice that this setup creates clusters: Some particles get repulses into small
-                groups which keep expanding. This is also visible when particles are initially
-                spread uniformly.
-            </p>
-            <button on:click={() => loadByName('1 color repulsion uniform')}>Click me 3</button>
-            <p>Inversely we can make particles attract each other</p>
-            <button on:click={() => loadByName('1 color attraction uniform')}>Click me 4</button>
-            <p>
-                Here clusters are much bigger and more compact as particles are groupes because they
-                attract each other and not because they are pushed against each other into a group.
-                Everything stabilize once all groups have attracted all the particles in they
+                Everything stabilizes once all groups have attracted all the particles in their
                 attraction radius.
             </p>
         </section>
@@ -200,12 +165,12 @@
             <h2>Species</h2>
             <p>
                 To make all of this more interesting we need to add more particle species we
-                differenciate with their color. Click to introduce red!
+                differentiate with their color. Click to introduce red!
             </p>
             <button on:click={() => loadByName('2 colors still')}>Click me 5</button>
             <p>
                 To begin, particles will only actively interact with other particles of the same
-                specy. White gets attracted by white by red is repulsed by red.
+                species. White gets attracted by white but red is repulsed by red.
             </p>
             <button on:click={() => loadByName('2 colors inverse forces')}>Click me 6</button>
             <p>
@@ -214,47 +179,54 @@
             </p>
             <p>
                 Now let's create inter-species attraction! Here red is attracted by white and white
-                is attracted by red but particles don't interact with their own specie. This create
-                filament-like structure which quickly converge into bi-color clusters: Inter-species
-                rules can create more complex structures.
+                is attracted by red but particles don't interact with their own species. This
+                creates filament-like structures which quickly converge into bi-color clusters:
+                Inter-species rules can create more complex structures.
             </p>
             <button on:click={() => loadByName('2 colors stable attraction')}>Click me 7</button>
             <p>
-                And if we combine inter-species attraction with intra-specie repulsion the particles
-                will pave the space trying to get as close as possible to their prefered color while
-                pushing away their siblings.
+                And if we combine inter-species attraction with intra-species repulsion the
+                particles will pave the space trying to get as close as possible to their preferred
+                color while pushing away their siblings.
             </p>
             <button on:click={() => loadByName('2 colors stable attraction inner repulsion')}
                 >Click me 9</button
             >
             <p>
                 But let's add some motion here! If white is very attracted to red but red is
-                strongly repulsed by white we create a trusting force: When a binome of cells of
+                strongly repulsed by white we create a thrusting force: When a pair of cells of
                 different colors is close to each other the chasing starts! And with enough
-                particles we see appearing waves of white chasing waves of red. While everythings
+                particles we see waves of white chasing waves of red appearing. While everything
                 looks pretty random we can still clearly see a common pattern.
             </p>
             <button on:click={() => loadByName('2 colors chase')}>Click me 8</button>
             <p>
                 Let's add some order in this chaos by enabling intra-species attraction: We keep the
-                white-red trusting force we created because but we add clusters of self-attracting
-                species. And we end up with our most simple moving structures!
+                white-red thrusting force we created but we add clusters of self-attracting species.
+                And we end up with our simplest moving structures!
             </p>
             <button on:click={() => loadByName('2 colors structured chase')}>Click me 9</button>
             <p>
-                See these small, inefficient white-red organism moving around their universe and
+                See these small, inefficient white-red organisms moving around their universe and
                 gobbling each other. Since everything is strongly attracted the universe shortly
-                stabilize as the red-white groups get sufficiently faw away from each other.
+                stabilizes as the red-white groups get sufficiently far away from each other.
             </p>
             <p>
-                But this is the very begining of what we want to obverse with this tool: Complex
-                behaviors emerging of simple rules
+                But this is the very beginning of what we want to observe with this tool: Complex
+                behaviors emerging from simple rules.
             </p>
         </section>
 
         <!-- Emergent Complexity -->
         <section>
             <h2>Emergent Complexity</h2>
+            <!--
+                TODO Universes to add:
+                - Cellular Strips 2
+                - 4 colors worms
+                - 3 colors stable islands
+            -->
+
             <p class="placeholder">[Complexity explanation goes here]</p>
             <div class="preset-btns">
                 <button on:click={() => loadByName('2 colors own repulsion')}
