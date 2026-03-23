@@ -1,48 +1,70 @@
 import type { Callback } from '$lib/tsUtils';
-import { getZeroedAttractionTable } from '$lib/particles/attraction';
+import { attractionTableToMatrix } from '$lib/particles/attraction';
 import type { AttractionTable } from '$lib/particles/attraction';
-import { CellsMap } from '$lib/particles/cellsMap';
-import { colorToIndex } from './colors';
-import { updateCellPos } from './math';
+import { COLORS } from './colors';
+import { cellsToParticles } from './particles';
+import type { Particles } from './particles';
+import { createSpatialGrid, rebuildSpatialGrid } from '$lib/particles/spatialGrid';
+import type { SpatialGrid } from '$lib/particles/spatialGrid';
 import type { Cell, WorldSize } from './types';
 
 export const CELL_RADIUS = 3;
 
 export class Engine {
     _stepTimeout: ReturnType<typeof setTimeout> | undefined;
-    _stepCb: Callback<Cell[]>;
+    _stepCb: Callback<Particles>;
     _running: boolean;
-    _cellsMap: CellsMap;
     _forceWorkers: Worker[];
-    _pullAppartAtStart: boolean;
+    _grid: SpatialGrid;
+    _velX: Float32Array;
+    _velY: Float32Array;
+    _maxAttractionRadius: number;
     attractionTable: AttractionTable;
+    attractionMatrix: Float32Array;
     worldSize: WorldSize;
-    cells: Cell[];
+    particles: Particles;
 
     constructor(
         cells: Cell[],
         attractionTable: AttractionTable,
         worldSize: WorldSize,
-        maxAttractionRadius: number,
-        params: {
-            pullAppartAtStart: boolean;
-        }
+        maxAttractionRadius: number
     ) {
         this._stepTimeout = undefined;
-        this._stepCb = console.log; // The actual function is provided to run()
+        this._stepCb = console.log;
         this._running = false;
-        this._pullAppartAtStart = params.pullAppartAtStart;
-        this.cells = cells;
-        this.attractionTable = attractionTable;
         this.worldSize = worldSize;
+        this.attractionTable = attractionTable;
+        this.attractionMatrix = attractionTableToMatrix(attractionTable);
+        this._maxAttractionRadius = maxAttractionRadius;
 
-        this._cellsMap = new CellsMap({ worldSize: this.worldSize, maxAttractionRadius });
+        // Convert Cell[] to Struct-of-Arrays (one-time cost)
+        this.particles = cellsToParticles(cells);
 
-        for (const cell of this.cells) {
-            this._cellsMap.insert(cell);
-        }
+        // Velocity scratch buffers (only used within step())
+        this._velX = new Float32Array(this.particles.count);
+        this._velY = new Float32Array(this.particles.count);
 
-        // Spawn force sub-workers (leave one thread for the simulation coordinator)
+        // Create flat spatial grid
+        const gridCols = worldSize.x / maxAttractionRadius;
+        const gridRows = worldSize.y / maxAttractionRadius;
+        this._grid = createSpatialGrid({
+            cols: gridCols,
+            rows: gridRows,
+            particleCount: this.particles.count
+        });
+
+        // Build initial grid
+        rebuildSpatialGrid({
+            grid: this._grid,
+            posX: this.particles.posX,
+            posY: this.particles.posY,
+            particleCount: this.particles.count,
+            worldWidth: worldSize.x,
+            worldHeight: worldSize.y
+        });
+
+        // Spawn force sub-workers
         const numWorkers = Math.max(1, Math.min((self.navigator?.hardwareConcurrency ?? 4) - 1, 8));
         this._forceWorkers = Array.from(
             { length: numWorkers },
@@ -50,26 +72,14 @@ export class Engine {
         );
     }
 
-    async run(stepCallback: Callback<Cell[]>) {
+    async run(stepCallback: Callback<Particles>) {
         this._stepCb = stepCallback;
-
-        // This is legacy from the first version of the code but it seems mostly useless
-        // as the simulation runs well without this initial pull appart
-        // Simulations are now started with pullAppartAtStart set to false
-        if (this._pullAppartAtStart) {
-            const realTable = this.attractionTable;
-            this.attractionTable = getZeroedAttractionTable();
-            for (let i = 0; i < 100; i++) {
-                await this.step();
-            }
-            this.attractionTable = realTable;
-        }
-
         this._running = true;
+
         const runSteps = async () => {
             if (this._running) {
                 await this.step();
-                this._stepCb(undefined, this.cells);
+                this._stepCb(undefined, this.particles);
             }
             this._stepTimeout = setTimeout(runSteps);
         };
@@ -98,56 +108,58 @@ export class Engine {
 
     updateAttractionTable(newAttractionTable: AttractionTable) {
         this.attractionTable = newAttractionTable;
+        this.attractionMatrix = attractionTableToMatrix(newAttractionTable);
     }
 
     async step() {
-        const n = this.cells.length;
+        const { count, posX, posY, colors } = this.particles;
+        const velX = this._velX;
+        const velY = this._velY;
         const numWorkers = this._forceWorkers.length;
 
-        // Serialize cell data into flat typed arrays for fast transfer
-        const positions = new Float32Array(n * 2);
-        const colors = new Uint8Array(n);
-        for (let i = 0; i < n; i++) {
-            positions[i * 2] = this.cells[i].pos.x;
-            positions[i * 2 + 1] = this.cells[i].pos.y;
-            colors[i] = colorToIndex(this.cells[i].color);
-        }
+        // Rebuild spatial grid each frame (counting sort — no allocation after init)
+        rebuildSpatialGrid({
+            grid: this._grid,
+            posX,
+            posY,
+            particleCount: count,
+            worldWidth: this.worldSize.x,
+            worldHeight: this.worldSize.y
+        });
 
-        // Serialize CellsMap squares as plain arrays (structured-cloned to each worker)
-        const squaresFlat = this._cellsMap.squares.map((row) => row.map((set) => [...set]));
-        const squareCols = this._cellsMap.squares[0].length;
-        const squareRows = this._cellsMap.squares.length;
+        const maxAttractionRadiusSqrd = this._maxAttractionRadius * this._maxAttractionRadius;
+        const minDistanceSqrd = (2 * CELL_RADIUS) ** 2;
+        const halfWorldX = this.worldSize.x / 2;
+        const halfWorldY = this.worldSize.y / 2;
 
-        const smallestDimension = Math.min(this.worldSize.x, this.worldSize.y);
-        const halfWorldDistance = (smallestDimension * smallestDimension) / 2;
-        const maxAttractionRadius = this._cellsMap.maxAttractionRadius;
-        const maxAttractionRadiusSqrd = maxAttractionRadius * maxAttractionRadius;
-        const cellRadius = CELL_RADIUS;
-        const minDistanceSqrd = (2 * cellRadius) ** 2;
-
-        // Dispatch each slice to a force worker in parallel
-        const chunkSize = Math.ceil(n / numWorkers);
+        // Dispatch slices to force workers
+        const chunkSize = Math.ceil(count / numWorkers);
         const promises = this._forceWorkers.map((worker, idx) => {
             const startIdx = idx * chunkSize;
-            const endIdx = Math.min(startIdx + chunkSize, n);
-            if (startIdx >= n) return Promise.resolve(null);
+            const endIdx = Math.min(startIdx + chunkSize, count);
+            if (startIdx >= count) return Promise.resolve(null);
 
             return new Promise<{ velX: Float32Array; velY: Float32Array; startIdx: number }>(
                 (resolve) => {
                     worker.onmessage = (e) => resolve(e.data);
                     worker.postMessage({
-                        positions,
+                        posX,
+                        posY,
                         colors,
-                        squaresFlat,
-                        squareCols,
-                        squareRows,
-                        worldSize: this.worldSize,
-                        attractionTable: this.attractionTable,
+                        gridOffsets: this._grid.cellOffsets,
+                        gridIndices: this._grid.particleIndices,
+                        gridCols: this._grid.cols,
+                        gridRows: this._grid.rows,
+                        worldSizeX: this.worldSize.x,
+                        worldSizeY: this.worldSize.y,
+                        attractionMatrix: this.attractionMatrix,
+                        numColors: COLORS.length,
                         startIdx,
                         endIdx,
                         maxAttractionRadiusSqrd,
                         minDistanceSqrd,
-                        halfWorldDistance
+                        halfWorldX,
+                        halfWorldY
                     });
                 }
             );
@@ -155,20 +167,31 @@ export class Engine {
 
         const results = await Promise.all(promises);
 
-        // Apply velocities from all workers
+        // Apply velocities and update positions in one pass
+        const wsx = this.worldSize.x;
+        const wsy = this.worldSize.y;
+
         for (const result of results) {
             if (!result) continue;
-            const { velX, velY, startIdx } = result;
-            for (let j = 0; j < velX.length; j++) {
-                this.cells[startIdx + j].vel.x = velX[j];
-                this.cells[startIdx + j].vel.y = velY[j];
+            const rVelX = result.velX;
+            const rVelY = result.velY;
+            const start = result.startIdx;
+            for (let j = 0; j < rVelX.length; j++) {
+                velX[start + j] = rVelX[j];
+                velY[start + j] = rVelY[j];
             }
         }
 
-        // Update all positions and CellsMap after all forces are computed
-        for (const cell of this.cells) {
-            updateCellPos(this.worldSize, cell);
-            this._cellsMap.updateCell(cell);
+        // Update positions with wrapping
+        for (let i = 0; i < count; i++) {
+            let px = posX[i] + velX[i];
+            let py = posY[i] + velY[i];
+            if (px <= 0) px += wsx;
+            else if (px >= wsx) px -= wsx;
+            if (py <= 0) py += wsy;
+            else if (py >= wsy) py -= wsy;
+            posX[i] = px;
+            posY[i] = py;
         }
     }
 }

@@ -1,6 +1,7 @@
 import type { Callback } from '$lib/tsUtils';
 import { Engine } from './Engine';
-import type { Cell, EngineRequest } from './types';
+import type { EngineRequest } from './types';
+import type { Particles } from './particles';
 
 let engine: Engine;
 onmessage = (request: MessageEvent<EngineRequest>) => {
@@ -11,10 +12,8 @@ onmessage = (request: MessageEvent<EngineRequest>) => {
         if (engine) {
             engine.destroy();
         }
-        engine = new Engine(cells, attractionTable, worldSize, maxAttractionRadius, {
-            pullAppartAtStart: false
-        });
-        engine.run(onUpdatedCells);
+        engine = new Engine(cells, attractionTable, worldSize, maxAttractionRadius);
+        engine.run(onUpdatedParticles);
     }
 
     if (msg === 'pause') {
@@ -36,14 +35,16 @@ onmessage = (request: MessageEvent<EngineRequest>) => {
     }
 };
 
-const onUpdatedCells: Callback<Cell[]> = (error, cells) => {
-    if (error) {
-        throw error;
-    }
-    if (!cells) {
-        throw new Error('No cells in engine step cb');
-    }
+const onUpdatedParticles: Callback<Particles> = (error, particles) => {
+    if (error) throw error;
+    if (!particles) throw new Error('No particles in engine step cb');
 
-    const positions = cells.map((c) => c.pos);
-    postMessage({ positions });
+    // Send interleaved positions as Float32Array [x0,y0,x1,y1,...]
+    const n = particles.count;
+    const positions = new Float32Array(n * 2);
+    for (let i = 0; i < n; i++) {
+        positions[i * 2] = particles.posX[i];
+        positions[i * 2 + 1] = particles.posY[i];
+    }
+    postMessage({ positions }, { transfer: [positions.buffer] });
 };

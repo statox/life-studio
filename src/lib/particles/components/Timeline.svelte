@@ -1,14 +1,11 @@
 <script lang="ts">
-    import type { Coordinates, Cell } from '$lib/particles/engine';
-
     const MAX_PAST_FRAMES = 1000;
     const MAX_UPCOMING_FRAMES = 180;
     const RESUME_UPCOMING_THRESHOLD = 60;
 
-    export let buffer: Coordinates[][];
+    export let buffer: Float32Array[];
     export let displayIndex: number;
     export let absoluteFrameOffset: number;
-    export let cells: Cell[];
     export let isFullscreen: boolean;
     export let onToggleFullscreen: () => void;
     export let onPauseEngine: () => void;
@@ -47,20 +44,12 @@
             displayIndex++;
             tickFPS();
 
-            // Trim old frames (only during playback, not manual scrub)
+            // Trim old frames
             if (displayIndex > MAX_PAST_FRAMES) {
                 const trimCount = displayIndex - MAX_PAST_FRAMES;
                 buffer.splice(0, trimCount);
                 displayIndex -= trimCount;
                 absoluteFrameOffset += trimCount;
-            }
-        }
-
-        // Apply current frame positions to cells
-        if (buffer.length > 0 && displayIndex < buffer.length) {
-            const positions = buffer[displayIndex];
-            if (positions && positions.length === cells.length) {
-                for (let i = 0; i < cells.length; i++) cells[i].pos = positions[i];
             }
         }
 

@@ -5,12 +5,14 @@
     import Timeline from '$lib/particles/components/Timeline.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
     import { createSimulationWorker } from '$lib/particles/engine/simulationWorker';
-    import type { Cell, Coordinates } from '$lib/particles/engine';
+    import type { Cell } from '$lib/particles/engine';
+    import { colorToIndex } from '$lib/particles/engine';
 
     const sim = createSimulationWorker();
 
-    let cells: Cell[] = [];
-    let buffer: Coordinates[][] = [];
+    let numParticles = 0;
+    let colorIndices: Uint8Array = new Uint8Array(0);
+    let buffer: Float32Array[] = [];
     let displayIndex = 0;
     let absoluteFrameOffset = 0;
 
@@ -43,11 +45,22 @@
         absoluteFrameOffset = 0;
 
         savedAttractionTable = params.attractionTable || savedAttractionTable;
-        cells = params.cells;
         savedWorldSize = params.worldSize || savedWorldSize;
         savedMaxAttractionRadius = params.maxAttractionRadius || savedMaxAttractionRadius;
 
-        if (!savedAttractionTable || !cells || !savedWorldSize || !savedMaxAttractionRadius) {
+        // Extract color indices once (colors don't change during sim)
+        numParticles = params.cells.length;
+        colorIndices = new Uint8Array(numParticles);
+        for (let i = 0; i < numParticles; i++) {
+            colorIndices[i] = colorToIndex(params.cells[i].color);
+        }
+
+        if (
+            !savedAttractionTable ||
+            !params.cells ||
+            !savedWorldSize ||
+            !savedMaxAttractionRadius
+        ) {
             throw new Error('Missing parameters to start simulation');
         }
 
@@ -55,10 +68,10 @@
             {
                 worldSize: savedWorldSize,
                 maxAttractionRadius: savedMaxAttractionRadius,
-                cells: cells,
+                cells: params.cells,
                 attractionTable: savedAttractionTable
             },
-            (positions) => {
+            (positions: Float32Array) => {
                 buffer.push(positions);
                 buffer = buffer;
             }
@@ -68,7 +81,9 @@
     export const updateAttractionTable = (newTable: AttractionTable) => {
         sim.updateAttractionTable(newTable);
         savedAttractionTable = newTable;
-        buffer = [cells.map((c) => c.pos)];
+        // Keep the current frame so Canvas doesn't go blank, discard stale frames
+        const currentFrame = buffer[displayIndex];
+        buffer = currentFrame ? [currentFrame] : [];
         displayIndex = 0;
         absoluteFrameOffset = 0;
     };
@@ -98,13 +113,18 @@
         return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
     });
     onDestroy(() => sim.destroy());
+
+    $: currentPositions =
+        buffer.length > 0 && displayIndex < buffer.length ? buffer[displayIndex] : null;
 </script>
 
 <div class="sim">
     <!-- Canvas -->
     <div class="canvas-wrap" bind:this={canvasWrap}>
         <Canvas
-            {cells}
+            positions={currentPositions}
+            {colorIndices}
+            {numParticles}
             {worldSize}
             {cellSize}
             {showColors}
@@ -118,7 +138,6 @@
         bind:buffer
         bind:displayIndex
         bind:absoluteFrameOffset
-        {cells}
         {isFullscreen}
         onToggleFullscreen={toggleFullscreen}
         onPauseEngine={() => sim.pause()}

@@ -8,11 +8,13 @@
 
     import { onMount } from 'svelte';
     import { linearMap } from '$lib/particles/attraction';
-    import { COLORS, colorToIndex, PARTICLE_COLORS } from '../engine';
-    import type { Cell, Coordinates } from '../engine';
+    import { COLORS, PARTICLE_COLORS } from '../engine';
+    import type { Coordinates } from '../engine';
 
     export let cellSize: number;
-    export let cells: Cell[];
+    export let positions: Float32Array | null;
+    export let colorIndices: Uint8Array;
+    export let numParticles: number;
     export let worldSize: Coordinates;
     export let drewFrame: () => void;
     export let showColors: boolean;
@@ -45,13 +47,17 @@
         ctx.fillStyle = backgroundColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        if (!cells?.length) return;
+        if (!positions || numParticles === 0) return;
 
-        for (let i = 0; i < cells.length; i++) {
-            const cell = cells[i];
-            const x = Math.floor(linearMap(cell.pos.x, 0, worldSize.x, 0, canvas.width));
-            const y = Math.floor(linearMap(cell.pos.y, 0, worldSize.y, 0, canvas.height));
-            const c = showColors ? colorToIndex(cell.color) : 0;
+        const cw = canvas.width;
+        const ch = canvas.height;
+        const wsx = worldSize.x;
+        const wsy = worldSize.y;
+
+        for (let i = 0; i < numParticles; i++) {
+            const x = Math.floor(linearMap(positions[i * 2], 0, wsx, 0, cw));
+            const y = Math.floor(linearMap(positions[i * 2 + 1], 0, wsy, 0, ch));
+            const c = showColors ? colorIndices[i] : 0;
             ctx.drawImage(off, c * d, 0, d, d, x - r, y - r, d, d);
         }
         drewFrame();

@@ -1,34 +1,5 @@
-import type { Color } from '$lib/particles/engine';
+import { COLORS } from '$lib/particles/engine';
 import type { AttractionTable } from './types';
-
-export const getAttractionForce = (
-    attractionTable: AttractionTable,
-    maxAttractionRadiusSqrd: number,
-    minDistanceSqrd: number,
-    distSqrd: number,
-    colorA: Color,
-    colorB: Color
-) => {
-    if (distSqrd > maxAttractionRadiusSqrd) {
-        return 0;
-    }
-    // push cells apart if they are too close
-    if (distSqrd < minDistanceSqrd) {
-        return -1;
-    }
-
-    const attractionValue = attractionTable[colorA][colorB] ?? 0;
-    if (attractionValue === 0) {
-        return 0;
-    }
-    return triangleMap(
-        distSqrd,
-        maxAttractionRadiusSqrd / 2,
-        maxAttractionRadiusSqrd,
-        0,
-        attractionValue
-    );
-};
 
 const triangleMap = function (
     n: number,
@@ -61,4 +32,47 @@ export const linearMap = function (
 
 const constrain = function (n: number, low: number, high: number) {
     return Math.max(Math.min(n, high), low);
+};
+
+/**
+ * Convert string-keyed AttractionTable to a flat Float32Array(16) for fast numeric lookup.
+ * Layout: matrix[selfColor * 4 + otherColor]
+ */
+export const attractionTableToMatrix = (table: AttractionTable): Float32Array => {
+    const n = COLORS.length;
+    const matrix = new Float32Array(n * n);
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            matrix[i * n + j] = table[COLORS[i]][COLORS[j]] ?? 0;
+        }
+    }
+    return matrix;
+};
+
+/**
+ * Force calculation using numeric color indices and flat matrix.
+ * Avoids string property lookups in the hot loop.
+ */
+export const getAttractionForceNumeric = (
+    matrix: Float32Array,
+    numColors: number,
+    maxAttractionRadiusSqrd: number,
+    minDistanceSqrd: number,
+    distSqrd: number,
+    colorA: number,
+    colorB: number
+): number => {
+    if (distSqrd > maxAttractionRadiusSqrd) return 0;
+    if (distSqrd < minDistanceSqrd) return -1;
+
+    const attractionValue = matrix[colorA * numColors + colorB];
+    if (attractionValue === 0) return 0;
+
+    return triangleMap(
+        distSqrd,
+        maxAttractionRadiusSqrd / 2,
+        maxAttractionRadiusSqrd,
+        0,
+        attractionValue
+    );
 };

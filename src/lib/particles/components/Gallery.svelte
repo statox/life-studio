@@ -112,7 +112,12 @@
                 aria-selected={i === selectedIndex}
                 tabindex="0"
                 on:click={() => selectUniverse(i)}
-                on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectUniverse(i); } }}
+                on:keydown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        selectUniverse(i);
+                    }
+                }}
             >
                 <div class="universe-item-row">
                     <span class="universe-item-name">{u.name}</span>

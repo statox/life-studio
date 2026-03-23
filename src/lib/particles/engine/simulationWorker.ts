@@ -1,8 +1,8 @@
 import type { AttractionTable } from '$lib/particles/attraction';
-import type { Cell, Coordinates, UpdateCellsResponse } from './types';
+import type { Cell, UpdateCellsResponse } from './types';
 
 export type SimulationParameters = {
-    worldSize: Coordinates;
+    worldSize: { x: number; y: number };
     maxAttractionRadius: number;
     attractionTable: AttractionTable;
     cells: Cell[];
@@ -20,7 +20,7 @@ export function createSimulationWorker() {
 
     const start = async (
         params: SimulationParameters,
-        onFrame: (positions: Coordinates[]) => void
+        onFrame: (positions: Float32Array) => void
     ) => {
         await loadWorker();
         const { worldSize, maxAttractionRadius, attractionTable, cells } = params;

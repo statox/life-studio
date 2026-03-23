@@ -48,5 +48,5 @@ export type EngineRequest =
     | DestroyEngineRequest;
 
 export type UpdateCellsResponse = {
-    positions: Coordinates[];
+    positions: Float32Array;
 };
