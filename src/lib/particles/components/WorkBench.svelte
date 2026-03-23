@@ -16,6 +16,8 @@
     import type { Cell } from '$lib/particles/engine';
     import Simulation from './Simulation.svelte';
     import UniverseExportModal from './UniverseExportModal.svelte';
+    import PresetSelector from './PresetSelector.svelte';
+    import type { StoredUniverse } from '$lib/particles/universe';
 
     let simulationComponent: Simulation;
 
@@ -71,6 +73,21 @@
         }, 750);
     };
 
+    const loadPreset = (u: StoredUniverse) => {
+        attractionTable = u.attractionTable;
+        colorWeights = u.colorWeights;
+        nbParticles = u.nbParticles;
+        maxAttractionRadius = u.maxAttractionRadius;
+        horizontalResolution = u.horizontalResolution;
+        verticalResolution = u.verticalResolution;
+        worldSize.x = u.maxAttractionRadius * u.horizontalResolution;
+        worldSize.y = u.maxAttractionRadius * u.verticalResolution;
+        cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
+        if (u.preferredInitialConfig === 'center') centerCellsInPlace(cells, worldSize);
+        if (u.preferredInitialConfig === 'rainbow') rainbowCellsInPlace(cells, worldSize);
+        startSim();
+    };
+
     const randomCells = () => {
         cells = getNewCells(worldSize, nbParticles, colorWeights);
         simulationComponent?.updateCells(cells);
@@ -117,6 +134,9 @@
     <div class="panels">
         <div class="card">
             <div class="card-title">Cells</div>
+            <div class="preset-wrap">
+                <PresetSelector onSelect={loadPreset} />
+            </div>
             <div class="btn-stack">
                 <button on:click={randomCells}>↺ Uniform spread</button>
                 <button on:click={largeCenterCells}>◎ Centered circle</button>
@@ -264,6 +284,10 @@
         max-width: 1200px;
         margin: 0 auto;
         box-sizing: border-box;
+    }
+
+    .preset-wrap {
+        margin-bottom: 8px;
     }
 
     /* ── Panels grid ─────────────────────────── */
