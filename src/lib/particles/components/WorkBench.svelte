@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, tick } from 'svelte';
 
     import AttractionTablePanel from '$lib/particles/components/AttractionTablePanel.svelte';
     import KeyboardShortcuts from '$lib/particles/components/KeyboardShortcuts.svelte';
@@ -26,6 +26,7 @@
 
     let showColors = true;
     let maxFPS = 60;
+    let useWorkers = true;
 
     let maxAttractionRadius = 32;
     let nbParticles = 4000;
@@ -132,7 +133,15 @@
         </div>
     </div>
 
-    <Simulation bind:this={simulationComponent} />
+    <Simulation
+        bind:this={simulationComponent}
+        {useWorkers}
+        onToggleWorkers={async () => {
+            useWorkers = !useWorkers;
+            await tick();
+            startSim();
+        }}
+    />
 
     <div class="panels">
         <!-- Simulation controls -->

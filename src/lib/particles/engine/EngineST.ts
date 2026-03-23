@@ -7,15 +7,15 @@ import type { Particles } from './particles';
 import { createSpatialGrid, rebuildSpatialGrid } from '$lib/particles/spatialGrid';
 import type { SpatialGrid } from '$lib/particles/spatialGrid';
 import type { Cell, WorldSize } from './types';
+import { computeForces } from './computeForces';
 
 export const CELL_RADIUS = 3;
 
-/* Web worker based engine */
-export class Engine {
+/* Single thread engine */
+export class EngineST {
     _stepTimeout: ReturnType<typeof setTimeout> | undefined;
     _stepCb: Callback<Particles>;
     _running: boolean;
-    _forceWorkers: Worker[];
     _grid: SpatialGrid;
     _velX: Float32Array;
     _velY: Float32Array;
@@ -64,13 +64,6 @@ export class Engine {
             worldWidth: worldSize.x,
             worldHeight: worldSize.y
         });
-
-        // Spawn force sub-workers
-        const numWorkers = Math.max(1, Math.min((self.navigator?.hardwareConcurrency ?? 4) - 1, 8));
-        this._forceWorkers = Array.from(
-            { length: numWorkers },
-            () => new Worker(new URL('./force.worker.ts', import.meta.url), { type: 'module' })
-        );
     }
 
     async run(stepCallback: Callback<Particles>) {
@@ -89,10 +82,6 @@ export class Engine {
 
     destroy() {
         clearTimeout(this._stepTimeout);
-        for (const w of this._forceWorkers) {
-            w.terminate();
-        }
-        this._forceWorkers = [];
     }
 
     pause() {
@@ -116,7 +105,6 @@ export class Engine {
         const { count, posX, posY, colors } = this.particles;
         const velX = this._velX;
         const velY = this._velY;
-        const numWorkers = this._forceWorkers.length;
 
         // Rebuild spatial grid each frame (counting sort — no allocation after init)
         rebuildSpatialGrid({
@@ -133,57 +121,37 @@ export class Engine {
         const halfWorldX = this.worldSize.x / 2;
         const halfWorldY = this.worldSize.y / 2;
 
-        // Dispatch slices to force workers
-        const chunkSize = Math.ceil(count / numWorkers);
-        const promises = this._forceWorkers.map((worker, idx) => {
-            const startIdx = idx * chunkSize;
-            const endIdx = Math.min(startIdx + chunkSize, count);
-            if (startIdx >= count) return Promise.resolve(null);
-
-            return new Promise<{ velX: Float32Array; velY: Float32Array; startIdx: number }>(
-                (resolve) => {
-                    worker.onmessage = (e) => resolve(e.data);
-                    worker.postMessage({
-                        posX,
-                        posY,
-                        colors,
-                        gridOffsets: this._grid.cellOffsets,
-                        gridIndices: this._grid.particleIndices,
-                        gridCols: this._grid.cols,
-                        gridRows: this._grid.rows,
-                        worldSizeX: this.worldSize.x,
-                        worldSizeY: this.worldSize.y,
-                        attractionMatrix: this.attractionMatrix,
-                        numColors: COLORS.length,
-                        startIdx,
-                        endIdx,
-                        maxAttractionRadiusSqrd,
-                        minDistanceSqrd,
-                        halfWorldX,
-                        halfWorldY
-                    });
-                }
-            );
+        const result = computeForces({
+            posX,
+            posY,
+            colors,
+            gridOffsets: this._grid.cellOffsets,
+            gridIndices: this._grid.particleIndices,
+            gridCols: this._grid.cols,
+            gridRows: this._grid.rows,
+            worldSizeX: this.worldSize.x,
+            worldSizeY: this.worldSize.y,
+            attractionMatrix: this.attractionMatrix,
+            numColors: COLORS.length,
+            startIdx: 0,
+            endIdx: count,
+            maxAttractionRadiusSqrd,
+            minDistanceSqrd,
+            halfWorldX,
+            halfWorldY
         });
 
-        const results = await Promise.all(promises);
-
-        // Apply velocities and update positions in one pass
-        const wsx = this.worldSize.x;
-        const wsy = this.worldSize.y;
-
-        for (const result of results) {
-            if (!result) continue;
-            const rVelX = result.velX;
-            const rVelY = result.velY;
-            const start = result.startIdx;
-            for (let j = 0; j < rVelX.length; j++) {
-                velX[start + j] = rVelX[j];
-                velY[start + j] = rVelY[j];
-            }
+        const rVelX = result.velX;
+        const rVelY = result.velY;
+        for (let j = 0; j < rVelX.length; j++) {
+            velX[j] = rVelX[j];
+            velY[j] = rVelY[j];
         }
 
         // Update positions with wrapping
+        const wsx = this.worldSize.x;
+        const wsy = this.worldSize.y;
+
         for (let i = 0; i < count; i++) {
             let px = posX[i] + velX[i];
             let py = posY[i] + velY[i];

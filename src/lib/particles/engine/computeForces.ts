@@ -1,6 +1,6 @@
 import { getAttractionForceNumeric } from '$lib/particles/attraction';
 
-type ForceWorkerRequest = {
+export type ComputeForcesParams = {
     posX: Float32Array;
     posY: Float32Array;
     colors: Uint8Array;
@@ -20,7 +20,11 @@ type ForceWorkerRequest = {
     halfWorldY: number;
 };
 
-onmessage = (event: MessageEvent<ForceWorkerRequest>) => {
+export function computeForces(params: ComputeForcesParams): {
+    velX: Float32Array;
+    velY: Float32Array;
+    startIdx: number;
+} {
     const {
         posX,
         posY,
@@ -39,7 +43,7 @@ onmessage = (event: MessageEvent<ForceWorkerRequest>) => {
         minDistanceSqrd,
         halfWorldX,
         halfWorldY
-    } = event.data;
+    } = params;
 
     const count = endIdx - startIdx;
     const velX = new Float32Array(count);
@@ -132,5 +136,5 @@ onmessage = (event: MessageEvent<ForceWorkerRequest>) => {
         velY[i - startIdx] = vy;
     }
 
-    postMessage({ velX, velY, startIdx }, { transfer: [velX.buffer, velY.buffer] });
-};
+    return { velX, velY, startIdx };
+}

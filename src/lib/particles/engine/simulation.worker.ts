@@ -1,18 +1,23 @@
 import type { Callback } from '$lib/tsUtils';
 import { Engine } from './Engine';
+import { EngineST } from './EngineST';
 import type { EngineRequest } from './types';
 import type { Particles } from './particles';
 
-let engine: Engine;
+let engine: Engine | EngineST;
 onmessage = (request: MessageEvent<EngineRequest>) => {
     const { msg } = request.data;
 
     if (msg === 'start') {
-        const { cells, attractionTable, worldSize, maxAttractionRadius } = request.data;
+        const { cells, attractionTable, worldSize, maxAttractionRadius, useWorkers } = request.data;
         if (engine) {
             engine.destroy();
         }
-        engine = new Engine(cells, attractionTable, worldSize, maxAttractionRadius);
+        if (useWorkers === false) {
+            engine = new EngineST(cells, attractionTable, worldSize, maxAttractionRadius);
+        } else {
+            engine = new Engine(cells, attractionTable, worldSize, maxAttractionRadius);
+        }
         engine.run(onUpdatedParticles);
     }
 

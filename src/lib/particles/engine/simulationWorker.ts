@@ -6,6 +6,7 @@ export type SimulationParameters = {
     maxAttractionRadius: number;
     attractionTable: AttractionTable;
     cells: Cell[];
+    useWorkers?: boolean;
 };
 
 export function createSimulationWorker() {
@@ -23,7 +24,7 @@ export function createSimulationWorker() {
         onFrame: (positions: Float32Array) => void
     ) => {
         await loadWorker();
-        const { worldSize, maxAttractionRadius, attractionTable, cells } = params;
+        const { worldSize, maxAttractionRadius, attractionTable, cells, useWorkers } = params;
 
         if (!WorkerConstructor) throw new Error('Worker is not initialized');
         worker?.postMessage({ msg: 'destroy' });
@@ -35,7 +36,8 @@ export function createSimulationWorker() {
             cells,
             attractionTable,
             worldSize,
-            maxAttractionRadius
+            maxAttractionRadius,
+            useWorkers
         });
     };
 

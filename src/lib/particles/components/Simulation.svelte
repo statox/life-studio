@@ -16,6 +16,9 @@
     let displayIndex = 0;
     let absoluteFrameOffset = 0;
 
+    export let useWorkers = true;
+    export let onToggleWorkers: (() => void) | undefined = undefined;
+
     let showColors = true;
     let maxFPS = 60;
 
@@ -69,7 +72,8 @@
                 worldSize: savedWorldSize,
                 maxAttractionRadius: savedMaxAttractionRadius,
                 cells: params.cells,
-                attractionTable: savedAttractionTable
+                attractionTable: savedAttractionTable,
+                useWorkers
             },
             (positions: Float32Array) => {
                 buffer.push(positions);
@@ -133,16 +137,23 @@
         />
     </div>
     <!-- Timeline bar -->
-    <Timeline
-        bind:this={timeline}
-        bind:buffer
-        bind:displayIndex
-        bind:absoluteFrameOffset
-        {isFullscreen}
-        onToggleFullscreen={toggleFullscreen}
-        onPauseEngine={() => sim.pause()}
-        onUnpauseEngine={() => sim.unpause()}
-    />
+    <div class="timeline-row">
+        <Timeline
+            bind:this={timeline}
+            bind:buffer
+            bind:displayIndex
+            bind:absoluteFrameOffset
+            {isFullscreen}
+            onToggleFullscreen={toggleFullscreen}
+            onPauseEngine={() => sim.pause()}
+            onUnpauseEngine={() => sim.unpause()}
+        />
+        {#if onToggleWorkers}
+            <button class="engine-toggle" class:active={useWorkers} on:click={onToggleWorkers}>
+                {useWorkers ? '⚡ Multi-threaded' : '▶ Single-threaded'}
+            </button>
+        {/if}
+    </div>
 </div>
 
 <style>
@@ -155,6 +166,42 @@
         max-width: 1200px;
         margin: 0 auto;
         box-sizing: border-box;
+    }
+
+    .timeline-row {
+        display: flex;
+        align-items: stretch;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .timeline-row > :global(.timeline) {
+        flex: 1;
+        min-width: 230px;
+    }
+
+    .engine-toggle {
+        background: #1a2327;
+        border: 1px solid #37474f;
+        color: #cfd8dc;
+        border-radius: 8px;
+        padding: 6px 12px;
+        font-size: 0.82rem;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background 0.13s, border-color 0.13s;
+    }
+
+    .engine-toggle:hover {
+        background: #2e3c43;
+        border-color: #546e7a;
+        color: #eceff1;
+    }
+
+    .engine-toggle.active {
+        border-color: #c3e88d55;
+        color: #c3e88d;
     }
 
     .canvas-wrap {

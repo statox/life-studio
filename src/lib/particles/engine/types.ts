@@ -21,6 +21,7 @@ export type StartEngineRequest = {
     attractionTable: AttractionTable;
     worldSize: WorldSize;
     maxAttractionRadius: number;
+    useWorkers?: boolean;
 };
 
 export type PauseEngineRequest = {
