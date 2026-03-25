@@ -122,6 +122,17 @@
                 at a much higher resolution. Reading this page first will allow you to better appreciate
                 how truly amazing this other tool is.
             </p>
+
+            <div class="notice">
+                <p>
+                    This page was made to be browsed on a computer screen. The experience on mobile
+                    devices might suffer from the smaller screen.
+                </p>
+                <p>
+                    Also the simulations run directly in your browser so their smoothness is
+                    directly linked to the processing power of your device.
+                </p>
+            </div>
         </section>
 
         <!-- Controls -->
@@ -132,6 +143,7 @@
                 concepts and invites you to click on a button to update the simulation to a new
                 universe.
             </p>
+            <button on:click={() => loadByName('Complexe moving structures')}>Like this !</button>
             <p>
                 On the right you'll find the three controls that govern every universe in this
                 simulation. You can adjust them at any time while a universe is running, or use the
@@ -174,28 +186,27 @@
             <p>
                 Here we have a bunch of white particles initially spread in a circle and without any
                 force applied to them. Notice that at the very beginning the cells in the center
-                push each other until everyone is far enough to not bother its neighbors. Then
+                push each other until everyone is far enough to not overlap its neighbors. Then
                 nothing more happens...
             </p>
 
+            <p>So let's add our first force: Repulsion!</p>
+            <button on:click={() => loadByName('1 color repulsion spread')}>Add repulsion</button>
+            <p>
+                Now every particle is repulsed by its neighbors, that makes the species covering as
+                much space as needed to have sufficient space between each individual so that no one
+                repulses the other.
+            </p>
             <div class="notice">
                 <h4>Attraction Radius</h4>
                 Each particle has an attraction radius - a fixed circular neighborhood around it. Only
                 particles within this radius exert forces on it; everything outside is ignored entirely.
                 The radius is the same for all particles in a universe.
             </div>
-            <p>So let's add our first force: Repulsion!</p>
-            <button on:click={() => loadByName('1 color repulsion circle - few particles')}
-                >Add repulsion</button
-            >
-            <p>
-                Now every particle is repulsed by its neighbors, that makes the species covering as
-                much space as needed to have sufficient space between each individual so that no one
-                repulses the other.
-            </p>
+
             <p>
                 Notice that when the population size increases, the particles don't have enough
-                space to to have no neighbors in its attraction radius. That creates clusters where
+                space to have no neighbors in its attraction radius. That creates clusters where
                 some particles get repulsed into small compact groups. A universal small repulsion
                 force avoids the particles to overlap when they get too close.
             </p>
@@ -204,10 +215,10 @@
             <button on:click={() => loadByName('1 color attraction uniform')}>Use attraction</button
             >
             <p>
-                Here clusters are much bigger and more compact because particles are grouped pulled
-                together and not because they are pushed against each other into a group. Everything
-                stabilizes once all groups have attracted all the particles in their attraction
-                radius.
+                Here clusters are much bigger and more compact because particles are pulled together
+                into groups, unlike the previous settings where they were pushed against each other
+                into groups. Everything stabilizes once all groups have attracted all the particles
+                in their attraction radius.
             </p>
         </section>
 
@@ -215,7 +226,7 @@
         <section>
             <h2>Species</h2>
             <p>
-                To make all of this more interesting we need to add more particle species we
+                To make all of this more interesting we need to add more particle species that we
                 differentiate with their color. Click to introduce red!
             </p>
             <button on:click={() => loadByName('2 colors still')}>Create the red species</button>
@@ -279,10 +290,9 @@
             <h2>Three Species</h2>
             <p>
                 With only two species we've already seen how simple rules can produce rich
-                behaviors. Adding a third species expands the possibility space: instead of 4
-                inter-species values to tune, we now have 9. More importantly, the three-way
-                relationships interact in ways that are harder to predict that's where things get
-                interesting.
+                behaviors. Adding a third species expands the possibility space: instead of 4 forces
+                to tune, we now have 9. More importantly, the three-way relationships interact in
+                ways that are harder to predict: that's where things get interesting.
             </p>
 
             <h3>Equilibrium</h3>
