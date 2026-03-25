@@ -143,7 +143,9 @@
                 concepts and invites you to click on a button to update the simulation to a new
                 universe.
             </p>
-            <button on:click={() => loadByName('Complexe moving structures')}>Like this !</button>
+            <button class="universe-btn" on:click={() => loadByName('Complexe moving structures')}
+                >Like this !</button
+            >
             <p>
                 On the right you'll find the three controls that govern every universe in this
                 simulation. You can adjust them at any time while a universe is running, or use the
@@ -182,7 +184,9 @@
         <section>
             <h2>The Basics</h2>
             <p>Let's start by making a cleaner universe.</p>
-            <button on:click={() => loadByName('1 color still')}>Click me !</button>
+            <button class="universe-btn" on:click={() => loadByName('1 color still')}
+                >Click me !</button
+            >
             <p>
                 Here we have a bunch of white particles initially spread in a circle and without any
                 force applied to them. Notice that at the very beginning the cells in the center
@@ -191,7 +195,9 @@
             </p>
 
             <p>So let's add our first force: Repulsion!</p>
-            <button on:click={() => loadByName('1 color repulsion spread')}>Add repulsion</button>
+            <button class="universe-btn" on:click={() => loadByName('1 color repulsion spread')}
+                >Add repulsion</button
+            >
             <p>
                 Now every particle is repulsed by its neighbors, that makes the species covering as
                 much space as needed to have sufficient space between each individual so that no one
@@ -210,9 +216,12 @@
                 some particles get repulsed into small compact groups. A universal small repulsion
                 force avoids the particles to overlap when they get too close.
             </p>
-            <button on:click={() => loadByName('1 color repulsion uniform')}>More cells!</button>
+            <button class="universe-btn" on:click={() => loadByName('1 color repulsion uniform')}
+                >More cells!</button
+            >
             <p>Inversely, we can make particles attract each other.</p>
-            <button on:click={() => loadByName('1 color attraction uniform')}>Use attraction</button
+            <button class="universe-btn" on:click={() => loadByName('1 color attraction uniform')}
+                >Use attraction</button
             >
             <p>
                 Here clusters are much bigger and more compact because particles are pulled together
@@ -229,12 +238,14 @@
                 To make all of this more interesting we need to add more particle species that we
                 differentiate with their color. Click to introduce red!
             </p>
-            <button on:click={() => loadByName('2 colors still')}>Create the red species</button>
+            <button class="universe-btn" on:click={() => loadByName('2 colors still')}
+                >Create the red species</button
+            >
             <p>
                 To begin, particles will only actively interact with other particles of the same
                 species. White gets attracted by white but red is repulsed by red.
             </p>
-            <button on:click={() => loadByName('2 colors inverse forces')}
+            <button class="universe-btn" on:click={() => loadByName('2 colors inverse forces')}
                 >Add intra-species forces</button
             >
             <p>
@@ -247,7 +258,7 @@
                 creates filament-like structures which quickly converge into bi-color clusters:
                 Inter-species rules can create more complex structures.
             </p>
-            <button on:click={() => loadByName('2 colors stable attraction')}
+            <button class="universe-btn" on:click={() => loadByName('2 colors stable attraction')}
                 >Create inter-species attraction</button
             >
             <p>
@@ -255,7 +266,9 @@
                 particles will pave the space trying to get as close as possible to their preferred
                 color while pushing away their siblings.
             </p>
-            <button on:click={() => loadByName('2 colors stable attraction inner repulsion')}
+            <button
+                class="universe-btn"
+                on:click={() => loadByName('2 colors stable attraction inner repulsion')}
                 >Combine forces</button
             >
             <p>
@@ -265,13 +278,15 @@
                 see waves of white chasing waves of red appearing. While everything looks pretty
                 random we can still clearly see a common pattern.
             </p>
-            <button on:click={() => loadByName('2 colors chase')}>Motion !</button>
+            <button class="universe-btn" on:click={() => loadByName('2 colors chase')}
+                >Motion !</button
+            >
             <p>
                 Let's create some order in this chaos by enabling intra-species attraction: We keep
                 the white-red thrusting force we just created and we add clusters of self-attracting
                 species. We end up with our simplest moving structures!
             </p>
-            <button on:click={() => loadByName('2 colors structured chase')}
+            <button class="universe-btn" on:click={() => loadByName('2 colors structured chase')}
                 >Moving structures</button
             >
             <p>
@@ -302,21 +317,25 @@
                 bystanders. The result: tight red islands floating in a disorganized white-green
                 sea.
             </p>
-            <button on:click={() => loadByName('Islands')}>Make red islands</button>
+            <button class="universe-btn" on:click={() => loadByName('Islands')}
+                >Make red islands</button
+            >
             <p>
                 When all three species interact with each other, the equilibria become more
                 structured. Here everyone is attracted to everyone else, but red weakly repels
                 itself while the others don't. This imbalance causes red to spread into rings around
                 white-green cores, creating repeated layered islands across the universe.
             </p>
-            <button on:click={() => loadByName('3 Colors - Stable islands')}
+            <button class="universe-btn" on:click={() => loadByName('3 Colors - Stable islands')}
                 >Make layered islands</button
             >
             <p>
                 The equilibrium can take a long time to settle. And a balanced repartition of
                 attraction and repulsion allows for a wider spatial repartition.
             </p>
-            <button on:click={() => loadByName('spatial repartition')}>Slow equilibrium</button>
+            <button class="universe-btn" on:click={() => loadByName('spatial repartition')}
+                >Slow equilibrium</button
+            >
             <p>
                 Here each species self-repels and is attracted to exactly one other in a
                 one-directional chain: white chases red, red chases green, green chases white. Each
@@ -336,7 +355,9 @@
                 -a species chasing another that flees it, all while the third pulls in a different
                 direction- the universe churns in a turbulent state for a long time.
             </p>
-            <button on:click={() => loadByName('Competing predators')}>Chaos !</button>
+            <button class="universe-btn" on:click={() => loadByName('Competing predators')}
+                >Chaos !</button
+            >
 
             <h3>Moving Structures</h3>
             <p>
@@ -345,7 +366,7 @@
                 species ever wins and no equilibrium is found. Instead, the three colors form
                 sweeping waves that rotate across the universe indefinitely.
             </p>
-            <button on:click={() => loadByName('Rock - Paper - Scissors')}
+            <button class="universe-btn" on:click={() => loadByName('Rock - Paper - Scissors')}
                 >Rock - Paper - Scissors</button
             >
             <p>
@@ -363,7 +384,7 @@
                 resolves very slowly into a repeating mesh - each red particle surrounded at a
                 precise distance by shells of white and green. Watch it for a while.
             </p>
-            <button on:click={() => loadByName('Crystal')}>Crystal</button>
+            <button class="universe-btn" on:click={() => loadByName('Crystal')}>Crystal</button>
         </section>
 
         <!-- Four Species -->
@@ -384,14 +405,15 @@
                 blobs of paired colors -red-blue regions and white-green regions- separated by empty
                 corridors.
             </p>
-            <button on:click={() => loadByName('Cellular strips')}>Create an organic pattern</button
+            <button class="universe-btn" on:click={() => loadByName('Cellular strips')}
+                >Create an organic pattern</button
             >
             <p>
                 A small change - adding the cross-pair repulsions too - makes the separating
                 corridors much thinner. Each color now repels two others instead of one, which
                 tightens the spacing and produces finer, more intricate strip patterns.
             </p>
-            <button on:click={() => loadByName('Cellular strips 2')}
+            <button class="universe-btn" on:click={() => loadByName('Cellular strips 2')}
                 >Create a different organic pattern</button
             >
             <p>
@@ -401,7 +423,9 @@
                 white fills those voids, producing hollow white islands enclosed by rings of the
                 other three.
             </p>
-            <button on:click={() => loadByName('Cellular strips - Inner islands')}
+            <button
+                class="universe-btn"
+                on:click={() => loadByName('Cellular strips - Inner islands')}
                 >Hollow islands</button
             >
             <p>
@@ -410,7 +434,9 @@
                 opposing teams slowly consolidate into larger and larger two-color blobs until the
                 universe settles.
             </p>
-            <button on:click={() => loadByName('4 Colors - Slowly merging 2-colors blobs')}
+            <button
+                class="universe-btn"
+                on:click={() => loadByName('4 Colors - Slowly merging 2-colors blobs')}
                 >Slowly merging two-color blobs</button
             >
 
@@ -422,7 +448,7 @@
                 worm-like organisms that travel endlessly, merge when they collide, split when they
                 grow too large, and occasionally fold into spinning rings that absorb passing worms.
             </p>
-            <button on:click={() => loadByName('4 colors worms')}
+            <button class="universe-btn" on:click={() => loadByName('4 colors worms')}
                 >Make long structured moving worms</button
             >
             <p>
@@ -431,7 +457,7 @@
                 filaments - white-green-blue lattices with rivers of red flowing through the
                 channels between them.
             </p>
-            <button on:click={() => loadByName('Crystal stripes')}
+            <button class="universe-btn" on:click={() => loadByName('Crystal stripes')}
                 >Crystals and moving fluids</button
             >
             <p>
@@ -439,7 +465,9 @@
                 a single two-color stage before slipping apart and reforming elsewhere. The
                 organisms are shorter-lived but the universe never settles.
             </p>
-            <button on:click={() => loadByName('4 Colors - worms - single stage')}
+            <button
+                class="universe-btn"
+                on:click={() => loadByName('4 Colors - worms - single stage')}
                 >Worms - single stage</button
             >
 
@@ -450,13 +478,17 @@
                 perpetual prey. The result is waves of white sweeping through incoherent masses of
                 red, green and blue that can never outrun their pursuer.
             </p>
-            <button on:click={() => loadByName('4 colors - Waves')}>4 colors - waves</button>
+            <button class="universe-btn" on:click={() => loadByName('4 colors - Waves')}
+                >4 colors - waves</button
+            >
             <p>
                 More complex asymmetric rules produce a higher-energy version: many small
                 low-cohesion groups constantly forming, colliding and scattering. No alliance is
                 stable enough to persist, and the universe maintains a perpetual churn.
             </p>
-            <button on:click={() => loadByName('4 Colors - Inifnite moving low cohesion groups')}
+            <button
+                class="universe-btn"
+                on:click={() => loadByName('4 Colors - Inifnite moving low cohesion groups')}
                 >Infinite low cohesion groups</button
             >
             <p>
@@ -465,7 +497,9 @@
                 as anchors - the white-red-green turbulence flows around them, occasionally
                 engulfing one before being pushed away again.
             </p>
-            <button on:click={() => loadByName('Blue islands')}>Blue islands</button>
+            <button class="universe-btn" on:click={() => loadByName('Blue islands')}
+                >Blue islands</button
+            >
         </section>
 
         <!-- Footer -->
@@ -714,6 +748,23 @@
         background: #2e3c43;
         border-color: #546e7a;
         color: #eceff1;
+    }
+
+    .universe-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 16px;
+        font-size: 0.88rem;
+        margin: 4px 0 16px;
+        border-color: #c3e88d55;
+        color: #c3e88d;
+        border-radius: 8px;
+    }
+
+    .universe-btn:hover {
+        background: #c3e88d0f;
+        border-color: #c3e88daa;
+        color: #d4f0a0;
     }
 
     /* ── Particle dots ───────────────────────── */
