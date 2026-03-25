@@ -1,4 +1,4 @@
-import{S as M,i as Q,s as U,C as W,k as c,q as o,a as I,l as _,m as h,r as i,h as n,c as J,n as y,b as K,D as t,E as X,F as Y,G as Z,f as x,t as ee}from"../../chunks/index-b2d96575.js";import{b as P}from"../../chunks/paths-b4419565.js";function te(d){let s,u,L,m,a,p,G,R,v,g,q,E,C,D,$,H,O,b,T,k,S,A;const F=d[1].default,l=W(F,d,d[0],null);return{c(){s=c("header"),u=c("h1"),L=o("Particles Life"),m=I(),a=c("nav"),p=c("a"),G=o("Particles life"),R=o(` |
+import{S as M,i as Q,s as U,C as W,k as c,q as o,a as I,l as _,m as h,r as i,h as n,c as J,n as y,b as K,D as t,E as X,F as Y,G as Z,f as x,t as ee}from"../../chunks/index-0f2870f9.js";import{b as P}from"../../chunks/paths-b4419565.js";function te(d){let s,u,L,m,a,p,G,R,v,g,q,E,C,D,$,H,O,b,T,k,S,A;const F=d[1].default,l=W(F,d,d[0],null);return{c(){s=c("header"),u=c("h1"),L=o("Particles Life"),m=I(),a=c("nav"),p=c("a"),G=o("Particles life"),R=o(` |
         `),v=c("a"),g=o("Game Of Life"),q=o(` |
         `),E=c("a"),C=o("Reaction-diffusion"),D=o(` |
         `),$=c("a"),H=o("Test shaders"),O=o(` |
