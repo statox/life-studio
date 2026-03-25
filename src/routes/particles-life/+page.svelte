@@ -6,14 +6,13 @@
     <section class="hero">
         <h1>Particle Life</h1>
         <p>
-            A few thousand colored particles, each following a single rule: move toward or away
-            from neighboring particles depending on their color. That's it. Yet from these
-            minimal rules emerge clusters, waves, worms, crystals, and structures that look
-            almost alive.
+            A few thousand colored particles, each following a single rule: move toward or away from
+            neighboring particles depending on their color. That's it. Yet from these minimal rules
+            emerge clusters, waves, worms, crystals, and structures that look almost alive.
         </p>
         <p>
-            This is a simulation of emergent complexity — behaviors that are impossible to
-            predict from the rules alone but appear reliably once the system is running.
+            This is a simulation of emergent complexity — behaviors that are impossible to predict
+            from the rules alone but appear reliably once the system is running.
         </p>
     </section>
 
@@ -22,9 +21,9 @@
             <div class="card-label">Start here</div>
             <h2>Demonstration</h2>
             <p>
-                A guided walkthrough of how the simulation works. Explains the mechanics step
-                by step — from a single particle species to complex four-species structures —
-                with interactive examples you can run as you read.
+                A guided walkthrough of how the simulation works. Explains the mechanics step by
+                step — from a single particle species to complex four-species structures — with
+                interactive examples you can run as you read.
             </p>
             <span class="card-cta">Read the guide →</span>
         </a>
@@ -32,9 +31,9 @@
         <a class="card" href="{base}/particles-life/gallery">
             <h2>Gallery</h2>
             <p>
-                Browse all named universes in one place. Each entry is a specific set of rules
-                that produces a distinct, reproducible behavior. A good way to explore the
-                range of what's possible.
+                Browse all named universes in one place. Each entry is a specific set of rules that
+                produces a distinct, reproducible behavior. A good way to explore the range of
+                what's possible.
             </p>
             <span class="card-cta">Browse universes →</span>
         </a>
@@ -42,9 +41,9 @@
         <a class="card" href="{base}/particles-life/workbench">
             <h2>Workbench</h2>
             <p>
-                A free-form sandbox. Adjust the attraction table, tweak color proportions,
-                change particle counts, and mutate or randomize the rules to discover new
-                behaviors on your own.
+                A free-form sandbox. Adjust the attraction table, tweak color proportions, change
+                particle counts, and mutate or randomize the rules to discover new behaviors on your
+                own.
             </p>
             <span class="card-cta">Open sandbox →</span>
         </a>

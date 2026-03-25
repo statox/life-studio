@@ -98,7 +98,6 @@
     };
 
     const stars = (n: number): string => '★'.repeat(n) + '☆'.repeat(3 - n);
-
 </script>
 
 <div class="sim">

@@ -23,31 +23,44 @@
     let sortKey: SortKey = 'name';
     let sortAsc = true;
 
-    const BEHAVIOR_ORDER: Record<string, number> = { still: 0, converges: 1, cyclic: 2, chaotic: 3 };
+    const BEHAVIOR_ORDER: Record<string, number> = {
+        still: 0,
+        converges: 1,
+        cyclic: 2,
+        chaotic: 3
+    };
     const ENERGY_ORDER: Record<string, number> = { low: 0, medium: 1, high: 2 };
 
     const toggleSort = (k: SortKey) => {
         if (sortKey === k) sortAsc = !sortAsc;
-        else { sortKey = k; sortAsc = true; }
+        else {
+            sortKey = k;
+            sortAsc = true;
+        }
     };
 
     $: searchLower = fSearch.trim().toLowerCase();
 
     $: visible = [...universes]
-        .filter(u =>
-            (!searchLower || u.name.toLowerCase().includes(searchLower) || u.description.toLowerCase().includes(searchLower)) &&
-            (fBehavior === 'all' || u.behavior === fBehavior) &&
-            (fStructure === 'all' || u.structure === fStructure) &&
-            (fColors === 'all' || u.activeColors === fColors) &&
-            (fEnergy === 'all' || u.energyLevel === fEnergy) &&
-            (fComplexity === 'all' || u.complexity === fComplexity)
+        .filter(
+            (u) =>
+                (!searchLower ||
+                    u.name.toLowerCase().includes(searchLower) ||
+                    u.description.toLowerCase().includes(searchLower)) &&
+                (fBehavior === 'all' || u.behavior === fBehavior) &&
+                (fStructure === 'all' || u.structure === fStructure) &&
+                (fColors === 'all' || u.activeColors === fColors) &&
+                (fEnergy === 'all' || u.energyLevel === fEnergy) &&
+                (fComplexity === 'all' || u.complexity === fComplexity)
         )
         .sort((a, b) => {
             let cmp = 0;
             if (sortKey === 'name') cmp = a.name.localeCompare(b.name);
-            else if (sortKey === 'behavior') cmp = (BEHAVIOR_ORDER[a.behavior] ?? 0) - (BEHAVIOR_ORDER[b.behavior] ?? 0);
+            else if (sortKey === 'behavior')
+                cmp = (BEHAVIOR_ORDER[a.behavior] ?? 0) - (BEHAVIOR_ORDER[b.behavior] ?? 0);
             else if (sortKey === 'colors') cmp = a.activeColors - b.activeColors;
-            else if (sortKey === 'energy') cmp = (ENERGY_ORDER[a.energyLevel] ?? 0) - (ENERGY_ORDER[b.energyLevel] ?? 0);
+            else if (sortKey === 'energy')
+                cmp = (ENERGY_ORDER[a.energyLevel] ?? 0) - (ENERGY_ORDER[b.energyLevel] ?? 0);
             else if (sortKey === 'complexity') cmp = a.complexity - b.complexity;
             return sortAsc ? cmp : -cmp;
         });
@@ -68,8 +81,20 @@
 
     const stars = (n: number): string => '★'.repeat(n) + '☆'.repeat(3 - n);
 
-    const behaviors: Array<UniverseBehavior | 'all'> = ['all', 'still', 'converges', 'cyclic', 'chaotic'];
-    const structures: Array<UniverseStructure | 'all'> = ['all', 'none', 'clusters', 'patterns', 'organisms'];
+    const behaviors: Array<UniverseBehavior | 'all'> = [
+        'all',
+        'still',
+        'converges',
+        'cyclic',
+        'chaotic'
+    ];
+    const structures: Array<UniverseStructure | 'all'> = [
+        'all',
+        'none',
+        'clusters',
+        'patterns',
+        'organisms'
+    ];
     const colorOptions: Array<1 | 2 | 3 | 4 | 'all'> = ['all', 1, 2, 3, 4];
     const energies: Array<EnergyLevel | 'all'> = ['all', 'low', 'medium', 'high'];
     const complexities: Array<1 | 2 | 3 | 'all'> = ['all', 1, 2, 3];
@@ -87,12 +112,7 @@
     <!-- ── Sort + count ── -->
     <div class="sort-bar">
         <span class="count">{visible.length}/{universes.length}</span>
-        <input
-            class="search"
-            type="search"
-            placeholder="Search…"
-            bind:value={fSearch}
-        />
+        <input class="search" type="search" placeholder="Search…" bind:value={fSearch} />
         <div class="sort-btns">
             {#each sortOptions as opt}
                 <button
@@ -130,9 +150,15 @@
                 <div class="item-header">
                     <span class="item-name">{u.name}</span>
                     <div class="badges">
-                        <span class="badge" style="background:{behaviorColor(u.behavior)}">{u.behavior}</span>
+                        <span class="badge" style="background:{behaviorColor(u.behavior)}"
+                            >{u.behavior}</span
+                        >
                         <span class="badge-outline">{u.activeColors}c</span>
-                        <span class="energy-dot" style="background:{energyColor(u.energyLevel)}" title="Energy: {u.energyLevel}" />
+                        <span
+                            class="energy-dot"
+                            style="background:{energyColor(u.energyLevel)}"
+                            title="Energy: {u.energyLevel}"
+                        />
                         <span class="stars">{stars(u.complexity)}</span>
                     </div>
                 </div>
@@ -153,9 +179,13 @@
                     <button
                         class="chip"
                         class:active={fBehavior === b}
-                        on:click={() => { fBehavior = b; }}
-                        style={b !== 'all' && fBehavior === b ? `background:${behaviorColor(b)};border-color:${behaviorColor(b)}` : ''}
-                    >{b === 'all' ? 'All' : b}</button>
+                        on:click={() => {
+                            fBehavior = b;
+                        }}
+                        style={b !== 'all' && fBehavior === b
+                            ? `background:${behaviorColor(b)};border-color:${behaviorColor(b)}`
+                            : ''}>{b === 'all' ? 'All' : b}</button
+                    >
                 {/each}
             </div>
         </div>
@@ -166,8 +196,10 @@
                     <button
                         class="chip"
                         class:active={fStructure === s}
-                        on:click={() => { fStructure = s; }}
-                    >{s === 'all' ? 'All' : s}</button>
+                        on:click={() => {
+                            fStructure = s;
+                        }}>{s === 'all' ? 'All' : s}</button
+                    >
                 {/each}
             </div>
         </div>
@@ -178,8 +210,10 @@
                     <button
                         class="chip"
                         class:active={fColors === c}
-                        on:click={() => { fColors = c; }}
-                    >{c === 'all' ? 'All' : c}</button>
+                        on:click={() => {
+                            fColors = c;
+                        }}>{c === 'all' ? 'All' : c}</button
+                    >
                 {/each}
             </div>
         </div>
@@ -190,9 +224,13 @@
                     <button
                         class="chip"
                         class:active={fEnergy === e}
-                        on:click={() => { fEnergy = e; }}
-                        style={e !== 'all' && fEnergy === e ? `color:${energyColor(e)}; border-color:${energyColor(e)}40` : ''}
-                    >{e === 'all' ? 'All' : e}</button>
+                        on:click={() => {
+                            fEnergy = e;
+                        }}
+                        style={e !== 'all' && fEnergy === e
+                            ? `color:${energyColor(e)}; border-color:${energyColor(e)}40`
+                            : ''}>{e === 'all' ? 'All' : e}</button
+                    >
                 {/each}
             </div>
         </div>
@@ -203,8 +241,10 @@
                     <button
                         class="chip"
                         class:active={fComplexity === cx}
-                        on:click={() => { fComplexity = cx; }}
-                    >{cx === 'all' ? 'All' : stars(cx)}</button>
+                        on:click={() => {
+                            fComplexity = cx;
+                        }}>{cx === 'all' ? 'All' : stars(cx)}</button
+                    >
                 {/each}
             </div>
         </div>
