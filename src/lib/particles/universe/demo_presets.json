@@ -94,6 +94,53 @@
         "verticalResolution": 20
     },
     {
+        "name": "1 color repulsion circle - few particles",
+        "description": "A fix universe with a single specie. Shows self repulsion and artifical clusters.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "still",
+        "structure": "none",
+        "activeColors": 1,
+        "convergenceSpeed": "instant",
+        "energyLevel": "low",
+        "complexity": 1,
+        "attractionTable": {
+            "white": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "red": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "green": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "blue": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        },
+        "nbParticles": 200,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
         "name": "1 color repulsion circle",
         "description": "A fix universe with a single specie. Shows self repulsion and artifical clusters.",
         "preferredInitialConfig": "center",
@@ -1828,6 +1875,54 @@
             "blue": 0
         },
         "nbParticles": 8000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Competing predators",
+        "aiGenerated": true,
+        "description": "White and red both hunt green. Green flees both. The twist: white and red repel each other, so they compete for hunting territory rather than cooperating. Creates de-facto patrol zones — patches of white chasing green and patches of red chasing green that can't overlap, with green perpetually squeezed between rival predators.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "chaotic",
+        "structure": "none",
+        "activeColors": 3,
+        "convergenceSpeed": "never",
+        "energyLevel": "high",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": -1,
+                "green": 1,
+                "blue": 0
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": 1,
+                "blue": 0
+            },
+            "green": {
+                "white": -1,
+                "red": -1,
+                "green": 0,
+                "blue": 0
+            },
+            "blue": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 0
+        },
+        "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
         "verticalResolution": 20
