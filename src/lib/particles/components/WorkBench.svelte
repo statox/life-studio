@@ -83,7 +83,7 @@
         worldSize.x = u.maxAttractionRadius * u.horizontalResolution;
         worldSize.y = u.maxAttractionRadius * u.verticalResolution;
         cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
-        if (u.preferredInitialConfig === 'center') centerCellsInPlace(cells, worldSize);
+        if (u.preferredInitialConfig === 'center') largeCenterCellsInPlace(cells, worldSize);
         if (u.preferredInitialConfig === 'rainbow') rainbowCellsInPlace(cells, worldSize);
         startSim();
     };
