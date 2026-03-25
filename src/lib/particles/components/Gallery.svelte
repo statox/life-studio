@@ -12,11 +12,12 @@
     import type { Cell } from '$lib/particles/engine';
     import Simulation from './Simulation.svelte';
     import { getAllUniverses, type StoredUniverse } from '$lib/particles/universe';
+    import UniverseSelector from './UniverseSelector.svelte';
 
     let simulationComponent: Simulation;
 
     const universes: StoredUniverse[] = getAllUniverses();
-    let selectedIndex = 0;
+    let selected: StoredUniverse = universes[0];
 
     let cells: Cell[] = [];
     let attractionTable: AttractionTable = universes[0].attractionTable;
@@ -47,9 +48,9 @@
         startSim();
     };
 
-    const selectUniverse = (i: number) => {
-        selectedIndex = i;
-        loadUniverse(universes[i]);
+    const selectUniverse = (u: StoredUniverse) => {
+        selected = u;
+        loadUniverse(u);
     };
 
     onMount(() => {
@@ -98,40 +99,11 @@
 
     const stars = (n: number): string => '★'.repeat(n) + '☆'.repeat(3 - n);
 
-    $: selected = universes[selectedIndex];
 </script>
 
 <div class="sim">
     <!-- Universe selector -->
-    <ul class="universe-list" role="listbox" aria-label="Universe selector">
-        {#each universes as u, i}
-            <li
-                class="universe-item"
-                class:active={i === selectedIndex}
-                role="option"
-                aria-selected={i === selectedIndex}
-                tabindex="0"
-                on:click={() => selectUniverse(i)}
-                on:keydown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        selectUniverse(i);
-                    }
-                }}
-            >
-                <div class="universe-item-row">
-                    <span class="universe-item-name">{u.name}</span>
-                    <div class="badges">
-                        <span class="badge" style="background:{behaviorColor(u.behavior)}"
-                            >{u.behavior}</span
-                        >
-                        <span class="stars">{stars(u.complexity)}</span>
-                    </div>
-                </div>
-                <span class="universe-item-desc dim">{u.description}</span>
-            </li>
-        {/each}
-    </ul>
+    <UniverseSelector {universes} {selected} onSelect={selectUniverse} />
 
     <!-- Simulation canvas -->
     <Simulation bind:this={simulationComponent} />
@@ -270,88 +242,6 @@
         max-width: 1200px;
         margin: 0 auto;
         box-sizing: border-box;
-    }
-
-    /* ── Universe selector ───────────────────── */
-    .universe-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        background: #263238;
-        border: 1px solid #37474f;
-        border-radius: 8px;
-        overflow-y: auto;
-        max-height: calc(6 * 56px);
-    }
-
-    .universe-item {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        padding: 10px 14px;
-        cursor: pointer;
-        border-left: 3px solid transparent;
-        transition: background 0.13s, border-color 0.13s;
-    }
-
-    .universe-item + .universe-item {
-        border-top: 1px solid #1e2a2f;
-    }
-
-    .universe-item:hover {
-        background: #2e3c43;
-    }
-
-    .universe-item.active {
-        border-left-color: #c3e88d;
-        background: #1e2e1a;
-    }
-
-    .universe-item-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 6px;
-    }
-
-    .universe-item-name {
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: #cfd8dc;
-    }
-
-    .universe-item.active .universe-item-name {
-        color: #c3e88d;
-    }
-
-    .universe-item-desc {
-        font-size: 0.75rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .badges {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        flex-shrink: 0;
-    }
-
-    .badge {
-        font-size: 0.62rem;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.9);
-        padding: 2px 6px;
-        border-radius: 10px;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-    }
-
-    .stars {
-        font-size: 0.72rem;
-        color: #c3e88d;
-        letter-spacing: 1px;
     }
 
     /* ── Spread buttons ─────────────────────── */
