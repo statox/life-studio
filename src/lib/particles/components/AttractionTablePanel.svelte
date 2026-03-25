@@ -22,6 +22,10 @@
     </summary>
     {#if attractionTable}
         <!-- Preset selector -->
+        <div class="table-body">
+            <AttractionTableComponent {attractionTable} onUpdateTable={update} />
+        </div>
+        <br />
         <div class="card preset-card">
             <div class="preset-row">
                 <div class="card-title">Preset</div>
@@ -45,9 +49,6 @@
                     <option value={JSON.stringify(t.table)}>{t.name} — {t.description}</option>
                 {/each}
             </select>
-        </div>
-        <div class="table-body">
-            <AttractionTableComponent {attractionTable} onUpdateTable={update} />
         </div>
     {/if}
 </details>
