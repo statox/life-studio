@@ -2019,5 +2019,389 @@
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
         "verticalResolution": 20
+    },
+    {
+        "name": "Self-cohesive RPS",
+        "aiGenerated": true,
+        "description": "Rock-Paper-Scissors dynamics (white chases green, green chases red, red chases white) with self-attraction added to each species. The original RPS produces diffuse rotating waves because particles spread freely. Here each species coalesces into compact clusters before the cyclic dynamics take over, expected to produce discrete blobs orbiting each other rather than spreading wave fronts.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "cyclic",
+        "structure": "organisms",
+        "activeColors": 3,
+        "convergenceSpeed": "never",
+        "energyLevel": "medium",
+        "complexity": 3,
+        "attractionTable": {
+            "white": {
+                "white": 1,
+                "red": -1,
+                "green": 1,
+                "blue": 0
+            },
+            "red": {
+                "white": 1,
+                "red": 1,
+                "green": -1,
+                "blue": 0
+            },
+            "green": {
+                "white": -1,
+                "red": 1,
+                "green": 1,
+                "blue": 0
+            },
+            "blue": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 0
+        },
+        "nbParticles": 12000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Competing predators",
+        "aiGenerated": true,
+        "description": "White and red both hunt green. Green flees both. The twist: white and red repel each other, so they compete for hunting territory rather than cooperating. Creates de-facto patrol zones — patches of white chasing green and patches of red chasing green that can't overlap, with green perpetually squeezed between rival predators.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "chaotic",
+        "structure": "none",
+        "activeColors": 3,
+        "convergenceSpeed": "never",
+        "energyLevel": "high",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": -1,
+                "green": 1,
+                "blue": 0
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": 1,
+                "blue": 0
+            },
+            "green": {
+                "white": -1,
+                "red": -1,
+                "green": 0,
+                "blue": 0
+            },
+            "blue": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 0
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Two independent chase pairs",
+        "aiGenerated": true,
+        "description": "Mostly random motions without clear interesting patterns emerging",
+        "preferredInitialConfig": "uniform",
+        "behavior": "chaotic",
+        "structure": "none",
+        "activeColors": 4,
+        "convergenceSpeed": "never",
+        "energyLevel": "high",
+        "complexity": 1,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 1,
+                "green": 0,
+                "blue": 0
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "green": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 1
+            },
+            "blue": {
+                "white": 0,
+                "red": 0,
+                "green": -1,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Bounded territories",
+        "aiGenerated": true,
+        "description": "Cyclic repulsion chain (white pushes red, red pushes green, green pushes blue, blue pushes white) combined with self-attraction for all four species. Unlike Cellular strips which produces soft organic regions because non-repelling pairs mix freely, the self-cohesion here prevents mixing: each color actively gathers into its own monochrome clusters, producing sharper and rounder territory boundaries.",
+        "preferredInitialConfig": "center",
+        "behavior": "converges",
+        "structure": "clusters",
+        "activeColors": 4,
+        "convergenceSpeed": "medium",
+        "energyLevel": "low",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 1,
+                "red": -1,
+                "green": 0,
+                "blue": 0
+            },
+            "red": {
+                "white": 0,
+                "red": 1,
+                "green": -1,
+                "blue": 0
+            },
+            "green": {
+                "white": 0,
+                "red": 0,
+                "green": 1,
+                "blue": -1
+            },
+            "blue": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 1
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Bubble exclusion zones",
+        "aiGenerated": true,
+        "description": "Blue self-attracts very strongly and violently repels all other species, which in turn repel blue. White, red and green are mutually attracted cross-species but not to themselves. Blue should form tight self-maintaining balls surrounded by a mixed-color gas that wraps around them but cannot penetrate — creating a cellular foam of blue bubbles enclosed in walls of mixed WRG.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "clusters",
+        "activeColors": 4,
+        "convergenceSpeed": "medium",
+        "energyLevel": "low",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 1,
+                "green": 1,
+                "blue": -1
+            },
+            "red": {
+                "white": 1,
+                "red": 0,
+                "green": 1,
+                "blue": -1
+            },
+            "green": {
+                "white": 1,
+                "red": 1,
+                "green": 0,
+                "blue": -1
+            },
+            "blue": {
+                "white": -2,
+                "red": -2,
+                "green": -2,
+                "blue": 2
+            }
+        },
+        "colorWeights": {
+            "white": 400,
+            "red": 400,
+            "green": 400,
+            "blue": 200
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Linear predator chain",
+        "aiGenerated": true,
+        "description": "A non-cyclic cascade: white hunts red, red hunts green, green hunts blue. Each prey also flees its direct predator. Unlike Rock-Paper-Scissors there is no return link — blue is never hunted and white is never prey. The expected dynamics: directional pressure cascades down the chain, with blue gradually accumulating at the end while the other species form a traveling pressure wave behind it.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "chaotic",
+        "structure": "none",
+        "activeColors": 4,
+        "convergenceSpeed": "never",
+        "energyLevel": "medium",
+        "complexity": 1,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 1,
+                "green": 0,
+                "blue": 0
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": 1,
+                "blue": 0
+            },
+            "green": {
+                "white": 0,
+                "red": -1,
+                "green": 0,
+                "blue": 1
+            },
+            "blue": {
+                "white": 0,
+                "red": 0,
+                "green": -1,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Faction civil war",
+        "aiGenerated": true,
+        "description": "Two factions (white+red vs green+blue) that strongly repel each other across faction lines, creating stable territorial boundaries. Within each faction there is a predator-prey chase: white hunts red and green hunts blue. The faction walls act as mirrors — each territory runs its own independent wave dynamics, with the inter-faction boundary preventing the two chases from ever directly interfering.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converge",
+        "structure": "patterns",
+        "activeColors": 4,
+        "convergenceSpeed": "medium",
+        "energyLevel": "low",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 1,
+                "green": -1,
+                "blue": -1
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": -1,
+                "blue": -1
+            },
+            "green": {
+                "white": -1,
+                "red": -1,
+                "green": 0,
+                "blue": 1
+            },
+            "blue": {
+                "white": -1,
+                "red": -1,
+                "green": -1,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 8000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Three-layer onion",
+        "aiGenerated": true,
+        "description": "A concentric shell structure built from a chained attraction cascade. Red self-attracts strongly and ignores everyone — it forms immovable dense cores. White is attracted to red but strongly self-repels, settling into a uniform ring around each core. Green is attracted to white but strongly self-repels, settling into a second outer ring around the white ring. Expected result: repeated three-layer structures of green outer shell, white middle ring, red nucleus.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "patterns",
+        "activeColors": 3,
+        "convergenceSpeed": "medium",
+        "energyLevel": "low",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": -1,
+                "red": 1,
+                "green": 0,
+                "blue": 0
+            },
+            "red": {
+                "white": 0,
+                "red": 2,
+                "green": 0,
+                "blue": 0
+            },
+            "green": {
+                "white": 1,
+                "red": 0,
+                "green": -1,
+                "blue": 0
+            },
+            "blue": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 200,
+            "green": 490,
+            "blue": 0
+        },
+        "nbParticles": 8000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
     }
 ]
