@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { base } from '$app/paths';
 
     import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
@@ -62,11 +63,11 @@
         '3 Colors - Stable islands',
         'spatial repartition'
     ].sort((_a, _b) => Math.random() - 1);
-    let randUniverseIndex = 0;
+    let randUniverseIndex = -1;
 
     const loadRandomUniverse = () => {
-        const name = randomUniversesForDemo[randUniverseIndex];
         randUniverseIndex = (randUniverseIndex + 1) % randomUniversesForDemo.length;
+        const name = randomUniversesForDemo[randUniverseIndex];
         loadByName(name);
     };
 
@@ -86,12 +87,6 @@
         simulationComponent?.updateCells(cells);
     };
 
-    const rainbowSpread = () => {
-        cells = getNewCells(worldSize, nbParticles, colorWeights);
-        rainbowCellsInPlace(cells, worldSize);
-        simulationComponent?.updateCells(cells);
-    };
-
     onMount(() => {
         loadRandomUniverse();
     });
@@ -108,7 +103,9 @@
                 thousand particles move freely and interact with each other.
             </p>
             <p>Press the next button a few times and observe these new universes coming to life.</p>
-            <button on:click={() => loadRandomUniverse()}>Try a random universe</button>
+            <button on:click={() => loadRandomUniverse()}
+                >Try another universe ({randUniverseIndex + 1} / {randomUniversesForDemo.length})</button
+            >
             <p>
                 While all these universes follow a small set of physical rules applied with
                 different parameters, they produce a wide range of emergent behaviors. I made this
@@ -123,6 +120,50 @@
                 >. You should definitely check it out because it makes everything you will see here
                 more spectacular. And reading this page first will allow you to better appreciate
                 how truly amazing this other tool is.
+            </p>
+        </section>
+
+        <!-- Controls -->
+        <section>
+            <h2>Controls</h2>
+            <p>
+                On the right you'll find the three controls that govern every universe in this
+                simulation. You can adjust them at any time while a universe is running, or use the
+                restart buttons to apply a fresh set of particles.
+            </p>
+
+            <h3>Attraction Radius</h3>
+            <p>
+                Each particle has an attraction radius — a fixed circular neighborhood around it.
+                Only particles within this radius exert forces on it; everything outside is ignored
+                entirely. The radius is the same for all particles in a universe.
+            </p>
+
+            <h3>The Attraction Table</h3>
+            <p>
+                The attraction table is the heart of the simulation. Each cell defines the force
+                that the <em>column</em> species exerts on the <em>row</em> species: a positive value
+                means the row species is attracted toward the column species, a negative value means
+                it is repelled. The table is not symmetric — red can be strongly attracted to white while
+                white is completely indifferent to red, or even repelled by it. This asymmetry is what
+                makes complex behaviors possible.
+            </p>
+
+            <h3>Color Proportions</h3>
+            <p>
+                The sliders set the relative number of particles of each species. Setting a color to
+                zero removes it from the universe entirely. Adjusting proportions while a simulation
+                is running has no effect on existing particles — hit one of the restart buttons to
+                generate a new set with the updated mix.
+            </p>
+
+            <h3>Restart Buttons</h3>
+            <p>
+                <strong>Uniform spread</strong> distributes all particles randomly across the full
+                world. <strong>Centered circle</strong> packs them into a dense cluster at the center
+                — many universes produce cleaner structures from this starting point since interactions
+                begin in a concentrated area before spreading out. Both buttons preserve the current
+                attraction table and color proportions.
             </p>
         </section>
 
@@ -219,38 +260,212 @@
 
         <!-- Emergent Complexity -->
         <section>
-            <h2>Emergent Complexity</h2>
-            <!--
-                TODO Universes to add:
-                - Cellular Strips 2
-                - 4 colors worms
-                - 3 colors stable islands
-            -->
+            <h2>Three Species</h2>
+            <p>
+                With only two species we've already seen how simple rules can produce rich
+                behaviors. Adding a third species expands the possibility space: instead of 4
+                inter-species values to tune, we now have 9. More importantly, the three-way
+                relationships interact in ways that are harder to predict — and that's where things
+                get interesting.
+            </p>
 
-            <p class="placeholder">[Complexity explanation goes here]</p>
-            <div class="preset-btns">
-                <button on:click={() => loadByName('2 colors own repulsion')}
-                    >2 colors own repulsion</button
-                >
-                <button on:click={() => loadByName('Central circle spread')}
-                    >Central circle spread</button
-                >
-            </div>
+            <h3>Equilibrium</h3>
+            <p>
+                The simplest 3-species universes are those where forces quickly find a balance. Here
+                red self-attracts and repels everything around it, while white and green are neutral
+                bystanders. The result: tight red islands floating in a disorganized white-green
+                sea.
+            </p>
+            <button on:click={() => loadByName('Islands')}>Islands</button>
+            <p>
+                When all three species interact with each other, the equilibria become more
+                structured. Here everyone is attracted to everyone else, but red weakly repels
+                itself while the others don't. This imbalance causes red to spread into rings around
+                white-green cores, creating repeated layered islands across the universe.
+            </p>
+            <button on:click={() => loadByName('3 Colors - Stable islands')}
+                >3 Colors - Stable islands</button
+            >
+
+            <h3>Chaos</h3>
+            <p>
+                Not all configurations find a stable equilibrium. When inter-species forces conflict
+                — a species chasing another that flees it, all while the third pulls in a different
+                direction — the universe churns in a turbulent state for a long time.
+            </p>
+            <p>
+                Here each species self-repels and is attracted to exactly one other in a
+                one-directional chain: white chases red, red chases green, green chases white. Each
+                species is simultaneously a pursuer and a prey, but the cycle is one-sided: the prey
+                doesn't know it's being chased. The resulting tension creates a slow churning motion
+                that takes a long time to resolve into organized territories.
+            </p>
+            <button on:click={() => loadByName('spatial repartition')}>Spatial repartition</button>
+
+            <h3>Moving Structures</h3>
+            <p>
+                Spectacular behaviors can emerge from a fully closed cycle: white chases green,
+                green chases red, red chases white. A classic rock-paper-scissors arrangement. No
+                species ever wins and no equilibrium is found. Instead, the three colors form
+                sweeping waves that rotate across the universe indefinitely.
+            </p>
+            <button on:click={() => loadByName('Rock - Paper - Scissors')}
+                >Rock - Paper - Scissors</button
+            >
+            <p>
+                This is fundamentally different from the chase patterns we saw with two species.
+                There, one color always caught the other and the motion decayed. Here the 3-way
+                cycle means the motion never decays: each pursuer that catches its prey is
+                immediately caught from behind by its own pursuer.
+            </p>
+
+            <h3>Going Further</h3>
+            <p>
+                Some 3-species universes converge to surprisingly intricate structures. Here white
+                particles strongly repel each other but are attracted to red, while green also
+                gravitates toward red. Red meanwhile pushes both white and green away. This tension
+                resolves very slowly into a repeating mesh — each red particle surrounded at a
+                precise distance by shells of white and green. Watch it for a while.
+            </p>
+            <button on:click={() => loadByName('Crystal')}>Crystal</button>
         </section>
 
-        <!-- The Attraction Table -->
+        <!-- Four Species -->
         <section>
-            <h2>The Attraction Table</h2>
-            <p class="placeholder">[Attraction table explanation goes here]</p>
+            <h2>Four Species</h2>
+            <p>
+                With four species the interaction table has 16 entries. The configurations that
+                produce coherent behavior become rarer and harder to find by chance, but when they
+                do emerge they tend to be far more intricate than anything three species can
+                produce. Here are some of the patterns that become possible.
+            </p>
+
+            <h3>Spatial Partitioning</h3>
+            <p>
+                The simplest stable configuration comes from a cyclic repulsion chain: white pushes
+                red away, red pushes green, green pushes blue, blue pushes white. Nobody is
+                attracted to anything. Starting from a central cluster, this expands into organic
+                blobs of paired colors — red-blue regions and white-green regions — separated by
+                empty corridors.
+            </p>
+            <button on:click={() => loadByName('Cellular strips')}>Cellular strips</button>
+            <p>
+                A small change — adding the cross-pair repulsions too — makes the separating
+                corridors much thinner. Each color now repels two others instead of one, which
+                tightens the spacing and produces finer, more intricate strip patterns.
+            </p>
+            <button on:click={() => loadByName('Cellular strips 2')}>Cellular strips 2</button>
+            <p>
+                A different approach to separation: make one species a universal pariah. White
+                repels all others and all others repel white, while the remaining three are neutral
+                to each other. They cluster into mixed blobs but always leave white-free voids — and
+                white fills those voids, producing hollow white islands enclosed by rings of the
+                other three.
+            </p>
+            <button on:click={() => loadByName('Cellular strips - Inner islands')}
+                >Cellular strips — inner islands</button
+            >
+            <p>
+                Finally, a case of natural alliances: white and green attract each other and repel
+                red and blue, while red and blue attract each other and repel white and green. Two
+                opposing teams slowly consolidate into larger and larger two-color blobs until the
+                universe settles.
+            </p>
+            <button on:click={() => loadByName('4 Colors - Slowly merging 2-colors blobs')}
+                >Slowly merging two-color blobs</button
+            >
+
+            <h3>Moving Structures</h3>
+            <p>
+                The most complex behavior in this simulation. A four-way cyclic chase — white
+                follows blue, blue follows green, green follows red, red follows white — where each
+                pursuer also repels the species behind it. This creates self-maintaining worm-like
+                organisms that travel endlessly, merge when they collide, split when they grow too
+                large, and occasionally fold into spinning rings that absorb passing worms.
+            </p>
+            <button on:click={() => loadByName('4 colors worms')}>4 colors worms</button>
+            <p>
+                A subtler variant of the same cyclic geometry, extended with a mutual attraction
+                between green and blue. The result is not free-roaming worms but rigid crystal
+                filaments — white-green-blue lattices with rivers of red flowing through the
+                channels between them.
+            </p>
+            <button on:click={() => loadByName('Crystal stripes')}>Crystal stripes</button>
+            <p>
+                Reducing the cohesion of the worm rules produces looser structures: groups that form
+                a single two-color stage before slipping apart and reforming elsewhere. The
+                organisms are shorter-lived but the universe never settles.
+            </p>
+            <button on:click={() => loadByName('4 Colors - worms - single stage')}
+                >Worms — single stage</button
+            >
+
+            <h3>Persistent Chaos</h3>
+            <p>
+                Some configurations never settle. Here white is attracted to all three other colors
+                while they all repel white — making white an incessant pursuer and the others its
+                perpetual prey. The result is waves of white sweeping through incoherent masses of
+                red, green and blue that can never outrun their pursuer.
+            </p>
+            <button on:click={() => loadByName('4 colors - Waves')}>4 colors — waves</button>
+            <p>
+                More complex asymmetric rules produce a higher-energy version: many small
+                low-cohesion groups constantly forming, colliding and scattering. No alliance is
+                stable enough to persist, and the universe maintains a perpetual churn.
+            </p>
+            <button on:click={() => loadByName('4 Colors - Inifnite moving low cohesion groups')}
+                >Infinite low cohesion groups</button
+            >
+            <p>
+                An interesting hybrid: blue quietly self-attracts into compact, immovable islands
+                while the other three species are locked in a permanent chase. The blue islands act
+                as anchors — the white-red-green turbulence flows around them, occasionally
+                engulfing one before being pushed away again.
+            </p>
+            <button on:click={() => loadByName('Blue islands')}>Blue islands</button>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer">
+            <h2>Going further</h2>
+            <p>
+                Now that you know more about how this simulation works you can checkout <a
+                    href="{base}/particles-life/gallery">the gallery</a
+                > which gathers the interesting configurations I have found while building this page.
+            </p>
+            <p>
+                You can also checkout <a href="{base}/particles-life/">my workbench</a> which I use to
+                find new configurations and play with the simulation.
+            </p>
+            <p>
+                You can also checkout <a
+                    rel="noopener noreferrer"
+                    target="none"
+                    href="https://sandbox-science.com/particle-life">this tool</a
+                > which runs the same simulation but uses the GPU of your computer instead of the CPU
+                as my implementation does. That allows for simulations with a much larger number of particles.
+                The app also allows to create more than 4 species and more complex attraction tables.
+            </p>
+        </section>
+    </div>
+
+    <!-- Right column: sticky scrollable panel -->
+    <div class="canvas-col">
+        <div class="canvas-sticky">
+            <Simulation bind:this={simulationComponent} />
+        </div>
+        <div class="canvas-params">
             <div class="card">
+                <div class="card-title">Restart</div>
+                <div class="preset-btns">
+                    <button on:click={uniformSpread}>↺ Uniform spread</button>
+                    <button on:click={centerSpread}>◎ Centered circle</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Attraction Table</div>
                 <AttractionTableComponent {attractionTable} onUpdateTable={updateAttractionTable} />
             </div>
-        </section>
-
-        <!-- Tuning the Mix -->
-        <section>
-            <h2>Tuning the Mix</h2>
-            <p class="placeholder">[Mix explanation goes here]</p>
             <div class="card">
                 <div class="card-title">Color proportions</div>
                 <div class="proportion-list">
@@ -270,24 +485,7 @@
                         </div>
                     {/each}
                 </div>
-                <div class="preset-btns">
-                    <button on:click={uniformSpread}>↺ Uniform spread</button>
-                    <button on:click={centerSpread}>◎ Centered circle</button>
-                    <button on:click={rainbowSpread}>≋ Rainbow</button>
-                </div>
             </div>
-        </section>
-
-        <!-- Footer -->
-        <section class="footer">
-            <p class="placeholder">[Footer — link to /particles/dev for the full sandbox]</p>
-        </section>
-    </div>
-
-    <!-- Right column: sticky canvas -->
-    <div class="canvas-col">
-        <div class="canvas-sticky">
-            <Simulation bind:this={simulationComponent} />
         </div>
     </div>
 </div>
@@ -346,6 +544,15 @@
         font-weight: 600;
     }
 
+    .narrative h3 {
+        font-size: 0.95rem;
+        color: #b0bec5;
+        margin: 24px 0 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+
     .narrative p {
         color: #90a4ae;
         font-size: 0.9rem;
@@ -356,17 +563,37 @@
     /* ── Sticky canvas column ────────────────── */
     .canvas-col {
         min-width: 0;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px 0;
+        box-sizing: border-box;
+        scrollbar-width: thin;
+        scrollbar-color: #37474f transparent;
     }
 
     .canvas-sticky {
-        position: sticky;
-        top: 16px;
-        align-self: start;
+        flex-shrink: 0;
+    }
+
+    .canvas-params {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-bottom: 8px;
     }
 
     @media (max-width: 768px) {
         .canvas-col {
             order: -1;
+            position: static;
+            height: auto;
+            overflow-y: visible;
+            padding: 0;
         }
 
         .canvas-sticky {
@@ -376,6 +603,10 @@
             background: #1a2327;
             padding: 8px 0;
         }
+
+        .canvas-params {
+            padding: 16px 0;
+        }
     }
 
     /* ── Preset buttons ──────────────────────── */
@@ -384,16 +615,6 @@
         flex-wrap: wrap;
         gap: 6px;
         margin-bottom: 16px;
-    }
-
-    /* ── Placeholder text ────────────────────── */
-    .placeholder {
-        background: #1a232744;
-        border-left: 3px solid #546e7a;
-        padding: 12px 16px;
-        border-radius: 0 6px 6px 0;
-        font-style: italic;
-        color: #546e7a;
     }
 
     /* ── Card ────────────────────────────────── */
