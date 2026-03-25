@@ -1314,5 +1314,710 @@
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
         "verticalResolution": 20
+    },
+    {
+        "name": "Moving structures",
+        "description": "Some complex moving structures emerge before stabilizing",
+        "preferredInitialConfig": "center",
+        "behavior": "converges",
+        "structure": "organisms",
+        "activeColors": 4,
+        "convergenceSpeed": "medium",
+        "energyLevel": "high",
+        "complexity": 3,
+        "attractionTable": {
+            "white": {
+                "white": -1,
+                "red": 1,
+                "green": -1,
+                "blue": 2
+            },
+            "red": {
+                "white": 0,
+                "red": -1,
+                "green": 1,
+                "blue": 2
+            },
+            "green": {
+                "white": 1,
+                "red": 2,
+                "green": 2,
+                "blue": 2
+            },
+            "blue": {
+                "white": 1,
+                "red": -1,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "4 colors islands",
+        "description": "Quickly creates islands with a thin white band, a red-blue blob and a green last band.\n\nThe islands tend to merge over time because the attraction table contains mostly attraction forces and few repulsion forces.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "clusters",
+        "activeColors": 4,
+        "convergenceSpeed": "slow",
+        "energyLevel": "low",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 1,
+                "red": 1,
+                "green": -1,
+                "blue": 1
+            },
+            "red": {
+                "white": 0,
+                "red": 2,
+                "green": 2,
+                "blue": 2
+            },
+            "green": {
+                "white": -1,
+                "red": 1,
+                "green": 0,
+                "blue": 2
+            },
+            "blue": {
+                "white": 1,
+                "red": 2,
+                "green": 1,
+                "blue": 1
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Comple moving structures",
+        "description": "The universe quickly creates complex moving structures with a white-blue center pushing a green blob and surrounded by low density red circle or semi circle.\n\nThe movers tend to merge together so the universe ends up less and less dynamical",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "organisms",
+        "activeColors": 4,
+        "convergenceSpeed": "slow",
+        "energyLevel": "high",
+        "complexity": 3,
+        "attractionTable": {
+            "white": {
+                "white": 1,
+                "red": 2,
+                "green": 2,
+                "blue": -1
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": 0,
+                "blue": 1
+            },
+            "green": {
+                "white": 0,
+                "red": -1,
+                "green": 1,
+                "blue": 0
+            },
+            "blue": {
+                "white": 1,
+                "red": -1,
+                "green": 0,
+                "blue": 2
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 8000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Complex islands",
+        "description": "The universe create moving structures with a band of white cells pushing a circle of white cells surrounding a red-blue-green core.\n\nThe structures end up merging together.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "organisms",
+        "activeColors": 4,
+        "convergenceSpeed": "slow",
+        "energyLevel": "medium",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 0,
+                "green": 2,
+                "blue": -1
+            },
+            "red": {
+                "white": 0,
+                "red": 1,
+                "green": 2,
+                "blue": 2
+            },
+            "green": {
+                "white": 1,
+                "red": 2,
+                "green": 0,
+                "blue": 2
+            },
+            "blue": {
+                "white": 1,
+                "red": 1,
+                "green": 1,
+                "blue": 1
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 12000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Moving to filaments",
+        "description": "Initially create long moving structures with red, green-white-green, red, blue, red stages.\n\nThe structures end up merging in filament-like structures.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "organisms",
+        "activeColors": 4,
+        "convergenceSpeed": "slow",
+        "energyLevel": "medium",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 1,
+                "red": 0,
+                "green": 1,
+                "blue": -1
+            },
+            "red": {
+                "white": 2,
+                "red": -1,
+                "green": 0,
+                "blue": 1
+            },
+            "green": {
+                "white": 2,
+                "red": 2,
+                "green": 0,
+                "blue": 0
+            },
+            "blue": {
+                "white": -1,
+                "red": 2,
+                "green": 0,
+                "blue": 2
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 8000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Complexe moving structures",
+        "description": "The universe creates several types of complexe moving organisms sometimes very circular sometimes longer.\n\nThe organisms sometime merge completely but often just exchange some particles when they merge. This change of particles sometimes put the movers to a rest and sometimes creates new movers.\n\nThe universe takes a very long time to stabilize as the energy decrese over time.",
+        "preferredInitialConfig": "center",
+        "behavior": "cyclic",
+        "structure": "organisms",
+        "activeColors": 4,
+        "convergenceSpeed": "never",
+        "energyLevel": "medium",
+        "complexity": 3,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 0,
+                "green": -1,
+                "blue": 1
+            },
+            "red": {
+                "white": 1,
+                "red": 0,
+                "green": 0,
+                "blue": -1
+            },
+            "green": {
+                "white": 2,
+                "red": 1,
+                "green": 1,
+                "blue": 1
+            },
+            "blue": {
+                "white": 2,
+                "red": -1,
+                "green": 0,
+                "blue": 2
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Complexe moving structures 2",
+        "description": "The universe create several types of moving structures which end up merging and stabilizing into complexe structures",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "organisms",
+        "activeColors": 4,
+        "convergenceSpeed": "never",
+        "energyLevel": "medium",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 0,
+                "green": -1,
+                "blue": 2
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": 1,
+                "blue": 2
+            },
+            "green": {
+                "white": 1,
+                "red": -1,
+                "green": 1,
+                "blue": 0
+            },
+            "blue": {
+                "white": 2,
+                "red": -1,
+                "green": 2,
+                "blue": -1
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 6000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Weakly bounded moving structures",
+        "description": "Creates white pushing blue pushing red moving structures floating in a sea of white and green.\n\nThe moving structures easily split and merge when they touch each other so the universe never really stabilize",
+        "preferredInitialConfig": "uniform",
+        "behavior": "cyclic",
+        "structure": "organisms",
+        "activeColors": 4,
+        "convergenceSpeed": "never",
+        "energyLevel": "high",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": -1,
+                "red": 0,
+                "green": 2,
+                "blue": 1
+            },
+            "red": {
+                "white": 0,
+                "red": 1,
+                "green": -1,
+                "blue": -1
+            },
+            "green": {
+                "white": -1,
+                "red": -1,
+                "green": -1,
+                "blue": -1
+            },
+            "blue": {
+                "white": 0,
+                "red": 2,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 6000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Stable chaos",
+        "description": "The universe quickly converge into an unorganized chaos where particles stop moving.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "none",
+        "activeColors": 4,
+        "convergenceSpeed": "fast",
+        "energyLevel": "low",
+        "complexity": 1,
+        "attractionTable": {
+            "white": {
+                "white": -1,
+                "red": 1,
+                "green": 2,
+                "blue": -1
+            },
+            "red": {
+                "white": 1,
+                "red": -1,
+                "green": 0,
+                "blue": -1
+            },
+            "green": {
+                "white": 2,
+                "red": 0,
+                "green": 1,
+                "blue": 2
+            },
+            "blue": {
+                "white": -1,
+                "red": 0,
+                "green": 2,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 8000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Slowly merging clusters",
+        "description": "clusters of blue-green-white moving in a see of red until they have all merged or stoped moving",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "clusters",
+        "activeColors": 4,
+        "convergenceSpeed": "slow",
+        "energyLevel": "low",
+        "complexity": 1,
+        "attractionTable": {
+            "white": {
+                "white": 1,
+                "red": -1,
+                "green": 0,
+                "blue": 0
+            },
+            "red": {
+                "white": -1,
+                "red": 0,
+                "green": -1,
+                "blue": -1
+            },
+            "green": {
+                "white": 2,
+                "red": 2,
+                "green": 1,
+                "blue": 2
+            },
+            "blue": {
+                "white": 1,
+                "red": 1,
+                "green": 0,
+                "blue": 1
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Slowly merging clusters 2",
+        "description": "Creates clusters of blue and of red-green slowing merging in a sea of white",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "clusters",
+        "activeColors": 4,
+        "convergenceSpeed": "slow",
+        "energyLevel": "medium",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": -1,
+                "green": -1,
+                "blue": -1
+            },
+            "red": {
+                "white": -1,
+                "red": 2,
+                "green": 2,
+                "blue": -1
+            },
+            "green": {
+                "white": 1,
+                "red": 0,
+                "green": 2,
+                "blue": -1
+            },
+            "blue": {
+                "white": 2,
+                "red": 0,
+                "green": -1,
+                "blue": 1
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Complexe clusters",
+        "description": "Green clusters merging next to more complex clusters of white or white-red shells encircling blue-red core. The clusters tend to move before merging and becoming still.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "clusters",
+        "activeColors": 4,
+        "convergenceSpeed": "slow",
+        "energyLevel": "low",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": -1,
+                "red": 0,
+                "green": -1,
+                "blue": 1
+            },
+            "red": {
+                "white": 2,
+                "red": -1,
+                "green": 1,
+                "blue": 2
+            },
+            "green": {
+                "white": -1,
+                "red": -1,
+                "green": 2,
+                "blue": -1
+            },
+            "blue": {
+                "white": 1,
+                "red": 0,
+                "green": 0,
+                "blue": 2
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Dynamic islands",
+        "description": "The universe create islands with blue-green core closely surrounded by red bands surrounded bu thin white bands.\n\nThe interesting parts is that the white surrounding bands (and sometimes the red inner bands) oscillate around some islands while the core remains mostly stable, just changing shape.\n\nIt also creates some rare completely rotating islands.",
+        "preferredInitialConfig": "uniform",
+        "behavior": "cyclic",
+        "structure": "clusters",
+        "activeColors": 4,
+        "convergenceSpeed": "medium",
+        "energyLevel": "medium",
+        "complexity": 3,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 2,
+                "green": -1,
+                "blue": -1
+            },
+            "red": {
+                "white": -1,
+                "red": -1,
+                "green": 2,
+                "blue": 2
+            },
+            "green": {
+                "white": 1,
+                "red": 2,
+                "green": 1,
+                "blue": 2
+            },
+            "blue": {
+                "white": 1,
+                "red": 2,
+                "green": 2,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Stable multi stage islands",
+        "description": "Islands of outer white, then very small blue chunks circling larger red and green. Sometimes the islands get longer a bit like worms",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "clusters",
+        "activeColors": 4,
+        "convergenceSpeed": "medium",
+        "energyLevel": "low",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 2,
+                "green": -1,
+                "blue": -1
+            },
+            "red": {
+                "white": -1,
+                "red": -1,
+                "green": 2,
+                "blue": 1
+            },
+            "green": {
+                "white": 1,
+                "red": 2,
+                "green": 1,
+                "blue": 2
+            },
+            "blue": {
+                "white": 1,
+                "red": 2,
+                "green": 0,
+                "blue": -1
+            }
+        },
+        "colorWeights": {
+            "white": 235,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 8000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "Complex islands 2",
+        "description": "Forms layered islands of various forms which get stable",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "clusters",
+        "activeColors": 4,
+        "convergenceSpeed": "medium",
+        "energyLevel": "low",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": -1,
+                "red": -1,
+                "green": 1,
+                "blue": 1
+            },
+            "red": {
+                "white": -1,
+                "red": 1,
+                "green": -1,
+                "blue": 1
+            },
+            "green": {
+                "white": 1,
+                "red": -1,
+                "green": 0,
+                "blue": 0
+            },
+            "blue": {
+                "white": 0,
+                "red": 2,
+                "green": 1,
+                "blue": 1
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
     }
 ]
