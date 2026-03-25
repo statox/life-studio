@@ -1319,7 +1319,7 @@
         "name": "4 Colors - Slowly merging 2-colors blobs",
         "description": "TODO Improve this description.\n\nBlobs of red-blue and blobs of green-white move around and regularly merge creating bigger blobs. Sometimes they stop moving.\n\nI think it should converge to a still state because there doesn't seemm to have splits but if it does it takes a very long time. The simulation might be artificially kept moving by the inaccurate computations of walls wrapping.",
         "preferredInitialConfig": "uniform",
-        "behavior": "converge",
+        "behavior": "converges",
         "structure": "clusters",
         "activeColors": 4,
         "convergenceSpeed": "slow",
