@@ -31,7 +31,7 @@
     const worldSize = { x: 0, y: 0 };
 
     const startSim = () => {
-        simulationComponent?.startSim({ cells, worldSize, maxAttractionRadius, attractionTable });
+        simulationComponent?.startSim({ cells, worldSize, maxAttractionRadius, attractionTable, friction });
     };
 
     const loadUniverse = (u: StoredUniverse) => {
@@ -172,6 +172,11 @@
             <div class="field">
                 <label for="gallery-maxradius">Max radius</label>
                 <input id="gallery-maxradius" type="number" value={maxAttractionRadius} disabled />
+            </div>
+            <div class="field">
+                <label for="gallery-friction">Friction</label>
+                <input id="gallery-friction" type="range" value={friction} min="0" max="1" step="0.01" disabled />
+                <span class="dim">{friction.toFixed(2)}</span>
             </div>
             <div class="proportion-list">
                 {#each COLORS as c}

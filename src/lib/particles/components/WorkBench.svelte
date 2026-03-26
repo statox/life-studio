@@ -52,7 +52,7 @@
     };
 
     const startSim = () => {
-        simulationComponent?.startSim({ cells, worldSize, maxAttractionRadius, attractionTable });
+        simulationComponent?.startSim({ cells, worldSize, maxAttractionRadius, attractionTable, friction });
     };
 
     const updateAttractionTable = (newTable: AttractionTable) => {

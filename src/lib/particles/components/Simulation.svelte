@@ -23,7 +23,7 @@
     let showColors = true;
     let maxFPS = 60;
 
-    const cellSize = 1;
+    const cellSize = 2;
 
     let maxAttractionRadius = 32;
     let horizontalResolution = 30;
@@ -43,6 +43,7 @@
         worldSize?: { x: number; y: number };
         maxAttractionRadius?: number;
         attractionTable?: AttractionTable;
+        friction?: number;
     }) => {
         buffer = [];
         displayIndex = 0;
@@ -75,7 +76,7 @@
                 cells: params.cells,
                 attractionTable: savedAttractionTable,
                 useWorkers,
-                friction
+                friction: params.friction ?? friction
             },
             (positions: Float32Array) => {
                 buffer.push(positions);

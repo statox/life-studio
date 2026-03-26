@@ -2062,6 +2062,6 @@
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
         "verticalResolution": 20,
-        "friction": 0.5
+        "friction": 0.1
     }
 ]

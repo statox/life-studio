@@ -35,7 +35,7 @@
     const worldSize = { x: 0, y: 0 };
 
     const startSim = () => {
-        simulationComponent?.startSim({ cells, worldSize, maxAttractionRadius, attractionTable });
+        simulationComponent?.startSim({ cells, worldSize, maxAttractionRadius, attractionTable, friction });
     };
 
     const loadUniverse = (u: StoredUniverse) => {
