@@ -20,6 +20,7 @@ export class EngineST {
     _velX: Float32Array;
     _velY: Float32Array;
     _maxAttractionRadius: number;
+    _friction: number;
     attractionTable: AttractionTable;
     attractionMatrix: Float32Array;
     worldSize: WorldSize;
@@ -29,7 +30,8 @@ export class EngineST {
         cells: Cell[],
         attractionTable: AttractionTable,
         worldSize: WorldSize,
-        maxAttractionRadius: number
+        maxAttractionRadius: number,
+        friction: number
     ) {
         this._stepTimeout = undefined;
         this._stepCb = console.log;
@@ -38,6 +40,7 @@ export class EngineST {
         this.attractionTable = attractionTable;
         this.attractionMatrix = attractionTableToMatrix(attractionTable);
         this._maxAttractionRadius = maxAttractionRadius;
+        this._friction = friction;
 
         // Convert Cell[] to Struct-of-Arrays (one-time cost)
         this.particles = cellsToParticles(cells);
@@ -143,9 +146,10 @@ export class EngineST {
 
         const rVelX = result.velX;
         const rVelY = result.velY;
+        const carry = 1 - this._friction;
         for (let j = 0; j < rVelX.length; j++) {
-            velX[j] = rVelX[j];
-            velY[j] = rVelY[j];
+            velX[j] = velX[j] * carry + rVelX[j];
+            velY[j] = velY[j] * carry + rVelY[j];
         }
 
         // Update positions with wrapping

@@ -22,6 +22,7 @@ export type StartEngineRequest = {
     worldSize: WorldSize;
     maxAttractionRadius: number;
     useWorkers?: boolean;
+    friction?: number;
 };
 
 export type PauseEngineRequest = {

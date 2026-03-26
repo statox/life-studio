@@ -20,6 +20,7 @@ export class Engine {
     _velX: Float32Array;
     _velY: Float32Array;
     _maxAttractionRadius: number;
+    _friction: number;
     attractionTable: AttractionTable;
     attractionMatrix: Float32Array;
     worldSize: WorldSize;
@@ -29,7 +30,8 @@ export class Engine {
         cells: Cell[],
         attractionTable: AttractionTable,
         worldSize: WorldSize,
-        maxAttractionRadius: number
+        maxAttractionRadius: number,
+        friction: number
     ) {
         this._stepTimeout = undefined;
         this._stepCb = console.log;
@@ -38,6 +40,7 @@ export class Engine {
         this.attractionTable = attractionTable;
         this.attractionMatrix = attractionTableToMatrix(attractionTable);
         this._maxAttractionRadius = maxAttractionRadius;
+        this._friction = friction;
 
         // Convert Cell[] to Struct-of-Arrays (one-time cost)
         this.particles = cellsToParticles(cells);
@@ -172,14 +175,15 @@ export class Engine {
         const wsx = this.worldSize.x;
         const wsy = this.worldSize.y;
 
+        const carry = 1 - this._friction;
         for (const result of results) {
             if (!result) continue;
             const rVelX = result.velX;
             const rVelY = result.velY;
             const start = result.startIdx;
             for (let j = 0; j < rVelX.length; j++) {
-                velX[start + j] = rVelX[j];
-                velY[start + j] = rVelY[j];
+                velX[start + j] = velX[start + j] * carry + rVelX[j];
+                velY[start + j] = velY[start + j] * carry + rVelY[j];
             }
         }
 

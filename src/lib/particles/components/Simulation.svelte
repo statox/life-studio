@@ -17,6 +17,7 @@
     let absoluteFrameOffset = 0;
 
     export let useWorkers = true;
+    export let friction = 0.5;
     export let onToggleWorkers: (() => void) | undefined = undefined;
 
     let showColors = true;
@@ -73,7 +74,8 @@
                 maxAttractionRadius: savedMaxAttractionRadius,
                 cells: params.cells,
                 attractionTable: savedAttractionTable,
-                useWorkers
+                useWorkers,
+                friction
             },
             (positions: Float32Array) => {
                 buffer.push(positions);

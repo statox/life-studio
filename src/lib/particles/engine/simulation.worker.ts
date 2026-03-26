@@ -9,14 +9,14 @@ onmessage = (request: MessageEvent<EngineRequest>) => {
     const { msg } = request.data;
 
     if (msg === 'start') {
-        const { cells, attractionTable, worldSize, maxAttractionRadius, useWorkers } = request.data;
+        const { cells, attractionTable, worldSize, maxAttractionRadius, useWorkers, friction } = request.data;
         if (engine) {
             engine.destroy();
         }
         if (useWorkers === false) {
-            engine = new EngineST(cells, attractionTable, worldSize, maxAttractionRadius);
+            engine = new EngineST(cells, attractionTable, worldSize, maxAttractionRadius, friction);
         } else {
-            engine = new Engine(cells, attractionTable, worldSize, maxAttractionRadius);
+            engine = new Engine(cells, attractionTable, worldSize, maxAttractionRadius, friction);
         }
         engine.run(onUpdatedParticles);
     }

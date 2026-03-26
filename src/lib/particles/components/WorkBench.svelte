@@ -29,6 +29,7 @@
     let showColors = true;
     let maxFPS = 60;
     let useWorkers = true;
+    let friction = 0.5;
 
     let maxAttractionRadius = 32;
     let nbParticles = 4000;
@@ -156,6 +157,7 @@
     <Simulation
         bind:this={simulationComponent}
         {useWorkers}
+        {friction}
         onToggleWorkers={async () => {
             useWorkers = !useWorkers;
             await tick();
@@ -262,6 +264,19 @@
             <div class="field">
                 <label for="fps-cap">FPS cap</label>
                 <input id="fps-cap" type="number" bind:value={maxFPS} min="1" max="120" />
+            </div>
+            <div class="field">
+                <label for="friction">Friction</label>
+                <input
+                    id="friction"
+                    type="range"
+                    bind:value={friction}
+                    on:change={startSim}
+                    min="0"
+                    max="1"
+                    step="0.01"
+                />
+                <span class="dim">{friction.toFixed(2)}</span>
             </div>
         </div>
     </div>
