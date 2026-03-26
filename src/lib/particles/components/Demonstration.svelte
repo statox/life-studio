@@ -165,11 +165,11 @@
             >
                 <h3>Restart Buttons</h3>
                 <p>
-                    <strong>Uniform spread</strong> distributes all particles randomly across the full
-                    world. <strong>Centered circle</strong> packs them into a dense cluster at the center
-                    - many universes produce cleaner structures from this starting point since interactions
-                    begin in a concentrated area before spreading out. Both buttons preserve the current
-                    attraction table and color proportions.
+                    <strong>Uniform spread</strong> distributes all particles randomly across the
+                    full world. <strong>Centered circle</strong> packs them into a dense cluster at the
+                    center - many universes produce cleaner structures from this starting point since
+                    interactions begin in a concentrated area before spreading out. Both buttons preserve
+                    the current attraction table and color proportions.
                 </p>
             </div>
 
@@ -182,12 +182,13 @@
                 <p>
                     The attraction table is the heart of the simulation. Each cell defines the force
                     that the <em>column</em> species exerts on the <em>row</em> species: a positive
-                    value means the row species is attracted toward the column species, a negative value
-                    means it is repelled. The table is not symmetric - <span class="cr">red</span> can
-                    be strongly attracted to <span class="cw">white</span> while
+                    value means the row species is attracted toward the column species, a negative
+                    value means it is repelled. The table is not symmetric -
+                    <span class="cr">red</span>
+                    can be strongly attracted to <span class="cw">white</span> while
                     <span class="cw">white</span> is completely indifferent to
-                    <span class="cr">red</span>, or even repelled by it. This asymmetry is what makes
-                    complex behaviors possible.
+                    <span class="cr">red</span>, or even repelled by it. This asymmetry is what
+                    makes complex behaviors possible.
                 </p>
             </div>
 
@@ -198,13 +199,13 @@
             >
                 <h3>Color Proportions</h3>
                 <p>
-                    The sliders set the relative number of particles of each species <span class="cw"
-                        >white</span
+                    The sliders set the relative number of particles of each species <span
+                        class="cw">white</span
                     >, <span class="cr">red</span>, <span class="cg">green</span> and
-                    <span class="cb">blue</span>. Setting a color to zero removes it from the universe
-                    entirely. Adjusting proportions while a simulation is running has no effect on
-                    existing particles - hit one of the restart buttons to generate a new set with the
-                    updated mix.
+                    <span class="cb">blue</span>. Setting a color to zero removes it from the
+                    universe entirely. Adjusting proportions while a simulation is running has no
+                    effect on existing particles - hit one of the restart buttons to generate a new
+                    set with the updated mix.
                 </p>
             </div>
         </section>
@@ -815,7 +816,6 @@
         display: flex;
         flex-wrap: wrap;
         gap: 6px;
-        margin-bottom: 16px;
     }
 
     /* ── Control description hover ───────────── */
