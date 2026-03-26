@@ -11,9 +11,9 @@
         />
         <meta http-equiv="content-security-policy" content="">
 		<link href="/particles-life/_app/immutable/assets/_layout-053e06f5.css" rel="stylesheet">
-		<link href="/particles-life/_app/immutable/assets/_page-b11df5f7.css" rel="stylesheet">
+		<link href="/particles-life/_app/immutable/assets/_page-07055ef5.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/index-c1a88ed1.css" rel="stylesheet">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/start-1d5e7617.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-271bd308.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-0f2870f9.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-372870b1.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-3b167b90.js">
@@ -22,8 +22,8 @@
 		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-2b869f80.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/gallery/_page.svelte-f6d51f15.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-910e0d15.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/gallery/_page.svelte-f6c38c5f.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-6120f833.js">
     </head>
 
     <body data-sveltekit-preload-data="hover">
@@ -41,7 +41,7 @@
 
 <div class="sim svelte-1cj9qh5">
     <div class="selector svelte-3mdsml">
-    <div class="sort-bar svelte-3mdsml"><span class="count svelte-3mdsml">48/48</span>
+    <div class="sort-bar svelte-3mdsml"><span class="count svelte-3mdsml">50/50</span>
         <input class="search svelte-3mdsml" type="search" placeholder="Search…" value="">
         <div class="sort-btns svelte-3mdsml"><button class="sort-btn svelte-3mdsml">Name
                     
@@ -140,6 +140,14 @@ It also creates some rare completely rotating islands.</p>
                         <span class="stars svelte-3mdsml">★★★</span>
                     </div></div>
                 <p class="item-desc svelte-3mdsml">Rock-Paper-Scissors dynamics (white chases green, green chases red, red chases white) with self-attraction added to each species. The original RPS produces diffuse rotating waves because particles spread freely. Here each species coalesces into compact clusters before the cyclic dynamics take over, expected to produce discrete blobs orbiting each other rather than spreading wave fronts.</p>
+            </li>
+            <li class="item svelte-3mdsml" role="option" aria-selected="false" tabindex="0"><div class="item-header svelte-3mdsml"><span class="item-name svelte-3mdsml">Various moving organisms</span>
+                    <div class="badges svelte-3mdsml"><span class="badge svelte-3mdsml" style="background:#2e7d32">cyclic</span>
+                        <span class="badge-outline svelte-3mdsml">4c</span>
+                        <span class="energy-dot svelte-3mdsml" style="background:#c3e88d" title="Energy: medium"></span>
+                        <span class="stars svelte-3mdsml">★★★</span>
+                    </div></div>
+                <p class="item-desc svelte-3mdsml">Several different moving species emerge through time and move for a long time until they are all merged</p>
             </li>
             <li class="item svelte-3mdsml" role="option" aria-selected="false" tabindex="0"><div class="item-header svelte-3mdsml"><span class="item-name svelte-3mdsml">2 colors chase</span>
                     <div class="badges svelte-3mdsml"><span class="badge svelte-3mdsml" style="background:#e65100">chaotic</span>
@@ -449,6 +457,14 @@ The moving structures easily split and merge when they touch each other so the u
                     </div></div>
                 <p class="item-desc svelte-3mdsml">A concentric shell structure built from a chained attraction cascade. Red self-attracts strongly and ignores everyone — it forms immovable dense cores. White is attracted to red but strongly self-repels, settling into a uniform ring around each core. Green is attracted to white but strongly self-repels, settling into a second outer ring around the white ring. Expected result: repeated three-layer structures of green outer shell, white middle ring, red nucleus.</p>
             </li>
+            <li class="item svelte-3mdsml" role="option" aria-selected="false" tabindex="0"><div class="item-header svelte-3mdsml"><span class="item-name svelte-3mdsml">fast movers</span>
+                    <div class="badges svelte-3mdsml"><span class="badge svelte-3mdsml" style="background:#1565c0">converges</span>
+                        <span class="badge-outline svelte-3mdsml">4c</span>
+                        <span class="energy-dot svelte-3mdsml" style="background:#fc2a51" title="Energy: high"></span>
+                        <span class="stars svelte-3mdsml">★★☆</span>
+                    </div></div>
+                <p class="item-desc svelte-3mdsml">large simple organisms moving very fast in the universe</p>
+            </li>
             <li class="item svelte-3mdsml active" role="option" aria-selected="true" tabindex="0"><div class="item-header svelte-3mdsml"><span class="item-name svelte-3mdsml">2 colors own attraction</span>
                     <div class="badges svelte-3mdsml"><span class="badge svelte-3mdsml" style="background:#1565c0">converges</span>
                         <span class="badge-outline svelte-3mdsml">2c</span>
@@ -596,6 +612,9 @@ We can see some groups at the border moving which is probably the symptom of a w
                 <span class="dim svelte-1cj9qh5">640px</span></div>
             <div class="field svelte-1cj9qh5"><label for="gallery-maxradius" class="svelte-1cj9qh5">Max radius</label>
                 <input id="gallery-maxradius" type="number" value="32" disabled class="svelte-1cj9qh5"></div>
+            <div class="field svelte-1cj9qh5"><label for="gallery-friction" class="svelte-1cj9qh5">Friction</label>
+                <input id="gallery-friction" type="range" value="0.5" min="0" max="1" step="0.01" disabled class="svelte-1cj9qh5">
+                <span class="dim svelte-1cj9qh5">0.50</span></div>
             <div class="proportion-list svelte-1cj9qh5"><div class="field svelte-1cj9qh5"><span class="pdot svelte-1cj9qh5" style="background:#ffedff"></span>
                         <input type="range" min="0" max="1000" step="1" disabled class="svelte-1cj9qh5" value="500">
                         <span class="dim svelte-1cj9qh5" style="width:28px;text-align:right">500</span>
@@ -670,14 +689,14 @@ We can see some groups at the border moving which is probably the symptom of a w
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="8ldfz7">
-			import { start } from "/particles-life/_app/immutable/start-1d5e7617.js";
+		<script type="module" data-sveltekit-hydrate="3xwt5d">
+			import { start } from "/particles-life/_app/immutable/start-271bd308.js";
 
 			start({
 				env: {},
 				paths: {"base":"/particles-life","assets":"/particles-life"},
-				target: document.querySelector('[data-sveltekit-hydrate="8ldfz7"]').parentNode,
-				version: "1774551931128",
+				target: document.querySelector('[data-sveltekit-hydrate="3xwt5d"]').parentNode,
+				version: "1774565842270",
 				hydrate: {
 					node_ids: [0, 6],
 					data: [null,null],
