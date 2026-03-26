@@ -376,6 +376,100 @@
         "verticalResolution": 20
     },
     {
+        "name": "3 colors still",
+        "description": "A still universe with 3 species",
+        "preferredInitialConfig": "uniform",
+        "behavior": "still",
+        "structure": "none",
+        "activeColors": 2,
+        "convergenceSpeed": "instant",
+        "energyLevel": "low",
+        "complexity": 1,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "red": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "green": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "blue": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 0
+        },
+        "nbParticles": 2000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
+        "name": "4 colors still",
+        "description": "A still universe with 4 species",
+        "preferredInitialConfig": "uniform",
+        "behavior": "still",
+        "structure": "none",
+        "activeColors": 2,
+        "convergenceSpeed": "instant",
+        "energyLevel": "low",
+        "complexity": 1,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "red": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "green": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            },
+            "blue": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 2000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20
+    },
+    {
         "name": "2 colors inverse forces",
         "description": "A universe when species have different self attraction forces",
         "preferredInitialConfig": "uniform",
