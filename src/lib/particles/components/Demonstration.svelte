@@ -790,15 +790,14 @@
     }
 
     @media (max-width: 768px) {
+        /* Make canvas-col transparent to the grid so its children
+           become direct grid items of .demo and sticky works page-wide */
         .canvas-col {
-            order: -1;
-            position: static;
-            height: auto;
-            overflow-y: visible;
-            padding: 0;
+            display: contents;
         }
 
         .canvas-sticky {
+            order: -1; /* appear before .narrative */
             position: sticky;
             top: 0;
             z-index: 10;
