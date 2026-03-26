@@ -20,8 +20,8 @@
 
     // ── Sort ─────────────────────────────────────────────────────────────────
     type SortKey = 'name' | 'behavior' | 'colors' | 'energy' | 'complexity';
-    let sortKey: SortKey = 'name';
-    let sortAsc = true;
+    let sortKey: SortKey = 'complexity';
+    let sortAsc = false;
 
     const BEHAVIOR_ORDER: Record<string, number> = {
         still: 0,
