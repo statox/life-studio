@@ -23,7 +23,7 @@
     let showColors = true;
     let maxFPS = 60;
 
-    const cellSize = 3;
+    const cellSize = 1;
 
     let maxAttractionRadius = 32;
     let horizontalResolution = 30;

@@ -44,7 +44,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "2 colors own repulsion",
@@ -91,7 +92,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "2 colors chase",
@@ -138,7 +140,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "2 colors chase - White attraction",
@@ -185,7 +188,8 @@
         "nbParticles": 2000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "2 Colors - Vessels",
@@ -232,7 +236,8 @@
         "nbParticles": 2000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "2 Colors - Red self repulsion",
@@ -279,7 +284,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "2 Colors - White self repulsion",
@@ -326,7 +332,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Cellular strips",
@@ -373,7 +380,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Cellular strips 2",
@@ -420,7 +428,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Cellular strips 3",
@@ -467,7 +476,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Cellular strips - Inner islands",
@@ -514,7 +524,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "4 colors worms",
@@ -561,7 +572,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "4 Colors - worms - single stage",
@@ -608,7 +620,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "4 Colors - Slowly merging 2-colors blobs",
@@ -655,7 +668,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "4 Colors - spreading pattern",
@@ -702,7 +716,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "4 Colors - Inifnite moving low cohesion groups",
@@ -749,7 +764,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "4 colors - Waves",
@@ -796,7 +812,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "3 Colors - Stable islands",
@@ -843,7 +860,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "spatial repartition",
@@ -890,7 +908,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Islands",
@@ -937,7 +956,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Stripe patterns",
@@ -984,7 +1004,8 @@
         "nbParticles": 12000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Rock - Paper - Scissors",
@@ -1031,7 +1052,8 @@
         "nbParticles": 12000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Crystal",
@@ -1078,7 +1100,8 @@
         "nbParticles": 12000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Blue islands",
@@ -1125,7 +1148,8 @@
         "nbParticles": 12000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Crystal stripes",
@@ -1172,7 +1196,8 @@
         "nbParticles": 12000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Moving structures",
@@ -1219,7 +1244,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "4 colors islands",
@@ -1266,7 +1292,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Comple moving structures",
@@ -1313,7 +1340,8 @@
         "nbParticles": 8000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Complex islands",
@@ -1360,7 +1388,8 @@
         "nbParticles": 12000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Moving to filaments",
@@ -1407,7 +1436,8 @@
         "nbParticles": 8000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Complexe moving structures",
@@ -1454,7 +1484,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Complexe moving structures 2",
@@ -1501,7 +1532,8 @@
         "nbParticles": 6000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Weakly bounded moving structures",
@@ -1548,7 +1580,8 @@
         "nbParticles": 6000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Stable chaos",
@@ -1595,7 +1628,8 @@
         "nbParticles": 8000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Slowly merging clusters",
@@ -1642,7 +1676,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Slowly merging clusters 2",
@@ -1689,7 +1724,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Complexe clusters",
@@ -1736,7 +1772,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Dynamic islands",
@@ -1783,7 +1820,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Stable multi stage islands",
@@ -1830,7 +1868,8 @@
         "nbParticles": 8000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Complex islands 2",
@@ -1877,7 +1916,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Self-cohesive RPS",
@@ -1925,7 +1965,8 @@
         "nbParticles": 12000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Competing predators",
@@ -1973,7 +2014,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Two independent chase pairs",
@@ -2021,7 +2063,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Bounded territories",
@@ -2069,7 +2112,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Bubble exclusion zones",
@@ -2117,7 +2161,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Linear predator chain",
@@ -2165,7 +2210,8 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Faction civil war",
@@ -2213,7 +2259,8 @@
         "nbParticles": 8000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Three-layer onion",
@@ -2261,7 +2308,8 @@
         "nbParticles": 8000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
     },
     {
         "name": "Various moving organisms",
@@ -2308,6 +2356,55 @@
         "nbParticles": 4000,
         "maxAttractionRadius": 32,
         "horizontalResolution": 30,
-        "verticalResolution": 20
+        "verticalResolution": 20,
+        "friction": 0.5
+    },
+    {
+        "name": "fast movers",
+        "description": "large simple organisms moving very fast in the universe",
+        "preferredInitialConfig": "uniform",
+        "behavior": "converges",
+        "structure": "organisms",
+        "activeColors": 4,
+        "convergenceSpeed": "slow",
+        "energyLevel": "high",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 2,
+                "red": 0,
+                "green": -1,
+                "blue": -1
+            },
+            "red": {
+                "white": 0,
+                "red": 0,
+                "green": 2,
+                "blue": -1
+            },
+            "green": {
+                "white": 0,
+                "red": 0,
+                "green": 2,
+                "blue": 2
+            },
+            "blue": {
+                "white": 1,
+                "red": 2,
+                "green": 2,
+                "blue": 1
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 8000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 30,
+        "verticalResolution": 20,
+        "friction": 0.04
     }
 ]

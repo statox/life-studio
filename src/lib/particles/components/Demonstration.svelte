@@ -30,6 +30,7 @@
     let colorWeights: ColorProportions = universes[0].colorWeights;
     let nbParticles = universes[0].nbParticles;
     let maxAttractionRadius = universes[0].maxAttractionRadius;
+    let friction = universes[0].friction;
 
     const worldSize = { x: 0, y: 0 };
 
@@ -47,6 +48,7 @@
         cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
         if (u.preferredInitialConfig === 'center') largeCenterCellsInPlace(cells, worldSize);
         if (u.preferredInitialConfig === 'rainbow') rainbowCellsInPlace(cells, worldSize);
+        friction = u.friction;
         startSim();
     };
 
@@ -645,7 +647,7 @@
     <!-- Right column: sticky scrollable panel -->
     <div class="canvas-col">
         <div class="canvas-sticky">
-            <Simulation bind:this={simulationComponent} />
+            <Simulation bind:this={simulationComponent} {friction} />
         </div>
         <div class="canvas-params">
             <div class="card" class:highlighted={hoveredControl === 'restart'}>

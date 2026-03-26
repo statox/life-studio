@@ -26,6 +26,7 @@
     let maxAttractionRadius = universes[0].maxAttractionRadius;
     let horizontalResolution = universes[0].horizontalResolution;
     let verticalResolution = universes[0].verticalResolution;
+    let friction = universes[0].friction;
 
     const worldSize = { x: 0, y: 0 };
 
@@ -45,6 +46,7 @@
         cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
         if (u.preferredInitialConfig === 'center') largeCenterCellsInPlace(cells, worldSize);
         if (u.preferredInitialConfig === 'rainbow') rainbowCellsInPlace(cells, worldSize);
+        friction = u.friction;
         startSim();
     };
 
@@ -105,7 +107,7 @@
     <UniverseSelector {universes} {selected} onSelect={selectUniverse} />
 
     <!-- Simulation canvas -->
-    <Simulation bind:this={simulationComponent} />
+    <Simulation bind:this={simulationComponent} {friction} />
 
     <!-- Spread buttons -->
     <div class="spread-btns">

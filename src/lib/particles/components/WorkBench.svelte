@@ -47,7 +47,8 @@
         nbParticles,
         maxAttractionRadius,
         horizontalResolution,
-        verticalResolution
+        verticalResolution,
+        friction
     };
 
     const startSim = () => {
@@ -81,6 +82,7 @@
         maxAttractionRadius = u.maxAttractionRadius;
         horizontalResolution = u.horizontalResolution;
         verticalResolution = u.verticalResolution;
+        friction = u.friction;
         worldSize.x = u.maxAttractionRadius * u.horizontalResolution;
         worldSize.y = u.maxAttractionRadius * u.verticalResolution;
         cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);

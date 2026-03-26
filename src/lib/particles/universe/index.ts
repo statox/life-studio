@@ -10,6 +10,7 @@ export type Universe = {
     maxAttractionRadius: number;
     horizontalResolution: number;
     verticalResolution: number;
+    friction: number;
 };
 
 type UniverseMetadata = {
