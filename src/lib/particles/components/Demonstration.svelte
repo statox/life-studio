@@ -20,6 +20,7 @@
     } from '$lib/particles/universe';
 
     let simulationComponent: Simulation;
+    let hoveredControl: 'restart' | 'attraction' | 'proportions' | null = null;
 
     const universes: StoredUniverse[] = getAllUniverses();
     const demoUniverses: StoredUniverse[] = getAllDemoUniverses();
@@ -157,37 +158,55 @@
                 the restart buttons to apply a fresh set of particles.
             </p>
 
-            <h3>Restart Buttons</h3>
-            <p>
-                <strong>Uniform spread</strong> distributes all particles randomly across the full
-                world. <strong>Centered circle</strong> packs them into a dense cluster at the center
-                - many universes produce cleaner structures from this starting point since interactions
-                begin in a concentrated area before spreading out. Both buttons preserve the current
-                attraction table and color proportions.
-            </p>
+            <div
+                class="control-desc"
+                on:mouseenter={() => (hoveredControl = 'restart')}
+                on:mouseleave={() => (hoveredControl = null)}
+            >
+                <h3>Restart Buttons</h3>
+                <p>
+                    <strong>Uniform spread</strong> distributes all particles randomly across the full
+                    world. <strong>Centered circle</strong> packs them into a dense cluster at the center
+                    - many universes produce cleaner structures from this starting point since interactions
+                    begin in a concentrated area before spreading out. Both buttons preserve the current
+                    attraction table and color proportions.
+                </p>
+            </div>
 
-            <h3>The Attraction Table</h3>
-            <p>
-                The attraction table is the heart of the simulation. Each cell defines the force
-                that the <em>column</em> species exerts on the <em>row</em> species: a positive
-                value means the row species is attracted toward the column species, a negative value
-                means it is repelled. The table is not symmetric - <span class="cr">red</span> can
-                be strongly attracted to <span class="cw">white</span> while
-                <span class="cw">white</span> is completely indifferent to
-                <span class="cr">red</span>, or even repelled by it. This asymmetry is what makes
-                complex behaviors possible.
-            </p>
+            <div
+                class="control-desc"
+                on:mouseenter={() => (hoveredControl = 'attraction')}
+                on:mouseleave={() => (hoveredControl = null)}
+            >
+                <h3>The Attraction Table</h3>
+                <p>
+                    The attraction table is the heart of the simulation. Each cell defines the force
+                    that the <em>column</em> species exerts on the <em>row</em> species: a positive
+                    value means the row species is attracted toward the column species, a negative value
+                    means it is repelled. The table is not symmetric - <span class="cr">red</span> can
+                    be strongly attracted to <span class="cw">white</span> while
+                    <span class="cw">white</span> is completely indifferent to
+                    <span class="cr">red</span>, or even repelled by it. This asymmetry is what makes
+                    complex behaviors possible.
+                </p>
+            </div>
 
-            <h3>Color Proportions</h3>
-            <p>
-                The sliders set the relative number of particles of each species <span class="cw"
-                    >white</span
-                >, <span class="cr">red</span>, <span class="cg">green</span> and
-                <span class="cb">blue</span>. Setting a color to zero removes it from the universe
-                entirely. Adjusting proportions while a simulation is running has no effect on
-                existing particles - hit one of the restart buttons to generate a new set with the
-                updated mix.
-            </p>
+            <div
+                class="control-desc"
+                on:mouseenter={() => (hoveredControl = 'proportions')}
+                on:mouseleave={() => (hoveredControl = null)}
+            >
+                <h3>Color Proportions</h3>
+                <p>
+                    The sliders set the relative number of particles of each species <span class="cw"
+                        >white</span
+                    >, <span class="cr">red</span>, <span class="cg">green</span> and
+                    <span class="cb">blue</span>. Setting a color to zero removes it from the universe
+                    entirely. Adjusting proportions while a simulation is running has no effect on
+                    existing particles - hit one of the restart buttons to generate a new set with the
+                    updated mix.
+                </p>
+            </div>
         </section>
 
         <!-- The Basics -->
@@ -628,18 +647,18 @@
             <Simulation bind:this={simulationComponent} />
         </div>
         <div class="canvas-params">
-            <div class="card">
+            <div class="card" class:highlighted={hoveredControl === 'restart'}>
                 <div class="card-title">Restart</div>
                 <div class="preset-btns">
                     <button on:click={uniformSpread}>↺ Uniform spread</button>
                     <button on:click={centerSpread}>◎ Centered circle</button>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" class:highlighted={hoveredControl === 'attraction'}>
                 <div class="card-title">Attraction Table</div>
                 <AttractionTableComponent {attractionTable} onUpdateTable={updateAttractionTable} />
             </div>
-            <div class="card">
+            <div class="card" class:highlighted={hoveredControl === 'proportions'}>
                 <div class="card-title">Color proportions</div>
                 <div class="proportion-list">
                     {#each COLORS as c}
@@ -800,12 +819,32 @@
         margin-bottom: 16px;
     }
 
+    /* ── Control description hover ───────────── */
+    .control-desc {
+        padding: 2px 8px;
+        border-left: 2px solid transparent;
+        border-radius: 0 4px 4px 0;
+        transition: background 0.15s, border-color 0.15s;
+        margin-left: -10px;
+    }
+
+    .control-desc:hover {
+        background: #c3e88d08;
+        border-left-color: #c3e88d66;
+    }
+
     /* ── Card ────────────────────────────────── */
     .card {
         background: #263238;
         border: 1px solid #37474f;
         border-radius: 8px;
         padding: 14px 16px;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card.highlighted {
+        border-color: #c3e88daa;
+        box-shadow: 0 0 0 1px #c3e88d33;
     }
 
     .card-title {
