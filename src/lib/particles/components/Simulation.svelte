@@ -5,8 +5,8 @@
     import Timeline from '$lib/particles/components/Timeline.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
     import { createSimulationWorker } from '$lib/particles/engine/simulationWorker';
-    import type { Cell } from '$lib/particles/engine';
     import { colorToIndex } from '$lib/particles/engine';
+    import type { SimulationParams } from '$lib/particles/engine/types';
 
     const sim = createSimulationWorker();
 
@@ -17,7 +17,6 @@
     let absoluteFrameOffset = 0;
 
     export let useWorkers = true;
-    export let friction = 0.5;
     export let onToggleWorkers: (() => void) | undefined = undefined;
 
     let showColors = true;
@@ -25,33 +24,15 @@
 
     const cellSize = 2;
 
-    let maxAttractionRadius = 32;
-    let horizontalResolution = 30;
-    let verticalResolution = 20;
+    // Rendering state derived from startSim params
+    let canvasWorldSize = { x: 0, y: 0 };
 
-    const worldSize = {
-        x: maxAttractionRadius * horizontalResolution,
-        y: maxAttractionRadius * verticalResolution
-    };
-
-    let savedAttractionTable: AttractionTable | null = null;
-    let savedWorldSize: { x: number; y: number } | null = null;
-    let savedMaxAttractionRadius: number | null = null;
-
-    export const startSim = async (params: {
-        cells: Cell[];
-        worldSize?: { x: number; y: number };
-        maxAttractionRadius?: number;
-        attractionTable?: AttractionTable;
-        friction?: number;
-    }) => {
+    export const startSim = async (params: SimulationParams) => {
         buffer = [];
         displayIndex = 0;
         absoluteFrameOffset = 0;
 
-        savedAttractionTable = params.attractionTable || savedAttractionTable;
-        savedWorldSize = params.worldSize || savedWorldSize;
-        savedMaxAttractionRadius = params.maxAttractionRadius || savedMaxAttractionRadius;
+        canvasWorldSize = { x: params.worldSize.x, y: params.worldSize.y };
 
         // Extract color indices once (colors don't change during sim)
         numParticles = params.cells.length;
@@ -60,23 +41,14 @@
             colorIndices[i] = colorToIndex(params.cells[i].color);
         }
 
-        if (
-            !savedAttractionTable ||
-            !params.cells ||
-            !savedWorldSize ||
-            !savedMaxAttractionRadius
-        ) {
-            throw new Error('Missing parameters to start simulation');
-        }
-
         await sim.start(
             {
-                worldSize: savedWorldSize,
-                maxAttractionRadius: savedMaxAttractionRadius,
+                worldSize: params.worldSize,
+                maxAttractionRadius: params.maxAttractionRadius,
                 cells: params.cells,
-                attractionTable: savedAttractionTable,
+                attractionTable: params.attractionTable,
                 useWorkers,
-                friction: params.friction ?? friction
+                friction: params.friction
             },
             (positions: Float32Array) => {
                 buffer.push(positions);
@@ -87,16 +59,11 @@
 
     export const updateAttractionTable = (newTable: AttractionTable) => {
         sim.updateAttractionTable(newTable);
-        savedAttractionTable = newTable;
         // Keep the current frame so Canvas doesn't go blank, discard stale frames
         const currentFrame = buffer[displayIndex];
         buffer = currentFrame ? [currentFrame] : [];
         displayIndex = 0;
         absoluteFrameOffset = 0;
-    };
-
-    export const updateCells = (newCells: Cell[]) => {
-        startSim({ cells: newCells });
     };
 
     let canvasWrap: HTMLElement;
@@ -132,7 +99,7 @@
             positions={currentPositions}
             {colorIndices}
             {numParticles}
-            {worldSize}
+            worldSize={canvasWorldSize}
             {cellSize}
             {showColors}
             drewFrame={() => timeline?.updateFrame()}

@@ -31,7 +31,18 @@
     const worldSize = { x: 0, y: 0 };
 
     const startSim = () => {
-        simulationComponent?.startSim({ cells, worldSize, maxAttractionRadius, attractionTable, friction });
+        simulationComponent?.startSim({
+            cells,
+            worldSize,
+            maxAttractionRadius,
+            attractionTable,
+            friction
+        });
+    };
+
+    const restartWithCells = (newCells: Cell[]) => {
+        cells = newCells;
+        startSim();
     };
 
     const loadUniverse = (u: StoredUniverse) => {
@@ -60,20 +71,19 @@
     });
 
     const uniformSpread = () => {
-        cells = getNewCells(worldSize, nbParticles, colorWeights);
-        simulationComponent?.updateCells(cells);
+        restartWithCells(getNewCells(worldSize, nbParticles, colorWeights));
     };
 
     const centerSpread = () => {
-        cells = getNewCells(worldSize, nbParticles, colorWeights);
-        largeCenterCellsInPlace(cells, worldSize);
-        simulationComponent?.updateCells(cells);
+        const newCells = getNewCells(worldSize, nbParticles, colorWeights);
+        largeCenterCellsInPlace(newCells, worldSize);
+        restartWithCells(newCells);
     };
 
     const rainbowSpread = () => {
-        cells = getNewCells(worldSize, nbParticles, colorWeights);
-        rainbowCellsInPlace(cells, worldSize);
-        simulationComponent?.updateCells(cells);
+        const newCells = getNewCells(worldSize, nbParticles, colorWeights);
+        rainbowCellsInPlace(newCells, worldSize);
+        restartWithCells(newCells);
     };
 
     const valueColor = (val: number): string => {
@@ -107,7 +117,7 @@
     <UniverseSelector {universes} {selected} onSelect={selectUniverse} />
 
     <!-- Simulation canvas -->
-    <Simulation bind:this={simulationComponent} {friction} />
+    <Simulation bind:this={simulationComponent} />
 
     <!-- Spread buttons -->
     <div class="spread-btns">
@@ -175,7 +185,15 @@
             </div>
             <div class="field">
                 <label for="gallery-friction">Friction</label>
-                <input id="gallery-friction" type="range" value={friction} min="0" max="1" step="0.01" disabled />
+                <input
+                    id="gallery-friction"
+                    type="range"
+                    value={friction}
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    disabled
+                />
                 <span class="dim">{friction.toFixed(2)}</span>
             </div>
             <div class="proportion-list">

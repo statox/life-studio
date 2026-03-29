@@ -15,6 +15,14 @@ export interface Cell {
     color: Color;
 }
 
+export type SimulationParams = {
+    cells: Cell[];
+    attractionTable: AttractionTable;
+    worldSize: WorldSize;
+    maxAttractionRadius: number;
+    friction: number;
+};
+
 export type StartEngineRequest = {
     msg: 'start';
     cells: Cell[];
@@ -22,7 +30,7 @@ export type StartEngineRequest = {
     worldSize: WorldSize;
     maxAttractionRadius: number;
     useWorkers?: boolean;
-    friction?: number;
+    friction: number;
 };
 
 export type PauseEngineRequest = {

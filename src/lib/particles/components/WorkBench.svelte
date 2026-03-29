@@ -52,7 +52,18 @@
     };
 
     const startSim = () => {
-        simulationComponent?.startSim({ cells, worldSize, maxAttractionRadius, attractionTable, friction });
+        simulationComponent?.startSim({
+            cells,
+            worldSize,
+            maxAttractionRadius,
+            attractionTable,
+            friction
+        });
+    };
+
+    const restartWithCells = (newCells: Cell[]) => {
+        cells = newCells;
+        startSim();
     };
 
     const updateAttractionTable = (newTable: AttractionTable) => {
@@ -68,8 +79,7 @@
             worldSize.x = maxAttractionRadius * horizontalResolution;
             worldSize.y = maxAttractionRadius * verticalResolution;
             if (resetCells) {
-                randomCells();
-                simulationComponent?.updateCells(cells);
+                cells = getNewCells(worldSize, nbParticles, colorWeights);
             }
             startSim();
         }, 750);
@@ -92,26 +102,25 @@
     };
 
     const randomCells = () => {
-        cells = getNewCells(worldSize, nbParticles, colorWeights);
-        simulationComponent?.updateCells(cells);
+        restartWithCells(getNewCells(worldSize, nbParticles, colorWeights));
     };
 
     const centerCells = () => {
         const newCells = getNewCells(worldSize, nbParticles, colorWeights);
         centerCellsInPlace(newCells, worldSize);
-        simulationComponent?.updateCells(newCells);
+        restartWithCells(newCells);
     };
 
     const largeCenterCells = () => {
         const newCells = getNewCells(worldSize, nbParticles, colorWeights);
         largeCenterCellsInPlace(newCells, worldSize);
-        simulationComponent?.updateCells(newCells);
+        restartWithCells(newCells);
     };
 
     const rainbowCells = () => {
         const newCells = getNewCells(worldSize, nbParticles, colorWeights);
         rainbowCellsInPlace(newCells, worldSize);
-        simulationComponent?.updateCells(newCells);
+        restartWithCells(newCells);
     };
 
     const keyActions: Record<string, () => void> = {
@@ -159,7 +168,6 @@
     <Simulation
         bind:this={simulationComponent}
         {useWorkers}
-        {friction}
         onToggleWorkers={async () => {
             useWorkers = !useWorkers;
             await tick();

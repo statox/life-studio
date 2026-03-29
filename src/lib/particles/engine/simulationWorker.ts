@@ -25,7 +25,8 @@ export function createSimulationWorker() {
         onFrame: (positions: Float32Array) => void
     ) => {
         await loadWorker();
-        const { worldSize, maxAttractionRadius, attractionTable, cells, useWorkers, friction } = params;
+        const { worldSize, maxAttractionRadius, attractionTable, cells, useWorkers, friction } =
+            params;
 
         if (!WorkerConstructor) throw new Error('Worker is not initialized');
         worker?.postMessage({ msg: 'destroy' });

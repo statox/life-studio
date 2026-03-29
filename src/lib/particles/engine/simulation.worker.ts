@@ -9,7 +9,8 @@ onmessage = (request: MessageEvent<EngineRequest>) => {
     const { msg } = request.data;
 
     if (msg === 'start') {
-        const { cells, attractionTable, worldSize, maxAttractionRadius, useWorkers, friction } = request.data;
+        const { cells, attractionTable, worldSize, maxAttractionRadius, useWorkers, friction } =
+            request.data;
         if (engine) {
             engine.destroy();
         }

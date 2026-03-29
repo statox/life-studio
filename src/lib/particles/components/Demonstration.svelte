@@ -35,7 +35,18 @@
     const worldSize = { x: 0, y: 0 };
 
     const startSim = () => {
-        simulationComponent?.startSim({ cells, worldSize, maxAttractionRadius, attractionTable, friction });
+        simulationComponent?.startSim({
+            cells,
+            worldSize,
+            maxAttractionRadius,
+            attractionTable,
+            friction
+        });
+    };
+
+    const restartWithCells = (newCells: Cell[]) => {
+        cells = newCells;
+        startSim();
     };
 
     const loadUniverse = (u: StoredUniverse) => {
@@ -80,14 +91,13 @@
     };
 
     const uniformSpread = () => {
-        cells = getNewCells(worldSize, nbParticles, colorWeights);
-        simulationComponent?.updateCells(cells);
+        restartWithCells(getNewCells(worldSize, nbParticles, colorWeights));
     };
 
     const centerSpread = () => {
-        cells = getNewCells(worldSize, nbParticles, colorWeights);
-        largeCenterCellsInPlace(cells, worldSize);
-        simulationComponent?.updateCells(cells);
+        const newCells = getNewCells(worldSize, nbParticles, colorWeights);
+        largeCenterCellsInPlace(newCells, worldSize);
+        restartWithCells(newCells);
     };
 
     onMount(() => {
@@ -647,7 +657,7 @@
     <!-- Right column: sticky scrollable panel -->
     <div class="canvas-col">
         <div class="canvas-sticky">
-            <Simulation bind:this={simulationComponent} {friction} />
+            <Simulation bind:this={simulationComponent} />
         </div>
         <div class="canvas-params">
             <div class="card" class:highlighted={hoveredControl === 'restart'}>
