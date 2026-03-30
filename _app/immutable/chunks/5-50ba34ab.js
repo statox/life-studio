@@ -1,1 +1,0 @@
-import{default as t}from"../components/pages/particles-life/demo/_page.svelte-9dd6638d.js";export{t as component};
