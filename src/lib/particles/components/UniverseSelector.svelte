@@ -5,6 +5,7 @@
         UniverseStructure,
         EnergyLevel
     } from '$lib/particles/universe';
+    import AttractionTableComponent from './AttractionTableComponent.svelte';
 
     export let universes: StoredUniverse[];
     export let selected: StoredUniverse | null = null;
@@ -172,38 +173,50 @@
                     }
                 }}
             >
-                <div class="item-top">
-                    <span class="item-name">{u.name}</span>
-                    <span class="item-colors">{u.activeColors}c</span>
-                </div>
+                <div class="item-body">
+                    <div class="item-content">
+                        <div class="item-top">
+                            <span class="item-name">{u.name}</span>
+                            <span class="item-colors">{u.activeColors}c</span>
+                        </div>
 
-                <div class="item-props">
-                    <span class="prop" style="border-color:{behaviorColor(u.behavior)}44">
-                        <span class="prop-dot" style="background:{behaviorColor(u.behavior)}" />
-                        {u.behavior}
-                    </span>
-                    <span class="prop" style="border-color:{structureColor(u.structure)}44">
-                        <span class="prop-dot" style="background:{structureColor(u.structure)}" />
-                        {u.structure}
-                    </span>
-                    <span class="prop" style="border-color:{energyColor(u.energyLevel)}44">
-                        <span class="prop-dot" style="background:{energyColor(u.energyLevel)}" />
-                        {u.energyLevel}
-                    </span>
-                    <span class="prop complexity">{stars(u.complexity)}</span>
-                </div>
+                        <div class="item-props">
+                            <span class="prop" style="border-color:{behaviorColor(u.behavior)}44">
+                                <span class="prop-dot" style="background:{behaviorColor(u.behavior)}" />
+                                {u.behavior}
+                            </span>
+                            <span class="prop" style="border-color:{structureColor(u.structure)}44">
+                                <span class="prop-dot" style="background:{structureColor(u.structure)}" />
+                                {u.structure}
+                            </span>
+                            <span class="prop" style="border-color:{energyColor(u.energyLevel)}44">
+                                <span class="prop-dot" style="background:{energyColor(u.energyLevel)}" />
+                                {u.energyLevel}
+                            </span>
+                            <span class="prop complexity">{stars(u.complexity)}</span>
+                        </div>
 
-                {#if u.description}
-                    <p class="item-desc" class:expanded={isExpanded}>{u.description}</p>
-                    {#if u.description.length > 120 || u.description.includes('\n')}
-                        <button
-                            class="expand-btn"
-                            on:click={(e) => toggleDesc(e, u.id)}
-                        >
-                            {isExpanded ? 'Show less' : 'Show more'}
-                        </button>
-                    {/if}
-                {/if}
+                        {#if u.description}
+                            <p class="item-desc" class:expanded={isExpanded}>{u.description}</p>
+                            {#if u.description.length > 120 || u.description.includes('\n')}
+                                <button
+                                    class="expand-btn"
+                                    on:click={(e) => toggleDesc(e, u.id)}
+                                >
+                                    {isExpanded ? 'Show less' : 'Show more'}
+                                </button>
+                            {/if}
+                        {/if}
+                    </div>
+
+                    <div class="item-table">
+                        <AttractionTableComponent
+                            attractionTable={u.attractionTable}
+                            readonly
+                            compact
+                        />
+                    </div>
+                </div>
             </li>
         {/each}
         {#if visible.length === 0}
@@ -463,13 +476,30 @@
     }
 
     .item {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
         padding: 10px 14px;
         cursor: pointer;
         border-left: 3px solid transparent;
         transition: background 0.13s, border-color 0.13s;
+    }
+
+    .item-body {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+    }
+
+    .item-content {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .item-table {
+        flex-shrink: 0;
+        width: 100px;
+        align-self: center;
     }
 
     .item + .item {

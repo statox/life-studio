@@ -11,7 +11,9 @@
     import { COLORS, type Color, PARTICLE_COLORS } from '$lib/particles/engine';
 
     export let attractionTable: AttractionTable;
-    export let onUpdateTable: (attractionTable: AttractionTable) => void;
+    export let onUpdateTable: (attractionTable: AttractionTable) => void = () => {};
+    export let readonly = false;
+    export let compact = false;
 
     const valueColor = (val: number): string => {
         if (val <= -2) return '#b71c1c';
@@ -49,51 +51,67 @@
 </script>
 
 {#if attractionTable}
-    <div class="actions">
-        <button on:click={randomizeTable}>Randomize</button>
-        <button on:click={zeroTable}>Zero</button>
-        <button on:click={mutateTable}>Mutate</button>
-    </div>
+    {#if !readonly}
+        <div class="actions">
+            <button on:click={randomizeTable}>Randomize</button>
+            <button on:click={zeroTable}>Zero</button>
+            <button on:click={mutateTable}>Mutate</button>
+        </div>
+    {/if}
 
     <div class="scroll-wrap">
-        <div class="matrix">
+        <div class="matrix" class:compact>
             <!-- Corner cell -->
-            <div class="corner">
-                <span class="corner-label">self ↓</span>
-                <span class="corner-label">other →</span>
-            </div>
-            <!-- Column headers -->
-            {#each COLORS as c}
-                <div class="col-header">
-                    <span class="dot" style="background:{PARTICLE_COLORS[c]}" />
-                    <span class="col-label">{c}</span>
+            {#if !compact}
+                <div class="corner">
+                    <span class="corner-label">self ↓</span>
+                    <span class="corner-label">other →</span>
                 </div>
-            {/each}
+                <!-- Column headers -->
+                {#each COLORS as c}
+                    <div class="col-header">
+                        <span class="dot" style="background:{PARTICLE_COLORS[c]}" />
+                        <span class="col-label">{c}</span>
+                    </div>
+                {/each}
+            {/if}
 
             <!-- Rows -->
             {#each COLORS as selfColor}
-                <div class="row-header">
-                    <span class="dot" style="background:{PARTICLE_COLORS[selfColor]}" />
-                    <span class="col-label">{selfColor}</span>
-                </div>
+                {#if !compact}
+                    <div class="row-header">
+                        <span class="dot" style="background:{PARTICLE_COLORS[selfColor]}" />
+                        <span class="col-label">{selfColor}</span>
+                    </div>
+                {/if}
                 {#each COLORS as otherColor}
                     {@const val = attractionTable[selfColor][otherColor]}
-                    <div class="cell">
-                        <button class="adj" on:click={() => decrease(selfColor, otherColor)}
-                            >−</button
-                        >
-                        <button
+                    {#if readonly}
+                        <div
                             class="swatch"
                             style="background:{valueColor(val)}"
-                            on:click={() => cycleUp(selfColor, otherColor)}
-                            title="Click to cycle · {selfColor} → {otherColor}"
+                            title="{selfColor} → {otherColor}: {valueLabel(val)}"
                         >
                             {valueLabel(val)}
-                        </button>
-                        <button class="adj" on:click={() => increase(selfColor, otherColor)}
-                            >+</button
-                        >
-                    </div>
+                        </div>
+                    {:else}
+                        <div class="cell">
+                            <button class="adj" on:click={() => decrease(selfColor, otherColor)}
+                                >−</button
+                            >
+                            <button
+                                class="swatch"
+                                style="background:{valueColor(val)}"
+                                on:click={() => cycleUp(selfColor, otherColor)}
+                                title="Click to cycle · {selfColor} → {otherColor}"
+                            >
+                                {valueLabel(val)}
+                            </button>
+                            <button class="adj" on:click={() => increase(selfColor, otherColor)}
+                                >+</button
+                            >
+                        </div>
+                    {/if}
                 {/each}
             {/each}
         </div>
@@ -132,6 +150,20 @@
         grid-template-columns: auto repeat(4, 1fr);
         gap: 4px;
         min-width: 300px;
+    }
+
+    .matrix.compact {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2px;
+        min-width: 0;
+    }
+
+    .matrix.compact .swatch {
+        height: auto;
+        padding: 2px 0;
+        font-size: 0.6rem;
+        border-radius: 2px;
+        cursor: default;
     }
 
     .corner {
