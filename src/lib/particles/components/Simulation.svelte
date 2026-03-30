@@ -17,10 +17,10 @@
     let absoluteFrameOffset = 0;
 
     export let useWorkers = true;
+    export let maxFPS = 60;
     export let onToggleWorkers: (() => void) | undefined = undefined;
 
     let showColors = true;
-    let maxFPS = 60;
 
     const cellSize = 2;
 

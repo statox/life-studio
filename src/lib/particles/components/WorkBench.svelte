@@ -168,6 +168,7 @@
     <Simulation
         bind:this={simulationComponent}
         {useWorkers}
+        {maxFPS}
         onToggleWorkers={async () => {
             useWorkers = !useWorkers;
             await tick();
