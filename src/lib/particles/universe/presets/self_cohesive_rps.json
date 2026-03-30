@@ -1,50 +1,50 @@
 {
-  "name": "Self-cohesive RPS",
-  "aiGenerated": true,
-  "description": "Rock-Paper-Scissors dynamics (white chases green, green chases red, red chases white) with self-attraction added to each species. The original RPS produces diffuse rotating waves because particles spread freely. Here each species coalesces into compact clusters before the cyclic dynamics take over, expected to produce discrete blobs orbiting each other rather than spreading wave fronts.",
-  "preferredInitialConfig": "uniform",
-  "behavior": "cyclic",
-  "structure": "organisms",
-  "activeColors": 3,
-  "convergenceSpeed": "never",
-  "energyLevel": "medium",
-  "complexity": 3,
-  "attractionTable": {
-    "white": {
-      "white": 1,
-      "red": -1,
-      "green": 1,
-      "blue": 0
+    "name": "Self-cohesive RPS",
+    "aiGenerated": true,
+    "description": "Rock-Paper-Scissors dynamics (white chases green, green chases red, red chases white) with self-attraction added to each species. The original RPS produces diffuse rotating waves because particles spread freely. Here each species coalesces into compact clusters before the cyclic dynamics take over, expected to produce discrete blobs orbiting each other rather than spreading wave fronts.",
+    "preferredInitialConfig": "uniform",
+    "behavior": "cyclic",
+    "structure": "organisms",
+    "activeColors": 3,
+    "convergenceSpeed": "never",
+    "energyLevel": "medium",
+    "complexity": 3,
+    "attractionTable": {
+        "white": {
+            "white": 1,
+            "red": -1,
+            "green": 1,
+            "blue": 0
+        },
+        "red": {
+            "white": 1,
+            "red": 1,
+            "green": -1,
+            "blue": 0
+        },
+        "green": {
+            "white": -1,
+            "red": 1,
+            "green": 1,
+            "blue": 0
+        },
+        "blue": {
+            "white": 0,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        }
     },
-    "red": {
-      "white": 1,
-      "red": 1,
-      "green": -1,
-      "blue": 0
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 0
     },
-    "green": {
-      "white": -1,
-      "red": 1,
-      "green": 1,
-      "blue": 0
-    },
-    "blue": {
-      "white": 0,
-      "red": 0,
-      "green": 0,
-      "blue": 0
-    }
-  },
-  "colorWeights": {
-    "white": 500,
-    "red": 500,
-    "green": 500,
-    "blue": 0
-  },
-  "nbParticles": 12000,
-  "maxAttractionRadius": 32,
-  "horizontalResolution": 30,
-  "verticalResolution": 20,
-  "friction": 0.5,
-  "id": "self_cohesive_rps"
+    "nbParticles": 12000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "self_cohesive_rps"
 }

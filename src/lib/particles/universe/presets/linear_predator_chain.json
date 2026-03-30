@@ -1,50 +1,50 @@
 {
-  "name": "Linear predator chain",
-  "aiGenerated": true,
-  "description": "A non-cyclic cascade: white hunts red, red hunts green, green hunts blue. Each prey also flees its direct predator. Unlike Rock-Paper-Scissors there is no return link — blue is never hunted and white is never prey. The expected dynamics: directional pressure cascades down the chain, with blue gradually accumulating at the end while the other species form a traveling pressure wave behind it.",
-  "preferredInitialConfig": "uniform",
-  "behavior": "chaotic",
-  "structure": "none",
-  "activeColors": 4,
-  "convergenceSpeed": "never",
-  "energyLevel": "medium",
-  "complexity": 1,
-  "attractionTable": {
-    "white": {
-      "white": 0,
-      "red": 1,
-      "green": 0,
-      "blue": 0
+    "name": "Linear predator chain",
+    "aiGenerated": true,
+    "description": "A non-cyclic cascade: white hunts red, red hunts green, green hunts blue. Each prey also flees its direct predator. Unlike Rock-Paper-Scissors there is no return link — blue is never hunted and white is never prey. The expected dynamics: directional pressure cascades down the chain, with blue gradually accumulating at the end while the other species form a traveling pressure wave behind it.",
+    "preferredInitialConfig": "uniform",
+    "behavior": "chaotic",
+    "structure": "none",
+    "activeColors": 4,
+    "convergenceSpeed": "never",
+    "energyLevel": "medium",
+    "complexity": 1,
+    "attractionTable": {
+        "white": {
+            "white": 0,
+            "red": 1,
+            "green": 0,
+            "blue": 0
+        },
+        "red": {
+            "white": -1,
+            "red": 0,
+            "green": 1,
+            "blue": 0
+        },
+        "green": {
+            "white": 0,
+            "red": -1,
+            "green": 0,
+            "blue": 1
+        },
+        "blue": {
+            "white": 0,
+            "red": 0,
+            "green": -1,
+            "blue": 0
+        }
     },
-    "red": {
-      "white": -1,
-      "red": 0,
-      "green": 1,
-      "blue": 0
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
     },
-    "green": {
-      "white": 0,
-      "red": -1,
-      "green": 0,
-      "blue": 1
-    },
-    "blue": {
-      "white": 0,
-      "red": 0,
-      "green": -1,
-      "blue": 0
-    }
-  },
-  "colorWeights": {
-    "white": 500,
-    "red": 500,
-    "green": 500,
-    "blue": 500
-  },
-  "nbParticles": 4000,
-  "maxAttractionRadius": 32,
-  "horizontalResolution": 30,
-  "verticalResolution": 20,
-  "friction": 0.5,
-  "id": "linear_predator_chain"
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "linear_predator_chain"
 }

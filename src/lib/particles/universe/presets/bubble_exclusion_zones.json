@@ -1,50 +1,50 @@
 {
-  "name": "Bubble exclusion zones",
-  "aiGenerated": true,
-  "description": "Blue self-attracts very strongly and violently repels all other species, which in turn repel blue. White, red and green are mutually attracted cross-species but not to themselves. Blue should form tight self-maintaining balls surrounded by a mixed-color gas that wraps around them but cannot penetrate — creating a cellular foam of blue bubbles enclosed in walls of mixed WRG.",
-  "preferredInitialConfig": "uniform",
-  "behavior": "converges",
-  "structure": "clusters",
-  "activeColors": 4,
-  "convergenceSpeed": "medium",
-  "energyLevel": "low",
-  "complexity": 2,
-  "attractionTable": {
-    "white": {
-      "white": 0,
-      "red": 1,
-      "green": 1,
-      "blue": -1
+    "name": "Bubble exclusion zones",
+    "aiGenerated": true,
+    "description": "Blue self-attracts very strongly and violently repels all other species, which in turn repel blue. White, red and green are mutually attracted cross-species but not to themselves. Blue should form tight self-maintaining balls surrounded by a mixed-color gas that wraps around them but cannot penetrate — creating a cellular foam of blue bubbles enclosed in walls of mixed WRG.",
+    "preferredInitialConfig": "uniform",
+    "behavior": "converges",
+    "structure": "clusters",
+    "activeColors": 4,
+    "convergenceSpeed": "medium",
+    "energyLevel": "low",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": 0,
+            "red": 1,
+            "green": 1,
+            "blue": -1
+        },
+        "red": {
+            "white": 1,
+            "red": 0,
+            "green": 1,
+            "blue": -1
+        },
+        "green": {
+            "white": 1,
+            "red": 1,
+            "green": 0,
+            "blue": -1
+        },
+        "blue": {
+            "white": -2,
+            "red": -2,
+            "green": -2,
+            "blue": 2
+        }
     },
-    "red": {
-      "white": 1,
-      "red": 0,
-      "green": 1,
-      "blue": -1
+    "colorWeights": {
+        "white": 400,
+        "red": 400,
+        "green": 400,
+        "blue": 200
     },
-    "green": {
-      "white": 1,
-      "red": 1,
-      "green": 0,
-      "blue": -1
-    },
-    "blue": {
-      "white": -2,
-      "red": -2,
-      "green": -2,
-      "blue": 2
-    }
-  },
-  "colorWeights": {
-    "white": 400,
-    "red": 400,
-    "green": 400,
-    "blue": 200
-  },
-  "nbParticles": 4000,
-  "maxAttractionRadius": 32,
-  "horizontalResolution": 30,
-  "verticalResolution": 20,
-  "friction": 0.5,
-  "id": "bubble_exclusion_zones"
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "bubble_exclusion_zones"
 }

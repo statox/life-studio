@@ -1,49 +1,49 @@
 {
-  "name": "4 colors islands",
-  "description": "Quickly creates islands with a thin white band, a red-blue blob and a green last band.\n\nThe islands tend to merge over time because the attraction table contains mostly attraction forces and few repulsion forces.",
-  "preferredInitialConfig": "uniform",
-  "behavior": "converges",
-  "structure": "clusters",
-  "activeColors": 4,
-  "convergenceSpeed": "slow",
-  "energyLevel": "low",
-  "complexity": 2,
-  "attractionTable": {
-    "white": {
-      "white": 1,
-      "red": 1,
-      "green": -1,
-      "blue": 1
+    "name": "4 colors islands",
+    "description": "Quickly creates islands with a thin white band, a red-blue blob and a green last band.\n\nThe islands tend to merge over time because the attraction table contains mostly attraction forces and few repulsion forces.",
+    "preferredInitialConfig": "uniform",
+    "behavior": "converges",
+    "structure": "clusters",
+    "activeColors": 4,
+    "convergenceSpeed": "slow",
+    "energyLevel": "low",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": 1,
+            "red": 1,
+            "green": -1,
+            "blue": 1
+        },
+        "red": {
+            "white": 0,
+            "red": 2,
+            "green": 2,
+            "blue": 2
+        },
+        "green": {
+            "white": -1,
+            "red": 1,
+            "green": 0,
+            "blue": 2
+        },
+        "blue": {
+            "white": 1,
+            "red": 2,
+            "green": 1,
+            "blue": 1
+        }
     },
-    "red": {
-      "white": 0,
-      "red": 2,
-      "green": 2,
-      "blue": 2
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
     },
-    "green": {
-      "white": -1,
-      "red": 1,
-      "green": 0,
-      "blue": 2
-    },
-    "blue": {
-      "white": 1,
-      "red": 2,
-      "green": 1,
-      "blue": 1
-    }
-  },
-  "colorWeights": {
-    "white": 500,
-    "red": 500,
-    "green": 500,
-    "blue": 500
-  },
-  "nbParticles": 4000,
-  "maxAttractionRadius": 32,
-  "horizontalResolution": 30,
-  "verticalResolution": 20,
-  "friction": 0.5,
-  "id": "4_colors_islands"
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "4_colors_islands"
 }

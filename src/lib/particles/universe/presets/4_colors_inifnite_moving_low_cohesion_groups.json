@@ -1,49 +1,49 @@
 {
-  "name": "4 Colors - Inifnite moving low cohesion groups",
-  "description": "TODO Improve description\n\nGreen-Blue chasing red-white but with lots of low cohesion groups and probably a more complex relationship to describe.",
-  "preferredInitialConfig": "uniform",
-  "behavior": "chaotic",
-  "structure": "clusters",
-  "activeColors": 4,
-  "convergenceSpeed": "never",
-  "energyLevel": "high",
-  "complexity": 2,
-  "attractionTable": {
-    "white": {
-      "white": 0,
-      "red": -1,
-      "green": -1,
-      "blue": -1
+    "name": "4 Colors - Inifnite moving low cohesion groups",
+    "description": "TODO Improve description\n\nGreen-Blue chasing red-white but with lots of low cohesion groups and probably a more complex relationship to describe.",
+    "preferredInitialConfig": "uniform",
+    "behavior": "chaotic",
+    "structure": "clusters",
+    "activeColors": 4,
+    "convergenceSpeed": "never",
+    "energyLevel": "high",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": 0,
+            "red": -1,
+            "green": -1,
+            "blue": -1
+        },
+        "red": {
+            "white": 1,
+            "red": 0,
+            "green": 1,
+            "blue": -1
+        },
+        "green": {
+            "white": 1,
+            "red": -1,
+            "green": 0,
+            "blue": 0
+        },
+        "blue": {
+            "white": 1,
+            "red": 1,
+            "green": 1,
+            "blue": 0
+        }
     },
-    "red": {
-      "white": 1,
-      "red": 0,
-      "green": 1,
-      "blue": -1
+    "colorWeights": {
+        "white": 500,
+        "red": 149,
+        "green": 500,
+        "blue": 500
     },
-    "green": {
-      "white": 1,
-      "red": -1,
-      "green": 0,
-      "blue": 0
-    },
-    "blue": {
-      "white": 1,
-      "red": 1,
-      "green": 1,
-      "blue": 0
-    }
-  },
-  "colorWeights": {
-    "white": 500,
-    "red": 149,
-    "green": 500,
-    "blue": 500
-  },
-  "nbParticles": 4000,
-  "maxAttractionRadius": 32,
-  "horizontalResolution": 30,
-  "verticalResolution": 20,
-  "friction": 0.5,
-  "id": "4_colors_inifnite_moving_low_cohesion_groups"
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "4_colors_inifnite_moving_low_cohesion_groups"
 }

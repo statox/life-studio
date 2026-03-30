@@ -1,49 +1,49 @@
 {
-  "name": "4 colors worms",
-  "description": "This universe creates moving structures of red, green, blue, white alternating small groups with lots of cells.\n\nThis creates strong worms which often merge together but also sometime split with a larger worm and a small one.\n\nSince the groups are strong the strucutre resist well the wall wrapping.\n\nThe universe doesn't stabilize but keep an infinitely consistent configurations.\n\nStarting from center helps creating stronger structure earlier on.\n\nSometime a worm eats its own tail and becomes a spinning structure absorbing other worms when they get too close.",
-  "preferredInitialConfig": "center",
-  "behavior": "cyclic",
-  "structure": "organisms",
-  "activeColors": 4,
-  "convergenceSpeed": "never",
-  "energyLevel": "medium",
-  "complexity": 3,
-  "attractionTable": {
-    "white": {
-      "white": 0,
-      "red": 0,
-      "green": -1,
-      "blue": 1
+    "name": "4 colors worms",
+    "description": "This universe creates moving structures of red, green, blue, white alternating small groups with lots of cells.\n\nThis creates strong worms which often merge together but also sometime split with a larger worm and a small one.\n\nSince the groups are strong the structure resists well the wall wrapping.\n\nThe universe doesn't stabilize but keep an infinitely consistent configurations.\n\nStarting from center helps creating stronger structure earlier on.\n\nSometime a worm eats its own tail and becomes a spinning structure absorbing other worms when they get too close.",
+    "preferredInitialConfig": "center",
+    "behavior": "cyclic",
+    "structure": "organisms",
+    "activeColors": 4,
+    "convergenceSpeed": "never",
+    "energyLevel": "medium",
+    "complexity": 3,
+    "attractionTable": {
+        "white": {
+            "white": 0,
+            "red": 0,
+            "green": -1,
+            "blue": 1
+        },
+        "red": {
+            "white": 1,
+            "red": 0,
+            "green": 0,
+            "blue": -1
+        },
+        "green": {
+            "white": -1,
+            "red": 1,
+            "green": 0,
+            "blue": 0
+        },
+        "blue": {
+            "white": 0,
+            "red": -1,
+            "green": 1,
+            "blue": 0
+        }
     },
-    "red": {
-      "white": 1,
-      "red": 0,
-      "green": 0,
-      "blue": -1
+    "colorWeights": {
+        "white": 500,
+        "red": 515,
+        "green": 485,
+        "blue": 505
     },
-    "green": {
-      "white": -1,
-      "red": 1,
-      "green": 0,
-      "blue": 0
-    },
-    "blue": {
-      "white": 0,
-      "red": -1,
-      "green": 1,
-      "blue": 0
-    }
-  },
-  "colorWeights": {
-    "white": 500,
-    "red": 515,
-    "green": 485,
-    "blue": 505
-  },
-  "nbParticles": 4000,
-  "maxAttractionRadius": 32,
-  "horizontalResolution": 30,
-  "verticalResolution": 20,
-  "friction": 0.5,
-  "id": "4_colors_worms"
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "4_colors_worms"
 }

@@ -1,49 +1,49 @@
 {
-  "name": "Blue islands",
-  "description": "Blue gets horded into islands which get stable early while chaotic waves of red  white and green never converge",
-  "preferredInitialConfig": "uniform",
-  "behavior": "cyclic",
-  "structure": "clusters",
-  "activeColors": 4,
-  "convergenceSpeed": "never",
-  "energyLevel": "medium",
-  "complexity": 2,
-  "attractionTable": {
-    "white": {
-      "white": 0,
-      "red": 1,
-      "green": 1,
-      "blue": 0
+    "name": "Blue islands",
+    "description": "Blue gets horded into islands which get stable early while chaotic waves of red  white and green never converge",
+    "preferredInitialConfig": "uniform",
+    "behavior": "cyclic",
+    "structure": "clusters",
+    "activeColors": 4,
+    "convergenceSpeed": "never",
+    "energyLevel": "medium",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": 0,
+            "red": 1,
+            "green": 1,
+            "blue": 0
+        },
+        "red": {
+            "white": -1,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        },
+        "green": {
+            "white": -1,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        },
+        "blue": {
+            "white": 0,
+            "red": 0,
+            "green": 0,
+            "blue": 1
+        }
     },
-    "red": {
-      "white": -1,
-      "red": 0,
-      "green": 0,
-      "blue": 0
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
     },
-    "green": {
-      "white": -1,
-      "red": 0,
-      "green": 0,
-      "blue": 0
-    },
-    "blue": {
-      "white": 0,
-      "red": 0,
-      "green": 0,
-      "blue": 1
-    }
-  },
-  "colorWeights": {
-    "white": 500,
-    "red": 500,
-    "green": 500,
-    "blue": 500
-  },
-  "nbParticles": 12000,
-  "maxAttractionRadius": 32,
-  "horizontalResolution": 30,
-  "verticalResolution": 20,
-  "friction": 0.5,
-  "id": "blue_islands"
+    "nbParticles": 12000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "blue_islands"
 }

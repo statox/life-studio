@@ -1,49 +1,49 @@
 {
-  "name": "Moving to filaments",
-  "description": "Initially create long moving structures with red, green-white-green, red, blue, red stages.\n\nThe structures end up merging in filament-like structures.",
-  "preferredInitialConfig": "uniform",
-  "behavior": "converges",
-  "structure": "organisms",
-  "activeColors": 4,
-  "convergenceSpeed": "slow",
-  "energyLevel": "medium",
-  "complexity": 2,
-  "attractionTable": {
-    "white": {
-      "white": 1,
-      "red": 0,
-      "green": 1,
-      "blue": -1
+    "name": "Moving to filaments",
+    "description": "Initially create long moving structures with red, green-white-green, red, blue, red stages.\n\nThe structures end up merging in filament-like structures.",
+    "preferredInitialConfig": "uniform",
+    "behavior": "converges",
+    "structure": "organisms",
+    "activeColors": 4,
+    "convergenceSpeed": "slow",
+    "energyLevel": "medium",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": 1,
+            "red": 0,
+            "green": 1,
+            "blue": -1
+        },
+        "red": {
+            "white": 2,
+            "red": -1,
+            "green": 0,
+            "blue": 1
+        },
+        "green": {
+            "white": 2,
+            "red": 2,
+            "green": 0,
+            "blue": 0
+        },
+        "blue": {
+            "white": -1,
+            "red": 2,
+            "green": 0,
+            "blue": 2
+        }
     },
-    "red": {
-      "white": 2,
-      "red": -1,
-      "green": 0,
-      "blue": 1
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
     },
-    "green": {
-      "white": 2,
-      "red": 2,
-      "green": 0,
-      "blue": 0
-    },
-    "blue": {
-      "white": -1,
-      "red": 2,
-      "green": 0,
-      "blue": 2
-    }
-  },
-  "colorWeights": {
-    "white": 500,
-    "red": 500,
-    "green": 500,
-    "blue": 500
-  },
-  "nbParticles": 8000,
-  "maxAttractionRadius": 32,
-  "horizontalResolution": 30,
-  "verticalResolution": 20,
-  "friction": 0.5,
-  "id": "moving_to_filaments"
+    "nbParticles": 8000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "moving_to_filaments"
 }

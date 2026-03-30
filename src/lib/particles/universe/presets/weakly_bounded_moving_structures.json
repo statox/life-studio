@@ -1,49 +1,49 @@
 {
-  "name": "Weakly bounded moving structures",
-  "description": "Creates white pushing blue pushing red moving structures floating in a sea of white and green.\n\nThe moving structures easily split and merge when they touch each other so the universe never really stabilize",
-  "preferredInitialConfig": "uniform",
-  "behavior": "cyclic",
-  "structure": "organisms",
-  "activeColors": 4,
-  "convergenceSpeed": "never",
-  "energyLevel": "high",
-  "complexity": 2,
-  "attractionTable": {
-    "white": {
-      "white": -1,
-      "red": 0,
-      "green": 2,
-      "blue": 1
+    "name": "Weakly bounded moving structures",
+    "description": "Creates white pushing blue pushing red moving structures floating in a sea of white and green.\n\nThe moving structures easily split and merge when they touch each other so the universe never really stabilize",
+    "preferredInitialConfig": "uniform",
+    "behavior": "cyclic",
+    "structure": "organisms",
+    "activeColors": 4,
+    "convergenceSpeed": "never",
+    "energyLevel": "high",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": -1,
+            "red": 0,
+            "green": 2,
+            "blue": 1
+        },
+        "red": {
+            "white": 0,
+            "red": 1,
+            "green": -1,
+            "blue": -1
+        },
+        "green": {
+            "white": -1,
+            "red": -1,
+            "green": -1,
+            "blue": -1
+        },
+        "blue": {
+            "white": 0,
+            "red": 2,
+            "green": 0,
+            "blue": 0
+        }
     },
-    "red": {
-      "white": 0,
-      "red": 1,
-      "green": -1,
-      "blue": -1
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
     },
-    "green": {
-      "white": -1,
-      "red": -1,
-      "green": -1,
-      "blue": -1
-    },
-    "blue": {
-      "white": 0,
-      "red": 2,
-      "green": 0,
-      "blue": 0
-    }
-  },
-  "colorWeights": {
-    "white": 500,
-    "red": 500,
-    "green": 500,
-    "blue": 500
-  },
-  "nbParticles": 6000,
-  "maxAttractionRadius": 32,
-  "horizontalResolution": 30,
-  "verticalResolution": 20,
-  "friction": 0.5,
-  "id": "weakly_bounded_moving_structures"
+    "nbParticles": 6000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "weakly_bounded_moving_structures"
 }

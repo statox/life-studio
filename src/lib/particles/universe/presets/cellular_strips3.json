@@ -1,49 +1,49 @@
 {
-  "name": "Cellular strips 3",
-  "description": "Shifted the matrix of repulsion horizontally.\n\nThere is much more spread (Probably due to the lack of internal group cohesion) to the full universe and that makes much more and thinner paths",
-  "preferredInitialConfig": "center",
-  "behavior": "converges",
-  "structure": "patterns",
-  "activeColors": 4,
-  "convergenceSpeed": "medium",
-  "energyLevel": "low",
-  "complexity": 2,
-  "attractionTable": {
-    "white": {
-      "white": -1,
-      "red": 0,
-      "green": -1,
-      "blue": 0
+    "name": "Cellular strips 3",
+    "description": "Shifted the matrix of repulsion horizontally.\n\nThere is much more spread (Probably due to the lack of internal group cohesion) to the full universe and that makes much more and thinner paths",
+    "preferredInitialConfig": "center",
+    "behavior": "converges",
+    "structure": "patterns",
+    "activeColors": 4,
+    "convergenceSpeed": "medium",
+    "energyLevel": "low",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": -1,
+            "red": 0,
+            "green": -1,
+            "blue": 0
+        },
+        "red": {
+            "white": 0,
+            "red": -1,
+            "green": 0,
+            "blue": -1
+        },
+        "green": {
+            "white": -1,
+            "red": 0,
+            "green": -1,
+            "blue": 0
+        },
+        "blue": {
+            "white": 0,
+            "red": -1,
+            "green": 0,
+            "blue": -1
+        }
     },
-    "red": {
-      "white": 0,
-      "red": -1,
-      "green": 0,
-      "blue": -1
+    "colorWeights": {
+        "white": 495,
+        "red": 500,
+        "green": 495,
+        "blue": 505
     },
-    "green": {
-      "white": -1,
-      "red": 0,
-      "green": -1,
-      "blue": 0
-    },
-    "blue": {
-      "white": 0,
-      "red": -1,
-      "green": 0,
-      "blue": -1
-    }
-  },
-  "colorWeights": {
-    "white": 495,
-    "red": 500,
-    "green": 495,
-    "blue": 505
-  },
-  "nbParticles": 4000,
-  "maxAttractionRadius": 32,
-  "horizontalResolution": 30,
-  "verticalResolution": 20,
-  "friction": 0.5,
-  "id": "cellular_strips3"
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "cellular_strips3"
 }

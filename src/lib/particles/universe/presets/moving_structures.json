@@ -1,49 +1,49 @@
 {
-  "name": "Moving structures",
-  "description": "Some complex moving structures emerge before stabilizing",
-  "preferredInitialConfig": "center",
-  "behavior": "converges",
-  "structure": "organisms",
-  "activeColors": 4,
-  "convergenceSpeed": "medium",
-  "energyLevel": "high",
-  "complexity": 3,
-  "attractionTable": {
-    "white": {
-      "white": -1,
-      "red": 1,
-      "green": -1,
-      "blue": 2
+    "name": "Moving structures",
+    "description": "Some complex moving structures emerge before stabilizing",
+    "preferredInitialConfig": "center",
+    "behavior": "converges",
+    "structure": "organisms",
+    "activeColors": 4,
+    "convergenceSpeed": "medium",
+    "energyLevel": "high",
+    "complexity": 3,
+    "attractionTable": {
+        "white": {
+            "white": -1,
+            "red": 1,
+            "green": -1,
+            "blue": 2
+        },
+        "red": {
+            "white": 0,
+            "red": -1,
+            "green": 1,
+            "blue": 2
+        },
+        "green": {
+            "white": 1,
+            "red": 2,
+            "green": 2,
+            "blue": 2
+        },
+        "blue": {
+            "white": 1,
+            "red": -1,
+            "green": 0,
+            "blue": 0
+        }
     },
-    "red": {
-      "white": 0,
-      "red": -1,
-      "green": 1,
-      "blue": 2
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
     },
-    "green": {
-      "white": 1,
-      "red": 2,
-      "green": 2,
-      "blue": 2
-    },
-    "blue": {
-      "white": 1,
-      "red": -1,
-      "green": 0,
-      "blue": 0
-    }
-  },
-  "colorWeights": {
-    "white": 500,
-    "red": 500,
-    "green": 500,
-    "blue": 500
-  },
-  "nbParticles": 4000,
-  "maxAttractionRadius": 32,
-  "horizontalResolution": 30,
-  "verticalResolution": 20,
-  "friction": 0.5,
-  "id": "moving_structures"
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "moving_structures"
 }
