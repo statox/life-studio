@@ -12,3 +12,6 @@ docs/
 
 # Local screenshots TODO Use git LFS? Store in the repo and don't care?
 screenshots/
+
+# Local copy of clipboard app
+findings/first_glider/first_glider-2026-03-26_23.38.01.mkv
