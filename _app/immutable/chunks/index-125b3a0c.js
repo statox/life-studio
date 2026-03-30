@@ -50,7 +50,7 @@ This creates waves of white floats pushing incoherent masses of red, green and b
 
 This creates strong worms which often merge together but also sometime split with a larger worm and a small one.
 
-Since the groups are strong the strucutre resist well the wall wrapping.
+Since the groups are strong the structure resists well the wall wrapping.
 
 The universe doesn't stabilize but keep an infinitely consistent configurations.
 
