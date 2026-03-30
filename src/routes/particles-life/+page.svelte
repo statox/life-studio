@@ -47,6 +47,16 @@
             </p>
             <span class="card-cta">Open sandbox →</span>
         </a>
+
+        <a class="card" href="{base}/particles-life/classifier">
+            <h2>Classifier</h2>
+            <p>
+                Review and tag universe presets. Load each universe, watch it simulate, then edit
+                its metadata — behavior, structure, energy level — and save changes back to the
+                source files. <em>Dev mode only.</em>
+            </p>
+            <span class="card-cta">Classify presets →</span>
+        </a>
     </div>
 </div>
 
@@ -137,6 +147,11 @@
         line-height: 1.6;
         margin: 0;
         flex: 1;
+    }
+
+    .card p em {
+        color: #78909c;
+        font-size: 0.82rem;
     }
 
     .card-cta {
