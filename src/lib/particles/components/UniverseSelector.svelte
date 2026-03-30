@@ -19,7 +19,7 @@
     let fComplexity: 1 | 2 | 3 | 'all' = 'all';
 
     // ── Sort ─────────────────────────────────────────────────────────────────
-    type SortKey = 'name' | 'behavior' | 'colors' | 'energy' | 'complexity';
+    type SortKey = 'name' | 'behavior' | 'structure' | 'colors' | 'energy' | 'complexity';
     let sortKey: SortKey = 'complexity';
     let sortAsc = false;
 
@@ -28,6 +28,12 @@
         converges: 1,
         cyclic: 2,
         chaotic: 3
+    };
+    const STRUCTURE_ORDER: Record<string, number> = {
+        none: 0,
+        clusters: 1,
+        patterns: 2,
+        organisms: 3
     };
     const ENERGY_ORDER: Record<string, number> = { low: 0, medium: 1, high: 2 };
 
@@ -58,6 +64,8 @@
             if (sortKey === 'name') cmp = a.name.localeCompare(b.name);
             else if (sortKey === 'behavior')
                 cmp = (BEHAVIOR_ORDER[a.behavior] ?? 0) - (BEHAVIOR_ORDER[b.behavior] ?? 0);
+            else if (sortKey === 'structure')
+                cmp = (STRUCTURE_ORDER[a.structure] ?? 0) - (STRUCTURE_ORDER[b.structure] ?? 0);
             else if (sortKey === 'colors') cmp = a.activeColors - b.activeColors;
             else if (sortKey === 'energy')
                 cmp = (ENERGY_ORDER[a.energyLevel] ?? 0) - (ENERGY_ORDER[b.energyLevel] ?? 0);
@@ -71,6 +79,13 @@
         if (b === 'converges') return '#1565c0';
         if (b === 'cyclic') return '#2e7d32';
         return '#e65100';
+    };
+
+    const structureColor = (s: string): string => {
+        if (s === 'none') return '#546e7a';
+        if (s === 'clusters') return '#6a1b9a';
+        if (s === 'patterns') return '#00838f';
+        return '#ef6c00';
     };
 
     const energyColor = (e: string): string => {
@@ -102,10 +117,19 @@
     const sortOptions: Array<{ key: SortKey; label: string }> = [
         { key: 'name', label: 'Name' },
         { key: 'behavior', label: 'Behavior' },
+        { key: 'structure', label: 'Structure' },
         { key: 'colors', label: 'Colors' },
         { key: 'energy', label: 'Energy' },
         { key: 'complexity', label: 'Complexity' }
     ];
+
+    // ── Expanded description ────────────────────────────────────────────────
+    let expandedId: string | null = null;
+
+    const toggleDesc = (e: MouseEvent, id: string) => {
+        e.stopPropagation();
+        expandedId = expandedId === id ? null : id;
+    };
 </script>
 
 <div class="selector">
@@ -133,6 +157,7 @@
     <ul class="list" role="listbox" aria-label="Universe selector">
         {#each visible as u (u.name)}
             {@const isSelected = selected?.name === u.name}
+            {@const isExpanded = expandedId === u.id}
             <li
                 class="item"
                 class:active={isSelected}
@@ -147,22 +172,38 @@
                     }
                 }}
             >
-                <div class="item-header">
+                <div class="item-top">
                     <span class="item-name">{u.name}</span>
-                    <div class="badges">
-                        <span class="badge" style="background:{behaviorColor(u.behavior)}"
-                            >{u.behavior}</span
-                        >
-                        <span class="badge-outline">{u.activeColors}c</span>
-                        <span
-                            class="energy-dot"
-                            style="background:{energyColor(u.energyLevel)}"
-                            title="Energy: {u.energyLevel}"
-                        />
-                        <span class="stars">{stars(u.complexity)}</span>
-                    </div>
+                    <span class="item-colors">{u.activeColors}c</span>
                 </div>
-                <p class="item-desc">{u.description}</p>
+
+                <div class="item-props">
+                    <span class="prop" style="border-color:{behaviorColor(u.behavior)}44">
+                        <span class="prop-dot" style="background:{behaviorColor(u.behavior)}" />
+                        {u.behavior}
+                    </span>
+                    <span class="prop" style="border-color:{structureColor(u.structure)}44">
+                        <span class="prop-dot" style="background:{structureColor(u.structure)}" />
+                        {u.structure}
+                    </span>
+                    <span class="prop" style="border-color:{energyColor(u.energyLevel)}44">
+                        <span class="prop-dot" style="background:{energyColor(u.energyLevel)}" />
+                        {u.energyLevel}
+                    </span>
+                    <span class="prop complexity">{stars(u.complexity)}</span>
+                </div>
+
+                {#if u.description}
+                    <p class="item-desc" class:expanded={isExpanded}>{u.description}</p>
+                    {#if u.description.length > 120 || u.description.includes('\n')}
+                        <button
+                            class="expand-btn"
+                            on:click={(e) => toggleDesc(e, u.id)}
+                        >
+                            {isExpanded ? 'Show less' : 'Show more'}
+                        </button>
+                    {/if}
+                {/if}
             </li>
         {/each}
         {#if visible.length === 0}
@@ -198,7 +239,10 @@
                         class:active={fStructure === s}
                         on:click={() => {
                             fStructure = s;
-                        }}>{s === 'all' ? 'All' : s}</button
+                        }}
+                        style={s !== 'all' && fStructure === s
+                            ? `background:${structureColor(s)};border-color:${structureColor(s)}`
+                            : ''}>{s === 'all' ? 'All' : s}</button
                     >
                 {/each}
             </div>
@@ -421,7 +465,7 @@
     .item {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 6px;
         padding: 10px 14px;
         cursor: pointer;
         border-left: 3px solid transparent;
@@ -441,11 +485,11 @@
         background: #1e2e1a;
     }
 
-    .item-header {
+    /* ── Item top row ────────────────────────────── */
+    .item-top {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 6px;
+        align-items: baseline;
+        gap: 8px;
     }
 
     .item-name {
@@ -458,55 +502,80 @@
         color: #c3e88d;
     }
 
+    .item-colors {
+        font-size: 0.68rem;
+        color: #546e7a;
+        flex-shrink: 0;
+    }
+
+    /* ── Property tags ───────────────────────────── */
+    .item-props {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .prop {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.68rem;
+        color: #90a4ae;
+        padding: 1px 8px 1px 6px;
+        border-radius: 10px;
+        border: 1px solid #37474f;
+        background: #1a232744;
+    }
+
+    .prop-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .prop.complexity {
+        color: #c3e88d;
+        border-color: #c3e88d22;
+        letter-spacing: 1px;
+        padding: 1px 6px;
+    }
+
+    /* ── Description ─────────────────────────────── */
     .item-desc {
         font-size: 0.75rem;
         color: #78909c;
         line-height: 1.55;
         margin: 0;
+        white-space: pre-line;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .item-desc.expanded {
+        -webkit-line-clamp: unset;
+        display: block;
     }
 
     .item.active .item-desc {
         color: #90a4ae;
     }
 
-    /* ── Badges ───────────────────────────────── */
-    .badges {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        flex-shrink: 0;
+    .expand-btn {
+        align-self: flex-start;
+        font-size: 0.68rem;
+        color: #546e7a;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: color 0.12s;
     }
 
-    .badge {
-        font-size: 0.62rem;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.9);
-        padding: 2px 6px;
-        border-radius: 10px;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-    }
-
-    .badge-outline {
-        font-size: 0.62rem;
-        font-weight: 600;
-        color: #78909c;
-        padding: 1px 5px;
-        border-radius: 10px;
-        border: 1px solid #37474f;
-    }
-
-    .energy-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        flex-shrink: 0;
-    }
-
-    .stars {
-        font-size: 0.72rem;
-        color: #c3e88d;
-        letter-spacing: 1px;
+    .expand-btn:hover {
+        color: #90a4ae;
     }
 
     .empty {
