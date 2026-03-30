@@ -1,0 +1,50 @@
+{
+  "name": "Faction civil war",
+  "aiGenerated": true,
+  "description": "Two factions (white+red vs green+blue) that strongly repel each other across faction lines, creating stable territorial boundaries. Within each faction there is a predator-prey chase: white hunts red and green hunts blue. The faction walls act as mirrors — each territory runs its own independent wave dynamics, with the inter-faction boundary preventing the two chases from ever directly interfering.",
+  "preferredInitialConfig": "uniform",
+  "behavior": "converges",
+  "structure": "patterns",
+  "activeColors": 4,
+  "convergenceSpeed": "medium",
+  "energyLevel": "low",
+  "complexity": 2,
+  "attractionTable": {
+    "white": {
+      "white": 0,
+      "red": 1,
+      "green": -1,
+      "blue": -1
+    },
+    "red": {
+      "white": -1,
+      "red": 0,
+      "green": -1,
+      "blue": -1
+    },
+    "green": {
+      "white": -1,
+      "red": -1,
+      "green": 0,
+      "blue": 1
+    },
+    "blue": {
+      "white": -1,
+      "red": -1,
+      "green": -1,
+      "blue": 0
+    }
+  },
+  "colorWeights": {
+    "white": 500,
+    "red": 500,
+    "green": 500,
+    "blue": 500
+  },
+  "nbParticles": 8000,
+  "maxAttractionRadius": 32,
+  "horizontalResolution": 30,
+  "verticalResolution": 20,
+  "friction": 0.5,
+  "id": "faction_civil_war"
+}

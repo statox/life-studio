@@ -1,7 +1,11 @@
 import type { AttractionTable } from '../attraction';
 import type { ColorProportions } from '../engine/cells';
-import presets from './presets.json';
 import demoPresets from './demo_presets.json';
+
+const presetModules = import.meta.glob('./presets/*.json', { eager: true }) as Record<
+    string,
+    { default: StoredUniverse }
+>;
 
 export type Universe = {
     attractionTable: AttractionTable;
@@ -14,6 +18,7 @@ export type Universe = {
 };
 
 type UniverseMetadata = {
+    id: string;
     name: string;
     description: string;
     /** Which initial particle placement best showcases this universe. */
@@ -78,5 +83,9 @@ export type EnergyLevel = 'low' | 'medium' | 'high';
 
 export type StoredUniverse = Universe & UniverseMetadata;
 
-export const getAllUniverses = (): StoredUniverse[] => presets as StoredUniverse[];
+const cachedPresets: StoredUniverse[] = Object.values(presetModules).map(
+    (mod) => mod.default as StoredUniverse
+);
+
+export const getAllUniverses = (): StoredUniverse[] => cachedPresets;
 export const getAllDemoUniverses = (): StoredUniverse[] => demoPresets as StoredUniverse[];

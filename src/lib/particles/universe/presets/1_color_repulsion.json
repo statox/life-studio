@@ -1,0 +1,48 @@
+{
+    "name": "1 colors repulsion",
+    "description": "This universe contains just the right amount of particles for the given world size and friction. So that when they repulse each other they will find an equilibrium where all particles are as far as possible from all the others.\n\nThat creates patterns which can take a few frames to a few hundred frames to stabilize into sometimes symetrical patterns",
+    "preferredInitialConfig": "center",
+    "behavior": "converges",
+    "structure": "patterns",
+    "activeColors": 1,
+    "convergenceSpeed": "fast",
+    "energyLevel": "low",
+    "complexity": 1,
+    "attractionTable": {
+        "white": {
+            "white": -1,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        },
+        "red": {
+            "white": 0,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        },
+        "green": {
+            "white": 0,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        },
+        "blue": {
+            "white": 0,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 0,
+        "green": 0,
+        "blue": 0
+    },
+    "nbParticles": 11,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 3,
+    "verticalResolution": 2,
+    "friction": 0.5
+}

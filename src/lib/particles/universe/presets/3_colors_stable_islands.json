@@ -1,0 +1,49 @@
+{
+  "name": "3 Colors - Stable islands",
+  "description": "TODO Find a good analogy\n\nThe universe converges to many small islands with a green-white core surrounded by red bands.\n\nSometimes more complex structures emerge but they are rare they often collapse into simpler forms.",
+  "preferredInitialConfig": "uniform",
+  "behavior": "converges",
+  "structure": "patterns",
+  "activeColors": 3,
+  "convergenceSpeed": "medium",
+  "energyLevel": "low",
+  "complexity": 2,
+  "attractionTable": {
+    "white": {
+      "white": 1,
+      "red": 2,
+      "green": 2,
+      "blue": 0
+    },
+    "red": {
+      "white": 1,
+      "red": -1,
+      "green": 2,
+      "blue": 0
+    },
+    "green": {
+      "white": 2,
+      "red": 2,
+      "green": 1,
+      "blue": 0
+    },
+    "blue": {
+      "white": 0,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    }
+  },
+  "colorWeights": {
+    "white": 500,
+    "red": 500,
+    "green": 500,
+    "blue": 0
+  },
+  "nbParticles": 4000,
+  "maxAttractionRadius": 32,
+  "horizontalResolution": 30,
+  "verticalResolution": 20,
+  "friction": 0.5,
+  "id": "3_colors_stable_islands"
+}

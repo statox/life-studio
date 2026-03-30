@@ -1,0 +1,49 @@
+{
+  "name": "infinite moving mass",
+  "description": "A beautiful pattern infinitely moving. Low cohesion but still some distinctive areas",
+  "preferredInitialConfig": "uniform",
+  "behavior": "chaotic",
+  "structure": "patterns",
+  "activeColors": 4,
+  "convergenceSpeed": "never",
+  "energyLevel": "high",
+  "complexity": 2,
+  "attractionTable": {
+    "white": {
+      "white": 0,
+      "red": 1,
+      "green": 0,
+      "blue": 0
+    },
+    "red": {
+      "white": -1,
+      "red": -1,
+      "green": -1,
+      "blue": 0
+    },
+    "green": {
+      "white": 0,
+      "red": 0,
+      "green": 0,
+      "blue": 1
+    },
+    "blue": {
+      "white": 1,
+      "red": 0,
+      "green": -1,
+      "blue": -2
+    }
+  },
+  "colorWeights": {
+    "white": 500,
+    "red": 500,
+    "green": 500,
+    "blue": 500
+  },
+  "nbParticles": 4000,
+  "maxAttractionRadius": 32,
+  "horizontalResolution": 15,
+  "verticalResolution": 10,
+  "friction": 0.57,
+  "id": "infinite_moving_mass"
+}
