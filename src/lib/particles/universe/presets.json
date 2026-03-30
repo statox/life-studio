@@ -2454,5 +2454,197 @@
         "horizontalResolution": 30,
         "verticalResolution": 20,
         "friction": 0.85
+    },
+    {
+        "name": "zoom 4 stages mover",
+        "description": "Converges into a layered moving structure",
+        "preferredInitialConfig": "uniform",
+        "behavior": "cyclic",
+        "structure": "organisms",
+        "activeColors": 4,
+        "convergenceSpeed": "fast",
+        "energyLevel": "medium",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 2,
+                "red": 1,
+                "green": 0,
+                "blue": 1
+            },
+            "red": {
+                "white": 1,
+                "red": 2,
+                "green": 0,
+                "blue": 0
+            },
+            "green": {
+                "white": 0,
+                "red": -1,
+                "green": 2,
+                "blue": 2
+            },
+            "blue": {
+                "white": 1,
+                "red": 1,
+                "green": 2,
+                "blue": 2
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 15,
+        "verticalResolution": 10,
+        "friction": 0.13
+    },
+    {
+        "name": "infinite moving mass",
+        "description": "A beautiful pattern infinitely moving. Low cohesion but still some distinctive areas",
+        "preferredInitialConfig": "uniform",
+        "behavior": "chaotic",
+        "structure": "patterns",
+        "activeColors": 4,
+        "convergenceSpeed": "never",
+        "energyLevel": "high",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 1,
+                "green": 0,
+                "blue": 0
+            },
+            "red": {
+                "white": -1,
+                "red": -1,
+                "green": -1,
+                "blue": 0
+            },
+            "green": {
+                "white": 0,
+                "red": 0,
+                "green": 0,
+                "blue": 1
+            },
+            "blue": {
+                "white": 1,
+                "red": 0,
+                "green": -1,
+                "blue": -2
+            }
+        },
+        "colorWeights": {
+            "white": 500,
+            "red": 500,
+            "green": 500,
+            "blue": 500
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 15,
+        "verticalResolution": 10,
+        "friction": 0.57
+    },
+    {
+        "name": "Moving structures 2",
+        "description": "Change the proportion of blue and see how structures become more structured when more blue appears",
+        "preferredInitialConfig": "uniform",
+        "behavior": "cyclic",
+        "structure": "organisms",
+        "activeColors": 4,
+        "convergenceSpeed": "never",
+        "energyLevel": "high",
+        "complexity": 2,
+        "attractionTable": {
+            "white": {
+                "white": 0,
+                "red": 1,
+                "green": 0,
+                "blue": 1
+            },
+            "red": {
+                "white": -1,
+                "red": 1,
+                "green": -1,
+                "blue": 0
+            },
+            "green": {
+                "white": 0,
+                "red": 1,
+                "green": 0,
+                "blue": 1
+            },
+            "blue": {
+                "white": 1,
+                "red": 0,
+                "green": -1,
+                "blue": -2
+            }
+        },
+        "colorWeights": {
+            "white": 499,
+            "red": 492,
+            "green": 499,
+            "blue": 506
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 15,
+        "verticalResolution": 10,
+        "friction": 0.51
+    },
+    {
+        "name": "Rotation cells",
+        "description": "Cells with a clustered blue-green center surrounded by alternating red-white borders.\n\nThe cells move mostly by rotating until they all merge and converge",
+        "preferredInitialConfig": "center",
+        "behavior": "converges",
+        "structure": "organisms",
+        "activeColors": 4,
+        "convergenceSpeed": "slow",
+        "energyLevel": "medium",
+        "complexity": 3,
+        "attractionTable": {
+            "white": {
+                "white": -1,
+                "red": 1,
+                "green": 1,
+                "blue": -1
+            },
+            "red": {
+                "white": 0,
+                "red": -1,
+                "green": 1,
+                "blue": -1
+            },
+            "green": {
+                "white": 0,
+                "red": 2,
+                "green": 0,
+                "blue": 2
+            },
+            "blue": {
+                "white": 1,
+                "red": 0,
+                "green": 0,
+                "blue": 1
+            }
+        },
+        "colorWeights": {
+            "white": 499,
+            "red": 492,
+            "green": 499,
+            "blue": 506
+        },
+        "nbParticles": 4000,
+        "maxAttractionRadius": 32,
+        "horizontalResolution": 15,
+        "verticalResolution": 10,
+        "friction": 0.51
     }
 ]
