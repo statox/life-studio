@@ -51,6 +51,8 @@
                 displayIndex -= trimCount;
                 absoluteFrameOffset += trimCount;
             }
+
+            bufferLevel = getBufferLevel();
         }
 
         // Engine backpressure check
@@ -85,6 +87,26 @@
 
         return `${currentMinute}:${currentSecond}`;
     };
+
+    const getUpcomingFramesCount = () => Math.max(0, (buffer?.length || 0) - 1 - displayIndex);
+
+    const BUFFER_BLOCKS = ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'];
+    const BUFFER_COLORS = [
+        '#ef5350',
+        '#ef5350',
+        '#ef5350',
+        '#e6a23c',
+        '#e6a23c',
+        '#e6a23c',
+        '#c3e88d',
+        '#c3e88d'
+    ];
+    const getBufferLevel = () => {
+        const ratio = Math.min(1, getUpcomingFramesCount() / MAX_UPCOMING_FRAMES);
+        const idx = Math.round(ratio * (BUFFER_BLOCKS.length - 1));
+        return { char: BUFFER_BLOCKS[idx], color: BUFFER_COLORS[idx] };
+    };
+    let bufferLevel = { char: BUFFER_BLOCKS[0], color: BUFFER_COLORS[0] };
 
     const togglePlayPause = () => (displayPaused = !displayPaused);
 </script>
@@ -122,9 +144,8 @@
             <span class="stat-label">Time</span>
             {frameNumberToTime(absoluteFrameOffset + displayIndex)}
         </span>
-        <span class="stat">
-            <span class="stat-label">upcoming</span>
-            {Math.max(0, (buffer?.length || 0) - 1 - displayIndex)}
+        <span class="stat buffer-indicator" style="color:{bufferLevel.color}">
+            {bufferLevel.char}
         </span>
         <span class="stat">{fps}<span class="stat-label">fps</span></span>
     </div>
@@ -173,6 +194,12 @@
     .stat-label {
         font-size: 0.65rem;
         color: #546e7a;
+    }
+
+    .buffer-indicator {
+        font-size: 0.9rem;
+        line-height: 1;
+        cursor: default;
     }
 
     button {
