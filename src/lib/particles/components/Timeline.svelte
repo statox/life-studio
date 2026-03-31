@@ -73,6 +73,19 @@
         togglePlayPause();
     };
 
+    const frameNumberToTime = (frame: number) => {
+        // Theoretical time at 60 fps
+        const elapsedSeconds = frame * (1 / 60);
+        const currentMinute = Math.floor(elapsedSeconds / 60)
+            .toString()
+            .padStart(2, '0');
+        const currentSecond = Math.floor(elapsedSeconds % 60)
+            .toFixed(0)
+            .padStart(2, '0');
+
+        return `${currentMinute}:${currentSecond}`;
+    };
+
     const togglePlayPause = () => (displayPaused = !displayPaused);
 </script>
 
@@ -106,8 +119,8 @@
     </button>
     <div class="tl-stats">
         <span class="stat">
-            <span class="stat-label">frame</span>
-            {absoluteFrameOffset + displayIndex}
+            <span class="stat-label">Time</span>
+            {frameNumberToTime(absoluteFrameOffset + displayIndex)}
         </span>
         <span class="stat">
             <span class="stat-label">upcoming</span>
