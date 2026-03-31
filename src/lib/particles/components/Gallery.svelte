@@ -2,15 +2,16 @@
     import { onMount } from 'svelte';
 
     import type { AttractionTable } from '$lib/particles/attraction';
-    import { COLORS, PARTICLE_COLORS } from '$lib/particles/engine';
     import {
         getNewCells,
         largeCenterCellsInPlace,
         rainbowCellsInPlace
     } from '$lib/particles/engine/cells';
-    import type { ColorProportions } from '$lib/particles/engine/cells';
     import type { Cell } from '$lib/particles/engine';
     import Simulation from './Simulation.svelte';
+    import AttractionTableComponent from './AttractionTableComponent.svelte';
+    import WorldSettingsSelector from './WorldSettingsSelector.svelte';
+    import type { WorldSettings } from '$lib/particles/engine/types';
     import { getAllUniverses, type StoredUniverse } from '$lib/particles/universe';
     import UniverseSelector from './UniverseSelector.svelte';
 
@@ -21,12 +22,15 @@
 
     let cells: Cell[] = [];
     let attractionTable: AttractionTable = universes[0].attractionTable;
-    let colorWeights: ColorProportions = universes[0].colorWeights;
-    let nbParticles = universes[0].nbParticles;
-    let maxAttractionRadius = universes[0].maxAttractionRadius;
-    let horizontalResolution = universes[0].horizontalResolution;
-    let verticalResolution = universes[0].verticalResolution;
-    let friction = universes[0].friction;
+
+    let ws: WorldSettings = {
+        nbParticles: universes[0].nbParticles,
+        horizontalResolution: universes[0].horizontalResolution,
+        verticalResolution: universes[0].verticalResolution,
+        maxAttractionRadius: universes[0].maxAttractionRadius,
+        friction: universes[0].friction,
+        colorWeights: universes[0].colorWeights
+    };
 
     const worldSize = { x: 0, y: 0 };
 
@@ -34,9 +38,9 @@
         simulationComponent?.startSim({
             cells,
             worldSize,
-            maxAttractionRadius,
+            maxAttractionRadius: ws.maxAttractionRadius,
             attractionTable,
-            friction
+            friction: ws.friction
         });
     };
 
@@ -47,17 +51,19 @@
 
     const loadUniverse = (u: StoredUniverse) => {
         attractionTable = u.attractionTable;
-        colorWeights = u.colorWeights;
-        nbParticles = u.nbParticles;
-        maxAttractionRadius = u.maxAttractionRadius;
-        horizontalResolution = u.horizontalResolution;
-        verticalResolution = u.verticalResolution;
+        ws = {
+            colorWeights: u.colorWeights,
+            nbParticles: u.nbParticles,
+            maxAttractionRadius: u.maxAttractionRadius,
+            horizontalResolution: u.horizontalResolution,
+            verticalResolution: u.verticalResolution,
+            friction: u.friction
+        };
         worldSize.x = u.maxAttractionRadius * u.horizontalResolution;
         worldSize.y = u.maxAttractionRadius * u.verticalResolution;
         cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
         if (u.preferredInitialConfig === 'center') largeCenterCellsInPlace(cells, worldSize);
         if (u.preferredInitialConfig === 'rainbow') rainbowCellsInPlace(cells, worldSize);
-        friction = u.friction;
         startSim();
     };
 
@@ -71,30 +77,20 @@
     });
 
     const uniformSpread = () => {
-        restartWithCells(getNewCells(worldSize, nbParticles, colorWeights));
+        restartWithCells(getNewCells(worldSize, ws.nbParticles, ws.colorWeights));
     };
 
     const centerSpread = () => {
-        const newCells = getNewCells(worldSize, nbParticles, colorWeights);
+        const newCells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
         largeCenterCellsInPlace(newCells, worldSize);
         restartWithCells(newCells);
     };
 
     const rainbowSpread = () => {
-        const newCells = getNewCells(worldSize, nbParticles, colorWeights);
+        const newCells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
         rainbowCellsInPlace(newCells, worldSize);
         restartWithCells(newCells);
     };
-
-    const valueColor = (val: number): string => {
-        if (val <= -2) return '#b71c1c';
-        if (val === -1) return '#c62828';
-        if (val === 0) return '#37474f';
-        if (val === 1) return '#2e7d32';
-        return '#1b5e20';
-    };
-
-    const valueLabel = (val: number): string => (val > 0 ? `+${val}` : `${val}`);
 
     const behaviorColor = (b: string): string => {
         if (b === 'still') return '#546e7a';
@@ -165,93 +161,13 @@
                 <span class="meta-stars">{stars(selected.complexity)}</span>
             </div>
             <div class="card-subtitle">Properties</div>
-            <div class="field">
-                <label for="gallery-particles">Particles</label>
-                <input id="gallery-particles" type="number" value={nbParticles} disabled />
-            </div>
-            <div class="field">
-                <label for="gallery-hcells">H cells</label>
-                <input id="gallery-hcells" type="number" value={horizontalResolution} disabled />
-                <span class="dim">{horizontalResolution * maxAttractionRadius}px</span>
-            </div>
-            <div class="field">
-                <label for="gallery-vcells">V cells</label>
-                <input id="gallery-vcells" type="number" value={verticalResolution} disabled />
-                <span class="dim">{verticalResolution * maxAttractionRadius}px</span>
-            </div>
-            <div class="field">
-                <label for="gallery-maxradius">Max radius</label>
-                <input id="gallery-maxradius" type="number" value={maxAttractionRadius} disabled />
-            </div>
-            <div class="field">
-                <label for="gallery-friction">Friction</label>
-                <input
-                    id="gallery-friction"
-                    type="range"
-                    value={friction}
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    disabled
-                />
-                <span class="dim">{friction.toFixed(2)}</span>
-            </div>
-            <div class="proportion-list">
-                {#each COLORS as c}
-                    <div class="field">
-                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
-                        <input
-                            type="range"
-                            bind:value={colorWeights[c]}
-                            min="0"
-                            max="1000"
-                            step="1"
-                            disabled
-                        />
-                        <span class="dim" style="width:28px;text-align:right"
-                            >{colorWeights[c]}</span
-                        >
-                    </div>
-                {/each}
-            </div>
+            <WorldSettingsSelector settings={ws} readonly />
         </div>
 
         <!-- Attraction Table (read-only) -->
         <div class="card">
             <div class="card-title">Attraction</div>
-            <div class="scroll-wrap">
-                <div class="matrix">
-                    <!-- Corner -->
-                    <div class="corner">
-                        <span class="corner-label">self ↓</span>
-                        <span class="corner-label">other →</span>
-                    </div>
-                    <!-- Column headers -->
-                    {#each COLORS as c}
-                        <div class="col-header">
-                            <span class="dot" style="background:{PARTICLE_COLORS[c]}" />
-                            <span class="col-label">{c}</span>
-                        </div>
-                    {/each}
-                    <!-- Rows -->
-                    {#each COLORS as selfColor}
-                        <div class="row-header">
-                            <span class="dot" style="background:{PARTICLE_COLORS[selfColor]}" />
-                            <span class="col-label">{selfColor}</span>
-                        </div>
-                        {#each COLORS as otherColor}
-                            {@const val = attractionTable[selfColor][otherColor]}
-                            <div
-                                class="swatch"
-                                style="background:{valueColor(val)}"
-                                title="{selfColor} → {otherColor}"
-                            >
-                                {valueLabel(val)}
-                            </div>
-                        {/each}
-                    {/each}
-                </div>
-            </div>
+            <AttractionTableComponent {attractionTable} readonly />
         </div>
     </div>
 </div>
@@ -382,7 +298,6 @@
         margin-bottom: 0;
     }
 
-    .field label,
     .field .field-label {
         font-size: 0.8rem;
         color: #90a4ae;
@@ -390,112 +305,8 @@
         flex-shrink: 0;
     }
 
-    .field input[type='number'] {
-        width: 62px;
-        background: #1a2327;
-        border: 1px solid #37474f;
-        border-radius: 5px;
-        color: #eceff1;
-        padding: 4px 7px;
-        font-size: 0.82rem;
-    }
-
-    .field input[type='number']:disabled {
-        opacity: 0.7;
-        cursor: default;
-    }
-
     .dim {
         font-size: 0.7rem;
         color: #aeafb0;
-    }
-
-    .pdot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        flex-shrink: 0;
-    }
-
-    .proportion-list {
-        margin-top: 10px;
-    }
-
-    .proportion-list .field input[type='range'] {
-        flex: 1;
-        min-width: 0;
-        accent-color: #c3e88d;
-    }
-
-    /* ── Attraction table (read-only) ────────── */
-    .scroll-wrap {
-        overflow-x: auto;
-    }
-
-    .matrix {
-        display: grid;
-        grid-template-columns: auto repeat(4, 1fr);
-        gap: 4px;
-        min-width: 220px;
-    }
-
-    .corner {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding-bottom: 6px;
-        padding-right: 6px;
-    }
-
-    .corner-label {
-        font-size: 0.6rem;
-        color: #546e7a;
-        line-height: 1.4;
-    }
-
-    .col-header,
-    .row-header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-        padding: 4px 2px;
-    }
-
-    .row-header {
-        flex-direction: row;
-        justify-content: flex-start;
-        padding-right: 6px;
-    }
-
-    .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        flex-shrink: 0;
-    }
-
-    .col-label {
-        font-size: 0.62rem;
-        color: #90a4ae;
-        text-transform: capitalize;
-    }
-
-    @media (max-width: 640px) {
-        .col-label {
-            display: none;
-        }
-    }
-
-    .swatch {
-        border-radius: 4px;
-        height: 34px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.72rem;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.92);
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     }
 </style>

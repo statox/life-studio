@@ -1,5 +1,6 @@
 import type { AttractionTable } from '$lib/particles/attraction';
 import type { Color } from './colors';
+import type { ColorProportions } from './cells';
 
 export type Coordinates = {
     x: number;
@@ -14,6 +15,15 @@ export interface Cell {
     vel: Coordinates;
     color: Color;
 }
+
+export type WorldSettings = {
+    nbParticles: number;
+    horizontalResolution: number;
+    verticalResolution: number;
+    maxAttractionRadius: number;
+    friction: number;
+    colorWeights: ColorProportions;
+};
 
 export type SimulationParams = {
     cells: Cell[];

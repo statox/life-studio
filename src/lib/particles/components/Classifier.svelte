@@ -4,16 +4,16 @@
     import { onMount } from 'svelte';
 
     import type { AttractionTable } from '$lib/particles/attraction';
-    import { COLORS, PARTICLE_COLORS } from '$lib/particles/engine';
     import {
         getNewCells,
         largeCenterCellsInPlace,
         rainbowCellsInPlace
     } from '$lib/particles/engine/cells';
-    import type { ColorProportions } from '$lib/particles/engine/cells';
     import type { Cell } from '$lib/particles/engine';
     import Simulation from './Simulation.svelte';
     import UniverseSelector from './UniverseSelector.svelte';
+    import WorldSettingsSelector from './WorldSettingsSelector.svelte';
+    import type { WorldSettings } from '$lib/particles/engine/types';
     import {
         getAllUniverses,
         type StoredUniverse,
@@ -31,12 +31,16 @@
 
     let cells: Cell[] = [];
     let attractionTable: AttractionTable;
-    let colorWeights: ColorProportions;
-    let nbParticles = 0;
-    let maxAttractionRadius = 0;
-    let horizontalResolution = 0;
-    let verticalResolution = 0;
-    let friction = 0;
+
+    let ws: WorldSettings = {
+        nbParticles: 0,
+        horizontalResolution: 0,
+        verticalResolution: 0,
+        maxAttractionRadius: 0,
+        friction: 0,
+        colorWeights: { white: 0, red: 0, green: 0, blue: 0 }
+    };
+
     const worldSize = { x: 0, y: 0 };
 
     // ── Editable metadata ──────────────────────
@@ -115,9 +119,9 @@
         simulationComponent?.startSim({
             cells,
             worldSize,
-            maxAttractionRadius,
+            maxAttractionRadius: ws.maxAttractionRadius,
             attractionTable,
-            friction
+            friction: ws.friction
         });
     };
 
@@ -128,12 +132,14 @@
 
     const loadUniverse = (u: StoredUniverse) => {
         attractionTable = u.attractionTable;
-        colorWeights = u.colorWeights;
-        nbParticles = u.nbParticles;
-        maxAttractionRadius = u.maxAttractionRadius;
-        horizontalResolution = u.horizontalResolution;
-        verticalResolution = u.verticalResolution;
-        friction = u.friction;
+        ws = {
+            colorWeights: u.colorWeights,
+            nbParticles: u.nbParticles,
+            maxAttractionRadius: u.maxAttractionRadius,
+            horizontalResolution: u.horizontalResolution,
+            verticalResolution: u.verticalResolution,
+            friction: u.friction
+        };
         worldSize.x = u.maxAttractionRadius * u.horizontalResolution;
         worldSize.y = u.maxAttractionRadius * u.verticalResolution;
         cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
@@ -149,17 +155,17 @@
     };
 
     const uniformSpread = () => {
-        restartWithCells(getNewCells(worldSize, nbParticles, colorWeights));
+        restartWithCells(getNewCells(worldSize, ws.nbParticles, ws.colorWeights));
     };
 
     const centerSpread = () => {
-        const newCells = getNewCells(worldSize, nbParticles, colorWeights);
+        const newCells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
         largeCenterCellsInPlace(newCells, worldSize);
         restartWithCells(newCells);
     };
 
     const rainbowSpread = () => {
-        const newCells = getNewCells(worldSize, nbParticles, colorWeights);
+        const newCells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
         rainbowCellsInPlace(newCells, worldSize);
         restartWithCells(newCells);
     };
@@ -356,42 +362,10 @@
             <div class="card">
                 <div class="card-title">Properties</div>
                 <div class="field">
-                    <label>ID</label>
+                    <span>ID</span>
                     <span class="ro-value">{selected.id}</span>
                 </div>
-                <div class="field">
-                    <label>Particles</label>
-                    <span class="ro-value">{nbParticles}</span>
-                </div>
-                <div class="field">
-                    <label>H cells</label>
-                    <span class="ro-value">{horizontalResolution}</span>
-                    <span class="dim">{horizontalResolution * maxAttractionRadius}px</span>
-                </div>
-                <div class="field">
-                    <label>V cells</label>
-                    <span class="ro-value">{verticalResolution}</span>
-                    <span class="dim">{verticalResolution * maxAttractionRadius}px</span>
-                </div>
-                <div class="field">
-                    <label>Max radius</label>
-                    <span class="ro-value">{maxAttractionRadius}</span>
-                </div>
-                <div class="field">
-                    <label>Friction</label>
-                    <span class="ro-value">{friction.toFixed(2)}</span>
-                </div>
-                <div class="card-subtitle">Color weights</div>
-                {#if colorWeights}
-                    <div class="proportion-list">
-                        {#each COLORS as c}
-                            <div class="field">
-                                <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
-                                <span class="ro-value">{colorWeights[c]}</span>
-                            </div>
-                        {/each}
-                    </div>
-                {/if}
+                <WorldSettingsSelector settings={ws} readonly />
             </div>
         </div>
     {/if}
@@ -462,17 +436,6 @@
         color: #78909c;
         margin-bottom: 12px;
         font-weight: 600;
-    }
-
-    .card-subtitle {
-        font-size: 0.63rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: #546e7a;
-        font-weight: 600;
-        margin: 10px 0 6px;
-        padding-top: 8px;
-        border-top: 1px solid #37474f;
     }
 
     .section-label {
@@ -552,22 +515,6 @@
     .ro-value {
         font-size: 0.82rem;
         color: #b0bec5;
-    }
-
-    .dim {
-        font-size: 0.7rem;
-        color: #aeafb0;
-    }
-
-    .pdot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        flex-shrink: 0;
-    }
-
-    .proportion-list {
-        margin-top: 4px;
     }
 
     /* ── Save row ────────────────────────────── */
