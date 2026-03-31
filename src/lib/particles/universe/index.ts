@@ -89,3 +89,11 @@ const cachedPresets: StoredUniverse[] = Object.values(presetModules).map(
 
 export const getAllUniverses = (): StoredUniverse[] => cachedPresets;
 export const getAllDemoUniverses = (): StoredUniverse[] => demoPresets as StoredUniverse[];
+export const getUniverseById = (id: string) => {
+    const u = cachedPresets.find((p) => p.id === id);
+    if (!u) {
+        throw new Error('Universe not found with id ' + id);
+    }
+
+    return u;
+};
