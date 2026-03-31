@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="/particles-life/favicon.png" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+        />
+        <meta http-equiv="content-security-policy" content="">
+		<link href="/particles-life/_app/immutable/assets/_layout-053e06f5.css" rel="stylesheet">
+		<link href="/particles-life/_app/immutable/assets/_page-64203330.css" rel="stylesheet">
+		<link href="/particles-life/_app/immutable/assets/index-096bff00.css" rel="stylesheet">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-3bda126b.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-5abd4bd0.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-399777ca.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-902e6631.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/paths-b4419565.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/preload-helper-41c905a7.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-3b653a49.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/story/_page.svelte-b8d8d3ed.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-b77df9a5.js">
+    </head>
+
+    <body data-sveltekit-preload-data="hover">
+        <div style="display: contents">
+
+
+<header class="svelte-12plrf"><h1>Particles Life</h1>
+
+    <nav><a href="/particles-life/particles-life">Particles life</a> |
+        <a href="/particles-life/gameoflife">Game Of Life</a> |
+        <a href="/particles-life/reaction-diffusion">Reaction-diffusion</a> |
+        <a href="/particles-life/shaders">Test shaders</a> |
+        <a href="/particles-life/soft-bodies">Soft bodies</a> |
+    </nav></header>
+
+<div class="story svelte-14cuy57"><div class="narrative svelte-14cuy57"><div class="screen svelte-mtpscv"><h2 class="svelte-mtpscv">A Still Universe</h2>
+    <p class="svelte-mtpscv">Here we have a bunch of white particles initially spread in a circle and without any force
+        applied to them. Notice that at the very beginning the cells in the center push each other
+        until everyone is far enough to not overlap its neighbors.
+    </p>
+    <p class="svelte-mtpscv">Then nothing more happens.</p>
+
+    <div class="controls svelte-mtpscv"><div class="control-section svelte-mtpscv"><h3 class="svelte-mtpscv">Attraction Table</h3>
+            
+
+    <div class="scroll-wrap svelte-cxat5a"><div class="matrix svelte-cxat5a">
+            <div class="corner svelte-cxat5a"><span class="corner-label svelte-cxat5a">self ↓</span>
+                    <span class="corner-label svelte-cxat5a">other →</span></div>
+                
+                <div class="col-header svelte-cxat5a"><span class="dot svelte-cxat5a" style="background:#ffedff"></span>
+                        <span class="col-label svelte-cxat5a">white</span>
+                    </div><div class="col-header svelte-cxat5a"><span class="dot svelte-cxat5a" style="background:#fc2a51"></span>
+                        <span class="col-label svelte-cxat5a">red</span>
+                    </div><div class="col-header svelte-cxat5a"><span class="dot svelte-cxat5a" style="background:#8ff97c"></span>
+                        <span class="col-label svelte-cxat5a">green</span>
+                    </div><div class="col-header svelte-cxat5a"><span class="dot svelte-cxat5a" style="background:#77cfff"></span>
+                        <span class="col-label svelte-cxat5a">blue</span>
+                    </div>
+
+            
+            <div class="row-header svelte-cxat5a"><span class="dot svelte-cxat5a" style="background:#ffedff"></span>
+                        <span class="col-label svelte-cxat5a">white</span>
+                    </div>
+                
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="white → white: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="white → red: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="white → green: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="white → blue: 0">0
+                        </div><div class="row-header svelte-cxat5a"><span class="dot svelte-cxat5a" style="background:#fc2a51"></span>
+                        <span class="col-label svelte-cxat5a">red</span>
+                    </div>
+                
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="red → white: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="red → red: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="red → green: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="red → blue: 0">0
+                        </div><div class="row-header svelte-cxat5a"><span class="dot svelte-cxat5a" style="background:#8ff97c"></span>
+                        <span class="col-label svelte-cxat5a">green</span>
+                    </div>
+                
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="green → white: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="green → red: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="green → green: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="green → blue: 0">0
+                        </div><div class="row-header svelte-cxat5a"><span class="dot svelte-cxat5a" style="background:#77cfff"></span>
+                        <span class="col-label svelte-cxat5a">blue</span>
+                    </div>
+                
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="blue → white: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="blue → red: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="blue → green: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="blue → blue: 0">0
+                        </div></div></div></div></div>
+</div></div>
+
+    <div class="canvas-col svelte-14cuy57"><div class="canvas-sticky svelte-14cuy57"><div class="sim svelte-1vuykw2">
+    <div class="canvas-wrap svelte-1vuykw2"><canvas class="svelte-mxo1ki"></canvas></div>
+    
+    <div class="timeline-row svelte-1vuykw2">
+
+<div class="timeline svelte-md0x9i"><div class="tl-btns svelte-md0x9i"><button class="icon-btn svelte-md0x9i" title="Go to start">⏮</button>
+        <button class="icon-btn svelte-md0x9i">⏸</button>
+        <button class="icon-btn svelte-md0x9i" title="Catch up to latest">⏭</button></div>
+    <input type="range" class="tl-slider svelte-md0x9i" min="0" max="0" value="0">
+    <button class="icon-btn svelte-md0x9i" title="Enter fullscreen">⛶</button>
+    <div class="tl-stats svelte-md0x9i"><span class="stat svelte-md0x9i"><span class="stat-label svelte-md0x9i">frame</span>
+            0</span>
+        <span class="stat svelte-md0x9i"><span class="stat-label svelte-md0x9i">upcoming</span>
+            0</span>
+        <span class="stat svelte-md0x9i">0<span class="stat-label svelte-md0x9i">fps</span></span></div>
+</div>
+        </div>
+</div></div></div></div>
+
+<div class="nav-bar svelte-14cuy57"><button class="nav-btn svelte-14cuy57" disabled>Previous</button>
+    <span class="nav-counter svelte-14cuy57">1 / 2</span>
+    <button class="nav-btn svelte-14cuy57" >Next</button>
+</div>
+
+
+		<script type="module" data-sveltekit-hydrate="152gm8c">
+			import { start } from "/particles-life/_app/immutable/start-3bda126b.js";
+
+			start({
+				env: {},
+				paths: {"base":"/particles-life","assets":"/particles-life"},
+				target: document.querySelector('[data-sveltekit-hydrate="152gm8c"]').parentNode,
+				version: "1774958141893",
+				hydrate: {
+					node_ids: [0, 8],
+					data: [null,null],
+					form: null
+				}
+			});
+		</script>
+	</div>
+    </body>
+
+    <!-- Override newcss -->
+    <style>
+        body {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        :root {
+            --nc-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
+                'Segoe UI Emoji', 'Segoe UI Symbol';
+            --nc-font-mono: Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New',
+                Courier, monospace;
+            --is-light-theme: 1;
+
+            /* Dark theme */
+            --nc-tx-1: #ffffff;
+            --nc-tx-2: #b7b7b7;
+            --nc-tx-3: #8a8d87;
+            --nc-bg-1: #1e272c;
+            --nc-bg-2: #161d21;
+            --nc-bg-3: #263238;
+            --nc-lk-1: #5e92ff;
+            --nc-lk-2: #99b2e8;
+            --nc-lk-tx: #2e3c43;
+            --nc-ac-1: #c3e88d;
+            --nc-ac-tx: #263238;
+        }
+    </style>
+</html>
