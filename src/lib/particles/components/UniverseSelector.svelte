@@ -182,15 +182,24 @@
 
                         <div class="item-props">
                             <span class="prop" style="border-color:{behaviorColor(u.behavior)}44">
-                                <span class="prop-dot" style="background:{behaviorColor(u.behavior)}" />
+                                <span
+                                    class="prop-dot"
+                                    style="background:{behaviorColor(u.behavior)}"
+                                />
                                 {u.behavior}
                             </span>
                             <span class="prop" style="border-color:{structureColor(u.structure)}44">
-                                <span class="prop-dot" style="background:{structureColor(u.structure)}" />
+                                <span
+                                    class="prop-dot"
+                                    style="background:{structureColor(u.structure)}"
+                                />
                                 {u.structure}
                             </span>
                             <span class="prop" style="border-color:{energyColor(u.energyLevel)}44">
-                                <span class="prop-dot" style="background:{energyColor(u.energyLevel)}" />
+                                <span
+                                    class="prop-dot"
+                                    style="background:{energyColor(u.energyLevel)}"
+                                />
                                 {u.energyLevel}
                             </span>
                             <span class="prop complexity">{stars(u.complexity)}</span>
@@ -199,10 +208,7 @@
                         {#if u.description}
                             <p class="item-desc" class:expanded={isExpanded}>{u.description}</p>
                             {#if u.description.length > 120 || u.description.includes('\n')}
-                                <button
-                                    class="expand-btn"
-                                    on:click={(e) => toggleDesc(e, u.id)}
-                                >
+                                <button class="expand-btn" on:click={(e) => toggleDesc(e, u.id)}>
                                     {isExpanded ? 'Show less' : 'Show more'}
                                 </button>
                             {/if}
