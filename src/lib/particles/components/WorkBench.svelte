@@ -215,10 +215,7 @@
     <div class="panels">
         <div class="card">
             <div class="card-title">World</div>
-            <WorldSettingsSelector
-                settings={ws}
-                onChange={onWorldSettingsChange}
-            />
+            <WorldSettingsSelector settings={ws} onChange={onWorldSettingsChange} />
         </div>
     </div>
 
