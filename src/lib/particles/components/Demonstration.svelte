@@ -745,13 +745,6 @@
         border-bottom: none;
     }
 
-    .narrative h1 {
-        font-size: 1.8rem;
-        color: #eceff1;
-        margin: 0 0 16px;
-        font-weight: 700;
-    }
-
     .narrative h2 {
         font-size: 1.2rem;
         color: #eceff1;
