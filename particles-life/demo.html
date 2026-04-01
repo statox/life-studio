@@ -11,9 +11,9 @@
         />
         <meta http-equiv="content-security-policy" content="">
 		<link href="/particles-life/_app/immutable/assets/_layout-053e06f5.css" rel="stylesheet">
-		<link href="/particles-life/_app/immutable/assets/_page-3bcbc0c3.css" rel="stylesheet">
+		<link href="/particles-life/_app/immutable/assets/_page-c3c9abe7.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/index-13a5c150.css" rel="stylesheet">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/start-1bf60066.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-4a50cd3c.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-5abd4bd0.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-399777ca.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-902e6631.js">
@@ -22,8 +22,8 @@
 		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-3b653a49.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/demo/_page.svelte-fc81f368.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-d6a7387c.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/demo/_page.svelte-9776fe73.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-3d57a553.js">
     </head>
 
     <body data-sveltekit-preload-data="hover">
@@ -39,7 +39,7 @@
         <a href="/particles-life/soft-bodies">Soft bodies</a> |
     </nav></header>
 
-<div class="intro svelte-m0lcd9">
+<div class="intro svelte-1qkyom2">
     <section class="hero"><h1>Particle Life</h1>
         <p>This is Particles Life. This is the simulation of a small universe where a few thousand
             particles move freely and interact with each other.
@@ -47,7 +47,7 @@
         <p>Press the next button a few times and observe these new universes coming to life in the
             simulation window
         </p>
-        <button class="universe-btn svelte-m0lcd9">Try another universe (0 / 7)</button>
+        <button class="universe-btn svelte-1qkyom2">Try another universe (0 / 7)</button>
         <p>While all these universes follow a small set of physical rules applied with different
             parameters, they produce a wide range of emergent behaviors. I made this page to explain
             how this type of simulation works and provide some insights to better understand how
@@ -59,350 +59,350 @@
             this page first should allow you to better appreciate how truly amazing this other tool is.
         </p>
 
-        <div class="notice svelte-m0lcd9"><p>This page was made to be browsed on a computer screen. The experience on mobile
+        <div class="notice svelte-1qkyom2"><p>This page was made to be browsed on a computer screen. The experience on mobile
                 devices suffer from the smaller screen size.
             </p>
             <p>Also the simulations run directly in your browser so their smoothness is directly
                 linked to the processing power of your device.
             </p></div></section></div>
 
-<div class="demo svelte-m0lcd9">
-    <div class="narrative svelte-m0lcd9">
-        <section class="svelte-m0lcd9"><h2 class="svelte-m0lcd9">Controls</h2>
-            <p class="svelte-m0lcd9">This page is meant to be an interactive walkthrough. Each section introduces new
+<div class="demo svelte-1qkyom2">
+    <div class="narrative svelte-1qkyom2">
+        <section class="svelte-1qkyom2"><h2 class="svelte-1qkyom2">Controls</h2>
+            <p class="svelte-1qkyom2">This page is meant to be an interactive walkthrough. Each section introduces new
                 concepts and invites you to click on a button to update the simulation to a new
                 universe.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Like this !</button>
-            <p class="svelte-m0lcd9">Below the simulation you&#39;ll find the three controls that govern every universe in
+            <button class="universe-btn svelte-1qkyom2">Like this !</button>
+            <p class="svelte-1qkyom2">Below the simulation you&#39;ll find the three controls that govern every universe in
                 this simulation. You can adjust them at any time while a universe is running, or use
                 the restart buttons to apply a fresh set of particles.
             </p>
 
-            <div class="control-desc svelte-m0lcd9"><h3 class="svelte-m0lcd9">Restart Buttons</h3>
-                <p class="svelte-m0lcd9"><strong>Uniform spread</strong> distributes all particles randomly across the
+            <div class="control-desc svelte-1qkyom2"><h3 class="svelte-1qkyom2">Restart Buttons</h3>
+                <p class="svelte-1qkyom2"><strong>Uniform spread</strong> distributes all particles randomly across the
                     full world. <strong>Centered circle</strong> packs them into a dense cluster at the
                     center - many universes produce cleaner structures from this starting point since
                     interactions begin in a concentrated area before spreading out. Both buttons preserve
                     the current attraction table and color proportions.
                 </p></div>
 
-            <div class="control-desc svelte-m0lcd9"><h3 class="svelte-m0lcd9">The Attraction Table</h3>
-                <p class="svelte-m0lcd9">The attraction table is the heart of the simulation. Each cell defines the force
+            <div class="control-desc svelte-1qkyom2"><h3 class="svelte-1qkyom2">The Attraction Table</h3>
+                <p class="svelte-1qkyom2">The attraction table is the heart of the simulation. Each cell defines the force
                     that the <em>column</em> species exerts on the <em>row</em> species: a positive
                     value means the row species is attracted toward the column species, a negative
                     value means it is repelled. The table is not symmetric -
-                    <span class="cr svelte-m0lcd9">red</span>
-                    can be strongly attracted to <span class="cw svelte-m0lcd9">white</span> while
-                    <span class="cw svelte-m0lcd9">white</span> is completely indifferent to
-                    <span class="cr svelte-m0lcd9">red</span>, or even repelled by it. This asymmetry is what
+                    <span class="cr svelte-1qkyom2">red</span>
+                    can be strongly attracted to <span class="cw svelte-1qkyom2">white</span> while
+                    <span class="cw svelte-1qkyom2">white</span> is completely indifferent to
+                    <span class="cr svelte-1qkyom2">red</span>, or even repelled by it. This asymmetry is what
                     makes complex behaviors possible.
                 </p></div>
 
-            <div class="control-desc svelte-m0lcd9"><h3 class="svelte-m0lcd9">Color Proportions</h3>
-                <p class="svelte-m0lcd9">The sliders set the relative number of particles of each species <span class="cw svelte-m0lcd9">white</span>, <span class="cr svelte-m0lcd9">red</span>, <span class="cg svelte-m0lcd9">green</span> and
-                    <span class="cb svelte-m0lcd9">blue</span>. Setting a color to zero removes it from the
+            <div class="control-desc svelte-1qkyom2"><h3 class="svelte-1qkyom2">Color Proportions</h3>
+                <p class="svelte-1qkyom2">The sliders set the relative number of particles of each species <span class="cw svelte-1qkyom2">white</span>, <span class="cr svelte-1qkyom2">red</span>, <span class="cg svelte-1qkyom2">green</span> and
+                    <span class="cb svelte-1qkyom2">blue</span>. Setting a color to zero removes it from the
                     universe entirely. Adjusting proportions while a simulation is running has no
                     effect on existing particles - hit one of the restart buttons to generate a new
                     set with the updated mix.
                 </p></div></section>
 
         
-        <section class="svelte-m0lcd9"><h2 class="svelte-m0lcd9">The Basics</h2>
-            <p class="svelte-m0lcd9">Let&#39;s start by making a cleaner universe.</p>
-            <button class="universe-btn svelte-m0lcd9">Click me !</button>
-            <p class="svelte-m0lcd9">Here we have a bunch of <span class="cw svelte-m0lcd9">white</span> particles initially spread in a
+        <section class="svelte-1qkyom2"><h2 class="svelte-1qkyom2">The Basics</h2>
+            <p class="svelte-1qkyom2">Let&#39;s start by making a cleaner universe.</p>
+            <button class="universe-btn svelte-1qkyom2">Click me !</button>
+            <p class="svelte-1qkyom2">Here we have a bunch of <span class="cw svelte-1qkyom2">white</span> particles initially spread in a
                 circle and without any force applied to them. Notice that at the very beginning the cells
                 in the center push each other until everyone is far enough to not overlap its neighbors.
                 Then nothing more happens...
             </p>
 
-            <p class="svelte-m0lcd9">So let&#39;s add our first force: Repulsion!</p>
-            <button class="universe-btn svelte-m0lcd9">Add repulsion</button>
-            <p class="svelte-m0lcd9">Now every particle is repulsed by its neighbors, that makes the species covering as
+            <p class="svelte-1qkyom2">So let&#39;s add our first force: Repulsion!</p>
+            <button class="universe-btn svelte-1qkyom2">Add repulsion</button>
+            <p class="svelte-1qkyom2">Now every particle is repulsed by its neighbors, that makes the species covering as
                 much space as needed to have sufficient space between each individual so that no one
                 repulses the other.
             </p>
-            <div class="notice svelte-m0lcd9"><h4>Attraction Radius</h4>
+            <div class="notice svelte-1qkyom2"><h4>Attraction Radius</h4>
                 Each particle has an attraction radius - a fixed circular neighborhood around it. Only
                 particles within this radius exert forces on it; everything outside is ignored entirely.
                 The radius is the same for all particles in a universe.
             </div>
 
-            <p class="svelte-m0lcd9">Notice that when the population size increases, the particles don&#39;t have enough
+            <p class="svelte-1qkyom2">Notice that when the population size increases, the particles don&#39;t have enough
                 space to have zero neighbors in their attraction radius. That creates clusters where
                 some particles get repulsed into small compact groups. Like in the first example a
                 small universal repulsion force prevents the particles from overlaping when they get
                 too close.
             </p>
-            <button class="universe-btn svelte-m0lcd9">More cells!</button>
-            <p class="svelte-m0lcd9">Inversely, we can make particles attract each other.</p>
-            <button class="universe-btn svelte-m0lcd9">Use attraction</button>
-            <p class="svelte-m0lcd9">Here clusters are much bigger and more compact because particles are pulled together
+            <button class="universe-btn svelte-1qkyom2">More cells!</button>
+            <p class="svelte-1qkyom2">Inversely, we can make particles attract each other.</p>
+            <button class="universe-btn svelte-1qkyom2">Use attraction</button>
+            <p class="svelte-1qkyom2">Here clusters are much bigger and more compact because particles are pulled together
                 into groups, unlike the previous settings where they were pushed against each other
                 into groups. Everything stabilizes once all groups have attracted all the particles
                 in their attraction radius.
             </p>
-            <p class="svelte-m0lcd9">With these few examples we described all the possible forces which can exist in our
+            <p class="svelte-1qkyom2">With these few examples we described all the possible forces which can exist in our
                 universes. From now on the only parameters we will tweak are how many forces we
                 create in the universes and to whom they apply.
             </p></section>
 
         
-        <section class="svelte-m0lcd9"><h2 class="svelte-m0lcd9">Species</h2>
-            <p class="svelte-m0lcd9">To make all of this more interesting we need to add more particle species that we
-                differentiate with their color. Click to introduce <span class="cr svelte-m0lcd9">red</span>!
+        <section class="svelte-1qkyom2"><h2 class="svelte-1qkyom2">Species</h2>
+            <p class="svelte-1qkyom2">To make all of this more interesting we need to add more particle species that we
+                differentiate with their color. Click to introduce <span class="cr svelte-1qkyom2">red</span>!
             </p>
-            <button class="universe-btn svelte-m0lcd9">Create the <span class="cr svelte-m0lcd9">red</span> species</button>
-            <p class="svelte-m0lcd9">To begin, particles will only actively interact with other particles of the same
-                species. <span class="cw svelte-m0lcd9">white</span> gets attracted by
-                <span class="cw svelte-m0lcd9">white</span>
-                but <span class="cr svelte-m0lcd9">red</span> is repulsed by <span class="cr svelte-m0lcd9">red</span>.
+            <button class="universe-btn svelte-1qkyom2">Create the <span class="cr svelte-1qkyom2">red</span> species</button>
+            <p class="svelte-1qkyom2">To begin, particles will only actively interact with other particles of the same
+                species. <span class="cw svelte-1qkyom2">white</span> gets attracted by
+                <span class="cw svelte-1qkyom2">white</span>
+                but <span class="cr svelte-1qkyom2">red</span> is repulsed by <span class="cr svelte-1qkyom2">red</span>.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Add intra-species forces</button>
-            <p class="svelte-m0lcd9">We find the same <span class="cw svelte-m0lcd9">white</span> clusters forming as seen before but
-                this time they move through masses of self repulsing <span class="cr svelte-m0lcd9">red</span>.
+            <button class="universe-btn svelte-1qkyom2">Add intra-species forces</button>
+            <p class="svelte-1qkyom2">We find the same <span class="cw svelte-1qkyom2">white</span> clusters forming as seen before but
+                this time they move through masses of self repulsing <span class="cr svelte-1qkyom2">red</span>.
             </p>
-            <p class="svelte-m0lcd9">Now let&#39;s create inter-species attraction! Here <span class="cr svelte-m0lcd9">red</span> is
-                attracted by <span class="cw svelte-m0lcd9">white</span> and <span class="cw svelte-m0lcd9">white</span>
-                is attracted by <span class="cr svelte-m0lcd9">red</span> but particles don&#39;t interact with their own
+            <p class="svelte-1qkyom2">Now let&#39;s create inter-species attraction! Here <span class="cr svelte-1qkyom2">red</span> is
+                attracted by <span class="cw svelte-1qkyom2">white</span> and <span class="cw svelte-1qkyom2">white</span>
+                is attracted by <span class="cr svelte-1qkyom2">red</span> but particles don&#39;t interact with their own
                 species. This creates filament-like structures which quickly converge into bi-color clusters:
                 Inter-species rules can create more complex structures.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Create inter-species attraction</button>
-            <p class="svelte-m0lcd9">And if we combine inter-species attraction with intra-species repulsion the
+            <button class="universe-btn svelte-1qkyom2">Create inter-species attraction</button>
+            <p class="svelte-1qkyom2">And if we combine inter-species attraction with intra-species repulsion the
                 particles will pave the space trying to get as close as possible to their preferred
                 color while pushing away their siblings.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Combine forces</button>
-            <p class="svelte-m0lcd9">Now let&#39;s add some motion here! If <span class="cw svelte-m0lcd9">white</span> is very attracted
-                to <span class="cr svelte-m0lcd9">red</span> but <span class="cr svelte-m0lcd9">red</span> is strongly repulsed
-                by <span class="cw svelte-m0lcd9">white</span> we create a thrusting force: When a pair of cells
+            <button class="universe-btn svelte-1qkyom2">Combine forces</button>
+            <p class="svelte-1qkyom2">Now let&#39;s add some motion here! If <span class="cw svelte-1qkyom2">white</span> is very attracted
+                to <span class="cr svelte-1qkyom2">red</span> but <span class="cr svelte-1qkyom2">red</span> is strongly repulsed
+                by <span class="cw svelte-1qkyom2">white</span> we create a thrusting force: When a pair of cells
                 of different colors is close enough the chasing starts! And with enough particles we
-                see waves of <span class="cw svelte-m0lcd9">white</span> chasing waves of
-                <span class="cr svelte-m0lcd9">red</span> appearing. While everything looks pretty random we can still
+                see waves of <span class="cw svelte-1qkyom2">white</span> chasing waves of
+                <span class="cr svelte-1qkyom2">red</span> appearing. While everything looks pretty random we can still
                 clearly see a common pattern.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Motion !</button>
-            <p class="svelte-m0lcd9">You can try to restart the simulation with the &quot;Uniform spread&quot; button to observe
+            <button class="universe-btn svelte-1qkyom2">Motion !</button>
+            <p class="svelte-1qkyom2">You can try to restart the simulation with the &quot;Uniform spread&quot; button to observe
                 that the swarm-like patterns still appear.
             </p>
-            <p class="svelte-m0lcd9">Let&#39;s create some order in this chaos by enabling intra-species attraction: We keep
-                the <span class="cw svelte-m0lcd9">white</span>-<span class="cr svelte-m0lcd9">red</span> thrusting force we just
+            <p class="svelte-1qkyom2">Let&#39;s create some order in this chaos by enabling intra-species attraction: We keep
+                the <span class="cw svelte-1qkyom2">white</span>-<span class="cr svelte-1qkyom2">red</span> thrusting force we just
                 created and we add clusters of self-attracting species. We end up with our simplest moving
                 structures!
             </p>
-            <button class="universe-btn svelte-m0lcd9">Moving structures</button>
-            <p class="svelte-m0lcd9">Look at these small, inefficient <span class="cw svelte-m0lcd9">white</span>-<span class="cr svelte-m0lcd9">red</span>
+            <button class="universe-btn svelte-1qkyom2">Moving structures</button>
+            <p class="svelte-1qkyom2">Look at these small, inefficient <span class="cw svelte-1qkyom2">white</span>-<span class="cr svelte-1qkyom2">red</span>
                 organisms moving around their universe and gobbling each other! Since everything is strongly
                 attracted the universe quickly stabilizes as the
-                <span class="cr svelte-m0lcd9">red</span>-<span class="cw svelte-m0lcd9">white</span> groups get sufficiently far
+                <span class="cr svelte-1qkyom2">red</span>-<span class="cw svelte-1qkyom2">white</span> groups get sufficiently far
                 away from each other.
             </p>
-            <p class="svelte-m0lcd9">This is the very beginning of what we want to observe with this tool: Complex
+            <p class="svelte-1qkyom2">This is the very beginning of what we want to observe with this tool: Complex
                 behaviors emerging from simple rules.
             </p></section>
 
         
-        <section class="svelte-m0lcd9"><h2 class="svelte-m0lcd9">Three Species</h2>
-            <p class="svelte-m0lcd9">With only two species we&#39;ve already seen how simple rules can produce rich
+        <section class="svelte-1qkyom2"><h2 class="svelte-1qkyom2">Three Species</h2>
+            <p class="svelte-1qkyom2">With only two species we&#39;ve already seen how simple rules can produce rich
                 behaviors. Adding a third species expands the possibility space: instead of 4 forces
                 to tune, we now have 9. More importantly, the three-way relationships interact in
                 ways that are harder to predict: that&#39;s where things get interesting.
             </p>
 
-            <button class="universe-btn svelte-m0lcd9">Create the <span class="cg svelte-m0lcd9">green</span> species</button>
+            <button class="universe-btn svelte-1qkyom2">Create the <span class="cg svelte-1qkyom2">green</span> species</button>
 
-            <h3 class="svelte-m0lcd9">Equilibrium</h3>
-            <p class="svelte-m0lcd9">The simplest 3-species universes are those where forces quickly find a balance. In
-                the next universe <span class="cr svelte-m0lcd9">red</span> self-attracts and repels everything
-                around it, while <span class="cw svelte-m0lcd9">white</span> and green are neutral bystanders. The
-                result: tight <span class="cr svelte-m0lcd9">red</span> islands floating in a disorganized
-                <span class="cw svelte-m0lcd9">white</span>-<span class="cg svelte-m0lcd9">green</span> sea.
+            <h3 class="svelte-1qkyom2">Equilibrium</h3>
+            <p class="svelte-1qkyom2">The simplest 3-species universes are those where forces quickly find a balance. In
+                the next universe <span class="cr svelte-1qkyom2">red</span> self-attracts and repels everything
+                around it, while <span class="cw svelte-1qkyom2">white</span> and green are neutral bystanders. The
+                result: tight <span class="cr svelte-1qkyom2">red</span> islands floating in a disorganized
+                <span class="cw svelte-1qkyom2">white</span>-<span class="cg svelte-1qkyom2">green</span> sea.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Make <span class="cr svelte-m0lcd9">red</span> islands</button>
-            <p class="svelte-m0lcd9">When all three species interact with each other, the equilibrium becomes more
+            <button class="universe-btn svelte-1qkyom2">Make <span class="cr svelte-1qkyom2">red</span> islands</button>
+            <p class="svelte-1qkyom2">When all three species interact with each other, the equilibrium becomes more
                 structured. In the &quot;layered islands&quot; universe everyone is attracted to everyone
                 else, but
-                <span class="cr svelte-m0lcd9">red</span>
+                <span class="cr svelte-1qkyom2">red</span>
                 weakly repels itself while the others don&#39;t. This imbalance causes
-                <span class="cr svelte-m0lcd9">red</span>
+                <span class="cr svelte-1qkyom2">red</span>
                 to spread into rings around
-                <span class="cw svelte-m0lcd9">white</span>-<span class="cg svelte-m0lcd9">green</span> cores, creating repeated
+                <span class="cw svelte-1qkyom2">white</span>-<span class="cg svelte-1qkyom2">green</span> cores, creating repeated
                 layered islands across the universe.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Make layered islands</button>
-            <p class="svelte-m0lcd9">The equilibrium can take a long time to settle. And a balanced repartition of
+            <button class="universe-btn svelte-1qkyom2">Make layered islands</button>
+            <p class="svelte-1qkyom2">The equilibrium can take a long time to settle. And a balanced repartition of
                 attraction and repulsion allows for a wider spatial repartition.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Slow equilibrium</button>
-            <p class="svelte-m0lcd9">Here each species self-repels and is attracted to exactly one other in a
-                one-directional chain: <span class="cw svelte-m0lcd9">white</span> chases
-                <span class="cr svelte-m0lcd9">red</span>, <span class="cr svelte-m0lcd9">red</span> chases
-                <span class="cg svelte-m0lcd9">green</span>, <span class="cg svelte-m0lcd9">green</span> chases
-                <span class="cw svelte-m0lcd9">white</span>. Each species is simultaneously a pursuer and a prey,
+            <button class="universe-btn svelte-1qkyom2">Slow equilibrium</button>
+            <p class="svelte-1qkyom2">Here each species self-repels and is attracted to exactly one other in a
+                one-directional chain: <span class="cw svelte-1qkyom2">white</span> chases
+                <span class="cr svelte-1qkyom2">red</span>, <span class="cr svelte-1qkyom2">red</span> chases
+                <span class="cg svelte-1qkyom2">green</span>, <span class="cg svelte-1qkyom2">green</span> chases
+                <span class="cw svelte-1qkyom2">white</span>. Each species is simultaneously a pursuer and a prey,
                 but the cycle is one-sided: the prey doesn&#39;t know it&#39;s being chased. The resulting
                 tension creates a slow churning motion that takes a long time to resolve into
                 organized territories.
             </p>
-            <p class="svelte-m0lcd9">This setup is interesting because sometimes it creates moving structures which
+            <p class="svelte-1qkyom2">This setup is interesting because sometimes it creates moving structures which
                 completely break the equilibrium, click the button several times to observe both
                 behaviors.
             </p>
 
-            <h3 class="svelte-m0lcd9">Chaos</h3>
-            <p class="svelte-m0lcd9">Not all configurations find a stable equilibrium. When inter-species forces conflict
+            <h3 class="svelte-1qkyom2">Chaos</h3>
+            <p class="svelte-1qkyom2">Not all configurations find a stable equilibrium. When inter-species forces conflict
                 -a species chasing another that flees it, all while the third pulls in a different
                 direction- the universe churns in an infinite turbulent state.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Chaos !</button>
+            <button class="universe-btn svelte-1qkyom2">Chaos !</button>
 
-            <h3 class="svelte-m0lcd9">Moving Structures</h3>
-            <p class="svelte-m0lcd9">Spectacular behaviors can emerge from a fully closed cycle: <span class="cw svelte-m0lcd9">white</span>
-                chases <span class="cg svelte-m0lcd9">green</span>, <span class="cg svelte-m0lcd9">green</span> chases
-                <span class="cr svelte-m0lcd9">red</span>, <span class="cr svelte-m0lcd9">red</span>
-                chases <span class="cw svelte-m0lcd9">white</span>. A classic rock-paper-scissors arrangement. No
+            <h3 class="svelte-1qkyom2">Moving Structures</h3>
+            <p class="svelte-1qkyom2">Spectacular behaviors can emerge from a fully closed cycle: <span class="cw svelte-1qkyom2">white</span>
+                chases <span class="cg svelte-1qkyom2">green</span>, <span class="cg svelte-1qkyom2">green</span> chases
+                <span class="cr svelte-1qkyom2">red</span>, <span class="cr svelte-1qkyom2">red</span>
+                chases <span class="cw svelte-1qkyom2">white</span>. A classic rock-paper-scissors arrangement. No
                 species ever wins and no equilibrium is found. Instead, the three colors form
                 sweeping waves that rotate across the universe indefinitely.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Rock - Paper - Scissors</button>
-            <p class="svelte-m0lcd9">This is fundamentally different from the chase patterns we saw with two species.
+            <button class="universe-btn svelte-1qkyom2">Rock - Paper - Scissors</button>
+            <p class="svelte-1qkyom2">This is fundamentally different from the chase patterns we saw with two species.
                 There, one color always caught the other and the motion decayed. Here the 3-way
                 cycle means the motion never decays: each pursuer that catches its prey is
                 immediately caught from behind by its own pursuer.
             </p>
-            <p class="svelte-m0lcd9">Try adding some self-attraction for a color (for example using <code>+1</code> for
-                the <span class="cw svelte-m0lcd9">white</span>-<span class="cw svelte-m0lcd9">white</span> force) and observe how
+            <p class="svelte-1qkyom2">Try adding some self-attraction for a color (for example using <code>+1</code> for
+                the <span class="cw svelte-1qkyom2">white</span>-<span class="cw svelte-1qkyom2">white</span> force) and observe how
                 these waves become more structured patterns.
             </p>
 
-            <h3 class="svelte-m0lcd9">Order</h3>
-            <p class="svelte-m0lcd9">Some 3-species universes converge to surprisingly intricate structures. Here <span class="cw svelte-m0lcd9">white</span>
+            <h3 class="svelte-1qkyom2">Order</h3>
+            <p class="svelte-1qkyom2">Some 3-species universes converge to surprisingly intricate structures. Here <span class="cw svelte-1qkyom2">white</span>
                 particles strongly repel each other but are attracted to
-                <span class="cr svelte-m0lcd9">red</span>, while <span class="cg svelte-m0lcd9">green</span> also gravitates
+                <span class="cr svelte-1qkyom2">red</span>, while <span class="cg svelte-1qkyom2">green</span> also gravitates
                 toward
-                <span class="cr svelte-m0lcd9">red</span>. <span class="cr svelte-m0lcd9">red</span> meanwhile pushes both
-                <span class="cw svelte-m0lcd9">white</span>
-                and <span class="cg svelte-m0lcd9">green</span> away. This tension resolves very slowly into a
+                <span class="cr svelte-1qkyom2">red</span>. <span class="cr svelte-1qkyom2">red</span> meanwhile pushes both
+                <span class="cw svelte-1qkyom2">white</span>
+                and <span class="cg svelte-1qkyom2">green</span> away. This tension resolves very slowly into a
                 repeating mesh - each
-                <span class="cr svelte-m0lcd9">red</span>
-                particle surrounded at a precise distance by shells of <span class="cw svelte-m0lcd9">white</span>
-                and <span class="cg svelte-m0lcd9">green</span>. Watch it for a while to see the structure
+                <span class="cr svelte-1qkyom2">red</span>
+                particle surrounded at a precise distance by shells of <span class="cw svelte-1qkyom2">white</span>
+                and <span class="cg svelte-1qkyom2">green</span>. Watch it for a while to see the structure
                 appearing.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Crystal</button></section>
+            <button class="universe-btn svelte-1qkyom2">Crystal</button></section>
 
         
-        <section class="svelte-m0lcd9"><h2 class="svelte-m0lcd9">Four Species</h2>
-            <p class="svelte-m0lcd9">With four species the interaction table has 16 entries. The configurations that
+        <section class="svelte-1qkyom2"><h2 class="svelte-1qkyom2">Four Species</h2>
+            <p class="svelte-1qkyom2">With four species the interaction table has 16 entries. The configurations that
                 produce coherent behavior become rarer and harder to find by chance, but when they
                 do emerge they tend to be more intricate than what three species systems produce.
                 Here are some of the patterns that become possible.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Create the <span class="cb svelte-m0lcd9">blue</span> species</button>
+            <button class="universe-btn svelte-1qkyom2">Create the <span class="cb svelte-1qkyom2">blue</span> species</button>
 
-            <h3 class="svelte-m0lcd9">Spatial Partitioning</h3>
-            <p class="svelte-m0lcd9">The simplest stable configuration comes from a cyclic repulsion chain: <span class="cw svelte-m0lcd9">white</span>
+            <h3 class="svelte-1qkyom2">Spatial Partitioning</h3>
+            <p class="svelte-1qkyom2">The simplest stable configuration comes from a cyclic repulsion chain: <span class="cw svelte-1qkyom2">white</span>
                 pushes
-                <span class="cr svelte-m0lcd9">red</span> away, <span class="cr svelte-m0lcd9">red</span> pushes
-                <span class="cg svelte-m0lcd9">green</span>, <span class="cg svelte-m0lcd9">green</span> pushes
-                <span class="cb svelte-m0lcd9">blue</span>, <span class="cb svelte-m0lcd9">blue</span>
-                pushes <span class="cw svelte-m0lcd9">white</span>. Nobody is attracted to anything. Starting from
-                a central cluster, this expands into organic blobs of paired colors -<span class="cr svelte-m0lcd9">red</span>-<span class="cb svelte-m0lcd9">blue</span> regions and
-                <span class="cw svelte-m0lcd9">white</span>-<span class="cg svelte-m0lcd9">green</span> regions- separated by empty
+                <span class="cr svelte-1qkyom2">red</span> away, <span class="cr svelte-1qkyom2">red</span> pushes
+                <span class="cg svelte-1qkyom2">green</span>, <span class="cg svelte-1qkyom2">green</span> pushes
+                <span class="cb svelte-1qkyom2">blue</span>, <span class="cb svelte-1qkyom2">blue</span>
+                pushes <span class="cw svelte-1qkyom2">white</span>. Nobody is attracted to anything. Starting from
+                a central cluster, this expands into organic blobs of paired colors -<span class="cr svelte-1qkyom2">red</span>-<span class="cb svelte-1qkyom2">blue</span> regions and
+                <span class="cw svelte-1qkyom2">white</span>-<span class="cg svelte-1qkyom2">green</span> regions- separated by empty
                 corridors.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Create an organic pattern</button>
-            <p class="svelte-m0lcd9">A small change -adding the cross-pair repulsions- makes the separating corridors
+            <button class="universe-btn svelte-1qkyom2">Create an organic pattern</button>
+            <p class="svelte-1qkyom2">A small change -adding the cross-pair repulsions- makes the separating corridors
                 much thinner. Each color now repels two others instead of one, which tightens the
                 spacing and produces finer, more intricate strip patterns.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Create a different organic pattern</button>
-            <p class="svelte-m0lcd9">A different approach to separation: make one species a universal pariah. <span class="cw svelte-m0lcd9">white</span>
-                repels all others and all others repel <span class="cw svelte-m0lcd9">white</span>, while the
+            <button class="universe-btn svelte-1qkyom2">Create a different organic pattern</button>
+            <p class="svelte-1qkyom2">A different approach to separation: make one species a universal pariah. <span class="cw svelte-1qkyom2">white</span>
+                repels all others and all others repel <span class="cw svelte-1qkyom2">white</span>, while the
                 remaining three are neutral to each other. They cluster into mixed blobs but always
-                leave <span class="cw svelte-m0lcd9">white</span>-free voids - and
-                <span class="cw svelte-m0lcd9">white</span> fills those voids, producing hollow
-                <span class="cw svelte-m0lcd9">white</span> islands enclosed by rings of the other three.
+                leave <span class="cw svelte-1qkyom2">white</span>-free voids - and
+                <span class="cw svelte-1qkyom2">white</span> fills those voids, producing hollow
+                <span class="cw svelte-1qkyom2">white</span> islands enclosed by rings of the other three.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Hollow islands</button>
-            <p class="svelte-m0lcd9">Finally, a case of natural alliances: <span class="cw svelte-m0lcd9">white</span> and
-                <span class="cg svelte-m0lcd9">green</span>
+            <button class="universe-btn svelte-1qkyom2">Hollow islands</button>
+            <p class="svelte-1qkyom2">Finally, a case of natural alliances: <span class="cw svelte-1qkyom2">white</span> and
+                <span class="cg svelte-1qkyom2">green</span>
                 attract each other and repel
-                <span class="cr svelte-m0lcd9">red</span> and <span class="cb svelte-m0lcd9">blue</span>, while
-                <span class="cr svelte-m0lcd9">red</span>
-                and <span class="cb svelte-m0lcd9">blue</span>
-                attract each other and repel <span class="cw svelte-m0lcd9">white</span> and
-                <span class="cg svelte-m0lcd9">green</span>. Two opposing teams slowly consolidate into larger and
+                <span class="cr svelte-1qkyom2">red</span> and <span class="cb svelte-1qkyom2">blue</span>, while
+                <span class="cr svelte-1qkyom2">red</span>
+                and <span class="cb svelte-1qkyom2">blue</span>
+                attract each other and repel <span class="cw svelte-1qkyom2">white</span> and
+                <span class="cg svelte-1qkyom2">green</span>. Two opposing teams slowly consolidate into larger and
                 larger two-color blobs until the universe settles.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Slowly merging two-color blobs</button>
+            <button class="universe-btn svelte-1qkyom2">Slowly merging two-color blobs</button>
 
-            <h3 class="svelte-m0lcd9">Moving Structures</h3>
-            <p class="svelte-m0lcd9">The most complex type of behavior in this simulation. A four-way cyclic chase -
-                <span class="cw svelte-m0lcd9">white</span> follows <span class="cb svelte-m0lcd9">blue</span>,
-                <span class="cb svelte-m0lcd9">blue</span>
+            <h3 class="svelte-1qkyom2">Moving Structures</h3>
+            <p class="svelte-1qkyom2">The most complex type of behavior in this simulation. A four-way cyclic chase -
+                <span class="cw svelte-1qkyom2">white</span> follows <span class="cb svelte-1qkyom2">blue</span>,
+                <span class="cb svelte-1qkyom2">blue</span>
                 follows
-                <span class="cg svelte-m0lcd9">green</span>, <span class="cg svelte-m0lcd9">green</span> follows
-                <span class="cr svelte-m0lcd9">red</span>, <span class="cr svelte-m0lcd9">red</span> follows
-                <span class="cw svelte-m0lcd9">white</span>- where each pursuer also repels the species behind it.
+                <span class="cg svelte-1qkyom2">green</span>, <span class="cg svelte-1qkyom2">green</span> follows
+                <span class="cr svelte-1qkyom2">red</span>, <span class="cr svelte-1qkyom2">red</span> follows
+                <span class="cw svelte-1qkyom2">white</span>- where each pursuer also repels the species behind it.
                 This creates self-maintaining worm-like organisms that travel endlessly, merge when
                 they collide, split when they grow too large, and occasionally fold into spinning
                 rings that absorb passing worms.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Make long structured moving worms</button>
-            <p class="svelte-m0lcd9">A subtler variant of the same cyclic geometry, extended with a mutual attraction
-                between <span class="cg svelte-m0lcd9">green</span> and <span class="cb svelte-m0lcd9">blue</span>. The result
+            <button class="universe-btn svelte-1qkyom2">Make long structured moving worms</button>
+            <p class="svelte-1qkyom2">A subtler variant of the same cyclic geometry, extended with a mutual attraction
+                between <span class="cg svelte-1qkyom2">green</span> and <span class="cb svelte-1qkyom2">blue</span>. The result
                 is not free-roaming worms but rigid crystal filaments -
-                <span class="cw svelte-m0lcd9">white</span>-<span class="cg svelte-m0lcd9">green</span>-<span class="cb svelte-m0lcd9">blue</span>
+                <span class="cw svelte-1qkyom2">white</span>-<span class="cg svelte-1qkyom2">green</span>-<span class="cb svelte-1qkyom2">blue</span>
                 lattices with rivers of
-                <span class="cr svelte-m0lcd9">red</span> flowing through the channels between them.
+                <span class="cr svelte-1qkyom2">red</span> flowing through the channels between them.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Crystals and moving fluids</button>
-            <p class="svelte-m0lcd9">Reducing the cohesion of the worm rules produces looser structures: groups that form
+            <button class="universe-btn svelte-1qkyom2">Crystals and moving fluids</button>
+            <p class="svelte-1qkyom2">Reducing the cohesion of the worm rules produces looser structures: groups that form
                 a single two-color stage before slipping apart and reforming elsewhere. The
                 organisms are shorter-lived but the universe never settles.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Create movers with low cohesion</button>
+            <button class="universe-btn svelte-1qkyom2">Create movers with low cohesion</button>
 
-            <h3 class="svelte-m0lcd9">Persistent Chaos</h3>
-            <p class="svelte-m0lcd9">Some configurations never settle. Here <span class="cw svelte-m0lcd9">white</span> is attracted to
-                all three other colors while they all repel <span class="cw svelte-m0lcd9">white</span> - making
-                <span class="cw svelte-m0lcd9">white</span>
+            <h3 class="svelte-1qkyom2">Persistent Chaos</h3>
+            <p class="svelte-1qkyom2">Some configurations never settle. Here <span class="cw svelte-1qkyom2">white</span> is attracted to
+                all three other colors while they all repel <span class="cw svelte-1qkyom2">white</span> - making
+                <span class="cw svelte-1qkyom2">white</span>
                 an incessant pursuer and the others its perpetual prey. The result is waves of
-                <span class="cw svelte-m0lcd9">white</span>
+                <span class="cw svelte-1qkyom2">white</span>
                 sweeping through incoherent masses of
-                <span class="cr svelte-m0lcd9">red</span>, <span class="cg svelte-m0lcd9">green</span> and
-                <span class="cb svelte-m0lcd9">blue</span> that can never outrun their pursuer.
+                <span class="cr svelte-1qkyom2">red</span>, <span class="cg svelte-1qkyom2">green</span> and
+                <span class="cb svelte-1qkyom2">blue</span> that can never outrun their pursuer.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Chaos again !</button>
-            <p class="svelte-m0lcd9">More complex asymmetric rules produce a higher-energy version: many small
+            <button class="universe-btn svelte-1qkyom2">Chaos again !</button>
+            <p class="svelte-1qkyom2">More complex asymmetric rules produce a higher-energy version: many small
                 low-cohesion groups constantly forming, colliding and scattering. No alliance is
                 stable enough to persist, and the universe maintains a perpetual churn.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Chaos, but blue stick together</button>
-            <p class="svelte-m0lcd9">An interesting hybrid: <span class="cb svelte-m0lcd9">blue</span> quietly self-attracts into
+            <button class="universe-btn svelte-1qkyom2">Chaos, but blue stick together</button>
+            <p class="svelte-1qkyom2">An interesting hybrid: <span class="cb svelte-1qkyom2">blue</span> quietly self-attracts into
                 compact, immovable islands while the other three species are locked in a permanent
-                chase. The <span class="cb svelte-m0lcd9">blue</span> islands act as anchors - the
-                <span class="cw svelte-m0lcd9">white</span>-<span class="cr svelte-m0lcd9">red</span>-<span class="cg svelte-m0lcd9">green</span>
+                chase. The <span class="cb svelte-1qkyom2">blue</span> islands act as anchors - the
+                <span class="cw svelte-1qkyom2">white</span>-<span class="cr svelte-1qkyom2">red</span>-<span class="cg svelte-1qkyom2">green</span>
                 turbulence flows around them, occasionally engulfing one before being pushed away again.
             </p>
-            <button class="universe-btn svelte-m0lcd9">Create <span class="cb svelte-m0lcd9">blue</span> islands</button></section>
+            <button class="universe-btn svelte-1qkyom2">Create <span class="cb svelte-1qkyom2">blue</span> islands</button></section>
 
         
-        <section class="footer svelte-m0lcd9"><h2 class="svelte-m0lcd9">Going further</h2>
-            <p class="svelte-m0lcd9">Now that you know more about how this simulation works you can checkout <a href="/particles-life/particles-life/gallery">the gallery</a> which gathers the interesting configurations I have found while building this page.
+        <section class="footer svelte-1qkyom2"><h2 class="svelte-1qkyom2">Going further</h2>
+            <p class="svelte-1qkyom2">Now that you know more about how this simulation works you can checkout <a href="/particles-life/particles-life/gallery">the gallery</a> which gathers the interesting configurations I have found while building this page.
             </p>
-            <p class="svelte-m0lcd9">You can also checkout my <a href="/particles-life/particles-life/workbench">workbench</a> which
+            <p class="svelte-1qkyom2">You can also checkout my <a href="/particles-life/particles-life/workbench">workbench</a> which
                 I use to find new configurations and play with the simulation.
             </p>
-            <p class="svelte-m0lcd9">You can also checkout <a rel="noopener noreferrer" target="none" href="https://sandbox-science.com/particle-life">this tool</a> which runs the same simulation but uses the GPU of your computer instead of the CPU
+            <p class="svelte-1qkyom2">You can also checkout <a rel="noopener noreferrer" target="none" href="https://sandbox-science.com/particle-life">this tool</a> which runs the same simulation but uses the GPU of your computer instead of the CPU
                 as my implementation does. That allows for simulations with a much larger number of particles.
                 The app also allows to create more than 4 species and more complex attraction tables.
             </p></section></div>
 
     
-    <div class="canvas-col svelte-m0lcd9"><div class="canvas-sticky svelte-m0lcd9"><div class="sim svelte-1vuykw2">
+    <div class="canvas-col svelte-1qkyom2"><div class="canvas-sticky svelte-1qkyom2"><div class="sim svelte-1vuykw2">
     <div class="canvas-wrap svelte-1vuykw2"><canvas class="svelte-mxo1ki"></canvas></div>
     
     <div class="timeline-row svelte-1vuykw2">
@@ -419,10 +419,10 @@
 </div>
         </div>
 </div></div>
-        <div class="canvas-params svelte-m0lcd9"><div class="card svelte-m0lcd9"><div class="card-title svelte-m0lcd9">Restart</div>
-                <div class="preset-btns svelte-m0lcd9"><button class="svelte-m0lcd9">↺ Uniform spread</button>
-                    <button class="svelte-m0lcd9">◎ Centered circle</button></div></div>
-            <div class="card svelte-m0lcd9"><div class="card-title svelte-m0lcd9">Attraction Table</div>
+        <div class="canvas-params svelte-1qkyom2"><div class="card svelte-1qkyom2"><div class="card-title svelte-1qkyom2">Restart</div>
+                <div class="preset-btns svelte-1qkyom2"><button class="svelte-1qkyom2">↺ Uniform spread</button>
+                    <button class="svelte-1qkyom2">◎ Centered circle</button></div></div>
+            <div class="card svelte-1qkyom2"><div class="card-title svelte-1qkyom2">Attraction Table</div>
                 <div class="actions svelte-cxat5a"><button class="svelte-cxat5a">Randomize</button>
             <button class="svelte-cxat5a">Zero</button>
             <button class="svelte-cxat5a">Mutate</button></div>
@@ -519,31 +519,31 @@
                             <button class="swatch svelte-cxat5a" style="background:#37474f" title="Click to cycle · blue → blue">0</button>
                             <button class="adj svelte-cxat5a">+</button>
                         </div></div></div></div>
-            <div class="card svelte-m0lcd9"><div class="card-title svelte-m0lcd9">Color proportions</div>
-                <div class="proportion-list svelte-m0lcd9"><div class="field svelte-m0lcd9"><span class="pdot svelte-m0lcd9" style="background:#ffedff"></span>
-                            <input type="range" min="0" max="1000" step="1" class="svelte-m0lcd9" value="500">
-                            <span class="dim svelte-m0lcd9" style="width:28px;text-align:right">500</span>
-                        </div><div class="field svelte-m0lcd9"><span class="pdot svelte-m0lcd9" style="background:#fc2a51"></span>
-                            <input type="range" min="0" max="1000" step="1" class="svelte-m0lcd9" value="0">
-                            <span class="dim svelte-m0lcd9" style="width:28px;text-align:right">0</span>
-                        </div><div class="field svelte-m0lcd9"><span class="pdot svelte-m0lcd9" style="background:#8ff97c"></span>
-                            <input type="range" min="0" max="1000" step="1" class="svelte-m0lcd9" value="0">
-                            <span class="dim svelte-m0lcd9" style="width:28px;text-align:right">0</span>
-                        </div><div class="field svelte-m0lcd9"><span class="pdot svelte-m0lcd9" style="background:#77cfff"></span>
-                            <input type="range" min="0" max="1000" step="1" class="svelte-m0lcd9" value="0">
-                            <span class="dim svelte-m0lcd9" style="width:28px;text-align:right">0</span>
+            <div class="card svelte-1qkyom2"><div class="card-title svelte-1qkyom2">Color proportions</div>
+                <div class="proportion-list svelte-1qkyom2"><div class="field svelte-1qkyom2"><span class="pdot svelte-1qkyom2" style="background:#ffedff"></span>
+                            <input type="range" min="0" max="1000" step="1" class="svelte-1qkyom2" value="500">
+                            <span class="dim svelte-1qkyom2" style="width:28px;text-align:right">500</span>
+                        </div><div class="field svelte-1qkyom2"><span class="pdot svelte-1qkyom2" style="background:#fc2a51"></span>
+                            <input type="range" min="0" max="1000" step="1" class="svelte-1qkyom2" value="0">
+                            <span class="dim svelte-1qkyom2" style="width:28px;text-align:right">0</span>
+                        </div><div class="field svelte-1qkyom2"><span class="pdot svelte-1qkyom2" style="background:#8ff97c"></span>
+                            <input type="range" min="0" max="1000" step="1" class="svelte-1qkyom2" value="0">
+                            <span class="dim svelte-1qkyom2" style="width:28px;text-align:right">0</span>
+                        </div><div class="field svelte-1qkyom2"><span class="pdot svelte-1qkyom2" style="background:#77cfff"></span>
+                            <input type="range" min="0" max="1000" step="1" class="svelte-1qkyom2" value="0">
+                            <span class="dim svelte-1qkyom2" style="width:28px;text-align:right">0</span>
                         </div></div></div></div></div>
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="rpj6ct">
-			import { start } from "/particles-life/_app/immutable/start-1bf60066.js";
+		<script type="module" data-sveltekit-hydrate="1yznp71">
+			import { start } from "/particles-life/_app/immutable/start-4a50cd3c.js";
 
 			start({
 				env: {},
 				paths: {"base":"/particles-life","assets":"/particles-life"},
-				target: document.querySelector('[data-sveltekit-hydrate="rpj6ct"]').parentNode,
-				version: "1774974135971",
+				target: document.querySelector('[data-sveltekit-hydrate="1yznp71"]').parentNode,
+				version: "1775083550752",
 				hydrate: {
 					node_ids: [0, 6],
 					data: [null,null],
