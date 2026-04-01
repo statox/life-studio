@@ -182,6 +182,23 @@
 
     <div class="panels">
         <div class="card">
+            <div class="card-title">Cells</div>
+            <div class="btn-stack">
+                <AttractionTablePanel
+                    {attractionTable}
+                    on:updateTable={(e) => updateAttractionTable(e.detail)}
+                />
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">World</div>
+            <WorldSettingsSelector settings={ws} onChange={onWorldSettingsChange} />
+        </div>
+    </div>
+
+    <!-- World settings -->
+    <div class="panels">
+        <div class="card">
             <div class="card-title">Simulation</div>
             <button
                 class="toggle-btn"
@@ -199,23 +216,6 @@
                 <label for="fps-cap">FPS cap</label>
                 <input id="fps-cap" type="number" bind:value={maxFPS} min="1" max="120" />
             </div>
-        </div>
-        <div class="card">
-            <div class="card-title">Cells</div>
-            <div class="btn-stack">
-                <AttractionTablePanel
-                    {attractionTable}
-                    on:updateTable={(e) => updateAttractionTable(e.detail)}
-                />
-            </div>
-        </div>
-    </div>
-
-    <!-- World settings -->
-    <div class="panels">
-        <div class="card">
-            <div class="card-title">World</div>
-            <WorldSettingsSelector settings={ws} onChange={onWorldSettingsChange} />
         </div>
     </div>
 
