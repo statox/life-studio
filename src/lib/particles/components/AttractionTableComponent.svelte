@@ -11,7 +11,7 @@
     import { COLORS, type Color, PARTICLE_COLORS } from '$lib/particles/engine';
 
     export let attractionTable: AttractionTable;
-    export let onUpdateTable: (attractionTable: AttractionTable) => void = () => {};
+    export let onUpdateTable: (attractionTable: AttractionTable) => void = () => null;
     export let readonly = false;
     export let compact = false;
 
