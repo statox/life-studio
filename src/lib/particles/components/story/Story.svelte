@@ -1,12 +1,28 @@
 <script lang="ts">
     import Simulation from '$lib/particles/components/Simulation.svelte';
     import EmptyUniverse from './screens/EmptyUniverse.svelte';
-    import OneColorStill from './screens/OneColorStill.svelte';
-    import OneColorRepulsionUniform from './screens/OneColorRepulsionUniform.svelte';
+    import SomeParticles from './screens/SomeParticles.svelte';
+    import RepulsingParticles from './screens/RepulsingParticles.svelte';
+    import AttractingParticles from './screens/AttractingParticles.svelte';
+    import FrictionScreen from './screens/FrictionScreen.svelte';
+    import ColorsScreen from './screens/ColorsScreen.svelte';
+    import AttractionTableScreen from './screens/AttractionTableScreen.svelte';
+    import InteractiveTableScreen from './screens/InteractiveTableScreen.svelte';
+    import FourColorsScreen from './screens/FourColorsScreen.svelte';
 
     let simulationComponent: Simulation;
 
-    const screens = [EmptyUniverse, OneColorStill, OneColorRepulsionUniform];
+    const screens = [
+        EmptyUniverse,
+        SomeParticles,
+        RepulsingParticles,
+        AttractingParticles,
+        FrictionScreen,
+        ColorsScreen,
+        AttractionTableScreen,
+        InteractiveTableScreen,
+        FourColorsScreen
+    ];
 
     let currentIndex = 0;
 
