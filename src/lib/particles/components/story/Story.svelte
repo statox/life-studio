@@ -1,11 +1,12 @@
 <script lang="ts">
     import Simulation from '$lib/particles/components/Simulation.svelte';
+    import EmptyUniverse from './screens/EmptyUniverse.svelte';
     import OneColorStill from './screens/OneColorStill.svelte';
     import OneColorRepulsionUniform from './screens/OneColorRepulsionUniform.svelte';
 
     let simulationComponent: Simulation;
 
-    const screens = [OneColorStill, OneColorRepulsionUniform];
+    const screens = [EmptyUniverse, OneColorStill, OneColorRepulsionUniform];
 
     let currentIndex = 0;
 
