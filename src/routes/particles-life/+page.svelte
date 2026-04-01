@@ -57,6 +57,12 @@
             </p>
             <span class="card-cta">Classify presets →</span>
         </a>
+
+        <a class="card" href="{base}/particles-life/story">
+            <h2>Story</h2>
+            <p>The beginning of an interactive introduction</p>
+            <span class="card-cta">Read Story →</span>
+        </a>
     </div>
 </div>
 
