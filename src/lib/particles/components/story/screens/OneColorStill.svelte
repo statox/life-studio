@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
     import { getNewCells, largeCenterCellsInPlace } from '$lib/particles/engine/cells';
@@ -28,9 +27,7 @@
         });
     };
 
-    onMount(() => {
-        startScreen();
-    });
+    $: if (simulationComponent) startScreen();
 </script>
 
 <div class="screen">
