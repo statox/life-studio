@@ -1,15 +1,15 @@
 <script lang="ts">
     import Simulation from '$lib/particles/components/Simulation.svelte';
     import Introduction from './screens/Introduction.svelte';
-    import EmptyUniverse from './screens/EmptyUniverse.svelte';
-    import SomeParticles from './screens/SomeParticles.svelte';
-    import RestartButtons from './screens/RestartButtons.svelte';
-    import SelfForces from './screens/SelfForces.svelte';
-    import Friction from './screens/Friction.svelte';
-    import AttractionTable from './screens/AttractionTable.svelte';
-    import ColorProportions from './screens/ColorProportions.svelte';
-    import ColorProportionsDynamic from './screens/ColorProportionsDynamic.svelte';
-    import WorldSize from './screens/WorldSize.svelte';
+    import Parameters_AttractionTable from './screens/parameters/AttractionTable.svelte';
+    import Parameters_ColorProportions from './screens/parameters/ColorProportions.svelte';
+    import Parameters_ColorProportionsDynamic from './screens/parameters/ColorProportionsDynamic.svelte';
+    import Parameters_EmptyUniverse from './screens/parameters/EmptyUniverse.svelte';
+    import Parameters_Friction from './screens/parameters/Friction.svelte';
+    import Parameters_RestartButtons from './screens/parameters/RestartButtons.svelte';
+    import Parameters_SelfForces from './screens/parameters/SelfForces.svelte';
+    import Parameters_SomeParticles from './screens/parameters/SomeParticles.svelte';
+    import Parameters_WorldSize from './screens/parameters/WorldSize.svelte';
 
     import type { SvelteComponent } from 'svelte';
 
@@ -22,15 +22,15 @@
 
     const screens: ScreenConfig[] = [
         { component: Introduction, noSimulation: true },
-        { component: EmptyUniverse },
-        { component: SomeParticles },
-        { component: RestartButtons },
-        { component: SelfForces },
-        { component: Friction },
-        { component: ColorProportions },
-        { component: ColorProportionsDynamic },
-        { component: AttractionTable },
-        { component: WorldSize }
+        { component: Parameters_EmptyUniverse },
+        { component: Parameters_SomeParticles },
+        { component: Parameters_RestartButtons },
+        { component: Parameters_SelfForces },
+        { component: Parameters_Friction },
+        { component: Parameters_ColorProportions },
+        { component: Parameters_ColorProportionsDynamic },
+        { component: Parameters_AttractionTable },
+        { component: Parameters_WorldSize }
     ];
 
     let currentIndex = 0;

@@ -2,7 +2,7 @@
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getUniverseById } from '$lib/particles/universe';
-    import AttractionTableComponent from '../../AttractionTableComponent.svelte';
+    import AttractionTableComponent from '../../../AttractionTableComponent.svelte';
 
     export let simulationComponent: Simulation;
 
