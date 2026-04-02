@@ -20,10 +20,13 @@
     import RainbowButton from './buttons/RainbowButton.svelte';
     import Simulation from './Simulation.svelte';
     import UniverseExportModal from './UniverseExportModal.svelte';
-    import PresetSelector from './PresetSelector.svelte';
-    import type { StoredUniverse } from '$lib/particles/universe';
+    import UniverseSelector from './UniverseSelector.svelte';
+    import { getAllUniverses, type StoredUniverse } from '$lib/particles/universe';
 
     let simulationComponent: Simulation;
+
+    const universes: StoredUniverse[] = getAllUniverses();
+    let selected: StoredUniverse | undefined = undefined;
 
     let cells: Cell[] = [];
     let attractionTable: AttractionTable = getRandomAttractionTable();
@@ -92,6 +95,7 @@
     };
 
     const loadPreset = (u: StoredUniverse) => {
+        selected = u;
         attractionTable = u.attractionTable;
         ws = {
             colorWeights: u.colorWeights,
@@ -151,28 +155,10 @@
 </script>
 
 <div class="sim">
-    <div class="panels">
-        <div class="card">
-            <div class="card-title">Cells</div>
-            <div class="preset-wrap">
-                <PresetSelector onSelect={loadPreset} />
-            </div>
-            <div class="btn-stack">
-                <UniformSpreadButton onClick={randomCells} />
-                <CenteredCircleButton onClick={largeCenterCells} />
-                <RainbowButton onClick={rainbowCells} />
-            </div>
+    <!-- Universe selector -->
+    <UniverseSelector {universes} {selected} onSelect={loadPreset} />
 
-            <button
-                class="export-btn"
-                on:click={() => (showExportModal = true)}
-                title="Export current table"
-            >
-                ↗ Export
-            </button>
-        </div>
-    </div>
-
+    <!-- Simulation canvas -->
     <Simulation
         bind:this={simulationComponent}
         {useWorkers}
@@ -184,15 +170,27 @@
         }}
     />
 
+    <!-- Spread buttons -->
+    <div class="spread-btns">
+        <UniformSpreadButton onClick={randomCells} />
+        <CenteredCircleButton onClick={largeCenterCells} />
+        <RainbowButton onClick={rainbowCells} />
+        <button
+            class="export-btn"
+            on:click={() => (showExportModal = true)}
+            title="Export current table"
+        >
+            ↗ Export
+        </button>
+    </div>
+
     <div class="panels">
         <div class="card">
-            <div class="card-title">Cells</div>
-            <div class="btn-stack">
-                <AttractionTablePanel
-                    {attractionTable}
-                    on:updateTable={(e) => updateAttractionTable(e.detail)}
-                />
-            </div>
+            <div class="card-title">Attraction Table</div>
+            <AttractionTablePanel
+                {attractionTable}
+                on:updateTable={(e) => updateAttractionTable(e.detail)}
+            />
         </div>
         <div class="card">
             <div class="card-title">World</div>
@@ -243,8 +241,10 @@
         box-sizing: border-box;
     }
 
-    .preset-wrap {
-        margin-bottom: 8px;
+    /* ── Spread buttons ─────────────────────── */
+    .spread-btns {
+        display: flex;
+        gap: 6px;
     }
 
     /* ── Panels grid ─────────────────────────── */
@@ -337,12 +337,6 @@
         color: #eceff1;
     }
 
-    .btn-stack {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-    }
-
     /* ── Toggle button ───────────────────────── */
     .toggle-btn {
         width: 100%;
@@ -368,9 +362,5 @@
         height: 8px;
         border-radius: 50%;
         flex-shrink: 0;
-    }
-
-    .export-btn {
-        margin-top: 8px;
     }
 </style>
