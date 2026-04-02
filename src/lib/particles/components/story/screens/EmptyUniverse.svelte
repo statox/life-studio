@@ -1,27 +1,29 @@
 <script lang="ts">
-    import { getNewCells, largeCenterCellsInPlace } from '$lib/particles/engine/cells';
-    import { getUniverseById, type StoredUniverse } from '$lib/particles/universe';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
+    import { getZeroedAttractionTable } from '$lib/particles/attraction';
+    import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
 
     export let simulationComponent: Simulation;
 
-    const preset: StoredUniverse = getUniverseById('1_color_still');
-
     const startScreen = () => {
-        const worldSize = {
-            x: preset.maxAttractionRadius * preset.horizontalResolution,
-            y: preset.maxAttractionRadius * preset.verticalResolution
+        const config: SimulationConfig = {
+            horizontalResolution: 30,
+            verticalResolution: 20,
+            initialSpreadConfig: 'center',
+            colorWeights: {
+                white: 0,
+                red: 0,
+                green: 0,
+                blue: 0
+            },
+            maxAttractionRadius: 32,
+            attractionTable: getZeroedAttractionTable(),
+            nbParticles: 0,
+            friction: 0.5
         };
-        const cells = getNewCells(worldSize, 0, preset.colorWeights);
-        if (preset.preferredInitialConfig === 'center') largeCenterCellsInPlace(cells, worldSize);
 
-        simulationComponent?.startSim({
-            cells,
-            worldSize,
-            maxAttractionRadius: preset.maxAttractionRadius,
-            attractionTable: preset.attractionTable,
-            friction: preset.friction
-        });
+        const simulationParams = generateSimulationParams(config);
+        simulationComponent?.startSim(simulationParams);
     };
 
     $: if (simulationComponent) startScreen();

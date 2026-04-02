@@ -1,34 +1,35 @@
 <script lang="ts">
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
-    import { getNewCells, largeCenterCellsInPlace } from '$lib/particles/engine/cells';
-    import { getUniverseById } from '$lib/particles/universe';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
+    import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
 
     export let simulationComponent: Simulation;
 
-    const preset = getUniverseById('1_colors_repulsion');
     const attractionTable = getZeroedAttractionTable();
     attractionTable.white.white = 1;
 
-    const frictionPresets = [0.8, 0.47, 0.06];
+    const frictionPresets = [0.8, 0.42, 0.06, 0.0];
     let friction = frictionPresets[0];
 
-    const worldSize = {
-        x: preset.maxAttractionRadius * preset.horizontalResolution,
-        y: preset.maxAttractionRadius * preset.verticalResolution
-    };
-
     const startScreen = () => {
-        const cells = getNewCells(worldSize, preset.nbParticles, preset.colorWeights);
-        largeCenterCellsInPlace(cells, worldSize);
+        const config: SimulationConfig = {
+            horizontalResolution: 3,
+            verticalResolution: 2,
+            initialSpreadConfig: 'center',
+            colorWeights: {
+                white: 1,
+                red: 0,
+                green: 0,
+                blue: 0
+            },
+            maxAttractionRadius: 32,
+            attractionTable: attractionTable,
+            nbParticles: 11,
+            friction: friction
+        };
 
-        simulationComponent?.startSim({
-            cells,
-            worldSize,
-            maxAttractionRadius: preset.maxAttractionRadius,
-            attractionTable,
-            friction
-        });
+        const simulationParams = generateSimulationParams(config);
+        simulationComponent?.startSim(simulationParams);
     };
 
     const setFriction = (val: number) => {

@@ -2,26 +2,24 @@
     import Simulation from '$lib/particles/components/Simulation.svelte';
     import EmptyUniverse from './screens/EmptyUniverse.svelte';
     import SomeParticles from './screens/SomeParticles.svelte';
-    import RepulsingParticles from './screens/RepulsingParticles.svelte';
-    import AttractingParticles from './screens/AttractingParticles.svelte';
-    import FrictionScreen from './screens/FrictionScreen.svelte';
-    import ColorsScreen from './screens/ColorsScreen.svelte';
-    import AttractionTableScreen from './screens/AttractionTableScreen.svelte';
-    import InteractiveTableScreen from './screens/InteractiveTableScreen.svelte';
-    import FourColorsScreen from './screens/FourColorsScreen.svelte';
+    import RestartButtons from './screens/RestartButtons.svelte';
+    import SelfForces from './screens/SelfForces.svelte';
+    import Friction from './screens/Friction.svelte';
+    import AttractionTable from './screens/AttractionTable.svelte';
+    import AttractionTableInteractive from './screens/AttractionTableInteractive.svelte';
+    import ColorProportions from './screens/ColorProportions.svelte';
 
     let simulationComponent: Simulation;
 
     const screens = [
         EmptyUniverse,
         SomeParticles,
-        RepulsingParticles,
-        AttractingParticles,
-        FrictionScreen,
-        ColorsScreen,
-        AttractionTableScreen,
-        InteractiveTableScreen,
-        FourColorsScreen
+        RestartButtons,
+        SelfForces,
+        Friction,
+        ColorProportions,
+        AttractionTable,
+        AttractionTableInteractive
     ];
 
     let currentIndex = 0;

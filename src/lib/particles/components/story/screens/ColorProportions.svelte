@@ -1,12 +1,12 @@
 <script lang="ts">
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
-    import { COLORS, PARTICLE_COLORS, type Cell } from '$lib/particles/engine';
     import {
-        getNewCells,
-        largeCenterCellsInPlace,
-        rainbowCellsInPlace
-    } from '$lib/particles/engine/cells';
-    import type { ColorProportions } from '$lib/particles/engine/cells';
+        COLORS,
+        generateSimulationParams,
+        PARTICLE_COLORS,
+        type SimulationConfig
+    } from '$lib/particles/engine';
+    import type { ColorProportions } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
 
     export let simulationComponent: Simulation;
@@ -28,49 +28,44 @@
     attractionTable.blue.red = 0;
     attractionTable.blue.green = 2;
     attractionTable.blue.blue = 1;
-    let colorWeights: ColorProportions = { white: 250, red: 250, green: 250, blue: 250 };
 
-    const maxAttractionRadius = 32;
-    const horizontalResolution = 3;
-    const verticalResolution = 2;
-    const nbParticles = 100;
-    const worldSize = {
-        x: maxAttractionRadius * horizontalResolution,
-        y: maxAttractionRadius * verticalResolution
+    const weightPresets: Record<string, ColorProportions> = {
+        equal: { white: 500, red: 500, green: 500, blue: 500 },
+        no_white: { white: 0, red: 500, green: 500, blue: 500 },
+        no_red: { white: 500, red: 0, green: 500, blue: 500 },
+        no_green: { white: 500, red: 500, green: 0, blue: 500 },
+        no_blue: { white: 500, red: 500, green: 500, blue: 0 }
     };
+    let currentPreset: string | undefined = 'equal';
+    let colorWeights: ColorProportions = weightPresets[currentPreset];
 
-    const startSim = (cells: Cell[]) => {
-        simulationComponent?.startSim({
-            cells,
-            worldSize,
-            maxAttractionRadius,
-            attractionTable,
-            friction: 0.5
-        });
-    };
-
-    const uniformSpread = () => {
-        startSim(getNewCells(worldSize, nbParticles, colorWeights));
-    };
-
-    const centerSpread = () => {
-        const cells = getNewCells(worldSize, nbParticles, colorWeights);
-        largeCenterCellsInPlace(cells, worldSize);
-        startSim(cells);
-    };
-
-    const rainbowSpread = () => {
-        const cells = getNewCells(worldSize, nbParticles, colorWeights);
-        rainbowCellsInPlace(cells, worldSize);
-        startSim(cells);
+    const setProportions = (preset: string) => {
+        if (!Object.keys(weightPresets).includes(preset)) {
+            throw new Error('Unknown preset name ' + preset);
+        }
+        currentPreset = preset;
+        colorWeights = weightPresets[currentPreset];
+        startScreen();
     };
 
     const onWeightsChange = () => {
-        centerSpread();
+        startScreen();
     };
 
     const startScreen = () => {
-        centerSpread();
+        const config: SimulationConfig = {
+            horizontalResolution: 3,
+            verticalResolution: 2,
+            initialSpreadConfig: 'uniform',
+            colorWeights,
+            maxAttractionRadius: 32,
+            attractionTable: attractionTable,
+            nbParticles: 100,
+            friction: 0.5
+        };
+
+        const simulationParams = generateSimulationParams(config);
+        simulationComponent?.startSim(simulationParams);
     };
 
     $: if (simulationComponent) startScreen();
@@ -109,11 +104,44 @@
                 {/each}
             </div>
         </div>
-
-        <div class="spread-btns">
-            <button class="restart-btn" on:click={uniformSpread}>↺ Uniform spread</button>
-            <button class="restart-btn" on:click={centerSpread}>◎ Centered circle</button>
-            <button class="restart-btn" on:click={rainbowSpread}>≋ Rainbow</button>
+        <div class="control-section">
+            <div class="proportions-btns">
+                <button
+                    class="proportions-btn"
+                    class:active={currentPreset === 'equal'}
+                    on:click={() => setProportions('equal')}
+                >
+                    Equal
+                </button>
+                <button
+                    class="proportions-btn"
+                    class:active={currentPreset === 'no_white'}
+                    on:click={() => setProportions('no_white')}
+                >
+                    No White
+                </button>
+                <button
+                    class="proportions-btn"
+                    class:active={currentPreset === 'no_red'}
+                    on:click={() => setProportions('no_red')}
+                >
+                    No Red
+                </button>
+                <button
+                    class="proportions-btn"
+                    class:active={currentPreset === 'no_green'}
+                    on:click={() => setProportions('no_green')}
+                >
+                    No Green
+                </button>
+                <button
+                    class="proportions-btn"
+                    class:active={currentPreset === 'no_blue'}
+                    on:click={() => setProportions('no_blue')}
+                >
+                    No Blue
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -190,31 +218,5 @@
         color: #aeafb0;
         min-width: 28px;
         text-align: right;
-    }
-
-    .spread-btns {
-        display: flex;
-        gap: 6px;
-        flex-wrap: wrap;
-    }
-
-    .restart-btn {
-        background: #1a2327;
-        border: 1px solid #37474f;
-        color: #cfd8dc;
-        border-radius: 6px;
-        padding: 6px 11px;
-        font-size: 0.82rem;
-        cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .restart-btn:hover {
-        background: #2e3c43;
-        border-color: #546e7a;
-        color: #eceff1;
     }
 </style>

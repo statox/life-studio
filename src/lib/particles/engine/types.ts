@@ -1,4 +1,5 @@
 import type { AttractionTable } from '$lib/particles/attraction';
+import type { InitialConfig } from '../universe';
 import type { Color } from './colors';
 
 export type Coordinates = {
@@ -66,3 +67,14 @@ export type UpdateCellsResponse = {
 };
 
 export type ColorProportions = Record<Color, number>;
+
+export type SimulationConfig = {
+    horizontalResolution: number;
+    verticalResolution: number;
+    initialSpreadConfig: InitialConfig;
+    colorWeights: ColorProportions;
+    maxAttractionRadius: number;
+    attractionTable: AttractionTable;
+    nbParticles: number;
+    friction: number;
+};

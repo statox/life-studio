@@ -1,12 +1,10 @@
-import type { Cell, Coordinates } from './types';
+import type { Cell, ColorProportions, Coordinates } from './types';
 import { COLORS, type Color } from './colors';
 
 const randColor = (): Color => {
     const randIndex = Math.floor(Math.random() * COLORS.length);
     return COLORS[randIndex];
 };
-
-export type ColorProportions = Record<Color, number>;
 
 const buildColorThresholds = (proportions: ColorProportions): [Color, number][] => {
     const total = COLORS.reduce((s, c) => s + (proportions[c] ?? 1), 0);
@@ -56,7 +54,7 @@ export const centerCellsInPlace = (cells: Cell[], worldSize: { x: number; y: num
 
 export const largeCenterCellsInPlace = (cells: Cell[], worldSize: { x: number; y: number }) => {
     for (const cell of cells) {
-        const r = 200 * Math.random();
+        const r = (Math.min(worldSize.x, worldSize.y) / 2) * Math.random();
         const theta = Math.random() * 2 * Math.PI;
         cell.pos = {
             x: worldSize.x / 2 + r * Math.cos(theta),

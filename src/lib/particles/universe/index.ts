@@ -42,6 +42,9 @@ type UniverseMetadata = {
     complexity: 1 | 2 | 3;
 };
 
+/**
+ * TODO: Rename InitialSpreadConfig
+ */
 export type InitialConfig = 'uniform' | 'center' | 'rainbow';
 
 /**

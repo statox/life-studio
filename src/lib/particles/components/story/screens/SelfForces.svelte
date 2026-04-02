@@ -1,22 +1,14 @@
 <script lang="ts">
-    import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
-    import { getZeroedAttractionTable, type AttractionTable } from '$lib/particles/attraction';
-    import { getNewCells, largeCenterCellsInPlace } from '$lib/particles/engine/cells';
-    import { getUniverseById } from '$lib/particles/universe';
+    import { getZeroedAttractionTable } from '$lib/particles/attraction';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
+    import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
 
     export let simulationComponent: Simulation;
 
-    const preset = getUniverseById('1_colors_repulsion');
-    let attractionTable: AttractionTable = getZeroedAttractionTable();
-    attractionTable.white.white = -1;
+    let attractionTable = getZeroedAttractionTable();
+    attractionTable.white.white = 0;
 
-    let forceValue: -1 | 0 | 1 = -1;
-
-    const worldSize = {
-        x: preset.maxAttractionRadius * preset.horizontalResolution,
-        y: preset.maxAttractionRadius * preset.verticalResolution
-    };
+    let forceValue: -1 | 0 | 1 = 0;
 
     const setForce = (val: -1 | 0 | 1) => {
         forceValue = val;
@@ -26,16 +18,24 @@
     };
 
     const startScreen = () => {
-        const cells = getNewCells(worldSize, preset.nbParticles, preset.colorWeights);
-        largeCenterCellsInPlace(cells, worldSize);
+        const config: SimulationConfig = {
+            horizontalResolution: 6,
+            verticalResolution: 4,
+            initialSpreadConfig: 'center',
+            colorWeights: {
+                white: 1,
+                red: 0,
+                green: 0,
+                blue: 0
+            },
+            maxAttractionRadius: 32,
+            attractionTable: attractionTable,
+            nbParticles: 500,
+            friction: 0.77
+        };
 
-        simulationComponent?.startSim({
-            cells,
-            worldSize,
-            maxAttractionRadius: preset.maxAttractionRadius,
-            attractionTable,
-            friction: preset.friction
-        });
+        const simulationParams = generateSimulationParams(config);
+        simulationComponent?.startSim(simulationParams);
     };
 
     $: if (simulationComponent) startScreen();
@@ -71,11 +71,6 @@
                 +1 attract
             </button>
         </div>
-
-        <div class="control-section">
-            <h3>Attraction Table</h3>
-            <AttractionTableComponent {attractionTable} readonly />
-        </div>
     </div>
 </div>
 
@@ -93,15 +88,6 @@
         font-weight: 600;
     }
 
-    h3 {
-        font-size: 0.85rem;
-        color: #b0bec5;
-        margin: 0 0 8px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-    }
-
     p {
         color: #90a4ae;
         font-size: 0.9rem;
@@ -114,13 +100,6 @@
         flex-direction: column;
         gap: 16px;
         margin-top: 8px;
-    }
-
-    .control-section {
-        background: #263238;
-        border: 1px solid #37474f;
-        border-radius: 8px;
-        padding: 14px 16px;
     }
 
     .force-btns {

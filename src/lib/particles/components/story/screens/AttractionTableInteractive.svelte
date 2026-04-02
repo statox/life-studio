@@ -1,13 +1,9 @@
 <script lang="ts">
     import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
     import { getZeroedAttractionTable, type AttractionTable } from '$lib/particles/attraction';
-    import {
-        getNewCells,
-        largeCenterCellsInPlace,
-        rainbowCellsInPlace
-    } from '$lib/particles/engine/cells';
-    import type { Cell } from '$lib/particles/engine';
+    import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
+    import type { InitialConfig } from '$lib/particles/universe';
 
     export let simulationComponent: Simulation;
 
@@ -15,39 +11,20 @@
     attractionTable.red.red = 1;
     attractionTable.white.white = -1;
 
-    const maxAttractionRadius = 32;
-    const horizontalResolution = 3;
-    const verticalResolution = 2;
-    const worldSize = {
-        x: maxAttractionRadius * horizontalResolution,
-        y: maxAttractionRadius * verticalResolution
-    };
-    const colorWeights = { white: 500, red: 500, green: 0, blue: 0 };
-
-    const startSim = (cells: Cell[]) => {
-        simulationComponent?.startSim({
-            cells,
-            worldSize,
-            maxAttractionRadius,
-            attractionTable,
-            friction: 0.5
-        });
-    };
-
+    let initialSpreadConfig: InitialConfig = 'uniform';
     const uniformSpread = () => {
-        startSim(getNewCells(worldSize, 50, colorWeights));
+        initialSpreadConfig = 'uniform';
+        startScreen();
     };
 
     const centerSpread = () => {
-        const cells = getNewCells(worldSize, 50, colorWeights);
-        largeCenterCellsInPlace(cells, worldSize);
-        startSim(cells);
+        initialSpreadConfig = 'center';
+        startScreen();
     };
 
     const rainbowSpread = () => {
-        const cells = getNewCells(worldSize, 50, colorWeights);
-        rainbowCellsInPlace(cells, worldSize);
-        startSim(cells);
+        initialSpreadConfig = 'rainbow';
+        startScreen();
     };
 
     const onUpdateTable = (newTable: AttractionTable) => {
@@ -56,7 +33,24 @@
     };
 
     const startScreen = () => {
-        centerSpread();
+        const config: SimulationConfig = {
+            horizontalResolution: 3,
+            verticalResolution: 2,
+            initialSpreadConfig: initialSpreadConfig,
+            colorWeights: {
+                white: 1,
+                red: 1,
+                green: 0,
+                blue: 0
+            },
+            maxAttractionRadius: 32,
+            attractionTable: attractionTable,
+            nbParticles: 500,
+            friction: 0.5
+        };
+
+        const simulationParams = generateSimulationParams(config);
+        simulationComponent?.startSim(simulationParams);
     };
 
     $: if (simulationComponent) startScreen();

@@ -1,50 +1,44 @@
 <script lang="ts">
-    import {
-        getNewCells,
-        largeCenterCellsInPlace,
-        rainbowCellsInPlace
-    } from '$lib/particles/engine/cells';
-    import { getUniverseById } from '$lib/particles/universe';
-    import type { Cell } from '$lib/particles/engine';
+    import type { InitialConfig } from '$lib/particles/universe';
+    import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
+    import { getZeroedAttractionTable } from '$lib/particles/attraction';
 
     export let simulationComponent: Simulation;
 
-    const preset = getUniverseById('1_colors_repulsion');
-    const attractionTable = preset.attractionTable;
-    const worldSize = {
-        x: preset.maxAttractionRadius * preset.horizontalResolution,
-        y: preset.maxAttractionRadius * preset.verticalResolution
-    };
+    let attractionTable = getZeroedAttractionTable();
 
-    const startSim = (cells: Cell[]) => {
-        simulationComponent?.startSim({
-            cells,
-            worldSize,
-            maxAttractionRadius: preset.maxAttractionRadius,
-            attractionTable,
-            friction: preset.friction
-        });
-    };
+    let initialSpreadConfig: InitialConfig = 'uniform';
 
     const uniformSpread = () => {
-        startSim(getNewCells(worldSize, preset.nbParticles, preset.colorWeights));
+        initialSpreadConfig = 'uniform';
+        startScreen();
     };
 
     const centerSpread = () => {
-        const cells = getNewCells(worldSize, preset.nbParticles, preset.colorWeights);
-        largeCenterCellsInPlace(cells, worldSize);
-        startSim(cells);
-    };
-
-    const rainbowSpread = () => {
-        const cells = getNewCells(worldSize, preset.nbParticles, preset.colorWeights);
-        rainbowCellsInPlace(cells, worldSize);
-        startSim(cells);
+        initialSpreadConfig = 'center';
+        startScreen();
     };
 
     const startScreen = () => {
-        centerSpread();
+        const config: SimulationConfig = {
+            horizontalResolution: 30,
+            verticalResolution: 20,
+            initialSpreadConfig: initialSpreadConfig,
+            colorWeights: {
+                white: 1,
+                red: 0,
+                green: 0,
+                blue: 0
+            },
+            maxAttractionRadius: 32,
+            attractionTable: attractionTable,
+            nbParticles: 2000,
+            friction: 0.5
+        };
+
+        const simulationParams = generateSimulationParams(config);
+        simulationComponent?.startSim(simulationParams);
     };
 
     $: if (simulationComponent) startScreen();
@@ -66,7 +60,6 @@
         <div class="spread-btns">
             <button class="restart-btn" on:click={uniformSpread}>↺ Uniform spread</button>
             <button class="restart-btn" on:click={centerSpread}>◎ Centered circle</button>
-            <button class="restart-btn" on:click={rainbowSpread}>≋ Rainbow</button>
         </div>
     </div>
 </div>

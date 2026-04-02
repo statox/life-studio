@@ -1,30 +1,24 @@
 <script lang="ts">
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
-    import { getNewCells, largeCenterCellsInPlace } from '$lib/particles/engine/cells';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
+    import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
 
     export let simulationComponent: Simulation;
 
-    const attractionTable = getZeroedAttractionTable();
-    const maxAttractionRadius = 32;
-    const horizontalResolution = 3;
-    const verticalResolution = 2;
-    const worldSize = {
-        x: maxAttractionRadius * horizontalResolution,
-        y: maxAttractionRadius * verticalResolution
-    };
-
     const startScreen = () => {
-        const cells = getNewCells(worldSize, 10, { white: 1, red: 0, green: 0, blue: 0 });
-        largeCenterCellsInPlace(cells, worldSize);
-
-        simulationComponent?.startSim({
-            cells,
-            worldSize,
-            maxAttractionRadius,
-            attractionTable,
+        const config: SimulationConfig = {
+            horizontalResolution: 30,
+            verticalResolution: 20,
+            initialSpreadConfig: 'uniform',
+            colorWeights: { white: 1, red: 0, green: 0, blue: 0 },
+            maxAttractionRadius: 32,
+            attractionTable: getZeroedAttractionTable(),
+            nbParticles: 100,
             friction: 0.5
-        });
+        };
+
+        const simulationParams = generateSimulationParams(config);
+        simulationComponent?.startSim(simulationParams);
     };
 
     $: if (simulationComponent) startScreen();

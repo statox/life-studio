@@ -10,8 +10,7 @@
         largeCenterCellsInPlace,
         rainbowCellsInPlace
     } from '$lib/particles/engine/cells';
-    import type { ColorProportions } from '$lib/particles/engine/cells';
-    import type { Cell } from '$lib/particles/engine';
+    import type { Cell, ColorProportions } from '$lib/particles/engine';
     import Simulation from './Simulation.svelte';
     import {
         getAllDemoUniverses,
