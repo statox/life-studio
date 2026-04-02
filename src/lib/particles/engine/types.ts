@@ -1,6 +1,5 @@
 import type { AttractionTable } from '$lib/particles/attraction';
 import type { Color } from './colors';
-import type { ColorProportions } from './cells';
 
 export type Coordinates = {
     x: number;
@@ -35,13 +34,8 @@ export type SimulationParams = {
 
 export type StartEngineRequest = {
     msg: 'start';
-    cells: Cell[];
-    attractionTable: AttractionTable;
-    worldSize: WorldSize;
-    maxAttractionRadius: number;
     useWorkers?: boolean;
-    friction: number;
-};
+} & SimulationParams;
 
 export type PauseEngineRequest = {
     msg: 'pause';
@@ -70,3 +64,5 @@ export type EngineRequest =
 export type UpdateCellsResponse = {
     positions: Float32Array;
 };
+
+export type ColorProportions = Record<Color, number>;

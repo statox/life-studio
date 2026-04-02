@@ -1,5 +1,5 @@
 import type { AttractionTable } from '../attraction';
-import type { ColorProportions } from '../engine/cells';
+import type { ColorProportions } from '../engine';
 import demoPresets from './demo_presets.json';
 
 const presetModules = import.meta.glob('./presets/*.json', { eager: true }) as Record<
