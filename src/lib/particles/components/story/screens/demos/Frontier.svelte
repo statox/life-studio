@@ -28,32 +28,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    .screen {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    h2 {
-        font-size: 1.2rem;
-        color: #eceff1;
-        margin: 0;
-        font-weight: 600;
-    }
-
-    p {
-        color: #90a4ae;
-        font-size: 0.9rem;
-        line-height: 1.6;
-        margin: 0;
-    }
-
-    .controls {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-top: 8px;
-    }
-</style>

@@ -85,23 +85,23 @@
 
     <div class="controls">
         <div class="control-section">
-            <div class="size-btns">
+            <div class="btn-group">
                 <button
-                    class="size-btn"
+                    class="screen-btn"
                     class:active={currentPreset === 'small'}
                     on:click={() => setProportions('small')}
                 >
                     Small
                 </button>
                 <button
-                    class="size-btn"
+                    class="screen-btn"
                     class:active={currentPreset === 'medium'}
                     on:click={() => setProportions('medium')}
                 >
                     Medium
                 </button>
                 <button
-                    class="size-btn"
+                    class="screen-btn"
                     class:active={currentPreset === 'large'}
                     on:click={() => setProportions('large')}
                 >
@@ -116,38 +116,3 @@
     </div>
 </div>
 
-<style>
-    .screen {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    h2 {
-        font-size: 1.2rem;
-        color: #eceff1;
-        margin: 0;
-        font-weight: 600;
-    }
-
-    p {
-        color: #90a4ae;
-        font-size: 0.9rem;
-        line-height: 1.6;
-        margin: 0;
-    }
-
-    .controls {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-top: 8px;
-    }
-
-    .control-section {
-        background: #263238;
-        border: 1px solid #37474f;
-        border-radius: 8px;
-        padding: 14px 16px;
-    }
-</style>

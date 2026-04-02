@@ -105,37 +105,37 @@
             </div>
         </div>
         <div class="control-section">
-            <div class="proportions-btns">
+            <div class="btn-group">
                 <button
-                    class="proportions-btn"
+                    class="screen-btn"
                     class:active={currentPreset === 'equal'}
                     on:click={() => setProportions('equal')}
                 >
                     Equal
                 </button>
                 <button
-                    class="proportions-btn"
+                    class="screen-btn"
                     class:active={currentPreset === 'no_white'}
                     on:click={() => setProportions('no_white')}
                 >
                     No White
                 </button>
                 <button
-                    class="proportions-btn"
+                    class="screen-btn"
                     class:active={currentPreset === 'no_red'}
                     on:click={() => setProportions('no_red')}
                 >
                     No Red
                 </button>
                 <button
-                    class="proportions-btn"
+                    class="screen-btn"
                     class:active={currentPreset === 'no_green'}
                     on:click={() => setProportions('no_green')}
                 >
                     No Green
                 </button>
                 <button
-                    class="proportions-btn"
+                    class="screen-btn"
                     class:active={currentPreset === 'no_blue'}
                     on:click={() => setProportions('no_blue')}
                 >
@@ -146,77 +146,3 @@
     </div>
 </div>
 
-<style>
-    .screen {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    h2 {
-        font-size: 1.2rem;
-        color: #eceff1;
-        margin: 0;
-        font-weight: 600;
-    }
-
-    h3 {
-        font-size: 0.85rem;
-        color: #b0bec5;
-        margin: 0 0 8px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-    }
-
-    p {
-        color: #90a4ae;
-        font-size: 0.9rem;
-        line-height: 1.6;
-        margin: 0;
-    }
-
-    .controls {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-top: 8px;
-    }
-
-    .control-section {
-        background: #263238;
-        border: 1px solid #37474f;
-        border-radius: 8px;
-        padding: 14px 16px;
-    }
-
-    .field {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 7px;
-    }
-
-    .field:last-child {
-        margin-bottom: 0;
-    }
-
-    .field input[type='range'] {
-        flex: 1;
-        accent-color: #c3e88d;
-    }
-
-    .pdot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        flex-shrink: 0;
-    }
-
-    .dim {
-        font-size: 0.7rem;
-        color: #aeafb0;
-        min-width: 28px;
-        text-align: right;
-    }
-</style>

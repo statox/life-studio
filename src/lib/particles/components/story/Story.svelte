@@ -12,6 +12,7 @@
     import Parameters_WorldSize from './screens/parameters/WorldSize.svelte';
     import Demos_Introduction from './screens/demos/Introduction.svelte';
     import Demos_Frontier from './screens/demos/Frontier.svelte';
+    import './screens/shared.css';
 
     import type { SvelteComponent } from 'svelte';
 

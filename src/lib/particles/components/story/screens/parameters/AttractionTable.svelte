@@ -72,7 +72,7 @@
         <div class="preset-btns">
             {#each presets as p, idx}
                 <button
-                    class="preset-btn"
+                    class="screen-btn"
                     class:active={activePreset === idx}
                     on:click={() => selectPreset(idx)}
                 >
@@ -89,76 +89,13 @@
 </div>
 
 <style>
-    .screen {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    h2 {
-        font-size: 1.2rem;
-        color: #eceff1;
-        margin: 0;
-        font-weight: 600;
-    }
-
-    h3 {
-        font-size: 0.85rem;
-        color: #b0bec5;
-        margin: 0 0 8px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-    }
-
-    p {
-        color: #90a4ae;
-        font-size: 0.9rem;
-        line-height: 1.6;
-        margin: 0;
-    }
-
-    .controls {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-top: 8px;
-    }
-
-    .control-section {
-        background: #263238;
-        border: 1px solid #37474f;
-        border-radius: 8px;
-        padding: 14px 16px;
-    }
-
     .preset-btns {
         display: flex;
         flex-direction: column;
         gap: 6px;
     }
 
-    .preset-btn {
-        background: #1a2327;
-        border: 1px solid #37474f;
-        color: #cfd8dc;
-        border-radius: 6px;
-        padding: 8px 12px;
-        font-size: 0.82rem;
-        cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
+    .preset-btns :global(.screen-btn) {
         text-align: left;
-    }
-
-    .preset-btn:hover {
-        background: #2e3c43;
-        border-color: #546e7a;
-        color: #eceff1;
-    }
-
-    .preset-btn.active {
-        border-color: #c3e88d;
-        color: #c3e88d;
-        background: #1e2e1a;
     }
 </style>

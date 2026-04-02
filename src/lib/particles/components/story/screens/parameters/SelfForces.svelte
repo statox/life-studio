@@ -55,86 +55,22 @@
     <p>[Placeholder: introducing self-attraction/repulsion, effect of -1, 0, +1]</p>
 
     <div class="controls">
-        <div class="force-btns">
-            <span class="force-label">White → White</span>
+        <div class="btn-group">
+            <span class="btn-group-label">White → White</span>
             <button
-                class="force-btn"
+                class="screen-btn"
                 class:active={forceValue === -1}
                 on:click={() => setForce(-1)}
             >
                 -1 repulse
             </button>
-            <button class="force-btn" class:active={forceValue === 0} on:click={() => setForce(0)}>
+            <button class="screen-btn" class:active={forceValue === 0} on:click={() => setForce(0)}>
                 0 neutral
             </button>
-            <button class="force-btn" class:active={forceValue === 1} on:click={() => setForce(1)}>
+            <button class="screen-btn" class:active={forceValue === 1} on:click={() => setForce(1)}>
                 +1 attract
             </button>
         </div>
     </div>
 </div>
 
-<style>
-    .screen {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    h2 {
-        font-size: 1.2rem;
-        color: #eceff1;
-        margin: 0;
-        font-weight: 600;
-    }
-
-    p {
-        color: #90a4ae;
-        font-size: 0.9rem;
-        line-height: 1.6;
-        margin: 0;
-    }
-
-    .controls {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-top: 8px;
-    }
-
-    .force-btns {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        flex-wrap: wrap;
-    }
-
-    .force-label {
-        font-size: 0.8rem;
-        color: #90a4ae;
-        margin-right: 4px;
-    }
-
-    .force-btn {
-        background: #1a2327;
-        border: 1px solid #37474f;
-        color: #cfd8dc;
-        border-radius: 6px;
-        padding: 6px 12px;
-        font-size: 0.82rem;
-        cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
-    }
-
-    .force-btn:hover {
-        background: #2e3c43;
-        border-color: #546e7a;
-        color: #eceff1;
-    }
-
-    .force-btn.active {
-        border-color: #c3e88d;
-        color: #c3e88d;
-        background: #1e2e1a;
-    }
-</style>
