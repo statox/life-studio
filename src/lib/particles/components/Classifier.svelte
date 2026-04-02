@@ -144,7 +144,7 @@
         worldSize.y = u.maxAttractionRadius * u.verticalResolution;
         cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
         if (u.preferredInitialConfig === 'center') largeCenterCellsInPlace(cells, worldSize);
-        if (u.preferredInitialConfig === 'rainbow') rainbowCellsInPlace(cells, worldSize);
+        if (u.preferredInitialConfig === 'rainbow') rainbowCellsInPlace(cells, worldSize, u.colorWeights);
         startSim();
     };
 
@@ -166,7 +166,7 @@
 
     const rainbowSpread = () => {
         const newCells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
-        rainbowCellsInPlace(newCells, worldSize);
+        rainbowCellsInPlace(newCells, worldSize, ws.colorWeights);
         restartWithCells(newCells);
     };
 

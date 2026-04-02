@@ -23,7 +23,7 @@ export const generateSimulationParams = (config: SimulationConfig): SimulationPa
     if (initialSpreadConfig === 'center') {
         largeCenterCellsInPlace(cells, worldSize);
     } else if (initialSpreadConfig === 'rainbow') {
-        rainbowCellsInPlace(cells, worldSize);
+        rainbowCellsInPlace(cells, worldSize, colorWeights);
     }
 
     return {

@@ -12,6 +12,22 @@
     export let simulationComponent: Simulation;
 
     const attractionTable = getZeroedAttractionTable();
+    attractionTable.white.white = 2;
+    attractionTable.white.red = 2;
+    attractionTable.white.green = 1;
+    attractionTable.white.blue = 0;
+    attractionTable.red.white = -1;
+    attractionTable.red.red = 1;
+    attractionTable.red.green = 1;
+    attractionTable.red.blue = -1;
+    attractionTable.green.white = 2;
+    attractionTable.green.red = -1;
+    attractionTable.green.green = 1;
+    attractionTable.green.blue = 2;
+    attractionTable.blue.white = 0;
+    attractionTable.blue.red = 0;
+    attractionTable.blue.green = 2;
+    attractionTable.blue.blue = 1;
 
     const weightPresets: Record<string, ColorProportions> = {
         equal: { white: 500, red: 500, green: 500, blue: 500 },
@@ -38,13 +54,13 @@
 
     const startScreen = () => {
         const config: SimulationConfig = {
-            horizontalResolution: 30,
-            verticalResolution: 20,
-            initialSpreadConfig: 'rainbow',
+            horizontalResolution: 3,
+            verticalResolution: 2,
+            initialSpreadConfig: 'uniform',
             colorWeights,
             maxAttractionRadius: 32,
             attractionTable: attractionTable,
-            nbParticles: 1000,
+            nbParticles: 100,
             friction: 0.5
         };
 

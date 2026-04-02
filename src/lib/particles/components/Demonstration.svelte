@@ -57,7 +57,7 @@
         worldSize.y = u.maxAttractionRadius * u.verticalResolution;
         cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
         if (u.preferredInitialConfig === 'center') largeCenterCellsInPlace(cells, worldSize);
-        if (u.preferredInitialConfig === 'rainbow') rainbowCellsInPlace(cells, worldSize);
+        if (u.preferredInitialConfig === 'rainbow') rainbowCellsInPlace(cells, worldSize, u.colorWeights);
         friction = u.friction;
         startSim();
     };

@@ -8,6 +8,7 @@
     import Friction from './screens/Friction.svelte';
     import AttractionTable from './screens/AttractionTable.svelte';
     import ColorProportions from './screens/ColorProportions.svelte';
+    import ColorProportionsDynamic from './screens/ColorProportionsDynamic.svelte';
     import WorldSize from './screens/WorldSize.svelte';
 
     import type { SvelteComponent } from 'svelte';
@@ -27,6 +28,7 @@
         { component: SelfForces },
         { component: Friction },
         { component: ColorProportions },
+        { component: ColorProportionsDynamic },
         { component: AttractionTable },
         { component: WorldSize }
     ];

@@ -63,9 +63,27 @@ export const largeCenterCellsInPlace = (cells: Cell[], worldSize: { x: number; y
     }
 };
 
-export const rainbowCellsInPlace = (cells: Cell[], worldSize: { x: number; y: number }) => {
-    const sectionWidth = worldSize.x / 4;
+export const rainbowCellsInPlace = (
+    cells: Cell[],
+    worldSize: { x: number; y: number },
+    colorWeights: ColorProportions
+) => {
+    const total = COLORS.reduce((s, c) => s + (colorWeights[c] ?? 0), 0);
+    if (total === 0) return;
+
+    const thresholds: [Color, number][] = [];
+    let cumulative = 0;
+    for (const c of COLORS) {
+        cumulative += ((colorWeights[c] ?? 0) / total) * worldSize.x;
+        thresholds.push([c, cumulative]);
+    }
+
     for (const cell of cells) {
-        cell.color = COLORS[Math.min(Math.floor(cell.pos.x / sectionWidth), 3)];
+        for (const [color, threshold] of thresholds) {
+            if (cell.pos.x < threshold) {
+                cell.color = color;
+                break;
+            }
+        }
     }
 };
