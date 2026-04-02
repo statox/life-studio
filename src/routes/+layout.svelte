@@ -1,7 +1,13 @@
 <script>
     import { base } from '$app/paths';
+    import { page } from '$app/stores';
+
+    const noHeaderPaths = ['/particles-life/story'];
+
+    $: showHeader = !noHeaderPaths.some((p) => $page.url.pathname.endsWith(p));
 </script>
 
+{#if showHeader}
 <header>
     <h1>Particles Life</h1>
 
@@ -13,6 +19,7 @@
         <a href="{base}/soft-bodies">Soft bodies</a> |
     </nav>
 </header>
+{/if}
 
 <slot />
 
