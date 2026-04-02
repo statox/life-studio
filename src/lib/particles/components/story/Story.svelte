@@ -10,6 +10,8 @@
     import Parameters_SelfForces from './screens/parameters/SelfForces.svelte';
     import Parameters_SomeParticles from './screens/parameters/SomeParticles.svelte';
     import Parameters_WorldSize from './screens/parameters/WorldSize.svelte';
+    import Demos_Introduction from './screens/demos/Introduction.svelte';
+    import Demos_Frontier from './screens/demos/Frontier.svelte';
 
     import type { SvelteComponent } from 'svelte';
 
@@ -30,7 +32,9 @@
         { component: Parameters_ColorProportions },
         { component: Parameters_ColorProportionsDynamic },
         { component: Parameters_AttractionTable },
-        { component: Parameters_WorldSize }
+        { component: Parameters_WorldSize },
+        { component: Demos_Introduction, noSimulation: true },
+        { component: Demos_Frontier }
     ];
 
     let currentIndex = 0;

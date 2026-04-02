@@ -101,7 +101,8 @@
         syncWorldSize();
         cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
         if (u.preferredInitialConfig === 'center') largeCenterCellsInPlace(cells, worldSize);
-        if (u.preferredInitialConfig === 'rainbow') rainbowCellsInPlace(cells, worldSize, u.colorWeights);
+        if (u.preferredInitialConfig === 'rainbow')
+            rainbowCellsInPlace(cells, worldSize, u.colorWeights);
         startSim();
     };
 
