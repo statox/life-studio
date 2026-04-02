@@ -62,28 +62,26 @@
     <div class="scroll-wrap">
         <div class="matrix" class:compact>
             <!-- Corner cell -->
-            {#if !compact}
-                <div class="corner">
+            <div class="corner">
+                {#if !compact}
                     <span class="corner-label">self ↓</span>
                     <span class="corner-label">other →</span>
+                {/if}
+            </div>
+            <!-- Column headers -->
+            {#each COLORS as c}
+                <div class="col-header">
+                    {#if !compact}<span class="col-label">{c}</span>{/if}
+                    <div class="color-bar-h" style="background:{PARTICLE_COLORS[c]}" />
                 </div>
-                <!-- Column headers -->
-                {#each COLORS as c}
-                    <div class="col-header">
-                        <span class="dot" style="background:{PARTICLE_COLORS[c]}" />
-                        <span class="col-label">{c}</span>
-                    </div>
-                {/each}
-            {/if}
+            {/each}
 
             <!-- Rows -->
             {#each COLORS as selfColor}
-                {#if !compact}
-                    <div class="row-header">
-                        <span class="dot" style="background:{PARTICLE_COLORS[selfColor]}" />
-                        <span class="col-label">{selfColor}</span>
-                    </div>
-                {/if}
+                <div class="row-header">
+                    {#if !compact}<span class="col-label">{selfColor}</span>{/if}
+                    <div class="color-bar-v" style="background:{PARTICLE_COLORS[selfColor]}" />
+                </div>
                 {#each COLORS as otherColor}
                     {@const val = attractionTable[selfColor][otherColor]}
                     {#if readonly}
@@ -153,10 +151,14 @@
     }
 
     .matrix.compact {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: auto repeat(4, 1fr);
         gap: 2px;
         min-width: 0;
         max-width: 400px;
+    }
+
+    .matrix.compact .corner {
+        width: 6px;
     }
 
     .matrix.compact .swatch {
@@ -181,10 +183,8 @@
         line-height: 1.4;
     }
 
-    .col-header,
-    .row-header {
+    .col-header {
         display: flex;
-        flex-wrap: wrap;
         flex-direction: column;
         align-items: center;
         gap: 4px;
@@ -192,16 +192,29 @@
     }
 
     .row-header {
+        display: flex;
         flex-direction: row;
-        justify-content: flex-start;
-        padding-right: 6px;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 6px;
     }
 
-    .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
+    .color-bar-h {
+        width: 100%;
+        height: 3px;
+        border-radius: 2px;
         flex-shrink: 0;
+    }
+
+    .color-bar-v {
+        width: 3px;
+        align-self: stretch;
+        border-radius: 2px;
+        flex-shrink: 0;
+    }
+
+    .matrix.compact .row-header {
+        padding-right: 2px;
     }
 
     .col-label {
