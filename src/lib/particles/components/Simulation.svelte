@@ -19,6 +19,7 @@
     export let useWorkers = true;
     export let maxFPS = 60;
     export let onToggleWorkers: (() => void) | undefined = undefined;
+    export let hideTimeline = false;
 
     let showColors = true;
 
@@ -107,7 +108,7 @@
         />
     </div>
     <!-- Timeline bar -->
-    <div class="timeline-row">
+    <div class="timeline-row" class:hidden={hideTimeline}>
         <Timeline
             bind:this={timeline}
             bind:buffer
@@ -148,6 +149,10 @@
     .timeline-row > :global(.timeline) {
         flex: 1;
         min-width: 230px;
+    }
+
+    .timeline-row.hidden {
+        display: none;
     }
 
     .engine-toggle {

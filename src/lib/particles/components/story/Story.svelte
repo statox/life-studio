@@ -42,7 +42,7 @@
 
     <div class="canvas-col">
         <div class="canvas-sticky">
-            <Simulation bind:this={simulationComponent} />
+            <Simulation bind:this={simulationComponent} hideTimeline={true} />
         </div>
     </div>
 </div>
