@@ -15,7 +15,7 @@
 		<link href="/particles-life/_app/immutable/assets/AttractionTableComponent-13a5c150.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/WorldSettingsSelector-45a8295f.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/UniverseSelector-39351368.css" rel="stylesheet">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/start-58cba989.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-0388db16.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-5abd4bd0.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-399777ca.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-902e6631.js">
@@ -24,10 +24,10 @@
 		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/_layout.svelte-3b653a49.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/gallery/_page.svelte-633c17fe.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/gallery/_page.svelte-7dc5a03a.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/AttractionTableComponent-7e60ea07.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/WorldSettingsSelector-ebfa1f6a.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-f3d39467.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-1226662a.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/UniverseSelector-e4380a12.js">
     </head>
 
@@ -46,7 +46,7 @@
 
 <div class="sim svelte-7k0dxx">
     <div class="selector svelte-1xjmckj">
-    <div class="sort-bar svelte-1xjmckj"><span class="count svelte-1xjmckj">60/60</span>
+    <div class="sort-bar svelte-1xjmckj"><span class="count svelte-1xjmckj">61/61</span>
         <input class="search svelte-1xjmckj" type="search" placeholder="Search…" value="">
         <div class="sort-btns svelte-1xjmckj"><button class="sort-btn svelte-1xjmckj">Name
                     
@@ -2502,6 +2502,69 @@ The structures end up merging together.</p>
                     </div></div>
             </li>
             
+            <li class="item svelte-1xjmckj" role="option" aria-selected="false" tabindex="0"><div class="item-body svelte-1xjmckj"><div class="item-content svelte-1xjmckj"><div class="item-top svelte-1xjmckj"><span class="item-name svelte-1xjmckj">Merging circular structures</span>
+                            <span class="item-colors svelte-1xjmckj">4c</span></div>
+
+                        <div class="item-props svelte-1xjmckj"><span class="prop svelte-1xjmckj" style="border-color:#1565c044"><span class="prop-dot svelte-1xjmckj" style="background:#1565c0"></span>
+                                converges</span>
+                            <span class="prop svelte-1xjmckj" style="border-color:#6a1b9a44"><span class="prop-dot svelte-1xjmckj" style="background:#6a1b9a"></span>
+                                clusters</span>
+                            <span class="prop svelte-1xjmckj" style="border-color:#78909c44"><span class="prop-dot svelte-1xjmckj" style="background:#78909c"></span>
+                                low</span>
+                            <span class="prop complexity svelte-1xjmckj">★★☆</span></div>
+
+                        <p class="item-desc svelte-1xjmckj">This is a good example of how friction affect things - try 0.47 vs 0.06. Creates a lot of structures which slow merge or stop moving
+
+Triangular green core with red-white alternating crown</p>
+                            <button class="expand-btn svelte-1xjmckj">Show more
+                                </button></div>
+
+                    <div class="item-table svelte-1xjmckj">
+
+    <div class="scroll-wrap svelte-cxat5a"><div class="matrix svelte-cxat5a compact">
+            
+
+            
+            
+                
+                    <div class="swatch svelte-cxat5a" style="background:#c62828" title="white → white: -1">-1
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#2e7d32" title="white → red: +1">+1
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#c62828" title="white → green: -1">-1
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#1b5e20" title="white → blue: +2">+2
+                        </div>
+                
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="red → white: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#c62828" title="red → red: -1">-1
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="red → green: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#1b5e20" title="red → blue: +2">+2
+                        </div>
+                
+                    <div class="swatch svelte-cxat5a" style="background:#2e7d32" title="green → white: +1">+1
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="green → red: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#1b5e20" title="green → green: +2">+2
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="green → blue: 0">0
+                        </div>
+                
+                    <div class="swatch svelte-cxat5a" style="background:#1b5e20" title="blue → white: +2">+2
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#37474f" title="blue → red: 0">0
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#2e7d32" title="blue → green: +1">+1
+                        </div>
+                    <div class="swatch svelte-cxat5a" style="background:#1b5e20" title="blue → blue: +2">+2
+                        </div></div></div>
+                    </div></div>
+            </li>
+            
             <li class="item svelte-1xjmckj" role="option" aria-selected="false" tabindex="0"><div class="item-body svelte-1xjmckj"><div class="item-content svelte-1xjmckj"><div class="item-top svelte-1xjmckj"><span class="item-name svelte-1xjmckj">Moving structures 2</span>
                             <span class="item-colors svelte-1xjmckj">4c</span></div>
 
@@ -3952,14 +4015,14 @@ That creates patterns which can take a few frames to a few hundred frames to sta
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="u6ny4p">
-			import { start } from "/particles-life/_app/immutable/start-58cba989.js";
+		<script type="module" data-sveltekit-hydrate="1x6dn3x">
+			import { start } from "/particles-life/_app/immutable/start-0388db16.js";
 
 			start({
 				env: {},
 				paths: {"base":"/particles-life","assets":"/particles-life"},
-				target: document.querySelector('[data-sveltekit-hydrate="u6ny4p"]').parentNode,
-				version: "1775155730819",
+				target: document.querySelector('[data-sveltekit-hydrate="1x6dn3x"]').parentNode,
+				version: "1775157918595",
 				hydrate: {
 					node_ids: [0, 7],
 					data: [null,null],
