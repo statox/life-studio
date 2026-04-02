@@ -63,14 +63,14 @@
         gap: 32px;
         max-width: 1400px;
         margin: 0 auto;
-        padding: 32px 24px 96px;
+        padding: 32px 24px 48px;
         box-sizing: border-box;
     }
 
     @media (max-width: 768px) {
         .story {
             grid-template-columns: 1fr;
-            padding: 16px 12px 96px;
+            padding: 16px 12px 48px;
             gap: 16px;
         }
     }
@@ -85,33 +85,6 @@
     /* ── Canvas column ──────────────────────── */
     .canvas-col {
         min-width: 0;
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        padding: 16px 0;
-        box-sizing: border-box;
-    }
-
-    .canvas-sticky {
-        flex-shrink: 0;
-    }
-
-    @media (max-width: 768px) {
-        .canvas-col {
-            display: contents;
-        }
-
-        .canvas-sticky {
-            order: -1;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background: #1a2327;
-            padding: 8px 0;
-        }
     }
 
     /* ── Navigation bar ────────────────────── */
