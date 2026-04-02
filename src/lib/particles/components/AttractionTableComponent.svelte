@@ -16,11 +16,11 @@
     export let compact = false;
 
     const valueColor = (val: number): string => {
-        if (val <= -2) return '#b71c1c';
-        if (val === -1) return '#c62828';
+        if (val <= -2) return '#8b3a3a';
+        if (val === -1) return '#a15252';
         if (val === 0) return '#37474f';
-        if (val === 1) return '#2e7d32';
-        return '#1b5e20';
+        if (val === 1) return '#4a7c59';
+        return '#2d5e3a';
     };
 
     const valueLabel = (val: number): string => (val > 0 ? `+${val}` : `${val}`);
