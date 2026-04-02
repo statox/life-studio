@@ -8,6 +8,9 @@
         rainbowCellsInPlace
     } from '$lib/particles/engine/cells';
     import type { Cell } from '$lib/particles/engine';
+    import UniformSpreadButton from './buttons/UniformSpreadButton.svelte';
+    import CenteredCircleButton from './buttons/CenteredCircleButton.svelte';
+    import RainbowButton from './buttons/RainbowButton.svelte';
     import Simulation from './Simulation.svelte';
     import AttractionTableComponent from './AttractionTableComponent.svelte';
     import WorldSettingsSelector from './WorldSettingsSelector.svelte';
@@ -118,9 +121,9 @@
 
     <!-- Spread buttons -->
     <div class="spread-btns">
-        <button on:click={uniformSpread}>↺ Uniform spread</button>
-        <button on:click={centerSpread}>◎ Centered circle</button>
-        <button on:click={rainbowSpread}>≋ Rainbow</button>
+        <UniformSpreadButton onClick={uniformSpread} />
+        <CenteredCircleButton onClick={centerSpread} />
+        <RainbowButton onClick={rainbowSpread} />
     </div>
 
     <!-- Details + Attraction Table -->
@@ -189,26 +192,6 @@
     .spread-btns {
         display: flex;
         gap: 6px;
-    }
-
-    .spread-btns button {
-        background: #1a2327;
-        border: 1px solid #37474f;
-        color: #cfd8dc;
-        border-radius: 6px;
-        padding: 6px 11px;
-        font-size: 0.82rem;
-        cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .spread-btns button:hover {
-        background: #2e3c43;
-        border-color: #546e7a;
-        color: #eceff1;
     }
 
     /* ── Panels grid ─────────────────────────── */

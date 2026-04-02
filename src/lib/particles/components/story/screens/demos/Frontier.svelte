@@ -1,4 +1,5 @@
 <script lang="ts">
+    import RainbowButton from '$lib/particles/components/buttons/RainbowButton.svelte';
     import { generateSimulationParams } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getUniverseById } from '$lib/particles/universe';
@@ -23,7 +24,7 @@
     <p>[Placeholder: How long do you think the frontier between white and red will hold?]</p>
     <div class="controls">
         <div class="spread-btns">
-            <button class="restart-btn" on:click={startScreen}>≋ Rainbow</button>
+            <RainbowButton onClick={startScreen} />
         </div>
     </div>
 </div>
@@ -54,25 +55,5 @@
         flex-direction: column;
         gap: 16px;
         margin-top: 8px;
-    }
-
-    .restart-btn {
-        background: #1a2327;
-        border: 1px solid #37474f;
-        color: #cfd8dc;
-        border-radius: 6px;
-        padding: 6px 11px;
-        font-size: 0.82rem;
-        cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .restart-btn:hover {
-        background: #2e3c43;
-        border-color: #546e7a;
-        color: #eceff1;
     }
 </style>

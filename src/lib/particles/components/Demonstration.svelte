@@ -11,6 +11,8 @@
         rainbowCellsInPlace
     } from '$lib/particles/engine/cells';
     import type { Cell, ColorProportions } from '$lib/particles/engine';
+    import UniformSpreadButton from './buttons/UniformSpreadButton.svelte';
+    import CenteredCircleButton from './buttons/CenteredCircleButton.svelte';
     import Simulation from './Simulation.svelte';
     import {
         getAllDemoUniverses,
@@ -663,8 +665,8 @@
             <div class="card" class:highlighted={hoveredControl === 'restart'}>
                 <div class="card-title">Restart</div>
                 <div class="preset-btns">
-                    <button on:click={uniformSpread}>↺ Uniform spread</button>
-                    <button on:click={centerSpread}>◎ Centered circle</button>
+                    <UniformSpreadButton onClick={uniformSpread} />
+                    <CenteredCircleButton onClick={centerSpread} />
                 </div>
             </div>
             <div class="card" class:highlighted={hoveredControl === 'attraction'}>

@@ -1,4 +1,6 @@
 <script lang="ts">
+    import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
+    import CenteredCircleButton from '$lib/particles/components/buttons/CenteredCircleButton.svelte';
     import type { InitialConfig } from '$lib/particles/universe';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
@@ -58,8 +60,8 @@
 
     <div class="controls">
         <div class="spread-btns">
-            <button class="restart-btn" on:click={uniformSpread}>↺ Uniform spread</button>
-            <button class="restart-btn" on:click={centerSpread}>◎ Centered circle</button>
+            <UniformSpreadButton onClick={uniformSpread} />
+            <CenteredCircleButton onClick={centerSpread} />
         </div>
     </div>
 </div>
@@ -96,25 +98,5 @@
         display: flex;
         gap: 6px;
         flex-wrap: wrap;
-    }
-
-    .restart-btn {
-        background: #1a2327;
-        border: 1px solid #37474f;
-        color: #cfd8dc;
-        border-radius: 6px;
-        padding: 6px 11px;
-        font-size: 0.82rem;
-        cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .restart-btn:hover {
-        background: #2e3c43;
-        border-color: #546e7a;
-        color: #eceff1;
     }
 </style>

@@ -15,6 +15,9 @@
         rainbowCellsInPlace
     } from '$lib/particles/engine/cells';
     import type { Cell } from '$lib/particles/engine';
+    import UniformSpreadButton from './buttons/UniformSpreadButton.svelte';
+    import CenteredCircleButton from './buttons/CenteredCircleButton.svelte';
+    import RainbowButton from './buttons/RainbowButton.svelte';
     import Simulation from './Simulation.svelte';
     import UniverseExportModal from './UniverseExportModal.svelte';
     import PresetSelector from './PresetSelector.svelte';
@@ -155,9 +158,9 @@
                 <PresetSelector onSelect={loadPreset} />
             </div>
             <div class="btn-stack">
-                <button on:click={randomCells}>↺ Uniform spread</button>
-                <button on:click={largeCenterCells}>◎ Centered circle</button>
-                <button on:click={rainbowCells}>≋ Rainbow</button>
+                <UniformSpreadButton onClick={randomCells} />
+                <CenteredCircleButton onClick={largeCenterCells} />
+                <RainbowButton onClick={rainbowCells} />
             </div>
 
             <button
@@ -338,11 +341,6 @@
         display: flex;
         flex-direction: column;
         gap: 5px;
-    }
-
-    .btn-stack button {
-        width: 100%;
-        justify-content: flex-start;
     }
 
     /* ── Toggle button ───────────────────────── */
