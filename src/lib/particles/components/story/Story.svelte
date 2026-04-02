@@ -1,5 +1,6 @@
 <script lang="ts">
     import Simulation from '$lib/particles/components/Simulation.svelte';
+    import Introduction from './screens/Introduction.svelte';
     import EmptyUniverse from './screens/EmptyUniverse.svelte';
     import SomeParticles from './screens/SomeParticles.svelte';
     import RestartButtons from './screens/RestartButtons.svelte';
@@ -9,22 +10,31 @@
     import ColorProportions from './screens/ColorProportions.svelte';
     import WorldSize from './screens/WorldSize.svelte';
 
+    import type { SvelteComponent } from 'svelte';
+
+    type ScreenConfig = {
+        component: typeof SvelteComponent;
+        noSimulation?: boolean;
+    };
+
     let simulationComponent: Simulation;
 
-    const screens = [
-        EmptyUniverse,
-        SomeParticles,
-        RestartButtons,
-        SelfForces,
-        Friction,
-        ColorProportions,
-        AttractionTable,
-        WorldSize
+    const screens: ScreenConfig[] = [
+        { component: Introduction, noSimulation: true },
+        { component: EmptyUniverse },
+        { component: SomeParticles },
+        { component: RestartButtons },
+        { component: SelfForces },
+        { component: Friction },
+        { component: ColorProportions },
+        { component: AttractionTable },
+        { component: WorldSize }
     ];
 
     let currentIndex = 0;
 
     $: currentScreen = screens[currentIndex];
+    $: showSimulation = !currentScreen.noSimulation;
 
     const prev = () => {
         if (currentIndex > 0) currentIndex--;
@@ -37,14 +47,14 @@
 
 <div class="story">
     <div class="narrative">
-        <svelte:component this={currentScreen} {simulationComponent} />
+        <svelte:component this={currentScreen.component} {simulationComponent} />
     </div>
 
-    <div class="canvas-col">
-        <div class="canvas-sticky">
+    {#if showSimulation}
+        <div class="canvas-col">
             <Simulation bind:this={simulationComponent} hideTimeline={true} />
         </div>
-    </div>
+    {/if}
 </div>
 
 <div class="nav-bar">
