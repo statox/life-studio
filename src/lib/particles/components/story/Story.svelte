@@ -6,8 +6,8 @@
     import SelfForces from './screens/SelfForces.svelte';
     import Friction from './screens/Friction.svelte';
     import AttractionTable from './screens/AttractionTable.svelte';
-    import AttractionTableInteractive from './screens/AttractionTableInteractive.svelte';
     import ColorProportions from './screens/ColorProportions.svelte';
+    import WorldSize from './screens/WorldSize.svelte';
 
     let simulationComponent: Simulation;
 
@@ -19,7 +19,7 @@
         Friction,
         ColorProportions,
         AttractionTable,
-        AttractionTableInteractive
+        WorldSize
     ];
 
     let currentIndex = 0;

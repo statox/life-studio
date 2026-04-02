@@ -156,12 +156,13 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 2px;
         min-width: 0;
+        max-width: 400px;
     }
 
     .matrix.compact .swatch {
         height: auto;
         padding: 2px 0;
-        font-size: 0.6rem;
+        font-size: 0.8rem;
         border-radius: 2px;
         cursor: default;
     }
