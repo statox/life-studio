@@ -26,6 +26,7 @@
     import './screens/shared.css';
     import '../species.css';
 
+    import { tick } from 'svelte';
     import type { SvelteComponent } from 'svelte';
 
     type ScreenConfig = {
@@ -66,12 +67,23 @@
     $: currentScreen = screens[currentIndex];
     $: showSimulation = !currentScreen.noSimulation;
 
+    const scrollToTop = async () => {
+        await tick();
+        window.scrollTo({ top: 0 });
+    };
+
     const prev = () => {
-        if (currentIndex > 0) currentIndex--;
+        if (currentIndex > 0) {
+            currentIndex--;
+            scrollToTop();
+        }
     };
 
     const next = () => {
-        if (currentIndex < screens.length - 1) currentIndex++;
+        if (currentIndex < screens.length - 1) {
+            currentIndex++;
+            scrollToTop();
+        }
     };
 </script>
 
