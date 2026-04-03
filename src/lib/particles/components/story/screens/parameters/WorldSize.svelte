@@ -68,7 +68,7 @@
 </script>
 
 <div class="screen">
-    <h2>Four Colors</h2>
+    <h2>World size</h2>
     <!-- TODO: Write text about worldsize
         Key points:
             - The cells always have the same size and same attraction radius
@@ -81,18 +81,54 @@
             - Small box
                 - shows how the world wraps
 -->
-    <p>[Placeholder: World size. Same behavior. Observe wrapping.]</p>
+    <p>
+        The last parameter we can control is the size of our universe. Here we will keep the same
+        amount of particles but we will vary the size of the "box" they live in.
+    </p>
+    <p>
+        We start with a
+        <button
+            class="screen-btn"
+            class:active={currentPreset === 'medium'}
+            on:click={() => setProportions('medium')}
+        >
+            Medium
+        </button>
+        size to observe the base behavior of this univere: Each color is attracted to the next one which
+        creates moving worm-like structures. Sometimes the worm eats its own tail and the structure becomes
+        circular. When they get close to each other, structures tend to merge and split.
+    </p>
+
+    <p>
+        If we use
+        <button
+            class="screen-btn"
+            class:active={currentPreset === 'large'}
+            on:click={() => setProportions('large')}
+        >
+            Large
+        </button> dimensions for the world we see that the particles have more place to evolve. The worms
+        take more time to travel accross the world. Since particles are less tighly packed in the world,
+        they interact with each other less often which allows more worms to forms because they merge
+        less often with other worms.
+    </p>
+
+    <p>
+        Finally in a
+        <button
+            class="screen-btn"
+            class:active={currentPreset === 'small'}
+            on:click={() => setProportions('small')}
+        >
+            Small
+        </button> world the particles don't have enough room to create several structures and most of
+        the world is merged into a single worm. This view allows to better see how the world wraps on
+        itself: The top and bottom borders are connected and so are the left and right borders.
+    </p>
 
     <div class="controls">
         <div class="control-section">
             <div class="btn-group">
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'small'}
-                    on:click={() => setProportions('small')}
-                >
-                    Small
-                </button>
                 <button
                     class="screen-btn"
                     class:active={currentPreset === 'medium'}
@@ -106,6 +142,13 @@
                     on:click={() => setProportions('large')}
                 >
                     Large
+                </button>
+                <button
+                    class="screen-btn"
+                    class:active={currentPreset === 'small'}
+                    on:click={() => setProportions('small')}
+                >
+                    Small
                 </button>
             </div>
         </div>

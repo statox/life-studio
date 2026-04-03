@@ -103,9 +103,8 @@
     </div>
 
     <p>
-        We can control which proportion of each species we want to introduce in each of our
-        universes. The total number of particles doesn't change but some get more common than
-        others.
+        We can control in which proportion we want to introduce each species in our universes. The
+        total number of particles doesn't change but some species get more common than others.
     </p>
     <p>Let's see the impact of these uneven numbers in a universe.</p>
 </div>

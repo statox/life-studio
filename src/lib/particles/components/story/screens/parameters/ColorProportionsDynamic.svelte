@@ -72,7 +72,7 @@
 </script>
 
 <div class="screen">
-    <h2>Four Colors</h2>
+    <h2>Changing species proportions</h2>
     <!-- TODO: Write text about color proportions and 4 colors.
          Points to address:
          - Up to 4 species can coexist in the simulation
@@ -88,8 +88,8 @@
         White-Green-Blue core.
     </p>
     <p>
-        Now use the buttons to observe what happens when you remove one specie all together. Can you
-        predict what will happen when you remove White?
+        Now, use the buttons to observe what happens when you remove one specie all together. Can
+        you predict what will happen when you remove White?
     </p>
 
     <div class="controls">

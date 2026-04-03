@@ -74,8 +74,12 @@
 
     <p>
         This is the most important setting we have because these conflicting forces are at the heart
-        of any form of motion in our universe. With only two species we already have 5⁴ = 625
-        possible different attraction tables.
+        of any form of motion in our universe. Each force can take 1 of 5 possible values from <code
+            >-2</code
+        >
+        (Strong repulsion) to <code>2</code> (Strong attraction). <code>0</code> makes the particles
+        not interact with each other. With only two species we already have 5⁴ = 625 possible different
+        attraction tables.
     </p>
 
     <div class="controls">

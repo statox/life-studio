@@ -67,11 +67,10 @@
         </div>
     </div>
     <p>
-        That shows their default behavior: If they are too close from a neighbor they get repulsed
-        by it and try to move away from it. If no neighbor is close enough they just rest and do
-        nothing.
+        That shows their default behavior: If a particle is too close from a neighbor it gets
+        repulsed and try to move away. If no neighbor is close enough it just rests and do nothing.
     </p>
-    <p>But they can also attract each other</p>
+    <p>But particles can also attract each other</p>
     <div class="controls">
         <div class="btn-group">
             <button class="screen-btn" class:active={forceValue === 1} on:click={() => setForce(1)}>
@@ -81,8 +80,8 @@
     </div>
     <p>
         In this case their natural repulsion force has to fight a new attraction force: When a
-        neighbor is close enough, the particle is now attracted by it. They pack as closely as
-        possible from each other and their natural repulsion force push them into clusters.
+        neighbor is close enough, the particle is now attracted. They pack as closely as possible
+        from each other and their natural repulsion force push them into clusters.
     </p>
     <p>
         Finally, they can also repulse each other and in this case clusters form because groups are

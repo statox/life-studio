@@ -51,10 +51,11 @@
          - Try the slider and restart to see the difference
     -->
     <p>
-        Another force converning our particles is friction. Friction controls how quickly particles
-        slow down. Picture trying to roll a marble on a table covered in soda or covered in mud. The
-        stickier the universe, the higher the friction, the quicker the particles slow down. Here
-        all the particles are attracted by each other.
+        Another force governing our particles is friction. Friction controls how quickly particles
+        slow down. Picture trying to roll a marble on a table covered in soda or in mud: You can
+        push the marble but it will not roll too far. The stickier the universe, the higher the
+        friction, the quicker the particles slow down. Here all the particles are attracted by each
+        other.
     </p>
 
     <p>
@@ -92,7 +93,7 @@
             {frictionPresets[2]}
         </button>
         we broke a barrier and the friction is less fighting the attraction forces. The particles keep
-        bouncing in a structure which reminds of an atom.
+        bouncing at each other in a structure which could start looking like something organic.
     </p>
 
     <p>
