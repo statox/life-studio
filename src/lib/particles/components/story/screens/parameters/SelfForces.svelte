@@ -56,8 +56,8 @@
 <div class="screen">
     <h2>Forces</h2>
     <p>
-        If we zoom in on the center of the previous universe we get something like this. All
-        particles start tightly packed and slowly move away from each other.
+        Let's zoom in on the center of the previous universe. All particles start tightly packed and
+        slowly move away from each other.
     </p>
     <div class="controls">
         <div class="btn-group">

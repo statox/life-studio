@@ -11,7 +11,7 @@
     let attractionTable = getZeroedAttractionTable();
 
     let initialSpreadConfig: InitialConfig = 'uniform';
-    let nbParticles = 100;
+    let nbParticles = 0;
 
     const uniformSpread = () => {
         initialSpreadConfig = 'uniform';
@@ -52,12 +52,16 @@
 <div class="screen">
     <h2>Restart Buttons</h2>
     <p>
-        You can add many more particles to this universe, you just have to click the button:
+        Let's add a few particles.
         <UniformSpreadButton onClick={uniformSpread} />
+    </p>
+    <p>
+        Meet <span class="cw">White</span>. This is our first species. For now it is doing nothing.
+        That is going to change soon.
     </p>
 
     <p>
-        But still nothing happens... What if we pack our particles a bit more tightly?
+        Look at what happens when we pack our particles a bit more tightly?
         <CenteredCircleButton onClick={centerSpread} />
     </p>
 

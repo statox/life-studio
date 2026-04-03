@@ -8,13 +8,13 @@
     const attractionTable = getZeroedAttractionTable();
     attractionTable.white.white = 1;
 
-    const frictionPresets = [0.8, 0.38, 0.06, 0.0];
+    const frictionPresets = [0.8, 0.25, 0.06, 0.0];
     let friction = frictionPresets[0];
 
     const startScreen = () => {
         const config: SimulationConfig = {
-            horizontalResolution: 3,
-            verticalResolution: 2,
+            horizontalResolution: 6,
+            verticalResolution: 4,
             initialSpreadConfig: 'center',
             colorWeights: {
                 white: 1,
@@ -79,8 +79,7 @@
         >
             {frictionPresets[1]}
         </button>
-        the friction is in the middle of its range. The particles wiggle a bit longer before finding
-        their final position.
+        the friction is lower. The particles wiggle a bit longer before finding their final position.
     </p>
 
     <p>

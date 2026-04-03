@@ -54,13 +54,13 @@
 
     const startScreen = () => {
         const config: SimulationConfig = {
-            horizontalResolution: 3,
-            verticalResolution: 2,
-            initialSpreadConfig: 'uniform',
+            horizontalResolution: 10,
+            verticalResolution: 7,
+            initialSpreadConfig: 'center',
             colorWeights,
             maxAttractionRadius: 32,
             attractionTable: attractionTable,
-            nbParticles: 200,
+            nbParticles: 1000,
             friction: 0.5
         };
 

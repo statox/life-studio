@@ -9,7 +9,6 @@
     import Parameters_Friction from './screens/parameters/Friction.svelte';
     import Parameters_RestartButtons from './screens/parameters/RestartButtons.svelte';
     import Parameters_SelfForces from './screens/parameters/SelfForces.svelte';
-    import Parameters_SomeParticles from './screens/parameters/SomeParticles.svelte';
     import Parameters_WorldSize from './screens/parameters/WorldSize.svelte';
     import Demos_Introduction from './screens/demos/Introduction.svelte';
     import Demos_Frontier from './screens/demos/Frontier.svelte';
@@ -39,7 +38,6 @@
     const screens: ScreenConfig[] = [
         { component: Introduction, noSimulation: true },
         { component: Parameters_EmptyUniverse },
-        { component: Parameters_SomeParticles },
         { component: Parameters_RestartButtons },
         { component: Parameters_SelfForces },
         { component: Parameters_Friction },
