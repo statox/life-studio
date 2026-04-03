@@ -1,0 +1,49 @@
+{
+    "name": "Wraping Bug - Worm",
+    "description": "Shows how the particles change their behavior close to the borders",
+    "preferredInitialConfig": "uniform",
+    "behavior": "cyclic",
+    "structure": "organisms",
+    "activeColors": 4,
+    "convergenceSpeed": "medium",
+    "energyLevel": "medium",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": 0,
+            "red": 0,
+            "green": -1,
+            "blue": 1
+        },
+        "red": {
+            "white": 1,
+            "red": 0,
+            "green": 0,
+            "blue": -1
+        },
+        "green": {
+            "white": -1,
+            "red": 1,
+            "green": 0,
+            "blue": 0
+        },
+        "blue": {
+            "white": 0,
+            "red": -1,
+            "green": 1,
+            "blue": 0
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 1000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 10,
+    "verticalResolution": 7,
+    "friction": 0.7,
+    "id": "wraping_bug_worm"
+}

@@ -80,27 +80,18 @@ onmessage = (event: MessageEvent<ForceWorkerRequest>) => {
                     const jx = posX[j];
                     const jy = posY[j];
 
-                    const dx = jx - ix;
-                    const dy = jy - iy;
+                    let dx = jx - ix;
+                    let dy = jy - iy;
 
-                    // Check if wrapping is shorter (inlined, no object allocation)
-                    let wrapped = false;
-                    const noWrapDistSqrd = dx * dx + dy * dy;
+                    // Shortest toroidal displacement per axis
+                    if (dx > halfWorldX) dx -= worldSizeX;
+                    else if (dx < -halfWorldX) dx += worldSizeX;
+                    if (dy > halfWorldY) dy -= worldSizeY;
+                    else if (dy < -halfWorldY) dy += worldSizeY;
 
-                    let distSqrd: number;
-                    if (noWrapDistSqrd <= halfWorldX * halfWorldX + halfWorldY * halfWorldY) {
-                        distSqrd = noWrapDistSqrd;
-                    } else {
-                        // Wrapped distance
-                        let wdx = Math.abs(dx);
-                        if (wdx > halfWorldX) wdx = worldSizeX - wdx;
-                        let wdy = Math.abs(dy);
-                        if (wdy > halfWorldY) wdy = worldSizeY - wdy;
-                        distSqrd = wdx * wdx + wdy * wdy;
-                        wrapped = true;
-                    }
+                    const distSqrd = dx * dx + dy * dy;
 
-                    let force = getAttractionForceNumeric(
+                    const force = getAttractionForceNumeric(
                         attractionMatrix,
                         numColors,
                         maxAttractionRadiusSqrd,
@@ -110,9 +101,7 @@ onmessage = (event: MessageEvent<ForceWorkerRequest>) => {
                         colors[j]
                     );
 
-                    if (wrapped) force *= -1;
-
-                    const dirMag = Math.sqrt(dx * dx + dy * dy);
+                    const dirMag = Math.sqrt(distSqrd);
                     if (dirMag === 0) continue;
 
                     vx += (dx / dirMag) * force;
