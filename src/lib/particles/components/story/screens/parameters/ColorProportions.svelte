@@ -58,15 +58,6 @@
 
 <div class="screen">
     <h2>Species</h2>
-    <!-- TODO: Write text about color proportions and 4 colors.
-         Points to address:
-         - Up to 4 species can coexist in the simulation
-         - Color weights control how many particles of each color are created
-         - Set a weight to 0 to remove a species entirely
-         - More species = more possible interactions = more complex emergent behavior
-         - 4 colors x 4 colors = 16 rules in the attraction table
-         - Try different proportions and table values to see what emerges
-    -->
     <p>
         A world is always more beautiful when it has multiple colors, our universes are no
         exception. Let's give <span class="cw">White</span> some friends:

@@ -62,7 +62,7 @@
     <div class="controls">
         <div class="btn-group">
             <button class="screen-btn" class:active={forceValue === 0} on:click={() => setForce(0)}>
-                neutral
+                No forces
             </button>
         </div>
     </div>
@@ -74,7 +74,7 @@
     <div class="controls">
         <div class="btn-group">
             <button class="screen-btn" class:active={forceValue === 1} on:click={() => setForce(1)}>
-                attract
+                Attract each other
             </button>
         </div>
     </div>
@@ -94,7 +94,7 @@
                 class:active={forceValue === -1}
                 on:click={() => setForce(-1)}
             >
-                repulse
+                Repel each other
             </button>
         </div>
     </div>

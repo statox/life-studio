@@ -52,15 +52,9 @@
 <div class="screen">
     <h2>Restart Buttons</h2>
     <p>
-        <span
-            >You can add many more particles to this universe, you just have to click the button:</span
-        >
+        You can add many more particles to this universe, you just have to click the button:
         <UniformSpreadButton onClick={uniformSpread} />
     </p>
-
-    <div class="controls">
-        <div class="spread-btns" />
-    </div>
 
     <p>
         But still nothing happens... What if we pack our particles a bit more tightly?
