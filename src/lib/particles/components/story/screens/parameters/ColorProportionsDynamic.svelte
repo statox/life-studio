@@ -17,7 +17,7 @@
     attractionTable.white.green = 1;
     attractionTable.white.blue = 0;
     attractionTable.red.white = -1;
-    attractionTable.red.red = 1;
+    attractionTable.red.red = 2;
     attractionTable.red.green = 1;
     attractionTable.red.blue = -1;
     attractionTable.green.white = 2;
@@ -60,7 +60,7 @@
             colorWeights,
             maxAttractionRadius: 32,
             attractionTable: attractionTable,
-            nbParticles: 100,
+            nbParticles: 200,
             friction: 0.5
         };
 
