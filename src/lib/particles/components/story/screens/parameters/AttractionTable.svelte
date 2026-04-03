@@ -66,7 +66,17 @@
          - Try each preset to see how different rules create different behaviors
          - Cross-species interactions (white→red) add another dimension
     -->
-    <p>[Placeholder: introducing the attraction table with two colors, try presets]</p>
+    <p>
+        The attraction table is our way to summarize the forces involved in our universe. This is a
+        matrix showing how each row color reacts when it gets close to another particles in of the
+        column color.
+    </p>
+
+    <p>
+        This is the most important setting we have because these conflicting forces are at the heart
+        of any form of motion in our universe. With only two species we already have 5⁴ = 625
+        possible different attraction tables.
+    </p>
 
     <div class="controls">
         <div class="preset-btns">
@@ -81,9 +91,9 @@
             {/each}
         </div>
 
-        <div class="control-section">
+        <div class="control-section attraction-table-container">
             <h3>Attraction Table</h3>
-            <AttractionTableComponent {attractionTable} readonly />
+            <AttractionTableComponent {attractionTable} readonly hiddenColors={['green', 'blue']} />
         </div>
     </div>
 </div>
@@ -97,5 +107,9 @@
 
     .preset-btns :global(.screen-btn) {
         text-align: left;
+    }
+
+    .attraction-table-container {
+        max-width: 400px;
     }
 </style>

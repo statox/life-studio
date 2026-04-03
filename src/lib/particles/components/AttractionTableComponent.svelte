@@ -14,6 +14,9 @@
     export let onUpdateTable: (attractionTable: AttractionTable) => void = () => null;
     export let readonly = false;
     export let compact = false;
+    export let hiddenColors: Color[] = [];
+
+    $: visibleColors = COLORS.filter((c) => !hiddenColors.includes(c));
 
     const valueColor = (val: number): string => {
         if (val <= -2) return '#8b3a3a';
@@ -60,7 +63,11 @@
     {/if}
 
     <div class="scroll-wrap">
-        <div class="matrix" class:compact>
+        <div
+            class="matrix"
+            class:compact
+            style="grid-template-columns: auto repeat({visibleColors.length}, 1fr)"
+        >
             <!-- Corner cell -->
             <div class="corner">
                 {#if !compact}
@@ -69,7 +76,7 @@
                 {/if}
             </div>
             <!-- Column headers -->
-            {#each COLORS as c}
+            {#each visibleColors as c}
                 <div class="col-header">
                     {#if !compact}<span class="col-label">{c}</span>{/if}
                     <div class="color-bar-h" style="background:{PARTICLE_COLORS[c]}" />
@@ -77,12 +84,12 @@
             {/each}
 
             <!-- Rows -->
-            {#each COLORS as selfColor}
+            {#each visibleColors as selfColor}
                 <div class="row-header">
                     {#if !compact}<span class="col-label">{selfColor}</span>{/if}
                     <div class="color-bar-v" style="background:{PARTICLE_COLORS[selfColor]}" />
                 </div>
-                {#each COLORS as otherColor}
+                {#each visibleColors as otherColor}
                     {@const val = attractionTable[selfColor][otherColor]}
                     {#if readonly}
                         <div
@@ -145,13 +152,11 @@
 
     .matrix {
         display: grid;
-        grid-template-columns: auto repeat(4, 1fr);
         gap: 4px;
         min-width: 300px;
     }
 
     .matrix.compact {
-        grid-template-columns: auto repeat(4, 1fr);
         gap: 2px;
         min-width: 0;
         max-width: 400px;
