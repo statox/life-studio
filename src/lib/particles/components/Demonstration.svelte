@@ -13,6 +13,7 @@
     import type { Cell, ColorProportions } from '$lib/particles/engine';
     import UniformSpreadButton from './buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from './buttons/CenteredCircleButton.svelte';
+    import './species.css';
     import Simulation from './Simulation.svelte';
     import {
         getAllDemoUniverses,
@@ -947,33 +948,5 @@
     }
 
     /* ── Species colors ──────────────────────── */
-    .cw,
-    .cr,
-    .cg,
-    .cb {
-        display: inline-block;
-        padding: 0px 5px;
-        border-radius: 3px;
-        font-weight: 500;
-        font-size: 0.95em; /* slightly smaller to feel like a tag */
-        line-height: 1.5;
-        letter-spacing: 0.01em;
-    }
-
-    .cw {
-        color: #eceff1;
-        background: #37474f;
-    } /* white needs dark bg */
-    .cr {
-        color: #ef5350;
-        background: #ef535018;
-    }
-    .cg {
-        color: #c3e88d;
-        background: #c3e88d18;
-    } /* matches existing accent */
-    .cb {
-        color: #42a5f5;
-        background: #42a5f518;
-    }
+    /* Defined in species.css, imported above    */
 </style>

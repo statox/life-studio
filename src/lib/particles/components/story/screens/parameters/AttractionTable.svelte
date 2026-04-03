@@ -68,22 +68,21 @@
     -->
     <p>
         The attraction table is our way to summarize the forces involved in our universe. This is a
-        matrix showing how each row color reacts when it gets close to another particles in of the
+        matrix showing how each row color reacts when it gets close to another particle of the
         column color.
     </p>
 
     <p>
         This is the most important setting we have because these conflicting forces are at the heart
-        of any form of motion in our universe. Each force can take 1 of 5 possible values from <code
-            >-2</code
-        >
+        of any form of motion in our universe. Each force can take one out of five possible values
+        from <code>-2</code>
         (Strong repulsion) to <code>2</code> (Strong attraction). <code>0</code> makes the particles
         not interact with each other. With only two species we already have 5⁴ = 625 possible different
         attraction tables.
     </p>
 
     <div class="controls">
-        <div class="preset-btns">
+        <div class="control-section">
             {#each presets as p, idx}
                 <button
                     class="screen-btn"
@@ -103,16 +102,6 @@
 </div>
 
 <style>
-    .preset-btns {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .preset-btns :global(.screen-btn) {
-        text-align: left;
-    }
-
     .attraction-table-container {
         max-width: 400px;
     }

@@ -8,7 +8,7 @@
     const attractionTable = getZeroedAttractionTable();
     attractionTable.white.white = 1;
 
-    const frictionPresets = [0.8, 0.42, 0.06, 0.0];
+    const frictionPresets = [0.8, 0.38, 0.06, 0.0];
     let friction = frictionPresets[0];
 
     const startScreen = () => {
@@ -92,8 +92,9 @@
         >
             {frictionPresets[2]}
         </button>
-        we broke a barrier and the friction is less fighting the attraction forces. The particles keep
-        bouncing at each other in a structure which could start looking like something organic.
+        we crossed a threshold where friction is no longer keeping the attraction forces in check. The
+        particles keep bouncing into each other in a structure which could start looking like something
+        organic.
     </p>
 
     <p>
@@ -105,13 +106,13 @@
         >
             {frictionPresets[3]}
         </button>
-        the particles never slow down and their motion in bound only by the maximal velocity of the universe.
+        the particles never slow down and their motion is bound only by the maximal velocity of the universe.
         Chaos is created.
     </p>
 
     <p>
-        Using the slider can you find the lowest friction which stabilize the universe in less than
-        10 seconds?
+        Using the slider, can you find the lowest friction which stabilizes the universe in less
+        than 10 seconds?
     </p>
     <div class="controls">
         <div class="slider-row">

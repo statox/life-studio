@@ -68,15 +68,16 @@
          - Try different proportions and table values to see what emerges
     -->
     <p>
-        A world is always more beautiful when it has multiples colors, our universes are no
-        exception. Let's give White some friends: Red, Green and Blue
+        A world is always more beautiful when it has multiple colors, our universes are no
+        exception. Let's give <span class="cw">White</span> some friends:
+        <span class="cr">Red</span>, <span class="cg">Green</span> and <span class="cb">Blue</span>.
 
         <button
             class="screen-btn"
             class:active={currentPreset === 'equal'}
             on:click={() => setProportions('equal')}
         >
-            Equal
+            Create friends
         </button>
     </p>
 

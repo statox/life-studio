@@ -1,5 +1,6 @@
 <script lang="ts">
     import Simulation from '$lib/particles/components/Simulation.svelte';
+    import Conclusion from './screens/Conclusion.svelte';
     import Introduction from './screens/Introduction.svelte';
     import Parameters_AttractionTable from './screens/parameters/AttractionTable.svelte';
     import Parameters_ColorProportions from './screens/parameters/ColorProportions.svelte';
@@ -12,7 +13,18 @@
     import Parameters_WorldSize from './screens/parameters/WorldSize.svelte';
     import Demos_Introduction from './screens/demos/Introduction.svelte';
     import Demos_Frontier from './screens/demos/Frontier.svelte';
+    import Demos_Clusters from './screens/demos/Clusters.svelte';
+    import Demos_ClustersDynamics from './screens/demos/ClustersDynamics.svelte';
+    import Demos_DynamicWorlds from './screens/demos/DynamicWorlds.svelte';
+    import Demos_DynamicWorldWithAttraction from './screens/demos/DynamicWorldWithAttraction.svelte';
+    import Demos_SpreadingPatterns from './screens/demos/SpreadingPatterns.svelte';
+    import Demos_MergingMovingOrganisms from './screens/demos/MergingMovingOrganisms.svelte';
+    import Demos_LargerMovingOrganisms from './screens/demos/LargerMovingOrganisms.svelte';
+    import Demos_SmallerMovingOrganisms from './screens/demos/SmallerMovingOrganisms.svelte';
+    import Demos_FastMovingObjects from './screens/demos/FastMovingObjects.svelte';
+    import Demos_SpacePaving from './screens/demos/SpacePaving.svelte';
     import './screens/shared.css';
+    import '../species.css';
 
     import type { SvelteComponent } from 'svelte';
 
@@ -35,7 +47,18 @@
         { component: Parameters_AttractionTable },
         { component: Parameters_WorldSize },
         { component: Demos_Introduction, noSimulation: true },
-        { component: Demos_Frontier }
+        { component: Demos_SpacePaving },
+        { component: Demos_Frontier },
+        { component: Demos_Clusters },
+        { component: Demos_ClustersDynamics },
+        { component: Demos_DynamicWorlds },
+        { component: Demos_DynamicWorldWithAttraction },
+        { component: Demos_SpreadingPatterns },
+        { component: Demos_MergingMovingOrganisms },
+        { component: Demos_SmallerMovingOrganisms },
+        { component: Demos_LargerMovingOrganisms },
+        { component: Demos_FastMovingObjects },
+        { component: Conclusion, noSimulation: true }
     ];
 
     let currentIndex = 0;

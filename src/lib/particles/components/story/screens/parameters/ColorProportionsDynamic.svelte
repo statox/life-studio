@@ -84,12 +84,13 @@
     -->
     <p>
         For now our 4 species all have the same number of individuals. We can see that the universe
-        quickly converges into a cyclic structure of four layers: a Red pack being chased by a
-        White-Green-Blue core.
+        quickly converges into a cyclic structure of four layers: a <span class="cr">Red</span> pack
+        being chased by a
+        <span class="cw">White</span>-<span class="cg">Green</span>-<span class="cb">Blue</span> core.
     </p>
     <p>
-        Now, use the buttons to observe what happens when you remove one specie all together. Can
-        you predict what will happen when you remove White?
+        Now, use the buttons to observe what happens when you remove one species altogether. Can you
+        predict what will happen when you remove <span class="cw">White</span>?
     </p>
 
     <div class="controls">

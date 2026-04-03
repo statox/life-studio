@@ -55,6 +55,7 @@ p {
 /* ── Spread button row ──────────────────── */
 .spread-btns {
     display: flex;
+    flex-direction: row;
     gap: 6px;
     flex-wrap: wrap;
 }

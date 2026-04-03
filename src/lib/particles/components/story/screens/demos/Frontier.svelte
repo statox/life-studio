@@ -21,9 +21,16 @@
 
 <div class="screen">
     <h2>Frontier</h2>
-    <p>[Placeholder: How long do you think the frontier between white and red will hold?]</p>
+    <p>
+        Sometimes chaos and order fight against each other and initially grouping the species gives
+        interesting results.
+    </p>
+    <p>
+        How long do you think the frontier between <span class="cw">White</span> and
+        <span class="cr">Red</span> will hold?
+    </p>
     <div class="controls">
-        <div class="spread-btns">
+        <div class="control-section spread-btns">
             <RainbowButton onClick={startScreen} />
         </div>
     </div>

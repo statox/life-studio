@@ -2,4 +2,10 @@
     <h1>Now, the good stuff</h1>
     <p>You have seen all of the parameters ruling our universes. They are pretty simple.</p>
     <p>But they can produce very unexpected things. Let me show you.</p>
+    <br />
+    <p>
+        <b>Warning</b> All the pages of this website run simulations directly on your device and the
+        upcoming pages sometimes run heavy simulations. Depending on the processing power of your device
+        you might experience some slowdowns.
+    </p>
 </div>

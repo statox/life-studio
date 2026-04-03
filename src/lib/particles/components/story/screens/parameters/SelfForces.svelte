@@ -57,7 +57,7 @@
     <h2>Forces</h2>
     <p>
         If we zoom in on the center of the previous universe we get something like this. All
-        particles start tighly packed and slowy move away from each other.
+        particles start tightly packed and slowly move away from each other.
     </p>
     <div class="controls">
         <div class="btn-group">
@@ -67,8 +67,8 @@
         </div>
     </div>
     <p>
-        That shows their default behavior: If a particle is too close from a neighbor it gets
-        repulsed and try to move away. If no neighbor is close enough it just rests and do nothing.
+        That shows their default behavior: If a particle is too close to a neighbor it gets repulsed
+        and tries to move away. If no neighbor is close enough it just rests and does nothing.
     </p>
     <p>But particles can also attract each other</p>
     <div class="controls">
@@ -80,12 +80,12 @@
     </div>
     <p>
         In this case their natural repulsion force has to fight a new attraction force: When a
-        neighbor is close enough, the particle is now attracted. They pack as closely as possible
-        from each other and their natural repulsion force push them into clusters.
+        neighbor is close enough, the particle is now attracted. They pack as closely as possible to
+        each other and their natural repulsion force pushes them into clusters.
     </p>
     <p>
-        Finally, they can also repulse each other and in this case clusters form because groups are
-        repulsed against each other.
+        Finally, they can also repel each other, which causes clusters to form as groups push
+        against one another.
     </p>
     <div class="controls">
         <div class="btn-group">

@@ -29,7 +29,7 @@
     <p>Let's add a few particles.</p>
     <!-- TODO Use class="cw" from Demonstration.svelte  -->
     <p>
-        Meet White. This is our first species. For now it is doing nothing. That is going to change
-        soon.
+        Meet <span class="cw">White</span>. This is our first species. For now it is doing nothing.
+        That is going to change soon.
     </p>
 </div>

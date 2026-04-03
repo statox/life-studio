@@ -63,9 +63,9 @@
     </div>
 
     <p>
-        But still nothing happens... What if we pack our particles a bit more thightly?
+        But still nothing happens... What if we pack our particles a bit more tightly?
         <CenteredCircleButton onClick={centerSpread} />
     </p>
 
-    <p>We get some motion! Let's zoom in on that</p>
+    <p>We get some motion! Let's zoom in on that.</p>
 </div>

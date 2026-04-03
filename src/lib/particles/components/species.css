@@ -1,0 +1,33 @@
+/* ── Species color labels ────────────────────
+   Inline <span> tags to highlight particle species names in prose.
+   Usage: <span class="cw">White</span>, <span class="cr">Red</span>, etc.
+──────────────────────────────────────────── */
+.cw,
+.cr,
+.cg,
+.cb {
+    display: inline-block;
+    padding: 0px 5px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 0.95em;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+}
+
+.cw {
+    color: #eceff1;
+    background: #37474f;
+} /* white needs dark bg */
+.cr {
+    color: #ef5350;
+    background: #ef535018;
+}
+.cg {
+    color: #c3e88d;
+    background: #c3e88d18;
+} /* matches existing accent */
+.cb {
+    color: #42a5f5;
+    background: #42a5f518;
+}
