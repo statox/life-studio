@@ -40,7 +40,7 @@
         "green": 500,
         "blue": 500
     },
-    "nbParticles": 4000,
+    "nbParticles": 1000,
     "maxAttractionRadius": 32,
     "horizontalResolution": 15,
     "verticalResolution": 10,
