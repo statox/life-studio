@@ -50,22 +50,69 @@
          - It's a velocity decay multiplier applied every frame
          - Try the slider and restart to see the difference
     -->
-    <p>[Placeholder: explaining friction as velocity decay, low vs high friction behavior]</p>
+    <p>
+        Another force converning our particles is friction. Friction controls how quickly particles
+        slow down. Picture trying to roll a marble on a table covered in soda or covered in mud. The
+        stickier the universe, the higher the friction, the quicker the particles slow down. Here
+        all the particles are attracted by each other.
+    </p>
 
+    <p>
+        At
+        <button
+            class="screen-btn"
+            class:active={friction === frictionPresets[0]}
+            on:click={() => setFriction(frictionPresets[0])}
+        >
+            {frictionPresets[0]}
+        </button>
+        the friction is high and particles quickly find an equilibrium.
+    </p>
+
+    <p>
+        At
+        <button
+            class="screen-btn"
+            class:active={friction === frictionPresets[1]}
+            on:click={() => setFriction(frictionPresets[1])}
+        >
+            {frictionPresets[1]}
+        </button>
+        the friction is in the middle of its range. The particles wiggle a bit longer before finding
+        their final position.
+    </p>
+
+    <p>
+        At
+        <button
+            class="screen-btn"
+            class:active={friction === frictionPresets[2]}
+            on:click={() => setFriction(frictionPresets[2])}
+        >
+            {frictionPresets[2]}
+        </button>
+        we broke a barrier and the friction is less fighting the attraction forces. The particles keep
+        bouncing in a structure which reminds of an atom.
+    </p>
+
+    <p>
+        Finally, when the friction gets to
+        <button
+            class="screen-btn"
+            class:active={friction === frictionPresets[3]}
+            on:click={() => setFriction(frictionPresets[3])}
+        >
+            {frictionPresets[3]}
+        </button>
+        the particles never slow down and their motion in bound only by the maximal velocity of the universe.
+        Chaos is created.
+    </p>
+
+    <p>
+        Using the slider can you find the lowest friction which stabilize the universe in less than
+        10 seconds?
+    </p>
     <div class="controls">
-        <div class="btn-group">
-            <span class="btn-group-label">Friction</span>
-            {#each frictionPresets as val}
-                <button
-                    class="screen-btn"
-                    class:active={friction === val}
-                    on:click={() => setFriction(val)}
-                >
-                    {val}
-                </button>
-            {/each}
-        </div>
-
         <div class="slider-row">
             <input
                 type="range"

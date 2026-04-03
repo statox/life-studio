@@ -14,13 +14,14 @@
     const attractionTable = getZeroedAttractionTable();
 
     const weightPresets: Record<string, ColorProportions> = {
+        all_white: { white: 500, red: 0, green: 0, blue: 0 },
         equal: { white: 500, red: 500, green: 500, blue: 500 },
         no_white: { white: 0, red: 500, green: 500, blue: 500 },
         no_red: { white: 500, red: 0, green: 500, blue: 500 },
         no_green: { white: 500, red: 500, green: 0, blue: 500 },
         no_blue: { white: 500, red: 500, green: 500, blue: 0 }
     };
-    let currentPreset: string | undefined = 'equal';
+    let currentPreset: string | undefined = 'all_white';
     let colorWeights: ColorProportions = weightPresets[currentPreset];
 
     const setProportions = (preset: string) => {
@@ -56,7 +57,7 @@
 </script>
 
 <div class="screen">
-    <h2>Four Colors</h2>
+    <h2>Species</h2>
     <!-- TODO: Write text about color proportions and 4 colors.
          Points to address:
          - Up to 4 species can coexist in the simulation
@@ -66,7 +67,18 @@
          - 4 colors x 4 colors = 16 rules in the attraction table
          - Try different proportions and table values to see what emerges
     -->
-    <p>[Placeholder: introducing 4 colors, color proportions, more complexity]</p>
+    <p>
+        A world is always more beautiful when it has multiples colors, our universes are no
+        exception. Let's give White some friends: Red, Green and Blue
+
+        <button
+            class="screen-btn"
+            class:active={currentPreset === 'equal'}
+            on:click={() => setProportions('equal')}
+        >
+            Equal
+        </button>
+    </p>
 
     <div class="controls">
         <div class="control-section">
@@ -88,44 +100,12 @@
                 {/each}
             </div>
         </div>
-        <div class="control-section">
-            <div class="btn-group">
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'equal'}
-                    on:click={() => setProportions('equal')}
-                >
-                    Equal
-                </button>
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'no_white'}
-                    on:click={() => setProportions('no_white')}
-                >
-                    No White
-                </button>
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'no_red'}
-                    on:click={() => setProportions('no_red')}
-                >
-                    No Red
-                </button>
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'no_green'}
-                    on:click={() => setProportions('no_green')}
-                >
-                    No Green
-                </button>
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'no_blue'}
-                    on:click={() => setProportions('no_blue')}
-                >
-                    No Blue
-                </button>
-            </div>
-        </div>
     </div>
+
+    <p>
+        We can control which proportion of each species we want to introduce in each of our
+        universes. The total number of particles doesn't change but some get more common than
+        others.
+    </p>
+    <p>Let's see the impact of these uneven numbers in a universe.</p>
 </div>

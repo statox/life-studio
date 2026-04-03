@@ -26,12 +26,10 @@
 
 <div class="screen">
     <h2>Some Particles</h2>
-    <!-- TODO: Write text about adding particles to the empty world.
-         Points to address:
-         - We added 10 white particles to the universe
-         - They start in the center
-         - No forces are defined yet (attraction table is all zeros)
-         - The particles just sit there, nothing happens
-    -->
-    <p>[Placeholder: adding particles, no forces, nothing happens]</p>
+    <p>Let's add a few particles.</p>
+    <!-- TODO Use class="cw" from Demonstration.svelte  -->
+    <p>
+        Meet White. This is our first species. For now it is doing nothing. That is going to change
+        soon.
+    </p>
 </div>

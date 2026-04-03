@@ -82,28 +82,17 @@
          - 4 colors x 4 colors = 16 rules in the attraction table
          - Try different proportions and table values to see what emerges
     -->
-    <p>[Placeholder: introducing 4 colors, color proportions, more complexity]</p>
+    <p>
+        For now our 4 species all have the same number of individuals. We can see that the universe
+        quickly converges into a cyclic structure of four layers: a Red pack being chased by a
+        White-Green-Blue core.
+    </p>
+    <p>
+        Now use the buttons to observe what happens when you remove one specie all together. Can you
+        predict what will happen when you remove White?
+    </p>
 
     <div class="controls">
-        <div class="control-section">
-            <h3>Color Proportions</h3>
-            <div class="proportion-list">
-                {#each COLORS as c}
-                    <div class="field">
-                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
-                        <input
-                            type="range"
-                            bind:value={colorWeights[c]}
-                            on:change={onWeightsChange}
-                            min="0"
-                            max="1000"
-                            step="1"
-                        />
-                        <span class="dim">{colorWeights[c]}</span>
-                    </div>
-                {/each}
-            </div>
-        </div>
         <div class="control-section">
             <div class="btn-group">
                 <button
@@ -144,5 +133,26 @@
             </div>
         </div>
     </div>
-</div>
 
+    <div class="controls">
+        <div class="control-section">
+            <h3>Color Proportions</h3>
+            <div class="proportion-list">
+                {#each COLORS as c}
+                    <div class="field">
+                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
+                        <input
+                            type="range"
+                            bind:value={colorWeights[c]}
+                            on:change={onWeightsChange}
+                            min="0"
+                            max="1000"
+                            step="1"
+                        />
+                        <span class="dim">{colorWeights[c]}</span>
+                    </div>
+                {/each}
+            </div>
+        </div>
+    </div>
+</div>

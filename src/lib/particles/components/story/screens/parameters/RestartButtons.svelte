@@ -11,14 +11,17 @@
     let attractionTable = getZeroedAttractionTable();
 
     let initialSpreadConfig: InitialConfig = 'uniform';
+    let nbParticles = 100;
 
     const uniformSpread = () => {
         initialSpreadConfig = 'uniform';
+        nbParticles = 2000;
         startScreen();
     };
 
     const centerSpread = () => {
         initialSpreadConfig = 'center';
+        nbParticles = 2000;
         startScreen();
     };
 
@@ -35,7 +38,7 @@
             },
             maxAttractionRadius: 32,
             attractionTable: attractionTable,
-            nbParticles: 2000,
+            nbParticles,
             friction: 0.5
         };
 
@@ -48,20 +51,21 @@
 
 <div class="screen">
     <h2>Restart Buttons</h2>
-    <!-- TODO: Write text about the restart buttons.
-         Points to address:
-         - "Uniform spread" distributes particles randomly across the whole world
-         - "Centered circle" places all particles in a circle at the center
-         - "Rainbow" distributes particles and colors them by horizontal position
-         - Each restart re-generates particles with the same rules, but different initial positions
-         - Initial conditions affect how the simulation evolves
-    -->
-    <p>[Placeholder: description of the three restart buttons and how initial conditions matter]</p>
+    <p>
+        <span
+            >You can add many more particles to this universe, you just have to click the button:</span
+        >
+        <UniformSpreadButton onClick={uniformSpread} />
+    </p>
 
     <div class="controls">
-        <div class="spread-btns">
-            <UniformSpreadButton onClick={uniformSpread} />
-            <CenteredCircleButton onClick={centerSpread} />
-        </div>
+        <div class="spread-btns" />
     </div>
+
+    <p>
+        But still nothing happens... What if we pack our particles a bit more thightly?
+        <CenteredCircleButton onClick={centerSpread} />
+    </p>
+
+    <p>We get some motion! Let's zoom in on that</p>
 </div>
