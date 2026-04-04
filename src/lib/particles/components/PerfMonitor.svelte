@@ -1,10 +1,25 @@
 <script lang="ts">
     import type { PerfData } from '$lib/particles/engine/types';
 
+    type PerfReport = PerfData & { total: number };
     export let enginePerf: PerfData | null = null;
     export let renderMs: number | null = null;
+    let history: PerfReport[] = [];
+    let lastRecordedFrame = -1;
 
     type PerfRow = { label: string; value: number };
+
+    // Separate reactive block for history — only reacts to enginePerf changes
+    $: if (enginePerf && enginePerf.frame !== lastRecordedFrame) {
+        if (history.length && enginePerf.frame <= history[history.length - 1]?.frame) {
+            history = [];
+        }
+        history.push({
+            ...enginePerf,
+            total: enginePerf.grid + enginePerf.force + enginePerf.update + enginePerf.interleave
+        });
+        lastRecordedFrame = enginePerf.frame;
+    }
 
     $: rows = (() => {
         const r: PerfRow[] = [];
@@ -25,18 +40,19 @@
 
     let copied = false;
     const copyStats = () => {
-        const lines: string[] = [];
-        for (const r of rows) {
-            lines.push(`${r.label.padEnd(12)}${r.value.toFixed(2)} ms`);
-        }
-        if (total != null) {
-            lines.push(`Total:      ${total.toFixed(2)} ms`);
-        }
-        if (enginePerf) {
-            lines.push(`Particles:  ${enginePerf.particles}`);
-            lines.push(`Frame:      ${enginePerf.frame}`);
-        }
-        navigator.clipboard.writeText(lines.join('\n'));
+        const lines = history
+            .map((r) => {
+                const lines: string[] = [];
+                lines.push(`Frame: ${r.frame.toString().padStart(5, ' ')}`);
+                lines.push(`Force: ${r.force.toFixed(2).padStart(6, ' ')}`);
+                lines.push(`Grid:\t${r.grid.toFixed(2)}`);
+                lines.push(`Update:\t${r.update.toFixed(2)}`);
+                lines.push(`Interleave:\t${r.interleave.toFixed(2)}`);
+                lines.push(`Total:\t${r.total.toFixed(2)}`);
+                return lines.join('\t');
+            })
+            .join('\n');
+        navigator.clipboard.writeText(lines);
         copied = true;
         setTimeout(() => (copied = false), 1500);
     };
