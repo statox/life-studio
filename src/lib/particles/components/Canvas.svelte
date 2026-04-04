@@ -7,7 +7,6 @@
      */
 
     import { onMount } from 'svelte';
-    import { linearMap } from '$lib/particles/attraction';
     import { COLORS, PARTICLE_COLORS } from '../engine';
     import type { Coordinates } from '../engine';
 
@@ -52,15 +51,20 @@
 
         if (!positions || numParticles === 0) return;
 
-        const cw = canvas.width;
-        const ch = canvas.height;
-        const wsx = worldSize.x;
-        const wsy = worldSize.y;
+        // Scale factors to map world coordinates [0, worldSize] to canvas
+        // pixel coordinates [0, canvasSize]. Pre-computed once per frame so
+        // the inner loop only needs a single multiply per axis instead of
+        // calling linearMap() (which involves extra arithmetic and clamping).
+        const sx = canvas.width / worldSize.x;
+        const sy = canvas.height / worldSize.y;
 
         const tR0 = performance.now();
         for (let i = 0; i < numParticles; i++) {
-            const x = Math.floor(linearMap(positions[i * 2], 0, wsx, 0, cw));
-            const y = Math.floor(linearMap(positions[i * 2 + 1], 0, wsy, 0, ch));
+            // `| 0` truncates to integer (equivalent to Math.floor for
+            // positive numbers) — it's a common JS micro-optimisation that
+            // avoids a function call in this hot loop.
+            const x = (positions[i * 2] * sx) | 0;
+            const y = (positions[i * 2 + 1] * sy) | 0;
             const c = showColors ? colorIndices[i] : 0;
             ctx.drawImage(off, c * d, 0, d, d, x - r, y - r, d, d);
         }
