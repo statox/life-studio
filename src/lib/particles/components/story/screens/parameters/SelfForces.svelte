@@ -58,26 +58,20 @@
     <p>
         Let's zoom in on the center of the previous universe. All particles start tightly packed and
         slowly move away from each other.
+        <button class="screen-btn" class:active={forceValue === 0} on:click={() => setForce(0)}>
+            No forces
+        </button>
     </p>
-    <div class="controls">
-        <div class="btn-group">
-            <button class="screen-btn" class:active={forceValue === 0} on:click={() => setForce(0)}>
-                No forces
-            </button>
-        </div>
-    </div>
     <p>
         That shows their default behavior: If a particle is too close to a neighbor it gets repulsed
         and tries to move away. If no neighbor is close enough it just rests and does nothing.
     </p>
-    <p>But particles can also attract each other</p>
-    <div class="controls">
-        <div class="btn-group">
-            <button class="screen-btn" class:active={forceValue === 1} on:click={() => setForce(1)}>
-                Attract each other
-            </button>
-        </div>
-    </div>
+    <p>
+        But particles can also attract each other
+        <button class="screen-btn" class:active={forceValue === 1} on:click={() => setForce(1)}>
+            Attract each other
+        </button>
+    </p>
     <p>
         In this case their natural repulsion force has to fight a new attraction force: When a
         neighbor is close enough, the particle is now attracted. They pack as closely as possible to
@@ -86,16 +80,8 @@
     <p>
         Finally, they can also repel each other, which causes clusters to form as groups push
         against one another.
+        <button class="screen-btn" class:active={forceValue === -1} on:click={() => setForce(-1)}>
+            Repel each other
+        </button>
     </p>
-    <div class="controls">
-        <div class="btn-group">
-            <button
-                class="screen-btn"
-                class:active={forceValue === -1}
-                on:click={() => setForce(-1)}
-            >
-                Repel each other
-            </button>
-        </div>
-    </div>
 </div>
