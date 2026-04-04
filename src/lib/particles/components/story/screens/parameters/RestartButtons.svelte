@@ -10,7 +10,7 @@
 
     let attractionTable = getZeroedAttractionTable();
 
-    let initialSpreadConfig: InitialConfig = 'uniform';
+    let initialSpreadConfig: InitialConfig | undefined = undefined;
     let nbParticles = 0;
 
     const uniformSpread = () => {
@@ -29,7 +29,7 @@
         const config: SimulationConfig = {
             horizontalResolution: 30,
             verticalResolution: 20,
-            initialSpreadConfig: initialSpreadConfig,
+            initialSpreadConfig: initialSpreadConfig || 'uniform',
             colorWeights: {
                 white: 1,
                 red: 0,
@@ -52,8 +52,14 @@
 <div class="screen">
     <h2>Restart Buttons</h2>
     <p>
-        Let's add a few particles.
-        <UniformSpreadButton onClick={uniformSpread} />
+        Let's add a few particles:
+        <button
+            class="screen-btn"
+            class:active={initialSpreadConfig === 'uniform'}
+            on:click={() => uniformSpread()}
+        >
+            Add particles
+        </button>
     </p>
     <p>
         Meet <span class="cw">White</span>. This is our first species. For now it is doing nothing.
@@ -61,8 +67,14 @@
     </p>
 
     <p>
-        Look at what happens when we pack our particles a bit more tightly?
-        <CenteredCircleButton onClick={centerSpread} />
+        Look at what happens when we pack our particles a bit more tightly:
+        <button
+            class="screen-btn"
+            class:active={initialSpreadConfig === 'center'}
+            on:click={() => centerSpread()}
+        >
+            Pack particles
+        </button>
     </p>
 
     <p>We get some motion! Let's zoom in on that.</p>
