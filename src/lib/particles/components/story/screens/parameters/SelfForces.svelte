@@ -8,10 +8,10 @@
     let attractionTable = getZeroedAttractionTable();
     attractionTable.white.white = 0;
 
-    let forceValue: -1 | 0 | 1 = 0;
+    let forceValue: -1 | 0 | 1 | undefined = undefined;
     let horizontalResolution = 6;
     let verticalResolution = 4;
-    let nbParticles = 500;
+    let nbParticles = 0; // Start with an empty screen
 
     const setForce = (val: -1 | 0 | 1) => {
         forceValue = val;
@@ -56,32 +56,33 @@
 <div class="screen">
     <h2>Forces</h2>
     <p>
-        Let's zoom in on the center of the previous universe. All particles start tightly packed and
-        slowly move away from each other.
+        Let's zoom in on the center of the previous universe.
         <button class="screen-btn" class:active={forceValue === 0} on:click={() => setForce(0)}>
-            No forces
+            Zoooom
         </button>
     </p>
     <p>
-        That shows their default behavior: If a particle is too close to a neighbor it gets repulsed
-        and tries to move away. If no neighbor is close enough it just rests and does nothing.
+        All particles start tightly packed and slowly move away from each other. <b
+            >This is their default behavior:</b
+        > If a particle is too close to a neighbor it gets repulsed and tries to move away. If no neighbor
+        is close enough it just rests and does nothing.
     </p>
     <p>
-        But particles can also attract each other
+        Particles can attract each other
         <button class="screen-btn" class:active={forceValue === 1} on:click={() => setForce(1)}>
-            Attract each other
+            Create attraction force
         </button>
     </p>
     <p>
-        In this case their natural repulsion force has to fight a new attraction force: When a
-        neighbor is close enough, the particle is now attracted. They pack as closely as possible to
-        each other and their natural repulsion force pushes them into clusters.
+        In this case their natural repulsion force has to fight a new force: When a neighbor is
+        close enough, the particle is now attracted. They pack as closely as possible to each other
+        and their natural repulsion force pushes them into clusters.
     </p>
     <p>
         Finally, they can also repel each other, which causes clusters to form as groups push
         against one another.
         <button class="screen-btn" class:active={forceValue === -1} on:click={() => setForce(-1)}>
-            Repel each other
+            Create repulsion force
         </button>
     </p>
 </div>
