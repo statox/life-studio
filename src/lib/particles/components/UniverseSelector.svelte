@@ -3,8 +3,10 @@
         StoredUniverse,
         UniverseBehavior,
         UniverseStructure,
-        EnergyLevel
+        EnergyLevel,
+        UniverseCategory
     } from '$lib/particles/universe';
+    import { UNIVERSE_CATEGORIES } from '$lib/particles/universe';
     import AttractionTableComponent from './AttractionTableComponent.svelte';
 
     export let universes: StoredUniverse[];
@@ -18,6 +20,7 @@
     let fColors: 1 | 2 | 3 | 4 | 'all' = 'all';
     let fEnergy: EnergyLevel | 'all' = 'all';
     let fComplexity: 1 | 2 | 3 | 'all' = 'all';
+    let fCategory: UniverseCategory | 'all' = 'all';
 
     // ── Sort ─────────────────────────────────────────────────────────────────
     type SortKey = 'name' | 'behavior' | 'structure' | 'colors' | 'energy' | 'complexity';
@@ -58,7 +61,8 @@
                 (fStructure === 'all' || u.structure === fStructure) &&
                 (fColors === 'all' || u.activeColors === fColors) &&
                 (fEnergy === 'all' || u.energyLevel === fEnergy) &&
-                (fComplexity === 'all' || u.complexity === fComplexity)
+                (fComplexity === 'all' || u.complexity === fComplexity) &&
+                (fCategory === 'all' || u.category === fCategory)
         )
         .sort((a, b) => {
             let cmp = 0;
@@ -73,6 +77,19 @@
             else if (sortKey === 'complexity') cmp = a.complexity - b.complexity;
             return sortAsc ? cmp : -cmp;
         });
+
+    // ── Category grouping ────────────────────────────────────────────────────
+    $: grouped = UNIVERSE_CATEGORIES.map((cat) => ({
+        category: cat,
+        items: visible.filter((u) => u.category === cat)
+    })).filter((g) => g.items.length > 0);
+
+    let collapsedCategories = new Set<string>();
+    const toggleCategory = (cat: string) => {
+        if (collapsedCategories.has(cat)) collapsedCategories.delete(cat);
+        else collapsedCategories.add(cat);
+        collapsedCategories = collapsedCategories;
+    };
 
     // ── Helpers ──────────────────────────────────────────────────────────────
     const behaviorColor = (b: string): string => {
@@ -114,6 +131,7 @@
     const colorOptions: Array<1 | 2 | 3 | 4 | 'all'> = ['all', 1, 2, 3, 4];
     const energies: Array<EnergyLevel | 'all'> = ['all', 'low', 'medium', 'high'];
     const complexities: Array<1 | 2 | 3 | 'all'> = ['all', 1, 2, 3];
+    const categories: Array<UniverseCategory | 'all'> = ['all', ...UNIVERSE_CATEGORIES];
 
     const sortOptions: Array<{ key: SortKey; label: string }> = [
         { key: 'name', label: 'Name' },
@@ -156,74 +174,98 @@
 
     <!-- ── List ── -->
     <ul class="list" role="listbox" aria-label="Universe selector">
-        {#each visible as u (u.name)}
-            {@const isSelected = selected?.name === u.name}
-            {@const isExpanded = expandedId === u.id}
-            <li
-                class="item"
-                class:active={isSelected}
-                role="option"
-                aria-selected={isSelected}
-                tabindex="0"
-                on:click={() => onSelect(u)}
-                on:keydown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        onSelect(u);
-                    }
-                }}
-            >
-                <div class="item-body">
-                    <div class="item-content">
-                        <div class="item-top">
-                            <span class="item-name">{u.name}</span>
-                            <span class="item-colors">{u.activeColors}c</span>
-                        </div>
-
-                        <div class="item-props">
-                            <span class="prop" style="border-color:{behaviorColor(u.behavior)}44">
-                                <span
-                                    class="prop-dot"
-                                    style="background:{behaviorColor(u.behavior)}"
-                                />
-                                {u.behavior}
-                            </span>
-                            <span class="prop" style="border-color:{structureColor(u.structure)}44">
-                                <span
-                                    class="prop-dot"
-                                    style="background:{structureColor(u.structure)}"
-                                />
-                                {u.structure}
-                            </span>
-                            <span class="prop" style="border-color:{energyColor(u.energyLevel)}44">
-                                <span
-                                    class="prop-dot"
-                                    style="background:{energyColor(u.energyLevel)}"
-                                />
-                                {u.energyLevel}
-                            </span>
-                            <span class="prop complexity">{stars(u.complexity)}</span>
-                        </div>
-
-                        {#if u.description}
-                            <p class="item-desc" class:expanded={isExpanded}>{u.description}</p>
-                            {#if u.description.length > 120 || u.description.includes('\n')}
-                                <button class="expand-btn" on:click={(e) => toggleDesc(e, u.id)}>
-                                    {isExpanded ? 'Show less' : 'Show more'}
-                                </button>
-                            {/if}
-                        {/if}
-                    </div>
-
-                    <div class="item-table">
-                        <AttractionTableComponent
-                            attractionTable={u.attractionTable}
-                            readonly
-                            compact
-                        />
-                    </div>
-                </div>
+        {#each grouped as group (group.category)}
+            <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
+            <li class="category-header" on:click={() => toggleCategory(group.category)}>
+                <span class="cat-arrow">{collapsedCategories.has(group.category) ? '▶' : '▼'}</span>
+                <span class="cat-name">{group.category}</span>
+                <span class="cat-count">{group.items.length}</span>
             </li>
+            {#if !collapsedCategories.has(group.category)}
+                {#each group.items as u (u.id)}
+                    {@const isSelected = selected?.name === u.name}
+                    {@const isExpanded = expandedId === u.id}
+                    <li
+                        class="item"
+                        class:active={isSelected}
+                        role="option"
+                        aria-selected={isSelected}
+                        tabindex="0"
+                        on:click={() => onSelect(u)}
+                        on:keydown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                onSelect(u);
+                            }
+                        }}
+                    >
+                        <div class="item-body">
+                            <div class="item-content">
+                                <div class="item-top">
+                                    <span class="item-name">{u.name}</span>
+                                    <span class="item-colors">{u.activeColors}c</span>
+                                </div>
+
+                                <div class="item-props">
+                                    <span
+                                        class="prop"
+                                        style="border-color:{behaviorColor(u.behavior)}44"
+                                    >
+                                        <span
+                                            class="prop-dot"
+                                            style="background:{behaviorColor(u.behavior)}"
+                                        />
+                                        {u.behavior}
+                                    </span>
+                                    <span
+                                        class="prop"
+                                        style="border-color:{structureColor(u.structure)}44"
+                                    >
+                                        <span
+                                            class="prop-dot"
+                                            style="background:{structureColor(u.structure)}"
+                                        />
+                                        {u.structure}
+                                    </span>
+                                    <span
+                                        class="prop"
+                                        style="border-color:{energyColor(u.energyLevel)}44"
+                                    >
+                                        <span
+                                            class="prop-dot"
+                                            style="background:{energyColor(u.energyLevel)}"
+                                        />
+                                        {u.energyLevel}
+                                    </span>
+                                    <span class="prop complexity">{stars(u.complexity)}</span>
+                                </div>
+
+                                {#if u.description}
+                                    <p class="item-desc" class:expanded={isExpanded}>
+                                        {u.description}
+                                    </p>
+                                    {#if u.description.length > 120 || u.description.includes('\n')}
+                                        <button
+                                            class="expand-btn"
+                                            on:click={(e) => toggleDesc(e, u.id)}
+                                        >
+                                            {isExpanded ? 'Show less' : 'Show more'}
+                                        </button>
+                                    {/if}
+                                {/if}
+                            </div>
+
+                            <div class="item-table">
+                                <AttractionTableComponent
+                                    attractionTable={u.attractionTable}
+                                    readonly
+                                    compact
+                                />
+                            </div>
+                        </div>
+                    </li>
+                {/each}
+            {/if}
         {/each}
         {#if visible.length === 0}
             <li class="empty">No universes match the current filters.</li>
@@ -232,6 +274,20 @@
 
     <!-- ── Filters ── -->
     <div class="filters">
+        <div class="filter-row">
+            <span class="filter-label">Category</span>
+            <div class="chips">
+                {#each categories as cat}
+                    <button
+                        class="chip"
+                        class:active={fCategory === cat}
+                        on:click={() => {
+                            fCategory = cat;
+                        }}>{cat === 'all' ? 'All' : cat}</button
+                    >
+                {/each}
+            </div>
+        </div>
         <div class="filter-row">
             <span class="filter-label">Behavior</span>
             <div class="chips">
@@ -479,6 +535,50 @@
         border-bottom: none;
         overflow-y: auto;
         max-height: 480px;
+    }
+
+    .category-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        background: #1a2327;
+        cursor: pointer;
+        user-select: none;
+        border-top: 1px solid #37474f;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        min-height: 36px;
+    }
+
+    .category-header:first-child {
+        border-top: none;
+    }
+
+    .category-header:hover {
+        background: #1e2e33;
+    }
+
+    .cat-arrow {
+        font-size: 0.6rem;
+        color: #546e7a;
+        width: 12px;
+        flex-shrink: 0;
+    }
+
+    .cat-name {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #90a4ae;
+        font-weight: 600;
+    }
+
+    .cat-count {
+        font-size: 0.68rem;
+        color: #546e7a;
+        margin-left: auto;
     }
 
     .item {

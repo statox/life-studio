@@ -1,0 +1,51 @@
+{
+    "name": "Crystal",
+    "description": "A universe very slowly converging into a stable mesh structure. ",
+    "preferredInitialConfig": "uniform",
+    "behavior": "converges",
+    "structure": "patterns",
+    "activeColors": 3,
+    "convergenceSpeed": "slow",
+    "energyLevel": "low",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": -2,
+            "red": 1,
+            "green": 0,
+            "blue": 0
+        },
+        "red": {
+            "white": -1,
+            "red": 0,
+            "green": -1,
+            "blue": 0
+        },
+        "green": {
+            "white": 0,
+            "red": 1,
+            "green": -1,
+            "blue": 0
+        },
+        "blue": {
+            "white": 0,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 0
+    },
+    "nbParticles": 12000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "crystal",
+    "category": "crystals",
+    "createdAt": "2026-03-30"
+}

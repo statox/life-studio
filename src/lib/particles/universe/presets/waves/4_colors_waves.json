@@ -1,0 +1,51 @@
+{
+    "name": "4 colors - Waves",
+    "description": "White is attracted to all other colors which all are repulsed by white.\n\nThis creates waves of white floats pushing incoherent masses of red, green and blue.",
+    "preferredInitialConfig": "uniform",
+    "behavior": "chaotic",
+    "structure": "none",
+    "activeColors": 4,
+    "convergenceSpeed": "never",
+    "energyLevel": "high",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": 0,
+            "red": 1,
+            "green": 1,
+            "blue": 1
+        },
+        "red": {
+            "white": -1,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        },
+        "green": {
+            "white": -1,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        },
+        "blue": {
+            "white": -1,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        }
+    },
+    "colorWeights": {
+        "white": 1000,
+        "red": 485,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "4_colors_waves",
+    "category": "waves",
+    "createdAt": "2026-03-30"
+}

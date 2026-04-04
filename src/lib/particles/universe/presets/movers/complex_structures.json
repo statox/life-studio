@@ -1,0 +1,51 @@
+{
+    "name": "Complex structure 3",
+    "description": "Another slowly moving but varied complex structure universe",
+    "preferredInitialConfig": "uniform",
+    "behavior": "cyclic",
+    "structure": "organisms",
+    "activeColors": 4,
+    "convergenceSpeed": "never",
+    "energyLevel": "low",
+    "complexity": 3,
+    "attractionTable": {
+        "white": {
+            "white": 0,
+            "red": 1,
+            "green": 0,
+            "blue": -1
+        },
+        "red": {
+            "white": 1,
+            "red": -1,
+            "green": 0,
+            "blue": 2
+        },
+        "green": {
+            "white": 2,
+            "red": 1,
+            "green": 0,
+            "blue": 1
+        },
+        "blue": {
+            "white": 2,
+            "red": 2,
+            "green": -1,
+            "blue": 0
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "complex_structures",
+    "category": "movers",
+    "createdAt": "2026-03-31"
+}

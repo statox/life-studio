@@ -2,7 +2,7 @@ import type { AttractionTable } from '../attraction';
 import type { ColorProportions } from '../engine';
 import demoPresets from './demo_presets.json';
 
-const presetModules = import.meta.glob('./presets/*.json', { eager: true }) as Record<
+const presetModules = import.meta.glob('./presets/**/*.json', { eager: true }) as Record<
     string,
     { default: StoredUniverse }
 >;
@@ -40,6 +40,12 @@ type UniverseMetadata = {
      * - `3` — rich multi-colour dynamics with emergent structures
      */
     complexity: 1 | 2 | 3;
+    /** Primary category for grouping in the catalogue. */
+    category: UniverseCategory;
+    /** Optional freeform tags for search/filtering. */
+    tags?: string[];
+    /** ISO date string (YYYY-MM-DD) when this preset was first created. */
+    createdAt?: string;
 };
 
 /**
@@ -83,6 +89,21 @@ export type ConvergenceSpeed = 'instant' | 'fast' | 'medium' | 'slow' | 'never';
  * - `high`   — fast, turbulent motion
  */
 export type EnergyLevel = 'low' | 'medium' | 'high';
+
+export const UNIVERSE_CATEGORIES = [
+    'worms',
+    'islands',
+    'clusters',
+    'waves',
+    'crystals',
+    'movers',
+    'chase',
+    'chaos',
+    'stripes',
+    'other'
+] as const;
+
+export type UniverseCategory = typeof UNIVERSE_CATEGORIES[number];
 
 export type StoredUniverse = Universe & UniverseMetadata;
 

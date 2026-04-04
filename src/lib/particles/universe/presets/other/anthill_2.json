@@ -1,0 +1,51 @@
+{
+    "name": "anthill_2",
+    "description": "Same as anthill but in a bigger world. It looks like some water (Green) creating water ways on a land over time",
+    "preferredInitialConfig": "center",
+    "behavior": "converges",
+    "structure": "patterns",
+    "activeColors": 4,
+    "convergenceSpeed": "slow",
+    "energyLevel": "medium",
+    "complexity": 3,
+    "attractionTable": {
+        "white": {
+            "white": 0,
+            "red": -1,
+            "green": 0,
+            "blue": 0
+        },
+        "red": {
+            "white": -1,
+            "red": 0,
+            "green": -1,
+            "blue": 0
+        },
+        "green": {
+            "white": 1,
+            "red": -1,
+            "green": 0,
+            "blue": -1
+        },
+        "blue": {
+            "white": 0,
+            "red": 1,
+            "green": 1,
+            "blue": 0
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 12000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "anthill_2",
+    "category": "other",
+    "createdAt": "2026-04-04"
+}

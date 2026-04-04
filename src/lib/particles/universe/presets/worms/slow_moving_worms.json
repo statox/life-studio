@@ -1,0 +1,51 @@
+{
+    "name": "slow moving worms",
+    "description": "Creates long worms structure which slowly merge together into a single very dense worm (seen with \"centered circle\" button)\n\nThe longer the structure become, the harder they fight the merge",
+    "preferredInitialConfig": "uniform",
+    "behavior": "converges",
+    "structure": "organisms",
+    "activeColors": 4,
+    "convergenceSpeed": "slow",
+    "energyLevel": "medium",
+    "complexity": 3,
+    "attractionTable": {
+        "white": {
+            "white": -1,
+            "red": 1,
+            "green": 1,
+            "blue": -1
+        },
+        "red": {
+            "white": 1,
+            "red": -1,
+            "green": 1,
+            "blue": 1
+        },
+        "green": {
+            "white": 1,
+            "red": 1,
+            "green": -1,
+            "blue": 1
+        },
+        "blue": {
+            "white": -1,
+            "red": 1,
+            "green": 1,
+            "blue": -1
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 60,
+    "verticalResolution": 40,
+    "friction": 0.04,
+    "id": "slow_moving_worms",
+    "category": "worms",
+    "createdAt": "2026-04-02"
+}

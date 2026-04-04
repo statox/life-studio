@@ -1,0 +1,51 @@
+{
+    "name": "fast movers",
+    "description": "large simple organisms moving very fast in the universe",
+    "preferredInitialConfig": "uniform",
+    "behavior": "converges",
+    "structure": "organisms",
+    "activeColors": 4,
+    "convergenceSpeed": "slow",
+    "energyLevel": "high",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": 2,
+            "red": 0,
+            "green": -1,
+            "blue": -1
+        },
+        "red": {
+            "white": 0,
+            "red": 0,
+            "green": 2,
+            "blue": -1
+        },
+        "green": {
+            "white": 0,
+            "red": 0,
+            "green": 2,
+            "blue": 2
+        },
+        "blue": {
+            "white": 1,
+            "red": 2,
+            "green": 2,
+            "blue": 1
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 8000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.04,
+    "id": "fast_movers",
+    "category": "movers",
+    "createdAt": "2026-03-30"
+}

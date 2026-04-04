@@ -1,0 +1,51 @@
+{
+    "name": "Moving structures 2",
+    "description": "Change the proportion of blue and see how structures become more structured when more blue appears",
+    "preferredInitialConfig": "uniform",
+    "behavior": "cyclic",
+    "structure": "organisms",
+    "activeColors": 4,
+    "convergenceSpeed": "never",
+    "energyLevel": "high",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": 0,
+            "red": 1,
+            "green": 0,
+            "blue": 1
+        },
+        "red": {
+            "white": -1,
+            "red": 1,
+            "green": -1,
+            "blue": 0
+        },
+        "green": {
+            "white": 0,
+            "red": 1,
+            "green": 0,
+            "blue": 1
+        },
+        "blue": {
+            "white": 1,
+            "red": 0,
+            "green": -1,
+            "blue": -2
+        }
+    },
+    "colorWeights": {
+        "white": 499,
+        "red": 492,
+        "green": 499,
+        "blue": 506
+    },
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 15,
+    "verticalResolution": 10,
+    "friction": 0.51,
+    "id": "moving_structures2",
+    "category": "movers",
+    "createdAt": "2026-03-30"
+}

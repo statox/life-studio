@@ -6,14 +6,25 @@
         UniverseBehavior,
         UniverseStructure,
         ConvergenceSpeed,
-        EnergyLevel
+        EnergyLevel,
+        UniverseCategory
     } from '../universe';
+    import { UNIVERSE_CATEGORIES } from '../universe';
 
     export let universe: Universe;
 
     const dispatch = createEventDispatcher<{ close: void }>();
 
+    const slugify = (s: string): string =>
+        s
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '_')
+            .replace(/^_|_$/g, '');
+
     let name = '';
+    let id = '';
+    let idManuallyEdited = false;
+    $: if (name && !idManuallyEdited) id = slugify(name);
     let description = '';
     let preferredInitialConfig: InitialConfig = 'uniform';
     let behavior: UniverseBehavior = 'cyclic';
@@ -22,7 +33,9 @@
     let convergenceSpeed: ConvergenceSpeed = 'never';
     let energyLevel: EnergyLevel = 'medium';
     let complexity: 1 | 2 | 3 = 2;
+    let category: UniverseCategory = 'other';
     let copied = false;
+    const createdAt = new Date().toISOString().slice(0, 10);
 
     const behaviorHints: Record<UniverseBehavior, string> = {
         still: 'Zero forces — particles never move',
@@ -58,6 +71,7 @@
         try {
             return JSON.stringify(
                 {
+                    id,
                     name,
                     description,
                     preferredInitialConfig,
@@ -67,6 +81,8 @@
                     convergenceSpeed,
                     energyLevel,
                     complexity,
+                    category,
+                    createdAt,
                     ...universe
                 },
                 null,
@@ -98,6 +114,16 @@
             <input id="export-name" type="text" placeholder="My table" bind:value={name} />
         </div>
         <div class="field">
+            <label for="export-id">ID</label>
+            <input
+                id="export-id"
+                type="text"
+                placeholder="auto-generated from name"
+                bind:value={id}
+                on:input={() => (idManuallyEdited = true)}
+            />
+        </div>
+        <div class="field">
             <label for="export-desc">Description</label>
             <textarea
                 rows="4"
@@ -116,6 +142,15 @@
         </div>
 
         <div class="section-label">Classification</div>
+
+        <div class="field">
+            <label for="export-category">Category</label>
+            <select id="export-category" bind:value={category}>
+                {#each UNIVERSE_CATEGORIES as cat}
+                    <option value={cat}>{cat}</option>
+                {/each}
+            </select>
+        </div>
 
         <div class="field-group">
             <div class="field">

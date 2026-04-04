@@ -1,0 +1,51 @@
+{
+    "name": "4 Colors - Slowly merging 2-colors blobs",
+    "description": "TODO Improve this description.\n\nBlobs of red-blue and blobs of green-white move around and regularly merge creating bigger blobs. Sometimes they stop moving.\n\nI think it should converge to a still state because there doesn't seemm to have splits but if it does it takes a very long time. The simulation might be artificially kept moving by the inaccurate computations of walls wrapping.",
+    "preferredInitialConfig": "uniform",
+    "behavior": "converges",
+    "structure": "clusters",
+    "activeColors": 4,
+    "convergenceSpeed": "slow",
+    "energyLevel": "low",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": 1,
+            "red": -1,
+            "green": -1,
+            "blue": 1
+        },
+        "red": {
+            "white": -1,
+            "red": 1,
+            "green": 1,
+            "blue": -1
+        },
+        "green": {
+            "white": 1,
+            "red": -1,
+            "green": -1,
+            "blue": 1
+        },
+        "blue": {
+            "white": -1,
+            "red": 1,
+            "green": 1,
+            "blue": -1
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "4_colors_slowly_merging2_colors_blobs",
+    "category": "clusters",
+    "createdAt": "2026-03-30"
+}

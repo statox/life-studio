@@ -1,0 +1,51 @@
+{
+    "name": "Rock - Paper - Scissors",
+    "description": "RPS-like rules which creates alternating stripes of white, red, green.\n\nConverge into a pretty stable moving pattern",
+    "preferredInitialConfig": "uniform",
+    "behavior": "cyclic",
+    "structure": "patterns",
+    "activeColors": 3,
+    "convergenceSpeed": "slow",
+    "energyLevel": "medium",
+    "complexity": 2,
+    "attractionTable": {
+        "white": {
+            "white": 0,
+            "red": -1,
+            "green": 1,
+            "blue": 0
+        },
+        "red": {
+            "white": 1,
+            "red": 0,
+            "green": -1,
+            "blue": 0
+        },
+        "green": {
+            "white": -1,
+            "red": 1,
+            "green": 0,
+            "blue": 0
+        },
+        "blue": {
+            "white": 0,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 12000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5,
+    "id": "rock_paper_scissors",
+    "category": "chase",
+    "createdAt": "2026-03-30"
+}

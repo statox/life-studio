@@ -24,8 +24,10 @@
         type UniverseBehavior,
         type UniverseStructure,
         type ConvergenceSpeed,
-        type EnergyLevel
+        type EnergyLevel,
+        type UniverseCategory
     } from '$lib/particles/universe';
+    import { UNIVERSE_CATEGORIES } from '$lib/particles/universe';
 
     // ── State ──────────────────────────────────
     let simulationComponent: Simulation;
@@ -56,6 +58,8 @@
     let editConvergenceSpeed: ConvergenceSpeed = 'never';
     let editEnergyLevel: EnergyLevel = 'medium';
     let editComplexity: 1 | 2 | 3 = 2;
+    let editCategory: UniverseCategory = 'other';
+    let editTagsStr = '';
 
     let saveStatus: 'idle' | 'saving' | 'saved' | 'error' = 'idle';
     let saveTimeout: ReturnType<typeof setTimeout>;
@@ -102,7 +106,9 @@
             editActiveColors !== selected.activeColors ||
             editConvergenceSpeed !== selected.convergenceSpeed ||
             editEnergyLevel !== selected.energyLevel ||
-            editComplexity !== selected.complexity);
+            editComplexity !== selected.complexity ||
+            editCategory !== selected.category ||
+            editTagsStr !== (selected.tags ?? []).join(', '));
 
     // ── Actions ────────────────────────────────
     const loadFormFromUniverse = (u: StoredUniverse) => {
@@ -115,6 +121,8 @@
         editConvergenceSpeed = u.convergenceSpeed;
         editEnergyLevel = u.energyLevel;
         editComplexity = u.complexity;
+        editCategory = u.category;
+        editTagsStr = (u.tags ?? []).join(', ');
         saveStatus = 'idle';
     };
 
@@ -184,7 +192,12 @@
         activeColors: editActiveColors,
         convergenceSpeed: editConvergenceSpeed,
         energyLevel: editEnergyLevel,
-        complexity: editComplexity
+        complexity: editComplexity,
+        category: editCategory,
+        tags: editTagsStr
+            .split(',')
+            .map((t) => t.trim())
+            .filter(Boolean)
     });
 
     const save = async () => {
@@ -262,7 +275,27 @@
                     </select>
                 </div>
 
-                <div class="section-label">Tags</div>
+                <div class="section-label">Classification</div>
+
+                <div class="field">
+                    <label for="cl-category">Category</label>
+                    <select id="cl-category" bind:value={editCategory}>
+                        {#each UNIVERSE_CATEGORIES as cat}
+                            <option value={cat}>{cat}</option>
+                        {/each}
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="cl-tags">Tags</label>
+                    <input
+                        id="cl-tags"
+                        type="text"
+                        placeholder="comma-separated tags"
+                        bind:value={editTagsStr}
+                    />
+                </div>
+
+                <div class="section-label">Metadata</div>
 
                 <div class="field-group">
                     <div class="field">
