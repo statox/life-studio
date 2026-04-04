@@ -1,0 +1,52 @@
+{
+  "id": "flux_between_pillars",
+  "name": "Flux between pillars",
+  "description": "A RPS chase flowing around self attracted blue islands.\n\nIt looks like flow of people walking around pillars in the subway",
+  "preferredInitialConfig": "center",
+  "behavior": "cyclic",
+  "structure": "patterns",
+  "activeColors": 4,
+  "convergenceSpeed": "never",
+  "energyLevel": "medium",
+  "complexity": 3,
+  "category": "chase",
+  "createdAt": "2026-04-04",
+  "attractionTable": {
+    "white": {
+      "white": 0,
+      "red": -1,
+      "green": 1,
+      "blue": -1
+    },
+    "red": {
+      "white": 1,
+      "red": 0,
+      "green": -1,
+      "blue": -1
+    },
+    "green": {
+      "white": -1,
+      "red": 1,
+      "green": 0,
+      "blue": -1
+    },
+    "blue": {
+      "white": 0,
+      "red": 0,
+      "green": 0,
+      "blue": 1
+    }
+  },
+  "colorWeights": {
+    "white": 500,
+    "red": 500,
+    "green": 500,
+    "blue": 500
+  },
+  "nbParticles": 12000,
+  "maxAttractionRadius": 32,
+  "horizontalResolution": 30,
+  "verticalResolution": 20,
+  "friction": 0.5,
+  "tags": []
+}
