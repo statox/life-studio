@@ -15,7 +15,7 @@
 		<link href="/particles-life/_app/immutable/assets/AttractionTableComponent-8e1b3dbe.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/WorldSettingsSelector-b8e56327.css" rel="stylesheet">
 		<link href="/particles-life/_app/immutable/assets/RainbowButton-78030349.css" rel="stylesheet">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/start-0556bb8a.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/start-9f6ddd2a.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-1094118d.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/singletons-5ddd2b47.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/index-ab3fae27.js">
@@ -25,9 +25,9 @@
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/stores-cbd28385.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/workbench/_page.svelte-1bc75325.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/AttractionTableComponent-d26ebc2f.js">
-		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/WorldSettingsSelector-fe85f580.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/components/pages/particles-life/workbench/_page.svelte-38eeeff9.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/AttractionTableComponent-ccbae300.js">
+		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/WorldSettingsSelector-e1e7e42b.js">
 		<link rel="modulepreload" href="/particles-life/_app/immutable/chunks/RainbowButton-921a3201.js">
     </head>
 
@@ -46,7 +46,7 @@
 
 <div class="sim svelte-1vvmtyw">
     <div class="selector svelte-10ces6n">
-    <div class="sort-bar svelte-10ces6n"><span class="count svelte-10ces6n">66/66</span>
+    <div class="sort-bar svelte-10ces6n"><span class="count svelte-10ces6n">67/67</span>
         <input class="search svelte-10ces6n" type="search" placeholder="Search…" value="">
         <div class="sort-btns svelte-10ces6n"><button class="sort-btn svelte-10ces6n">Name
                     
@@ -3352,8 +3352,85 @@ The moving structures easily split and merge when they touch each other so the u
                     </li>
             <li class="category-header svelte-10ces6n"><span class="cat-arrow svelte-10ces6n">▼</span>
                 <span class="cat-name svelte-10ces6n">chase</span>
-                <span class="cat-count svelte-10ces6n">7</span></li>
+                <span class="cat-count svelte-10ces6n">8</span></li>
             
+                    
+                    <li class="item svelte-10ces6n" role="option" aria-selected="false" tabindex="0"><div class="item-body svelte-10ces6n"><div class="item-content svelte-10ces6n"><div class="item-top svelte-10ces6n"><span class="item-name svelte-10ces6n">Flux between pillars</span>
+                                    <span class="item-colors svelte-10ces6n">4c</span></div>
+
+                                <div class="item-props svelte-10ces6n"><span class="prop svelte-10ces6n" style="border-color:#2e7d3244"><span class="prop-dot svelte-10ces6n" style="background:#2e7d32"></span>
+                                        cyclic</span>
+                                    <span class="prop svelte-10ces6n" style="border-color:#00838f44"><span class="prop-dot svelte-10ces6n" style="background:#00838f"></span>
+                                        patterns</span>
+                                    <span class="prop svelte-10ces6n" style="border-color:#c3e88d44"><span class="prop-dot svelte-10ces6n" style="background:#c3e88d"></span>
+                                        medium</span>
+                                    <span class="prop complexity svelte-10ces6n">★★★</span></div>
+
+                                <p class="item-desc svelte-10ces6n">A RPS chase flowing around self attracted blue islands.
+
+It looks like flow of people walking around pillars in the subway</p>
+                                    <button class="expand-btn svelte-10ces6n">Show more
+                                        </button></div>
+
+                            <div class="item-table svelte-10ces6n">
+
+    <div class="scroll-wrap svelte-whhb3g"><div class="matrix svelte-whhb3g compact" style="grid-template-columns: auto repeat(4, 1fr)">
+            <div class="corner svelte-whhb3g"></div>
+            
+            <div class="col-header svelte-whhb3g">
+                    <div class="color-bar-h svelte-whhb3g" style="background:#ffedff"></div>
+                </div><div class="col-header svelte-whhb3g">
+                    <div class="color-bar-h svelte-whhb3g" style="background:#fc2a51"></div>
+                </div><div class="col-header svelte-whhb3g">
+                    <div class="color-bar-h svelte-whhb3g" style="background:#8ff97c"></div>
+                </div><div class="col-header svelte-whhb3g">
+                    <div class="color-bar-h svelte-whhb3g" style="background:#77cfff"></div>
+                </div>
+
+            
+            <div class="row-header svelte-whhb3g">
+                    <div class="color-bar-v svelte-whhb3g" style="background:#ffedff"></div></div>
+                
+                    <div class="swatch svelte-whhb3g" style="background:#37474f" title="white → white: 0">0
+                        </div>
+                    <div class="swatch svelte-whhb3g" style="background:#a15252" title="white → red: -1">-1
+                        </div>
+                    <div class="swatch svelte-whhb3g" style="background:#4a7c59" title="white → green: +1">+1
+                        </div>
+                    <div class="swatch svelte-whhb3g" style="background:#a15252" title="white → blue: -1">-1
+                        </div><div class="row-header svelte-whhb3g">
+                    <div class="color-bar-v svelte-whhb3g" style="background:#fc2a51"></div></div>
+                
+                    <div class="swatch svelte-whhb3g" style="background:#4a7c59" title="red → white: +1">+1
+                        </div>
+                    <div class="swatch svelte-whhb3g" style="background:#37474f" title="red → red: 0">0
+                        </div>
+                    <div class="swatch svelte-whhb3g" style="background:#a15252" title="red → green: -1">-1
+                        </div>
+                    <div class="swatch svelte-whhb3g" style="background:#a15252" title="red → blue: -1">-1
+                        </div><div class="row-header svelte-whhb3g">
+                    <div class="color-bar-v svelte-whhb3g" style="background:#8ff97c"></div></div>
+                
+                    <div class="swatch svelte-whhb3g" style="background:#a15252" title="green → white: -1">-1
+                        </div>
+                    <div class="swatch svelte-whhb3g" style="background:#4a7c59" title="green → red: +1">+1
+                        </div>
+                    <div class="swatch svelte-whhb3g" style="background:#37474f" title="green → green: 0">0
+                        </div>
+                    <div class="swatch svelte-whhb3g" style="background:#a15252" title="green → blue: -1">-1
+                        </div><div class="row-header svelte-whhb3g">
+                    <div class="color-bar-v svelte-whhb3g" style="background:#77cfff"></div></div>
+                
+                    <div class="swatch svelte-whhb3g" style="background:#37474f" title="blue → white: 0">0
+                        </div>
+                    <div class="swatch svelte-whhb3g" style="background:#37474f" title="blue → red: 0">0
+                        </div>
+                    <div class="swatch svelte-whhb3g" style="background:#37474f" title="blue → green: 0">0
+                        </div>
+                    <div class="swatch svelte-whhb3g" style="background:#4a7c59" title="blue → blue: +1">+1
+                        </div></div></div>
+                            </div></div>
+                    </li>
                     
                     <li class="item svelte-10ces6n" role="option" aria-selected="false" tabindex="0"><div class="item-body svelte-10ces6n"><div class="item-content svelte-10ces6n"><div class="item-top svelte-10ces6n"><span class="item-name svelte-10ces6n">Self-cohesive RPS</span>
                                     <span class="item-colors svelte-10ces6n">3c</span></div>
@@ -5199,15 +5276,15 @@ We can see some groups at the border moving which is probably the symptom of a w
                             <button class="adj svelte-whhb3g">+</button>
                         </div>
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#2d5e3a" title="Click to cycle · white → red">+2</button>
+                            <button class="swatch svelte-whhb3g" style="background:#a15252" title="Click to cycle · white → red">-1</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div>
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#2d5e3a" title="Click to cycle · white → green">+2</button>
+                            <button class="swatch svelte-whhb3g" style="background:#a15252" title="Click to cycle · white → green">-1</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div>
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#2d5e3a" title="Click to cycle · white → blue">+2</button>
+                            <button class="swatch svelte-whhb3g" style="background:#a15252" title="Click to cycle · white → blue">-1</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div><div class="row-header svelte-whhb3g"><span class="col-label svelte-whhb3g">red</span>
                     <div class="color-bar-v svelte-whhb3g" style="background:#fc2a51"></div></div>
@@ -5217,43 +5294,43 @@ We can see some groups at the border moving which is probably the symptom of a w
                             <button class="adj svelte-whhb3g">+</button>
                         </div>
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#2d5e3a" title="Click to cycle · red → red">+2</button>
+                            <button class="swatch svelte-whhb3g" style="background:#37474f" title="Click to cycle · red → red">0</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div>
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#4a7c59" title="Click to cycle · red → green">+1</button>
+                            <button class="swatch svelte-whhb3g" style="background:#2d5e3a" title="Click to cycle · red → green">+2</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div>
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#4a7c59" title="Click to cycle · red → blue">+1</button>
+                            <button class="swatch svelte-whhb3g" style="background:#37474f" title="Click to cycle · red → blue">0</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div><div class="row-header svelte-whhb3g"><span class="col-label svelte-whhb3g">green</span>
                     <div class="color-bar-v svelte-whhb3g" style="background:#8ff97c"></div></div>
                 
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#4a7c59" title="Click to cycle · green → white">+1</button>
+                            <button class="swatch svelte-whhb3g" style="background:#2d5e3a" title="Click to cycle · green → white">+2</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div>
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#a15252" title="Click to cycle · green → red">-1</button>
+                            <button class="swatch svelte-whhb3g" style="background:#2d5e3a" title="Click to cycle · green → red">+2</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div>
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#37474f" title="Click to cycle · green → green">0</button>
+                            <button class="swatch svelte-whhb3g" style="background:#2d5e3a" title="Click to cycle · green → green">+2</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div>
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#4a7c59" title="Click to cycle · green → blue">+1</button>
+                            <button class="swatch svelte-whhb3g" style="background:#37474f" title="Click to cycle · green → blue">0</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div><div class="row-header svelte-whhb3g"><span class="col-label svelte-whhb3g">blue</span>
                     <div class="color-bar-v svelte-whhb3g" style="background:#77cfff"></div></div>
                 
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#2d5e3a" title="Click to cycle · blue → white">+2</button>
+                            <button class="swatch svelte-whhb3g" style="background:#4a7c59" title="Click to cycle · blue → white">+1</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div>
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#37474f" title="Click to cycle · blue → red">0</button>
+                            <button class="swatch svelte-whhb3g" style="background:#2d5e3a" title="Click to cycle · blue → red">+2</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div>
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
@@ -5261,7 +5338,7 @@ We can see some groups at the border moving which is probably the symptom of a w
                             <button class="adj svelte-whhb3g">+</button>
                         </div>
                     <div class="cell svelte-whhb3g"><button class="adj svelte-whhb3g">−</button>
-                            <button class="swatch svelte-whhb3g" style="background:#37474f" title="Click to cycle · blue → blue">0</button>
+                            <button class="swatch svelte-whhb3g" style="background:#2d5e3a" title="Click to cycle · blue → blue">+2</button>
                             <button class="adj svelte-whhb3g">+</button>
                         </div></div></div></div>
         <br>
@@ -5318,14 +5395,14 @@ We can see some groups at the border moving which is probably the symptom of a w
 
 
 
-		<script type="module" data-sveltekit-hydrate="mmsvcr">
-			import { start } from "/particles-life/_app/immutable/start-0556bb8a.js";
+		<script type="module" data-sveltekit-hydrate="lbrkv1">
+			import { start } from "/particles-life/_app/immutable/start-9f6ddd2a.js";
 
 			start({
 				env: {},
 				paths: {"base":"/particles-life","assets":"/particles-life"},
-				target: document.querySelector('[data-sveltekit-hydrate="mmsvcr"]').parentNode,
-				version: "1775328653105",
+				target: document.querySelector('[data-sveltekit-hydrate="lbrkv1"]').parentNode,
+				version: "1775329225052",
 				hydrate: {
 					node_ids: [0, 9],
 					data: [null,null],
