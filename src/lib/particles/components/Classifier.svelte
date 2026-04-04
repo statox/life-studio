@@ -3,13 +3,8 @@
     import { dev } from '$app/environment';
     import { onMount } from 'svelte';
 
-    import type { AttractionTable } from '$lib/particles/attraction';
-    import {
-        getNewCells,
-        largeCenterCellsInPlace,
-        rainbowCellsInPlace
-    } from '$lib/particles/engine/cells';
-    import type { Cell } from '$lib/particles/engine';
+    import { loadPresetParams, respreadParams } from '$lib/particles/engine';
+    import type { SimulationParams } from '$lib/particles/engine/types';
     import UniformSpreadButton from './buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from './buttons/CenteredCircleButton.svelte';
     import RainbowButton from './buttons/RainbowButton.svelte';
@@ -33,10 +28,9 @@
     let simulationComponent: Simulation;
     let universes: StoredUniverse[] = [...getAllUniverses()];
     let selected: StoredUniverse | null = null;
+    let lastParams: SimulationParams;
 
-    let cells: Cell[] = [];
-    let attractionTable: AttractionTable;
-
+    // Derived from selected preset for the read-only WorldSettingsSelector
     let ws: WorldSettings = {
         nbParticles: 0,
         horizontalResolution: 0,
@@ -45,8 +39,16 @@
         friction: 0,
         colorWeights: { white: 0, red: 0, green: 0, blue: 0 }
     };
-
-    const worldSize = { x: 0, y: 0 };
+    $: if (selected) {
+        ws = {
+            nbParticles: selected.nbParticles,
+            horizontalResolution: selected.horizontalResolution,
+            verticalResolution: selected.verticalResolution,
+            maxAttractionRadius: selected.maxAttractionRadius,
+            friction: selected.friction,
+            colorWeights: selected.colorWeights
+        };
+    }
 
     // ── Editable metadata ──────────────────────
     let editName = '';
@@ -126,64 +128,28 @@
         saveStatus = 'idle';
     };
 
-    const startSim = () => {
-        simulationComponent?.startSim({
-            cells,
-            worldSize,
-            maxAttractionRadius: ws.maxAttractionRadius,
-            attractionTable,
-            friction: ws.friction
-        });
-    };
-
-    const restartWithCells = (newCells: Cell[]) => {
-        cells = newCells;
-        startSim();
-    };
-
-    const loadUniverse = (u: StoredUniverse) => {
-        attractionTable = u.attractionTable;
-        ws = {
-            colorWeights: u.colorWeights,
-            nbParticles: u.nbParticles,
-            maxAttractionRadius: u.maxAttractionRadius,
-            horizontalResolution: u.horizontalResolution,
-            verticalResolution: u.verticalResolution,
-            friction: u.friction
-        };
-        worldSize.x = u.maxAttractionRadius * u.horizontalResolution;
-        worldSize.y = u.maxAttractionRadius * u.verticalResolution;
-        cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
-        if (u.preferredInitialConfig === 'center') largeCenterCellsInPlace(cells, worldSize);
-        if (u.preferredInitialConfig === 'rainbow')
-            rainbowCellsInPlace(cells, worldSize, u.colorWeights);
-        startSim();
+    const startWithParams = (params: SimulationParams) => {
+        lastParams = params;
+        simulationComponent?.startSim(params);
     };
 
     const selectUniverse = (u: StoredUniverse) => {
         selected = u;
         loadFormFromUniverse(u);
-        loadUniverse(u);
+        startWithParams(loadPresetParams(u));
     };
 
-    const uniformSpread = () => {
-        restartWithCells(getNewCells(worldSize, ws.nbParticles, ws.colorWeights));
+    const spread = (type: 'uniform' | 'center' | 'rainbow') => {
+        if (!selected) return;
+        startWithParams(
+            respreadParams(lastParams, type, selected.nbParticles, selected.colorWeights)
+        );
     };
 
-    const centerSpread = () => {
-        const newCells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
-        largeCenterCellsInPlace(newCells, worldSize);
-        restartWithCells(newCells);
-    };
-
-    const rainbowSpread = () => {
-        const newCells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
-        rainbowCellsInPlace(newCells, worldSize, ws.colorWeights);
-        restartWithCells(newCells);
-    };
-
-    const buildStoredUniverse = (): StoredUniverse => ({
-        ...selected!,
+    const buildStoredUniverse = (): StoredUniverse => {
+        if (!selected) throw new Error('No preset selected');
+        return {
+        ...selected,
         name: editName,
         description: editDescription,
         preferredInitialConfig: editPreferredInitialConfig,
@@ -198,10 +164,12 @@
             .split(',')
             .map((t) => t.trim())
             .filter(Boolean)
-    });
+        };
+    };
 
     const save = async () => {
-        if (!selected) return;
+        const current = selected;
+        if (!current) return;
         saveStatus = 'saving';
         clearTimeout(saveTimeout);
 
@@ -219,7 +187,7 @@
             }
 
             // Update in-memory list so UniverseSelector reflects changes
-            const idx = universes.findIndex((u) => u.id === selected!.id);
+            const idx = universes.findIndex((u) => u.id === current.id);
             if (idx !== -1) {
                 universes[idx] = updated;
                 universes = universes;
@@ -247,9 +215,9 @@
     <Simulation bind:this={simulationComponent} />
 
     <div class="spread-btns">
-        <UniformSpreadButton onClick={uniformSpread} />
-        <CenteredCircleButton onClick={centerSpread} />
-        <RainbowButton onClick={rainbowSpread} />
+        <UniformSpreadButton onClick={() => spread('uniform')} />
+        <CenteredCircleButton onClick={() => spread('center')} />
+        <RainbowButton onClick={() => spread('rainbow')} />
     </div>
 
     {#if selected}

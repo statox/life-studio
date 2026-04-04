@@ -34,28 +34,28 @@ Alternatively, use the **Classifier** page (`/particles-life/classifier/`) to ed
 
 Every preset file must conform to `StoredUniverse` (defined in `../index.ts`):
 
-| Field | Type | Notes |
-|---|---|---|
-| `id` | `string` | Unique, lowercase, underscores only. Must match filename (without `.json`). |
-| `name` | `string` | Human-readable display name. |
-| `description` | `string` | What the universe does and why it's interesting. |
-| `category` | `UniverseCategory` | Must match the parent directory name. |
-| `tags` | `string[]` (optional) | Freeform tags for filtering. |
-| `createdAt` | `string` (optional) | ISO date `YYYY-MM-DD`. |
-| `preferredInitialConfig` | `uniform \| center \| rainbow` | Which particle spread best showcases this universe. |
-| `behavior` | `still \| converges \| cyclic \| chaotic` | Overall dynamics. |
-| `structure` | `none \| clusters \| patterns \| organisms` | Spatial organization in characteristic state. |
-| `activeColors` | `1 \| 2 \| 3 \| 4` | Number of colors with non-zero weight. |
-| `convergenceSpeed` | `instant \| fast \| medium \| slow \| never` | How quickly it settles. Use `never` for cyclic/chaotic. |
-| `energyLevel` | `low \| medium \| high` | Typical particle velocity once settled. |
-| `complexity` | `1 \| 2 \| 3` | 1 = trivial, 2 = a few rules, 3 = rich emergent dynamics. |
-| `attractionTable` | `AttractionTable` | 4x4 color interaction matrix (values -2 to 2). |
-| `colorWeights` | `ColorProportions` | `{ white, red, green, blue }` particle counts. |
-| `nbParticles` | `number` | Total particle count. |
-| `maxAttractionRadius` | `number` | Interaction radius. |
-| `horizontalResolution` | `number` | World width = `maxAttractionRadius * horizontalResolution`. |
-| `verticalResolution` | `number` | World height = `maxAttractionRadius * verticalResolution`. |
-| `friction` | `number` | Velocity damping factor (typically 0.5). |
+| Field                    | Type                                         | Notes                                                                       |
+| ------------------------ | -------------------------------------------- | --------------------------------------------------------------------------- |
+| `id`                     | `string`                                     | Unique, lowercase, underscores only. Must match filename (without `.json`). |
+| `name`                   | `string`                                     | Human-readable display name.                                                |
+| `description`            | `string`                                     | What the universe does and why it's interesting.                            |
+| `category`               | `UniverseCategory`                           | Must match the parent directory name.                                       |
+| `tags`                   | `string[]` (optional)                        | Freeform tags for filtering.                                                |
+| `createdAt`              | `string` (optional)                          | ISO date `YYYY-MM-DD`.                                                      |
+| `preferredInitialConfig` | `uniform \| center \| rainbow`               | Which particle spread best showcases this universe.                         |
+| `behavior`               | `still \| converges \| cyclic \| chaotic`    | Overall dynamics.                                                           |
+| `structure`              | `none \| clusters \| patterns \| organisms`  | Spatial organization in characteristic state.                               |
+| `activeColors`           | `1 \| 2 \| 3 \| 4`                           | Number of colors with non-zero weight.                                      |
+| `convergenceSpeed`       | `instant \| fast \| medium \| slow \| never` | How quickly it settles. Use `never` for cyclic/chaotic.                     |
+| `energyLevel`            | `low \| medium \| high`                      | Typical particle velocity once settled.                                     |
+| `complexity`             | `1 \| 2 \| 3`                                | 1 = trivial, 2 = a few rules, 3 = rich emergent dynamics.                   |
+| `attractionTable`        | `AttractionTable`                            | 4x4 color interaction matrix (values -2 to 2).                              |
+| `colorWeights`           | `ColorProportions`                           | `{ white, red, green, blue }` particle counts.                              |
+| `nbParticles`            | `number`                                     | Total particle count.                                                       |
+| `maxAttractionRadius`    | `number`                                     | Interaction radius.                                                         |
+| `horizontalResolution`   | `number`                                     | World width = `maxAttractionRadius * horizontalResolution`.                 |
+| `verticalResolution`     | `number`                                     | World height = `maxAttractionRadius * verticalResolution`.                  |
+| `friction`               | `number`                                     | Velocity damping factor (typically 0.5).                                    |
 
 ## Adding a new category
 

@@ -2,12 +2,8 @@
     import { onMount } from 'svelte';
 
     import type { AttractionTable } from '$lib/particles/attraction';
-    import {
-        getNewCells,
-        largeCenterCellsInPlace,
-        rainbowCellsInPlace
-    } from '$lib/particles/engine/cells';
-    import type { Cell } from '$lib/particles/engine';
+    import { loadPresetParams, respreadParams } from '$lib/particles/engine';
+    import type { SimulationParams } from '$lib/particles/engine/types';
     import UniformSpreadButton from './buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from './buttons/CenteredCircleButton.svelte';
     import RainbowButton from './buttons/RainbowButton.svelte';
@@ -22,8 +18,7 @@
 
     const universes: StoredUniverse[] = getAllUniverses();
     let selected: StoredUniverse = universes[0];
-
-    let cells: Cell[] = [];
+    let lastParams: SimulationParams;
     let attractionTable: AttractionTable = universes[0].attractionTable;
 
     let ws: WorldSettings = {
@@ -35,24 +30,13 @@
         colorWeights: universes[0].colorWeights
     };
 
-    const worldSize = { x: 0, y: 0 };
-
-    const startSim = () => {
-        simulationComponent?.startSim({
-            cells,
-            worldSize,
-            maxAttractionRadius: ws.maxAttractionRadius,
-            attractionTable,
-            friction: ws.friction
-        });
+    const startWithParams = (params: SimulationParams) => {
+        lastParams = params;
+        simulationComponent?.startSim(params);
     };
 
-    const restartWithCells = (newCells: Cell[]) => {
-        cells = newCells;
-        startSim();
-    };
-
-    const loadUniverse = (u: StoredUniverse) => {
+    const selectUniverse = (u: StoredUniverse) => {
+        selected = u;
         attractionTable = u.attractionTable;
         ws = {
             colorWeights: u.colorWeights,
@@ -62,38 +46,15 @@
             verticalResolution: u.verticalResolution,
             friction: u.friction
         };
-        worldSize.x = u.maxAttractionRadius * u.horizontalResolution;
-        worldSize.y = u.maxAttractionRadius * u.verticalResolution;
-        cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
-        if (u.preferredInitialConfig === 'center') largeCenterCellsInPlace(cells, worldSize);
-        if (u.preferredInitialConfig === 'rainbow')
-            rainbowCellsInPlace(cells, worldSize, u.colorWeights);
-        startSim();
-    };
-
-    const selectUniverse = (u: StoredUniverse) => {
-        selected = u;
-        loadUniverse(u);
+        startWithParams(loadPresetParams(u));
     };
 
     onMount(() => {
-        loadUniverse(universes[0]);
+        selectUniverse(universes[0]);
     });
 
-    const uniformSpread = () => {
-        restartWithCells(getNewCells(worldSize, ws.nbParticles, ws.colorWeights));
-    };
-
-    const centerSpread = () => {
-        const newCells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
-        largeCenterCellsInPlace(newCells, worldSize);
-        restartWithCells(newCells);
-    };
-
-    const rainbowSpread = () => {
-        const newCells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
-        rainbowCellsInPlace(newCells, worldSize, ws.colorWeights);
-        restartWithCells(newCells);
+    const spread = (type: 'uniform' | 'center' | 'rainbow') => {
+        startWithParams(respreadParams(lastParams, type, ws.nbParticles, ws.colorWeights));
     };
 
     const behaviorColor = (b: string): string => {
@@ -121,9 +82,9 @@
 
     <!-- Spread buttons -->
     <div class="spread-btns">
-        <UniformSpreadButton onClick={uniformSpread} />
-        <CenteredCircleButton onClick={centerSpread} />
-        <RainbowButton onClick={rainbowSpread} />
+        <UniformSpreadButton onClick={() => spread('uniform')} />
+        <CenteredCircleButton onClick={() => spread('center')} />
+        <RainbowButton onClick={() => spread('rainbow')} />
     </div>
 
     <!-- Details + Attraction Table -->

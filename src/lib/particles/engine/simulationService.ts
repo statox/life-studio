@@ -1,5 +1,6 @@
 import { getNewCells, largeCenterCellsInPlace, rainbowCellsInPlace } from './cells';
-import type { SimulationConfig, SimulationParams } from './types';
+import type { ColorProportions, SimulationConfig, SimulationParams } from './types';
+import type { InitialConfig, StoredUniverse } from '../universe';
 
 export const generateSimulationParams = (config: SimulationConfig): SimulationParams => {
     const {
@@ -33,4 +34,27 @@ export const generateSimulationParams = (config: SimulationConfig): SimulationPa
         attractionTable,
         friction
     };
+};
+
+/** Load a preset into SimulationParams, optionally overriding the spread config. */
+export const loadPresetParams = (
+    preset: StoredUniverse,
+    spreadOverride?: InitialConfig
+): SimulationParams =>
+    generateSimulationParams({
+        ...preset,
+        initialSpreadConfig: spreadOverride ?? preset.preferredInitialConfig
+    });
+
+/** Re-spread particles using the current simulation's world/physics settings. */
+export const respreadParams = (
+    current: SimulationParams,
+    spread: InitialConfig,
+    nbParticles: number,
+    colorWeights: ColorProportions
+): SimulationParams => {
+    const cells = getNewCells(current.worldSize, nbParticles, colorWeights);
+    if (spread === 'center') largeCenterCellsInPlace(cells, current.worldSize);
+    else if (spread === 'rainbow') rainbowCellsInPlace(cells, current.worldSize, colorWeights);
+    return { ...current, cells };
 };

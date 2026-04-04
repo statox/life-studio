@@ -8,13 +8,9 @@
     import type { AttractionTable } from '$lib/particles/attraction';
     import { getMutatedAttractionTable, getRandomAttractionTable } from '$lib/particles/attraction';
     import { COLORS, PARTICLE_COLORS } from '$lib/particles/engine';
-    import {
-        centerCellsInPlace,
-        getNewCells,
-        largeCenterCellsInPlace,
-        rainbowCellsInPlace
-    } from '$lib/particles/engine/cells';
-    import type { Cell } from '$lib/particles/engine';
+    import { centerCellsInPlace, getNewCells } from '$lib/particles/engine/cells';
+    import { loadPresetParams, respreadParams } from '$lib/particles/engine';
+    import type { SimulationParams } from '$lib/particles/engine/types';
     import UniformSpreadButton from './buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from './buttons/CenteredCircleButton.svelte';
     import RainbowButton from './buttons/RainbowButton.svelte';
@@ -30,7 +26,7 @@
     const universes: StoredUniverse[] = getAllUniverses();
     let selected: StoredUniverse | undefined = undefined;
 
-    let cells: Cell[] = [];
+    let lastParams: SimulationParams;
     let attractionTable: AttractionTable = getRandomAttractionTable();
 
     let showColors = true;
@@ -66,19 +62,22 @@
         friction: ws.friction
     };
 
-    const startSim = () => {
-        simulationComponent?.startSim({
-            cells,
-            worldSize,
-            maxAttractionRadius: ws.maxAttractionRadius,
-            attractionTable,
-            friction: ws.friction
-        });
+    const startWithParams = (params: SimulationParams) => {
+        lastParams = params;
+        simulationComponent?.startSim(params);
     };
 
-    const restartWithCells = (newCells: Cell[]) => {
-        cells = newCells;
-        startSim();
+    /** Build SimulationParams from the current editable ws + attractionTable state. */
+    const buildCurrentParams = () => ({
+        cells: getNewCells(worldSize, ws.nbParticles, ws.colorWeights),
+        worldSize: { ...worldSize },
+        maxAttractionRadius: ws.maxAttractionRadius,
+        attractionTable,
+        friction: ws.friction
+    });
+
+    const startSim = () => {
+        startWithParams(buildCurrentParams());
     };
 
     const updateAttractionTable = (newTable: AttractionTable) => {
@@ -91,7 +90,6 @@
         clearTimeout(updateWorldSettingsTimer);
         updateWorldSettingsTimer = setTimeout(() => {
             syncWorldSize();
-            cells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
             startSim();
         }, 750);
     };
@@ -108,47 +106,31 @@
             friction: u.friction
         };
         syncWorldSize();
-        cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
-        if (u.preferredInitialConfig === 'center') largeCenterCellsInPlace(cells, worldSize);
-        if (u.preferredInitialConfig === 'rainbow')
-            rainbowCellsInPlace(cells, worldSize, u.colorWeights);
-        startSim();
+        startWithParams(loadPresetParams(u));
     };
 
-    const randomCells = () => {
-        restartWithCells(getNewCells(worldSize, ws.nbParticles, ws.colorWeights));
+    const spread = (type: 'uniform' | 'center' | 'rainbow') => {
+        startWithParams(respreadParams(lastParams, type, ws.nbParticles, ws.colorWeights));
     };
 
+    // Small-center spread (unique to WorkBench, keyboard shortcut 'e')
     const centerCells = () => {
-        const newCells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
-        centerCellsInPlace(newCells, worldSize);
-        restartWithCells(newCells);
-    };
-
-    const largeCenterCells = () => {
-        const newCells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
-        largeCenterCellsInPlace(newCells, worldSize);
-        restartWithCells(newCells);
-    };
-
-    const rainbowCells = () => {
-        const newCells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
-        rainbowCellsInPlace(newCells, worldSize, ws.colorWeights);
-        restartWithCells(newCells);
+        const params = buildCurrentParams();
+        centerCellsInPlace(params.cells, worldSize);
+        startWithParams(params);
     };
 
     const keyActions: Record<string, () => void> = {
-        q: randomCells,
-        w: largeCenterCells,
+        q: () => spread('uniform'),
+        w: () => spread('center'),
         e: centerCells,
-        r: rainbowCells,
+        r: () => spread('rainbow'),
         t: () => updateAttractionTable(getRandomAttractionTable()),
         m: () => updateAttractionTable(getMutatedAttractionTable(attractionTable)),
         f: () => simulationComponent?.toggleFullscreen()
     };
 
     onMount(async () => {
-        cells = getNewCells(worldSize, ws.nbParticles, ws.colorWeights);
         attractionTable = getRandomAttractionTable();
         startSim();
     });
@@ -180,9 +162,9 @@
 
     <!-- Spread buttons -->
     <div class="spread-btns">
-        <UniformSpreadButton onClick={randomCells} />
-        <CenteredCircleButton onClick={largeCenterCells} />
-        <RainbowButton onClick={rainbowCells} />
+        <UniformSpreadButton onClick={() => spread('uniform')} />
+        <CenteredCircleButton onClick={() => spread('center')} />
+        <RainbowButton onClick={() => spread('rainbow')} />
         <button
             class="export-btn"
             on:click={() => (showExportModal = true)}

@@ -5,12 +5,8 @@
     import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
     import { COLORS, PARTICLE_COLORS } from '$lib/particles/engine';
-    import {
-        getNewCells,
-        largeCenterCellsInPlace,
-        rainbowCellsInPlace
-    } from '$lib/particles/engine/cells';
-    import type { Cell, ColorProportions } from '$lib/particles/engine';
+    import { loadPresetParams, respreadParams } from '$lib/particles/engine';
+    import type { SimulationParams } from '$lib/particles/engine/types';
     import UniformSpreadButton from './buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from './buttons/CenteredCircleButton.svelte';
     import './species.css';
@@ -27,43 +23,21 @@
     const universes: StoredUniverse[] = getAllUniverses();
     const demoUniverses: StoredUniverse[] = getAllDemoUniverses();
 
-    let cells: Cell[] = [];
+    let lastParams: SimulationParams;
     let attractionTable: AttractionTable = universes[0].attractionTable;
-    let colorWeights: ColorProportions = universes[0].colorWeights;
-    let nbParticles = universes[0].nbParticles;
-    let maxAttractionRadius = universes[0].maxAttractionRadius;
-    let friction = universes[0].friction;
+    let colorWeights = { ...universes[0].colorWeights };
+    let currentPreset: StoredUniverse = universes[0];
 
-    const worldSize = { x: 0, y: 0 };
-
-    const startSim = () => {
-        simulationComponent?.startSim({
-            cells,
-            worldSize,
-            maxAttractionRadius,
-            attractionTable,
-            friction
-        });
-    };
-
-    const restartWithCells = (newCells: Cell[]) => {
-        cells = newCells;
-        startSim();
+    const startWithParams = (params: SimulationParams) => {
+        lastParams = params;
+        simulationComponent?.startSim(params);
     };
 
     const loadUniverse = (u: StoredUniverse) => {
+        currentPreset = u;
         attractionTable = u.attractionTable;
-        colorWeights = u.colorWeights;
-        nbParticles = u.nbParticles;
-        maxAttractionRadius = u.maxAttractionRadius;
-        worldSize.x = u.maxAttractionRadius * u.horizontalResolution;
-        worldSize.y = u.maxAttractionRadius * u.verticalResolution;
-        cells = getNewCells(worldSize, u.nbParticles, u.colorWeights);
-        if (u.preferredInitialConfig === 'center') largeCenterCellsInPlace(cells, worldSize);
-        if (u.preferredInitialConfig === 'rainbow')
-            rainbowCellsInPlace(cells, worldSize, u.colorWeights);
-        friction = u.friction;
-        startSim();
+        colorWeights = { ...u.colorWeights };
+        startWithParams(loadPresetParams(u));
     };
 
     const loadByName = (name: string) => {
@@ -94,13 +68,15 @@
     };
 
     const uniformSpread = () => {
-        restartWithCells(getNewCells(worldSize, nbParticles, colorWeights));
+        startWithParams(
+            respreadParams(lastParams, 'uniform', currentPreset.nbParticles, currentPreset.colorWeights)
+        );
     };
 
     const centerSpread = () => {
-        const newCells = getNewCells(worldSize, nbParticles, colorWeights);
-        largeCenterCellsInPlace(newCells, worldSize);
-        restartWithCells(newCells);
+        startWithParams(
+            respreadParams(lastParams, 'center', currentPreset.nbParticles, currentPreset.colorWeights)
+        );
     };
 
     onMount(() => {
