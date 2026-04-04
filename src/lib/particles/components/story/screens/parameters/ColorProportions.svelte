@@ -68,7 +68,7 @@
             class:active={currentPreset === 'equal'}
             on:click={() => setProportions('equal')}
         >
-            Create friends
+            Create diversity
         </button>
     </p>
 
