@@ -9,7 +9,8 @@
     attractionTable.white.white = 1;
 
     const frictionPresets = [0.8, 0.25, 0.06, 0.0];
-    let friction = frictionPresets[0];
+    let friction = 0.5;
+    let nbParticles = 0; // Start with an empty screen
 
     const startScreen = () => {
         const config: SimulationConfig = {
@@ -24,8 +25,8 @@
             },
             maxAttractionRadius: 32,
             attractionTable: attractionTable,
-            nbParticles: 11,
-            friction: friction
+            nbParticles,
+            friction: friction ?? 0.5
         };
 
         const simulationParams = generateSimulationParams(config);
@@ -34,6 +35,7 @@
 
     const setFriction = (val: number) => {
         friction = val;
+        nbParticles = 11;
         startScreen();
     };
 
@@ -42,14 +44,6 @@
 
 <div class="screen">
     <h2>Friction</h2>
-    <!-- TODO: Write text about friction.
-         Points to address:
-         - Friction controls how quickly particles slow down
-         - Low friction: particles overshoot, oscillate, bounce around
-         - High friction: particles move slowly, converge smoothly
-         - It's a velocity decay multiplier applied every frame
-         - Try the slider and restart to see the difference
-    -->
     <p>
         Another force governing our particles is friction. Friction controls how quickly particles
         slow down. Picture trying to roll a marble on a table covered in soda or in mud: You can
