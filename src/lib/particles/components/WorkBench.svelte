@@ -82,6 +82,10 @@
 
     const updateAttractionTable = (newTable: AttractionTable) => {
         attractionTable = newTable;
+        lastParams = {
+            ...lastParams,
+            attractionTable
+        };
         simulationComponent?.updateAttractionTable(newTable);
     };
 
