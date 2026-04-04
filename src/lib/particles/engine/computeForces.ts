@@ -1,5 +1,3 @@
-import { getAttractionForceNumeric } from '$lib/particles/attraction';
-
 export type ComputeForcesParams = {
     posX: Float32Array;
     posY: Float32Array;
@@ -49,6 +47,14 @@ export function computeForces(params: ComputeForcesParams): {
     const velX = new Float32Array(count);
     const velY = new Float32Array(count);
 
+    // Pre-computed thresholds for the triangle force curve.
+    // The force is a triangle function of distSqrd:
+    //   0 below halfR2, ramps to attractionValue at threeQuarterR2,
+    //   ramps back to 0 at maxR2. The ramp width is quarterR2.
+    const halfR2 = maxAttractionRadiusSqrd * 0.5;
+    const quarterR2 = maxAttractionRadiusSqrd * 0.25;
+    const threeQuarterR2 = halfR2 + quarterR2;
+
     for (let i = startIdx; i < endIdx; i++) {
         const ix = posX[i];
         const iy = posY[i];
@@ -95,19 +101,33 @@ export function computeForces(params: ComputeForcesParams): {
 
                     const distSqrd = dx * dx + dy * dy;
 
-                    const force = getAttractionForceNumeric(
-                        attractionMatrix,
-                        numColors,
-                        maxAttractionRadiusSqrd,
-                        minDistanceSqrd,
-                        distSqrd,
-                        iColor,
-                        colors[j]
-                    );
+                    // Too far to interact
+                    if (distSqrd > maxAttractionRadiusSqrd) continue;
+
+                    // Close-range repulsion (force = -1)
+                    if (distSqrd < minDistanceSqrd) {
+                        const dirMag = Math.sqrt(distSqrd);
+                        if (dirMag === 0) continue;
+                        vx -= dx / dirMag;
+                        vy -= dy / dirMag;
+                        continue;
+                    }
+
+                    // Below the triangle onset: force is 0
+                    if (distSqrd < halfR2) continue;
+
+                    // Attraction value for this color pair
+                    const attractionValue = attractionMatrix[iColor * numColors + colors[j]];
+                    if (attractionValue === 0) continue;
+
+                    // Triangle ramp: up from halfR2 to threeQuarterR2,
+                    // down from threeQuarterR2 to maxR2
+                    const force =
+                        distSqrd < threeQuarterR2
+                            ? ((distSqrd - halfR2) / quarterR2) * attractionValue
+                            : ((maxAttractionRadiusSqrd - distSqrd) / quarterR2) * attractionValue;
 
                     const dirMag = Math.sqrt(distSqrd);
-                    if (dirMag === 0) continue;
-
                     vx += (dx / dirMag) * force;
                     vy += (dy / dirMag) * force;
                 }

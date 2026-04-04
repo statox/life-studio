@@ -1,7 +1,7 @@
 import { COLORS } from '$lib/particles/engine';
 import type { AttractionTable } from './types';
 
-const triangleMap = function (
+export const triangleMap = function (
     n: number,
     start1: number,
     stop1: number,
@@ -49,30 +49,36 @@ export const attractionTableToMatrix = (table: AttractionTable): Float32Array =>
     return matrix;
 };
 
-/**
- * Force calculation using numeric color indices and flat matrix.
- * Avoids string property lookups in the hot loop.
- */
-export const getAttractionForceNumeric = (
-    matrix: Float32Array,
-    numColors: number,
-    maxAttractionRadiusSqrd: number,
-    minDistanceSqrd: number,
-    distSqrd: number,
-    colorA: number,
-    colorB: number
-): number => {
-    if (distSqrd > maxAttractionRadiusSqrd) return 0;
-    if (distSqrd < minDistanceSqrd) return -1;
-
-    const attractionValue = matrix[colorA * numColors + colorB];
-    if (attractionValue === 0) return 0;
-
-    return triangleMap(
-        distSqrd,
-        maxAttractionRadiusSqrd / 2,
-        maxAttractionRadiusSqrd,
-        0,
-        attractionValue
-    );
-};
+// /**
+//  * Force calculation using numeric color indices and flat matrix.
+//  * Avoids string property lookups in the hot loop.
+//  *
+//  * This function has been inlined in computeForces()
+//  * Removing the function calls (computeForces -> getAttractionForceNumeric -> triangleMap -> linearMap -> constrain)
+//  * had a significant impact on the performance.
+//  *
+//  * Keeping the code here for historical reasons
+//  */
+// export const getAttractionForceNumeric = (
+//     matrix: Float32Array,
+//     numColors: number,
+//     maxAttractionRadiusSqrd: number,
+//     minDistanceSqrd: number,
+//     distSqrd: number,
+//     colorA: number,
+//     colorB: number
+// ): number => {
+//     if (distSqrd > maxAttractionRadiusSqrd) return 0;
+//     if (distSqrd < minDistanceSqrd) return -1;
+//
+//     const attractionValue = matrix[colorA * numColors + colorB];
+//     if (attractionValue === 0) return 0;
+//
+//     return triangleMap(
+//         distSqrd,
+//         maxAttractionRadiusSqrd / 2,
+//         maxAttractionRadiusSqrd,
+//         0,
+//         attractionValue
+//     );
+// };
