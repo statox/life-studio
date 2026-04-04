@@ -6,7 +6,7 @@ import { cellsToParticles } from './particles';
 import type { Particles } from './particles';
 import { createSpatialGrid, rebuildSpatialGrid } from '$lib/particles/spatialGrid';
 import type { SpatialGrid } from '$lib/particles/spatialGrid';
-import type { Cell, WorldSize } from './types';
+import type { Cell, PerfData, WorldSize } from './types';
 import { computeForces } from './computeForces';
 
 export const CELL_RADIUS = 3;
@@ -104,10 +104,18 @@ export class EngineST {
         this.attractionMatrix = attractionTableToMatrix(newAttractionTable);
     }
 
+    _frameCount = 0;
+    _tGrid = 0;
+    _tForce = 0;
+    _tUpdate = 0;
+    perfData: Omit<PerfData, 'interleave'> | null = null;
+
     async step() {
         const { count, posX, posY, colors } = this.particles;
         const velX = this._velX;
         const velY = this._velY;
+
+        const t0 = performance.now();
 
         // Rebuild spatial grid each frame (counting sort — no allocation after init)
         rebuildSpatialGrid({
@@ -118,6 +126,8 @@ export class EngineST {
             worldWidth: this.worldSize.x,
             worldHeight: this.worldSize.y
         });
+
+        const t1 = performance.now();
 
         const maxAttractionRadiusSqrd = this._maxAttractionRadius * this._maxAttractionRadius;
         const minDistanceSqrd = (2 * CELL_RADIUS) ** 2;
@@ -144,6 +154,8 @@ export class EngineST {
             halfWorldY
         });
 
+        const t2 = performance.now();
+
         const rVelX = result.velX;
         const rVelY = result.velY;
         const carry = 1 - this._friction;
@@ -165,6 +177,27 @@ export class EngineST {
             else if (py >= wsy) py -= wsy;
             posX[i] = px;
             posY[i] = py;
+        }
+
+        const t3 = performance.now();
+
+        this._frameCount++;
+        this._tGrid += t1 - t0;
+        this._tForce += t2 - t1;
+        this._tUpdate += t3 - t2;
+
+        if (this._frameCount % 120 === 0) {
+            const n = 120;
+            this.perfData = {
+                grid: this._tGrid / n,
+                force: this._tForce / n,
+                update: this._tUpdate / n,
+                particles: count,
+                frame: this._frameCount
+            };
+            this._tGrid = 0;
+            this._tForce = 0;
+            this._tUpdate = 0;
         }
     }
 }

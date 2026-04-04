@@ -19,6 +19,7 @@
     export let drewFrame: () => void;
     export let showColors: boolean;
     export let maxFPS = 25;
+    export let onRenderPerf: ((ms: number) => void) | undefined = undefined;
 
     let canvas: HTMLCanvasElement;
     let off: HTMLCanvasElement | undefined;
@@ -29,6 +30,8 @@
 
     let fpsInterval = 1000 / maxFPS;
     let then = 0;
+    let _renderCount = 0;
+    let _tRender = 0;
 
     $: fpsInterval = 1000 / maxFPS;
 
@@ -54,11 +57,20 @@
         const wsx = worldSize.x;
         const wsy = worldSize.y;
 
+        const tR0 = performance.now();
         for (let i = 0; i < numParticles; i++) {
             const x = Math.floor(linearMap(positions[i * 2], 0, wsx, 0, cw));
             const y = Math.floor(linearMap(positions[i * 2 + 1], 0, wsy, 0, ch));
             const c = showColors ? colorIndices[i] : 0;
             ctx.drawImage(off, c * d, 0, d, d, x - r, y - r, d, d);
+        }
+        const tR1 = performance.now();
+        _renderCount++;
+        _tRender += tR1 - tR0;
+        if (_renderCount >= 120) {
+            if (onRenderPerf) onRenderPerf(_tRender / _renderCount);
+            _tRender = 0;
+            _renderCount = 0;
         }
         drewFrame();
     }

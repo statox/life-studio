@@ -6,7 +6,7 @@
     import type { AttractionTable } from '$lib/particles/attraction';
     import { createSimulationWorker } from '$lib/particles/engine/simulationWorker';
     import { colorToIndex } from '$lib/particles/engine';
-    import type { SimulationParams } from '$lib/particles/engine/types';
+    import type { PerfData, SimulationParams } from '$lib/particles/engine/types';
 
     const sim = createSimulationWorker();
 
@@ -20,6 +20,8 @@
     export let maxFPS = 60;
     export let onToggleWorkers: (() => void) | undefined = undefined;
     export let hideTimeline = false;
+    export let onPerfData: ((perf: PerfData) => void) | undefined = undefined;
+    export let onRenderPerf: ((ms: number) => void) | undefined = undefined;
 
     let showColors = true;
 
@@ -51,9 +53,10 @@
                 useWorkers,
                 friction: params.friction
             },
-            (positions: Float32Array) => {
+            (positions: Float32Array, perf?: PerfData) => {
                 buffer.push(positions);
                 buffer = buffer;
+                if (perf && onPerfData) onPerfData(perf);
             }
         );
     };
@@ -105,6 +108,7 @@
             {showColors}
             drewFrame={() => timeline?.updateFrame()}
             {maxFPS}
+            {onRenderPerf}
         />
     </div>
     <!-- Timeline bar -->

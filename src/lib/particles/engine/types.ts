@@ -62,8 +62,18 @@ export type EngineRequest =
     | UpdateTableEngineRequest
     | DestroyEngineRequest;
 
+export type PerfData = {
+    grid: number;
+    force: number;
+    update: number;
+    interleave: number;
+    particles: number;
+    frame: number;
+};
+
 export type UpdateCellsResponse = {
     positions: Float32Array;
+    perf?: PerfData;
 };
 
 export type ColorProportions = Record<Color, number>;

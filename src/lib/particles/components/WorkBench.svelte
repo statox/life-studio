@@ -19,6 +19,8 @@
     import CenteredCircleButton from './buttons/CenteredCircleButton.svelte';
     import RainbowButton from './buttons/RainbowButton.svelte';
     import Simulation from './Simulation.svelte';
+    import PerfMonitor from './PerfMonitor.svelte';
+    import type { PerfData } from '$lib/particles/engine/types';
     import UniverseExportModal from './UniverseExportModal.svelte';
     import UniverseSelector from './UniverseSelector.svelte';
     import { getAllUniverses, type StoredUniverse } from '$lib/particles/universe';
@@ -151,6 +153,8 @@
         startSim();
     });
 
+    let perfData: PerfData | null = null;
+    let renderMs: number | null = null;
     let showExportModal = false;
 </script>
 
@@ -165,9 +169,13 @@
         {maxFPS}
         onToggleWorkers={async () => {
             useWorkers = !useWorkers;
+            perfData = null;
+            renderMs = null;
             await tick();
             startSim();
         }}
+        onPerfData={(p) => (perfData = p)}
+        onRenderPerf={(ms) => (renderMs = ms)}
     />
 
     <!-- Spread buttons -->
@@ -183,6 +191,13 @@
             ↗ Export
         </button>
     </div>
+
+    {#if !useWorkers}
+        <div class="card">
+            <div class="card-title">Performance (single-thread)</div>
+            <PerfMonitor enginePerf={perfData} {renderMs} />
+        </div>
+    {/if}
 
     <div class="panels">
         <div class="card">
