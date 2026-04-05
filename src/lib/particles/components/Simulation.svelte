@@ -22,6 +22,9 @@
     export let hideTimeline = false;
     export let onPerfData: ((perf: PerfData) => void) | undefined = undefined;
     export let onRenderPerf: ((ms: number) => void) | undefined = undefined;
+    export let onPositions:
+        | ((positions: Float32Array, colorIndices: Uint8Array, numParticles: number) => void)
+        | undefined = undefined;
 
     let showColors = true;
 
@@ -57,6 +60,7 @@
                 buffer.push(positions);
                 buffer = buffer;
                 if (perf && onPerfData) onPerfData(perf);
+                if (onPositions) onPositions(positions, colorIndices, numParticles);
             }
         );
     };
