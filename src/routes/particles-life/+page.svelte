@@ -63,6 +63,12 @@
             <p>The beginning of an interactive introduction</p>
             <span class="card-cta">Read Story →</span>
         </a>
+
+        <a class="card" href="{base}/particles-life/playground">
+            <h2>Story</h2>
+            <p>POC playground</p>
+            <span class="card-cta">Go play →</span>
+        </a>
     </div>
 </div>
 

@@ -519,9 +519,7 @@
                 <span class="cw">white</span> fills those voids, producing hollow
                 <span class="cw">white</span> islands enclosed by rings of the other three.
             </p>
-            <button
-                class="universe-btn"
-                on:click={() => loadById('cellular_strips_inner_islands')}
+            <button class="universe-btn" on:click={() => loadById('cellular_strips_inner_islands')}
                 >Hollow islands</button
             >
             <p>
@@ -575,9 +573,7 @@
                 a single two-color stage before slipping apart and reforming elsewhere. The
                 organisms are shorter-lived but the universe never settles.
             </p>
-            <button
-                class="universe-btn"
-                on:click={() => loadById('4_colors_worms_single_stage')}
+            <button class="universe-btn" on:click={() => loadById('4_colors_worms_single_stage')}
                 >Create movers with low cohesion</button
             >
 

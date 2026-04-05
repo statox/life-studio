@@ -22,6 +22,7 @@
     export let hideTimeline = false;
     export let onPerfData: ((perf: PerfData) => void) | undefined = undefined;
     export let onRenderPerf: ((ms: number) => void) | undefined = undefined;
+    export let fillContainer = false;
 
     let showColors = true;
 
@@ -96,7 +97,7 @@
         buffer.length > 0 && displayIndex < buffer.length ? buffer[displayIndex] : null;
 </script>
 
-<div class="sim">
+<div class="sim" class:fill={fillContainer}>
     <!-- Canvas -->
     <div class="canvas-wrap" bind:this={canvasWrap}>
         <Canvas
@@ -141,6 +142,12 @@
         max-width: 1200px;
         margin: 0 auto;
         box-sizing: border-box;
+    }
+
+    .sim.fill {
+        padding: 0;
+        max-width: none;
+        margin: 0;
     }
 
     .timeline-row {

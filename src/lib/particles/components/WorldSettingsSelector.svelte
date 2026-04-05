@@ -148,6 +148,7 @@
 
     .field input[type='range'] {
         flex: 1;
+        min-width: 0;
         accent-color: #c3e88d;
     }
 

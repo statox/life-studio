@@ -144,63 +144,14 @@
     let showExportModal = false;
 </script>
 
-<div class="sim">
-    <!-- Universe selector -->
-    <UniverseSelector {universes} {selected} onSelect={loadPreset} />
-
-    <!-- Simulation canvas -->
-    <Simulation
-        bind:this={simulationComponent}
-        {useWorkers}
-        {maxFPS}
-        onToggleWorkers={async () => {
-            useWorkers = !useWorkers;
-            perfData = null;
-            renderMs = null;
-            await tick();
-            startSim();
-        }}
-        onPerfData={(p) => (perfData = p)}
-        onRenderPerf={(ms) => (renderMs = ms)}
-    />
-
-    <!-- Spread buttons -->
-    <div class="spread-btns">
-        <UniformSpreadButton onClick={() => spread('uniform')} />
-        <CenteredCircleButton onClick={() => spread('center')} />
-        <RainbowButton onClick={() => spread('rainbow')} />
-        <button
-            class="export-btn"
-            on:click={() => (showExportModal = true)}
-            title="Export current table"
-        >
-            ↗ Export
-        </button>
-    </div>
-
-    {#if !useWorkers}
-        <div class="card">
-            <div class="card-title">Performance (single-thread)</div>
-            <PerfMonitor enginePerf={perfData} {renderMs} />
-        </div>
-    {/if}
-
-    <div class="panels">
-        <div class="card">
-            <div class="card-title">Attraction Table</div>
-            <AttractionTablePanel
-                {attractionTable}
-                on:updateTable={(e) => updateAttractionTable(e.detail)}
-            />
-        </div>
+<div class="playground">
+    <!-- Left sidebar: controls (full height) -->
+    <aside class="sidebar">
         <div class="card">
             <div class="card-title">World</div>
             <WorldSettingsSelector settings={ws} onChange={onWorldSettingsChange} />
         </div>
-    </div>
 
-    <!-- World settings -->
-    <div class="panels">
         <div class="card">
             <div class="card-title">Simulation</div>
             <button
@@ -220,10 +171,66 @@
                 <input id="fps-cap" type="number" bind:value={maxFPS} min="1" max="120" />
             </div>
         </div>
-    </div>
 
-    <!-- Keyboard shortcuts legend -->
-    <KeyboardShortcuts actions={keyActions} />
+        <div class="spread-btns">
+            <UniformSpreadButton onClick={() => spread('uniform')} />
+            <CenteredCircleButton onClick={() => spread('center')} />
+            <RainbowButton onClick={() => spread('rainbow')} />
+            <button
+                class="export-btn"
+                on:click={() => (showExportModal = true)}
+                title="Export current table"
+            >
+                ↗ Export
+            </button>
+        </div>
+
+        {#if !useWorkers}
+            <div class="card">
+                <div class="card-title">Performance (single-thread)</div>
+                <PerfMonitor enginePerf={perfData} {renderMs} />
+            </div>
+        {/if}
+
+        <KeyboardShortcuts actions={keyActions} />
+    </aside>
+
+    <!-- Right content area -->
+    <div class="right-content">
+        <!-- Top: simulation canvas -->
+        <main class="canvas-area">
+            <Simulation
+                bind:this={simulationComponent}
+                fillContainer
+                {useWorkers}
+                {maxFPS}
+                onToggleWorkers={async () => {
+                    useWorkers = !useWorkers;
+                    perfData = null;
+                    renderMs = null;
+                    await tick();
+                    startSim();
+                }}
+                onPerfData={(p) => (perfData = p)}
+                onRenderPerf={(ms) => (renderMs = ms)}
+            />
+        </main>
+
+        <!-- Bottom panels: attraction table + universe selector -->
+        <div class="bottom-panels">
+            <section class="bottom-left card">
+                <div class="card-title">Attraction Table</div>
+                <AttractionTablePanel
+                    {attractionTable}
+                    on:updateTable={(e) => updateAttractionTable(e.detail)}
+                />
+            </section>
+
+            <section class="bottom-right">
+                <UniverseSelector {universes} {selected} onSelect={loadPreset} />
+            </section>
+        </div>
+    </div>
 </div>
 
 {#if showExportModal}
@@ -231,32 +238,135 @@
 {/if}
 
 <style>
-    /* ── Layout ─────────────────────────────── */
-    .sim {
+    /* ── Dashboard layout ────────────────────── */
+    .playground {
+        display: flex;
+        gap: 10px;
+        padding: 12px 16px;
+        height: calc(100vh - 60px);
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .sidebar {
+        width: 280px;
+        flex-shrink: 0;
         display: flex;
         flex-direction: column;
         gap: 10px;
-        padding: 12px 16px 32px;
-        max-width: 1200px;
-        margin: 0 auto;
-        box-sizing: border-box;
+        overflow-y: auto;
+        overflow-x: hidden;
+        min-width: 0;
     }
 
-    /* ── Spread buttons ─────────────────────── */
-    .spread-btns {
+    .right-content {
+        flex: 1;
+        min-width: 0;
+        min-height: 0;
         display: flex;
-        gap: 6px;
-    }
-
-    /* ── Panels grid ─────────────────────────── */
-    .panels {
-        display: grid;
-        grid-template-columns: 1fr auto;
+        flex-direction: column;
         gap: 10px;
     }
 
-    @media (max-width: 640px) {
-        .panels {
+    .canvas-area {
+        flex: 1 1 0;
+        min-height: 0;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    /* Make the Simulation canvas shrink to fit available height */
+    .canvas-area :global(.sim) {
+        height: 100%;
+    }
+
+    .canvas-area :global(.canvas-wrap) {
+        height: calc(100% - 50px); /* leave room for timeline */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .canvas-area :global(canvas) {
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+    .bottom-panels {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        flex-shrink: 0;
+        max-height: 40vh;
+        overflow-y: auto;
+    }
+
+    /* ── Tablet ──────────────────────────────── */
+    @media (max-width: 1023px) {
+        .playground {
+            flex-direction: column;
+            height: auto;
+            overflow: auto;
+        }
+
+        .sidebar {
+            width: 100%;
+            flex-direction: row;
+            flex-wrap: wrap;
+            overflow-x: visible;
+        }
+
+        .sidebar > :global(*) {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .spread-btns {
+            min-width: 0;
+            flex: 0 0 auto;
+        }
+
+        .sidebar > :global(.shortcuts) {
+            min-width: 0;
+            flex: 0 0 auto;
+            font-size: 0.65rem;
+            gap: 4px 10px;
+        }
+
+        .canvas-area {
+            flex: none;
+            min-height: auto;
+            overflow: visible;
+        }
+
+        .canvas-area :global(.canvas-wrap) {
+            height: auto;
+        }
+
+        .canvas-area :global(canvas) {
+            width: 100%;
+            height: auto;
+        }
+
+        .bottom-panels {
+            max-height: none;
+            overflow: visible;
+        }
+    }
+
+    /* ── Mobile ──────────────────────────────── */
+    @media (max-width: 767px) {
+        .sidebar {
+            flex-direction: column;
+        }
+
+        .sidebar > :global(*) {
+            min-width: 0;
+        }
+
+        .bottom-panels {
             grid-template-columns: 1fr;
         }
     }
@@ -277,6 +387,13 @@
         margin-bottom: 12px;
         font-weight: 600;
         display: block;
+    }
+
+    /* ── Spread buttons ─────────────────────── */
+    .spread-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
     }
 
     /* ── Fields ──────────────────────────────── */
