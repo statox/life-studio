@@ -1,37 +1,37 @@
 {
-    "name": "Complexe moving structures 2",
-    "description": "The universe create several types of moving structures which end up merging and stabilizing into complexe structures",
+    "name": "Complex clusters",
+    "description": "Green clusters merging next to more complex clusters of white or white-red shells encircling blue-red core. The clusters tend to move before merging and becoming still.",
     "preferredInitialConfig": "uniform",
     "behavior": "converges",
-    "structure": "organisms",
+    "structure": "clusters",
     "activeColors": 4,
-    "convergenceSpeed": "never",
-    "energyLevel": "medium",
+    "convergenceSpeed": "slow",
+    "energyLevel": "low",
     "complexity": 2,
     "attractionTable": {
         "white": {
-            "white": 0,
-            "red": 0,
-            "green": -1,
-            "blue": 2
-        },
-        "red": {
             "white": -1,
             "red": 0,
+            "green": -1,
+            "blue": 1
+        },
+        "red": {
+            "white": 2,
+            "red": -1,
             "green": 1,
             "blue": 2
         },
         "green": {
-            "white": 1,
-            "red": -1,
-            "green": 1,
-            "blue": 0
-        },
-        "blue": {
-            "white": 2,
+            "white": -1,
             "red": -1,
             "green": 2,
             "blue": -1
+        },
+        "blue": {
+            "white": 1,
+            "red": 0,
+            "green": 0,
+            "blue": 2
         }
     },
     "colorWeights": {
@@ -40,12 +40,12 @@
         "green": 500,
         "blue": 500
     },
-    "nbParticles": 6000,
+    "nbParticles": 4000,
     "maxAttractionRadius": 32,
     "horizontalResolution": 30,
     "verticalResolution": 20,
     "friction": 0.5,
-    "id": "complexe_moving_structures2",
-    "category": "movers",
+    "id": "complex_clusters",
+    "category": "clusters",
     "createdAt": "2026-03-30"
 }

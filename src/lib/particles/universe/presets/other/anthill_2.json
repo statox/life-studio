@@ -1,5 +1,5 @@
 {
-    "name": "anthill_2",
+    "name": "Anthill 2",
     "description": "Same as anthill but in a bigger world. It looks like some water (Green) creating water ways on a land over time",
     "preferredInitialConfig": "center",
     "behavior": "converges",

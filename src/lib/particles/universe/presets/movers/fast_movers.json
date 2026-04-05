@@ -1,5 +1,5 @@
 {
-    "name": "fast movers",
+    "name": "Fast movers",
     "description": "large simple organisms moving very fast in the universe",
     "preferredInitialConfig": "uniform",
     "behavior": "converges",

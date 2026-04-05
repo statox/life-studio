@@ -1,5 +1,5 @@
 {
-    "name": "anthill 3",
+    "name": "Anthill 3",
     "description": "With Blue repulsing itself the islands patterns change",
     "preferredInitialConfig": "uniform",
     "behavior": "cyclic",

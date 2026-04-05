@@ -12,7 +12,7 @@
     const presets = [
         getUniverseById('spinning_structures'),
         getUniverseById('dynamic_islands'),
-        getUniverseById('stable_multi_stage_islands')
+        getUniverseById('diverse_collapsing_organisms')
     ];
 
     let activeIndex = 0;

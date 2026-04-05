@@ -1,5 +1,5 @@
 {
-    "name": "infinite moving mass",
+    "name": "Infinite moving mass",
     "description": "A beautiful pattern infinitely moving. Low cohesion but still some distinctive areas",
     "preferredInitialConfig": "uniform",
     "behavior": "chaotic",

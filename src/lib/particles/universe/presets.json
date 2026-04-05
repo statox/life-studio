@@ -720,7 +720,7 @@
         "friction": 0.5
     },
     {
-        "name": "4 Colors - Inifnite moving low cohesion groups",
+        "name": "4 Colors - Infinite moving low cohesion groups",
         "description": "TODO Improve description\n\nGreen-Blue chasing red-white but with lots of low cohesion groups and probably a more complex relationship to describe.",
         "preferredInitialConfig": "uniform",
         "behavior": "chaotic",
@@ -1440,7 +1440,7 @@
         "friction": 0.5
     },
     {
-        "name": "Complexe moving structures",
+        "name": "Complex moving structures",
         "description": "The universe creates several types of complexe moving organisms sometimes very circular sometimes longer.\n\nThe organisms sometime merge completely but often just exchange some particles when they merge. This change of particles sometimes put the movers to a rest and sometimes creates new movers.\n\nThe universe takes a very long time to stabilize as the energy decrese over time.",
         "preferredInitialConfig": "center",
         "behavior": "cyclic",
@@ -1488,7 +1488,7 @@
         "friction": 0.5
     },
     {
-        "name": "Complexe moving structures 2",
+        "name": "Complex moving structures 2",
         "description": "The universe create several types of moving structures which end up merging and stabilizing into complexe structures",
         "preferredInitialConfig": "uniform",
         "behavior": "converges",
@@ -1728,7 +1728,7 @@
         "friction": 0.5
     },
     {
-        "name": "Complexe clusters",
+        "name": "Complex clusters",
         "description": "Green clusters merging next to more complex clusters of white or white-red shells encircling blue-red core. The clusters tend to move before merging and becoming still.",
         "preferredInitialConfig": "uniform",
         "behavior": "converges",

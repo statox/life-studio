@@ -149,21 +149,21 @@
     const buildStoredUniverse = (): StoredUniverse => {
         if (!selected) throw new Error('No preset selected');
         return {
-        ...selected,
-        name: editName,
-        description: editDescription,
-        preferredInitialConfig: editPreferredInitialConfig,
-        behavior: editBehavior,
-        structure: editStructure,
-        activeColors: editActiveColors,
-        convergenceSpeed: editConvergenceSpeed,
-        energyLevel: editEnergyLevel,
-        complexity: editComplexity,
-        category: editCategory,
-        tags: editTagsStr
-            .split(',')
-            .map((t) => t.trim())
-            .filter(Boolean)
+            ...selected,
+            name: editName,
+            description: editDescription,
+            preferredInitialConfig: editPreferredInitialConfig,
+            behavior: editBehavior,
+            structure: editStructure,
+            activeColors: editActiveColors,
+            convergenceSpeed: editConvergenceSpeed,
+            energyLevel: editEnergyLevel,
+            complexity: editComplexity,
+            category: editCategory,
+            tags: editTagsStr
+                .split(',')
+                .map((t) => t.trim())
+                .filter(Boolean)
         };
     };
 

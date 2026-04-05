@@ -1,5 +1,5 @@
 {
-    "name": "spatial repartition",
+    "name": "Spatial repartition",
     "description": "All colors repulse themselves but there is a white -> red -> green attraction chain.\n\nThis creates compact groups becoming still",
     "preferredInitialConfig": "uniform",
     "behavior": "converges",

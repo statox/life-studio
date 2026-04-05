@@ -1,6 +1,7 @@
 [
     {
         "name": "Still",
+        "id": "still",
         "description": "No forces in the universe, everything is still",
         "preferredInitialConfig": "uniform",
         "behavior": "still",
@@ -49,6 +50,7 @@
     },
     {
         "name": "1 color still",
+        "id": "1_color_still",
         "description": "A fix universe with a single specie. Shows the natural repulsion between cells",
         "preferredInitialConfig": "center",
         "behavior": "still",
@@ -97,6 +99,7 @@
     },
     {
         "name": "1 color repulsion spread",
+        "id": "1_color_repulsion_spread",
         "description": "",
         "preferredInitialConfig": "uniform",
         "behavior": "still",
@@ -145,6 +148,7 @@
     },
     {
         "name": "1 color repulsion circle",
+        "id": "1_color_repulsion_circle",
         "description": "A fix universe with a single specie. Shows self repulsion and artifical clusters.",
         "preferredInitialConfig": "center",
         "behavior": "still",
@@ -193,6 +197,7 @@
     },
     {
         "name": "1 color repulsion uniform",
+        "id": "1_color_repulsion_uniform",
         "description": "A fix universe with a single specie. Shows space paving",
         "preferredInitialConfig": "uniform",
         "behavior": "still",
@@ -241,6 +246,7 @@
     },
     {
         "name": "1 color attraction circle",
+        "id": "1_color_attraction_circle",
         "description": "A fix universe with a single specie. Shows self repulsion and artifical clusters.",
         "preferredInitialConfig": "center",
         "behavior": "still",
@@ -289,6 +295,7 @@
     },
     {
         "name": "1 color attraction uniform",
+        "id": "1_color_attraction_uniform",
         "description": "A fix universe with a single specie. Shows space paving",
         "preferredInitialConfig": "uniform",
         "behavior": "still",
@@ -337,6 +344,7 @@
     },
     {
         "name": "2 colors still",
+        "id": "2_colors_still",
         "description": "A still universe with 2 species",
         "preferredInitialConfig": "uniform",
         "behavior": "still",
@@ -385,6 +393,7 @@
     },
     {
         "name": "3 colors still",
+        "id": "3_colors_still",
         "description": "A still universe with 3 species",
         "preferredInitialConfig": "uniform",
         "behavior": "still",
@@ -433,6 +442,7 @@
     },
     {
         "name": "4 colors still",
+        "id": "4_colors_still",
         "description": "A still universe with 4 species",
         "preferredInitialConfig": "uniform",
         "behavior": "still",
@@ -481,6 +491,7 @@
     },
     {
         "name": "2 colors inverse forces",
+        "id": "2_colors_inverse_forces",
         "description": "A universe when species have different self attraction forces",
         "preferredInitialConfig": "uniform",
         "behavior": "still",
@@ -529,6 +540,7 @@
     },
     {
         "name": "2 colors chase",
+        "id": "2_colors_chase",
         "description": "2 colors white chases red",
         "preferredInitialConfig": "center",
         "behavior": "cyclic",
@@ -577,6 +589,7 @@
     },
     {
         "name": "2 colors structured chase",
+        "id": "2_colors_structured_chase",
         "description": "2 colors white chases red",
         "preferredInitialConfig": "uniform",
         "behavior": "cyclic",
@@ -625,6 +638,7 @@
     },
     {
         "name": "2 colors stable attraction",
+        "id": "2_colors_stable_attraction",
         "description": "",
         "preferredInitialConfig": "center",
         "behavior": "converges",
@@ -673,6 +687,7 @@
     },
     {
         "name": "2 colors stable attraction inner repulsion",
+        "id": "2_colors_stable_attraction_inner_repulsion",
         "description": "",
         "preferredInitialConfig": "center",
         "behavior": "converges",
@@ -721,6 +736,7 @@
     },
     {
         "name": "Uniform repulsion",
+        "id": "uniform_repulsion",
         "description": "This is a test universe with a simple all negative attraction table",
         "preferredInitialConfig": "center",
         "behavior": "converges",
@@ -769,6 +785,7 @@
     },
     {
         "name": "Central circle spread",
+        "id": "central_circle_spread",
         "description": "Cells neither attract or repulse each others. When initially placed in a circle they will just spread until none of them has a neighbor touching it.\n\nThis replicates the initial phase of the simulation where we try to avoid cells overlaping each other. At the beginning of the simulation we let a few frames running like this before we start applying the attraction table. This is to add some stability to the system.\n\nThe simulation stabilize in approximately 2700 frames (which is about 45 seconds at 60fps)",
         "preferredInitialConfig": "center",
         "behavior": "converges",
@@ -817,6 +834,7 @@
     },
     {
         "name": "2 colors own attraction",
+        "id": "2_colors_own_attraction",
         "description": "Red and White form groups of their color.\n\nThe universe stabilize quickly.\n\nWe can see some groups at the border moving which is probably the symptom of a wrapping bug",
         "preferredInitialConfig": "uniform",
         "behavior": "converges",
@@ -865,6 +883,7 @@
     },
     {
         "name": "2 colors own repulsion",
+        "id": "2_colors_own_repulsion",
         "description": "Red and White repulse their color.\n\nThe universe stabilize quickly.\n\nWe can see some groups at the border moving which is probably the symptom of a wrapping bug",
         "preferredInitialConfig": "uniform",
         "behavior": "converges",
@@ -913,6 +932,7 @@
     },
     {
         "name": "2 colors chase",
+        "id": "2_colors_chase_2",
         "description": "White is attracted to red which is repulsed by white.\n\nWe start seeing some chaotic motion, swarms of red are pushed by swarms of white.\n\nSince the only attraction force has a corresponding repulsion force the system remains chaotic because we are creating constant energy and no equilibrium.",
         "preferredInitialConfig": "center",
         "behavior": "chaotic",
@@ -961,6 +981,7 @@
     },
     {
         "name": "2 colors chase - White attraction",
+        "id": "2_colors_chase_white_attraction",
         "description": "From the 2 colors chase make white attract white.\n\nWe quickly end up in groups of white which coagulated. Around them there is a border empty of cells caused by the repulsion of red.\n\nThe simulation takes a long time to stabilize completely because some isolated white cells keep being attracted by all the red cells around them but when they get close of a white group, the empty border because big enough so that the group attraction doesn't reach the isolated cell.\n\nEventually they still end up merging when the corona of red around a white group spreads a bit and let them get closer to the group. Then the universe becomes stable.",
         "preferredInitialConfig": "center",
         "behavior": "converges",
@@ -1009,6 +1030,7 @@
     },
     {
         "name": "2 Colors - Vessels",
+        "id": "2_colors_vessels",
         "description": "From the 2 colors chase add red self-attraction.\n\nSuddenly we start to see some kind off dynamic cohesion. The red cells attract each other forming groups which attract groups of white cells chasing them.\n\nBut since there is no strong structures the vessels are fragile and approaching other vessels tends to create chaos which disperse them.\n\nAs time goes by vessels become bigger and more stable.\n\nIt seems the only thing which keeps them disassembling are the wrapping inaccuracies.",
         "preferredInitialConfig": "uniform",
         "behavior": "cyclic",
@@ -1057,6 +1079,7 @@
     },
     {
         "name": "2 Colors - Red self repulsion",
+        "id": "2_colors_red_self_repulsion",
         "description": "From 2 Colors Chase add red self repulsion.\n\nThe universe never stabilize. We don't see the waves of white chasing red anymore because red tends to spread more, which in turns also spreads white more.\n\nNote that add white self repulsion of red gives a similar pattern",
         "preferredInitialConfig": "uniform",
         "behavior": "chaotic",
@@ -1105,6 +1128,7 @@
     },
     {
         "name": "2 Colors - White self repulsion",
+        "id": "2_colors_white_self_repulsion",
         "description": "See \"2 Colors - Red self repulsion\"\n\nTODO Document the differences more precisely. It seems to create a slightly more structured universe but I'm not sure why.",
         "preferredInitialConfig": "uniform",
         "behavior": "chaotic",
@@ -1153,6 +1177,7 @@
     },
     {
         "name": "Cellular strips",
+        "id": "cellular_strips",
         "description": "I'm not sure which analogy to use here.\n\nExpands quickly into a stable universe with organic shapes of red-blue and white-green separated by empty strips.",
         "preferredInitialConfig": "center",
         "behavior": "converges",
@@ -1201,6 +1226,7 @@
     },
     {
         "name": "Cellular strips 2",
+        "id": "cellular_strips_2",
         "description": "It seems that the additional repulsions create thinner strips.",
         "preferredInitialConfig": "center",
         "behavior": "converges",
@@ -1249,6 +1275,7 @@
     },
     {
         "name": "Cellular strips 2",
+        "id": "cellular_strips_2_2",
         "description": "Shifted the matrix of repulsion horizontally.\n\nThere is much more spread (Probably due to the lack of internal group cohesion) to the full universe and that makes much more and thinner paths",
         "preferredInitialConfig": "center",
         "behavior": "converges",
@@ -1297,6 +1324,7 @@
     },
     {
         "name": "Cellular strips - Inner islands",
+        "id": "cellular_strips_inner_islands",
         "description": "White is repulsed by other colors and other colors are all repulsed by white.\n\nThis create organic patterns of multi colors groups surrounding white islands",
         "preferredInitialConfig": "center",
         "behavior": "converges",
@@ -1345,6 +1373,7 @@
     },
     {
         "name": "4 colors worms",
+        "id": "4_colors_worms",
         "description": "This universe creates moving structures of red, green, blue, white alternating small groups with lots of cells.\n\nThis creates strong worms which often merge together but also sometime split with a larger worm and a small one.\n\nSince the groups are strong the strucutre resist well the wall wrapping.\n\nThe universe doesn't stabilize but keep an infinitely consistent configurations.\n\nStarting from center helps creating stronger structure earlier on.\n\nSometime a worm eats its own tail and becomes a spinning structure absorbing other worms when they get too close.",
         "preferredInitialConfig": "center",
         "behavior": "cyclic",
@@ -1393,6 +1422,7 @@
     },
     {
         "name": "4 Colors - worms - single stage",
+        "id": "4_colors_worms_single_stage",
         "description": "Looks a lot like \"4 Colors - worms\" but without enough cohesion to form full worms as they slip soon after they create a single stage.",
         "preferredInitialConfig": "uniform",
         "behavior": "cyclic",
@@ -1441,6 +1471,7 @@
     },
     {
         "name": "4 Colors - Slowly merging 2-colors blobs",
+        "id": "4_colors_slowly_merging_2_colors_blobs",
         "description": "TODO Improve this description.\n\nBlobs of red-blue and blobs of green-white move around and regularly merge creating bigger blobs. Sometimes they stop moving.\n\nI think it should converge to a still state because there doesn't seemm to have splits but if it does it takes a very long time. The simulation might be artificially kept moving by the inaccurate computations of walls wrapping.",
         "preferredInitialConfig": "uniform",
         "behavior": "converges",
@@ -1489,6 +1520,7 @@
     },
     {
         "name": "4 Colors - spreading pattern",
+        "id": "4_colors_spreading_pattern",
         "description": "TODO Describe this one",
         "preferredInitialConfig": "center",
         "behavior": "converges",
@@ -1536,7 +1568,8 @@
         "friction": 0.5
     },
     {
-        "name": "4 Colors - Inifnite moving low cohesion groups",
+        "name": "4 Colors - Infinite moving low cohesion groups",
+        "id": "4_colors_infinite_moving_low_cohesion_groups",
         "description": "TODO Improve description\n\nGreen-Blue chasing red-white but with lots of low cohesion groups and probably a more complex relationship to describe.",
         "preferredInitialConfig": "uniform",
         "behavior": "chaotic",
@@ -1585,6 +1618,7 @@
     },
     {
         "name": "4 colors - Waves",
+        "id": "4_colors_waves",
         "description": "White is attracted to all other colors which all are repulsed by white.\n\nThis creates waves of white floats pushing incoherent masses of red, green and blue.",
         "preferredInitialConfig": "uniform",
         "behavior": "chaotic",
@@ -1633,6 +1667,7 @@
     },
     {
         "name": "3 Colors - Stable islands",
+        "id": "3_colors_stable_islands",
         "description": "TODO Find a good analogy\n\nThe universe converges to many small islands with a green-white core surrounded by red bands.\n\nSometimes more complex structures emerge but they are rare they often collapse into simpler forms.",
         "preferredInitialConfig": "uniform",
         "behavior": "converges",
@@ -1681,6 +1716,7 @@
     },
     {
         "name": "spatial repartition",
+        "id": "spatial_repartition",
         "description": "All colors repulse themselves but there is a white -> red -> green attraction chain.\n\nThis creates compact groups becoming still",
         "preferredInitialConfig": "uniform",
         "behavior": "converges",
@@ -1729,6 +1765,7 @@
     },
     {
         "name": "Islands",
+        "id": "islands",
         "description": "Red islands caught in white-green swarms",
         "preferredInitialConfig": "center",
         "behavior": "converges",
@@ -1777,6 +1814,7 @@
     },
     {
         "name": "Blue islands",
+        "id": "blue_islands",
         "description": "Blue gets horded into islands which get stable early while chaotic waves of red white and green never converge",
         "preferredInitialConfig": "uniform",
         "behavior": "cyclic",
@@ -1825,6 +1863,7 @@
     },
     {
         "name": "Crystal stripes",
+        "id": "crystal_stripes",
         "description": "Strong white-green-blue crystal-like filament with rivers of red and white",
         "preferredInitialConfig": "uniform",
         "behavior": "cyclic",
@@ -1873,6 +1912,7 @@
     },
     {
         "name": "Rock - Paper - Scissors",
+        "id": "rock_paper_scissors",
         "description": "RPS-like rules which creates alternating stripes of white, red, green.\n\nConverge into a pretty stable moving pattern",
         "preferredInitialConfig": "uniform",
         "behavior": "cyclic",
@@ -1921,6 +1961,7 @@
     },
     {
         "name": "Crystal",
+        "id": "crystal",
         "description": "A universe very slowly converging into a stable mesh structure.",
         "preferredInitialConfig": "uniform",
         "behavior": "converges",
@@ -1969,6 +2010,7 @@
     },
     {
         "name": "Competing predators",
+        "id": "competing_predators",
         "aiGenerated": true,
         "description": "White and red both hunt green. Green flees both. The twist: white and red repel each other, so they compete for hunting territory rather than cooperating. Creates de-facto patrol zones — patches of white chasing green and patches of red chasing green that can't overlap, with green perpetually squeezed between rival predators.",
         "preferredInitialConfig": "uniform",
@@ -2017,7 +2059,8 @@
         "friction": 0.5
     },
     {
-        "name": "Complexe moving structures",
+        "name": "Complex moving structures",
+        "id": "complex_moving_structures",
         "description": "The universe creates several types of complexe moving organisms sometimes very circular sometimes longer.\n\nThe organisms sometime merge completely but often just exchange some particles when they merge. This change of particles sometimes put the movers to a rest and sometimes creates new movers.\n\nThe universe takes a very long time to stabilize as the energy decrese over time.",
         "preferredInitialConfig": "center",
         "behavior": "cyclic",

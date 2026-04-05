@@ -1,36 +1,36 @@
 {
-    "name": "Spinning structures",
-    "description": "create islnds which sometimes have a spinning structure of a white core. 3 groups of red spinning around it surrounded by a circle of green.\n\nBlue is not impacting much the other colors\n\nBoth low and high friction produce interesting results",
+    "name": "Complex moving structures 2",
+    "description": "The universe create several types of moving structures which end up merging and stabilizing into complex structures",
     "preferredInitialConfig": "uniform",
-    "behavior": "cyclic",
+    "behavior": "converges",
     "structure": "organisms",
     "activeColors": 4,
-    "convergenceSpeed": "medium",
+    "convergenceSpeed": "never",
     "energyLevel": "medium",
     "complexity": 2,
     "attractionTable": {
         "white": {
-            "white": 1,
+            "white": 0,
+            "red": 0,
+            "green": -1,
+            "blue": 2
+        },
+        "red": {
+            "white": -1,
             "red": 0,
             "green": 1,
             "blue": 2
         },
-        "red": {
-            "white": 1,
-            "red": -1,
-            "green": 2,
-            "blue": 0
-        },
         "green": {
             "white": 1,
             "red": -1,
-            "green": 0,
+            "green": 1,
             "blue": 0
         },
         "blue": {
-            "white": 0,
+            "white": 2,
             "red": -1,
-            "green": -1,
+            "green": 2,
             "blue": -1
         }
     },
@@ -40,12 +40,12 @@
         "green": 500,
         "blue": 500
     },
-    "nbParticles": 4000,
+    "nbParticles": 6000,
     "maxAttractionRadius": 32,
     "horizontalResolution": 30,
     "verticalResolution": 20,
-    "friction": 0.85,
-    "id": "spinning_structures",
+    "friction": 0.5,
+    "id": "complex_moving_structures2",
     "category": "movers",
     "createdAt": "2026-03-30"
 }

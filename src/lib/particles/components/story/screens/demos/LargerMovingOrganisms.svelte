@@ -10,9 +10,9 @@
     export let simulationComponent: Simulation;
 
     const presets = [
-        getUniverseById('comple_moving_structures'),
+        getUniverseById('complex_moving_structures_3'),
         getUniverseById('complex_structures'),
-        getUniverseById('complexe_moving_structures'),
+        getUniverseById('complex_moving_structures'),
         getUniverseById('moving_structures'),
         getUniverseById('various_moving_organisms')
     ];

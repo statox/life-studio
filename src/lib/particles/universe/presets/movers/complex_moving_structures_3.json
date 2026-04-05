@@ -1,5 +1,5 @@
 {
-    "name": "Comple moving structures",
+    "name": "Complex moving structures 3",
     "description": "The universe quickly creates complex moving structures with a white-blue center pushing a green blob and surrounded by low density red circle or semi circle.\n\nThe movers tend to merge together so the universe ends up less and less dynamical",
     "preferredInitialConfig": "uniform",
     "behavior": "converges",
@@ -45,7 +45,7 @@
     "horizontalResolution": 30,
     "verticalResolution": 20,
     "friction": 0.5,
-    "id": "comple_moving_structures",
+    "id": "complex_moving_structures_3",
     "category": "movers",
     "createdAt": "2026-03-30"
 }

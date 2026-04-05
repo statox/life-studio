@@ -1,5 +1,5 @@
 {
-    "name": "anthill",
+    "name": "Anthill",
     "description": "Islands of Red-Blue (the soil?) Pushed White in which Green keeps moving and forming new paths",
     "preferredInitialConfig": "uniform",
     "behavior": "cyclic",

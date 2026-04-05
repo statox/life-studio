@@ -1,6 +1,6 @@
 {
-    "name": "Complexe moving structures",
-    "description": "The universe creates several types of complexe moving organisms sometimes very circular sometimes longer.\n\nThe organisms sometime merge completely but often just exchange some particles when they merge. This change of particles sometimes put the movers to a rest and sometimes creates new movers.\n\nThe universe takes a very long time to stabilize as the energy decrese over time.",
+    "name": "Complex moving structures",
+    "description": "The universe creates several types of complex moving organisms sometimes very circular sometimes longer.\n\nThe organisms sometime merge completely but often just exchange some particles when they merge. This change of particles sometimes put the movers to a rest and sometimes creates new movers.\n\nThe universe takes a very long time to stabilize as the energy decrese over time.",
     "preferredInitialConfig": "center",
     "behavior": "cyclic",
     "structure": "organisms",
@@ -45,7 +45,7 @@
     "horizontalResolution": 30,
     "verticalResolution": 20,
     "friction": 0.5,
-    "id": "complexe_moving_structures",
+    "id": "complex_moving_structures",
     "category": "movers",
     "createdAt": "2026-03-30"
 }

@@ -1,5 +1,5 @@
 {
-    "name": "single compact moving pattern",
+    "name": "Single compact moving structure",
     "description": "A small universe converging to a single moving pattern with a core of white chasing red, 2 lateral half circles of blue and chasing a crowd of green",
     "preferredInitialConfig": "uniform",
     "behavior": "cyclic",

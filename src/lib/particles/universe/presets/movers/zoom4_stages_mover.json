@@ -1,5 +1,5 @@
 {
-    "name": "zoom 4 stages mover",
+    "name": "Zoom 4 stages mover",
     "description": "Converges into a layered moving structure",
     "preferredInitialConfig": "uniform",
     "behavior": "cyclic",

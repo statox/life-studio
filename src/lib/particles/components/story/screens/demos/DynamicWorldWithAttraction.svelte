@@ -11,7 +11,7 @@
 
     const presets = [
         getUniverseById('4_colors_worms_single_stage'),
-        getUniverseById('4_colors_inifnite_moving_low_cohesion_groups'),
+        getUniverseById('4_colors_infinite_moving_low_cohesion_groups'),
         getUniverseById('blue_islands')
     ];
 

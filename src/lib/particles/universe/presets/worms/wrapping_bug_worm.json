@@ -1,5 +1,5 @@
 {
-    "name": "Wraping Bug - Worm",
+    "name": "Wrapping Bug - Worm",
     "description": "Shows how the particles change their behavior close to the borders",
     "preferredInitialConfig": "uniform",
     "behavior": "cyclic",
@@ -45,7 +45,7 @@
     "horizontalResolution": 10,
     "verticalResolution": 7,
     "friction": 0.7,
-    "id": "wraping_bug_worm",
+    "id": "wrapping_bug_worm",
     "category": "worms",
     "createdAt": "2026-04-04"
 }

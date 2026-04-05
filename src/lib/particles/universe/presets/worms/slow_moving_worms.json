@@ -1,5 +1,5 @@
 {
-    "name": "slow moving worms",
+    "name": "Slow moving worms",
     "description": "Creates long worms structure which slowly merge together into a single very dense worm (seen with \"centered circle\" button)\n\nThe longer the structure become, the harder they fight the merge",
     "preferredInitialConfig": "uniform",
     "behavior": "converges",

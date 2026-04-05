@@ -10,7 +10,7 @@
     export let simulationComponent: Simulation;
 
     const presets = [
-        getUniverseById('4_colors_islands'),
+        getUniverseById('compact_merging_movers_with_several_phases'),
         getUniverseById('compact_moving_structures')
     ];
 

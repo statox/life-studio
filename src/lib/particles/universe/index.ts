@@ -98,7 +98,6 @@ export const UNIVERSE_CATEGORIES = [
     'crystals',
     'movers',
     'chase',
-    'chaos',
     'stripes',
     'other'
 ] as const;

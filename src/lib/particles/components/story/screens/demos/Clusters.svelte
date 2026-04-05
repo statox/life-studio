@@ -13,7 +13,7 @@
         getUniverseById('3_colors_stable_islands'),
         getUniverseById('complex_islands'),
         getUniverseById('complex_islands2'),
-        getUniverseById('complexe_clusters'),
+        getUniverseById('complex_clusters'),
         getUniverseById('merging_circular_structures'),
         getUniverseById('three_layer_onion')
     ];

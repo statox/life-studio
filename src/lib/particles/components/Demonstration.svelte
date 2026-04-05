@@ -40,26 +40,26 @@
         startWithParams(loadPresetParams(u));
     };
 
-    const loadByName = (name: string) => {
-        const u = demoUniverses.find((u) => u.name === name);
+    const loadById = (id: string) => {
+        const u = demoUniverses.find((u) => u.id === id);
         if (u) loadUniverse(u);
     };
 
     const randomUniversesForDemo = [
-        '2 colors chase',
-        '2 colors chase - White attraction',
-        'Cellular strips 2',
-        'Cellular strips - Inner islands',
-        '4 colors worms',
-        '3 Colors - Stable islands',
-        'spatial repartition'
+        '2_colors_chase',
+        '2_colors_chase_white_attraction',
+        'cellular_strips_2',
+        'cellular_strips_inner_islands',
+        '4_colors_worms',
+        '3_colors_stable_islands',
+        'spatial_repartition'
     ].sort((_a, _b) => Math.random() - 1);
     let randUniverseIndex = -1;
 
     const loadRandomUniverse = () => {
         randUniverseIndex = (randUniverseIndex + 1) % randomUniversesForDemo.length;
-        const name = randomUniversesForDemo[randUniverseIndex];
-        loadByName(name);
+        const id = randomUniversesForDemo[randUniverseIndex];
+        loadById(id);
     };
 
     const updateAttractionTable = (newTable: AttractionTable) => {
@@ -69,13 +69,23 @@
 
     const uniformSpread = () => {
         startWithParams(
-            respreadParams(lastParams, 'uniform', currentPreset.nbParticles, currentPreset.colorWeights)
+            respreadParams(
+                lastParams,
+                'uniform',
+                currentPreset.nbParticles,
+                currentPreset.colorWeights
+            )
         );
     };
 
     const centerSpread = () => {
         startWithParams(
-            respreadParams(lastParams, 'center', currentPreset.nbParticles, currentPreset.colorWeights)
+            respreadParams(
+                lastParams,
+                'center',
+                currentPreset.nbParticles,
+                currentPreset.colorWeights
+            )
         );
     };
 
@@ -140,7 +150,7 @@
                 concepts and invites you to click on a button to update the simulation to a new
                 universe.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('Complexe moving structures')}
+            <button class="universe-btn" on:click={() => loadById('complex_moving_structures')}
                 >Like this !</button
             >
             <p>
@@ -205,7 +215,7 @@
         <section>
             <h2>The Basics</h2>
             <p>Let's start by making a cleaner universe.</p>
-            <button class="universe-btn" on:click={() => loadByName('1 color still')}
+            <button class="universe-btn" on:click={() => loadById('1_color_still')}
                 >Click me !</button
             >
             <p>
@@ -216,7 +226,7 @@
             </p>
 
             <p>So let's add our first force: Repulsion!</p>
-            <button class="universe-btn" on:click={() => loadByName('1 color repulsion spread')}
+            <button class="universe-btn" on:click={() => loadById('1_color_repulsion_spread')}
                 >Add repulsion</button
             >
             <p>
@@ -238,11 +248,11 @@
                 small universal repulsion force prevents the particles from overlaping when they get
                 too close.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('1 color repulsion uniform')}
+            <button class="universe-btn" on:click={() => loadById('1_color_repulsion_uniform')}
                 >More cells!</button
             >
             <p>Inversely, we can make particles attract each other.</p>
-            <button class="universe-btn" on:click={() => loadByName('1 color attraction uniform')}
+            <button class="universe-btn" on:click={() => loadById('1_color_attraction_uniform')}
                 >Use attraction</button
             >
             <p>
@@ -265,7 +275,7 @@
                 To make all of this more interesting we need to add more particle species that we
                 differentiate with their color. Click to introduce <span class="cr">red</span>!
             </p>
-            <button class="universe-btn" on:click={() => loadByName('2 colors still')}
+            <button class="universe-btn" on:click={() => loadById('2_colors_still')}
                 >Create the <span class="cr">red</span> species</button
             >
             <p>
@@ -274,7 +284,7 @@
                 <span class="cw">white</span>
                 but <span class="cr">red</span> is repulsed by <span class="cr">red</span>.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('2 colors inverse forces')}
+            <button class="universe-btn" on:click={() => loadById('2_colors_inverse_forces')}
                 >Add intra-species forces</button
             >
             <p>
@@ -288,7 +298,7 @@
                 species. This creates filament-like structures which quickly converge into bi-color clusters:
                 Inter-species rules can create more complex structures.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('2 colors stable attraction')}
+            <button class="universe-btn" on:click={() => loadById('2_colors_stable_attraction')}
                 >Create inter-species attraction</button
             >
             <p>
@@ -298,7 +308,7 @@
             </p>
             <button
                 class="universe-btn"
-                on:click={() => loadByName('2 colors stable attraction inner repulsion')}
+                on:click={() => loadById('2_colors_stable_attraction_inner_repulsion')}
                 >Combine forces</button
             >
             <p>
@@ -310,7 +320,7 @@
                 <span class="cr">red</span> appearing. While everything looks pretty random we can still
                 clearly see a common pattern.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('2 colors chase')}
+            <button class="universe-btn" on:click={() => loadById('2_colors_chase')}
                 >Motion !</button
             >
             <p>
@@ -323,7 +333,7 @@
                 created and we add clusters of self-attracting species. We end up with our simplest moving
                 structures!
             </p>
-            <button class="universe-btn" on:click={() => loadByName('2 colors structured chase')}
+            <button class="universe-btn" on:click={() => loadById('2_colors_structured_chase')}
                 >Moving structures</button
             >
             <p>
@@ -351,7 +361,7 @@
                 ways that are harder to predict: that's where things get interesting.
             </p>
 
-            <button class="universe-btn" on:click={() => loadByName('3 colors still')}
+            <button class="universe-btn" on:click={() => loadById('3_colors_still')}
                 >Create the <span class="cg">green</span> species</button
             >
 
@@ -363,7 +373,7 @@
                 result: tight <span class="cr">red</span> islands floating in a disorganized
                 <span class="cw">white</span>-<span class="cg">green</span> sea.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('Islands')}
+            <button class="universe-btn" on:click={() => loadById('islands')}
                 >Make <span class="cr">red</span> islands</button
             >
             <p>
@@ -377,14 +387,14 @@
                 <span class="cw">white</span>-<span class="cg">green</span> cores, creating repeated
                 layered islands across the universe.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('3 Colors - Stable islands')}
+            <button class="universe-btn" on:click={() => loadById('3_colors_stable_islands')}
                 >Make layered islands</button
             >
             <p>
                 The equilibrium can take a long time to settle. And a balanced repartition of
                 attraction and repulsion allows for a wider spatial repartition.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('spatial repartition')}
+            <button class="universe-btn" on:click={() => loadById('spatial_repartition')}
                 >Slow equilibrium</button
             >
             <p>
@@ -409,7 +419,7 @@
                 -a species chasing another that flees it, all while the third pulls in a different
                 direction- the universe churns in an infinite turbulent state.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('Competing predators')}
+            <button class="universe-btn" on:click={() => loadById('competing_predators')}
                 >Chaos !</button
             >
 
@@ -424,7 +434,7 @@
                 species ever wins and no equilibrium is found. Instead, the three colors form
                 sweeping waves that rotate across the universe indefinitely.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('Rock - Paper - Scissors')}
+            <button class="universe-btn" on:click={() => loadById('rock_paper_scissors')}
                 >Rock - Paper - Scissors</button
             >
             <p>
@@ -456,7 +466,7 @@
                 and <span class="cg">green</span>. Watch it for a while to see the structure
                 appearing.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('Crystal')}>Crystal</button>
+            <button class="universe-btn" on:click={() => loadById('crystal')}>Crystal</button>
         </section>
 
         <!-- Four Species -->
@@ -468,7 +478,7 @@
                 do emerge they tend to be more intricate than what three species systems produce.
                 Here are some of the patterns that become possible.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('4 colors still')}
+            <button class="universe-btn" on:click={() => loadById('4_colors_still')}
                 >Create the <span class="cb">blue</span> species</button
             >
 
@@ -488,7 +498,7 @@
                 <span class="cw">white</span>-<span class="cg">green</span> regions- separated by empty
                 corridors.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('Cellular strips')}
+            <button class="universe-btn" on:click={() => loadById('cellular_strips')}
                 >Create an organic pattern</button
             >
             <p>
@@ -496,7 +506,7 @@
                 much thinner. Each color now repels two others instead of one, which tightens the
                 spacing and produces finer, more intricate strip patterns.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('Cellular strips 2')}
+            <button class="universe-btn" on:click={() => loadById('cellular_strips_2')}
                 >Create a different organic pattern</button
             >
             <p>
@@ -511,7 +521,7 @@
             </p>
             <button
                 class="universe-btn"
-                on:click={() => loadByName('Cellular strips - Inner islands')}
+                on:click={() => loadById('cellular_strips_inner_islands')}
                 >Hollow islands</button
             >
             <p>
@@ -527,7 +537,7 @@
             </p>
             <button
                 class="universe-btn"
-                on:click={() => loadByName('4 Colors - Slowly merging 2-colors blobs')}
+                on:click={() => loadById('4_colors_slowly_merging_2_colors_blobs')}
                 >Slowly merging two-color blobs</button
             >
 
@@ -544,7 +554,7 @@
                 they collide, split when they grow too large, and occasionally fold into spinning
                 rings that absorb passing worms.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('4 colors worms')}
+            <button class="universe-btn" on:click={() => loadById('4_colors_worms')}
                 >Make long structured moving worms</button
             >
             <p>
@@ -557,7 +567,7 @@
                 lattices with rivers of
                 <span class="cr">red</span> flowing through the channels between them.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('Crystal stripes')}
+            <button class="universe-btn" on:click={() => loadById('crystal_stripes')}
                 >Crystals and moving fluids</button
             >
             <p>
@@ -567,7 +577,7 @@
             </p>
             <button
                 class="universe-btn"
-                on:click={() => loadByName('4 Colors - worms - single stage')}
+                on:click={() => loadById('4_colors_worms_single_stage')}
                 >Create movers with low cohesion</button
             >
 
@@ -582,7 +592,7 @@
                 <span class="cr">red</span>, <span class="cg">green</span> and
                 <span class="cb">blue</span> that can never outrun their pursuer.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('4 colors - Waves')}
+            <button class="universe-btn" on:click={() => loadById('4_colors_waves')}
                 >Chaos again !</button
             >
             <p>
@@ -592,7 +602,7 @@
             </p>
             <button
                 class="universe-btn"
-                on:click={() => loadByName('4 Colors - Inifnite moving low cohesion groups')}
+                on:click={() => loadById('4_colors_infinite_moving_low_cohesion_groups')}
                 >Chaos, but blue stick together</button
             >
             <p>
@@ -604,7 +614,7 @@
                 >
                 turbulence flows around them, occasionally engulfing one before being pushed away again.
             </p>
-            <button class="universe-btn" on:click={() => loadByName('Blue islands')}
+            <button class="universe-btn" on:click={() => loadById('blue_islands')}
                 >Create <span class="cb">blue</span> islands</button
             >
         </section>
