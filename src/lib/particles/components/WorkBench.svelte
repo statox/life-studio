@@ -20,7 +20,6 @@
     import UniverseExportModal from './UniverseExportModal.svelte';
     import UniverseSelector from './UniverseSelector.svelte';
     import { getAllUniverses, type StoredUniverse } from '$lib/particles/universe';
-    import { SonificationController } from '$lib/particles/sonification';
 
     let simulationComponent: Simulation;
 
@@ -132,8 +131,7 @@
         r: () => spread('rainbow'),
         t: () => updateAttractionTable(getRandomAttractionTable()),
         m: () => updateAttractionTable(getMutatedAttractionTable(attractionTable)),
-        f: () => simulationComponent?.toggleFullscreen(),
-        s: () => toggleAudio()
+        f: () => simulationComponent?.toggleFullscreen()
     };
 
     onMount(async () => {
@@ -144,22 +142,6 @@
     let perfData: PerfData | null = null;
     let renderMs: number | null = null;
     let showExportModal = false;
-
-    const sonification = new SonificationController();
-    let audioOn = false;
-    let audioVolume = 0.5;
-
-    const toggleAudio = () => {
-        if (sonification.running) {
-            sonification.stop();
-            audioOn = false;
-        } else {
-            sonification.start();
-            audioOn = true;
-        }
-    };
-
-    $: sonification.setVolume(audioVolume);
 </script>
 
 <div class="sim">
@@ -180,7 +162,6 @@
         }}
         onPerfData={(p) => (perfData = p)}
         onRenderPerf={(ms) => (renderMs = ms)}
-        onPositions={(positions, colors, n) => sonification.feed(positions, colors, n, worldSize)}
     />
 
     <!-- Spread buttons -->
@@ -234,19 +215,6 @@
                 </span>
                 {showColors ? 'Colors on' : 'Colors off'}
             </button>
-            <button
-                class="toggle-btn"
-                class:active={audioOn}
-                on:click={toggleAudio}
-            >
-                {audioOn ? '♫ Audio on' : '♫ Audio off'}
-            </button>
-            {#if audioOn}
-                <div class="field">
-                    <label for="audio-vol">Volume</label>
-                    <input id="audio-vol" type="range" bind:value={audioVolume} min="0" max="1" step="0.01" />
-                </div>
-            {/if}
             <div class="field">
                 <label for="fps-cap">FPS cap</label>
                 <input id="fps-cap" type="number" bind:value={maxFPS} min="1" max="120" />
