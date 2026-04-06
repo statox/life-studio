@@ -1,12 +1,6 @@
 <script lang="ts">
     import ScreenBtn from '../ScreenBtn.svelte';
-    import { getZeroedAttractionTable } from '$lib/particles/attraction';
-    import {
-        COLORS,
-        generateSimulationParams,
-        PARTICLE_COLORS,
-        type SimulationConfig
-    } from '$lib/particles/engine';
+    import { COLORS, generateSimulationParams, PARTICLE_COLORS } from '$lib/particles/engine';
     import type { ColorProportions } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getUniverseById } from '$lib/particles/universe';
