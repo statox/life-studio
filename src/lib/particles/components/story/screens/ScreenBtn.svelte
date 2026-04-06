@@ -1,8 +1,15 @@
 <script lang="ts">
     export let active = false;
+
+    const handleClick = () => {
+        // After a short delay (let the simulation start), scroll the canvas into view
+        setTimeout(() => {
+            document.querySelector('.canvas-col')?.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+    };
 </script>
 
-<button class="screen-btn" class:active on:click>
+<button class="screen-btn" class:active on:click on:click={handleClick}>
     <slot />
 </button>
 
