@@ -65,6 +65,8 @@
 
     $: currentScreen = screens[currentIndex];
     $: showSimulation = !currentScreen.noSimulation;
+    $: isOnLastScreen = currentIndex === screens.length - 1;
+    $: isOnFirstScreen = currentIndex === 0;
 
     const scrollToTop = async () => {
         await tick();
@@ -115,15 +117,19 @@
             /></svg
         >
     </a>
-    <button class="nav-btn" on:click={prev} disabled={currentIndex === 0}>
-        <span class="nav-label-full">Previous</span>
-        <span class="nav-label-short">←</span>
-    </button>
+    {#if !isOnFirstScreen}
+        <button class="nav-btn" on:click={prev}>
+            <span class="nav-label-full">Previous</span>
+            <span class="nav-label-short">←</span>
+        </button>
+    {/if}
     <span class="nav-counter">{currentIndex + 1} / {screens.length}</span>
-    <button class="nav-btn" on:click={next} disabled={currentIndex === screens.length - 1}>
-        <span class="nav-label-full">Next</span>
-        <span class="nav-label-short">→</span>
-    </button>
+    {#if !isOnLastScreen}
+        <button class="nav-btn" on:click={next}>
+            <span class="nav-label-full">Next</span>
+            <span class="nav-label-short">→</span>
+        </button>
+    {/if}
 </div>
 
 <style>
