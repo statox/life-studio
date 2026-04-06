@@ -1,1 +1,0 @@
-import{default as t}from"../components/pages/particles-life/workbench/_page.svelte-6b1a7203.js";export{t as component};
