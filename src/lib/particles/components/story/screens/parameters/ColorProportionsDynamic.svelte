@@ -9,26 +9,11 @@
     } from '$lib/particles/engine';
     import type { ColorProportions } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
+    import { getUniverseById } from '$lib/particles/universe';
 
     export let simulationComponent: Simulation;
 
-    const attractionTable = getZeroedAttractionTable();
-    attractionTable.white.white = 2;
-    attractionTable.white.red = 2;
-    attractionTable.white.green = 1;
-    attractionTable.white.blue = 0;
-    attractionTable.red.white = -1;
-    attractionTable.red.red = 2;
-    attractionTable.red.green = 1;
-    attractionTable.red.blue = -1;
-    attractionTable.green.white = 2;
-    attractionTable.green.red = -1;
-    attractionTable.green.green = 1;
-    attractionTable.green.blue = 2;
-    attractionTable.blue.white = 0;
-    attractionTable.blue.red = 0;
-    attractionTable.blue.green = 2;
-    attractionTable.blue.blue = 1;
+    const universe = getUniverseById('crystal_stripes');
 
     const weightPresets: Record<string, ColorProportions> = {
         equal: { white: 500, red: 500, green: 500, blue: 500 },
@@ -54,18 +39,11 @@
     };
 
     const startScreen = () => {
-        const config: SimulationConfig = {
-            horizontalResolution: 10,
-            verticalResolution: 7,
-            initialSpreadConfig: 'center',
-            colorWeights,
-            maxAttractionRadius: 32,
-            attractionTable: attractionTable,
-            nbParticles: 1000,
-            friction: 0.5
-        };
-
-        const simulationParams = generateSimulationParams(config);
+        const simulationParams = generateSimulationParams({
+            ...universe,
+            initialSpreadConfig: universe.preferredInitialConfig,
+            colorWeights
+        });
         simulationComponent?.startSim(simulationParams);
     };
 
@@ -74,24 +52,67 @@
 
 <div class="screen">
     <h2>Changing species proportions</h2>
-    <!-- TODO: Write text about color proportions and 4 colors.
-         Points to address:
-         - Up to 4 species can coexist in the simulation
-         - Color weights control how many particles of each color are created
-         - Set a weight to 0 to remove a species entirely
-         - More species = more possible interactions = more complex emergent behavior
-         - 4 colors x 4 colors = 16 rules in the attraction table
-         - Try different proportions and table values to see what emerges
-    -->
     <p>
-        For now our 4 species all have the same number of individuals. We can see that the universe
-        quickly converges into a cyclic structure of four layers: a <span class="cr">Red</span> pack
-        being chased by a
-        <span class="cw">White</span>-<span class="cg">Green</span>-<span class="cb">Blue</span> core.
+        Check the current simulation at the bottom of the page. Our 4 species all have the same
+        number of individuals. We can see that the universe converges into a crystal-like structure
+        where
+        <span class="cw">White</span>, <span class="cg">Green</span> and
+        <span class="cb">Blue</span>
+        pack into compact structures and between them <span class="cr">Red</span> randomly moves in
+        poaches where some
+        <span class="cw">White</span> and <span class="cb">Blue</span> sometimes mix in small quantities.
     </p>
     <p>
         Now, use the buttons to observe what happens when you remove one species altogether. Can you
         predict what will happen when you remove <span class="cw">White</span>?
+        <ScreenBtn
+            active={currentPreset === 'no_white'}
+            on:click={() => setProportions('no_white')}
+        >
+            Remove <span class="cw">White</span>
+        </ScreenBtn>
+    </p>
+    <p>
+        It looks like the <span class="cw">White</span> dynamic was the motor of the motion in the
+        universe now everything stabillize very quickly. Let's reintroduce
+        <span class="cw">White</span>
+        and remove <span class="cr">Red</span> completely.
+        <ScreenBtn active={currentPreset === 'no_red'} on:click={() => setProportions('no_red')}>
+            Remove <span class="cr">Red</span>
+        </ScreenBtn>
+    </p>
+    <p>
+        As we could have preditected from the initial configuration removing <span class="cr"
+            >Red</span
+        > doesn't prevent the creation of crystals. Actually since red isn't there to create holes in
+        the crystal, all the particles tend to form one big area.
+    </p>
+    <p>
+        Let's remove <span class="cg">Green</span>.
+        <ScreenBtn
+            active={currentPreset === 'no_green'}
+            on:click={() => setProportions('no_green')}
+        >
+            Remove <span class="cg">Green</span>
+        </ScreenBtn>
+    </p>
+    <p>
+        Now it is clear that the <span class="cb">Blue</span>-<span class="cg">Green</span>
+        attraction is the basis of the crystal we saw. When this strong crystal doesn't exist anymore
+        <span class="cr">Red</span>
+        and
+        <span class="cw">White</span> have all the room to chase each other.
+    </p>
+    <p>
+        <ScreenBtn active={currentPreset === 'no_blue'} on:click={() => setProportions('no_blue')}>
+            Remove <span class="cb">Blue</span>
+        </ScreenBtn>
+    </p>
+    <p>
+        Finally without <span class="cb">Blue</span> you can observe a more chaotic world where
+        waves of <span class="cw">White</span> chase groups of <span class="cg">Green</span> and
+        <span class="cr">Red</span>. It's interesting to see how simple oscillations end up
+        converging in larger waves like it happens in some physical systems.
     </p>
 
     <div class="controls">
