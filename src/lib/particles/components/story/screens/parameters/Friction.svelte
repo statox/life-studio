@@ -47,10 +47,9 @@
     <h2>Friction</h2>
     <p>
         Another force governing our particles is friction. Friction controls how quickly particles
-        slow down. Picture trying to roll a marble on a table covered in soda or in mud: You can
-        push the marble but it will not roll too far. The stickier the universe, the higher the
-        friction, the quicker the particles slow down. Here all the particles are attracted by each
-        other.
+        slow down. Picture trying to roll a marble on a table covered in soda: You can push the
+        marble but it will not roll too far. The higher the friction, the stickier the universe, the
+        quicker the particles stop moving. Here all the particles are attracted by each other.
     </p>
 
     <p>
