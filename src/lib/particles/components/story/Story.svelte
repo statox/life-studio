@@ -115,11 +115,15 @@
             /></svg
         >
     </a>
-    <button class="nav-btn" on:click={prev} disabled={currentIndex === 0}>Previous</button>
+    <button class="nav-btn" on:click={prev} disabled={currentIndex === 0}>
+        <span class="nav-label-full">Previous</span>
+        <span class="nav-label-short">←</span>
+    </button>
     <span class="nav-counter">{currentIndex + 1} / {screens.length}</span>
-    <button class="nav-btn" on:click={next} disabled={currentIndex === screens.length - 1}
-        >Next</button
-    >
+    <button class="nav-btn" on:click={next} disabled={currentIndex === screens.length - 1}>
+        <span class="nav-label-full">Next</span>
+        <span class="nav-label-short">→</span>
+    </button>
 </div>
 
 <style>
@@ -127,7 +131,7 @@
     .story {
         display: flex;
         flex-direction: column;
-        gap: 32px;
+        gap: 6px;
         max-width: 1400px;
         margin: 0 auto;
         padding: 32px 24px 48px;
@@ -146,7 +150,6 @@
     .narrative {
         display: flex;
         flex-direction: column;
-        padding: 16px 0;
         align-self: center;
         text-align: center;
         max-width: 600px;
@@ -227,5 +230,24 @@
         align-items: center;
         justify-content: center;
         text-decoration: none;
+    }
+
+    .nav-label-short {
+        display: none;
+    }
+
+    @media (max-width: 480px) {
+        .nav-label-full {
+            display: none;
+        }
+
+        .nav-label-short {
+            display: inline;
+            font-size: 1.1rem;
+        }
+
+        .nav-btn {
+            padding: 8px 14px;
+        }
     }
 </style>
