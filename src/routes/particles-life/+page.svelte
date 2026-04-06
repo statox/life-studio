@@ -11,21 +11,35 @@
             emerge clusters, waves, worms, crystals, and structures that look almost alive.
         </p>
         <p>
-            This is a simulation of emergent complexity — behaviors that are impossible to predict
-            from the rules alone but appear reliably once the system is running.
+            This is a simulation of emergent complexity: many agent following simple local rules
+            create complex patterns appearing at large scale.
         </p>
     </section>
 
     <div class="cards">
-        <a class="card featured" href="{base}/particles-life/demo">
+        <a class="card featured" href="{base}/particles-life/story">
             <div class="card-label">Start here</div>
+            <h2>Story</h2>
+            <p>Let me show you the universes through an guided demonstration</p>
+            <span class="card-cta">Read Story →</span>
+        </a>
+
+        <a class="card" href="{base}/particles-life/demo">
             <h2>Demonstration</h2>
             <p>
-                A guided walkthrough of how the simulation works. Explains the mechanics step by
-                step — from a single particle species to complex four-species structures — with
-                interactive examples you can run as you read.
+                A detailed walkthrough of how the simulation works. Explains the mechanics step by
+                step with interactive examples you can run as you read. <em>Work in progress.</em>
             </p>
             <span class="card-cta">Read the guide →</span>
+        </a>
+
+        <a class="card" href="{base}/particles-life/playground">
+            <h2>Playground</h2>
+            <p>
+                An interactive interface allowing you to load preset universes and manipulate them
+                to find new dynamics. <em>Works best on desktop.</em>
+            </p>
+            <span class="card-cta">Go play →</span>
         </a>
 
         <a class="card" href="{base}/particles-life/gallery">
@@ -45,6 +59,10 @@
                 particle counts, and mutate or randomize the rules to discover new behaviors on your
                 own.
             </p>
+            <p>
+                I tailor the UI to my specific needs as I work on this project so the interface is
+                rough around the edges and might break often.
+            </p>
             <span class="card-cta">Open sandbox →</span>
         </a>
 
@@ -52,22 +70,10 @@
             <h2>Classifier</h2>
             <p>
                 Review and tag universe presets. Load each universe, watch it simulate, then edit
-                its metadata — behavior, structure, energy level — and save changes back to the
-                source files. <em>Dev mode only.</em>
+                its metadata -behavior, structure, energy level- and save changes back to the source
+                files. <em>Dev mode only.</em>
             </p>
             <span class="card-cta">Classify presets →</span>
-        </a>
-
-        <a class="card" href="{base}/particles-life/story">
-            <h2>Story</h2>
-            <p>The beginning of an interactive introduction</p>
-            <span class="card-cta">Read Story →</span>
-        </a>
-
-        <a class="card" href="{base}/particles-life/playground">
-            <h2>Playground</h2>
-            <p>POC playground</p>
-            <span class="card-cta">Go play →</span>
         </a>
     </div>
 </div>
@@ -97,7 +103,7 @@
         color: #90a4ae;
         line-height: 1.7;
         margin: 0 0 12px;
-        max-width: 620px;
+        /* max-width: 620px; */
     }
 
     /* ── Cards ───────────────────────────────── */
