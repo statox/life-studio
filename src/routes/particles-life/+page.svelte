@@ -26,15 +26,6 @@
             <span class="card-cta">Read Story →</span>
         </a>
 
-        <a class="card" href="{base}/particles-life/demo">
-            <h2>Demonstration</h2>
-            <p>
-                A detailed walkthrough of how the simulation works. Explains the mechanics step by
-                step with interactive examples you can run as you read. <em>Work in progress.</em>
-            </p>
-            <span class="card-cta">Read the guide →</span>
-        </a>
-
         <a class="card" href="{base}/particles-life/playground">
             <h2>Playground</h2>
             <p>
@@ -42,6 +33,15 @@
                 to find new dynamics. <em>Works best on desktop.</em>
             </p>
             <span class="card-cta">Go play →</span>
+        </a>
+
+        <a class="card" href="{base}/particles-life/demo">
+            <h2>Demonstration</h2>
+            <p>
+                A detailed walkthrough of how the simulation works. Explains the mechanics step by
+                step with interactive examples you can run as you read. <em>Work in progress.</em>
+            </p>
+            <span class="card-cta">Read the guide →</span>
         </a>
 
         <a class="card" href="{base}/particles-life/gallery">

@@ -41,22 +41,15 @@
 
         <a class="card" href="{base}/soft-bodies">
             <h2>Soft bodies</h2>
-            <p>
-                The Gray-Scott model simulates two chemicals reacting and diffusing across a
-                surface, producing spots, stripes, and labyrinthine patterns.
-            </p>
-            <span class="card-cta">Explore →</span>
+            <p>A never completed -and really never started- project around soft bodies physics..</p>
+            <span class="card-cta">Expect nothing, still get disappointed →</span>
         </a>
     </div>
     <br />
     <div class="cards">
         <a class="card" href="{base}/shaders">
             <h2>Shader tests</h2>
-            <p>
-                Colored particles attract or repel each other based on simple rules. Clusters,
-                waves, and lifelike structures emerge from minimal interactions, all running in web
-                workers.
-            </p>
+            <p>Me messing up with shaders and webgl before implementing Game of Life on the GPU.</p>
             <span class="card-cta">Explore →</span>
         </a>
     </div>

@@ -50,7 +50,7 @@
 
 <div class="screen">
     <h2>Restart Buttons</h2>
-    <p>Let's add a few particles:</p>
+    <p>Let's add a few particles</p>
     <p>
         <em
             >Click the buttons in the text and observe the simulation update at the bottom of the
