@@ -1,9 +1,26 @@
 <script lang="ts">
     export let active = false;
 
+    const isVisibleInViewport = (element: Element) => {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight) + rect.height / 2
+        );
+    };
+
     const handleClick = () => {
         // After a short delay (let the simulation start), scroll the canvas into view
         setTimeout(() => {
+            const canvasEl = document.querySelector('.canvas-col');
+            if (!canvasEl) {
+                return;
+            }
+
+            // Only scroll if the simulation is not already partly visible
+            if (isVisibleInViewport(canvasEl)) {
+                return;
+            }
             document.querySelector('.canvas-col')?.scrollIntoView({ behavior: 'smooth' });
         }, 50);
     };
