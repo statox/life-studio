@@ -65,7 +65,7 @@
         </a>
 
         <a class="card" href="{base}/particles-life/playground">
-            <h2>Story</h2>
+            <h2>Playground</h2>
             <p>POC playground</p>
             <span class="card-cta">Go play →</span>
         </a>
