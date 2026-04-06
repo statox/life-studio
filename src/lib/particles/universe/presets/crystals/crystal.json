@@ -44,7 +44,7 @@
     "maxAttractionRadius": 32,
     "horizontalResolution": 30,
     "verticalResolution": 20,
-    "friction": 0.5,
+    "friction": 0.8,
     "id": "crystal",
     "category": "crystals",
     "createdAt": "2026-03-30"
