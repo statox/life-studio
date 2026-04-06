@@ -1,7 +1,7 @@
 {
     "name": "Moving structures 2",
     "description": "Change the proportion of blue and see how structures become more structured when more blue appears",
-    "preferredInitialConfig": "uniform",
+    "preferredInitialConfig": "center",
     "behavior": "cyclic",
     "structure": "organisms",
     "activeColors": 4,
