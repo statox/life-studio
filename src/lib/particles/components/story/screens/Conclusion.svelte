@@ -9,16 +9,25 @@
         them!
     </p>
     <p>
-        I created several tools to explore this simulation. You can check out the <a
-            href="{base}/particles-life/gallery">Gallery</a
-        >
-        to find all the interesting universes I have compiled. The
+        I created several tools to explore this simulation. You can check out the
+
+        <a href="{base}/particles-life/playground">Playground</a>
+
+        to find all the interesting universes I have compiled and interact with them. The
         <a href="{base}/particles-life/demo">Demonstration</a> introduces the settings with more
-        details and allows you to see their effects on different universes. You can also check my
+        details and allows you to see their effects on different universes (This is still a work in
+        progress). You can also check the readonly
+
+        <a href="{base}/particles-life/gallery">Gallery</a> and my
         <a href="{base}/particles-life/workbench">Workbench</a>
-        which gives you full control of the universe and that I use to find new interesting universes.
+
+        that I use to find new interesting universes.
     </p>
     <p>You can find all of these tools <a href="{base}/particles-life">on this page</a>.</p>
+    <p>
+        I hope this short demo made you want to learn more about these mini universes creating
+        moving patterns born ouf of your processor.
+    </p>
     <p>
         Personally I enjoy spending time tweaking the parameters of my universes until I see
         something interesting happen. I am currently in the process of creating an inventory of the
