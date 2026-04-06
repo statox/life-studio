@@ -24,8 +24,9 @@
     let off: HTMLCanvasElement | undefined;
     const backgroundColor = '#000000';
     const n = COLORS.length;
-    const r = cellSize;
-    const d = r * 2;
+
+    $: r = cellSize || 2;
+    $: d = r * 2;
 
     let fpsInterval = 1000 / maxFPS;
     let then = 0;
@@ -79,10 +80,10 @@
         drewFrame();
     }
 
-    onMount(() => {
-        canvas.width = 1600;
-        canvas.height = 960;
-
+    const createOffsetPoints = (d: number) => {
+        if (typeof document === 'undefined') {
+            return;
+        }
         off = document.createElement('canvas');
         off.width = n * d;
         off.height = d;
@@ -96,6 +97,14 @@
             offCtx.closePath();
             offCtx.fill();
         }
+    };
+    $: createOffsetPoints(d);
+
+    onMount(() => {
+        canvas.width = 1600;
+        canvas.height = 960;
+
+        createOffsetPoints(d);
 
         then = Date.now();
         window.requestAnimationFrame(draw);

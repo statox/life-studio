@@ -32,6 +32,7 @@
     type ScreenConfig = {
         component: typeof SvelteComponent;
         noSimulation?: boolean;
+        cellSize?: number;
     };
 
     let simulationComponent: Simulation;
@@ -39,10 +40,10 @@
     const screens: ScreenConfig[] = [
         { component: Introduction, noSimulation: true },
         { component: Parameters_EmptyUniverse },
-        { component: Parameters_RestartButtons },
-        { component: Parameters_SelfForces },
-        { component: Parameters_Friction },
-        { component: Parameters_ColorProportions },
+        { component: Parameters_RestartButtons, cellSize: 5 },
+        { component: Parameters_SelfForces, cellSize: 5 },
+        { component: Parameters_Friction, cellSize: 20 },
+        { component: Parameters_ColorProportions, cellSize: 5 },
         { component: Parameters_ColorProportionsDynamic },
         { component: Parameters_AttractionTable },
         { component: Parameters_WorldSize },
@@ -95,7 +96,11 @@
 
     {#if showSimulation}
         <div class="canvas-col">
-            <Simulation bind:this={simulationComponent} hideTimeline={true} />
+            <Simulation
+                bind:this={simulationComponent}
+                hideTimeline={true}
+                cellSize={currentScreen.cellSize}
+            />
         </div>
     {/if}
 </div>

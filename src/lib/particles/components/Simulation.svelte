@@ -23,10 +23,9 @@
     export let onPerfData: ((perf: PerfData) => void) | undefined = undefined;
     export let onRenderPerf: ((ms: number) => void) | undefined = undefined;
     export let fillContainer = false;
+    export let cellSize = 2;
 
     let showColors = true;
-
-    const cellSize = 2;
 
     // Rendering state derived from startSim params
     let canvasWorldSize = { x: 0, y: 0 };
