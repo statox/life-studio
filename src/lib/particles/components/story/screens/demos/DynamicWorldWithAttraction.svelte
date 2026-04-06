@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ScreenBtn from '../ScreenBtn.svelte';
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from '$lib/particles/components/buttons/CenteredCircleButton.svelte';
     import RainbowButton from '$lib/particles/components/buttons/RainbowButton.svelte';
@@ -54,13 +55,9 @@
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <button
-                    class="screen-btn"
-                    class:active={activeIndex === idx}
-                    on:click={() => loadPreset(idx)}
-                >
+                <ScreenBtn active={activeIndex === idx} on:click={() => loadPreset(idx)}>
                     {p.name}
-                </button>
+                </ScreenBtn>
             {/each}
         </div>
         <div class="control-section spread-btns">

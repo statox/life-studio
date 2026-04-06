@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ScreenBtn from '../ScreenBtn.svelte';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getUniverseById } from '$lib/particles/universe';
@@ -87,13 +88,9 @@
     </p>
     <p>
         We start with a
-        <button
-            class="screen-btn"
-            class:active={currentPreset === 'medium'}
-            on:click={() => setProportions('medium')}
-        >
+        <ScreenBtn active={currentPreset === 'medium'} on:click={() => setProportions('medium')}>
             Medium
-        </button>
+        </ScreenBtn>
         size to observe the base behavior of this universe: Each color is attracted to the next one which
         creates moving worm-like structures. Sometimes the worm eats its own tail and the structure becomes
         circular. When they get close to each other, structures tend to merge and split.
@@ -101,13 +98,9 @@
 
     <p>
         If we use
-        <button
-            class="screen-btn"
-            class:active={currentPreset === 'large'}
-            on:click={() => setProportions('large')}
-        >
+        <ScreenBtn active={currentPreset === 'large'} on:click={() => setProportions('large')}>
             Large
-        </button> dimensions for the world we see that the particles have more room to move. The worms
+        </ScreenBtn> dimensions for the world we see that the particles have more room to move. The worms
         take more time to travel across the world. Since particles are less tightly packed in the world,
         they interact with each other less often, which allows more worms to form as they merge less
         often with other worms.
@@ -115,41 +108,34 @@
 
     <p>
         Finally in a
-        <button
-            class="screen-btn"
-            class:active={currentPreset === 'small'}
-            on:click={() => setProportions('small')}
-        >
+        <ScreenBtn active={currentPreset === 'small'} on:click={() => setProportions('small')}>
             Small
-        </button> world the particles don't have enough room to create several structures and most of
-        the world is merged into a single worm. This view allows you to better see how the world wraps
+        </ScreenBtn> world the particles don't have enough room to create several structures and most
+        of the world is merged into a single worm. This view allows you to better see how the world wraps
         on itself: The top and bottom borders are connected and so are the left and right borders.
     </p>
 
     <div class="controls">
         <div class="control-section">
             <div class="btn-group">
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'medium'}
+                <ScreenBtn
+                    active={currentPreset === 'medium'}
                     on:click={() => setProportions('medium')}
                 >
                     Medium
-                </button>
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'large'}
+                </ScreenBtn>
+                <ScreenBtn
+                    active={currentPreset === 'large'}
                     on:click={() => setProportions('large')}
                 >
                     Large
-                </button>
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'small'}
+                </ScreenBtn>
+                <ScreenBtn
+                    active={currentPreset === 'small'}
                     on:click={() => setProportions('small')}
                 >
                     Small
-                </button>
+                </ScreenBtn>
             </div>
         </div>
         <div class="control-section">

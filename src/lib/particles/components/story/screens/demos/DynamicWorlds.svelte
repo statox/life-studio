@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ScreenBtn from '../ScreenBtn.svelte';
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from '$lib/particles/components/buttons/CenteredCircleButton.svelte';
     import RainbowButton from '$lib/particles/components/buttons/RainbowButton.svelte';
@@ -53,16 +54,16 @@
     <h2>Dynamic Worlds</h2>
     <p>
         When we release some attraction forces we end up with more dynamic worlds:
-        <button class="screen-btn" class:active={activeIndex === 0} on:click={() => loadPreset(0)}>
+        <ScreenBtn active={activeIndex === 0} on:click={() => loadPreset(0)}>
             {presets[0].name}
-        </button>
+        </ScreenBtn>
         has <span class="cw">White</span> chasing the other colors so we get a universe which shows
         some cyclical aspects, waves of <span class="cw">White</span> appear after a few seconds.
     </p>
     <p>
-        <button class="screen-btn" class:active={activeIndex === 1} on:click={() => loadPreset(1)}>
+        <ScreenBtn active={activeIndex === 1} on:click={() => loadPreset(1)}>
             {presets[1].name}
-        </button>
+        </ScreenBtn>
         creates dramatic waves of <span class="cr">Red</span> chasing <span class="cw">White</span>
         chasing <span class="cg">Green</span> chasing <span class="cr">Red</span>. The universe
         quickly starts looking like ripples in still water.
@@ -71,13 +72,9 @@
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <button
-                    class="screen-btn"
-                    class:active={activeIndex === idx}
-                    on:click={() => loadPreset(idx)}
-                >
+                <ScreenBtn active={activeIndex === idx} on:click={() => loadPreset(idx)}>
                     {p.name}
-                </button>
+                </ScreenBtn>
             {/each}
         </div>
         <div class="control-section spread-btns">

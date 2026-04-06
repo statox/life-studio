@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
     import {
         COLORS,
@@ -96,41 +97,36 @@
     <div class="controls">
         <div class="control-section">
             <div class="btn-group">
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'equal'}
+                <ScreenBtn
+                    active={currentPreset === 'equal'}
                     on:click={() => setProportions('equal')}
                 >
                     Equal
-                </button>
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'no_white'}
+                </ScreenBtn>
+                <ScreenBtn
+                    active={currentPreset === 'no_white'}
                     on:click={() => setProportions('no_white')}
                 >
                     No White
-                </button>
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'no_red'}
+                </ScreenBtn>
+                <ScreenBtn
+                    active={currentPreset === 'no_red'}
                     on:click={() => setProportions('no_red')}
                 >
                     No Red
-                </button>
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'no_green'}
+                </ScreenBtn>
+                <ScreenBtn
+                    active={currentPreset === 'no_green'}
                     on:click={() => setProportions('no_green')}
                 >
                     No Green
-                </button>
-                <button
-                    class="screen-btn"
-                    class:active={currentPreset === 'no_blue'}
+                </ScreenBtn>
+                <ScreenBtn
+                    active={currentPreset === 'no_blue'}
                     on:click={() => setProportions('no_blue')}
                 >
                     No Blue
-                </button>
+                </ScreenBtn>
             </div>
         </div>
     </div>

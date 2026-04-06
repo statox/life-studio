@@ -2,6 +2,7 @@
     import type { InitialConfig } from '$lib/particles/universe';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
+    import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
 
     export let simulationComponent: Simulation;
@@ -51,13 +52,9 @@
     <h2>Restart Buttons</h2>
     <p>
         Let's add a few particles:
-        <button
-            class="screen-btn"
-            class:active={initialSpreadConfig === 'uniform'}
-            on:click={() => uniformSpread()}
-        >
+        <ScreenBtn active={initialSpreadConfig === 'uniform'} on:click={() => uniformSpread()}>
             Add particles
-        </button>
+        </ScreenBtn>
     </p>
     <p>
         Meet <span class="cw">White</span>. This is our first species. For now it is doing nothing.
@@ -66,33 +63,27 @@
 
     <p>
         Look at what happens when we pack our particles a bit more tightly:
-        <button
-            class="screen-btn"
-            class:active={initialSpreadConfig === 'center'}
-            on:click={() => centerSpread()}
-        >
+        <ScreenBtn active={initialSpreadConfig === 'center'} on:click={() => centerSpread()}>
             Pack particles
-        </button>
+        </ScreenBtn>
     </p>
 
     <p>We get some motion! Let's zoom in on that.</p>
     <div class="controls">
         <div class="control-section">
             <div class="btn-group">
-                <button
-                    class="screen-btn"
-                    class:active={initialSpreadConfig === 'uniform'}
+                <ScreenBtn
+                    active={initialSpreadConfig === 'uniform'}
                     on:click={() => uniformSpread()}
                 >
                     Add particles
-                </button>
-                <button
-                    class="screen-btn"
-                    class:active={initialSpreadConfig === 'center'}
+                </ScreenBtn>
+                <ScreenBtn
+                    active={initialSpreadConfig === 'center'}
                     on:click={() => centerSpread()}
                 >
                     Pack particles
-                </button>
+                </ScreenBtn>
             </div>
         </div>
     </div>

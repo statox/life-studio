@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ScreenBtn from '../ScreenBtn.svelte';
     import { base } from '$app/paths';
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from '$lib/particles/components/buttons/CenteredCircleButton.svelte';
@@ -57,13 +58,13 @@
         patterns.
     </p>
     <p>
-        <button class="screen-btn" class:active={activeIndex === 0} on:click={() => loadPreset(0)}>
+        <ScreenBtn active={activeIndex === 0} on:click={() => loadPreset(0)}>
             {presets[0].name}
-        </button>
+        </ScreenBtn>
         and
-        <button class="screen-btn" class:active={activeIndex === 1} on:click={() => loadPreset(1)}>
+        <ScreenBtn active={activeIndex === 1} on:click={() => loadPreset(1)}>
             {presets[1].name}
-        </button>
+        </ScreenBtn>
         are some of the first patterns I found and some of my favorite. They remind me of some patterns
         I found when implementing
         <a target="_blank" rel="noopener noreferrer" href="{base}/reaction-diffusion"
@@ -71,9 +72,9 @@
         > which look like cells.
     </p>
     <p>
-        <button class="screen-btn" class:active={activeIndex === 2} on:click={() => loadPreset(2)}>
+        <ScreenBtn active={activeIndex === 2} on:click={() => loadPreset(2)}>
             {presets[2].name}
-        </button>
+        </ScreenBtn>
         create even more complex patterns which remind me of
         <a
             target="_blank"
@@ -84,20 +85,16 @@
     </p>
     <p>
         Of course, not all patterns have the same level of order.
-        <button class="screen-btn" class:active={activeIndex === 3} on:click={() => loadPreset(3)}>
+        <ScreenBtn active={activeIndex === 3} on:click={() => loadPreset(3)}>
             {presets[3].name}
-        </button> creates something a bit less structured than the previous examples.
+        </ScreenBtn> creates something a bit less structured than the previous examples.
     </p>
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <button
-                    class="screen-btn"
-                    class:active={activeIndex === idx}
-                    on:click={() => loadPreset(idx)}
-                >
+                <ScreenBtn active={activeIndex === idx} on:click={() => loadPreset(idx)}>
                     {p.name}
-                </button>
+                </ScreenBtn>
             {/each}
         </div>
         <div class="control-section spread-btns">

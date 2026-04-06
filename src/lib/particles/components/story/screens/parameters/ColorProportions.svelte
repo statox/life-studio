@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
     import {
         COLORS,
@@ -63,13 +64,9 @@
         exception. Let's give <span class="cw">White</span> some friends:
         <span class="cr">Red</span>, <span class="cg">Green</span> and <span class="cb">Blue</span>.
 
-        <button
-            class="screen-btn"
-            class:active={currentPreset === 'equal'}
-            on:click={() => setProportions('equal')}
-        >
+        <ScreenBtn active={currentPreset === 'equal'} on:click={() => setProportions('equal')}>
             Create diversity
-        </button>
+        </ScreenBtn>
     </p>
 
     <div class="controls">

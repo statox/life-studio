@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ScreenBtn from '../ScreenBtn.svelte';
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from '$lib/particles/components/buttons/CenteredCircleButton.svelte';
     import RainbowButton from '$lib/particles/components/buttons/RainbowButton.svelte';
@@ -56,22 +57,22 @@
     <p>
         A lot of configurations tend to create clusters: The universe stabilizes into groups of
         several colors.
-        <button class="screen-btn" class:active={activeIndex === 0} on:click={() => loadPreset(0)}>
+        <ScreenBtn active={activeIndex === 0} on:click={() => loadPreset(0)}>
             3 Colors - Stable islands
-        </button> is a good example of that: The clusters form quickly and stop moving.
+        </ScreenBtn> is a good example of that: The clusters form quickly and stop moving.
     </p>
     <p>
         In universes like
-        <button class="screen-btn" class:active={activeIndex === 1} on:click={() => loadPreset(1)}>
+        <ScreenBtn active={activeIndex === 1} on:click={() => loadPreset(1)}>
             Complex islands
-        </button> the clusters are slower to form and end up being more complex. We can also see some
+        </ScreenBtn> the clusters are slower to form and end up being more complex. We can also see some
         moving organisms briefly forming before collapsing into clusters.
     </p>
     <p>
         And complexity can keep increasing like in
-        <button class="screen-btn" class:active={activeIndex === 4} on:click={() => loadPreset(4)}>
+        <ScreenBtn active={activeIndex === 4} on:click={() => loadPreset(4)}>
             Merging circular structures
-        </button>
+        </ScreenBtn>
         where some clusters tend to form a triangular <span class="cg">Green</span>-<span class="cb"
             >Blue</span
         >
@@ -81,13 +82,9 @@
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <button
-                    class="screen-btn"
-                    class:active={activeIndex === idx}
-                    on:click={() => loadPreset(idx)}
-                >
+                <ScreenBtn active={activeIndex === idx} on:click={() => loadPreset(idx)}>
                     {p.name}
-                </button>
+                </ScreenBtn>
             {/each}
         </div>
         <div class="control-section spread-btns">

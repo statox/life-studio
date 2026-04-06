@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ScreenBtn from '../ScreenBtn.svelte';
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from '$lib/particles/components/buttons/CenteredCircleButton.svelte';
     import RainbowButton from '$lib/particles/components/buttons/RainbowButton.svelte';
@@ -52,38 +53,34 @@
     <h2>Dynamic Clusters</h2>
     <p>
         Some clusters start spinning like in
-        <button class="screen-btn" class:active={activeIndex === 0} on:click={() => loadPreset(0)}>
+        <ScreenBtn active={activeIndex === 0} on:click={() => loadPreset(0)}>
             {presets[0].name}
-        </button>. You might have to restart the simulation a few times to see it happening but
+        </ScreenBtn>. You might have to restart the simulation a few times to see it happening but
         eventually you'll find clusters with a <span class="cw">White</span> core surrounded by a
         spinning triangular system of <span class="cr">Red</span> pushed by
         <span class="cg">Green</span>.
     </p>
     <p>
         This opens a new family of dynamic clusters.
-        <button class="screen-btn" class:active={activeIndex === 1} on:click={() => loadPreset(1)}>
+        <ScreenBtn active={activeIndex === 1} on:click={() => loadPreset(1)}>
             {presets[1].name}
-        </button> produces fascinating clusters where the outer border seems to oscillate with a period
+        </ScreenBtn> produces fascinating clusters where the outer border seems to oscillate with a period
         of 2. This is one of my favorite universes and I am currently looking for oscillators with a
         higher period.
     </p>
     <p>
         Then
-        <button class="screen-btn" class:active={activeIndex === 2} on:click={() => loadPreset(2)}>
+        <ScreenBtn active={activeIndex === 2} on:click={() => loadPreset(2)}>
             {presets[2].name}
-        </button> produces configurations that start to move away from simple clusters towards moving
+        </ScreenBtn> produces configurations that start to move away from simple clusters towards moving
         organisms. We will find more of them in the next pages but for that we need more motion.
     </p>
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <button
-                    class="screen-btn"
-                    class:active={activeIndex === idx}
-                    on:click={() => loadPreset(idx)}
-                >
+                <ScreenBtn active={activeIndex === idx} on:click={() => loadPreset(idx)}>
                     {p.name}
-                </button>
+                </ScreenBtn>
             {/each}
         </div>
         <div class="control-section spread-btns">

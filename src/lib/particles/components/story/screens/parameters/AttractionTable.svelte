@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ScreenBtn from '../ScreenBtn.svelte';
     import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
     import { getZeroedAttractionTable, type AttractionTable } from '$lib/particles/attraction';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
@@ -84,13 +85,9 @@
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <button
-                    class="screen-btn"
-                    class:active={activePreset === idx}
-                    on:click={() => selectPreset(idx)}
-                >
+                <ScreenBtn active={activePreset === idx} on:click={() => selectPreset(idx)}>
                     {p.label}
-                </button>
+                </ScreenBtn>
             {/each}
         </div>
 

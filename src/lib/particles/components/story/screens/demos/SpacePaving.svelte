@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ScreenBtn from '../ScreenBtn.svelte';
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from '$lib/particles/components/buttons/CenteredCircleButton.svelte';
     import RainbowButton from '$lib/particles/components/buttons/RainbowButton.svelte';
@@ -61,52 +62,38 @@
     </p>
 
     <p>
-        <button class="screen-btn" class:active={activeIndex === 0} on:click={() => loadPreset(0)}>
-            Crystal
-        </button>
+        <ScreenBtn active={activeIndex === 0} on:click={() => loadPreset(0)}>Crystal</ScreenBtn>
         creates a world where groups of <span class="cr">Red</span>-<span class="cw">White</span>
         fight against <span class="cg">Green</span> and never settle.
     </p>
     <p>
-        With <button
-            class="screen-btn"
-            class:active={activeIndex === 1}
-            on:click={() => loadPreset(1)}
-        >
+        With <ScreenBtn active={activeIndex === 1} on:click={() => loadPreset(1)}>
             Crystal stripes
-        </button> <span class="cw">White</span>, <span class="cg">Green</span> and
+        </ScreenBtn> <span class="cw">White</span>, <span class="cg">Green</span> and
         <span class="cb">Blue</span>
         form strong crystal-like structures and <span class="cr">Red</span> moves between them.
     </p>
     <p>
-        <button class="screen-btn" class:active={activeIndex === 2} on:click={() => loadPreset(2)}>
+        <ScreenBtn active={activeIndex === 2} on:click={() => loadPreset(2)}>
             Faction civil war
-        </button>
+        </ScreenBtn>
         adds a lot of order. <span class="cb">Blue</span> and <span class="cg">Green</span> pack
         together, so do <span class="cw">White</span> and <span class="cr">Red</span>, but both
         clans repel each other creating very organic patterns.
     </p>
     <p>
-        Finally <button
-            class="screen-btn"
-            class:active={activeIndex === 3}
-            on:click={() => loadPreset(3)}
-        >
+        Finally <ScreenBtn active={activeIndex === 3} on:click={() => loadPreset(3)}>
             Spatial repartition
-        </button> creates a dynamic universe where some worm-like structures form before collapsing into
-        wide areas of small clusters.
+        </ScreenBtn> creates a dynamic universe where some worm-like structures form before collapsing
+        into wide areas of small clusters.
     </p>
 
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <button
-                    class="screen-btn"
-                    class:active={activeIndex === idx}
-                    on:click={() => loadPreset(idx)}
-                >
+                <ScreenBtn active={activeIndex === idx} on:click={() => loadPreset(idx)}>
                     {p.name}
-                </button>
+                </ScreenBtn>
             {/each}
         </div>
         <div class="control-section spread-btns">
