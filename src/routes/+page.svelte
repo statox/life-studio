@@ -1,5 +1,8 @@
 <script>
     import { base } from '$app/paths';
+    import { pageMetadataStore } from '$lib/stores/pageMetadata';
+
+    pageMetadataStore.set({ name: '' });
 </script>
 
 <div class="landing">

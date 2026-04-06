@@ -1,5 +1,8 @@
 <script lang="ts">
     import { base } from '$app/paths';
+    import { pageMetadataStore } from '$lib/stores/pageMetadata';
+
+    pageMetadataStore.set({ name: 'Particle Life' });
 </script>
 
 <div class="landing">
