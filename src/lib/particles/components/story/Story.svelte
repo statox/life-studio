@@ -151,19 +151,13 @@
         display: flex;
         flex-direction: column;
         align-self: center;
-        text-align: center;
-        max-width: 600px;
+        text-align: justify;
+        max-width: 900px;
     }
 
-    @media (max-width: 768px) {
-        .narrative {
-            text-align: left;
-        }
-
-        .narrative :global(h1),
-        .narrative :global(h2) {
-            text-align: center;
-        }
+    .narrative :global(h1),
+    .narrative :global(h2) {
+        text-align: center;
     }
 
     /* ── Text-only screens: also center vertically ── */
