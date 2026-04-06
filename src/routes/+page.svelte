@@ -2,12 +2,11 @@
     import { base } from '$app/paths';
     import { pageMetadataStore } from '$lib/stores/pageMetadata';
 
-    pageMetadataStore.set({ name: '' });
+    pageMetadataStore.set({ name: 'Emergent behaviors' });
 </script>
 
 <div class="landing">
     <section class="hero">
-        <h1>Emergent Behaviors</h1>
         <p>Experiments with simple rules producing complex patterns.</p>
     </section>
 

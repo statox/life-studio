@@ -6,11 +6,20 @@
     const noHeaderPaths = ['/particles-life/story'];
 
     $: showHeader = !noHeaderPaths.some((p) => $page.url.pathname.endsWith(p));
+
+    $: pathname = $page.url.pathname.replace(/\/$/, '');
+    $: basePath = (base || '').replace(/\/$/, '');
+    $: isHome = pathname === basePath;
+    $: parentPath = pathname.includes('/')
+        ? pathname.substring(0, pathname.lastIndexOf('/')) || '/'
+        : '/';
 </script>
 
 {#if showHeader}
     <header>
-        <a class="home-link" href="{base}/">Home</a>
+        {#if !isHome}
+            <a class="home-link" href={parentPath} title="Back">←</a>
+        {/if}
         {#if $pageMetadataStore.name}
             <h1>{$pageMetadataStore.name}</h1>
         {/if}
@@ -20,12 +29,14 @@
 <slot />
 
 <style>
+    /* TODO Move that in a global css file */
     :global(.svelte-tabs li.svelte-tabs__tab) {
         background-color: #bfbec6;
         margin-right: 4px;
     }
 
     header {
+        background-color: inherit;
         max-width: 1200px;
         margin: 0 auto;
         padding: 8px 16px;
@@ -33,22 +44,26 @@
         display: flex;
         align-items: center;
         gap: 16px;
+        border-bottom: 2px solid #bfbec6;
     }
 
     .home-link {
-        color: #90a4ae;
+        color: #c3e88d;
         text-decoration: none;
-        font-size: 0.9rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1;
+        transition: color 0.15s;
+        -webkit-text-stroke: 1px #c3e88d;
     }
 
     .home-link:hover {
-        color: #eceff1;
+        color: #dce775;
+        -webkit-text-stroke-color: #dce775;
     }
 
     h1 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #eceff1;
-        margin: 0;
+        font-size: 2.1rem;
+        font-weight: bolder;
     }
 </style>

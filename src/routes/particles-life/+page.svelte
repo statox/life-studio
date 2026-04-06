@@ -7,7 +7,6 @@
 
 <div class="landing">
     <section class="hero">
-        <h1>Particle Life</h1>
         <p>
             A few thousand colored particles, each following a single rule: move toward or away from
             neighboring particles depending on their color. That's it. Yet from these minimal rules
