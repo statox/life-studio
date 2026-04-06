@@ -1,6 +1,4 @@
 <script lang="ts">
-    import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
-    import CenteredCircleButton from '$lib/particles/components/buttons/CenteredCircleButton.svelte';
     import type { InitialConfig } from '$lib/particles/universe';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
@@ -78,4 +76,24 @@
     </p>
 
     <p>We get some motion! Let's zoom in on that.</p>
+    <div class="controls">
+        <div class="control-section">
+            <div class="btn-group">
+                <button
+                    class="screen-btn"
+                    class:active={initialSpreadConfig === 'uniform'}
+                    on:click={() => uniformSpread()}
+                >
+                    Add particles
+                </button>
+                <button
+                    class="screen-btn"
+                    class:active={initialSpreadConfig === 'center'}
+                    on:click={() => centerSpread()}
+                >
+                    Pack particles
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

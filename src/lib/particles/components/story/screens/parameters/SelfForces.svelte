@@ -55,8 +55,8 @@
 
 <div class="screen">
     <h2>Forces</h2>
+    <p>Let's zoom in on the center of the previous universe.</p>
     <p>
-        Let's zoom in on the center of the previous universe.
         <button class="screen-btn" class:active={forceValue === 0} on:click={() => setForce(0)}>
             Zoooom
         </button>
@@ -85,4 +85,31 @@
             Create repulsion force
         </button>
     </p>
+    <div class="controls">
+        <div class="control-section">
+            <div class="btn-group">
+                <button
+                    class="screen-btn"
+                    class:active={forceValue === 0}
+                    on:click={() => setForce(0)}
+                >
+                    Zoooom
+                </button>
+                <button
+                    class="screen-btn"
+                    class:active={forceValue === 1}
+                    on:click={() => setForce(1)}
+                >
+                    Create attraction force
+                </button>
+                <button
+                    class="screen-btn"
+                    class:active={forceValue === -1}
+                    on:click={() => setForce(-1)}
+                >
+                    Create repulsion force
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

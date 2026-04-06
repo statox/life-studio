@@ -108,8 +108,23 @@
         than 10 seconds?
     </p>
     <div class="controls">
+        <div class="control-section">
+            <div class="btn-group">
+                {#each frictionPresets as preset}
+                    <button
+                        class="screen-btn"
+                        class:active={friction === preset}
+                        on:click={() => setFriction(preset)}
+                    >
+                        {preset}
+                    </button>
+                {/each}
+            </div>
+        </div>
         <div class="slider-row">
+            <label for="friction-slider">Friction:</label>
             <input
+                id="friction-slider"
                 type="range"
                 bind:value={friction}
                 on:change={startScreen}
