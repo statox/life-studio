@@ -3,6 +3,7 @@
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from '$lib/particles/components/buttons/CenteredCircleButton.svelte';
     import RainbowButton from '$lib/particles/components/buttons/RainbowButton.svelte';
+    import { Media } from '$lib/components/Media';
     import { generateSimulationParams } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getUniverseById } from '$lib/particles/universe';
@@ -61,6 +62,9 @@
             3 Colors - Stable islands
         </ScreenBtn> is a good example of that: The clusters form quickly and stop moving.
     </p>
+    <div style="max-width: 200px;">
+        <Media path="/particles-life/story_clusters/3_colors_stable_islands.png" />
+    </div>
     <p>
         In universes like
         <ScreenBtn active={activeIndex === 1} on:click={() => loadPreset(1)}>
@@ -68,6 +72,9 @@
         </ScreenBtn> the clusters are slower to form and end up being more complex. We can also see some
         moving organisms briefly forming before collapsing into clusters.
     </p>
+    <div style="max-width: 200px;">
+        <Media path="/particles-life/story_clusters/complex_islands.png" />
+    </div>
     <p>
         And complexity can keep increasing like in
         <ScreenBtn active={activeIndex === 4} on:click={() => loadPreset(4)}>
