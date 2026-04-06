@@ -86,7 +86,7 @@
     };
 </script>
 
-<div class="story">
+<div class="story" class:text-only={!showSimulation}>
     <div class="narrative">
         <svelte:component this={currentScreen.component} {simulationComponent} />
     </div>
@@ -147,6 +147,26 @@
         display: flex;
         flex-direction: column;
         padding: 16px 0;
+        align-self: center;
+        text-align: center;
+        max-width: 600px;
+    }
+
+    @media (max-width: 768px) {
+        .narrative {
+            text-align: left;
+        }
+
+        .narrative :global(h1),
+        .narrative :global(h2) {
+            text-align: center;
+        }
+    }
+
+    /* ── Text-only screens: also center vertically ── */
+    .story.text-only {
+        min-height: calc(100vh - 60px);
+        justify-content: center;
     }
 
     /* ── Canvas column ──────────────────────── */
