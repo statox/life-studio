@@ -22,11 +22,11 @@
 <div class="screen">
     <h2>Frontier</h2>
     <p>
-        Sometimes chaos and order fight against each other and initially grouping the species gives
-        interesting results.
+        Sometimes chaos and order fight against each other and initially grouping the species by
+        color gives interesting results.
     </p>
     <p>
-        How long do you think the frontier between <span class="cw">White</span> and
+        How long do you think the vertical frontier between <span class="cw">White</span> and
         <span class="cr">Red</span> will hold?
     </p>
     <div class="controls">

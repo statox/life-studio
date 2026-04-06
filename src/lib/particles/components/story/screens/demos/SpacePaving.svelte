@@ -63,8 +63,9 @@
 
     <p>
         <ScreenBtn active={activeIndex === 0} on:click={() => loadPreset(0)}>Crystal</ScreenBtn>
-        creates a world where groups of <span class="cr">Red</span>-<span class="cw">White</span>
-        fight against <span class="cg">Green</span> and never settle.
+        creates a world where <span class="cg">Green</span> and <span class="cw">White</span> chase
+        <span class="cr">Red</span> which tries to fly away but gets trapped between them. This creates
+        strongly bound small structure which slowly align with each other into a stable crystal.
     </p>
     <p>
         With <ScreenBtn active={activeIndex === 1} on:click={() => loadPreset(1)}>
