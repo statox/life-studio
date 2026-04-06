@@ -50,8 +50,12 @@
 
 <div class="screen">
     <h2>Restart Buttons</h2>
+    <p>Let's add a few particles:</p>
     <p>
-        Let's add a few particles:
+        <em
+            >Click the buttons in the text and observe the simulation update at the bottom of the
+            page.</em
+        >
         <ScreenBtn active={initialSpreadConfig === 'uniform'} on:click={() => uniformSpread()}>
             Add particles
         </ScreenBtn>
@@ -68,7 +72,10 @@
         </ScreenBtn>
     </p>
 
-    <p>We get some motion! Let's zoom in on that.</p>
+    <p>
+        We get some motion! Let's zoom in on that.
+        <em>Click the "Next" (→) button at the bottom of the page.</em>
+    </p>
     <div class="controls">
         <div class="control-section">
             <div class="btn-group">
