@@ -4,7 +4,7 @@ import { EngineST } from './EngineST';
 import type { EngineRequest, PerfData } from './types';
 import type { Particles } from './particles';
 
-let engine: Engine | EngineST;
+let engine: Engine | EngineST | undefined;
 onmessage = (request: MessageEvent<EngineRequest>) => {
     const { msg } = request.data;
 
@@ -23,15 +23,15 @@ onmessage = (request: MessageEvent<EngineRequest>) => {
     }
 
     if (msg === 'pause') {
-        engine.pause();
+        engine?.pause();
     }
 
     if (msg === 'unpause') {
-        engine.unpause();
+        engine?.unpause();
     }
 
     if (msg === 'updateTable') {
-        engine.updateAttractionTable(request.data.attractionTable);
+        engine?.updateAttractionTable(request.data.attractionTable);
     }
 
     if (msg === 'destroy') {
