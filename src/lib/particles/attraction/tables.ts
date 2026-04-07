@@ -1,12 +1,19 @@
 import { COLORS, type Color } from '../engine';
 import type { AttractionTable, StoredTable } from './types';
 
+export const ATTRACTION_MIN = -2;
+export const ATTRACTION_MAX = 2;
+export const ATTRACTION_STEP = 0.1;
+const roundToStep = (val: number): number => Math.round(val * 10) / 10;
+
+const randomAttractionValue = (): number => roundToStep(Math.floor(Math.random() * 41) * 0.1 - 2);
+
 export const getRandomAttractionTable = (): AttractionTable => {
     const table = {} as AttractionTable;
     COLORS.forEach((c) => {
         table[c] = {} as Record<Color, number>;
         COLORS.forEach((c2) => {
-            table[c][c2] = Math.floor(Math.random() * 5) - 2;
+            table[c][c2] = randomAttractionValue();
         });
     });
 
@@ -34,54 +41,25 @@ export const getMutatedAttractionTable = (original: AttractionTable): Attraction
     const originalValue = mutated[sc][oc];
 
     while (mutated[sc][oc] === originalValue) {
-        mutated[sc][oc] = Math.floor(Math.random() * 5) - 2;
+        mutated[sc][oc] = randomAttractionValue();
     }
 
     return mutated;
 };
 
-export const getCycledUpAttractionTable = (
+export const getUpdatedAttractionTable = (
     original: AttractionTable,
     selfColor: Color,
-    otherColor: Color
+    otherColor: Color,
+    newValue: number
 ): AttractionTable => {
     const mutated = Object.fromEntries(
         Object.entries(original).map(([k, v]) => [k, { ...v }])
     ) as AttractionTable;
 
-    let val = mutated[selfColor][otherColor];
-    val = val >= 2 ? -2 : val + 1;
-    mutated[selfColor][otherColor] = val;
-
-    return mutated;
-};
-
-export const getIncreasedAttractionTable = (
-    original: AttractionTable,
-    selfColor: Color,
-    otherColor: Color
-): AttractionTable => {
-    const mutated = Object.fromEntries(
-        Object.entries(original).map(([k, v]) => [k, { ...v }])
-    ) as AttractionTable;
-
-    const val = mutated[selfColor][otherColor];
-    if (val < 2) mutated[selfColor][otherColor] = val + 1;
-
-    return mutated;
-};
-
-export const getDecreasedAttractionTable = (
-    original: AttractionTable,
-    selfColor: Color,
-    otherColor: Color
-): AttractionTable => {
-    const mutated = Object.fromEntries(
-        Object.entries(original).map(([k, v]) => [k, { ...v }])
-    ) as AttractionTable;
-
-    const val = mutated[selfColor][otherColor];
-    if (val > -2) mutated[selfColor][otherColor] = val - 1;
+    mutated[selfColor][otherColor] = roundToStep(
+        Math.max(ATTRACTION_MIN, Math.min(ATTRACTION_MAX, newValue))
+    );
 
     return mutated;
 };

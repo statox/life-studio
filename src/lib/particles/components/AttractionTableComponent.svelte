@@ -1,11 +1,12 @@
 <script lang="ts">
     import {
-        getCycledUpAttractionTable,
-        getDecreasedAttractionTable,
-        getIncreasedAttractionTable,
         getMutatedAttractionTable,
         getRandomAttractionTable,
+        getUpdatedAttractionTable,
         getZeroedAttractionTable,
+        ATTRACTION_MIN,
+        ATTRACTION_MAX,
+        ATTRACTION_STEP,
         type AttractionTable
     } from '$lib/particles/attraction';
     import { COLORS, type Color, PARTICLE_COLORS } from '$lib/particles/engine';
@@ -29,38 +30,75 @@
     let visibleColors = $derived(COLORS.filter((c) => !hiddenColors.includes(c)));
 
     const valueColor = (val: number): string => {
-        if (val <= -2) return '#8b3a3a';
-        if (val === -1) return '#a15252';
-        if (val === 0) return '#37474f';
-        if (val === 1) return '#4a7c59';
-        return '#2d5e3a';
+        const t = Math.max(0, Math.min(1, (val + 2) / 4));
+        let r: number, g: number, b: number;
+        if (t < 0.5) {
+            const u = t / 0.5;
+            r = 139 + (55 - 139) * u;
+            g = 58 + (71 - 58) * u;
+            b = 58 + (79 - 58) * u;
+        } else {
+            const u = (t - 0.5) / 0.5;
+            r = 55 + (45 - 55) * u;
+            g = 71 + (94 - 71) * u;
+            b = 79 + (58 - 79) * u;
+        }
+        return `rgb(${Math.round(r)},${Math.round(g)},${Math.round(b)})`;
     };
 
-    const valueLabel = (val: number): string => (val > 0 ? `+${val}` : `${val}`);
+    const valueLabel = (val: number): string => (val > 0 ? '+' : '') + val.toFixed(1);
 
-    const cycleUp = (selfColor: Color, otherColor: Color) => {
-        onUpdateTable(getCycledUpAttractionTable(attractionTable, selfColor, otherColor));
+    // ── Drag interaction ──────────────────────
+    let dragging: {
+        selfColor: Color;
+        otherColor: Color;
+        startX: number;
+        startVal: number;
+    } | null = $state(null);
+
+    const onPointerDown = (e: PointerEvent, selfColor: Color, otherColor: Color) => {
+        if (readonly) return;
+        const target = e.currentTarget as HTMLElement;
+        target.setPointerCapture(e.pointerId);
+        dragging = {
+            selfColor,
+            otherColor,
+            startX: e.clientX,
+            startVal: attractionTable[selfColor][otherColor]
+        };
     };
 
-    const increase = (selfColor: Color, otherColor: Color) => {
-        onUpdateTable(getIncreasedAttractionTable(attractionTable, selfColor, otherColor));
+    const onPointerMove = (e: PointerEvent) => {
+        if (!dragging) return;
+        const dx = e.clientX - dragging.startX;
+        const steps = Math.round(dx / 16);
+        const newVal =
+            Math.round(
+                Math.max(
+                    ATTRACTION_MIN,
+                    Math.min(ATTRACTION_MAX, dragging.startVal + steps * ATTRACTION_STEP)
+                ) * 10
+            ) / 10;
+        if (newVal !== attractionTable[dragging.selfColor][dragging.otherColor]) {
+            onUpdateTable(
+                getUpdatedAttractionTable(
+                    attractionTable,
+                    dragging.selfColor,
+                    dragging.otherColor,
+                    newVal
+                )
+            );
+        }
     };
 
-    const decrease = (selfColor: Color, otherColor: Color) => {
-        onUpdateTable(getDecreasedAttractionTable(attractionTable, selfColor, otherColor));
+    const onPointerUp = () => {
+        dragging = null;
     };
 
-    const randomizeTable = () => {
-        onUpdateTable(getRandomAttractionTable());
-    };
-
-    const zeroTable = () => {
-        onUpdateTable(getZeroedAttractionTable());
-    };
-
-    const mutateTable = () => {
-        onUpdateTable(getMutatedAttractionTable(attractionTable));
-    };
+    // ── Bulk actions ──────────────────────────
+    const randomizeTable = () => onUpdateTable(getRandomAttractionTable());
+    const zeroTable = () => onUpdateTable(getZeroedAttractionTable());
+    const mutateTable = () => onUpdateTable(getMutatedAttractionTable(attractionTable));
 </script>
 
 {#if attractionTable}
@@ -101,7 +139,7 @@
                 </div>
                 {#each visibleColors as otherColor}
                     {@const val = attractionTable[selfColor][otherColor]}
-                    {#if readonly}
+                    {#if readonly || compact}
                         <div
                             class="swatch"
                             style="background:{valueColor(val)}"
@@ -110,21 +148,19 @@
                             {valueLabel(val)}
                         </div>
                     {:else}
-                        <div class="cell">
-                            <button class="adj" onclick={() => decrease(selfColor, otherColor)}
-                                >−</button
-                            >
-                            <button
-                                class="swatch"
-                                style="background:{valueColor(val)}"
-                                onclick={() => cycleUp(selfColor, otherColor)}
-                                title="Click to cycle · {selfColor} → {otherColor}"
-                            >
-                                {valueLabel(val)}
-                            </button>
-                            <button class="adj" onclick={() => increase(selfColor, otherColor)}
-                                >+</button
-                            >
+                        <!-- svelte-ignore a11y_no_static_element_interactions -->
+                        <div
+                            class="swatch interactive"
+                            class:dragging={dragging?.selfColor === selfColor &&
+                                dragging?.otherColor === otherColor}
+                            style="background:{valueColor(val)}"
+                            title="Drag horizontally to adjust · {selfColor} → {otherColor}"
+                            onpointerdown={(e) => onPointerDown(e, selfColor, otherColor)}
+                            onpointermove={onPointerMove}
+                            onpointerup={onPointerUp}
+                            onlostpointercapture={onPointerUp}
+                        >
+                            {valueLabel(val)}
                         </div>
                     {/if}
                 {/each}
@@ -179,7 +215,7 @@
     .matrix.compact .swatch {
         height: auto;
         padding: 2px 0;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         border-radius: 2px;
         cursor: default;
     }
@@ -244,40 +280,10 @@
         }
     }
 
-    .cell {
-        display: grid;
-        grid-template-columns: 30% 1fr 30%;
-        gap: 0px;
-        align-items: stretch;
-        justify-content: baseline;
-        /* justify-items: center; */
-    }
-
-    .adj {
-        background: #1e272c;
-        border: 1px solid #37474f;
-        color: #cfd8dc;
-        border-radius: 4px;
-        padding: 0;
-        cursor: pointer;
-        font-size: 1.05rem;
-        line-height: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.12s;
-        height: 34px;
-    }
-
-    .adj:hover {
-        background: #37474f;
-    }
-
     .swatch {
         border: none;
         border-radius: 4px;
         height: 34px;
-        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -288,7 +294,14 @@
         transition: filter 0.12s;
     }
 
-    .swatch:hover {
+    .swatch.interactive {
+        cursor: ew-resize;
+        touch-action: none;
+        user-select: none;
+    }
+
+    .swatch.interactive:hover,
+    .swatch.dragging {
         filter: brightness(1.25);
     }
 </style>

@@ -1,0 +1,51 @@
+{
+    "id": "glider_pushing_ball",
+    "name": "glider pushing ball",
+    "description": "A Blue-Red-White glider moving in a sea of Red-White. Also a single Green blob emerge and the glider pushes it indefinitely",
+    "preferredInitialConfig": "uniform",
+    "behavior": "cyclic",
+    "structure": "organisms",
+    "activeColors": 4,
+    "convergenceSpeed": "medium",
+    "energyLevel": "medium",
+    "complexity": 3,
+    "category": "movers",
+    "createdAt": "2026-04-07",
+    "attractionTable": {
+        "white": {
+            "white": -1.5,
+            "red": 1.4,
+            "green": -0.7,
+            "blue": -1.1
+        },
+        "red": {
+            "white": -2,
+            "red": 0.5,
+            "green": -2,
+            "blue": 0.7
+        },
+        "green": {
+            "white": -1.1,
+            "red": 0.6,
+            "green": 1.8,
+            "blue": -2
+        },
+        "blue": {
+            "white": -2,
+            "red": -2,
+            "green": 0,
+            "blue": 1.7
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 10,
+    "verticalResolution": 7,
+    "friction": 0.35
+}
