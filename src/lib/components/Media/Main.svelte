@@ -36,7 +36,15 @@
 
 {#snippet mediaContent(autoplay: boolean)}
     {#if isVideo}
-        <video {src} preload={autoplay ? 'auto' : 'none'} controls loop muted playsinline {autoplay}>
+        <video
+            {src}
+            preload={autoplay ? 'auto' : 'none'}
+            controls
+            loop
+            muted
+            playsinline
+            {autoplay}
+        >
             <track kind="captions" />
         </video>
     {:else}
