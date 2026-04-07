@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
-
     /*
      * This component is made to replace P5-svelte to improve performences
      * It uses the technic described by https://stackoverflow.com/a/13916313
@@ -44,14 +42,10 @@
     let r = $derived(cellSize || 2);
     let d = $derived(r * 2);
 
-    let fpsInterval = $state(1000 / maxFPS);
+    let fpsInterval = $derived(1000 / maxFPS);
     let then = 0;
     let _renderCount = 0;
     let _tRender = 0;
-
-    run(() => {
-        fpsInterval = 1000 / maxFPS;
-    });
 
     function draw() {
         if (!canvas || !off) return;
@@ -116,7 +110,7 @@
             offCtx.fill();
         }
     };
-    run(() => {
+    $effect(() => {
         createOffsetPoints(d);
     });
 
@@ -124,8 +118,6 @@
         if (!canvas) return;
         canvas.width = 1600;
         canvas.height = 960;
-
-        createOffsetPoints(d);
 
         then = Date.now();
         window.requestAnimationFrame(draw);
