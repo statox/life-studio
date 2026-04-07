@@ -142,7 +142,7 @@
     <aside class="sidebar">
         <div class="card">
             <div class="card-title">World</div>
-            <WorldSettingsSelector settings={ws} onChange={onWorldSettingsChange} />
+            <WorldSettingsSelector bind:settings={ws} onChange={onWorldSettingsChange} />
         </div>
 
         <div class="card">
