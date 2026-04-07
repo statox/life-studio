@@ -18,7 +18,7 @@
 
     const universes: StoredUniverse[] = getAllUniverses();
     let selected: StoredUniverse = $state(universes[0]);
-    let lastParams: SimulationParams;
+    let lastParams: SimulationParams | undefined;
     let attractionTable: AttractionTable = $state(universes[0].attractionTable);
 
     let ws: WorldSettings = $state({
@@ -54,6 +54,7 @@
     });
 
     const spread = (type: 'uniform' | 'center' | 'rainbow') => {
+        if (!lastParams) return;
         startWithParams(respreadParams(lastParams, type, ws.nbParticles, ws.colorWeights));
     };
 

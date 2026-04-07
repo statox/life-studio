@@ -23,7 +23,7 @@
     const universes: StoredUniverse[] = getAllUniverses();
     const demoUniverses: StoredUniverse[] = getAllDemoUniverses();
 
-    let lastParams: SimulationParams;
+    let lastParams: SimulationParams | undefined;
     let attractionTable: AttractionTable = $state(universes[0].attractionTable);
     let colorWeights = $state({ ...universes[0].colorWeights });
     let currentPreset: StoredUniverse = universes[0];
@@ -68,6 +68,7 @@
     };
 
     const uniformSpread = () => {
+        if (!lastParams) return;
         startWithParams(
             respreadParams(
                 lastParams,
@@ -79,6 +80,7 @@
     };
 
     const centerSpread = () => {
+        if (!lastParams) return;
         startWithParams(
             respreadParams(
                 lastParams,

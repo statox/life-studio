@@ -28,7 +28,7 @@
     let simulationComponent: Simulation | undefined = $state();
     let universes: StoredUniverse[] = $state([...getAllUniverses()]);
     let selected: StoredUniverse | null = $state(null);
-    let lastParams: SimulationParams;
+    let lastParams: SimulationParams | undefined;
 
     // Derived from selected preset for the read-only WorldSettingsSelector
     let ws: WorldSettings = $state({
@@ -145,7 +145,7 @@
     };
 
     const spread = (type: 'uniform' | 'center' | 'rainbow') => {
-        if (!selected) return;
+        if (!selected || !lastParams) return;
         startWithParams(
             respreadParams(lastParams, type, selected.nbParticles, selected.colorWeights)
         );
