@@ -122,12 +122,10 @@
             /></svg
         >
     </a>
-    {#if !isOnFirstScreen}
-        <button class="nav-btn" onclick={prev}>
-            <span class="nav-label-full">Previous</span>
-            <span class="nav-label-short">←</span>
-        </button>
-    {/if}
+    <button class="nav-btn" disabled={isOnFirstScreen} onclick={prev}>
+        <span class="nav-label-full">Previous</span>
+        <span class="nav-label-short">←</span>
+    </button>
     <span class="nav-counter">{currentIndex + 1} / {screens.length}</span>
     {#if !isOnLastScreen}
         <button class="nav-btn" onclick={next}>
