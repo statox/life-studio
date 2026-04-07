@@ -34,7 +34,7 @@ export class Engine {
         friction: number
     ) {
         this._stepTimeout = undefined;
-        this._stepCb = console.log;
+        this._stepCb = () => {};
         this._running = false;
         this.worldSize = worldSize;
         this.attractionTable = attractionTable;
