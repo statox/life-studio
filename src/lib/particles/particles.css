@@ -1,0 +1,26 @@
+/* ── Particles-life design tokens ─────────────────────────────────────────
+ *
+ * Colors not covered by new.css tokens (--nc-*).
+ * Components reference these variables instead of hardcoded hex values.
+ *
+ * Reused new.css tokens (no need to redefine):
+ *   --nc-bg-3    #263238   card background
+ *   --nc-lk-tx   #2e3c43   hover surface
+ *   --nc-ac-1    #c3e88d   accent / green highlight
+ * ─────────────────────────────────────────────────────────────────────── */
+
+:root {
+    /* Surfaces */
+    --p-surface: #1a2327; /* button, input, code block background */
+
+    /* Borders */
+    --p-border: #37474f; /* default border */
+    --p-border-hover: #546e7a; /* border on hover */
+
+    /* Text hierarchy */
+    --p-text: #cfd8dc; /* primary text in components */
+    --p-text-bright: #eceff1; /* text on hover / headings */
+    --p-text-label: #90a4ae; /* form labels */
+    --p-text-secondary: #78909c; /* section titles, card titles */
+    --p-text-muted: #546e7a; /* hints, placeholders, dim values */
+}
