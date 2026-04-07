@@ -93,13 +93,6 @@
         margin-bottom: 48px;
     }
 
-    .hero h1 {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #eceff1;
-        margin: 0 0 20px;
-    }
-
     .hero p {
         font-size: 1rem;
         color: #90a4ae;
@@ -208,10 +201,6 @@
 
         .card.featured {
             grid-column: 1;
-        }
-
-        .hero h1 {
-            font-size: 1.6rem;
         }
     }
 </style>
