@@ -197,6 +197,7 @@
                 fillContainer
                 {useWorkers}
                 {maxFPS}
+                {showColors}
                 onToggleWorkers={async () => {
                     useWorkers = !useWorkers;
                     perfData = null;

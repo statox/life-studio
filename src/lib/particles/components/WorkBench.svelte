@@ -146,6 +146,7 @@
         bind:this={simulationComponent}
         {useWorkers}
         {maxFPS}
+        {showColors}
         onToggleWorkers={async () => {
             useWorkers = !useWorkers;
             perfData = null;

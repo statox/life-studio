@@ -19,6 +19,7 @@
     interface Props {
         useWorkers?: boolean;
         maxFPS?: number;
+        showColors?: boolean;
         onToggleWorkers?: (() => void) | undefined;
         hideTimeline?: boolean;
         onPerfData?: ((perf: PerfData) => void) | undefined;
@@ -30,6 +31,7 @@
     let {
         useWorkers = true,
         maxFPS = 60,
+        showColors = true,
         onToggleWorkers = undefined,
         hideTimeline = false,
         onPerfData = undefined,
@@ -37,8 +39,6 @@
         fillContainer = false,
         cellSize = 2
     }: Props = $props();
-
-    let showColors = true;
 
     // Rendering state derived from startSim params
     let canvasWorldSize = $state({ x: 0, y: 0 });
