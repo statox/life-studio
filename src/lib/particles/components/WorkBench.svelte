@@ -237,6 +237,7 @@
     /* ── Spread buttons ─────────────────────── */
     .spread-btns {
         display: flex;
+        flex-wrap: wrap;
         gap: 6px;
     }
 
