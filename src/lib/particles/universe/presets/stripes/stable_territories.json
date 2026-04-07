@@ -1,0 +1,51 @@
+{
+    "id": "stable_territories",
+    "name": "Stable territories",
+    "description": "Red creates a barriere between stripes of White and stripes of Green.\n\nAdd White-White and Green-Green repulsion turns into small waves",
+    "preferredInitialConfig": "uniform",
+    "behavior": "converges",
+    "structure": "patterns",
+    "activeColors": 3,
+    "convergenceSpeed": "never",
+    "energyLevel": "medium",
+    "complexity": 2,
+    "category": "stripes",
+    "createdAt": "2026-04-07",
+    "attractionTable": {
+        "white": {
+            "white": 0,
+            "red": 1,
+            "green": -1,
+            "blue": 0
+        },
+        "red": {
+            "white": -1,
+            "red": 0,
+            "green": -1,
+            "blue": 0
+        },
+        "green": {
+            "white": -1,
+            "red": 1,
+            "green": 0,
+            "blue": 0
+        },
+        "blue": {
+            "white": 0,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 0
+    },
+    "nbParticles": 12000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.8
+}
