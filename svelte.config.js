@@ -1,5 +1,5 @@
 import adapter from 'svelte-adapter-github';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 // CHANGEME
 const REPO_NAME = '/particles-life';
