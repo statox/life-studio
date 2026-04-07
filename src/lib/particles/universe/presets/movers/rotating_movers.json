@@ -1,0 +1,51 @@
+{
+    "id": "rotating_movers",
+    "name": "Rotating movers",
+    "description": "movers are core White pushed by one blob of Red and pulled by two blobs of Green and a circle of Blue\n\nThey either move in straight line or spin on themself in one direction or the other depending on the local perturbations",
+    "preferredInitialConfig": "uniform",
+    "behavior": "cyclic",
+    "structure": "organisms",
+    "activeColors": 4,
+    "convergenceSpeed": "slow",
+    "energyLevel": "medium",
+    "complexity": 3,
+    "category": "movers",
+    "createdAt": "2026-04-07",
+    "attractionTable": {
+        "white": {
+            "white": 1.5,
+            "red": 1.6,
+            "green": 1.4,
+            "blue": 1.3
+        },
+        "red": {
+            "white": 1.8,
+            "red": 1.1,
+            "green": -1.9,
+            "blue": 0.9
+        },
+        "green": {
+            "white": 0.9,
+            "red": -1.1,
+            "green": -1.9,
+            "blue": -1.6
+        },
+        "blue": {
+            "white": -0.5,
+            "red": -0.8,
+            "green": 1.4,
+            "blue": -0.3
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.11
+}

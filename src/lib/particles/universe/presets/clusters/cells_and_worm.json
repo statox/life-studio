@@ -1,0 +1,51 @@
+{
+    "id": "cells_and_worm",
+    "name": "cells and worm",
+    "description": "Very strong and circular cells of Red-Green-Blue-White layers very clearly delimited.\n\nSome Red Green worms not moving and slowly merging around",
+    "preferredInitialConfig": "center",
+    "behavior": "converges",
+    "structure": "clusters",
+    "activeColors": 4,
+    "convergenceSpeed": "slow",
+    "energyLevel": "low",
+    "complexity": 3,
+    "category": "clusters",
+    "createdAt": "2026-04-07",
+    "attractionTable": {
+        "white": {
+            "white": 0.1,
+            "red": -1,
+            "green": 0.6,
+            "blue": 0
+        },
+        "red": {
+            "white": 1,
+            "red": 0,
+            "green": 1.9,
+            "blue": 0
+        },
+        "green": {
+            "white": -0.3,
+            "red": 1,
+            "green": -0.3,
+            "blue": 0
+        },
+        "blue": {
+            "white": 0,
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 12000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5
+}

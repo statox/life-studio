@@ -1,0 +1,51 @@
+{
+    "id": "tbd2",
+    "name": "tbd2",
+    "description": "",
+    "preferredInitialConfig": "uniform",
+    "behavior": "cyclic",
+    "structure": "none",
+    "activeColors": 4,
+    "convergenceSpeed": "never",
+    "energyLevel": "medium",
+    "complexity": 2,
+    "category": "other",
+    "createdAt": "2026-04-06",
+    "attractionTable": {
+        "white": {
+            "white": 2,
+            "red": 1,
+            "green": 0,
+            "blue": -1
+        },
+        "red": {
+            "white": -1,
+            "red": 2,
+            "green": 1,
+            "blue": 0
+        },
+        "green": {
+            "white": 0,
+            "red": -1,
+            "green": 2,
+            "blue": 1
+        },
+        "blue": {
+            "white": 1,
+            "red": 0,
+            "green": -1,
+            "blue": 2
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 8000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 30,
+    "verticalResolution": 20,
+    "friction": 0.5
+}
