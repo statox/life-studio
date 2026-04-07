@@ -6,7 +6,7 @@ export const getRandomAttractionTable = (): AttractionTable => {
     COLORS.forEach((c) => {
         table[c] = {} as Record<Color, number>;
         COLORS.forEach((c2) => {
-            table[c][c2] = Math.floor(Math.random() * 4 - 1);
+            table[c][c2] = Math.floor(Math.random() * 5) - 2;
         });
     });
 
@@ -29,8 +29,8 @@ export const getMutatedAttractionTable = (original: AttractionTable): Attraction
     const mutated = Object.fromEntries(
         Object.entries(original).map(([k, v]) => [k, { ...v }])
     ) as AttractionTable;
-    const sc = COLORS[Math.floor(Math.random() * 4)];
-    const oc = COLORS[Math.floor(Math.random() * 4)];
+    const sc = COLORS[Math.floor(Math.random() * COLORS.length)];
+    const oc = COLORS[Math.floor(Math.random() * COLORS.length)];
     const originalValue = mutated[sc][oc];
 
     while (mutated[sc][oc] === originalValue) {
