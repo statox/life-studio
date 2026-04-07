@@ -11,11 +11,11 @@
 
     interface Props {
         universes: StoredUniverse[];
-        selected?: StoredUniverse | null;
+        selected?: StoredUniverse;
         onSelect: (u: StoredUniverse) => void;
     }
 
-    let { universes, selected = null, onSelect }: Props = $props();
+    let { universes, selected = undefined, onSelect }: Props = $props();
 
     // ── Filters ──────────────────────────────────────────────────────────────
     let fSearch = $state('');

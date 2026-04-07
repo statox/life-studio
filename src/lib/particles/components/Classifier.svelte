@@ -27,7 +27,7 @@
     // ── State ──────────────────────────────────
     let simulationComponent: Simulation | undefined = $state();
     let universes: StoredUniverse[] = $state([...getAllUniverses()]);
-    let selected: StoredUniverse | null = $state(null);
+    let selected: StoredUniverse | undefined = $state(undefined);
     let lastParams: SimulationParams | undefined;
 
     // Derived from selected preset for the read-only WorldSettingsSelector
