@@ -30,7 +30,7 @@
     import { base } from '$app/paths';
 
     type ScreenConfig = {
-        component: typeof SvelteComponent;
+        component: typeof SvelteComponent<any>;
         noSimulation?: boolean;
         cellSize?: number;
     };
