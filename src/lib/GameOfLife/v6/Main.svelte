@@ -267,7 +267,7 @@
     style="background-color: black"
     width={screenDimensions.width}
     height={screenDimensions.height}
-/>
+></canvas>
 
 <style>
     #canvas {

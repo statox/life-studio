@@ -252,7 +252,7 @@ void main() {
     });
 </script>
 
-<canvas id="canvas" width={screenDimensions.width} height={screenDimensions.height} />
+<canvas id="canvas" width={screenDimensions.width} height={screenDimensions.height}></canvas>
 
 <style>
     #canvas {

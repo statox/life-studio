@@ -10,25 +10,38 @@
 
     const sim = createSimulationWorker();
 
-    let numParticles = 0;
-    let colorIndices: Uint8Array = new Uint8Array(0);
-    let buffer: Float32Array[] = [];
-    let displayIndex = 0;
-    let absoluteFrameOffset = 0;
+    let numParticles = $state(0);
+    let colorIndices: Uint8Array = $state(new Uint8Array(0));
+    let buffer: Float32Array[] = $state([]);
+    let displayIndex = $state(0);
+    let absoluteFrameOffset = $state(0);
 
-    export let useWorkers = true;
-    export let maxFPS = 60;
-    export let onToggleWorkers: (() => void) | undefined = undefined;
-    export let hideTimeline = false;
-    export let onPerfData: ((perf: PerfData) => void) | undefined = undefined;
-    export let onRenderPerf: ((ms: number) => void) | undefined = undefined;
-    export let fillContainer = false;
-    export let cellSize = 2;
+    interface Props {
+        useWorkers?: boolean;
+        maxFPS?: number;
+        onToggleWorkers?: (() => void) | undefined;
+        hideTimeline?: boolean;
+        onPerfData?: ((perf: PerfData) => void) | undefined;
+        onRenderPerf?: ((ms: number) => void) | undefined;
+        fillContainer?: boolean;
+        cellSize?: number;
+    }
+
+    let {
+        useWorkers = true,
+        maxFPS = 60,
+        onToggleWorkers = undefined,
+        hideTimeline = false,
+        onPerfData = undefined,
+        onRenderPerf = undefined,
+        fillContainer = false,
+        cellSize = 2
+    }: Props = $props();
 
     let showColors = true;
 
     // Rendering state derived from startSim params
-    let canvasWorldSize = { x: 0, y: 0 };
+    let canvasWorldSize = $state({ x: 0, y: 0 });
 
     export const startSim = async (params: SimulationParams) => {
         buffer = [];
@@ -70,9 +83,9 @@
         absoluteFrameOffset = 0;
     };
 
-    let canvasWrap: HTMLElement;
-    let isFullscreen = false;
-    let timeline: Timeline;
+    let canvasWrap: HTMLElement = $state();
+    let isFullscreen = $state(false);
+    let timeline: Timeline = $state();
 
     export const toggleFullscreen = () => {
         if (!document.fullscreenElement) {
@@ -92,8 +105,8 @@
     });
     onDestroy(() => sim.destroy());
 
-    $: currentPositions =
-        buffer.length > 0 && displayIndex < buffer.length ? buffer[displayIndex] : null;
+    let currentPositions =
+        $derived(buffer.length > 0 && displayIndex < buffer.length ? buffer[displayIndex] : null);
 </script>
 
 <div class="sim" class:fill={fillContainer}>
@@ -124,7 +137,7 @@
             onUnpauseEngine={() => sim.unpause()}
         />
         {#if onToggleWorkers}
-            <button class="engine-toggle" class:active={useWorkers} on:click={onToggleWorkers}>
+            <button class="engine-toggle" class:active={useWorkers} onclick={onToggleWorkers}>
                 {useWorkers ? '⚡ Multi-threaded' : '▶ Single-threaded'}
             </button>
         {/if}

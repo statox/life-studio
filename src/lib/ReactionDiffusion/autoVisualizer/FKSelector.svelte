@@ -7,9 +7,9 @@
     import { PARAMETERS_CLASSES } from './pearsonClasses';
 
     const dispatch = createEventDispatcher<{ fkupdated: { f: number; k: number } }>();
-    let selectedClass = PARAMETERS_CLASSES[0];
+    let selectedClass = $state(PARAMETERS_CLASSES[0]);
 
-    let isOpen = true;
+    let isOpen = $state(true);
 
     const rangeF = [0, 0.12];
     const rangeK = [0.03, 0.07];
@@ -90,7 +90,7 @@
     };
 
     let _p5: p5;
-    let buttonIsPressed = false;
+    let buttonIsPressed = $state(false);
     const sketch: Sketch = (p5) => {
         _p5 = p5;
         let background: p5.Image;
@@ -135,7 +135,7 @@
 </script>
 
 <div id="container" class:no-cursor={buttonIsPressed}>
-    <button class="full-width" id="toggleButton" on:click={toggleDisplay}>
+    <button class="full-width" id="toggleButton" onclick={toggleDisplay}>
         {isOpen ? 'Close' : 'F/K selection'}
     </button>
     {#if isOpen}
@@ -143,7 +143,7 @@
         <select
             class="full-width"
             bind:value={selectedClass}
-            on:change={() => dispatch('fkupdated', selectedClass)}
+            onchange={() => dispatch('fkupdated', selectedClass)}
         >
             {#each PARAMETERS_CLASSES as parametersClass}
                 <option value={parametersClass}>

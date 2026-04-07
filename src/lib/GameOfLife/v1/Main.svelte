@@ -10,11 +10,11 @@
         width: 1600,
         height: 900
     };
-    const worldDimensions = {
+    const worldDimensions = $state({
         width: 1600,
         height: 900
-    };
-    let pause = true;
+    });
+    let pause = $state(true);
     let cellsTex: WebGLTexture;
 
     let gl: WebGLRenderingContext;
@@ -50,7 +50,7 @@
         animationFrameRequest = requestAnimationFrame(render);
     }
 
-    let enableFullscreen: () => void;
+    let enableFullscreen: () => void = $state();
     onMount(() => {
         main();
 
@@ -95,10 +95,10 @@
     style="background-color: black"
     width={screenDimensions.width}
     height={screenDimensions.height}
-/>
+></canvas>
 
 <div>
-    <button on:click={() => (pause = !pause)}>{pause ? 'Play' : 'Pause'} (Space)</button>
+    <button onclick={() => (pause = !pause)}>{pause ? 'Play' : 'Pause'} (Space)</button>
 </div>
 
 <div>
@@ -106,18 +106,18 @@
         World {worldDimensions.width} x {worldDimensions.height} ({worldDimensions.width *
             worldDimensions.height} cells)
     </span>
-    <button on:click={() => main()}>Reload program</button>
-    <button on:click={enableFullscreen}>Fullscreen (f)</button>
+    <button onclick={() => main()}>Reload program</button>
+    <button onclick={enableFullscreen}>Fullscreen (f)</button>
 </div>
 
 <div>
-    <button on:click={resetTexture}>Reset world (r)</button>
+    <button onclick={resetTexture}>Reset world (r)</button>
 
     <span>
         <label for="worldWidth">World: width</label>
         <input
             id="worldWidth"
-            on:change={resetTexture}
+            onchange={resetTexture}
             bind:value={worldDimensions.width}
             type="number"
             min={0}
@@ -126,7 +126,7 @@
         <label for="worldHeight">height</label>
         <input
             id="worldHeight"
-            on:change={resetTexture}
+            onchange={resetTexture}
             bind:value={worldDimensions.height}
             type="number"
             min={0}

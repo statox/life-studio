@@ -21,26 +21,26 @@
     import UniverseSelector from './UniverseSelector.svelte';
     import { getAllUniverses, type StoredUniverse } from '$lib/particles/universe';
 
-    let simulationComponent: Simulation;
+    let simulationComponent: Simulation = $state();
 
     const universes: StoredUniverse[] = getAllUniverses();
-    let selected: StoredUniverse | undefined = undefined;
+    let selected: StoredUniverse | undefined = $state(undefined);
 
     let lastParams: SimulationParams;
-    let attractionTable: AttractionTable = getRandomAttractionTable();
+    let attractionTable: AttractionTable = $state(getRandomAttractionTable());
 
-    let showColors = true;
-    let maxFPS = 60;
-    let useWorkers = true;
+    let showColors = $state(true);
+    let maxFPS = $state(60);
+    let useWorkers = $state(true);
 
-    let ws: WorldSettings = {
+    let ws: WorldSettings = $state({
         nbParticles: 4000,
         horizontalResolution: 30,
         verticalResolution: 20,
         maxAttractionRadius: 32,
         friction: 0.5,
         colorWeights: { white: 500, red: 500, green: 500, blue: 500 }
-    };
+    });
 
     const worldSize = {
         x: ws.maxAttractionRadius * ws.horizontalResolution,
@@ -52,7 +52,7 @@
         worldSize.y = ws.maxAttractionRadius * ws.verticalResolution;
     };
 
-    $: universe = {
+    let universe = $derived({
         attractionTable,
         colorWeights: ws.colorWeights,
         nbParticles: ws.nbParticles,
@@ -60,7 +60,7 @@
         horizontalResolution: ws.horizontalResolution,
         verticalResolution: ws.verticalResolution,
         friction: ws.friction
-    };
+    });
 
     const startWithParams = (params: SimulationParams) => {
         lastParams = params;
@@ -139,9 +139,9 @@
         startSim();
     });
 
-    let perfData: PerfData | null = null;
-    let renderMs: number | null = null;
-    let showExportModal = false;
+    let perfData: PerfData | null = $state(null);
+    let renderMs: number | null = $state(null);
+    let showExportModal = $state(false);
 </script>
 
 <div class="sim">
@@ -171,7 +171,7 @@
         <RainbowButton onClick={() => spread('rainbow')} />
         <button
             class="export-btn"
-            on:click={() => (showExportModal = true)}
+            onclick={() => (showExportModal = true)}
             title="Export current table"
         >
             ↗ Export
@@ -206,11 +206,11 @@
             <button
                 class="toggle-btn"
                 class:active={showColors}
-                on:click={() => (showColors = !showColors)}
+                onclick={() => (showColors = !showColors)}
             >
                 <span class="pdots">
                     {#each COLORS as c}
-                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
+                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}"></span>
                     {/each}
                 </span>
                 {showColors ? 'Colors on' : 'Colors off'}

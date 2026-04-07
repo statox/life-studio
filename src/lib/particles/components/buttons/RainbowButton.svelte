@@ -1,8 +1,12 @@
 <script lang="ts">
-    export let onClick: () => void;
+    interface Props {
+        onClick: () => void;
+    }
+
+    let { onClick }: Props = $props();
 </script>
 
-<button class="spread-btn" on:click={onClick}>≋ Rainbow</button>
+<button class="spread-btn" onclick={onClick}>≋ Rainbow</button>
 
 <style>
     .spread-btn {

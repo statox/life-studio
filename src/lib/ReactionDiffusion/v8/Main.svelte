@@ -18,19 +18,19 @@
         </TabList>
 
         <TabPanel>
-            <svelte:component this={About} />
+            <About />
         </TabPanel>
         <TabPanel>
-            <svelte:component this={Manual} />
+            <Manual />
         </TabPanel>
         <TabPanel>
-            <svelte:component this={Auto} />
+            <Auto />
         </TabPanel>
         <TabPanel>
-            <svelte:component this={ParametersMap} />
+            <ParametersMap />
         </TabPanel>
         <TabPanel>
-            <svelte:component this={Archive} />
+            <Archive />
         </TabPanel>
     </Tabs>
 </div>

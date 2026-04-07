@@ -2,9 +2,13 @@
     import { COLORS, PARTICLE_COLORS } from '$lib/particles/engine';
     import type { WorldSettings } from '$lib/particles/engine/types';
 
-    export let settings: WorldSettings;
-    export let readonly = false;
-    export let onChange: (() => void) | undefined = undefined;
+    interface Props {
+        settings: WorldSettings;
+        readonly?: boolean;
+        onChange?: (() => void) | undefined;
+    }
+
+    let { settings = $bindable(), readonly = false, onChange = undefined }: Props = $props();
 
     const emit = () => {
         if (onChange) onChange();
@@ -21,7 +25,7 @@
                 id="ws-particles"
                 type="number"
                 bind:value={settings.nbParticles}
-                on:change={emit}
+                onchange={emit}
                 min="1"
             />
         {/if}
@@ -35,7 +39,7 @@
                 id="ws-hcells"
                 type="number"
                 bind:value={settings.horizontalResolution}
-                on:change={emit}
+                onchange={emit}
                 min="1"
                 max="100"
             />
@@ -51,7 +55,7 @@
                 id="ws-vcells"
                 type="number"
                 bind:value={settings.verticalResolution}
-                on:change={emit}
+                onchange={emit}
                 min="1"
                 max="100"
             />
@@ -67,7 +71,7 @@
                 id="ws-radius"
                 type="number"
                 bind:value={settings.maxAttractionRadius}
-                on:change={emit}
+                onchange={emit}
                 min="8"
                 max="128"
             />
@@ -79,7 +83,7 @@
             id="ws-friction"
             type="range"
             bind:value={settings.friction}
-            on:change={emit}
+            onchange={emit}
             min="0"
             max="1"
             step="0.01"
@@ -92,11 +96,11 @@
     <div class="proportion-list">
         {#each COLORS as c}
             <div class="field">
-                <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
+                <span class="pdot" style="background:{PARTICLE_COLORS[c]}"></span>
                 <input
                     type="range"
                     bind:value={settings.colorWeights[c]}
-                    on:change={emit}
+                    onchange={emit}
                     min="0"
                     max="1000"
                     step="1"

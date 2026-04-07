@@ -3,17 +3,29 @@
     const MAX_UPCOMING_FRAMES = 180;
     const RESUME_UPCOMING_THRESHOLD = 60;
 
-    export let buffer: Float32Array[];
-    export let displayIndex: number;
-    export let absoluteFrameOffset: number;
-    export let isFullscreen: boolean;
-    export let onToggleFullscreen: () => void;
-    export let onPauseEngine: () => void;
-    export let onUnpauseEngine: () => void;
+    interface Props {
+        buffer: Float32Array[];
+        displayIndex: number;
+        absoluteFrameOffset: number;
+        isFullscreen: boolean;
+        onToggleFullscreen: () => void;
+        onPauseEngine: () => void;
+        onUnpauseEngine: () => void;
+    }
 
-    let displayPaused = false;
+    let {
+        buffer = $bindable(),
+        displayIndex = $bindable(),
+        absoluteFrameOffset = $bindable(),
+        isFullscreen,
+        onToggleFullscreen,
+        onPauseEngine,
+        onUnpauseEngine
+    }: Props = $props();
+
+    let displayPaused = $state(false);
     let enginePaused = false;
-    let fps = 0;
+    let fps = $state(0);
 
     let fpsFrameCount = 0;
     let fpsLastSecond = 0;
@@ -106,22 +118,22 @@
         const idx = Math.round(ratio * (BUFFER_BLOCKS.length - 1));
         return { char: BUFFER_BLOCKS[idx], color: BUFFER_COLORS[idx] };
     };
-    let bufferLevel = { char: BUFFER_BLOCKS[0], color: BUFFER_COLORS[0] };
+    let bufferLevel = $state({ char: BUFFER_BLOCKS[0], color: BUFFER_COLORS[0] });
 
     const togglePlayPause = () => (displayPaused = !displayPaused);
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />
 
 <div class="timeline">
     <div class="tl-btns">
-        <button class="icon-btn" on:click={() => (displayIndex = 0)} title="Go to start">⏮</button>
-        <button class="icon-btn" on:click={togglePlayPause}>
+        <button class="icon-btn" onclick={() => (displayIndex = 0)} title="Go to start">⏮</button>
+        <button class="icon-btn" onclick={togglePlayPause}>
             {displayPaused ? '▶' : '⏸'}
         </button>
         <button
             class="icon-btn"
-            on:click={() => (displayIndex = Math.max(0, (buffer?.length || 1) - 1))}
+            onclick={() => (displayIndex = Math.max(0, (buffer?.length || 1) - 1))}
             title="Catch up to latest">⏭</button
         >
     </div>
@@ -134,7 +146,7 @@
     />
     <button
         class="icon-btn"
-        on:click={onToggleFullscreen}
+        onclick={onToggleFullscreen}
         title={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
     >
         {isFullscreen ? '⊡' : '⛶'}

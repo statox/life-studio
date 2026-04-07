@@ -323,4 +323,4 @@
         webglfundamentals
     </a> directly copied in a svelte component.
 </p>
-<canvas id="canvas" style="background-color: black" width="800" height="600" />
+<canvas id="canvas" style="background-color: black" width="800" height="600"></canvas>

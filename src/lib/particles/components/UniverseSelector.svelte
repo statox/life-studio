@@ -9,23 +9,27 @@
     import { UNIVERSE_CATEGORIES } from '$lib/particles/universe';
     import AttractionTableComponent from './AttractionTableComponent.svelte';
 
-    export let universes: StoredUniverse[];
-    export let selected: StoredUniverse | null = null;
-    export let onSelect: (u: StoredUniverse) => void;
+    interface Props {
+        universes: StoredUniverse[];
+        selected?: StoredUniverse | null;
+        onSelect: (u: StoredUniverse) => void;
+    }
+
+    let { universes, selected = null, onSelect }: Props = $props();
 
     // ── Filters ──────────────────────────────────────────────────────────────
-    let fSearch = '';
-    let fBehavior: UniverseBehavior | 'all' = 'all';
-    let fStructure: UniverseStructure | 'all' = 'all';
-    let fColors: 1 | 2 | 3 | 4 | 'all' = 'all';
-    let fEnergy: EnergyLevel | 'all' = 'all';
-    let fComplexity: 1 | 2 | 3 | 'all' = 'all';
-    let fCategory: UniverseCategory | 'all' = 'all';
+    let fSearch = $state('');
+    let fBehavior: UniverseBehavior | 'all' = $state('all');
+    let fStructure: UniverseStructure | 'all' = $state('all');
+    let fColors: 1 | 2 | 3 | 4 | 'all' = $state('all');
+    let fEnergy: EnergyLevel | 'all' = $state('all');
+    let fComplexity: 1 | 2 | 3 | 'all' = $state('all');
+    let fCategory: UniverseCategory | 'all' = $state('all');
 
     // ── Sort ─────────────────────────────────────────────────────────────────
     type SortKey = 'name' | 'behavior' | 'structure' | 'colors' | 'energy' | 'complexity';
-    let sortKey: SortKey = 'complexity';
-    let sortAsc = false;
+    let sortKey: SortKey = $state('complexity');
+    let sortAsc = $state(false);
 
     const BEHAVIOR_ORDER: Record<string, number> = {
         still: 0,
@@ -49,9 +53,9 @@
         }
     };
 
-    $: searchLower = fSearch.trim().toLowerCase();
+    let searchLower = $derived(fSearch.trim().toLowerCase());
 
-    $: visible = [...universes]
+    let visible = $derived([...universes]
         .filter(
             (u) =>
                 (!searchLower ||
@@ -76,15 +80,15 @@
                 cmp = (ENERGY_ORDER[a.energyLevel] ?? 0) - (ENERGY_ORDER[b.energyLevel] ?? 0);
             else if (sortKey === 'complexity') cmp = a.complexity - b.complexity;
             return sortAsc ? cmp : -cmp;
-        });
+        }));
 
     // ── Category grouping ────────────────────────────────────────────────────
-    $: grouped = UNIVERSE_CATEGORIES.map((cat) => ({
+    let grouped = $derived(UNIVERSE_CATEGORIES.map((cat) => ({
         category: cat,
         items: visible.filter((u) => u.category === cat)
-    })).filter((g) => g.items.length > 0);
+    })).filter((g) => g.items.length > 0));
 
-    let collapsedCategories = new Set<string>();
+    let collapsedCategories = $state(new Set<string>());
     const toggleCategory = (cat: string) => {
         if (collapsedCategories.has(cat)) collapsedCategories.delete(cat);
         else collapsedCategories.add(cat);
@@ -143,7 +147,7 @@
     ];
 
     // ── Expanded description ────────────────────────────────────────────────
-    let expandedId: string | null = null;
+    let expandedId: string | null = $state(null);
 
     const toggleDesc = (e: MouseEvent, id: string) => {
         e.stopPropagation();
@@ -161,7 +165,7 @@
                 <button
                     class="sort-btn"
                     class:active={sortKey === opt.key}
-                    on:click={() => toggleSort(opt.key)}
+                    onclick={() => toggleSort(opt.key)}
                 >
                     {opt.label}
                     {#if sortKey === opt.key}
@@ -175,8 +179,8 @@
     <!-- ── List ── -->
     <ul class="list" role="listbox" aria-label="Universe selector">
         {#each grouped as group (group.category)}
-            <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
-            <li class="category-header" on:click={() => toggleCategory(group.category)}>
+            <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
+            <li class="category-header" onclick={() => toggleCategory(group.category)}>
                 <span class="cat-arrow">{collapsedCategories.has(group.category) ? '▶' : '▼'}</span>
                 <span class="cat-name">{group.category}</span>
                 <span class="cat-count">{group.items.length}</span>
@@ -191,8 +195,8 @@
                         role="option"
                         aria-selected={isSelected}
                         tabindex="0"
-                        on:click={() => onSelect(u)}
-                        on:keydown={(e) => {
+                        onclick={() => onSelect(u)}
+                        onkeydown={(e) => {
                             if (e.key === 'Enter' || e.key === ' ') {
                                 e.preventDefault();
                                 onSelect(u);
@@ -214,7 +218,7 @@
                                         <span
                                             class="prop-dot"
                                             style="background:{behaviorColor(u.behavior)}"
-                                        />
+></span>
                                         {u.behavior}
                                     </span>
                                     <span
@@ -224,7 +228,7 @@
                                         <span
                                             class="prop-dot"
                                             style="background:{structureColor(u.structure)}"
-                                        />
+></span>
                                         {u.structure}
                                     </span>
                                     <span
@@ -234,7 +238,7 @@
                                         <span
                                             class="prop-dot"
                                             style="background:{energyColor(u.energyLevel)}"
-                                        />
+></span>
                                         {u.energyLevel}
                                     </span>
                                     <span class="prop complexity">{stars(u.complexity)}</span>
@@ -247,7 +251,7 @@
                                     {#if u.description.length > 120 || u.description.includes('\n')}
                                         <button
                                             class="expand-btn"
-                                            on:click={(e) => toggleDesc(e, u.id)}
+                                            onclick={(e) => toggleDesc(e, u.id)}
                                         >
                                             {isExpanded ? 'Show less' : 'Show more'}
                                         </button>
@@ -281,7 +285,7 @@
                     <button
                         class="chip"
                         class:active={fCategory === cat}
-                        on:click={() => {
+                        onclick={() => {
                             fCategory = cat;
                         }}>{cat === 'all' ? 'All' : cat}</button
                     >
@@ -295,7 +299,7 @@
                     <button
                         class="chip"
                         class:active={fBehavior === b}
-                        on:click={() => {
+                        onclick={() => {
                             fBehavior = b;
                         }}
                         style={b !== 'all' && fBehavior === b
@@ -312,7 +316,7 @@
                     <button
                         class="chip"
                         class:active={fStructure === s}
-                        on:click={() => {
+                        onclick={() => {
                             fStructure = s;
                         }}
                         style={s !== 'all' && fStructure === s
@@ -329,7 +333,7 @@
                     <button
                         class="chip"
                         class:active={fColors === c}
-                        on:click={() => {
+                        onclick={() => {
                             fColors = c;
                         }}>{c === 'all' ? 'All' : c}</button
                     >
@@ -343,7 +347,7 @@
                     <button
                         class="chip"
                         class:active={fEnergy === e}
-                        on:click={() => {
+                        onclick={() => {
                             fEnergy = e;
                         }}
                         style={e !== 'all' && fEnergy === e
@@ -360,7 +364,7 @@
                     <button
                         class="chip"
                         class:active={fComplexity === cx}
-                        on:click={() => {
+                        onclick={() => {
                             fComplexity = cx;
                         }}>{cx === 'all' ? 'All' : stars(cx)}</button
                     >

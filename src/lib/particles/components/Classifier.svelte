@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import { base } from '$app/paths';
     import { dev } from '$app/environment';
     import { onMount } from 'svelte';
@@ -25,45 +27,47 @@
     import { UNIVERSE_CATEGORIES } from '$lib/particles/universe';
 
     // ── State ──────────────────────────────────
-    let simulationComponent: Simulation;
-    let universes: StoredUniverse[] = [...getAllUniverses()];
-    let selected: StoredUniverse | null = null;
+    let simulationComponent: Simulation = $state();
+    let universes: StoredUniverse[] = $state([...getAllUniverses()]);
+    let selected: StoredUniverse | null = $state(null);
     let lastParams: SimulationParams;
 
     // Derived from selected preset for the read-only WorldSettingsSelector
-    let ws: WorldSettings = {
+    let ws: WorldSettings = $state({
         nbParticles: 0,
         horizontalResolution: 0,
         verticalResolution: 0,
         maxAttractionRadius: 0,
         friction: 0,
         colorWeights: { white: 0, red: 0, green: 0, blue: 0 }
-    };
-    $: if (selected) {
-        ws = {
-            nbParticles: selected.nbParticles,
-            horizontalResolution: selected.horizontalResolution,
-            verticalResolution: selected.verticalResolution,
-            maxAttractionRadius: selected.maxAttractionRadius,
-            friction: selected.friction,
-            colorWeights: selected.colorWeights
-        };
-    }
+    });
+    run(() => {
+        if (selected) {
+            ws = {
+                nbParticles: selected.nbParticles,
+                horizontalResolution: selected.horizontalResolution,
+                verticalResolution: selected.verticalResolution,
+                maxAttractionRadius: selected.maxAttractionRadius,
+                friction: selected.friction,
+                colorWeights: selected.colorWeights
+            };
+        }
+    });
 
     // ── Editable metadata ──────────────────────
-    let editName = '';
-    let editDescription = '';
-    let editPreferredInitialConfig: InitialConfig = 'uniform';
-    let editBehavior: UniverseBehavior = 'cyclic';
-    let editStructure: UniverseStructure = 'none';
-    let editActiveColors: 1 | 2 | 3 | 4 = 4;
-    let editConvergenceSpeed: ConvergenceSpeed = 'never';
-    let editEnergyLevel: EnergyLevel = 'medium';
-    let editComplexity: 1 | 2 | 3 = 2;
-    let editCategory: UniverseCategory = 'other';
-    let editTagsStr = '';
+    let editName = $state('');
+    let editDescription = $state('');
+    let editPreferredInitialConfig: InitialConfig = $state('uniform');
+    let editBehavior: UniverseBehavior = $state('cyclic');
+    let editStructure: UniverseStructure = $state('none');
+    let editActiveColors: 1 | 2 | 3 | 4 = $state(4);
+    let editConvergenceSpeed: ConvergenceSpeed = $state('never');
+    let editEnergyLevel: EnergyLevel = $state('medium');
+    let editComplexity: 1 | 2 | 3 = $state(2);
+    let editCategory: UniverseCategory = $state('other');
+    let editTagsStr = $state('');
 
-    let saveStatus: 'idle' | 'saving' | 'saved' | 'error' = 'idle';
+    let saveStatus: 'idle' | 'saving' | 'saved' | 'error' = $state('idle');
     let saveTimeout: ReturnType<typeof setTimeout>;
 
     // ── Hint dictionaries ──────────────────────
@@ -98,8 +102,8 @@
     };
 
     // ── Reactive: unsaved changes ──────────────
-    $: hasChanges =
-        selected != null &&
+    let hasChanges =
+        $derived(selected != null &&
         (editName !== selected.name ||
             editDescription !== selected.description ||
             editPreferredInitialConfig !== selected.preferredInitialConfig ||
@@ -110,7 +114,7 @@
             editEnergyLevel !== selected.energyLevel ||
             editComplexity !== selected.complexity ||
             editCategory !== selected.category ||
-            editTagsStr !== (selected.tags ?? []).join(', '));
+            editTagsStr !== (selected.tags ?? []).join(', ')));
 
     // ── Actions ────────────────────────────────
     const loadFormFromUniverse = (u: StoredUniverse) => {
@@ -232,7 +236,7 @@
                 </div>
                 <div class="field">
                     <label for="cl-desc">Description</label>
-                    <textarea id="cl-desc" rows="3" bind:value={editDescription} />
+                    <textarea id="cl-desc" rows="3" bind:value={editDescription}></textarea>
                 </div>
                 <div class="field">
                     <label for="cl-config">Spread</label>
@@ -341,7 +345,7 @@
                         class="save-btn"
                         class:saved={saveStatus === 'saved'}
                         class:error={saveStatus === 'error'}
-                        on:click={save}
+                        onclick={save}
                         disabled={!dev || (!hasChanges && saveStatus !== 'error')}
                     >
                         {#if saveStatus === 'saving'}
@@ -355,7 +359,7 @@
                         {/if}
                     </button>
                     {#if hasChanges}
-                        <span class="unsaved-dot" title="Unsaved changes" />
+                        <span class="unsaved-dot" title="Unsaved changes"></span>
                     {/if}
                     {#if !dev}
                         <span class="dev-notice">Dev mode only</span>

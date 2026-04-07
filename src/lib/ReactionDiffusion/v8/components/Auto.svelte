@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { preventDefault } from 'svelte/legacy';
+
     import FkRandomizer from './FKRandomizer.svelte';
     import type { GUI } from 'dat.gui';
     import type REGL from 'regl';
@@ -34,10 +36,10 @@
         panY: 0.5
     };
 
-    const info: SimulationInfo = {
+    const info: SimulationInfo = $state({
         iteration: 0,
         worldSize: 8 // Used as a power of 2
-    };
+    });
 
     // Dummy initialization, changes are handled by FKRandomizer
     const simulationParameters: SimulationParameters = {
@@ -179,10 +181,10 @@
     });
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />
 <main>
     <FkRandomizer on:fkupdated={onSimulationParamsUpdate} />
-    <div id="datgui-container" />
+    <div id="datgui-container"></div>
 
     <div>
         <label for="worldSize">World Size:</label>
@@ -191,16 +193,16 @@
             bind:value={info.worldSize}
             type="number"
             step="1"
-            on:change={reset}
+            onchange={reset}
         />
         <span>({2 ** info.worldSize} x {2 ** info.worldSize} : {2 ** (info.worldSize + 1)})</span>
     </div>
     <canvas
-        on:contextmenu|preventDefault={(e) => e}
+        oncontextmenu={preventDefault((e) => e)}
         id="canvas"
         width={screenDimensions.width}
         height={screenDimensions.height}
-    />
+></canvas>
 </main>
 
 <style>

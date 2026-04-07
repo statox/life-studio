@@ -1,15 +1,21 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
 
-    export let simulationComponent: Simulation;
+    interface Props {
+        simulationComponent: Simulation;
+    }
+
+    let { simulationComponent }: Props = $props();
 
     let attractionTable = getZeroedAttractionTable();
     attractionTable.white.white = 0;
 
-    let forceValue: -1 | 0 | 1 | undefined = undefined;
+    let forceValue: -1 | 0 | 1 | undefined = $state(undefined);
     let horizontalResolution = 6;
     let verticalResolution = 4;
     let nbParticles = 0; // Start with an empty screen
@@ -51,7 +57,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    $: if (simulationComponent) startScreen();
+    run(() => {
+        if (simulationComponent) startScreen();
+    });
 </script>
 
 <div class="screen">

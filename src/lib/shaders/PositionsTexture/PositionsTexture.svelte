@@ -55,4 +55,4 @@
     > update the positions randomly with javascript and create a new texture holding the positions then
     use a shader to render the texture.
 </p>
-<canvas id="canvas" style="background-color: black" width={screenWidth} height={screenHeight} />
+<canvas id="canvas" style="background-color: black" width={screenWidth} height={screenHeight}></canvas>

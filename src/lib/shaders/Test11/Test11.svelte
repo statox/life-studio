@@ -10,24 +10,24 @@
         width: 800,
         height: 600
     };
-    const worldDimensions = {
+    const worldDimensions = $state({
         width: 800,
         height: 600
-    };
+    });
     const texDimensions = {
         width: 500,
         height: 10
     };
-    let steps = 10;
-    let slowMo = false;
-    let pause = true;
+    let steps = $state(10);
+    let slowMo = $state(false);
+    let pause = $state(true);
 
-    const simulationParams = {
+    const simulationParams = $state({
         interactionRange: 6,
         drag: 5,
         timeStep: 10,
         particlesSize: 4
-    };
+    });
     let gl: WebGLRenderingContext;
     let animationFrameRequest: number;
     function main() {
@@ -98,16 +98,16 @@
     style="background-color: black"
     width={screenDimensions.width}
     height={screenDimensions.height}
-/>
+></canvas>
 
 <div>
-    <button on:click={() => (pause = !pause)}>{pause ? 'Play' : 'Pause'}</button>
-    <button on:click={() => (slowMo = !slowMo)}>{slowMo ? 'Normal Speed' : 'Slow Mo'}</button>
+    <button onclick={() => (pause = !pause)}>{pause ? 'Play' : 'Pause'}</button>
+    <button onclick={() => (slowMo = !slowMo)}>{slowMo ? 'Normal Speed' : 'Slow Mo'}</button>
     <span>particles: {texDimensions.width * texDimensions.height}</span>
     <label for="steps">Smooth steps</label>
     <input bind:value={steps} type="number" min={0} />
-    <button on:click={() => main()}>Reset</button>
-    <button on:click={enableFullscreen}>Fullscreen</button>
+    <button onclick={() => main()}>Reset</button>
+    <button onclick={enableFullscreen}>Fullscreen</button>
 </div>
 <div>
     <ul>
@@ -148,6 +148,6 @@
             <label for="worldHeight">height</label>
             <input id="worldHeight" bind:value={worldDimensions.height} type="number" min={0} />
         </li>
-        <ul />
+        <ul></ul>
     </ul>
 </div>

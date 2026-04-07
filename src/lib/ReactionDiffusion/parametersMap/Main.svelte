@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { preventDefault } from 'svelte/legacy';
+
     import type { GUI } from 'dat.gui';
     import type REGL from 'regl';
     import { onDestroy, onMount } from 'svelte';
@@ -32,10 +34,10 @@
         panY: 0.5
     };
 
-    const info: SimulationInfo = {
+    const info: SimulationInfo = $state({
         iteration: 0,
         worldSize: 10 // Used as a power of 2
-    };
+    });
 
     const simulationParameters: ParametersMapParameters = {
         minK: 0.02,
@@ -194,9 +196,9 @@
     });
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />
 <main>
-    <div id="datgui-container" />
+    <div id="datgui-container"></div>
 
     <div>
         <label for="worldSize">World Size:</label>
@@ -205,20 +207,20 @@
             bind:value={info.worldSize}
             type="number"
             step="1"
-            on:change={reset}
+            onchange={reset}
         />
     </div>
     <canvas
-        on:mousemove={handleMousemove}
-        on:mousedown|preventDefault={handleMouseButton}
-        on:mouseup={handleMouseButton}
-        on:wheel={handleMouseWheel}
-        on:keydown|preventDefault={handleKeydown}
-        on:contextmenu|preventDefault={(e) => e}
+        onmousemove={handleMousemove}
+        onmousedown={preventDefault(handleMouseButton)}
+        onmouseup={handleMouseButton}
+        onwheel={handleMouseWheel}
+        onkeydown={preventDefault(handleKeydown)}
+        oncontextmenu={preventDefault((e) => e)}
         id="canvas"
         width={screenDimensions.width}
         height={screenDimensions.height}
-    />
+></canvas>
 </main>
 
 <style>

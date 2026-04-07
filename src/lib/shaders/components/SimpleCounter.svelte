@@ -129,6 +129,6 @@
     </a>.
 </p>
 
-<ul id="result" />
+<ul id="result"></ul>
 
-<canvas id="canvas" />
+<canvas id="canvas"></canvas>

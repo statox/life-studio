@@ -1,10 +1,14 @@
 <script lang="ts">
     import { getAllUniverses, type StoredUniverse } from '$lib/particles/universe';
 
-    export let onSelect: (universe: StoredUniverse) => void;
+    interface Props {
+        onSelect: (universe: StoredUniverse) => void;
+    }
+
+    let { onSelect }: Props = $props();
 
     const universes = getAllUniverses();
-    let selectedIndex = '';
+    let selectedIndex = $state('');
 
     const handleChange = () => {
         const idx = parseInt(selectedIndex);
@@ -13,7 +17,7 @@
 </script>
 
 <div class="preset-selector">
-    <select bind:value={selectedIndex} on:change={handleChange}>
+    <select bind:value={selectedIndex} onchange={handleChange}>
         <option value="" disabled>Load a preset…</option>
         {#each universes as u, i}
             <option value={String(i)}>{u.name}</option>

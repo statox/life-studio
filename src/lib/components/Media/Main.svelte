@@ -1,19 +1,32 @@
 <script lang="ts">
+    import { stopPropagation } from 'svelte/legacy';
+
     import { base } from '$app/paths';
 
-    export let path: string;
-    export let title: string | undefined = undefined;
-    export let description: string | undefined = undefined;
-    export let showTitle = true;
-    export let showDescription = true;
-    export let alt = '';
+    interface Props {
+        path: string;
+        title?: string | undefined;
+        description?: string | undefined;
+        showTitle?: boolean;
+        showDescription?: boolean;
+        alt?: string;
+    }
+
+    let {
+        path,
+        title = undefined,
+        description = undefined,
+        showTitle = true,
+        showDescription = true,
+        alt = ''
+    }: Props = $props();
 
     const videoExtensions = ['.mp4', '.webm', '.ogg'];
-    $: isVideo = videoExtensions.some((ext) => path.toLowerCase().endsWith(ext));
-    $: src = `${base}${path}`;
-    $: altText = alt || title || '';
+    let isVideo = $derived(videoExtensions.some((ext) => path.toLowerCase().endsWith(ext)));
+    let src = $derived(`${base}${path}`);
+    let altText = $derived(alt || title || '');
 
-    let expanded = false;
+    let expanded = $state(false);
 
     const open = () => (expanded = true);
     const close = () => (expanded = false);
@@ -22,9 +35,9 @@
     };
 </script>
 
-<svelte:window on:keydown={expanded ? handleKeydown : undefined} />
+<svelte:window onkeydown={expanded ? handleKeydown : undefined} />
 
-<figure class="media" on:click={open} on:keydown={undefined}>
+<figure class="media" onclick={open} onkeydown={undefined}>
     {#if isVideo}
         <video {src} preload="none" controls loop muted playsinline>
             <track kind="captions" />
@@ -41,8 +54,8 @@
 </figure>
 
 {#if expanded}
-    <div class="overlay" on:click={close} on:keydown={undefined}>
-        <figure class="overlay-content" on:click|stopPropagation={undefined} on:keydown={undefined}>
+    <div class="overlay" onclick={close} onkeydown={undefined}>
+        <figure class="overlay-content" onclick={stopPropagation(undefined)} onkeydown={undefined}>
             {#if isVideo}
                 <video {src} controls loop muted playsinline autoplay>
                     <track kind="captions" />
@@ -58,7 +71,7 @@
                         >{/if}
                 </figcaption>
             {/if}
-            <button class="close-btn" on:click={close} title="Close">✕</button>
+            <button class="close-btn" onclick={close} title="Close">✕</button>
         </figure>
     </div>
 {/if}

@@ -1,11 +1,17 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import ScreenBtn from '../ScreenBtn.svelte';
     import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
     import { getZeroedAttractionTable, type AttractionTable } from '$lib/particles/attraction';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
 
-    export let simulationComponent: Simulation;
+    interface Props {
+        simulationComponent: Simulation;
+    }
+
+    let { simulationComponent }: Props = $props();
 
     type Preset = { label: string; table: { ww: number; wr: number; rw: number; rr: number } };
 
@@ -15,7 +21,7 @@
         { label: 'White repulses + attracts Red', table: { ww: -1, wr: 1, rw: 0, rr: 1 } }
     ];
 
-    let activePreset = 0;
+    let activePreset = $state(0);
 
     const buildTable = (p: Preset['table']): AttractionTable => {
         const t = getZeroedAttractionTable();
@@ -26,7 +32,7 @@
         return t;
     };
 
-    let attractionTable: AttractionTable = buildTable(presets[0].table);
+    let attractionTable: AttractionTable = $state(buildTable(presets[0].table));
 
     const selectPreset = (idx: number) => {
         activePreset = idx;
@@ -55,7 +61,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    $: if (simulationComponent) startScreen();
+    run(() => {
+        if (simulationComponent) startScreen();
+    });
 </script>
 
 <div class="screen">

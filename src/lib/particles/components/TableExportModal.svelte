@@ -1,17 +1,23 @@
 <script lang="ts">
+    import { self } from 'svelte/legacy';
+
     import { createEventDispatcher } from 'svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
     import { COLORS } from '../engine';
 
-    export let attractionTable: AttractionTable;
+    interface Props {
+        attractionTable: AttractionTable;
+    }
+
+    let { attractionTable }: Props = $props();
 
     const dispatch = createEventDispatcher<{ close: void }>();
 
-    let name = '';
-    let description = '';
-    let copied = false;
+    let name = $state('');
+    let description = $state('');
+    let copied = $state(false);
 
-    $: code = (() => {
+    let code = $derived((() => {
         const rows = COLORS.map((from) => {
             const vals = COLORS.map((to) => `${to}: ${attractionTable[from][to]}`).join(', ');
             return `            ${from}: { ${vals} }`;
@@ -19,7 +25,7 @@
         const safeName = name.replace(/'/g, "\\'");
         const safeDesc = description.replace(/'/g, "\\'");
         return `    {\n        name: '${safeName}',\n        description: '${safeDesc}',\n        table: {\n${rows}\n        }\n    },`;
-    })();
+    })());
 
     const copy = () => {
         navigator.clipboard.writeText(code).then(() => {
@@ -29,12 +35,12 @@
     };
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
-<div class="backdrop" on:click|self={() => dispatch('close')}>
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
+<div class="backdrop" onclick={self(() => dispatch('close'))}>
     <div class="modal">
         <div class="modal-header">
             <span class="title">Export attraction table</span>
-            <button class="icon-btn" on:click={() => dispatch('close')}>✕</button>
+            <button class="icon-btn" onclick={() => dispatch('close')}>✕</button>
         </div>
 
         <div class="field">
@@ -55,7 +61,7 @@
             <pre>{code}</pre>
         </div>
 
-        <button class="copy-btn" class:copied on:click={copy}>
+        <button class="copy-btn" class:copied onclick={copy}>
             {copied ? '✓ Copied!' : '⧉ Copy to clipboard'}
         </button>
 

@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { run, self } from 'svelte/legacy';
+
     import { createEventDispatcher } from 'svelte';
     import type {
         Universe,
@@ -11,7 +13,11 @@
     } from '../universe';
     import { UNIVERSE_CATEGORIES } from '../universe';
 
-    export let universe: Universe;
+    interface Props {
+        universe: Universe;
+    }
+
+    let { universe }: Props = $props();
 
     const dispatch = createEventDispatcher<{ close: void }>();
 
@@ -21,20 +27,22 @@
             .replace(/[^a-z0-9]+/g, '_')
             .replace(/^_|_$/g, '');
 
-    let name = '';
-    let id = '';
-    let idManuallyEdited = false;
-    $: if (name && !idManuallyEdited) id = slugify(name);
-    let description = '';
-    let preferredInitialConfig: InitialConfig = 'uniform';
-    let behavior: UniverseBehavior = 'cyclic';
-    let structure: UniverseStructure = 'none';
-    let activeColors: 1 | 2 | 3 | 4 = 4;
-    let convergenceSpeed: ConvergenceSpeed = 'never';
-    let energyLevel: EnergyLevel = 'medium';
-    let complexity: 1 | 2 | 3 = 2;
-    let category: UniverseCategory = 'other';
-    let copied = false;
+    let name = $state('');
+    let id = $state('');
+    let idManuallyEdited = $state(false);
+    run(() => {
+        if (name && !idManuallyEdited) id = slugify(name);
+    });
+    let description = $state('');
+    let preferredInitialConfig: InitialConfig = $state('uniform');
+    let behavior: UniverseBehavior = $state('cyclic');
+    let structure: UniverseStructure = $state('none');
+    let activeColors: 1 | 2 | 3 | 4 = $state(4);
+    let convergenceSpeed: ConvergenceSpeed = $state('never');
+    let energyLevel: EnergyLevel = $state('medium');
+    let complexity: 1 | 2 | 3 = $state(2);
+    let category: UniverseCategory = $state('other');
+    let copied = $state(false);
     const createdAt = new Date().toISOString().slice(0, 10);
 
     const behaviorHints: Record<UniverseBehavior, string> = {
@@ -67,7 +75,7 @@
         3: 'Rich multi-colour dynamics with emergent structures'
     };
 
-    $: result = (() => {
+    let result = $derived((() => {
         try {
             return JSON.stringify(
                 {
@@ -91,7 +99,7 @@
         } catch {
             return 'Error';
         }
-    })();
+    })());
 
     const copy = () => {
         navigator.clipboard.writeText(result).then(() => {
@@ -101,12 +109,12 @@
     };
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
-<div class="backdrop" on:click|self={() => dispatch('close')}>
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
+<div class="backdrop" onclick={self(() => dispatch('close'))}>
     <div class="modal">
         <div class="modal-header">
             <span class="title">Export Universe</span>
-            <button class="icon-btn" on:click={() => dispatch('close')}>✕</button>
+            <button class="icon-btn" onclick={() => dispatch('close')}>✕</button>
         </div>
 
         <div class="field">
@@ -120,7 +128,7 @@
                 type="text"
                 placeholder="auto-generated from name"
                 bind:value={id}
-                on:input={() => (idManuallyEdited = true)}
+                oninput={() => (idManuallyEdited = true)}
             />
         </div>
         <div class="field">
@@ -130,7 +138,7 @@
                 id="export-desc"
                 placeholder="What does it do?"
                 bind:value={description}
-            />
+></textarea>
         </div>
         <div class="field">
             <label for="export-config">Initial spread</label>
@@ -228,7 +236,7 @@
             <pre>{result}</pre>
         </div>
 
-        <button class="copy-btn" class:copied on:click={copy}>
+        <button class="copy-btn" class:copied onclick={copy}>
             {copied ? '✓ Copied!' : '⧉ Copy to clipboard'}
         </button>
     </div>

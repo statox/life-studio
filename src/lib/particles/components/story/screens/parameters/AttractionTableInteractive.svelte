@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from '$lib/particles/components/buttons/CenteredCircleButton.svelte';
     import RainbowButton from '$lib/particles/components/buttons/RainbowButton.svelte';
@@ -8,9 +10,13 @@
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import type { InitialConfig } from '$lib/particles/universe';
 
-    export let simulationComponent: Simulation;
+    interface Props {
+        simulationComponent: Simulation;
+    }
 
-    let attractionTable: AttractionTable = getZeroedAttractionTable();
+    let { simulationComponent }: Props = $props();
+
+    let attractionTable: AttractionTable = $state(getZeroedAttractionTable());
     attractionTable.red.red = 1;
     attractionTable.white.white = -1;
 
@@ -56,7 +62,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    $: if (simulationComponent) startScreen();
+    run(() => {
+        if (simulationComponent) startScreen();
+    });
 </script>
 
 <div class="screen">

@@ -1,5 +1,9 @@
 <script lang="ts">
-    export let actions: Record<string, () => void>;
+    interface Props {
+        actions: Record<string, () => void>;
+    }
+
+    let { actions }: Props = $props();
 
     const shortcuts = [
         { key: 'Q', label: 'Reset random' },
@@ -17,7 +21,7 @@
     };
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />
 
 <div class="shortcuts">
     {#each shortcuts as s}

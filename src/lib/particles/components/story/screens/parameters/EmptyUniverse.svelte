@@ -1,9 +1,15 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
 
-    export let simulationComponent: Simulation;
+    interface Props {
+        simulationComponent: Simulation;
+    }
+
+    let { simulationComponent }: Props = $props();
 
     const startScreen = () => {
         const config: SimulationConfig = {
@@ -26,7 +32,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    $: if (simulationComponent) startScreen();
+    run(() => {
+        if (simulationComponent) startScreen();
+    });
 </script>
 
 <div class="screen">

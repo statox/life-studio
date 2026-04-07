@@ -1,15 +1,21 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import type { InitialConfig } from '$lib/particles/universe';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
 
-    export let simulationComponent: Simulation;
+    interface Props {
+        simulationComponent: Simulation;
+    }
+
+    let { simulationComponent }: Props = $props();
 
     let attractionTable = getZeroedAttractionTable();
 
-    let initialSpreadConfig: InitialConfig | undefined = undefined;
+    let initialSpreadConfig: InitialConfig | undefined = $state(undefined);
     let nbParticles = 0;
 
     const uniformSpread = () => {
@@ -45,7 +51,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    $: if (simulationComponent) startScreen();
+    run(() => {
+        if (simulationComponent) startScreen();
+    });
 </script>
 
 <div class="screen">

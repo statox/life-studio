@@ -3,6 +3,8 @@
 -  https://regl-project.github.io/regl/www/gallery/sprites.js.html
 -->
 <script lang="ts">
+    import { preventDefault } from 'svelte/legacy';
+
     import type { GUI } from 'dat.gui';
     import REGL from 'regl';
     import { onDestroy, onMount } from 'svelte';
@@ -252,14 +254,14 @@
 </script>
 
 <canvas
-    on:mousemove={handleMousemove}
-    on:mousedown|preventDefault={handleMouseButton}
-    on:mouseup={handleMouseButton}
-    on:contextmenu|preventDefault={(e) => e}
+    onmousemove={handleMousemove}
+    onmousedown={preventDefault(handleMouseButton)}
+    onmouseup={handleMouseButton}
+    oncontextmenu={preventDefault((e) => e)}
     id="canvas"
     width={screenDimensions.width}
     height={screenDimensions.height}
-/>
+></canvas>
 
 <style>
     #canvas {

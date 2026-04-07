@@ -257,4 +257,4 @@
         webglfundamentals
     </a> with the shader code extracted into separate files.
 </p>
-<canvas id="canvas" style="background-color: black" width="800" height="600" />
+<canvas id="canvas" style="background-color: black" width="800" height="600"></canvas>

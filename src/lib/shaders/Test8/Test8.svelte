@@ -13,15 +13,15 @@
         width: 10,
         height: 10
     };
-    let steps = 1;
-    let slowMo = false;
-    let pause = true;
+    let steps = $state(1);
+    let slowMo = $state(false);
+    let pause = $state(true);
 
-    const simulationParams = {
+    const simulationParams = $state({
         interactionRange: 70,
         drag: 1000,
         timeStep: 10
-    };
+    });
     function main() {
         const gl = webglUtils.getWebGLContext();
         webglUtils.resizeCanvasToDisplaySize(gl.canvas as HTMLCanvasElement);
@@ -84,11 +84,11 @@
     style="background-color: black"
     width={screenDimensions.width}
     height={screenDimensions.height}
-/>
+></canvas>
 
 <div>
-    <button on:click={() => (pause = !pause)}>{pause ? 'Play' : 'Pause'}</button>
-    <button on:click={() => (slowMo = !slowMo)}>{slowMo ? 'Normal Speed' : 'Slow Mo'}</button>
+    <button onclick={() => (pause = !pause)}>{pause ? 'Play' : 'Pause'}</button>
+    <button onclick={() => (slowMo = !slowMo)}>{slowMo ? 'Normal Speed' : 'Slow Mo'}</button>
     <span>particles: {texDimensions.width * texDimensions.height}</span>
     <label for="steps">Smooth steps</label>
     <input bind:value={steps} type="number" min={0} />
@@ -114,6 +114,6 @@
             <label for="deltaTime">Time step</label>
             <input id="deltaTime" bind:value={simulationParams.timeStep} type="number" min={0} />
         </li>
-        <ul />
+        <ul></ul>
     </ul>
 </div>

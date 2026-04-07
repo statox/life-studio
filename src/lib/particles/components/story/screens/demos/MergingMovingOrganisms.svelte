@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import ScreenBtn from '../ScreenBtn.svelte';
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
     import CenteredCircleButton from '$lib/particles/components/buttons/CenteredCircleButton.svelte';
@@ -8,14 +10,18 @@
     import { getUniverseById } from '$lib/particles/universe';
     import type { InitialConfig } from '$lib/particles/universe';
 
-    export let simulationComponent: Simulation;
+    interface Props {
+        simulationComponent: Simulation;
+    }
+
+    let { simulationComponent }: Props = $props();
 
     const presets = [
         getUniverseById('compact_merging_movers_with_several_phases'),
         getUniverseById('compact_moving_structures')
     ];
 
-    let activeIndex = 0;
+    let activeIndex = $state(0);
     let spreadConfig: InitialConfig = presets[0].preferredInitialConfig;
 
     const loadPreset = (idx: number) => {
@@ -45,7 +51,9 @@
         startScreen();
     };
 
-    $: if (simulationComponent) startScreen();
+    run(() => {
+        if (simulationComponent) startScreen();
+    });
 </script>
 
 <div class="screen">

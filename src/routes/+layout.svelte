@@ -1,18 +1,23 @@
-<script>
+<script lang="ts">
     import { base } from '$app/paths';
     import { page } from '$app/stores';
     import { pageMetadataStore } from '$lib/stores/pageMetadata';
+    interface Props {
+        children?: import('svelte').Snippet;
+    }
+
+    let { children }: Props = $props();
 
     const noHeaderPaths = ['/particles-life/story'];
 
-    $: showHeader = !noHeaderPaths.some((p) => $page.url.pathname.endsWith(p));
+    let showHeader = $derived(!noHeaderPaths.some((p) => $page.url.pathname.endsWith(p)));
 
-    $: pathname = $page.url.pathname.replace(/\/$/, '');
-    $: basePath = (base || '').replace(/\/$/, '');
-    $: isHome = pathname === basePath;
-    $: parentPath = pathname.includes('/')
+    let pathname = $derived($page.url.pathname.replace(/\/$/, ''));
+    let basePath = $derived((base || '').replace(/\/$/, ''));
+    let isHome = $derived(pathname === basePath);
+    let parentPath = $derived(pathname.includes('/')
         ? pathname.substring(0, pathname.lastIndexOf('/')) || '/'
-        : '/';
+        : '/');
 </script>
 
 {#if showHeader}
@@ -26,7 +31,7 @@
     </header>
 {/if}
 
-<slot />
+{@render children?.()}
 
 <style>
     /* TODO Move that in a global css file */

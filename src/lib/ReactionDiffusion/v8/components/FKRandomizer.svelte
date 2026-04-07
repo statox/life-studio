@@ -9,9 +9,9 @@
     const dispatch = createEventDispatcher<{ fkupdated: { f: number; k: number } }>();
     let selectedClass = PARAMETERS_CLASSES[0];
 
-    let isOpen = true;
-    let changeMag = 1; // [0, 5];
-    let changeRate = 100;
+    let isOpen = $state(true);
+    let changeMag = $state(1); // [0, 5];
+    let changeRate = $state(100);
 
     const rangeF = [0, 0.12];
     const rangeK = [0.03, 0.07];
@@ -237,7 +237,7 @@
     };
 
     let _p5: p5;
-    let buttonIsPressed = false;
+    let buttonIsPressed = $state(false);
     const sketch: Sketch = (p5) => {
         _p5 = p5;
         let background: p5.Image;
@@ -302,7 +302,7 @@
 </script>
 
 <div id="container" class:no-cursor={buttonIsPressed}>
-    <button class="full-width" id="toggleButton" on:click={toggleDisplay}>
+    <button class="full-width" id="toggleButton" onclick={toggleDisplay}>
         {isOpen ? 'Close' : 'F/K selection'}
     </button>
     {#if isOpen}
@@ -312,11 +312,11 @@
         </div>
         <div>
             <label for="changeMag">changeMag</label>
-            <span id="changeMag" />{changeMag.toFixed(2)}
+            <span id="changeMag"></span>{changeMag.toFixed(2)}
         </div>
         <div>
             <label for="changeRate">changeRate</label>
-            <span id="changeRate" />{changeRate.toFixed(2)}
+            <span id="changeRate"></span>{changeRate.toFixed(2)}
         </div>
         <P5 {sketch} />
     {/if}

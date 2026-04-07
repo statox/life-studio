@@ -1,10 +1,16 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import RainbowButton from '$lib/particles/components/buttons/RainbowButton.svelte';
     import { generateSimulationParams } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getUniverseById } from '$lib/particles/universe';
 
-    export let simulationComponent: Simulation;
+    interface Props {
+        simulationComponent: Simulation;
+    }
+
+    let { simulationComponent }: Props = $props();
 
     const preset = getUniverseById('competing_predators');
 
@@ -16,7 +22,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    $: if (simulationComponent) startScreen();
+    run(() => {
+        if (simulationComponent) startScreen();
+    });
 </script>
 
 <div class="screen">

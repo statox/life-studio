@@ -96,6 +96,6 @@
     each <code>requestAnimationFrame</code> update the positions randomly with javascript and use the
     shader program to render each position as a point.
 </p>
-<canvas id="canvas" style="background-color: black" width="800" height="600" />
+<canvas id="canvas" style="background-color: black" width="800" height="600"></canvas>
 
-<button on:click={() => addPosition()}>Add position</button>
+<button onclick={() => addPosition()}>Add position</button>

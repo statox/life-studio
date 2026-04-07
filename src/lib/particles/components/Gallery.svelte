@@ -14,21 +14,21 @@
     import { getAllUniverses, type StoredUniverse } from '$lib/particles/universe';
     import UniverseSelector from './UniverseSelector.svelte';
 
-    let simulationComponent: Simulation;
+    let simulationComponent: Simulation = $state();
 
     const universes: StoredUniverse[] = getAllUniverses();
-    let selected: StoredUniverse = universes[0];
+    let selected: StoredUniverse = $state(universes[0]);
     let lastParams: SimulationParams;
-    let attractionTable: AttractionTable = universes[0].attractionTable;
+    let attractionTable: AttractionTable = $state(universes[0].attractionTable);
 
-    let ws: WorldSettings = {
+    let ws: WorldSettings = $state({
         nbParticles: universes[0].nbParticles,
         horizontalResolution: universes[0].horizontalResolution,
         verticalResolution: universes[0].verticalResolution,
         maxAttractionRadius: universes[0].maxAttractionRadius,
         friction: universes[0].friction,
         colorWeights: universes[0].colorWeights
-    };
+    });
 
     const startWithParams = (params: SimulationParams) => {
         lastParams = params;

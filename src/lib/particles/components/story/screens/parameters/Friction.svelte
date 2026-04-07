@@ -1,16 +1,22 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
 
-    export let simulationComponent: Simulation;
+    interface Props {
+        simulationComponent: Simulation;
+    }
+
+    let { simulationComponent }: Props = $props();
 
     const attractionTable = getZeroedAttractionTable();
     attractionTable.white.white = 1;
 
     const frictionPresets = [0.8, 0.25, 0.06, 0.0];
-    let friction = 0.5;
+    let friction = $state(0.5);
     let nbParticles = 0; // Start with an empty screen
 
     const startScreen = () => {
@@ -40,7 +46,9 @@
         startScreen();
     };
 
-    $: if (simulationComponent) startScreen();
+    run(() => {
+        if (simulationComponent) startScreen();
+    });
 </script>
 
 <div class="screen">
@@ -119,7 +127,7 @@
                 id="friction-slider"
                 type="range"
                 bind:value={friction}
-                on:change={startScreen}
+                onchange={startScreen}
                 min="0"
                 max="1"
                 step="0.01"

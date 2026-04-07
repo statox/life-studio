@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     /*
      * This component is made to replace P5-svelte to improve performences
      * It uses the technic described by https://stackoverflow.com/a/13916313
@@ -10,30 +12,46 @@
     import { COLORS, PARTICLE_COLORS } from '../engine';
     import type { Coordinates } from '../engine';
 
-    export let cellSize: number;
-    export let positions: Float32Array | null;
-    export let colorIndices: Uint8Array;
-    export let numParticles: number;
-    export let worldSize: Coordinates;
-    export let drewFrame: () => void;
-    export let showColors: boolean;
-    export let maxFPS = 25;
-    export let onRenderPerf: ((ms: number) => void) | undefined = undefined;
+    interface Props {
+        cellSize: number;
+        positions: Float32Array | null;
+        colorIndices: Uint8Array;
+        numParticles: number;
+        worldSize: Coordinates;
+        drewFrame: () => void;
+        showColors: boolean;
+        maxFPS?: number;
+        onRenderPerf?: ((ms: number) => void) | undefined;
+    }
 
-    let canvas: HTMLCanvasElement;
+    let {
+        cellSize,
+        positions,
+        colorIndices,
+        numParticles,
+        worldSize,
+        drewFrame,
+        showColors,
+        maxFPS = 25,
+        onRenderPerf = undefined
+    }: Props = $props();
+
+    let canvas: HTMLCanvasElement = $state();
     let off: HTMLCanvasElement | undefined;
     const backgroundColor = '#000000';
     const n = COLORS.length;
 
-    $: r = cellSize || 2;
-    $: d = r * 2;
+    let r = $derived(cellSize || 2);
+    let d = $derived(r * 2);
 
-    let fpsInterval = 1000 / maxFPS;
+    let fpsInterval = $state(1000 / maxFPS);
     let then = 0;
     let _renderCount = 0;
     let _tRender = 0;
 
-    $: fpsInterval = 1000 / maxFPS;
+    run(() => {
+        fpsInterval = 1000 / maxFPS;
+    });
 
     function draw() {
         if (!canvas || !off) return;
@@ -98,7 +116,9 @@
             offCtx.fill();
         }
     };
-    $: createOffsetPoints(d);
+    run(() => {
+        createOffsetPoints(d);
+    });
 
     onMount(() => {
         canvas.width = 1600;
@@ -111,7 +131,7 @@
     });
 </script>
 
-<canvas bind:this={canvas} />
+<canvas bind:this={canvas}></canvas>
 
 <style>
     canvas {

@@ -1,11 +1,17 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import ScreenBtn from '../ScreenBtn.svelte';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getUniverseById } from '$lib/particles/universe';
     import AttractionTableComponent from '../../../AttractionTableComponent.svelte';
 
-    export let simulationComponent: Simulation;
+    interface Props {
+        simulationComponent: Simulation;
+    }
+
+    let { simulationComponent }: Props = $props();
 
     const preset = getUniverseById('4_colors_worms');
 
@@ -37,7 +43,7 @@
             friction: 0.5
         }
     };
-    let currentPreset: string | undefined = 'medium';
+    let currentPreset: string | undefined = $state('medium');
     let currentSize = sizePresets.medium;
 
     const setProportions = (preset: string) => {
@@ -65,7 +71,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    $: if (simulationComponent) startScreen();
+    run(() => {
+        if (simulationComponent) startScreen();
+    });
 </script>
 
 <div class="screen">

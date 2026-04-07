@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
     import {
@@ -10,7 +12,11 @@
     import type { ColorProportions } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
 
-    export let simulationComponent: Simulation;
+    interface Props {
+        simulationComponent: Simulation;
+    }
+
+    let { simulationComponent }: Props = $props();
 
     const attractionTable = getZeroedAttractionTable();
 
@@ -22,8 +28,8 @@
         no_green: { white: 500, red: 500, green: 0, blue: 500 },
         no_blue: { white: 500, red: 500, green: 500, blue: 0 }
     };
-    let currentPreset: string | undefined = 'all_white';
-    let colorWeights: ColorProportions = weightPresets[currentPreset];
+    let currentPreset: string | undefined = $state('all_white');
+    let colorWeights: ColorProportions = $state(weightPresets[currentPreset]);
 
     const setProportions = (preset: string) => {
         if (!Object.keys(weightPresets).includes(preset)) {
@@ -54,7 +60,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    $: if (simulationComponent) startScreen();
+    run(() => {
+        if (simulationComponent) startScreen();
+    });
 </script>
 
 <div class="screen">
@@ -75,11 +83,11 @@
             <div class="proportion-list">
                 {#each COLORS as c}
                     <div class="field">
-                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}" />
+                        <span class="pdot" style="background:{PARTICLE_COLORS[c]}"></span>
                         <input
                             type="range"
                             bind:value={colorWeights[c]}
-                            on:change={onWeightsChange}
+                            onchange={onWeightsChange}
                             min="0"
                             max="1000"
                             step="1"

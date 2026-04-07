@@ -5,13 +5,17 @@
     import type { AttractionTable } from '$lib/particles/attraction';
     import { getRandomAttractionTable, tables } from '$lib/particles/attraction';
 
-    export let attractionTable: AttractionTable;
+    interface Props {
+        attractionTable: AttractionTable;
+    }
+
+    let { attractionTable }: Props = $props();
 
     const dispatch = createEventDispatcher<{ updateTable: AttractionTable }>();
 
     const update = (t: AttractionTable) => dispatch('updateTable', t);
 
-    let showExportModal = false;
+    let showExportModal = $state(false);
 </script>
 
 <!-- Attraction table editor (collapsible) -->
@@ -31,14 +35,14 @@
                 <div class="card-title">Preset</div>
                 <button
                     class="export-btn"
-                    on:click={() => (showExportModal = true)}
+                    onclick={() => (showExportModal = true)}
                     title="Export current table"
                 >
                     ↗ Export
                 </button>
             </div>
             <select
-                on:change={(e) => {
+                onchange={(e) => {
                     const v = e.currentTarget.value;
                     if (v === '__random__') update(getRandomAttractionTable());
                     else update(JSON.parse(v));

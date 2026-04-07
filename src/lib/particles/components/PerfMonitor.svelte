@@ -1,27 +1,35 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import type { PerfData } from '$lib/particles/engine/types';
 
     type PerfReport = PerfData & { total: number };
-    export let enginePerf: PerfData | null = null;
-    export let renderMs: number | null = null;
-    let history: PerfReport[] = [];
-    let lastRecordedFrame = -1;
+    interface Props {
+        enginePerf?: PerfData | null;
+        renderMs?: number | null;
+    }
+
+    let { enginePerf = null, renderMs = null }: Props = $props();
+    let history: PerfReport[] = $state([]);
+    let lastRecordedFrame = $state(-1);
 
     type PerfRow = { label: string; value: number };
 
     // Separate reactive block for history — only reacts to enginePerf changes
-    $: if (enginePerf && enginePerf.frame !== lastRecordedFrame) {
-        if (history.length && enginePerf.frame <= history[history.length - 1]?.frame) {
-            history = [];
+    run(() => {
+        if (enginePerf && enginePerf.frame !== lastRecordedFrame) {
+            if (history.length && enginePerf.frame <= history[history.length - 1]?.frame) {
+                history = [];
+            }
+            history.push({
+                ...enginePerf,
+                total: enginePerf.grid + enginePerf.force + enginePerf.update + enginePerf.interleave
+            });
+            lastRecordedFrame = enginePerf.frame;
         }
-        history.push({
-            ...enginePerf,
-            total: enginePerf.grid + enginePerf.force + enginePerf.update + enginePerf.interleave
-        });
-        lastRecordedFrame = enginePerf.frame;
-    }
+    });
 
-    $: rows = (() => {
+    let rows = $derived((() => {
         const r: PerfRow[] = [];
         if (enginePerf) {
             r.push({ label: 'Grid', value: enginePerf.grid });
@@ -34,11 +42,11 @@
         }
         r.sort((a, b) => b.value - a.value);
         return r;
-    })();
+    })());
 
-    $: total = rows.length > 0 ? rows.reduce((s, r) => s + r.value, 0) : null;
+    let total = $derived(rows.length > 0 ? rows.reduce((s, r) => s + r.value, 0) : null);
 
-    let copied = false;
+    let copied = $state(false);
     const copyStats = () => {
         const lines = history
             .map((r) => {
@@ -65,7 +73,7 @@
         </div>
     {/each}
     {#if total != null}
-        <div class="sep" />
+        <div class="sep"></div>
         <div class="row total">
             <span class="label">Total</span><span class="val">{total.toFixed(2)} ms</span>
         </div>
@@ -81,7 +89,7 @@
     {#if rows.length === 0}
         <span class="dim">Waiting for data...</span>
     {:else}
-        <button class="copy-btn" on:click={copyStats}>{copied ? 'Copied!' : 'Copy'}</button>
+        <button class="copy-btn" onclick={copyStats}>{copied ? 'Copied!' : 'Copy'}</button>
     {/if}
 </div>
 

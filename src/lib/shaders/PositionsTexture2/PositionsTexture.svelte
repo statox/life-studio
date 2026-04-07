@@ -50,4 +50,4 @@
     one. Then use the drawing shader to render the new texture to the canvas.
 </p>
 <p>Finally switch the two textures to read and write in the updated textures</p>
-<canvas id="canvas" style="background-color: black" width={screenWidth} height={screenHeight} />
+<canvas id="canvas" style="background-color: black" width={screenWidth} height={screenHeight}></canvas>

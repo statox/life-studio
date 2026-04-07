@@ -10,13 +10,23 @@
     } from '$lib/particles/attraction';
     import { COLORS, type Color, PARTICLE_COLORS } from '$lib/particles/engine';
 
-    export let attractionTable: AttractionTable;
-    export let onUpdateTable: (attractionTable: AttractionTable) => void = () => null;
-    export let readonly = false;
-    export let compact = false;
-    export let hiddenColors: Color[] = [];
+    interface Props {
+        attractionTable: AttractionTable;
+        onUpdateTable?: (attractionTable: AttractionTable) => void;
+        readonly?: boolean;
+        compact?: boolean;
+        hiddenColors?: Color[];
+    }
 
-    $: visibleColors = COLORS.filter((c) => !hiddenColors.includes(c));
+    let {
+        attractionTable,
+        onUpdateTable = () => null,
+        readonly = false,
+        compact = false,
+        hiddenColors = []
+    }: Props = $props();
+
+    let visibleColors = $derived(COLORS.filter((c) => !hiddenColors.includes(c)));
 
     const valueColor = (val: number): string => {
         if (val <= -2) return '#8b3a3a';
@@ -56,9 +66,9 @@
 {#if attractionTable}
     {#if !readonly}
         <div class="actions">
-            <button on:click={randomizeTable}>Randomize</button>
-            <button on:click={zeroTable}>Zero</button>
-            <button on:click={mutateTable}>Mutate</button>
+            <button onclick={randomizeTable}>Randomize</button>
+            <button onclick={zeroTable}>Zero</button>
+            <button onclick={mutateTable}>Mutate</button>
         </div>
     {/if}
 
@@ -79,7 +89,7 @@
             {#each visibleColors as c}
                 <div class="col-header">
                     {#if !compact}<span class="col-label">{c}</span>{/if}
-                    <div class="color-bar-h" style="background:{PARTICLE_COLORS[c]}" />
+                    <div class="color-bar-h" style="background:{PARTICLE_COLORS[c]}"></div>
                 </div>
             {/each}
 
@@ -87,7 +97,7 @@
             {#each visibleColors as selfColor}
                 <div class="row-header">
                     {#if !compact}<span class="col-label">{selfColor}</span>{/if}
-                    <div class="color-bar-v" style="background:{PARTICLE_COLORS[selfColor]}" />
+                    <div class="color-bar-v" style="background:{PARTICLE_COLORS[selfColor]}"></div>
                 </div>
                 {#each visibleColors as otherColor}
                     {@const val = attractionTable[selfColor][otherColor]}
@@ -101,18 +111,18 @@
                         </div>
                     {:else}
                         <div class="cell">
-                            <button class="adj" on:click={() => decrease(selfColor, otherColor)}
+                            <button class="adj" onclick={() => decrease(selfColor, otherColor)}
                                 >−</button
                             >
                             <button
                                 class="swatch"
                                 style="background:{valueColor(val)}"
-                                on:click={() => cycleUp(selfColor, otherColor)}
+                                onclick={() => cycleUp(selfColor, otherColor)}
                                 title="Click to cycle · {selfColor} → {otherColor}"
                             >
                                 {valueLabel(val)}
                             </button>
-                            <button class="adj" on:click={() => increase(selfColor, otherColor)}
+                            <button class="adj" onclick={() => increase(selfColor, otherColor)}
                                 >+</button
                             >
                         </div>

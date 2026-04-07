@@ -183,4 +183,4 @@
 
 <P5 {sketch} />
 <!-- button to call the reset function -->
-<button on:click={reset}>Reset</button>
+<button onclick={reset}>Reset</button>

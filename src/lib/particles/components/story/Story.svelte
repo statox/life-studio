@@ -35,7 +35,7 @@
         cellSize?: number;
     };
 
-    let simulationComponent: Simulation;
+    let simulationComponent: Simulation = $state();
 
     const screens: ScreenConfig[] = [
         { component: Introduction, noSimulation: true },
@@ -62,12 +62,12 @@
         { component: Conclusion, noSimulation: true }
     ];
 
-    let currentIndex = 0;
+    let currentIndex = $state(0);
 
-    $: currentScreen = screens[currentIndex];
-    $: showSimulation = !currentScreen.noSimulation;
-    $: isOnLastScreen = currentIndex === screens.length - 1;
-    $: isOnFirstScreen = currentIndex === 0;
+    let currentScreen = $derived(screens[currentIndex]);
+    let showSimulation = $derived(!currentScreen.noSimulation);
+    let isOnLastScreen = $derived(currentIndex === screens.length - 1);
+    let isOnFirstScreen = $derived(currentIndex === 0);
 
     const scrollToTop = async () => {
         await tick();
@@ -91,7 +91,7 @@
 
 <div class="story" class:text-only={!showSimulation}>
     <div class="narrative">
-        <svelte:component this={currentScreen.component} {simulationComponent} />
+        <currentScreen.component {simulationComponent} />
     </div>
 
     {#if showSimulation}
@@ -123,14 +123,14 @@
         >
     </a>
     {#if !isOnFirstScreen}
-        <button class="nav-btn" on:click={prev}>
+        <button class="nav-btn" onclick={prev}>
             <span class="nav-label-full">Previous</span>
             <span class="nav-label-short">←</span>
         </button>
     {/if}
     <span class="nav-counter">{currentIndex + 1} / {screens.length}</span>
     {#if !isOnLastScreen}
-        <button class="nav-btn" on:click={next}>
+        <button class="nav-btn" onclick={next}>
             <span class="nav-label-full">Next</span>
             <span class="nav-label-short">→</span>
         </button>

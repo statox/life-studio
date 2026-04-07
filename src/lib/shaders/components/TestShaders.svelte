@@ -49,7 +49,7 @@
 
         {#each tabs as tab}
             <TabPanel>
-                <svelte:component this={tab.component} />
+                <tab.component />
             </TabPanel>
         {/each}
     </Tabs>

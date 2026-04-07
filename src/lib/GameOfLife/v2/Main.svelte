@@ -12,26 +12,26 @@
         height: 900
     };
 
-    const worldDimensions = {
+    const worldDimensions = $state({
         width: 1200,
         height: 900
-    };
+    });
 
     const mouseCoordinates = {
         x: -100,
         y: -100
     };
-    const pan = {
+    const pan = $state({
         x: 0,
         y: 0
-    };
+    });
     let mouseMode: updateCells.MouseMode = 0;
-    let infiniteSource = true;
+    let infiniteSource = $state(true);
 
-    let zoomLevel = 1;
-    let initialDensity = 0.05;
+    let zoomLevel = $state(1);
+    let initialDensity = $state(0.05);
 
-    let pause = true;
+    let pause = $state(true);
     let cellsTex: WebGLTexture;
 
     let gl: WebGLRenderingContext;
@@ -84,7 +84,7 @@
         animationFrameRequest = requestAnimationFrame(render);
     }
 
-    let enableFullscreen: () => void;
+    let enableFullscreen: () => void = $state();
     onMount(() => {
         main();
 
@@ -191,16 +191,16 @@
     style="background-color: black"
     width={screenDimensions.width}
     height={screenDimensions.height}
-/>
+></canvas>
 
 <div>
-    <button on:click={() => (pause = !pause)}>{pause ? 'Play' : 'Pause'} (Space)</button>
-    <button on:click={() => (infiniteSource = !infiniteSource)}>
+    <button onclick={() => (pause = !pause)}>{pause ? 'Play' : 'Pause'} (Space)</button>
+    <button onclick={() => (infiniteSource = !infiniteSource)}>
         {infiniteSource ? 'Disable' : 'Enable'} constant cells generation (E)
     </button>
-    <button on:click={() => (zoomLevel += 1)}>Zoom in (I)</button>
+    <button onclick={() => (zoomLevel += 1)}>Zoom in (I)</button>
     <button
-        on:click={() => {
+        onclick={() => {
             zoomLevel = Math.max(zoomLevel - 1, 1);
             if (zoomLevel === 1) {
                 pan.x = 0;
@@ -208,7 +208,7 @@
             }
         }}>Zoom out (O)</button
     >
-    <button on:click={() => (zoomLevel = 1)}>Reset zoom (Z)</button>
+    <button onclick={() => (zoomLevel = 1)}>Reset zoom (Z)</button>
 </div>
 
 <div>
@@ -216,13 +216,13 @@
         World {worldDimensions.width} x {worldDimensions.height} ({worldDimensions.width *
             worldDimensions.height} cells)
     </span>
-    <button on:click={() => main()}>Reload program</button>
-    <button on:click={enableFullscreen}>Fullscreen (f)</button>
+    <button onclick={() => main()}>Reload program</button>
+    <button onclick={enableFullscreen}>Fullscreen (f)</button>
 </div>
 
 <div>
-    <button on:click={() => resetTexture('random')}>Reset world (R)</button>
-    <button on:click={() => resetTexture('zero')}>Empty world (E)</button>
+    <button onclick={() => resetTexture('random')}>Reset world (R)</button>
+    <button onclick={() => resetTexture('zero')}>Empty world (E)</button>
 
     <span>
         <label for="initialDensity">Initial density [0-1]</label>
@@ -233,7 +233,7 @@
         <label for="worldWidth">World: width</label>
         <input
             id="worldWidth"
-            on:change={() => resetTexture('random')}
+            onchange={() => resetTexture('random')}
             bind:value={worldDimensions.width}
             type="number"
             min={0}
@@ -242,7 +242,7 @@
         <label for="worldHeight">height</label>
         <input
             id="worldHeight"
-            on:change={() => resetTexture('random')}
+            onchange={() => resetTexture('random')}
             bind:value={worldDimensions.height}
             type="number"
             min={0}

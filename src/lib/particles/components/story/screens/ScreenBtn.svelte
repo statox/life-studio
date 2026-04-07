@@ -1,5 +1,13 @@
 <script lang="ts">
-    export let active = false;
+    import { createBubbler, handlers } from 'svelte/legacy';
+
+    const bubble = createBubbler();
+    interface Props {
+        active?: boolean;
+        children?: import('svelte').Snippet;
+    }
+
+    let { active = false, children }: Props = $props();
 
     const isVisibleInViewport = (element: Element) => {
         const rect = element.getBoundingClientRect();
@@ -26,8 +34,8 @@
     };
 </script>
 
-<button class="screen-btn" class:active on:click on:click={handleClick}>
-    <slot />
+<button class="screen-btn" class:active onclick={handlers(bubble('click'), handleClick)}>
+    {@render children?.()}
 </button>
 
 <style>
