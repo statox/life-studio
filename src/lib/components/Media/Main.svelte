@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { stopPropagation } from 'svelte/legacy';
-
     import { base } from '$app/paths';
 
     interface Props {
@@ -55,7 +53,7 @@
 
 {#if expanded}
     <div class="overlay" onclick={close} onkeydown={undefined}>
-        <figure class="overlay-content" onclick={stopPropagation(undefined)} onkeydown={undefined}>
+        <figure class="overlay-content" onclick={(e) => e.stopPropagation()} onkeydown={undefined}>
             {#if isVideo}
                 <video {src} controls loop muted playsinline autoplay>
                     <track kind="captions" />

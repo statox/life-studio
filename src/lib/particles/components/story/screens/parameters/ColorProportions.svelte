@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
@@ -60,8 +60,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 
@@ -72,7 +73,7 @@
         exception. Let's give <span class="cw">White</span> some friends:
         <span class="cr">Red</span>, <span class="cg">Green</span> and <span class="cb">Blue</span>.
 
-        <ScreenBtn active={currentPreset === 'equal'} on:click={() => setProportions('equal')}>
+        <ScreenBtn active={currentPreset === 'equal'} onclick={() => setProportions('equal')}>
             Create diversity
         </ScreenBtn>
     </p>

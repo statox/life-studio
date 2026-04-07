@@ -2,11 +2,14 @@
     import { base } from '$app/paths';
     import type p5 from 'p5';
     import P5, { type Sketch } from 'p5-svelte';
-    import { onDestroy, createEventDispatcher } from 'svelte';
+    import { onDestroy } from 'svelte';
 
     import { PARAMETERS_CLASSES } from './pearsonClasses';
 
-    const dispatch = createEventDispatcher<{ fkupdated: { f: number; k: number } }>();
+    interface Props {
+        onfkupdated?: (params: { f: number; k: number }) => void;
+    }
+    let { onfkupdated }: Props = $props();
     let selectedClass = $state(PARAMETERS_CLASSES[0]);
 
     let isOpen = $state(false);
@@ -41,7 +44,7 @@
             name: 'custom',
             type: 'manual'
         };
-        dispatch('fkupdated', selectedClass);
+        onfkupdated?.(selectedClass);
     };
 
     const drawClasses = (p5: p5) => {
@@ -123,7 +126,7 @@
         <select
             class="full-width"
             bind:value={selectedClass}
-            onchange={() => dispatch('fkupdated', selectedClass)}
+            onchange={() => onfkupdated?.(selectedClass)}
         >
             {#each PARAMETERS_CLASSES as parametersClass}
                 <option value={parametersClass}>

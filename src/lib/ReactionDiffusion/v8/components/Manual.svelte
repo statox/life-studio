@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { preventDefault } from 'svelte/legacy';
-
     import FkSelector from './FKSelector.svelte';
     import type { GUI } from 'dat.gui';
     import type REGL from 'regl';
@@ -188,9 +186,9 @@
         regl = initProgram({ controls, info, mouseState, simulationParameters });
     };
 
-    const onSimulationParamsUpdate = (event: CustomEvent<{ f: number; k: number }>) => {
-        simulationParameters.f = event.detail.f;
-        simulationParameters.k = event.detail.k;
+    const onSimulationParamsUpdate = (params: { f: number; k: number }) => {
+        simulationParameters.f = params.f;
+        simulationParameters.k = params.k;
     };
 
     onMount(() => {
@@ -205,7 +203,7 @@
 
 <svelte:window onkeydown={handleKeydown} />
 <main>
-    <FkSelector on:fkupdated={onSimulationParamsUpdate} />
+    <FkSelector onfkupdated={onSimulationParamsUpdate} />
     <div id="datgui-container"></div>
 
     <div>
@@ -221,11 +219,11 @@
     </div>
     <canvas
         onmousemove={handleMousemove}
-        onmousedown={preventDefault(handleMouseButton)}
+        onmousedown={(e) => { e.preventDefault(); handleMouseButton(e); }}
         onmouseup={handleMouseButton}
         onwheel={handleMouseWheel}
-        onkeydown={preventDefault(handleKeydown)}
-        oncontextmenu={preventDefault((e) => e)}
+        onkeydown={(e) => { e.preventDefault(); handleKeydown(e); }}
+        oncontextmenu={(e) => e.preventDefault()}
         id="canvas"
         width={screenDimensions.width}
         height={screenDimensions.height}

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import ScreenBtn from '../ScreenBtn.svelte';
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
@@ -52,8 +52,9 @@
         startScreen();
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 
@@ -63,7 +64,7 @@
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <ScreenBtn active={activeIndex === idx} on:click={() => loadPreset(idx)}>
+                <ScreenBtn active={activeIndex === idx} onclick={() => loadPreset(idx)}>
                     {p.name}
                 </ScreenBtn>
             {/each}

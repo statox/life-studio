@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import ScreenBtn from '../ScreenBtn.svelte';
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
@@ -56,8 +56,9 @@
         startScreen();
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 
@@ -66,7 +67,7 @@
     <p>
         A lot of configurations tend to create clusters: The universe stabilizes into groups of
         several colors.
-        <ScreenBtn active={activeIndex === 0} on:click={() => loadPreset(0)}>
+        <ScreenBtn active={activeIndex === 0} onclick={() => loadPreset(0)}>
             3 Colors - Stable islands
         </ScreenBtn> is a good example of that: The clusters form quickly and stop moving.
     </p>
@@ -75,7 +76,7 @@
     </div>
     <p>
         In universes like
-        <ScreenBtn active={activeIndex === 1} on:click={() => loadPreset(1)}>
+        <ScreenBtn active={activeIndex === 1} onclick={() => loadPreset(1)}>
             Complex islands
         </ScreenBtn> the clusters are slower to form and end up being more complex. We can also see some
         moving organisms briefly forming before collapsing into clusters.
@@ -85,7 +86,7 @@
     </div>
     <p>
         And complexity can keep increasing like in
-        <ScreenBtn active={activeIndex === 4} on:click={() => loadPreset(4)}>
+        <ScreenBtn active={activeIndex === 4} onclick={() => loadPreset(4)}>
             Merging circular structures
         </ScreenBtn>
         where some clusters tend to form a triangular <span class="cg">Green</span>-<span class="cb"
@@ -97,7 +98,7 @@
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <ScreenBtn active={activeIndex === idx} on:click={() => loadPreset(idx)}>
+                <ScreenBtn active={activeIndex === idx} onclick={() => loadPreset(idx)}>
                     {p.name}
                 </ScreenBtn>
             {/each}

@@ -21,7 +21,7 @@
     import UniverseSelector from './UniverseSelector.svelte';
     import { getAllUniverses, type StoredUniverse } from '$lib/particles/universe';
 
-    let simulationComponent: Simulation = $state();
+    let simulationComponent: Simulation | undefined = $state();
 
     const universes: StoredUniverse[] = getAllUniverses();
     let selected: StoredUniverse | undefined = $state(undefined);
@@ -42,15 +42,10 @@
         colorWeights: { white: 500, red: 500, green: 500, blue: 500 }
     });
 
-    const worldSize = {
+    const worldSize = $derived({
         x: ws.maxAttractionRadius * ws.horizontalResolution,
         y: ws.maxAttractionRadius * ws.verticalResolution
-    };
-
-    const syncWorldSize = () => {
-        worldSize.x = ws.maxAttractionRadius * ws.horizontalResolution;
-        worldSize.y = ws.maxAttractionRadius * ws.verticalResolution;
-    };
+    });
 
     let universe = $derived({
         attractionTable,
@@ -93,7 +88,6 @@
     const onWorldSettingsChange = () => {
         clearTimeout(updateWorldSettingsTimer);
         updateWorldSettingsTimer = setTimeout(() => {
-            syncWorldSize();
             startSim();
         }, 750);
     };
@@ -109,7 +103,6 @@
             verticalResolution: u.verticalResolution,
             friction: u.friction
         };
-        syncWorldSize();
         startWithParams(loadPresetParams(u));
     };
 
@@ -222,7 +215,7 @@
                 <div class="card-title">Attraction Table</div>
                 <AttractionTablePanel
                     {attractionTable}
-                    on:updateTable={(e) => updateAttractionTable(e.detail)}
+                    onUpdateTable={(t) => updateAttractionTable(t)}
                 />
             </section>
 
@@ -234,7 +227,7 @@
 </div>
 
 {#if showExportModal}
-    <UniverseExportModal {universe} on:close={() => (showExportModal = false)} />
+    <UniverseExportModal {universe} onclose={() => (showExportModal = false)} />
 {/if}
 
 <style>

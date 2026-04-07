@@ -1,17 +1,15 @@
 <script lang="ts">
     import { self } from 'svelte/legacy';
 
-    import { createEventDispatcher } from 'svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
     import { COLORS } from '../engine';
 
     interface Props {
         attractionTable: AttractionTable;
+        onclose?: () => void;
     }
 
-    let { attractionTable }: Props = $props();
-
-    const dispatch = createEventDispatcher<{ close: void }>();
+    let { attractionTable, onclose }: Props = $props();
 
     let name = $state('');
     let description = $state('');
@@ -36,11 +34,11 @@
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-<div class="backdrop" onclick={self(() => dispatch('close'))}>
+<div class="backdrop" onclick={self(() => onclose?.())}>
     <div class="modal">
         <div class="modal-header">
             <span class="title">Export attraction table</span>
-            <button class="icon-btn" onclick={() => dispatch('close')}>✕</button>
+            <button class="icon-btn" onclick={() => onclose?.()}>✕</button>
         </div>
 
         <div class="field">

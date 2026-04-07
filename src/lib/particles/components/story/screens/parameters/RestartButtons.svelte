@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import type { InitialConfig } from '$lib/particles/universe';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
@@ -19,6 +19,7 @@
     let nbParticles = 0;
 
     const uniformSpread = () => {
+        console.log('uniformSpread');
         initialSpreadConfig = 'uniform';
         nbParticles = 2000;
         startScreen();
@@ -31,6 +32,7 @@
     };
 
     const startScreen = () => {
+        console.log('startScreen');
         const config: SimulationConfig = {
             horizontalResolution: 30,
             verticalResolution: 20,
@@ -49,10 +51,12 @@
 
         const simulationParams = generateSimulationParams(config);
         simulationComponent?.startSim(simulationParams);
+        console.log({ simulationComponent });
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 
@@ -64,7 +68,7 @@
             >Click the buttons in the text and observe the simulation update at the bottom of the
             page.</em
         >
-        <ScreenBtn active={initialSpreadConfig === 'uniform'} on:click={() => uniformSpread()}>
+        <ScreenBtn active={initialSpreadConfig === 'uniform'} onclick={() => uniformSpread()}>
             Add particles
         </ScreenBtn>
     </p>
@@ -75,7 +79,7 @@
 
     <p>
         Look at what happens when we pack our particles a bit more tightly:
-        <ScreenBtn active={initialSpreadConfig === 'center'} on:click={() => centerSpread()}>
+        <ScreenBtn active={initialSpreadConfig === 'center'} onclick={() => centerSpread()}>
             Pack particles
         </ScreenBtn>
     </p>
@@ -89,14 +93,11 @@
             <div class="btn-group">
                 <ScreenBtn
                     active={initialSpreadConfig === 'uniform'}
-                    on:click={() => uniformSpread()}
+                    onclick={() => uniformSpread()}
                 >
                     Add particles
                 </ScreenBtn>
-                <ScreenBtn
-                    active={initialSpreadConfig === 'center'}
-                    on:click={() => centerSpread()}
-                >
+                <ScreenBtn active={initialSpreadConfig === 'center'} onclick={() => centerSpread()}>
                     Pack particles
                 </ScreenBtn>
             </div>

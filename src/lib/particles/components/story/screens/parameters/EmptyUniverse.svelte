@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
@@ -32,8 +32,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 

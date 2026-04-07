@@ -83,13 +83,13 @@
         absoluteFrameOffset = 0;
     };
 
-    let canvasWrap: HTMLElement = $state();
+    let canvasWrap: HTMLElement | undefined = $state();
     let isFullscreen = $state(false);
-    let timeline: Timeline = $state();
+    let timeline: Timeline | undefined = $state();
 
     export const toggleFullscreen = () => {
         if (!document.fullscreenElement) {
-            canvasWrap.requestFullscreen();
+            canvasWrap?.requestFullscreen();
         } else {
             document.exitFullscreen();
         }
@@ -99,7 +99,7 @@
         isFullscreen = !!document.fullscreenElement;
     };
 
-    onMount(async () => {
+    onMount(() => {
         document.addEventListener('fullscreenchange', onFullscreenChange);
         return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
     });

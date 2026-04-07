@@ -1,13 +1,15 @@
 <script lang="ts">
     import { createBubbler, handlers } from 'svelte/legacy';
+    import type { HTMLButtonAttributes } from 'svelte/elements';
 
     const bubble = createBubbler();
-    interface Props {
+    interface Props extends HTMLButtonAttributes {
         active?: boolean;
         children?: import('svelte').Snippet;
+        onclick?: () => void;
     }
 
-    let { active = false, children }: Props = $props();
+    let { active = false, children, onclick }: Props = $props();
 
     const isVisibleInViewport = (element: Element) => {
         const rect = element.getBoundingClientRect();
@@ -18,6 +20,10 @@
     };
 
     const handleClick = () => {
+        if (onclick) {
+            onclick();
+        }
+
         // After a short delay (let the simulation start), scroll the canvas into view
         setTimeout(() => {
             const canvasEl = document.querySelector('.canvas-col');
@@ -48,7 +54,9 @@
         font-size: 0.95rem;
         min-height: 25px;
         cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
+        transition:
+            background 0.13s,
+            border-color 0.13s;
     }
 
     .screen-btn:hover {

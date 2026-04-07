@@ -158,9 +158,9 @@
         randomClick();
     };
 
-    const onSimulationParamsUpdate = (event: CustomEvent<{ f: number; k: number }>) => {
-        simulationParameters.f = event.detail.f;
-        simulationParameters.k = event.detail.k;
+    const onSimulationParamsUpdate = (params: { f: number; k: number }) => {
+        simulationParameters.f = params.f;
+        simulationParameters.k = params.k;
 
         if (simulationParameters.f > 0.06) {
             controls.speed = 70;
@@ -183,7 +183,7 @@
 
 <svelte:window onkeydown={handleKeydown} />
 <main>
-    <FkRandomizer on:fkupdated={onSimulationParamsUpdate} />
+    <FkRandomizer onfkupdated={onSimulationParamsUpdate} />
     <div id="datgui-container"></div>
 
     <div>

@@ -14,7 +14,7 @@
     import { getAllUniverses, type StoredUniverse } from '$lib/particles/universe';
     import UniverseSelector from './UniverseSelector.svelte';
 
-    let simulationComponent: Simulation = $state();
+    let simulationComponent: Simulation | undefined = $state();
 
     const universes: StoredUniverse[] = getAllUniverses();
     let selected: StoredUniverse = $state(universes[0]);

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import ScreenBtn from '../ScreenBtn.svelte';
     import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
@@ -61,8 +61,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 
@@ -85,15 +86,15 @@
         This is the most important setting we have because these conflicting forces are at the heart
         of any form of motion in our universe. Each force can take one out of five possible values
         from <code>-2</code>
-        (Strong repulsion) to <code>2</code> (Strong attraction). <code>0</code> makes the particles
-        not interact with each other. With only two species we already have 5⁴ = 625 possible different
-        attraction tables.
+        (Strong repulsion) to <code>2</code> (Strong attraction). <code>0</code> makes the particles not
+        interact with each other. With only two species we already have 5⁴ = 625 possible different attraction
+        tables.
     </p>
 
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <ScreenBtn active={activePreset === idx} on:click={() => selectPreset(idx)}>
+                <ScreenBtn active={activePreset === idx} onclick={() => selectPreset(idx)}>
                     {p.label}
                 </ScreenBtn>
             {/each}

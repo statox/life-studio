@@ -17,7 +17,7 @@
         type StoredUniverse
     } from '$lib/particles/universe';
 
-    let simulationComponent: Simulation = $state();
+    let simulationComponent: Simulation | undefined = $state();
     let hoveredControl: 'restart' | 'attraction' | 'proportions' | null = $state(null);
 
     const universes: StoredUniverse[] = getAllUniverses();

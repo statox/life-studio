@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
@@ -46,8 +46,9 @@
         startScreen();
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 
@@ -64,7 +65,7 @@
         At
         <ScreenBtn
             active={friction === frictionPresets[0]}
-            on:click={() => setFriction(frictionPresets[0])}
+            onclick={() => setFriction(frictionPresets[0])}
         >
             {frictionPresets[0]}
         </ScreenBtn>
@@ -75,7 +76,7 @@
         At
         <ScreenBtn
             active={friction === frictionPresets[1]}
-            on:click={() => setFriction(frictionPresets[1])}
+            onclick={() => setFriction(frictionPresets[1])}
         >
             {frictionPresets[1]}
         </ScreenBtn>
@@ -86,7 +87,7 @@
         At
         <ScreenBtn
             active={friction === frictionPresets[2]}
-            on:click={() => setFriction(frictionPresets[2])}
+            onclick={() => setFriction(frictionPresets[2])}
         >
             {frictionPresets[2]}
         </ScreenBtn>
@@ -99,7 +100,7 @@
         Finally, when the friction gets to
         <ScreenBtn
             active={friction === frictionPresets[3]}
-            on:click={() => setFriction(frictionPresets[3])}
+            onclick={() => setFriction(frictionPresets[3])}
         >
             {frictionPresets[3]}
         </ScreenBtn>
@@ -115,7 +116,7 @@
         <div class="control-section">
             <div class="btn-group">
                 {#each frictionPresets as preset}
-                    <ScreenBtn active={friction === preset} on:click={() => setFriction(preset)}>
+                    <ScreenBtn active={friction === preset} onclick={() => setFriction(preset)}>
                         {preset}
                     </ScreenBtn>
                 {/each}

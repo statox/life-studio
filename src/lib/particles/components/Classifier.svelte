@@ -27,7 +27,7 @@
     import { UNIVERSE_CATEGORIES } from '$lib/particles/universe';
 
     // ── State ──────────────────────────────────
-    let simulationComponent: Simulation = $state();
+    let simulationComponent: Simulation | undefined = $state();
     let universes: StoredUniverse[] = $state([...getAllUniverses()]);
     let selected: StoredUniverse | null = $state(null);
     let lastParams: SimulationParams;
@@ -102,9 +102,10 @@
     };
 
     // ── Reactive: unsaved changes ──────────────
-    let hasChanges =
-        $derived(selected != null &&
-        (editName !== selected.name ||
+    const hasChanges = $derived.by(() => {
+        if (!selected) return false;
+        return (
+            editName !== selected.name ||
             editDescription !== selected.description ||
             editPreferredInitialConfig !== selected.preferredInitialConfig ||
             editBehavior !== selected.behavior ||
@@ -114,7 +115,9 @@
             editEnergyLevel !== selected.energyLevel ||
             editComplexity !== selected.complexity ||
             editCategory !== selected.category ||
-            editTagsStr !== (selected.tags ?? []).join(', ')));
+            editTagsStr !== (selected.tags ?? []).join(', ')
+        );
+    });
 
     // ── Actions ────────────────────────────────
     const loadFormFromUniverse = (u: StoredUniverse) => {

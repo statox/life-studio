@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
@@ -57,8 +57,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 
@@ -66,7 +67,7 @@
     <h2>Forces</h2>
     <p>Let's zoom in on the center of the previous universe.</p>
     <p>
-        <ScreenBtn active={forceValue === 0} on:click={() => setForce(0)}>Zoooom</ScreenBtn>
+        <ScreenBtn active={forceValue === 0} onclick={() => setForce(0)}>Zoooom</ScreenBtn>
     </p>
     <p>
         All particles start tightly packed and slowly move away from each other. <b
@@ -76,7 +77,7 @@
     </p>
     <p>
         Particles can attract each other
-        <ScreenBtn active={forceValue === 1} on:click={() => setForce(1)}>
+        <ScreenBtn active={forceValue === 1} onclick={() => setForce(1)}>
             Create attraction force
         </ScreenBtn>
     </p>
@@ -88,18 +89,18 @@
     <p>
         Finally, they can also repel each other, which causes clusters to form as groups push
         against one another.
-        <ScreenBtn active={forceValue === -1} on:click={() => setForce(-1)}>
+        <ScreenBtn active={forceValue === -1} onclick={() => setForce(-1)}>
             Create repulsion force
         </ScreenBtn>
     </p>
     <div class="controls">
         <div class="control-section">
             <div class="btn-group">
-                <ScreenBtn active={forceValue === 0} on:click={() => setForce(0)}>Zoooom</ScreenBtn>
-                <ScreenBtn active={forceValue === 1} on:click={() => setForce(1)}>
+                <ScreenBtn active={forceValue === 0} onclick={() => setForce(0)}>Zoooom</ScreenBtn>
+                <ScreenBtn active={forceValue === 1} onclick={() => setForce(1)}>
                     Create attraction force
                 </ScreenBtn>
-                <ScreenBtn active={forceValue === -1} on:click={() => setForce(-1)}>
+                <ScreenBtn active={forceValue === -1} onclick={() => setForce(-1)}>
                     Create repulsion force
                 </ScreenBtn>
             </div>

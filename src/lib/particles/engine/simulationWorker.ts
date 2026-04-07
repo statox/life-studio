@@ -37,7 +37,7 @@ export function createSimulationWorker() {
         worker.postMessage({
             msg: 'start',
             cells,
-            attractionTable,
+            attractionTable: JSON.parse(JSON.stringify(attractionTable)),
             worldSize,
             maxAttractionRadius,
             useWorkers,
@@ -46,7 +46,7 @@ export function createSimulationWorker() {
     };
 
     const updateAttractionTable = (table: AttractionTable) => {
-        worker?.postMessage({ msg: 'updateTable', attractionTable: table });
+        worker?.postMessage({ msg: 'updateTable', attractionTable: JSON.parse(JSON.stringify(table)) });
     };
 
     const pause = () => {

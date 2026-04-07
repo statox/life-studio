@@ -84,7 +84,7 @@
         animationFrameRequest = requestAnimationFrame(render);
     }
 
-    let enableFullscreen: () => void = $state();
+    let enableFullscreen: (() => void) | undefined = $state();
     onMount(() => {
         main();
 
@@ -100,7 +100,7 @@
                 event.preventDefault();
             }
             if (event.code === 'KeyF') {
-                enableFullscreen();
+                enableFullscreen?.();
                 return;
             }
             if (event.code === 'KeyR') {

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import ScreenBtn from '../ScreenBtn.svelte';
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
@@ -53,8 +53,9 @@
         startScreen();
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 
@@ -62,14 +63,14 @@
     <h2>Dynamic Worlds</h2>
     <p>
         When we release some attraction forces we end up with more dynamic worlds:
-        <ScreenBtn active={activeIndex === 0} on:click={() => loadPreset(0)}>
+        <ScreenBtn active={activeIndex === 0} onclick={() => loadPreset(0)}>
             {presets[0].name}
         </ScreenBtn>
         has <span class="cw">White</span> chasing the other colors so we get a universe which shows
         some cyclical aspects, waves of <span class="cw">White</span> appear after a few seconds.
     </p>
     <p>
-        <ScreenBtn active={activeIndex === 1} on:click={() => loadPreset(1)}>
+        <ScreenBtn active={activeIndex === 1} onclick={() => loadPreset(1)}>
             {presets[1].name}
         </ScreenBtn>
         creates dramatic waves of <span class="cr">Red</span> chasing <span class="cw">White</span>
@@ -80,7 +81,7 @@
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <ScreenBtn active={activeIndex === idx} on:click={() => loadPreset(idx)}>
+                <ScreenBtn active={activeIndex === idx} onclick={() => loadPreset(idx)}>
                     {p.name}
                 </ScreenBtn>
             {/each}

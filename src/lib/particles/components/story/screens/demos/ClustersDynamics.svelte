@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import ScreenBtn from '../ScreenBtn.svelte';
     import UniformSpreadButton from '$lib/particles/components/buttons/UniformSpreadButton.svelte';
@@ -52,8 +52,9 @@
         startScreen();
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 
@@ -61,7 +62,7 @@
     <h2>Dynamic Clusters</h2>
     <p>
         Some clusters start spinning like in
-        <ScreenBtn active={activeIndex === 0} on:click={() => loadPreset(0)}>
+        <ScreenBtn active={activeIndex === 0} onclick={() => loadPreset(0)}>
             {presets[0].name}
         </ScreenBtn>. You might have to restart the simulation a few times to see it happening but
         eventually you'll find clusters with a <span class="cw">White</span> core surrounded by a
@@ -70,7 +71,7 @@
     </p>
     <p>
         This opens a new family of dynamic clusters.
-        <ScreenBtn active={activeIndex === 1} on:click={() => loadPreset(1)}>
+        <ScreenBtn active={activeIndex === 1} onclick={() => loadPreset(1)}>
             {presets[1].name}
         </ScreenBtn> produces fascinating clusters where the outer border seems to oscillate with a period
         of 2. This is one of my favorite universes and I am currently looking for oscillators with a
@@ -78,7 +79,7 @@
     </p>
     <p>
         Then
-        <ScreenBtn active={activeIndex === 2} on:click={() => loadPreset(2)}>
+        <ScreenBtn active={activeIndex === 2} onclick={() => loadPreset(2)}>
             {presets[2].name}
         </ScreenBtn> produces configurations that start to move away from simple clusters towards moving
         organisms. We will find more of them in the next pages but for that we need more motion.
@@ -86,7 +87,7 @@
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <ScreenBtn active={activeIndex === idx} on:click={() => loadPreset(idx)}>
+                <ScreenBtn active={activeIndex === idx} onclick={() => loadPreset(idx)}>
                     {p.name}
                 </ScreenBtn>
             {/each}

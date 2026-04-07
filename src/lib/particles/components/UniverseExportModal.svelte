@@ -1,7 +1,6 @@
 <script lang="ts">
     import { run, self } from 'svelte/legacy';
 
-    import { createEventDispatcher } from 'svelte';
     import type {
         Universe,
         InitialConfig,
@@ -15,11 +14,10 @@
 
     interface Props {
         universe: Universe;
+        onclose?: () => void;
     }
 
-    let { universe }: Props = $props();
-
-    const dispatch = createEventDispatcher<{ close: void }>();
+    let { universe, onclose }: Props = $props();
 
     const slugify = (s: string): string =>
         s
@@ -110,11 +108,11 @@
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-<div class="backdrop" onclick={self(() => dispatch('close'))}>
+<div class="backdrop" onclick={self(() => onclose?.())}>
     <div class="modal">
         <div class="modal-header">
             <span class="title">Export Universe</span>
-            <button class="icon-btn" onclick={() => dispatch('close')}>✕</button>
+            <button class="icon-btn" onclick={() => onclose?.()}>✕</button>
         </div>
 
         <div class="field">

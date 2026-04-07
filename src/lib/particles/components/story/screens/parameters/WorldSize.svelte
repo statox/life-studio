@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import ScreenBtn from '../ScreenBtn.svelte';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
@@ -71,8 +71,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 
@@ -96,7 +97,7 @@
     </p>
     <p>
         We start with a
-        <ScreenBtn active={currentPreset === 'medium'} on:click={() => setProportions('medium')}>
+        <ScreenBtn active={currentPreset === 'medium'} onclick={() => setProportions('medium')}>
             Medium
         </ScreenBtn>
         size to observe the base behavior of this universe: Each color is attracted to the next one which
@@ -106,7 +107,7 @@
 
     <p>
         If we use
-        <ScreenBtn active={currentPreset === 'large'} on:click={() => setProportions('large')}>
+        <ScreenBtn active={currentPreset === 'large'} onclick={() => setProportions('large')}>
             Large
         </ScreenBtn> dimensions for the world we see that the particles have more room to move. The worms
         take more time to travel across the world. Since particles are less tightly packed in the world,
@@ -116,7 +117,7 @@
 
     <p>
         Finally in a
-        <ScreenBtn active={currentPreset === 'small'} on:click={() => setProportions('small')}>
+        <ScreenBtn active={currentPreset === 'small'} onclick={() => setProportions('small')}>
             Small
         </ScreenBtn> world the particles don't have enough room to create several structures and most
         of the world is merged into a single worm. This view allows you to better see how the world wraps
@@ -128,19 +129,19 @@
             <div class="btn-group">
                 <ScreenBtn
                     active={currentPreset === 'medium'}
-                    on:click={() => setProportions('medium')}
+                    onclick={() => setProportions('medium')}
                 >
                     Medium
                 </ScreenBtn>
                 <ScreenBtn
                     active={currentPreset === 'large'}
-                    on:click={() => setProportions('large')}
+                    onclick={() => setProportions('large')}
                 >
                     Large
                 </ScreenBtn>
                 <ScreenBtn
                     active={currentPreset === 'small'}
-                    on:click={() => setProportions('small')}
+                    onclick={() => setProportions('small')}
                 >
                     Small
                 </ScreenBtn>

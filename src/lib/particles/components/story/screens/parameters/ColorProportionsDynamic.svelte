@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import ScreenBtn from '../ScreenBtn.svelte';
     import { COLORS, generateSimulationParams, PARTICLE_COLORS } from '$lib/particles/engine';
@@ -47,8 +47,9 @@
         simulationComponent?.startSim(simulationParams);
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 
@@ -69,7 +70,7 @@
         predict what will happen when you remove <span class="cw">White</span>?
         <ScreenBtn
             active={currentPreset === 'no_white'}
-            on:click={() => setProportions('no_white')}
+            onclick={() => setProportions('no_white')}
         >
             Remove <span class="cw">White</span>
         </ScreenBtn>
@@ -79,7 +80,7 @@
         universe now everything stabillize very quickly. Let's reintroduce
         <span class="cw">White</span>
         and remove <span class="cr">Red</span> completely.
-        <ScreenBtn active={currentPreset === 'no_red'} on:click={() => setProportions('no_red')}>
+        <ScreenBtn active={currentPreset === 'no_red'} onclick={() => setProportions('no_red')}>
             Remove <span class="cr">Red</span>
         </ScreenBtn>
     </p>
@@ -93,7 +94,7 @@
         Let's remove <span class="cg">Green</span>.
         <ScreenBtn
             active={currentPreset === 'no_green'}
-            on:click={() => setProportions('no_green')}
+            onclick={() => setProportions('no_green')}
         >
             Remove <span class="cg">Green</span>
         </ScreenBtn>
@@ -106,7 +107,7 @@
         <span class="cw">White</span> have all the room to chase each other.
     </p>
     <p>
-        <ScreenBtn active={currentPreset === 'no_blue'} on:click={() => setProportions('no_blue')}>
+        <ScreenBtn active={currentPreset === 'no_blue'} onclick={() => setProportions('no_blue')}>
             Remove <span class="cb">Blue</span>
         </ScreenBtn>
     </p>
@@ -122,31 +123,31 @@
             <div class="btn-group">
                 <ScreenBtn
                     active={currentPreset === 'equal'}
-                    on:click={() => setProportions('equal')}
+                    onclick={() => setProportions('equal')}
                 >
                     Equal
                 </ScreenBtn>
                 <ScreenBtn
                     active={currentPreset === 'no_white'}
-                    on:click={() => setProportions('no_white')}
+                    onclick={() => setProportions('no_white')}
                 >
                     No White
                 </ScreenBtn>
                 <ScreenBtn
                     active={currentPreset === 'no_red'}
-                    on:click={() => setProportions('no_red')}
+                    onclick={() => setProportions('no_red')}
                 >
                     No Red
                 </ScreenBtn>
                 <ScreenBtn
                     active={currentPreset === 'no_green'}
-                    on:click={() => setProportions('no_green')}
+                    onclick={() => setProportions('no_green')}
                 >
                     No Green
                 </ScreenBtn>
                 <ScreenBtn
                     active={currentPreset === 'no_blue'}
-                    on:click={() => setProportions('no_blue')}
+                    onclick={() => setProportions('no_blue')}
                 >
                     No Blue
                 </ScreenBtn>

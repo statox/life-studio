@@ -36,7 +36,7 @@
         onRenderPerf = undefined
     }: Props = $props();
 
-    let canvas: HTMLCanvasElement = $state();
+    let canvas: HTMLCanvasElement | undefined = $state();
     let off: HTMLCanvasElement | undefined;
     const backgroundColor = '#000000';
     const n = COLORS.length;
@@ -121,6 +121,7 @@
     });
 
     onMount(() => {
+        if (!canvas) return;
         canvas.width = 1600;
         canvas.height = 960;
 

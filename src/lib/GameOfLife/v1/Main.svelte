@@ -50,7 +50,7 @@
         animationFrameRequest = requestAnimationFrame(render);
     }
 
-    let enableFullscreen: () => void = $state();
+    let enableFullscreen: (() => void) | undefined = $state();
     onMount(() => {
         main();
 
@@ -68,7 +68,7 @@
             }
             if (event.code === 'KeyF') {
                 // Space bar was pressed
-                enableFullscreen();
+                enableFullscreen?.();
                 return;
             }
             if (event.code === 'KeyR') {

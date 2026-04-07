@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { createEventDispatcher } from 'svelte';
     import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
     import TableExportModal from '$lib/particles/components/TableExportModal.svelte';
     import type { AttractionTable } from '$lib/particles/attraction';
@@ -7,13 +6,12 @@
 
     interface Props {
         attractionTable: AttractionTable;
+        onUpdateTable?: (table: AttractionTable) => void;
     }
 
-    let { attractionTable }: Props = $props();
+    let { attractionTable, onUpdateTable }: Props = $props();
 
-    const dispatch = createEventDispatcher<{ updateTable: AttractionTable }>();
-
-    const update = (t: AttractionTable) => dispatch('updateTable', t);
+    const update = (t: AttractionTable) => onUpdateTable?.(t);
 
     let showExportModal = $state(false);
 </script>
@@ -58,7 +56,7 @@
 </details>
 
 {#if showExportModal}
-    <TableExportModal {attractionTable} on:close={() => (showExportModal = false)} />
+    <TableExportModal {attractionTable} onclose={() => (showExportModal = false)} />
 {/if}
 
 <style>

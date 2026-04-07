@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { preventDefault } from 'svelte/legacy';
-
     import type { GUI } from 'dat.gui';
     import type REGL from 'regl';
     import { onDestroy, onMount } from 'svelte';
@@ -212,11 +210,11 @@
     </div>
     <canvas
         onmousemove={handleMousemove}
-        onmousedown={preventDefault(handleMouseButton)}
+        onmousedown={(e) => { e.preventDefault(); handleMouseButton(e); }}
         onmouseup={handleMouseButton}
         onwheel={handleMouseWheel}
-        onkeydown={preventDefault(handleKeydown)}
-        oncontextmenu={preventDefault((e) => e)}
+        onkeydown={(e) => { e.preventDefault(); handleKeydown(e); }}
+        oncontextmenu={(e) => e.preventDefault()}
         id="canvas"
         width={screenDimensions.width}
         height={screenDimensions.height}

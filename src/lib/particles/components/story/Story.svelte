@@ -26,16 +26,16 @@
     import '../species.css';
 
     import { tick } from 'svelte';
-    import type { SvelteComponent } from 'svelte';
+    import type { Component } from 'svelte';
     import { base } from '$app/paths';
 
     type ScreenConfig = {
-        component: typeof SvelteComponent<any>;
+        component: Component<any>;
         noSimulation?: boolean;
         cellSize?: number;
     };
 
-    let simulationComponent: Simulation = $state();
+    let simulationComponent: Simulation | undefined = $state();
 
     const screens: ScreenConfig[] = [
         { component: Introduction, noSimulation: true },

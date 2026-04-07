@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { untrack } from 'svelte';
 
     import ScreenBtn from '../ScreenBtn.svelte';
     import { base } from '$app/paths';
@@ -54,8 +54,9 @@
         startScreen();
     };
 
-    run(() => {
-        if (simulationComponent) startScreen();
+    $effect(() => {
+        if (!simulationComponent) return;
+        untrack(startScreen);
     });
 </script>
 
@@ -66,11 +67,11 @@
         patterns.
     </p>
     <p>
-        <ScreenBtn active={activeIndex === 0} on:click={() => loadPreset(0)}>
+        <ScreenBtn active={activeIndex === 0} onclick={() => loadPreset(0)}>
             {presets[0].name}
         </ScreenBtn>
         and
-        <ScreenBtn active={activeIndex === 1} on:click={() => loadPreset(1)}>
+        <ScreenBtn active={activeIndex === 1} onclick={() => loadPreset(1)}>
             {presets[1].name}
         </ScreenBtn>
         are some of the first patterns I found and some of my favorite. They remind me of some patterns
@@ -80,7 +81,7 @@
         > which look like cells.
     </p>
     <p>
-        <ScreenBtn active={activeIndex === 2} on:click={() => loadPreset(2)}>
+        <ScreenBtn active={activeIndex === 2} onclick={() => loadPreset(2)}>
             {presets[2].name}
         </ScreenBtn>
         create even more complex patterns which remind me of
@@ -93,14 +94,14 @@
     </p>
     <p>
         Of course, not all patterns have the same level of order.
-        <ScreenBtn active={activeIndex === 3} on:click={() => loadPreset(3)}>
+        <ScreenBtn active={activeIndex === 3} onclick={() => loadPreset(3)}>
             {presets[3].name}
         </ScreenBtn> creates something a bit less structured than the previous examples.
     </p>
     <div class="controls">
         <div class="control-section">
             {#each presets as p, idx}
-                <ScreenBtn active={activeIndex === idx} on:click={() => loadPreset(idx)}>
+                <ScreenBtn active={activeIndex === idx} onclick={() => loadPreset(idx)}>
                     {p.name}
                 </ScreenBtn>
             {/each}
