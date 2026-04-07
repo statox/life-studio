@@ -49,7 +49,7 @@
         padding: 8px 16px;
         box-sizing: border-box;
         display: flex;
-        align-items: center;
+        align-items: baseline;
         gap: 16px;
         border-bottom: 2px solid #bfbec6;
     }
@@ -60,6 +60,7 @@
         font-size: 1.5rem;
         font-weight: bold;
         line-height: 1;
+        min-width: 2em;
         transition: color 0.15s;
         -webkit-text-stroke: 1px #c3e88d;
     }
