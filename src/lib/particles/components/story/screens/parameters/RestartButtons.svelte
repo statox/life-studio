@@ -19,7 +19,6 @@
     let nbParticles = 0;
 
     const uniformSpread = () => {
-        console.log('uniformSpread');
         initialSpreadConfig = 'uniform';
         nbParticles = 2000;
         startScreen();
@@ -32,7 +31,6 @@
     };
 
     const startScreen = () => {
-        console.log('startScreen');
         const config: SimulationConfig = {
             horizontalResolution: 30,
             verticalResolution: 20,
@@ -51,7 +49,6 @@
 
         const simulationParams = generateSimulationParams(config);
         simulationComponent?.startSim(simulationParams);
-        console.log({ simulationComponent });
     };
 
     $effect(() => {
