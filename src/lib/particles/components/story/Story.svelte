@@ -106,7 +106,7 @@
 </div>
 
 <div class="nav-bar">
-    <a class="nav-btn home-btn" href="{base}/particles-life">
+    <a class="nav-btn home-btn" href="{base}/particles-life" title="Home">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
