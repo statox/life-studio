@@ -1,8 +1,7 @@
 <script lang="ts">
-    import { createBubbler, handlers } from 'svelte/legacy';
+    import { tick } from 'svelte';
     import type { HTMLButtonAttributes } from 'svelte/elements';
 
-    const bubble = createBubbler();
     interface Props extends HTMLButtonAttributes {
         active?: boolean;
         children?: import('svelte').Snippet;
@@ -19,28 +18,23 @@
         );
     };
 
-    const handleClick = () => {
+    const handleClick = async () => {
         if (onclick) {
             onclick();
         }
 
-        // After a short delay (let the simulation start), scroll the canvas into view
-        setTimeout(() => {
-            const canvasEl = document.querySelector('.canvas-col');
-            if (!canvasEl) {
-                return;
-            }
+        // After the DOM updates (let the simulation start), scroll the canvas into view
+        await tick();
+        const canvasEl = document.querySelector('.canvas-col');
+        if (!canvasEl) return;
 
-            // Only scroll if the simulation is not already partly visible
-            if (isVisibleInViewport(canvasEl)) {
-                return;
-            }
-            document.querySelector('.canvas-col')?.scrollIntoView({ behavior: 'smooth' });
-        }, 50);
+        // Only scroll if the simulation is not already partly visible
+        if (isVisibleInViewport(canvasEl)) return;
+        canvasEl.scrollIntoView({ behavior: 'smooth' });
     };
 </script>
 
-<button class="screen-btn" class:active onclick={handlers(bubble('click'), handleClick)}>
+<button class="screen-btn" class:active onclick={handleClick}>
     {@render children?.()}
 </button>
 
