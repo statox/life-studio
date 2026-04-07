@@ -36,7 +36,6 @@
         "svelte": "^5.0.0",
         "svelte-adapter-github": "^1.0.0-next.0",
         "svelte-check": "^4.0.0",
-        "svelte-markdown": "^0.2.3",
         "svelte-tabs": "^1.1.0",
         "ts-node": "^10.9.1",
         "tslib": "^2.4.1",
