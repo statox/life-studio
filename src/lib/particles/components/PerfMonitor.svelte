@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
-
     import type { PerfData } from '$lib/particles/engine/types';
 
     type PerfReport = PerfData & { total: number };
@@ -16,7 +14,7 @@
     type PerfRow = { label: string; value: number };
 
     // Separate reactive block for history — only reacts to enginePerf changes
-    run(() => {
+    $effect(() => {
         if (enginePerf && enginePerf.frame !== lastRecordedFrame) {
             if (history.length && enginePerf.frame <= history[history.length - 1]?.frame) {
                 history = [];

@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { self } from 'svelte/legacy';
-
     import type { AttractionTable } from '$lib/particles/attraction';
     import { COLORS } from '../engine';
 
@@ -36,7 +34,7 @@
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-<div class="backdrop" onclick={self(() => onclose?.())}>
+<div class="backdrop" onclick={(e) => e.target === e.currentTarget && onclose?.()}>
     <div class="modal">
         <div class="modal-header">
             <span class="title">Export attraction table</span>

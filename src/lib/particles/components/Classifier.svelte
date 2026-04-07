@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
-
     import { base } from '$app/paths';
     import { dev } from '$app/environment';
     import { onMount } from 'svelte';
@@ -41,7 +39,7 @@
         friction: 0,
         colorWeights: { white: 0, red: 0, green: 0, blue: 0 }
     });
-    run(() => {
+    $effect(() => {
         if (selected) {
             ws = {
                 nbParticles: selected.nbParticles,
