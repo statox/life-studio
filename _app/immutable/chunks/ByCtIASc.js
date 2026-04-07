@@ -1,0 +1,1 @@
+import{a as e,f as i}from"./CbliM6HH.js";import{d as r,a as s}from"./BjgsIbJ5.js";var c=i('<button class="spread-btn svelte-1xncj24">≋ Rainbow</button>');function b(a,o){var t=c();s("click",t,function(...n){o.onClick?.apply(this,n)}),e(a,t)}r(["click"]);export{b as R};
