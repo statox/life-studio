@@ -13,6 +13,7 @@
     import type { WorldSettings } from '$lib/particles/engine/types';
     import { getAllUniverses, type StoredUniverse } from '$lib/particles/universe';
     import UniverseSelector from './UniverseSelector.svelte';
+    import { behaviorColor, energyColor, stars } from './universeDisplay';
 
     let simulationComponent: Simulation | undefined = $state();
 
@@ -57,21 +58,6 @@
         if (!lastParams) return;
         startWithParams(respreadParams(lastParams, type, ws.nbParticles, ws.colorWeights));
     };
-
-    const behaviorColor = (b: string): string => {
-        if (b === 'still') return '#546e7a';
-        if (b === 'converges') return '#1565c0';
-        if (b === 'cyclic') return '#2e7d32';
-        return '#e65100';
-    };
-
-    const energyColor = (e: string): string => {
-        if (e === 'low') return '#78909c';
-        if (e === 'medium') return '#c3e88d';
-        return '#fc2a51';
-    };
-
-    const stars = (n: number): string => '★'.repeat(n) + '☆'.repeat(3 - n);
 </script>
 
 <div class="sim">

@@ -1,13 +1,14 @@
 <script lang="ts">
     import type {
+        EnergyLevel,
         StoredUniverse,
         UniverseBehavior,
-        UniverseStructure,
-        EnergyLevel,
-        UniverseCategory
+        UniverseCategory,
+        UniverseStructure
     } from '$lib/particles/universe';
     import { UNIVERSE_CATEGORIES } from '$lib/particles/universe';
     import AttractionTableComponent from './AttractionTableComponent.svelte';
+    import { behaviorColor, structureColor, energyColor, stars } from './universeDisplay';
 
     interface Props {
         universes: StoredUniverse[];
@@ -100,27 +101,6 @@
     };
 
     // ── Helpers ──────────────────────────────────────────────────────────────
-    const behaviorColor = (b: string): string => {
-        if (b === 'still') return '#546e7a';
-        if (b === 'converges') return '#1565c0';
-        if (b === 'cyclic') return '#2e7d32';
-        return '#e65100';
-    };
-
-    const structureColor = (s: string): string => {
-        if (s === 'none') return '#546e7a';
-        if (s === 'clusters') return '#6a1b9a';
-        if (s === 'patterns') return '#00838f';
-        return '#ef6c00';
-    };
-
-    const energyColor = (e: string): string => {
-        if (e === 'low') return '#78909c';
-        if (e === 'medium') return '#c3e88d';
-        return '#fc2a51';
-    };
-
-    const stars = (n: number): string => '★'.repeat(n) + '☆'.repeat(3 - n);
 
     const behaviors: Array<UniverseBehavior | 'all'> = [
         'all',
