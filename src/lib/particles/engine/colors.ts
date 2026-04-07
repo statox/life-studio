@@ -1,6 +1,6 @@
 export const COLORS = ['white', 'red', 'green', 'blue'] as const;
 
-export type Color = typeof COLORS[number];
+export type Color = (typeof COLORS)[number];
 
 export const PARTICLE_COLORS: Record<Color, string> = {
     white: '#ffedff',

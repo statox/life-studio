@@ -527,7 +527,9 @@
         padding: 8px 20px;
         font-size: 0.82rem;
         cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
+        transition:
+            background 0.13s,
+            border-color 0.13s;
     }
 
     .save-btn:hover:not(:disabled) {

@@ -68,10 +68,7 @@
     <p>
         Now, use the buttons to observe what happens when you remove one species altogether. Can you
         predict what will happen when you remove <span class="cw">White</span>?
-        <ScreenBtn
-            active={currentPreset === 'no_white'}
-            onclick={() => setProportions('no_white')}
-        >
+        <ScreenBtn active={currentPreset === 'no_white'} onclick={() => setProportions('no_white')}>
             Remove <span class="cw">White</span>
         </ScreenBtn>
     </p>
@@ -92,10 +89,7 @@
     </p>
     <p>
         Let's remove <span class="cg">Green</span>.
-        <ScreenBtn
-            active={currentPreset === 'no_green'}
-            onclick={() => setProportions('no_green')}
-        >
+        <ScreenBtn active={currentPreset === 'no_green'} onclick={() => setProportions('no_green')}>
             Remove <span class="cg">Green</span>
         </ScreenBtn>
     </p>

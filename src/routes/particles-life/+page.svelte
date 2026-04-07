@@ -128,7 +128,9 @@
         border-radius: 10px;
         padding: 24px 28px;
         text-decoration: none;
-        transition: border-color 0.15s, background 0.15s;
+        transition:
+            border-color 0.15s,
+            background 0.15s;
     }
 
     .card:hover {

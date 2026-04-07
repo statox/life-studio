@@ -319,7 +319,9 @@
         padding: 6px 11px;
         font-size: 0.82rem;
         cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
+        transition:
+            background 0.13s,
+            border-color 0.13s;
         display: flex;
         align-items: center;
         gap: 6px;

@@ -111,8 +111,8 @@
             Large
         </ScreenBtn> dimensions for the world we see that the particles have more room to move. The worms
         take more time to travel across the world. Since particles are less tightly packed in the world,
-        they interact with each other less often, which allows more worms to form as they merge less
-        often with other worms.
+        they interact with each other less often, which allows more worms to form as they merge less often
+        with other worms.
     </p>
 
     <p>

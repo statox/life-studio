@@ -47,10 +47,13 @@
         gui.add(controls, 'pause').name('Pause');
         gui.add(controls, 'reset').name('Reset simulation');
 
-        const presetParamsOptions = PARAMETERS_CLASSES.reduce((options, option, index) => {
-            options[option.name] = index;
-            return options;
-        }, {} as { [name: string]: number });
+        const presetParamsOptions = PARAMETERS_CLASSES.reduce(
+            (options, option, index) => {
+                options[option.name] = index;
+                return options;
+            },
+            {} as { [name: string]: number }
+        );
         gui.add(controls, 'presetParams', presetParamsOptions).onFinishChange(() => {
             simulationParameters.f = PARAMETERS_CLASSES[controls.presetParams].f;
             simulationParameters.k = PARAMETERS_CLASSES[controls.presetParams].k;

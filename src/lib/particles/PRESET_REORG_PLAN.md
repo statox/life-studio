@@ -6,15 +6,15 @@ The 66 universe presets in `src/lib/particles/universe/presets/` are in a flat d
 
 ## Decisions
 
--   **Categories**: One primary category per preset + optional tags array
--   **Initial categories**: worms, islands, clusters, waves, crystals, movers, chase, chaos, stripes, other
--   **Directories**: `presets/<category>/` subdirectories
--   **UI**: Collapsible sections in UniverseSelector grouped by category
--   **Variations**: Deferred to later
+- **Categories**: One primary category per preset + optional tags array
+- **Initial categories**: worms, islands, clusters, waves, crystals, movers, chase, chaos, stripes, other
+- **Directories**: `presets/<category>/` subdirectories
+- **UI**: Collapsible sections in UniverseSelector grouped by category
+- **Variations**: Deferred to later
 
 ## Known issues to fix along the way
 
--   `anthill_2.json` and `anthill_3.json` are missing `id` fields
+- `anthill_2.json` and `anthill_3.json` are missing `id` fields
 
 ---
 
@@ -24,19 +24,19 @@ The 66 universe presets in `src/lib/particles/universe/presets/` are in a flat d
 
 **File**: `src/lib/particles/universe/index.ts`
 
--   Add `UNIVERSE_CATEGORIES` const array and `UniverseCategory` type
--   Add to `UniverseMetadata`: `category: UniverseCategory`, `tags?: string[]`, `createdAt?: string`
+- Add `UNIVERSE_CATEGORIES` const array and `UniverseCategory` type
+- Add to `UniverseMetadata`: `category: UniverseCategory`, `tags?: string[]`, `createdAt?: string`
 
 ### 1.2 Backfill script
 
 Create `scripts/backfill-presets.mjs` (one-time, run manually):
 
--   For each JSON in `presets/`:
-    -   Get creation date via `git log --diff-filter=A --format=%aI -- <path>`
-    -   Add `createdAt` field
-    -   Add `category` from a hardcoded mapping (review before running)
-    -   Add missing `id` for `anthill_2`, `anthill_3`
-    -   Write file back
+- For each JSON in `presets/`:
+    - Get creation date via `git log --diff-filter=A --format=%aI -- <path>`
+    - Add `createdAt` field
+    - Add `category` from a hardcoded mapping (review before running)
+    - Add missing `id` for `anthill_2`, `anthill_3`
+    - Write file back
 
 **Category mapping** (to review manually):
 
@@ -55,8 +55,8 @@ Create `scripts/backfill-presets.mjs` (one-time, run manually):
 
 ### Verification
 
--   `npm run check` passes
--   App runs identically (no consumer reads the new fields yet)
+- `npm run check` passes
+- App runs identically (no consumer reads the new fields yet)
 
 ---
 
@@ -83,15 +83,15 @@ Note: `demo_presets.json` is at `src/lib/particles/universe/demo_presets.json` (
 
 Currently writes to `presets/${id}.json`. After reorg, needs to write to `presets/${category}/${id}.json`:
 
--   Validate `category` from POST body against `UNIVERSE_CATEGORIES`
--   When category changes for an existing preset, delete the old file (scan subdirectories by ID)
+- Validate `category` from POST body against `UNIVERSE_CATEGORIES`
+- When category changes for an existing preset, delete the old file (scan subdirectories by ID)
 
 ### Verification
 
--   `npm run check` passes
--   Story screens still load (they use `getUniverseById` which searches by `id` field, not path)
--   Gallery/WorkBench/Classifier all load presets normally
--   Classifier save writes to correct subdirectory
+- `npm run check` passes
+- Story screens still load (they use `getUniverseById` which searches by `id` field, not path)
+- Gallery/WorkBench/Classifier all load presets normally
+- Classifier save writes to correct subdirectory
 
 ---
 
@@ -101,23 +101,23 @@ Currently writes to `presets/${id}.json`. After reorg, needs to write to `preset
 
 ### 3.1 Auto-generate ID
 
--   Add slugify helper: `name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '')`
--   Reactive `id` field auto-derived from `name`, editable (once manually edited, stops auto-updating)
+- Add slugify helper: `name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '')`
+- Reactive `id` field auto-derived from `name`, editable (once manually edited, stops auto-updating)
 
 ### 3.2 Add category selector
 
--   Import `UNIVERSE_CATEGORIES`
--   Add `<select>` dropdown in the Classification section
+- Import `UNIVERSE_CATEGORIES`
+- Add `<select>` dropdown in the Classification section
 
 ### 3.3 Auto-populate createdAt
 
--   `new Date().toISOString().slice(0, 10)` included in generated JSON
+- `new Date().toISOString().slice(0, 10)` included in generated JSON
 
 ### Verification
 
--   Open WorkBench, click Export, type a name -> ID auto-populates
--   Category dropdown shows all options
--   Generated JSON includes id, category, createdAt
+- Open WorkBench, click Export, type a name -> ID auto-populates
+- Category dropdown shows all options
+- Generated JSON includes id, category, createdAt
 
 ---
 
@@ -127,15 +127,15 @@ Currently writes to `presets/${id}.json`. After reorg, needs to write to `preset
 
 ### 4.1 Add category filter
 
--   New `fCategory` state variable
--   Add to filter chain in `$: visible`
--   Add chip row in filters section
+- New `fCategory` state variable
+- Add to filter chain in `$: visible`
+- Add chip row in filters section
 
 ### 4.2 Group by category
 
--   Derive `$: grouped` from `visible`: array of `{ category, items }` ordered by `UNIVERSE_CATEGORIES`
--   Track `collapsedCategories` as a `Set<string>` for toggle state
--   Default: all sections expanded
+- Derive `$: grouped` from `visible`: array of `{ category, items }` ordered by `UNIVERSE_CATEGORIES`
+- Track `collapsedCategories` as a `Set<string>` for toggle state
+- Default: all sections expanded
 
 ### 4.3 Update template
 
@@ -149,22 +149,24 @@ Replace flat `{#each visible as u}` with nested loop:
         <span class="count">({group.items.length})</span>
     </li>
     {#if !collapsed}
-        {#each group.items as u (u.id)} ... {/each}
+        {#each group.items as u (u.id)}
+            ...
+        {/each}
     {/if}
 {/each}
 ```
 
 ### 4.4 Styles
 
--   Category header: distinct background, uppercase, sticky within scroll if feasible
--   Tap target >= 44px for mobile
+- Category header: distinct background, uppercase, sticky within scroll if feasible
+- Tap target >= 44px for mobile
 
 ### Verification
 
--   Gallery shows presets grouped by category with collapsible headers
--   Filters still work within/across categories
--   Search narrows categories (empty categories hidden)
--   Mobile layout works
+- Gallery shows presets grouped by category with collapsible headers
+- Filters still work within/across categories
+- Search narrows categories (empty categories hidden)
+- Mobile layout works
 
 ---
 
@@ -172,16 +174,16 @@ Replace flat `{#each visible as u}` with nested loop:
 
 **File**: `src/lib/particles/components/Classifier.svelte`
 
--   Add category `<select>` dropdown (using `UNIVERSE_CATEGORIES`)
--   Add tags as comma-separated text input
--   Include category and tags in `buildStoredUniverse()` output
--   Save API already handles category-based paths (Phase 2.3)
+- Add category `<select>` dropdown (using `UNIVERSE_CATEGORIES`)
+- Add tags as comma-separated text input
+- Include category and tags in `buildStoredUniverse()` output
+- Save API already handles category-based paths (Phase 2.3)
 
 ### Verification
 
--   Open Classifier, select a preset -> category and tags shown
--   Change category, save -> file moves to new subdirectory
--   Tags round-trip correctly
+- Open Classifier, select a preset -> category and tags shown
+- Change category, save -> file moves to new subdirectory
+- Tags round-trip correctly
 
 ---
 

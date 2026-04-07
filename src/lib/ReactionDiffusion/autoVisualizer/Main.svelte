@@ -185,13 +185,7 @@
 
     <div>
         <label for="worldSize">World Size:</label>
-        <input
-            id="worldSize"
-            bind:value={info.worldSize}
-            type="number"
-            step="1"
-            onchange={reset}
-        />
+        <input id="worldSize" bind:value={info.worldSize} type="number" step="1" onchange={reset} />
         <span>({2 ** info.worldSize} x {2 ** info.worldSize} : {2 ** (info.worldSize + 1)})</span>
     </div>
     <canvas
@@ -199,7 +193,7 @@
         id="canvas"
         width={screenDimensions.width}
         height={screenDimensions.height}
-></canvas>
+    ></canvas>
 </main>
 
 <style>

@@ -102,7 +102,7 @@ export const UNIVERSE_CATEGORIES = [
     'other'
 ] as const;
 
-export type UniverseCategory = typeof UNIVERSE_CATEGORIES[number];
+export type UniverseCategory = (typeof UNIVERSE_CATEGORIES)[number];
 
 export type StoredUniverse = Universe & UniverseMetadata;
 

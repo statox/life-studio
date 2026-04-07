@@ -122,8 +122,8 @@
                 href="https://sandbox-science.com/particle-life">this tool</a
             > which I have tried to reimplement from scratch without looking at the original code. You
             should definitely check it out because it provides a GPU-powered version of the simulation
-            that allows to run the simulation at a much higher resolution than on this page. Reading
-            this page first should allow you to better appreciate how truly amazing this other tool is.
+            that allows to run the simulation at a much higher resolution than on this page. Reading this
+            page first should allow you to better appreciate how truly amazing this other tool is.
         </p>
 
         <div class="notice">
@@ -320,8 +320,7 @@
                 <span class="cr">red</span> appearing. While everything looks pretty random we can still
                 clearly see a common pattern.
             </p>
-            <button class="universe-btn" onclick={() => loadById('2_colors_chase')}
-                >Motion !</button
+            <button class="universe-btn" onclick={() => loadById('2_colors_chase')}>Motion !</button
             >
             <p>
                 You can try to restart the simulation with the "Uniform spread" button to observe
@@ -384,8 +383,8 @@
                 weakly repels itself while the others don't. This imbalance causes
                 <span class="cr">red</span>
                 to spread into rings around
-                <span class="cw">white</span>-<span class="cg">green</span> cores, creating repeated
-                layered islands across the universe.
+                <span class="cw">white</span>-<span class="cg">green</span> cores, creating repeated layered
+                islands across the universe.
             </p>
             <button class="universe-btn" onclick={() => loadById('3_colors_stable_islands')}
                 >Make layered islands</button
@@ -813,7 +812,9 @@
         padding: 2px 8px;
         border-left: 2px solid transparent;
         border-radius: 0 4px 4px 0;
-        transition: background 0.15s, border-color 0.15s;
+        transition:
+            background 0.15s,
+            border-color 0.15s;
         margin-left: -10px;
     }
 
@@ -828,7 +829,9 @@
         border: 1px solid #37474f;
         border-radius: 8px;
         padding: 14px 16px;
-        transition: border-color 0.2s, box-shadow 0.2s;
+        transition:
+            border-color 0.2s,
+            box-shadow 0.2s;
     }
 
     .card.highlighted {
@@ -872,7 +875,9 @@
         padding: 6px 11px;
         font-size: 0.82rem;
         cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
+        transition:
+            background 0.13s,
+            border-color 0.13s;
         display: flex;
         align-items: center;
         gap: 6px;

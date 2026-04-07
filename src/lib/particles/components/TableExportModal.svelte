@@ -15,15 +15,17 @@
     let description = $state('');
     let copied = $state(false);
 
-    let code = $derived((() => {
-        const rows = COLORS.map((from) => {
-            const vals = COLORS.map((to) => `${to}: ${attractionTable[from][to]}`).join(', ');
-            return `            ${from}: { ${vals} }`;
-        }).join(',\n');
-        const safeName = name.replace(/'/g, "\\'");
-        const safeDesc = description.replace(/'/g, "\\'");
-        return `    {\n        name: '${safeName}',\n        description: '${safeDesc}',\n        table: {\n${rows}\n        }\n    },`;
-    })());
+    let code = $derived(
+        (() => {
+            const rows = COLORS.map((from) => {
+                const vals = COLORS.map((to) => `${to}: ${attractionTable[from][to]}`).join(', ');
+                return `            ${from}: { ${vals} }`;
+            }).join(',\n');
+            const safeName = name.replace(/'/g, "\\'");
+            const safeDesc = description.replace(/'/g, "\\'");
+            return `    {\n        name: '${safeName}',\n        description: '${safeDesc}',\n        table: {\n${rows}\n        }\n    },`;
+        })()
+    );
 
     const copy = () => {
         navigator.clipboard.writeText(code).then(() => {
@@ -163,7 +165,9 @@
         padding: 5px 9px;
         font-size: 0.88rem;
         cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
+        transition:
+            background 0.13s,
+            border-color 0.13s;
     }
 
     .icon-btn:hover {
@@ -181,7 +185,9 @@
         padding: 6px 14px;
         font-size: 0.82rem;
         cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
+        transition:
+            background 0.13s,
+            border-color 0.13s;
     }
 
     .copy-btn:hover {

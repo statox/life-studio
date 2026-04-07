@@ -23,26 +23,29 @@
             }
             history.push({
                 ...enginePerf,
-                total: enginePerf.grid + enginePerf.force + enginePerf.update + enginePerf.interleave
+                total:
+                    enginePerf.grid + enginePerf.force + enginePerf.update + enginePerf.interleave
             });
             lastRecordedFrame = enginePerf.frame;
         }
     });
 
-    let rows = $derived((() => {
-        const r: PerfRow[] = [];
-        if (enginePerf) {
-            r.push({ label: 'Grid', value: enginePerf.grid });
-            r.push({ label: 'Force', value: enginePerf.force });
-            r.push({ label: 'Update', value: enginePerf.update });
-            r.push({ label: 'Interleave', value: enginePerf.interleave });
-        }
-        if (renderMs != null) {
-            r.push({ label: 'Render', value: renderMs });
-        }
-        r.sort((a, b) => b.value - a.value);
-        return r;
-    })());
+    let rows = $derived(
+        (() => {
+            const r: PerfRow[] = [];
+            if (enginePerf) {
+                r.push({ label: 'Grid', value: enginePerf.grid });
+                r.push({ label: 'Force', value: enginePerf.force });
+                r.push({ label: 'Update', value: enginePerf.update });
+                r.push({ label: 'Interleave', value: enginePerf.interleave });
+            }
+            if (renderMs != null) {
+                r.push({ label: 'Render', value: renderMs });
+            }
+            r.sort((a, b) => b.value - a.value);
+            return r;
+        })()
+    );
 
     let total = $derived(rows.length > 0 ? rows.reduce((s, r) => s + r.value, 0) : null);
 
@@ -151,7 +154,9 @@
         font-size: 0.72rem;
         cursor: pointer;
         font-family: monospace;
-        transition: background 0.13s, border-color 0.13s;
+        transition:
+            background 0.13s,
+            border-color 0.13s;
     }
 
     .copy-btn:hover {

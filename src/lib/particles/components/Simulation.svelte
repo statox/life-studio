@@ -105,8 +105,9 @@
     });
     onDestroy(() => sim.destroy());
 
-    let currentPositions =
-        $derived(buffer.length > 0 && displayIndex < buffer.length ? buffer[displayIndex] : null);
+    let currentPositions = $derived(
+        buffer.length > 0 && displayIndex < buffer.length ? buffer[displayIndex] : null
+    );
 </script>
 
 <div class="sim" class:fill={fillContainer}>
@@ -188,7 +189,9 @@
         cursor: pointer;
         white-space: nowrap;
         flex-shrink: 0;
-        transition: background 0.13s, border-color 0.13s;
+        transition:
+            background 0.13s,
+            border-color 0.13s;
     }
 
     .engine-toggle:hover {

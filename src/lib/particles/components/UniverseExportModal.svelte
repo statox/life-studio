@@ -73,31 +73,33 @@
         3: 'Rich multi-colour dynamics with emergent structures'
     };
 
-    let result = $derived((() => {
-        try {
-            return JSON.stringify(
-                {
-                    id,
-                    name,
-                    description,
-                    preferredInitialConfig,
-                    behavior,
-                    structure,
-                    activeColors,
-                    convergenceSpeed,
-                    energyLevel,
-                    complexity,
-                    category,
-                    createdAt,
-                    ...universe
-                },
-                null,
-                2
-            );
-        } catch {
-            return 'Error';
-        }
-    })());
+    let result = $derived(
+        (() => {
+            try {
+                return JSON.stringify(
+                    {
+                        id,
+                        name,
+                        description,
+                        preferredInitialConfig,
+                        behavior,
+                        structure,
+                        activeColors,
+                        convergenceSpeed,
+                        energyLevel,
+                        complexity,
+                        category,
+                        createdAt,
+                        ...universe
+                    },
+                    null,
+                    2
+                );
+            } catch {
+                return 'Error';
+            }
+        })()
+    );
 
     const copy = () => {
         navigator.clipboard.writeText(result).then(() => {
@@ -136,7 +138,7 @@
                 id="export-desc"
                 placeholder="What does it do?"
                 bind:value={description}
-></textarea>
+            ></textarea>
         </div>
         <div class="field">
             <label for="export-config">Initial spread</label>
@@ -361,7 +363,9 @@
         padding: 5px 9px;
         font-size: 0.88rem;
         cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
+        transition:
+            background 0.13s,
+            border-color 0.13s;
     }
 
     .icon-btn:hover {
@@ -379,7 +383,9 @@
         padding: 6px 14px;
         font-size: 0.82rem;
         cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
+        transition:
+            background 0.13s,
+            border-color 0.13s;
     }
 
     .copy-btn:hover {

@@ -46,7 +46,10 @@ export function createSimulationWorker() {
     };
 
     const updateAttractionTable = (table: AttractionTable) => {
-        worker?.postMessage({ msg: 'updateTable', attractionTable: JSON.parse(JSON.stringify(table)) });
+        worker?.postMessage({
+            msg: 'updateTable',
+            attractionTable: JSON.parse(JSON.stringify(table))
+        });
     };
 
     const pause = () => {

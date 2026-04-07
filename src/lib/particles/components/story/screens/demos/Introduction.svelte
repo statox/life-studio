@@ -4,8 +4,8 @@
     <p>But they can produce very diverse and unexpected universes. Let's explore them!</p>
     <br />
     <p>
-        <b>Warning</b> All the pages of this website run simulations directly on your device and the
-        upcoming pages sometimes run heavy simulations. Depending on the processing power of your device
-        you might experience some slowdowns.
+        <b>Warning</b> All the pages of this website run simulations directly on your device and the upcoming
+        pages sometimes run heavy simulations. Depending on the processing power of your device you might
+        experience some slowdowns.
     </p>
 </div>

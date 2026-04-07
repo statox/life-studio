@@ -107,8 +107,8 @@ getAttractionForce(table, maxR², minDist², distSqrd, colorA, colorB):
 
 `triangleMap` is a piecewise linear function that:
 
--   rises from 0 → `attractionValue` over `[maxR²/2, midpoint]`
--   falls back from `attractionValue` → 0 over `[midpoint, maxR²]`
+- rises from 0 → `attractionValue` over `[maxR²/2, midpoint]`
+- falls back from `attractionValue` → 0 over `[midpoint, maxR²]`
 
 This means the force peaks at ¾ of `maxAttractionRadius` (in squared-distance space) and tapers to 0 at the boundary. Short-range hard repulsion (`distSqrd < minDist²`) always overrides.
 
@@ -126,10 +126,10 @@ The naive O(N²) all-pairs loop would be too slow for thousands of particles. `C
 
 **Structure**:
 
--   The world is divided into a grid of squares, each of size `maxAttractionRadius × maxAttractionRadius`.
--   Grid dimensions: `(worldSize.x / maxAttractionRadius) × (worldSize.y / maxAttractionRadius)`.
--   Each square stores a `Set<number>` of cell IDs.
--   A reverse map `squareByCellId: Map<number, Coordinates>` gives O(1) square lookup by cell ID.
+- The world is divided into a grid of squares, each of size `maxAttractionRadius × maxAttractionRadius`.
+- Grid dimensions: `(worldSize.x / maxAttractionRadius) × (worldSize.y / maxAttractionRadius)`.
+- Each square stores a `Set<number>` of cell IDs.
+- A reverse map `squareByCellId: Map<number, Coordinates>` gives O(1) square lookup by cell ID.
 
 **Constraint**: `worldSize` must be an exact multiple of `maxAttractionRadius` in both dimensions. The UI enforces this by computing `worldSize = { x: maxAttractionRadius * horizontalResolution, y: maxAttractionRadius * verticalResolution }`.
 
@@ -174,12 +174,12 @@ The worker sends only `positions: Coordinates[]` per frame (not the full `Cell[]
 
 `Simulation.svelte` maintains a `buffer: Coordinates[][]` — an ordered array of position snapshots. The worker pushes frames into it asynchronously. The render side reads from `buffer[frameIndex]`.
 
--   `frameIndex` advances by 1 each time `Canvas.svelte` calls `drewFrame()` (= `updateFrame()`).
--   If the worker is faster than the renderer, the buffer grows and acts as a time-shifting queue.
--   A slider lets the user scrub to any buffered frame.
--   `renderPaused` freezes `frameIndex`, letting the worker keep filling the buffer.
--   "Replay from start" resets `frameIndex = 0`.
--   "Catchup last frame" jumps to the most recent computed frame.
+- `frameIndex` advances by 1 each time `Canvas.svelte` calls `drewFrame()` (= `updateFrame()`).
+- If the worker is faster than the renderer, the buffer grows and acts as a time-shifting queue.
+- A slider lets the user scrub to any buffered frame.
+- `renderPaused` freezes `frameIndex`, letting the worker keep filling the buffer.
+- "Replay from start" resets `frameIndex = 0`.
+- "Catchup last frame" jumps to the most recent computed frame.
 
 > ⚠️ The buffer is never trimmed — it grows indefinitely. Long-running simulations will consume significant memory.
 
@@ -187,12 +187,12 @@ The worker sends only `positions: Coordinates[]` per frame (not the full `Cell[]
 
 ## 8. Renderer: Canvas.svelte
 
--   Fixed canvas resolution: **1600 × 960** logical pixels, displayed at **1000 × 700** CSS pixels.
--   Uses an **offscreen canvas** as a sprite sheet: 4 pre-drawn circles (one per colour) at `cellSize * 2` diameter. Each frame, particles are drawn with `ctx.drawImage(off, ...)` which is faster than re-issuing arc commands per particle.
--   Particle positions are mapped from world coordinates to canvas coordinates with `linearMap`.
--   FPS is capped (default **25 FPS**) via the `elapsed / fpsInterval` pattern on `requestAnimationFrame`.
--   `showColors` toggle: when false, all particles use sprite index 0 (white).
--   `cellSize = 1` in current config → circles are 2px diameter.
+- Fixed canvas resolution: **1600 × 960** logical pixels, displayed at **1000 × 700** CSS pixels.
+- Uses an **offscreen canvas** as a sprite sheet: 4 pre-drawn circles (one per colour) at `cellSize * 2` diameter. Each frame, particles are drawn with `ctx.drawImage(off, ...)` which is faster than re-issuing arc commands per particle.
+- Particle positions are mapped from world coordinates to canvas coordinates with `linearMap`.
+- FPS is capped (default **25 FPS**) via the `elapsed / fpsInterval` pattern on `requestAnimationFrame`.
+- `showColors` toggle: when false, all particles use sprite index 0 (white).
+- `cellSize = 1` in current config → circles are 2px diameter.
 
 ---
 
@@ -224,11 +224,11 @@ Default world size: **960 × 640** (32×30, 32×20).
 
 ### Attraction table controls
 
--   **AttractionTableChoice**: dropdown to select preset tables or "Random".
--   **AttractionTableComponent**: 4×4 interactive grid showing current values. Each cell has `+` / `−` / click-to-cycle buttons. Values cycle in `[-2, 2]`.
-    -   "Randomize table": fills all 16 values from `[-2, 2]` uniformly at random.
-    -   "Zero table": sets all values to 0.
-    -   "Mutate table": changes a single random entry to a random value.
+- **AttractionTableChoice**: dropdown to select preset tables or "Random".
+- **AttractionTableComponent**: 4×4 interactive grid showing current values. Each cell has `+` / `−` / click-to-cycle buttons. Values cycle in `[-2, 2]`.
+    - "Randomize table": fills all 16 values from `[-2, 2]` uniformly at random.
+    - "Zero table": sets all values to 0.
+    - "Mutate table": changes a single random entry to a random value.
 
 ---
 
@@ -274,9 +274,9 @@ When the worker starts, `Engine` runs **100 iterations with a zeroed attraction 
 
 ## 13. Key Invariants for Future Development
 
--   `worldSize.x % maxAttractionRadius === 0` and `worldSize.y % maxAttractionRadius === 0` — enforced in `CellsMap` constructor; violating this throws.
--   Cell IDs are array indices (0 to N-1), stable for the lifetime of a simulation run.
--   All force values in `AttractionTable` should stay in `[-2, 2]` — the UI cycles and colours are mapped at those discrete values.
--   The worker must be terminated before creating a new one: `postMessage({ msg: 'destroy' })` then `worker.terminate()`.
--   `cellsMap.updateCell()` must be called after every `updateCellPos()` to keep the spatial index consistent.
--   Positions updated _mid-loop_ (not double-buffered) — this is intentional and affects emergent behaviour. Changing to a double-buffer approach would alter the dynamics.
+- `worldSize.x % maxAttractionRadius === 0` and `worldSize.y % maxAttractionRadius === 0` — enforced in `CellsMap` constructor; violating this throws.
+- Cell IDs are array indices (0 to N-1), stable for the lifetime of a simulation run.
+- All force values in `AttractionTable` should stay in `[-2, 2]` — the UI cycles and colours are mapped at those discrete values.
+- The worker must be terminated before creating a new one: `postMessage({ msg: 'destroy' })` then `worker.terminate()`.
+- `cellsMap.updateCell()` must be called after every `updateCellPos()` to keep the spatial index consistent.
+- Positions updated _mid-loop_ (not double-buffered) — this is intentional and affects emergent behaviour. Changing to a double-buffer approach would alter the dynamics.

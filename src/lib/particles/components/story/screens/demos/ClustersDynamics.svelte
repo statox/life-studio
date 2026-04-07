@@ -74,8 +74,8 @@
         <ScreenBtn active={activeIndex === 1} onclick={() => loadPreset(1)}>
             {presets[1].name}
         </ScreenBtn> produces fascinating clusters where the outer border seems to oscillate with a period
-        of 2. This is one of my favorite universes and I am currently looking for oscillators with a
-        higher period.
+        of 2. This is one of my favorite universes and I am currently looking for oscillators with a higher
+        period.
     </p>
     <p>
         Then

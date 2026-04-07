@@ -19,13 +19,13 @@ File: `src/lib/particles/engine/computeForces.ts`
 `getAttractionForceNumeric` -> `triangleMap` -> `linearMap` -> `constrain` is
 4 levels of function calls executed 500K-2M times per frame.
 
--   Inline the entire chain into `computeForces`
--   This allows using `continue` to skip `Math.sqrt` early. Currently
-    `getAttractionForceNumeric` returns 0 for out-of-range or zero-attraction
-    pairs, but the caller still computes `Math.sqrt(distSqrd)` and two
-    divisions before multiplying by that 0. Inlining turns those return-0
-    paths into `continue` statements that skip the sqrt entirely.
--   `force.worker.ts` imports `computeForces` so the fix applies to both
+- Inline the entire chain into `computeForces`
+- This allows using `continue` to skip `Math.sqrt` early. Currently
+  `getAttractionForceNumeric` returns 0 for out-of-range or zero-attraction
+  pairs, but the caller still computes `Math.sqrt(distSqrd)` and two
+  divisions before multiplying by that 0. Inlining turns those return-0
+  paths into `continue` statements that skip the sqrt entirely.
+- `force.worker.ts` imports `computeForces` so the fix applies to both
 
 ### 2. Canvas rendering (est. 15-25%)
 
@@ -36,8 +36,8 @@ File: `src/lib/particles/components/Canvas.svelte`
 
 `linearMap` (with constrain/Math.max/Math.min) called 2x per particle.
 
--   Pre-compute scale factors: `sx = canvasWidth / worldSizeX`
--   Replace `Math.floor(linearMap(...))` with `(pos * sx) | 0`
+- Pre-compute scale factors: `sx = canvasWidth / worldSizeX`
+- Replace `Math.floor(linearMap(...))` with `(pos * sx) | 0`
 
 ### 3. Worker transfer (est. 5-10%)
 
@@ -47,8 +47,8 @@ File: `src/lib/particles/engine/simulation.worker.ts`
 
 Per-frame `new Float32Array(n*2)` + copy from separate posX/posY arrays.
 
--   Pre-allocate interleaved buffer once
--   Write positions directly during the position update step
+- Pre-allocate interleaved buffer once
+- Write positions directly during the position update step
 
 ### 4. Spatial grid (est. 3-5%)
 
@@ -58,5 +58,5 @@ File: `src/lib/particles/spatialGrid/spatialGrid.ts`
 
 Cell index computed twice (pass 1 and pass 3) with `Math.floor` + multiply + divide.
 
--   Cache cell indices in a Uint32Array during pass 1
--   Reuse cached indices in pass 3
+- Cache cell indices in a Uint32Array during pass 1
+- Reuse cached indices in pass 3

@@ -208,26 +208,26 @@
 
     <div>
         <label for="worldSize">World Size:</label>
-        <input
-            id="worldSize"
-            bind:value={info.worldSize}
-            type="number"
-            step="1"
-            onchange={reset}
-        />
+        <input id="worldSize" bind:value={info.worldSize} type="number" step="1" onchange={reset} />
         <span>({2 ** info.worldSize} x {2 ** info.worldSize} : {2 ** (info.worldSize + 1)})</span>
     </div>
     <canvas
         onmousemove={handleMousemove}
-        onmousedown={(e) => { e.preventDefault(); handleMouseButton(e); }}
+        onmousedown={(e) => {
+            e.preventDefault();
+            handleMouseButton(e);
+        }}
         onmouseup={handleMouseButton}
         onwheel={handleMouseWheel}
-        onkeydown={(e) => { e.preventDefault(); handleKeydown(e); }}
+        onkeydown={(e) => {
+            e.preventDefault();
+            handleKeydown(e);
+        }}
         oncontextmenu={(e) => e.preventDefault()}
         id="canvas"
         width={screenDimensions.width}
         height={screenDimensions.height}
-></canvas>
+    ></canvas>
 </main>
 
 <style>

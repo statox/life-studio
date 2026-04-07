@@ -214,7 +214,9 @@
         padding: 8px 20px;
         font-size: 0.85rem;
         cursor: pointer;
-        transition: background 0.13s, border-color 0.13s;
+        transition:
+            background 0.13s,
+            border-color 0.13s;
     }
 
     .nav-btn:hover:not(:disabled) {

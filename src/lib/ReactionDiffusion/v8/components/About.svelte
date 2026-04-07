@@ -14,7 +14,4 @@
     const renderers = { image: ImageRenderer as any, link: LinkRenderer as any };
 </script>
 
-<SvelteMarkdown
-    source={sourceWithFixedLinks}
-    {renderers}
-/>
+<SvelteMarkdown source={sourceWithFixedLinks} {renderers} />

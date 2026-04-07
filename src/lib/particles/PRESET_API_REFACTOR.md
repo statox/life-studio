@@ -42,8 +42,8 @@ export const respreadParams = (
 
 **Gallery.svelte** -- replace `loadUniverse` + 3 spread functions with:
 
--   `loadPresetParams(u)` -> `startSim(params)`
--   Spread buttons: `respreadParams(lastParams, 'uniform', ...)` -> `startSim`
+- `loadPresetParams(u)` -> `startSim(params)`
+- Spread buttons: `respreadParams(lastParams, 'uniform', ...)` -> `startSim`
 
 **Classifier.svelte** -- same pattern as Gallery.
 
@@ -62,17 +62,17 @@ Add `loadPresetParams` and `respreadParams` to `engine/index.ts` exports.
 
 ## Files to modify
 
--   `src/lib/particles/engine/simulationService.ts` -- add 2 functions
--   `src/lib/particles/engine/index.ts` -- export new functions
--   `src/lib/particles/components/Gallery.svelte` -- simplify
--   `src/lib/particles/components/Classifier.svelte` -- simplify
--   `src/lib/particles/components/WorkBench.svelte` -- simplify
--   `src/lib/particles/components/Demonstration.svelte` -- simplify
+- `src/lib/particles/engine/simulationService.ts` -- add 2 functions
+- `src/lib/particles/engine/index.ts` -- export new functions
+- `src/lib/particles/components/Gallery.svelte` -- simplify
+- `src/lib/particles/components/Classifier.svelte` -- simplify
+- `src/lib/particles/components/WorkBench.svelte` -- simplify
+- `src/lib/particles/components/Demonstration.svelte` -- simplify
 
 ## Verification
 
--   `npm run check` passes
--   Gallery: select preset -> simulation starts, spread buttons work
--   WorkBench: load preset, edit world settings, spread buttons, export all work
--   Classifier: load preset, change metadata, save, spread buttons work
--   Story: all demo screens still load correctly
+- `npm run check` passes
+- Gallery: select preset -> simulation starts, spread buttons work
+- WorkBench: load preset, edit world settings, spread buttons, export all work
+- Classifier: load preset, change metadata, save, spread buttons work
+- Story: all demo screens still load correctly

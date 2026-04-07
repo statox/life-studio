@@ -15,9 +15,9 @@
     let pathname = $derived($page.url.pathname.replace(/\/$/, ''));
     let basePath = $derived((base || '').replace(/\/$/, ''));
     let isHome = $derived(pathname === basePath);
-    let parentPath = $derived(pathname.includes('/')
-        ? pathname.substring(0, pathname.lastIndexOf('/')) || '/'
-        : '/');
+    let parentPath = $derived(
+        pathname.includes('/') ? pathname.substring(0, pathname.lastIndexOf('/')) || '/' : '/'
+    );
 </script>
 
 {#if showHeader}

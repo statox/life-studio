@@ -55,38 +55,42 @@
 
     let searchLower = $derived(fSearch.trim().toLowerCase());
 
-    let visible = $derived([...universes]
-        .filter(
-            (u) =>
-                (!searchLower ||
-                    u.name.toLowerCase().includes(searchLower) ||
-                    u.description.toLowerCase().includes(searchLower)) &&
-                (fBehavior === 'all' || u.behavior === fBehavior) &&
-                (fStructure === 'all' || u.structure === fStructure) &&
-                (fColors === 'all' || u.activeColors === fColors) &&
-                (fEnergy === 'all' || u.energyLevel === fEnergy) &&
-                (fComplexity === 'all' || u.complexity === fComplexity) &&
-                (fCategory === 'all' || u.category === fCategory)
-        )
-        .sort((a, b) => {
-            let cmp = 0;
-            if (sortKey === 'name') cmp = a.name.localeCompare(b.name);
-            else if (sortKey === 'behavior')
-                cmp = (BEHAVIOR_ORDER[a.behavior] ?? 0) - (BEHAVIOR_ORDER[b.behavior] ?? 0);
-            else if (sortKey === 'structure')
-                cmp = (STRUCTURE_ORDER[a.structure] ?? 0) - (STRUCTURE_ORDER[b.structure] ?? 0);
-            else if (sortKey === 'colors') cmp = a.activeColors - b.activeColors;
-            else if (sortKey === 'energy')
-                cmp = (ENERGY_ORDER[a.energyLevel] ?? 0) - (ENERGY_ORDER[b.energyLevel] ?? 0);
-            else if (sortKey === 'complexity') cmp = a.complexity - b.complexity;
-            return sortAsc ? cmp : -cmp;
-        }));
+    let visible = $derived(
+        [...universes]
+            .filter(
+                (u) =>
+                    (!searchLower ||
+                        u.name.toLowerCase().includes(searchLower) ||
+                        u.description.toLowerCase().includes(searchLower)) &&
+                    (fBehavior === 'all' || u.behavior === fBehavior) &&
+                    (fStructure === 'all' || u.structure === fStructure) &&
+                    (fColors === 'all' || u.activeColors === fColors) &&
+                    (fEnergy === 'all' || u.energyLevel === fEnergy) &&
+                    (fComplexity === 'all' || u.complexity === fComplexity) &&
+                    (fCategory === 'all' || u.category === fCategory)
+            )
+            .sort((a, b) => {
+                let cmp = 0;
+                if (sortKey === 'name') cmp = a.name.localeCompare(b.name);
+                else if (sortKey === 'behavior')
+                    cmp = (BEHAVIOR_ORDER[a.behavior] ?? 0) - (BEHAVIOR_ORDER[b.behavior] ?? 0);
+                else if (sortKey === 'structure')
+                    cmp = (STRUCTURE_ORDER[a.structure] ?? 0) - (STRUCTURE_ORDER[b.structure] ?? 0);
+                else if (sortKey === 'colors') cmp = a.activeColors - b.activeColors;
+                else if (sortKey === 'energy')
+                    cmp = (ENERGY_ORDER[a.energyLevel] ?? 0) - (ENERGY_ORDER[b.energyLevel] ?? 0);
+                else if (sortKey === 'complexity') cmp = a.complexity - b.complexity;
+                return sortAsc ? cmp : -cmp;
+            })
+    );
 
     // ── Category grouping ────────────────────────────────────────────────────
-    let grouped = $derived(UNIVERSE_CATEGORIES.map((cat) => ({
-        category: cat,
-        items: visible.filter((u) => u.category === cat)
-    })).filter((g) => g.items.length > 0));
+    let grouped = $derived(
+        UNIVERSE_CATEGORIES.map((cat) => ({
+            category: cat,
+            items: visible.filter((u) => u.category === cat)
+        })).filter((g) => g.items.length > 0)
+    );
 
     let collapsedCategories = $state(new Set<string>());
     const toggleCategory = (cat: string) => {
@@ -218,7 +222,7 @@
                                         <span
                                             class="prop-dot"
                                             style="background:{behaviorColor(u.behavior)}"
-></span>
+                                        ></span>
                                         {u.behavior}
                                     </span>
                                     <span
@@ -228,7 +232,7 @@
                                         <span
                                             class="prop-dot"
                                             style="background:{structureColor(u.structure)}"
-></span>
+                                        ></span>
                                         {u.structure}
                                     </span>
                                     <span
@@ -238,7 +242,7 @@
                                         <span
                                             class="prop-dot"
                                             style="background:{energyColor(u.energyLevel)}"
-></span>
+                                        ></span>
                                         {u.energyLevel}
                                     </span>
                                     <span class="prop complexity">{stars(u.complexity)}</span>
@@ -437,7 +441,10 @@
         background: transparent;
         color: #78909c;
         cursor: pointer;
-        transition: background 0.12s, border-color 0.12s, color 0.12s;
+        transition:
+            background 0.12s,
+            border-color 0.12s,
+            color 0.12s;
         line-height: 1.6;
     }
 
@@ -507,7 +514,9 @@
         background: transparent;
         color: #546e7a;
         cursor: pointer;
-        transition: color 0.12s, border-color 0.12s;
+        transition:
+            color 0.12s,
+            border-color 0.12s;
         display: flex;
         align-items: center;
         gap: 3px;
@@ -589,7 +598,9 @@
         padding: 10px 14px;
         cursor: pointer;
         border-left: 3px solid transparent;
-        transition: background 0.13s, border-color 0.13s;
+        transition:
+            background 0.13s,
+            border-color 0.13s;
     }
 
     .item-body {

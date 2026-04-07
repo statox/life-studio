@@ -4,14 +4,14 @@ A self-contained component for displaying images and videos from the `static/` d
 
 ## Props
 
-| Prop              | Type                  | Default     | Description                                      |
-| ----------------- | --------------------- | ----------- | ------------------------------------------------ |
-| `path`            | `string`              | **required**| Path relative to `static/`, e.g. `"/my-img.png"` |
-| `title`           | `string \| undefined` | `undefined` | Optional title shown below the media             |
-| `description`     | `string \| undefined` | `undefined` | Optional description shown below the title       |
-| `showTitle`       | `boolean`             | `true`      | Set to `false` to hide the title                 |
-| `showDescription` | `boolean`             | `true`      | Set to `false` to hide the description           |
-| `alt`             | `string`              | `''`        | Alt text for images (falls back to `title`)      |
+| Prop              | Type                  | Default      | Description                                      |
+| ----------------- | --------------------- | ------------ | ------------------------------------------------ |
+| `path`            | `string`              | **required** | Path relative to `static/`, e.g. `"/my-img.png"` |
+| `title`           | `string \| undefined` | `undefined`  | Optional title shown below the media             |
+| `description`     | `string \| undefined` | `undefined`  | Optional description shown below the title       |
+| `showTitle`       | `boolean`             | `true`       | Set to `false` to hide the title                 |
+| `showDescription` | `boolean`             | `true`       | Set to `false` to hide the description           |
+| `alt`             | `string`              | `''`         | Alt text for images (falls back to `title`)      |
 
 ## Supported formats
 
