@@ -23,6 +23,7 @@
     let isVideo = $derived(videoExtensions.some((ext) => path.toLowerCase().endsWith(ext)));
     let src = $derived(`${base}${path}`);
     let altText = $derived(alt || title || '');
+    let hasCaption = $derived((showTitle && !!title) || (showDescription && !!description));
 
     let expanded = $state(false);
 
@@ -33,43 +34,36 @@
     };
 </script>
 
-<svelte:window onkeydown={expanded ? handleKeydown : undefined} />
-
-<figure class="media" onclick={open} onkeydown={undefined}>
+{#snippet mediaContent(autoplay: boolean)}
     {#if isVideo}
-        <video {src} preload="none" controls loop muted playsinline>
+        <video {src} preload={autoplay ? 'auto' : 'none'} controls loop muted playsinline {autoplay}>
             <track kind="captions" />
         </video>
     {:else}
-        <img {src} alt={altText} loading="lazy" />
+        <img {src} alt={altText} loading={autoplay ? 'eager' : 'lazy'} />
     {/if}
-    {#if (showTitle && title) || (showDescription && description)}
+    {#if hasCaption}
         <figcaption>
             {#if showTitle && title}<span class="title">{title}</span>{/if}
             {#if showDescription && description}<span class="description">{description}</span>{/if}
         </figcaption>
     {/if}
+{/snippet}
+
+<svelte:window onkeydown={expanded ? handleKeydown : undefined} />
+
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<figure class="media" onclick={open} onkeydown={undefined}>
+    {@render mediaContent(false)}
 </figure>
 
 {#if expanded}
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class="overlay" onclick={close} onkeydown={undefined}>
+        <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
         <figure class="overlay-content" onclick={(e) => e.stopPropagation()} onkeydown={undefined}>
-            {#if isVideo}
-                <video {src} controls loop muted playsinline autoplay>
-                    <track kind="captions" />
-                </video>
-            {:else}
-                <img {src} alt={altText} />
-            {/if}
-            {#if (showTitle && title) || (showDescription && description)}
-                <figcaption>
-                    {#if showTitle && title}<span class="title">{title}</span>{/if}
-                    {#if showDescription && description}<span class="description"
-                            >{description}</span
-                        >{/if}
-                </figcaption>
-            {/if}
-            <button class="close-btn" onclick={close} title="Close">✕</button>
+            {@render mediaContent(true)}
+            <button class="close-btn" onclick={close} title="Close">&#x2715;</button>
         </figure>
     </div>
 {/if}
@@ -117,26 +111,27 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 2vh 2vw;
         cursor: pointer;
     }
 
     .overlay-content {
         position: relative;
         margin: 0;
-        max-width: 90vw;
-        max-height: 90vh;
+        width: 100%;
+        max-height: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
         cursor: default;
     }
 
     .overlay-content img,
     .overlay-content video {
         display: block;
-        max-width: 90vw;
-        max-height: 80vh;
-        width: auto;
-        height: auto;
+        width: 100%;
+        max-height: calc(100vh - 8vh);
+        object-fit: contain;
         border-radius: 6px;
     }
 

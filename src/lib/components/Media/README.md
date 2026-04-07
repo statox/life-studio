@@ -82,7 +82,7 @@ Inside a flex layout:
 
 ## Fullscreen overlay
 
-Clicking the media opens a fullscreen overlay showing the image/video at its original size (constrained to 90vw/80vh). Close by:
+Clicking the media opens a fullscreen overlay showing the image/video at full width while preserving its aspect ratio. Close by:
 
 - Clicking the backdrop
 - Clicking the **✕** button
