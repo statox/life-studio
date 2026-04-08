@@ -76,11 +76,6 @@
 
     export const updateAttractionTable = (newTable: AttractionTable) => {
         sim.updateAttractionTable(newTable);
-        // Keep the current frame so Canvas doesn't go blank, discard stale frames
-        const currentFrame = buffer[displayIndex];
-        buffer = currentFrame ? [currentFrame] : [];
-        displayIndex = 0;
-        absoluteFrameOffset = 0;
     };
 
     let canvasWrap: HTMLElement | undefined = $state();
