@@ -54,6 +54,12 @@
             <span class="card-cta">Browse universes →</span>
         </a>
 
+        <a class="card" href="{base}/particles-life/infinite">
+            <h2>Infinite</h2>
+            <p>Enjoy infinite universes</p>
+            <span class="card-cta">Be amazed →</span>
+        </a>
+
         <a class="card" href="{base}/particles-life/workbench">
             <h2>Workbench</h2>
             <p>

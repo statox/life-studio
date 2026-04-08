@@ -84,11 +84,10 @@
 
     <p>
         This is the most important setting we have because these conflicting forces are at the heart
-        of any form of motion in our universe. Each force takes a value
-        from <code>-2.0</code>
-        (Strong repulsion) to <code>2.0</code> (Strong attraction) in steps of <code>0.1</code>. <code>0</code> makes the particles not
-        interact with each other. Even with only two species, the number of possible attraction
-        tables is enormous.
+        of any form of motion in our universe. Each force takes a value from <code>-2.0</code>
+        (Strong repulsion) to <code>2.0</code> (Strong attraction) in steps of <code>0.1</code>.
+        <code>0</code> makes the particles not interact with each other. Even with only two species, the
+        number of possible attraction tables is enormous.
     </p>
 
     <div class="controls">

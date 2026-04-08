@@ -8,7 +8,7 @@
 
     let { children }: Props = $props();
 
-    const noHeaderPaths = ['/particles-life/story'];
+    const noHeaderPaths = ['/particles-life/story', '/particles-life/infinite'];
 
     let showHeader = $derived(!noHeaderPaths.some((p) => $page.url.pathname.endsWith(p)));
 
