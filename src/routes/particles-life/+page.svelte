@@ -56,7 +56,7 @@
 
         <a class="card" href="{base}/particles-life/infinite">
             <h2>Infinite</h2>
-            <p>Enjoy infinite universes</p>
+            <p>Enjoy randomly generated universes infinitely</p>
             <span class="card-cta">Be amazed →</span>
         </a>
 
