@@ -7,12 +7,18 @@ import type { Particles } from './particles';
 import { createSpatialGrid, rebuildSpatialGrid } from '$lib/particles/spatialGrid';
 import type { SpatialGrid } from '$lib/particles/spatialGrid';
 import type { Cell, WorldSize } from './types';
+import { SimulationStats } from './simulationStats';
+import type { StatsResult } from './simulationStats';
 
 export const CELL_RADIUS = 3;
 
 /* Web worker based engine */
 export class Engine {
     _stepTimeout: ReturnType<typeof setTimeout> | undefined;
+    _lastStatsTs: number;
+    _frameCount: number;
+    _stats: SimulationStats;
+    statsResult: StatsResult | null;
     _stepCb: Callback<Particles>;
     _running: boolean;
     _forceWorkers: Worker[];
@@ -34,6 +40,10 @@ export class Engine {
         friction: number
     ) {
         this._stepTimeout = undefined;
+        this._lastStatsTs = performance.now();
+        this._frameCount = 0;
+        this._stats = new SimulationStats();
+        this.statsResult = null;
         this._stepCb = () => {};
         this._running = false;
         this.worldSize = worldSize;
@@ -84,6 +94,12 @@ export class Engine {
             if (this._running) {
                 await this.step();
                 this._stepCb(undefined, this.particles);
+            }
+            this._frameCount++;
+            const now = performance.now();
+            if (now - this._lastStatsTs > 3000) {
+                this._lastStatsTs = now;
+                this.statsResult = this._stats.compute(this._grid, this._frameCount);
             }
             this._stepTimeout = setTimeout(runSteps);
         };

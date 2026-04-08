@@ -1,5 +1,6 @@
 import type { AttractionTable } from '$lib/particles/attraction';
 import type { Cell, PerfData, UpdateCellsResponse } from './types';
+import type { StatsResult } from './simulationStats';
 
 export type SimulationParameters = {
     worldSize: { x: number; y: number };
@@ -22,7 +23,8 @@ export function createSimulationWorker() {
 
     const start = async (
         params: SimulationParameters,
-        onFrame: (positions: Float32Array, perf?: PerfData) => void
+        onFrame: (positions: Float32Array, perf?: PerfData) => void,
+        onStats?: (stats: StatsResult) => void
     ) => {
         await loadWorker();
         const { worldSize, maxAttractionRadius, attractionTable, cells, useWorkers, friction } =
@@ -32,8 +34,10 @@ export function createSimulationWorker() {
         worker?.postMessage({ msg: 'destroy' });
         worker?.terminate();
         worker = new WorkerConstructor();
-        worker.onmessage = (e: MessageEvent<UpdateCellsResponse>) =>
+        worker.onmessage = (e: MessageEvent<UpdateCellsResponse>) => {
+            if (e.data.stats && onStats) onStats(e.data.stats);
             onFrame(e.data.positions, e.data.perf);
+        };
         worker.postMessage({
             msg: 'start',
             cells,
@@ -64,5 +68,5 @@ export function createSimulationWorker() {
         worker?.terminate();
     };
 
-    return { loadWorker, start, updateAttractionTable, pause, unpause, destroy };
+    return { loadWorker, start, updateAttractionTable, pause, unpause, destroy } as const;
 }

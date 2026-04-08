@@ -7,6 +7,8 @@ import type { Particles } from './particles';
 import { createSpatialGrid, rebuildSpatialGrid } from '$lib/particles/spatialGrid';
 import type { SpatialGrid } from '$lib/particles/spatialGrid';
 import type { Cell, PerfData, WorldSize } from './types';
+import { SimulationStats } from './simulationStats';
+import type { StatsResult } from './simulationStats';
 import { computeForces } from './computeForces';
 
 export const CELL_RADIUS = 3;
@@ -108,6 +110,9 @@ export class EngineST {
     _tGrid = 0;
     _tForce = 0;
     _tUpdate = 0;
+    _lastStatsTs: number = performance.now();
+    _stats = new SimulationStats();
+    statsResult: StatsResult | null = null;
     perfData: Omit<PerfData, 'interleave'> | null = null;
 
     async step() {
@@ -185,6 +190,12 @@ export class EngineST {
         this._tGrid += t1 - t0;
         this._tForce += t2 - t1;
         this._tUpdate += t3 - t2;
+
+        const now = performance.now();
+        if (now - this._lastStatsTs > 3000) {
+            this._lastStatsTs = now;
+            this.statsResult = this._stats.compute(this._grid, this._frameCount);
+        }
 
         if (this._frameCount % 120 === 0) {
             const n = 120;

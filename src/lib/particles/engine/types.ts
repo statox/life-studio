@@ -1,6 +1,7 @@
 import type { AttractionTable } from '$lib/particles/attraction';
 import type { InitialConfig } from '../universe';
 import type { Color } from './colors';
+import type { StatsResult } from './simulationStats';
 
 export type Coordinates = {
     x: number;
@@ -74,6 +75,7 @@ export type PerfData = {
 export type UpdateCellsResponse = {
     positions: Float32Array;
     perf?: PerfData;
+    stats?: StatsResult;
 };
 
 export type ColorProportions = Record<Color, number>;

@@ -205,6 +205,7 @@
                 }}
                 onPerfData={(p) => (perfData = p)}
                 onRenderPerf={(ms) => (renderMs = ms)}
+                onStats={console.log}
             />
         </main>
 

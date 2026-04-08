@@ -2,6 +2,7 @@ import type { Callback } from '$lib/tsUtils';
 import { Engine } from './Engine';
 import { EngineST } from './EngineST';
 import type { EngineRequest, PerfData } from './types';
+import type { StatsResult } from './simulationStats';
 import type { Particles } from './particles';
 
 let engine: Engine | EngineST | undefined;
@@ -72,5 +73,12 @@ const onUpdatedParticles: Callback<Particles> = (error, particles) => {
         _interleaveCount = 0;
     }
 
-    postMessage({ positions, perf }, { transfer: [positions.buffer] });
+    // Collect stats from either engine type
+    let stats: StatsResult | undefined;
+    if (engine?.statsResult) {
+        stats = engine.statsResult;
+        engine.statsResult = null;
+    }
+
+    postMessage({ positions, perf, stats }, { transfer: [positions.buffer] });
 };

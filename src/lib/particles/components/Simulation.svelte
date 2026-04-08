@@ -7,6 +7,7 @@
     import { createSimulationWorker } from '$lib/particles/engine/simulationWorker';
     import { colorToIndex } from '$lib/particles/engine';
     import type { PerfData, SimulationParams } from '$lib/particles/engine/types';
+    import type { StatsResult } from '$lib/particles/engine/simulationStats';
 
     const sim = createSimulationWorker();
 
@@ -24,6 +25,7 @@
         hideTimeline?: boolean;
         onPerfData?: ((perf: PerfData) => void) | undefined;
         onRenderPerf?: ((ms: number) => void) | undefined;
+        onStats?: ((stats: StatsResult) => void) | undefined;
         fillContainer?: boolean;
         cellSize?: number;
     }
@@ -36,6 +38,7 @@
         hideTimeline = false,
         onPerfData = undefined,
         onRenderPerf = undefined,
+        onStats = undefined,
         fillContainer = false,
         cellSize = 2
     }: Props = $props();
@@ -70,7 +73,8 @@
                 buffer.push(positions);
                 buffer = buffer;
                 if (perf && onPerfData) onPerfData(perf);
-            }
+            },
+            onStats ? (stats) => onStats(stats) : undefined
         );
     };
 
