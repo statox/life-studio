@@ -1,0 +1,51 @@
+{
+    "id": "atom",
+    "name": "atom",
+    "description": "A central structured Green core closely surrounded by a thin White border surrounded by a thin Red-Blue border with a sea of Red and Blue around.",
+    "preferredInitialConfig": "center",
+    "behavior": "cyclic",
+    "structure": "clusters",
+    "activeColors": 4,
+    "convergenceSpeed": "fast",
+    "energyLevel": "medium",
+    "complexity": 3,
+    "category": "other",
+    "createdAt": "2026-04-08",
+    "attractionTable": {
+        "white": {
+            "white": -0.4,
+            "red": 0,
+            "green": 0.8,
+            "blue": 0.9
+        },
+        "red": {
+            "white": 0.9,
+            "red": -0.6,
+            "green": -2,
+            "blue": 2
+        },
+        "green": {
+            "white": 1.6,
+            "red": 2,
+            "green": 0.8,
+            "blue": 1.1
+        },
+        "blue": {
+            "white": 0.7,
+            "red": -1,
+            "green": -1.6,
+            "blue": -0.7
+        }
+    },
+    "colorWeights": {
+        "white": 500,
+        "red": 500,
+        "green": 500,
+        "blue": 500
+    },
+    "nbParticles": 4000,
+    "maxAttractionRadius": 32,
+    "horizontalResolution": 10,
+    "verticalResolution": 7,
+    "friction": 0.5
+}
