@@ -9,147 +9,68 @@
 
     interface Props {
         simulationComponent: Simulation;
+        sectionIndex?: number;
     }
 
-    let { simulationComponent }: Props = $props();
+    let { simulationComponent, sectionIndex = 0 }: Props = $props();
 
     const preset = getUniverseById('4_colors_worms');
 
-    const sizePresets: Record<
-        string,
-        {
-            horizontalResolution: number;
-            verticalResolution: number;
-            nbParticles: number;
-            friction: number;
-        }
-    > = {
-        small: {
-            horizontalResolution: 10,
-            verticalResolution: 7,
-            nbParticles: 1000,
-            friction: 0.7
-        },
-        medium: {
-            horizontalResolution: 30,
-            verticalResolution: 20,
-            nbParticles: 4000,
-            friction: 0.5
-        },
-        large: {
-            horizontalResolution: 90,
-            verticalResolution: 60,
-            nbParticles: 4000,
-            friction: 0.5
-        }
-    };
-    let currentPreset: string | undefined = $state('medium');
-    let currentSize = sizePresets.medium;
+    const sizePresets = [
+        { name: 'medium', horizontalResolution: 30, verticalResolution: 20, nbParticles: 4000 },
+        { name: 'large', horizontalResolution: 90, verticalResolution: 60, nbParticles: 4000 },
+        { name: 'small', horizontalResolution: 10, verticalResolution: 7, nbParticles: 1000 }
+    ] as const;
 
-    const setProportions = (preset: string) => {
-        if (!Object.keys(sizePresets).includes(preset)) {
-            throw new Error('Unknown preset name ' + preset);
-        }
-        currentPreset = preset;
-        currentSize = sizePresets[currentPreset];
-        startScreen();
-    };
-
-    const startScreen = () => {
-        const config: SimulationConfig = {
-            horizontalResolution: currentSize.horizontalResolution,
-            verticalResolution: currentSize.verticalResolution,
+    const loadSize = (idx: number) => {
+        const s = sizePresets[idx];
+        const cfg: SimulationConfig = {
+            horizontalResolution: s.horizontalResolution,
+            verticalResolution: s.verticalResolution,
             initialSpreadConfig: 'center',
             colorWeights: preset.colorWeights,
             maxAttractionRadius: 32,
             attractionTable: preset.attractionTable,
-            nbParticles: currentSize.nbParticles,
+            nbParticles: s.nbParticles,
             friction: preset.friction
         };
-
-        const simulationParams = generateSimulationParams(config);
-        simulationComponent?.startSim(simulationParams);
+        simulationComponent?.startSim(generateSimulationParams(cfg));
     };
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(startScreen);
+        untrack(() => loadSize(sectionIndex));
     });
 </script>
 
 <div class="screen">
     <h2>World size</h2>
-    <!-- TODO: Write text about worldsize
-        Key points:
-            - The cells always have the same size and same attraction radius
-            - It is the size of "the box" which changes
-            - Medium box 
-                - Base reference
-                - Shows worm behaviors and spinning structures
-            - Large box
-                - Leave room for worms to grow longer but the pattern is the same
-            - Small box
-                - shows how the world wraps
--->
-    <p>
-        The last parameter we can control is the size of our universe. Here we will keep the same
-        amount of particles but we will vary the size of the "box" they live in.
-    </p>
-    <p>
-        We start with a
-        <ScreenBtn active={currentPreset === 'medium'} onclick={() => setProportions('medium')}>
-            Medium
+    {#if sectionIndex === 0}
+        <p>
+            The last parameter we can control is the size of our universe. Here we keep the same
+            amount of particles but vary the size of the "box" they live in.
+        </p>
+        <p>
+            Start with a <b>Medium</b> size to observe the base behavior: Each color is attracted to the
+            next one which creates moving worm-like structures. Sometimes the worm eats its own tail.
+            When structures get close, they tend to merge and split.
+        </p>
+    {:else if sectionIndex === 1}
+        <p>
+            With a <b>Large</b> world the particles have more room to move. Worms take more time to travel
+            across the world and interact less often, which allows more of them to form.
+        </p>
+    {:else}
+        <p>
+            In a <b>Small</b> world the particles don't have enough room to create several structures
+            and most merge into a single worm. This view also lets you better see how the world wraps
+            on itself: top and bottom borders are connected, as are left and right.
+        </p>
+    {/if}
+    <div class="section-btns">
+        <ScreenBtn onclick={() => loadSize(sectionIndex)}>
+            {sizePresets[sectionIndex]?.name}
         </ScreenBtn>
-        size to observe the base behavior of this universe: Each color is attracted to the next one which
-        creates moving worm-like structures. Sometimes the worm eats its own tail and the structure becomes
-        circular. When they get close to each other, structures tend to merge and split.
-    </p>
-
-    <p>
-        If we use
-        <ScreenBtn active={currentPreset === 'large'} onclick={() => setProportions('large')}>
-            Large
-        </ScreenBtn> dimensions for the world we see that the particles have more room to move. The worms
-        take more time to travel across the world. Since particles are less tightly packed in the world,
-        they interact with each other less often, which allows more worms to form as they merge less often
-        with other worms.
-    </p>
-
-    <p>
-        Finally in a
-        <ScreenBtn active={currentPreset === 'small'} onclick={() => setProportions('small')}>
-            Small
-        </ScreenBtn> world the particles don't have enough room to create several structures and most
-        of the world is merged into a single worm. This view allows you to better see how the world wraps
-        on itself: The top and bottom borders are connected and so are the left and right borders.
-    </p>
-
-    <div class="controls">
-        <div class="control-section">
-            <div class="btn-group">
-                <ScreenBtn
-                    active={currentPreset === 'medium'}
-                    onclick={() => setProportions('medium')}
-                >
-                    Medium
-                </ScreenBtn>
-                <ScreenBtn
-                    active={currentPreset === 'large'}
-                    onclick={() => setProportions('large')}
-                >
-                    Large
-                </ScreenBtn>
-                <ScreenBtn
-                    active={currentPreset === 'small'}
-                    onclick={() => setProportions('small')}
-                >
-                    Small
-                </ScreenBtn>
-            </div>
-        </div>
-        <div class="control-section">
-            <h3>Attraction Table</h3>
-            <AttractionTableComponent attractionTable={preset.attractionTable} readonly compact />
-        </div>
     </div>
+    <AttractionTableComponent attractionTable={preset.attractionTable} readonly compact />
 </div>

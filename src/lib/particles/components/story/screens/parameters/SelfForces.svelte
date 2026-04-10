@@ -8,102 +8,73 @@
 
     interface Props {
         simulationComponent: Simulation;
+        sectionIndex?: number;
     }
 
-    let { simulationComponent }: Props = $props();
+    let { simulationComponent, sectionIndex = 0 }: Props = $props();
 
-    let attractionTable = getZeroedAttractionTable();
-    attractionTable.white.white = 0;
-
-    let forceValue: -1 | 0 | 1 | undefined = $state(undefined);
-    let horizontalResolution = 6;
-    let verticalResolution = 4;
-    let nbParticles = 0; // Start with an empty screen
+    // sectionIndex 0 → force 0 (zoom), 1 → force 1 (attract), 2 → force -1 (repulse)
+    const forceForSection = [0, 1, -1] as const;
+    let activeForce: -1 | 0 | 1 = $state(forceForSection[sectionIndex] ?? 0);
 
     const setForce = (val: -1 | 0 | 1) => {
-        forceValue = val;
-        attractionTable = getZeroedAttractionTable();
-        attractionTable.white.white = val;
-        if (val === -1) {
-            horizontalResolution = 12;
-            verticalResolution = 8;
-            nbParticles = 100;
-        } else {
-            horizontalResolution = 6;
-            verticalResolution = 4;
-            nbParticles = 500;
-        }
-        startScreen();
-    };
-
-    const startScreen = () => {
-        const config: SimulationConfig = {
-            horizontalResolution,
-            verticalResolution,
+        activeForce = val;
+        const table = getZeroedAttractionTable();
+        table.white.white = val;
+        const isRepulse = val === -1;
+        const cfg: SimulationConfig = {
+            horizontalResolution: isRepulse ? 12 : 6,
+            verticalResolution: isRepulse ? 8 : 4,
             initialSpreadConfig: 'center',
-            colorWeights: {
-                white: 1,
-                red: 0,
-                green: 0,
-                blue: 0
-            },
+            colorWeights: { white: 1, red: 0, green: 0, blue: 0 },
             maxAttractionRadius: 32,
-            attractionTable: attractionTable,
-            nbParticles,
+            attractionTable: table,
+            nbParticles: isRepulse ? 100 : 500,
             friction: 0.77
         };
-
-        const simulationParams = generateSimulationParams(config);
-        simulationComponent?.startSim(simulationParams);
+        simulationComponent?.startSim(generateSimulationParams(cfg));
     };
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(startScreen);
+        untrack(() => setForce(forceForSection[sectionIndex] ?? 0));
     });
 </script>
 
 <div class="screen">
     <h2>Forces</h2>
-    <p>Let's zoom in on the center of the previous universe.</p>
-    <p>
-        <ScreenBtn active={forceValue === 0} onclick={() => setForce(0)}>Zoooom</ScreenBtn>
-    </p>
-    <p>
-        All particles start tightly packed and slowly move away from each other. <b
-            >This is their default behavior:</b
-        > If a particle is too close to a neighbor it gets repulsed and tries to move away. If no neighbor
-        is close enough it just rests and does nothing.
-    </p>
-    <p>
-        Particles can attract each other
-        <ScreenBtn active={forceValue === 1} onclick={() => setForce(1)}>
-            Create attraction force
-        </ScreenBtn>
-    </p>
-    <p>
-        In this case their natural repulsion force has to fight a new force: When a neighbor is
-        close enough, the particle is now attracted. They pack as closely as possible to each other
-        and their natural repulsion force pushes them into clusters.
-    </p>
-    <p>
-        Finally, they can also repel each other, which causes clusters to form as groups push
-        against one another.
-        <ScreenBtn active={forceValue === -1} onclick={() => setForce(-1)}>
-            Create repulsion force
-        </ScreenBtn>
-    </p>
-    <div class="controls">
-        <div class="control-section">
-            <div class="btn-group">
-                <ScreenBtn active={forceValue === 0} onclick={() => setForce(0)}>Zoooom</ScreenBtn>
-                <ScreenBtn active={forceValue === 1} onclick={() => setForce(1)}>
-                    Create attraction force
-                </ScreenBtn>
-                <ScreenBtn active={forceValue === -1} onclick={() => setForce(-1)}>
-                    Create repulsion force
-                </ScreenBtn>
-            </div>
+    {#if sectionIndex === 0}
+        <p>Let's zoom in on the center of the previous universe.</p>
+        <p>
+            All particles start tightly packed and slowly move away from each other. <b
+                >This is their default behavior:</b
+            > If a particle is too close to a neighbor it gets repulsed and tries to move away. If no
+            neighbor is close enough it just rests and does nothing.
+        </p>
+        <div class="section-btns">
+            <ScreenBtn active={activeForce === 0} onclick={() => setForce(0)}>Zoooom</ScreenBtn>
         </div>
-    </div>
+    {:else if sectionIndex === 1}
+        <p>Particles can attract each other.</p>
+        <p>
+            Their natural repulsion force has to fight a new force: When a neighbor is close enough,
+            the particle is now attracted. They pack as closely as possible to each other and their
+            natural repulsion force pushes them into clusters.
+        </p>
+        <div class="section-btns">
+            <ScreenBtn active={activeForce === 1} onclick={() => setForce(1)}>
+                Create attraction force
+            </ScreenBtn>
+        </div>
+    {:else}
+        <p>
+            Finally, they can also repel each other, which causes clusters to form as groups push
+            against one another.
+        </p>
+        <div class="section-btns">
+            <ScreenBtn active={activeForce === -1} onclick={() => setForce(-1)}>
+                Create repulsion force
+            </ScreenBtn>
+        </div>
+    {/if}
 </div>

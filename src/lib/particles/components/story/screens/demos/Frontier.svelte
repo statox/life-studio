@@ -8,6 +8,7 @@
 
     interface Props {
         simulationComponent: Simulation;
+        sectionIndex?: number;
     }
 
     let { simulationComponent }: Props = $props();
@@ -15,11 +16,9 @@
     const preset = getUniverseById('competing_predators');
 
     const startScreen = () => {
-        const simulationParams = generateSimulationParams({
-            ...preset,
-            initialSpreadConfig: 'rainbow'
-        });
-        simulationComponent?.startSim(simulationParams);
+        simulationComponent?.startSim(
+            generateSimulationParams({ ...preset, initialSpreadConfig: 'rainbow' })
+        );
     };
 
     $effect(() => {
@@ -38,9 +37,7 @@
         How long do you think the vertical frontier between <span class="cw">White</span> and
         <span class="cr">Red</span> will hold?
     </p>
-    <div class="controls">
-        <div class="control-section spread-btns">
-            <RainbowButton onClick={startScreen} />
-        </div>
+    <div class="section-btns">
+        <RainbowButton onClick={startScreen} />
     </div>
 </div>

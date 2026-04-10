@@ -12,66 +12,58 @@
 
     interface Props {
         simulationComponent: Simulation;
+        sectionIndex?: number;
     }
 
-    let { simulationComponent }: Props = $props();
+    let { simulationComponent, sectionIndex = 0 }: Props = $props();
 
     const presets = [
         getUniverseById('single_compact_moving_structure'),
         getUniverseById('zoom4_stages_mover')
     ];
 
-    let activeIndex = $state(0);
-    let spreadConfig: InitialConfig = presets[0].preferredInitialConfig;
+    let spreadConfig: InitialConfig = $state(
+        presets[sectionIndex]?.preferredInitialConfig ?? presets[0].preferredInitialConfig
+    );
 
-    const loadPreset = (idx: number) => {
-        activeIndex = idx;
-        spreadConfig = presets[idx].preferredInitialConfig;
-        startScreen();
-    };
-
-    const startScreen = () => {
-        const simulationParams = generateSimulationParams({
-            ...presets[activeIndex],
-            initialSpreadConfig: spreadConfig
-        });
-        simulationComponent?.startSim(simulationParams);
+    const loadPreset = () => {
+        spreadConfig = presets[sectionIndex].preferredInitialConfig;
+        simulationComponent?.startSim(
+            generateSimulationParams({
+                ...presets[sectionIndex],
+                initialSpreadConfig: spreadConfig
+            })
+        );
     };
 
-    const uniformSpread = () => {
-        spreadConfig = 'uniform';
-        startScreen();
-    };
-    const centerSpread = () => {
-        spreadConfig = 'center';
-        startScreen();
-    };
-    const rainbowSpread = () => {
-        spreadConfig = 'rainbow';
-        startScreen();
+    const reSpread = (config: InitialConfig) => {
+        spreadConfig = config;
+        simulationComponent?.startSim(
+            generateSimulationParams({ ...presets[sectionIndex], initialSpreadConfig: config })
+        );
     };
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(startScreen);
+        untrack(loadPreset);
     });
 </script>
 
 <div class="screen">
     <h2>Smaller Moving Organisms</h2>
-    <p>If we create smaller worlds we can better observe how these small moving organisms form.</p>
-    <div class="controls">
-        <div class="control-section">
-            {#each presets as p, idx}
-                <ScreenBtn active={activeIndex === idx} onclick={() => loadPreset(idx)}>
-                    {p.name}
-                </ScreenBtn>
-            {/each}
-        </div>
-        <div class="control-section spread-btns">
-            <UniformSpreadButton onClick={uniformSpread} />
-            <CenteredCircleButton onClick={centerSpread} />
-            <RainbowButton onClick={rainbowSpread} />
-        </div>
+    {#if sectionIndex === 0}
+        <p>
+            If we create smaller worlds we can better observe how these small moving organisms form.
+        </p>
+    {:else}
+        <p><b>{presets[sectionIndex]?.name}</b></p>
+    {/if}
+    <div class="section-btns">
+        <ScreenBtn onclick={loadPreset}>{presets[sectionIndex]?.name}</ScreenBtn>
+    </div>
+    <div class="spread-btns">
+        <UniformSpreadButton onClick={() => reSpread('uniform')} />
+        <CenteredCircleButton onClick={() => reSpread('center')} />
+        <RainbowButton onClick={() => reSpread('rainbow')} />
     </div>
 </div>

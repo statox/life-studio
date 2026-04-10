@@ -36,20 +36,14 @@ p {
     margin: 0;
 }
 
-/* ── Controls container ─────────────────── */
-.controls {
+/* ── Section buttons row ────────────────── */
+.section-btns {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 8px;
-}
-
-/* ── Control section card ───────────────── */
-.control-section {
-    background: #263238;
-    border: 1px solid #37474f;
-    border-radius: 8px;
-    padding: 14px 16px;
+    flex-direction: row;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 2px;
 }
 
 /* ── Spread button row ──────────────────── */
@@ -58,20 +52,6 @@ p {
     flex-direction: row;
     gap: 6px;
     flex-wrap: wrap;
-}
-
-/* ── Inline button group (with label) ───── */
-.btn-group {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-
-.btn-group-label {
-    font-size: 0.8rem;
-    color: #90a4ae;
-    margin-right: 4px;
 }
 
 /* ── Color proportion fields ────────────── */

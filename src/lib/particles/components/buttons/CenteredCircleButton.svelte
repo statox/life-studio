@@ -6,7 +6,9 @@
     let { onClick }: Props = $props();
 </script>
 
-<button class="spread-btn" onclick={onClick}>◎ Centered circle</button>
+<button class="spread-btn" onclick={onClick} title="Centered circle"
+    >◎<span class="spread-btn-text"> Centered circle</span></button
+>
 
 <style>
     .spread-btn {
@@ -29,5 +31,17 @@
         background: #2e3c43;
         border-color: #546e7a;
         color: #eceff1;
+    }
+
+    @media (max-width: 480px) {
+        .spread-btn {
+            padding: 8px 10px;
+            min-width: 44px;
+            justify-content: center;
+        }
+
+        .spread-btn-text {
+            display: none;
+        }
     }
 </style>

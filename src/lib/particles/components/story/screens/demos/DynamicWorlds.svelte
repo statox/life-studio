@@ -12,9 +12,10 @@
 
     interface Props {
         simulationComponent: Simulation;
+        sectionIndex?: number;
     }
 
-    let { simulationComponent }: Props = $props();
+    let { simulationComponent, sectionIndex = 0 }: Props = $props();
 
     const presets = [
         getUniverseById('4_colors_waves'),
@@ -23,73 +24,58 @@
         getUniverseById('infinite_moving_mass')
     ];
 
-    let activeIndex = $state(0);
-    let spreadConfig: InitialConfig = presets[0].preferredInitialConfig;
+    let spreadConfig: InitialConfig = $state(
+        presets[sectionIndex]?.preferredInitialConfig ?? presets[0].preferredInitialConfig
+    );
 
-    const loadPreset = (idx: number) => {
-        activeIndex = idx;
-        spreadConfig = presets[idx].preferredInitialConfig;
-        startScreen();
-    };
-
-    const startScreen = () => {
-        const simulationParams = generateSimulationParams({
-            ...presets[activeIndex],
-            initialSpreadConfig: spreadConfig
-        });
-        simulationComponent?.startSim(simulationParams);
+    const loadPreset = () => {
+        spreadConfig = presets[sectionIndex].preferredInitialConfig;
+        simulationComponent?.startSim(
+            generateSimulationParams({
+                ...presets[sectionIndex],
+                initialSpreadConfig: spreadConfig
+            })
+        );
     };
 
-    const uniformSpread = () => {
-        spreadConfig = 'uniform';
-        startScreen();
-    };
-    const centerSpread = () => {
-        spreadConfig = 'center';
-        startScreen();
-    };
-    const rainbowSpread = () => {
-        spreadConfig = 'rainbow';
-        startScreen();
+    const reSpread = (config: InitialConfig) => {
+        spreadConfig = config;
+        simulationComponent?.startSim(
+            generateSimulationParams({ ...presets[sectionIndex], initialSpreadConfig: config })
+        );
     };
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(startScreen);
+        untrack(loadPreset);
     });
 </script>
 
 <div class="screen">
     <h2>Dynamic Worlds</h2>
-    <p>
-        When we release some attraction forces we end up with more dynamic worlds:
-        <ScreenBtn active={activeIndex === 0} onclick={() => loadPreset(0)}>
-            {presets[0].name}
-        </ScreenBtn>
-        has <span class="cw">White</span> chasing the other colors so we get a universe which shows
-        some cyclical aspects, waves of <span class="cw">White</span> appear after a few seconds.
-    </p>
-    <p>
-        <ScreenBtn active={activeIndex === 1} onclick={() => loadPreset(1)}>
-            {presets[1].name}
-        </ScreenBtn>
-        creates dramatic waves of <span class="cr">Red</span> chasing <span class="cw">White</span>
-        chasing <span class="cg">Green</span> chasing <span class="cr">Red</span>. The universe
-        quickly starts looking like ripples in still water.
-    </p>
-    <p>The other universes in this page also show a blend of order and chaos.</p>
-    <div class="controls">
-        <div class="control-section">
-            {#each presets as p, idx}
-                <ScreenBtn active={activeIndex === idx} onclick={() => loadPreset(idx)}>
-                    {p.name}
-                </ScreenBtn>
-            {/each}
-        </div>
-        <div class="control-section spread-btns">
-            <UniformSpreadButton onClick={uniformSpread} />
-            <CenteredCircleButton onClick={centerSpread} />
-            <RainbowButton onClick={rainbowSpread} />
-        </div>
+    {#if sectionIndex === 0}
+        <p>
+            When we release some attraction forces we end up with more dynamic worlds.
+            <b>{presets[0].name}</b> has <span class="cw">White</span> chasing the other colors so
+            we get a universe which shows some cyclical aspects: waves of
+            <span class="cw">White</span> appear after a few seconds.
+        </p>
+    {:else if sectionIndex === 1}
+        <p>
+            <b>{presets[1].name}</b> creates dramatic waves of <span class="cr">Red</span> chasing
+            <span class="cw">White</span> chasing <span class="cg">Green</span> chasing
+            <span class="cr">Red</span>. The universe quickly starts looking like ripples in still
+            water.
+        </p>
+    {:else}
+        <p>The other universes in this page also show a blend of order and chaos.</p>
+    {/if}
+    <div class="section-btns">
+        <ScreenBtn onclick={loadPreset}>{presets[sectionIndex]?.name}</ScreenBtn>
+    </div>
+    <div class="spread-btns">
+        <UniformSpreadButton onClick={() => reSpread('uniform')} />
+        <CenteredCircleButton onClick={() => reSpread('center')} />
+        <RainbowButton onClick={() => reSpread('rainbow')} />
     </div>
 </div>

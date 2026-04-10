@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { tick } from 'svelte';
     import type { HTMLButtonAttributes } from 'svelte/elements';
 
     interface Props extends HTMLButtonAttributes {
@@ -10,27 +9,10 @@
 
     let { active = false, children, onclick }: Props = $props();
 
-    const isVisibleInViewport = (element: Element) => {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.bottom <=
-            (window.innerHeight || document.documentElement.clientHeight) + rect.height / 2
-        );
-    };
-
-    const handleClick = async () => {
+    const handleClick = () => {
         if (onclick) {
             onclick();
         }
-
-        // After the DOM updates (let the simulation start), scroll the canvas into view
-        await tick();
-        const canvasEl = document.querySelector('.canvas-col');
-        if (!canvasEl) return;
-
-        // Only scroll if the simulation is not already partly visible
-        if (isVisibleInViewport(canvasEl)) return;
-        canvasEl.scrollIntoView({ behavior: 'smooth' });
     };
 </script>
 

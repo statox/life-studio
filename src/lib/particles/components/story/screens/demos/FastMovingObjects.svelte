@@ -12,70 +12,57 @@
 
     interface Props {
         simulationComponent: Simulation;
+        sectionIndex?: number;
     }
 
-    let { simulationComponent }: Props = $props();
+    let { simulationComponent, sectionIndex = 0 }: Props = $props();
 
     const presets = [getUniverseById('fast_movers'), getUniverseById('moving_structures2')];
 
-    let activeIndex = $state(0);
-    let spreadConfig: InitialConfig = presets[0].preferredInitialConfig;
+    let spreadConfig: InitialConfig = $state(
+        presets[sectionIndex]?.preferredInitialConfig ?? presets[0].preferredInitialConfig
+    );
 
-    const loadPreset = (idx: number) => {
-        activeIndex = idx;
-        spreadConfig = presets[idx].preferredInitialConfig;
-        startScreen();
-    };
-
-    const startScreen = () => {
-        const simulationParams = generateSimulationParams({
-            ...presets[activeIndex],
-            initialSpreadConfig: spreadConfig
-        });
-        simulationComponent?.startSim(simulationParams);
+    const loadPreset = () => {
+        spreadConfig = presets[sectionIndex].preferredInitialConfig;
+        simulationComponent?.startSim(
+            generateSimulationParams({
+                ...presets[sectionIndex],
+                initialSpreadConfig: spreadConfig
+            })
+        );
     };
 
-    const uniformSpread = () => {
-        spreadConfig = 'uniform';
-        startScreen();
-    };
-    const centerSpread = () => {
-        spreadConfig = 'center';
-        startScreen();
-    };
-    const rainbowSpread = () => {
-        spreadConfig = 'rainbow';
-        startScreen();
+    const reSpread = (config: InitialConfig) => {
+        spreadConfig = config;
+        simulationComponent?.startSim(
+            generateSimulationParams({ ...presets[sectionIndex], initialSpreadConfig: config })
+        );
     };
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(startScreen);
+        untrack(loadPreset);
     });
 </script>
 
 <div class="screen">
     <h2>Fast moving objects</h2>
-    <p>
-        When we reduce the friction in the universe the energy in the system increases and things
-        begin to move much faster.
-    </p>
-    <p>
-        Here we can see that clusters are much more dynamic and don't stabilize as well as before.
-        And when the right species meet it can get explosive!
-    </p>
-    <div class="controls">
-        <div class="control-section">
-            {#each presets as p, idx}
-                <ScreenBtn active={activeIndex === idx} onclick={() => loadPreset(idx)}>
-                    {p.name}
-                </ScreenBtn>
-            {/each}
-        </div>
-        <div class="control-section spread-btns">
-            <UniformSpreadButton onClick={uniformSpread} />
-            <CenteredCircleButton onClick={centerSpread} />
-            <RainbowButton onClick={rainbowSpread} />
-        </div>
+    {#if sectionIndex === 0}
+        <p>
+            When we reduce the friction in the universe the energy in the system increases and
+            things begin to move much faster. Clusters are much more dynamic and don't stabilize as
+            well as before. And when the right species meet it can get explosive!
+        </p>
+    {:else}
+        <p><b>{presets[sectionIndex]?.name}</b></p>
+    {/if}
+    <div class="section-btns">
+        <ScreenBtn onclick={loadPreset}>{presets[sectionIndex]?.name}</ScreenBtn>
+    </div>
+    <div class="spread-btns">
+        <UniformSpreadButton onClick={() => reSpread('uniform')} />
+        <CenteredCircleButton onClick={() => reSpread('center')} />
+        <RainbowButton onClick={() => reSpread('rainbow')} />
     </div>
 </div>

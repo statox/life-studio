@@ -33,32 +33,94 @@
         component: Component<any>;
         noSimulation?: boolean;
         cellSize?: number;
+        sectionIndex?: number;
     };
 
     let simulationComponent: Simulation | undefined = $state();
+    let narrativeEl: HTMLDivElement | undefined = $state();
 
     const screens: ScreenConfig[] = [
         { component: Introduction, noSimulation: true },
+        // Empty universe
         { component: Parameters_EmptyUniverse },
-        { component: Parameters_RestartButtons, cellSize: 5 },
-        { component: Parameters_SelfForces, cellSize: 5 },
-        { component: Parameters_Friction, cellSize: 20 },
-        { component: Parameters_ColorProportions, cellSize: 5 },
-        { component: Parameters_ColorProportionsDynamic },
-        { component: Parameters_AttractionTable },
-        { component: Parameters_WorldSize },
+        // Restart buttons (2 sections)
+        { component: Parameters_RestartButtons, cellSize: 5, sectionIndex: 0 },
+        { component: Parameters_RestartButtons, cellSize: 5, sectionIndex: 1 },
+        // Self forces (3 sections)
+        { component: Parameters_SelfForces, cellSize: 5, sectionIndex: 0 },
+        { component: Parameters_SelfForces, cellSize: 5, sectionIndex: 1 },
+        { component: Parameters_SelfForces, cellSize: 5, sectionIndex: 2 },
+        // Friction (5 sections)
+        { component: Parameters_Friction, cellSize: 20, sectionIndex: 0 },
+        { component: Parameters_Friction, cellSize: 20, sectionIndex: 1 },
+        { component: Parameters_Friction, cellSize: 20, sectionIndex: 2 },
+        { component: Parameters_Friction, cellSize: 20, sectionIndex: 3 },
+        { component: Parameters_Friction, cellSize: 20, sectionIndex: 4 },
+        // Color proportions (2 sections)
+        { component: Parameters_ColorProportions, cellSize: 5, sectionIndex: 0 },
+        { component: Parameters_ColorProportions, cellSize: 5, sectionIndex: 1 },
+        // Color proportions dynamic (5 sections)
+        { component: Parameters_ColorProportionsDynamic, sectionIndex: 0 },
+        { component: Parameters_ColorProportionsDynamic, sectionIndex: 1 },
+        { component: Parameters_ColorProportionsDynamic, sectionIndex: 2 },
+        { component: Parameters_ColorProportionsDynamic, sectionIndex: 3 },
+        { component: Parameters_ColorProportionsDynamic, sectionIndex: 4 },
+        // Attraction table (3 sections)
+        { component: Parameters_AttractionTable, sectionIndex: 0 },
+        { component: Parameters_AttractionTable, sectionIndex: 1 },
+        { component: Parameters_AttractionTable, sectionIndex: 2 },
+        // World size (3 sections)
+        { component: Parameters_WorldSize, sectionIndex: 0 },
+        { component: Parameters_WorldSize, sectionIndex: 1 },
+        { component: Parameters_WorldSize, sectionIndex: 2 },
         { component: Demos_Introduction, noSimulation: true },
-        { component: Demos_SpacePaving },
+        // Space paving (4 presets)
+        { component: Demos_SpacePaving, sectionIndex: 0 },
+        { component: Demos_SpacePaving, sectionIndex: 1 },
+        { component: Demos_SpacePaving, sectionIndex: 2 },
+        { component: Demos_SpacePaving, sectionIndex: 3 },
+        // Frontier (1 preset)
         { component: Demos_Frontier },
-        { component: Demos_Clusters },
-        { component: Demos_ClustersDynamics },
-        { component: Demos_DynamicWorlds },
-        { component: Demos_DynamicWorldWithAttraction },
-        { component: Demos_SpreadingPatterns },
-        { component: Demos_MergingMovingOrganisms },
-        { component: Demos_SmallerMovingOrganisms },
-        { component: Demos_LargerMovingOrganisms },
-        { component: Demos_FastMovingObjects },
+        // Clusters (6 presets)
+        { component: Demos_Clusters, sectionIndex: 0 },
+        { component: Demos_Clusters, sectionIndex: 1 },
+        { component: Demos_Clusters, sectionIndex: 2 },
+        { component: Demos_Clusters, sectionIndex: 3 },
+        { component: Demos_Clusters, sectionIndex: 4 },
+        { component: Demos_Clusters, sectionIndex: 5 },
+        // Clusters dynamics (3 presets)
+        { component: Demos_ClustersDynamics, sectionIndex: 0 },
+        { component: Demos_ClustersDynamics, sectionIndex: 1 },
+        { component: Demos_ClustersDynamics, sectionIndex: 2 },
+        // Dynamic worlds (4 presets)
+        { component: Demos_DynamicWorlds, sectionIndex: 0 },
+        { component: Demos_DynamicWorlds, sectionIndex: 1 },
+        { component: Demos_DynamicWorlds, sectionIndex: 2 },
+        { component: Demos_DynamicWorlds, sectionIndex: 3 },
+        // Dynamic world with attraction (3 presets)
+        { component: Demos_DynamicWorldWithAttraction, sectionIndex: 0 },
+        { component: Demos_DynamicWorldWithAttraction, sectionIndex: 1 },
+        { component: Demos_DynamicWorldWithAttraction, sectionIndex: 2 },
+        // Spreading patterns (4 presets)
+        { component: Demos_SpreadingPatterns, sectionIndex: 0 },
+        { component: Demos_SpreadingPatterns, sectionIndex: 1 },
+        { component: Demos_SpreadingPatterns, sectionIndex: 2 },
+        { component: Demos_SpreadingPatterns, sectionIndex: 3 },
+        // Merging moving organisms (2 presets)
+        { component: Demos_MergingMovingOrganisms, sectionIndex: 0 },
+        { component: Demos_MergingMovingOrganisms, sectionIndex: 1 },
+        // Smaller moving organisms (2 presets)
+        { component: Demos_SmallerMovingOrganisms, sectionIndex: 0 },
+        { component: Demos_SmallerMovingOrganisms, sectionIndex: 1 },
+        // Larger moving organisms (5 presets)
+        { component: Demos_LargerMovingOrganisms, sectionIndex: 0 },
+        { component: Demos_LargerMovingOrganisms, sectionIndex: 1 },
+        { component: Demos_LargerMovingOrganisms, sectionIndex: 2 },
+        { component: Demos_LargerMovingOrganisms, sectionIndex: 3 },
+        { component: Demos_LargerMovingOrganisms, sectionIndex: 4 },
+        // Fast moving objects (2 presets)
+        { component: Demos_FastMovingObjects, sectionIndex: 0 },
+        { component: Demos_FastMovingObjects, sectionIndex: 1 },
         { component: Conclusion, noSimulation: true }
     ];
 
@@ -71,7 +133,7 @@
 
     const scrollToTop = async () => {
         await tick();
-        window.scrollTo({ top: 0 });
+        if (narrativeEl) narrativeEl.scrollTop = 0;
     };
 
     const prev = () => {
@@ -89,20 +151,24 @@
     };
 </script>
 
-<div class="story" class:text-only={!showSimulation}>
-    <div class="narrative">
-        <currentScreen.component {simulationComponent} />
+<div class="page" class:with-simulation={showSimulation}>
+    <div class="narrative" bind:this={narrativeEl}>
+        {#key currentIndex}
+            <currentScreen.component
+                {simulationComponent}
+                sectionIndex={currentScreen.sectionIndex ?? 0}
+            />
+        {/key}
     </div>
 
-    {#if showSimulation}
-        <div class="canvas-col">
-            <Simulation
-                bind:this={simulationComponent}
-                hideTimeline={true}
-                cellSize={currentScreen.cellSize}
-            />
-        </div>
-    {/if}
+    <div class="sim-area" class:hidden={!showSimulation}>
+        <Simulation
+            bind:this={simulationComponent}
+            fillContainer
+            hideTimeline={true}
+            cellSize={currentScreen.cellSize}
+        />
+    </div>
 </div>
 
 <div class="nav-bar">
@@ -126,7 +192,17 @@
         <span class="nav-label-full">Previous</span>
         <span class="nav-label-short">←</span>
     </button>
-    <span class="nav-counter">{currentIndex + 1} / {screens.length}</span>
+    <input
+        class="nav-slider"
+        type="range"
+        min="0"
+        max={screens.length - 1}
+        value={currentIndex}
+        oninput={(e) => {
+            currentIndex = parseInt(e.currentTarget.value);
+            scrollToTop();
+        }}
+    />
     {#if !isOnLastScreen}
         <button class="nav-btn" onclick={next}>
             <span class="nav-label-full">Next</span>
@@ -136,32 +212,44 @@
 </div>
 
 <style>
-    /* ── Layout ─────────────────────────────── */
-    .story {
+    /* ── Page shell ─────────────────────────── */
+    .page {
         display: flex;
         flex-direction: column;
-        gap: 6px;
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 32px 24px 48px;
+        height: calc(100vh - 48px); /* 48px = nav-bar height */
+        overflow: hidden;
         box-sizing: border-box;
     }
 
-    @media (max-width: 768px) {
-        .story {
-            grid-template-columns: 1fr;
-            padding: 16px 12px 48px;
-            gap: 16px;
-        }
+    /* ── Narrative strip (top ~1/3) ─────────── */
+    .narrative {
+        flex: 0 0 auto;
+        height: clamp(200px, 33vh, 400px);
+        overflow-y: auto;
+        padding: 14px 20px 10px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #263238;
+        /* Subtle scrollbar */
+        scrollbar-width: thin;
+        scrollbar-color: #37474f transparent;
     }
 
-    /* ── Narrative column ────────────────────── */
-    .narrative {
+    /* Text-only screens: center content vertically in full page height */
+    .page:not(.with-simulation) .narrative {
+        height: auto;
+        flex: 1;
         display: flex;
-        flex-direction: column;
-        align-self: center;
-        text-align: justify;
-        max-width: 900px;
+        align-items: center;
+        justify-content: center;
+        border-bottom: none;
+        padding: 24px;
+    }
+
+    /* Inner wrapper for centering on text-only screens */
+    .page:not(.with-simulation) .narrative :global(.screen),
+    .page:not(.with-simulation) .narrative :global(div) {
+        max-width: 760px;
+        width: 100%;
     }
 
     .narrative :global(h1),
@@ -169,15 +257,32 @@
         text-align: center;
     }
 
-    /* ── Text-only screens: also center vertically ── */
-    .story.text-only {
-        min-height: calc(100vh - 60px);
-        justify-content: center;
+    /* ── Simulation area (bottom ~2/3) ──────── */
+    .sim-area {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden;
     }
 
-    /* ── Canvas column ──────────────────────── */
-    .canvas-col {
-        min-width: 0;
+    .sim-area.hidden {
+        display: none;
+    }
+
+    .sim-area :global(.sim) {
+        height: 100%;
+    }
+
+    .sim-area :global(.canvas-wrap) {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+    }
+
+    .sim-area :global(canvas) {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        aspect-ratio: unset !important;
     }
 
     /* ── Navigation bar ────────────────────── */
@@ -189,19 +294,47 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 24px;
-        padding: 12px 24px;
+        gap: 8px;
+        padding: 12px 16px;
         background: #1a2327ee;
         border-top: 1px solid #37474f;
         backdrop-filter: blur(8px);
         z-index: 20;
     }
 
-    .nav-counter {
-        font-size: 0.85rem;
-        color: #90a4ae;
-        min-width: 48px;
-        text-align: center;
+    .nav-slider {
+        flex: 1;
+        -webkit-appearance: none;
+        appearance: none;
+        height: 3px;
+        border-radius: 2px;
+        background: #37474f;
+        outline: none;
+        cursor: pointer;
+        margin: 0 4px;
+    }
+
+    .nav-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #c3e88d;
+        cursor: pointer;
+        transition: transform 0.1s;
+    }
+
+    .nav-slider::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+    }
+
+    .nav-slider::-moz-range-thumb {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #c3e88d;
+        border: none;
+        cursor: pointer;
     }
 
     .nav-btn {
@@ -230,7 +363,7 @@
 
     .home-btn {
         position: absolute;
-        left: 24px;
+        left: 16px;
         display: flex;
         align-items: center;
         justify-content: center;

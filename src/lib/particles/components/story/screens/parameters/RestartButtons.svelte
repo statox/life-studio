@@ -9,95 +9,58 @@
 
     interface Props {
         simulationComponent: Simulation;
+        sectionIndex?: number;
     }
 
-    let { simulationComponent }: Props = $props();
+    let { simulationComponent, sectionIndex = 0 }: Props = $props();
 
-    let attractionTable = getZeroedAttractionTable();
+    const attractionTable = getZeroedAttractionTable();
+    let spreadConfig: InitialConfig = $state('uniform');
 
-    let initialSpreadConfig: InitialConfig | undefined = $state(undefined);
-    let nbParticles = 0;
-
-    const uniformSpread = () => {
-        initialSpreadConfig = 'uniform';
-        nbParticles = 2000;
-        startScreen();
-    };
-
-    const centerSpread = () => {
-        initialSpreadConfig = 'center';
-        nbParticles = 2000;
-        startScreen();
-    };
-
-    const startScreen = () => {
-        const config: SimulationConfig = {
+    const startSim = (config: InitialConfig) => {
+        spreadConfig = config;
+        const cfg: SimulationConfig = {
             horizontalResolution: 30,
             verticalResolution: 20,
-            initialSpreadConfig: initialSpreadConfig || 'uniform',
-            colorWeights: {
-                white: 1,
-                red: 0,
-                green: 0,
-                blue: 0
-            },
+            initialSpreadConfig: config,
+            colorWeights: { white: 1, red: 0, green: 0, blue: 0 },
             maxAttractionRadius: 32,
-            attractionTable: attractionTable,
-            nbParticles,
+            attractionTable,
+            nbParticles: 2000,
             friction: 0.5
         };
-
-        const simulationParams = generateSimulationParams(config);
-        simulationComponent?.startSim(simulationParams);
+        simulationComponent?.startSim(generateSimulationParams(cfg));
     };
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(startScreen);
+        untrack(() => {
+            if (sectionIndex === 0) startSim('uniform');
+            else startSim('center');
+        });
     });
 </script>
 
 <div class="screen">
     <h2>Restart Buttons</h2>
-    <p>Let's add a few particles</p>
-    <p>
-        <em
-            >Click the buttons in the text and observe the simulation update at the bottom of the
-            page.</em
-        >
-        <ScreenBtn active={initialSpreadConfig === 'uniform'} onclick={() => uniformSpread()}>
-            Add particles
-        </ScreenBtn>
-    </p>
-    <p>
-        Meet <span class="cw">White</span>. This is our first species. For now it is doing nothing.
-        That is going to change soon.
-    </p>
-
-    <p>
-        Look at what happens when we pack our particles a bit more tightly:
-        <ScreenBtn active={initialSpreadConfig === 'center'} onclick={() => centerSpread()}>
-            Pack particles
-        </ScreenBtn>
-    </p>
-
-    <p>
-        We get some motion! Let's zoom in on that.
-        <em>Click the "Next" (→) button at the bottom of the page.</em>
-    </p>
-    <div class="controls">
-        <div class="control-section">
-            <div class="btn-group">
-                <ScreenBtn
-                    active={initialSpreadConfig === 'uniform'}
-                    onclick={() => uniformSpread()}
-                >
-                    Add particles
-                </ScreenBtn>
-                <ScreenBtn active={initialSpreadConfig === 'center'} onclick={() => centerSpread()}>
-                    Pack particles
-                </ScreenBtn>
-            </div>
+    {#if sectionIndex === 0}
+        <p>Let's add a few particles.</p>
+        <p>
+            Meet <span class="cw">White</span>. This is our first species. For now it is doing
+            nothing. That is going to change soon.
+        </p>
+        <div class="section-btns">
+            <ScreenBtn active={spreadConfig === 'uniform'} onclick={() => startSim('uniform')}>
+                Add particles
+            </ScreenBtn>
         </div>
-    </div>
+    {:else}
+        <p>Look at what happens when we pack our particles a bit more tightly:</p>
+        <div class="section-btns">
+            <ScreenBtn active={spreadConfig === 'center'} onclick={() => startSim('center')}>
+                Pack particles
+            </ScreenBtn>
+        </div>
+        <p>We get some motion! Let's zoom in on that.</p>
+    {/if}
 </div>

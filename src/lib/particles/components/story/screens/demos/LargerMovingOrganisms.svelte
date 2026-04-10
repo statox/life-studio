@@ -12,9 +12,10 @@
 
     interface Props {
         simulationComponent: Simulation;
+        sectionIndex?: number;
     }
 
-    let { simulationComponent }: Props = $props();
+    let { simulationComponent, sectionIndex = 0 }: Props = $props();
 
     const presets = [
         getUniverseById('complex_moving_structures_3'),
@@ -24,61 +25,50 @@
         getUniverseById('various_moving_organisms')
     ];
 
-    let activeIndex = $state(0);
-    let spreadConfig: InitialConfig = presets[0].preferredInitialConfig;
+    let spreadConfig: InitialConfig = $state(
+        presets[sectionIndex]?.preferredInitialConfig ?? presets[0].preferredInitialConfig
+    );
 
-    const loadPreset = (idx: number) => {
-        activeIndex = idx;
-        spreadConfig = presets[idx].preferredInitialConfig;
-        startScreen();
-    };
-
-    const startScreen = () => {
-        const simulationParams = generateSimulationParams({
-            ...presets[activeIndex],
-            initialSpreadConfig: spreadConfig
-        });
-        simulationComponent?.startSim(simulationParams);
+    const loadPreset = () => {
+        spreadConfig = presets[sectionIndex].preferredInitialConfig;
+        simulationComponent?.startSim(
+            generateSimulationParams({
+                ...presets[sectionIndex],
+                initialSpreadConfig: spreadConfig
+            })
+        );
     };
 
-    const uniformSpread = () => {
-        spreadConfig = 'uniform';
-        startScreen();
-    };
-    const centerSpread = () => {
-        spreadConfig = 'center';
-        startScreen();
-    };
-    const rainbowSpread = () => {
-        spreadConfig = 'rainbow';
-        startScreen();
+    const reSpread = (config: InitialConfig) => {
+        spreadConfig = config;
+        simulationComponent?.startSim(
+            generateSimulationParams({ ...presets[sectionIndex], initialSpreadConfig: config })
+        );
     };
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(startScreen);
+        untrack(loadPreset);
     });
 </script>
 
 <div class="screen">
     <h2>Larger Moving Organisms</h2>
-    <p>Our universes can also create larger and more complex moving structures.</p>
-    <p>
-        Some are chaotic and their dynamics are not always easy to understand, while others are much
-        more structured.
-    </p>
-    <div class="controls">
-        <div class="control-section">
-            {#each presets as p, idx}
-                <ScreenBtn active={activeIndex === idx} onclick={() => loadPreset(idx)}>
-                    {p.name}
-                </ScreenBtn>
-            {/each}
-        </div>
-        <div class="control-section spread-btns">
-            <UniformSpreadButton onClick={uniformSpread} />
-            <CenteredCircleButton onClick={centerSpread} />
-            <RainbowButton onClick={rainbowSpread} />
-        </div>
+    {#if sectionIndex === 0}
+        <p>Our universes can also create larger and more complex moving structures.</p>
+        <p>
+            Some are chaotic and their dynamics are not always easy to understand, while others are
+            much more structured.
+        </p>
+    {:else}
+        <p><b>{presets[sectionIndex]?.name}</b></p>
+    {/if}
+    <div class="section-btns">
+        <ScreenBtn onclick={loadPreset}>{presets[sectionIndex]?.name}</ScreenBtn>
+    </div>
+    <div class="spread-btns">
+        <UniformSpreadButton onClick={() => reSpread('uniform')} />
+        <CenteredCircleButton onClick={() => reSpread('center')} />
+        <RainbowButton onClick={() => reSpread('rainbow')} />
     </div>
 </div>

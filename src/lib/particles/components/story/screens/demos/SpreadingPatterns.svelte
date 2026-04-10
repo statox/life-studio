@@ -13,9 +13,10 @@
 
     interface Props {
         simulationComponent: Simulation;
+        sectionIndex?: number;
     }
 
-    let { simulationComponent }: Props = $props();
+    let { simulationComponent, sectionIndex = 0 }: Props = $props();
 
     const presets = [
         getUniverseById('cellular_strips_inner_islands'),
@@ -24,92 +25,68 @@
         getUniverseById('4_colors_spreading_pattern')
     ];
 
-    let activeIndex = $state(0);
-    let spreadConfig: InitialConfig = presets[0].preferredInitialConfig;
+    let spreadConfig: InitialConfig = $state(
+        presets[sectionIndex]?.preferredInitialConfig ?? presets[0].preferredInitialConfig
+    );
 
-    const loadPreset = (idx: number) => {
-        activeIndex = idx;
-        spreadConfig = presets[idx].preferredInitialConfig;
-        startScreen();
-    };
-
-    const startScreen = () => {
-        const simulationParams = generateSimulationParams({
-            ...presets[activeIndex],
-            initialSpreadConfig: spreadConfig
-        });
-        simulationComponent?.startSim(simulationParams);
+    const loadPreset = () => {
+        spreadConfig = presets[sectionIndex].preferredInitialConfig;
+        simulationComponent?.startSim(
+            generateSimulationParams({
+                ...presets[sectionIndex],
+                initialSpreadConfig: spreadConfig
+            })
+        );
     };
 
-    const uniformSpread = () => {
-        spreadConfig = 'uniform';
-        startScreen();
-    };
-    const centerSpread = () => {
-        spreadConfig = 'center';
-        startScreen();
-    };
-    const rainbowSpread = () => {
-        spreadConfig = 'rainbow';
-        startScreen();
+    const reSpread = (config: InitialConfig) => {
+        spreadConfig = config;
+        simulationComponent?.startSim(
+            generateSimulationParams({ ...presets[sectionIndex], initialSpreadConfig: config })
+        );
     };
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(startScreen);
+        untrack(loadPreset);
     });
 </script>
 
 <div class="screen">
     <h2>Spreading Patterns</h2>
-    <p>
-        When our universes have low energy, strong order can appear and create very organic
-        patterns.
-    </p>
-    <p>
-        <ScreenBtn active={activeIndex === 0} onclick={() => loadPreset(0)}>
-            {presets[0].name}
-        </ScreenBtn>
-        and
-        <ScreenBtn active={activeIndex === 1} onclick={() => loadPreset(1)}>
-            {presets[1].name}
-        </ScreenBtn>
-        are some of the first patterns I found and some of my favorite. They remind me of some patterns
-        I found when implementing
-        <a target="_blank" rel="noopener noreferrer" href="{base}/reaction-diffusion"
-            >the Gray-Scott reaction-diffusion model</a
-        > which look like cells.
-    </p>
-    <p>
-        <ScreenBtn active={activeIndex === 2} onclick={() => loadPreset(2)}>
-            {presets[2].name}
-        </ScreenBtn>
-        create even more complex patterns which remind me of
-        <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://duckduckgo.com/?q=aboriginal+dot+painting&ia=images&iax=images"
-            >Aboriginal dot painting</a
-        >
-    </p>
-    <p>
-        Of course, not all patterns have the same level of order.
-        <ScreenBtn active={activeIndex === 3} onclick={() => loadPreset(3)}>
-            {presets[3].name}
-        </ScreenBtn> creates something a bit less structured than the previous examples.
-    </p>
-    <div class="controls">
-        <div class="control-section">
-            {#each presets as p, idx}
-                <ScreenBtn active={activeIndex === idx} onclick={() => loadPreset(idx)}>
-                    {p.name}
-                </ScreenBtn>
-            {/each}
-        </div>
-        <div class="control-section spread-btns">
-            <UniformSpreadButton onClick={uniformSpread} />
-            <CenteredCircleButton onClick={centerSpread} />
-            <RainbowButton onClick={rainbowSpread} />
-        </div>
+    {#if sectionIndex === 0}
+        <p>
+            When our universes have low energy, strong order can appear and create very organic
+            patterns. These are some of the first patterns I found and some of my favorites — they
+            remind me of patterns from
+            <a target="_blank" rel="noopener noreferrer" href="{base}/reaction-diffusion"
+                >the Gray-Scott reaction-diffusion model</a
+            >.
+        </p>
+    {:else if sectionIndex === 1}
+        <p><b>{presets[1].name}</b> — another cell-like pattern.</p>
+    {:else if sectionIndex === 2}
+        <p>
+            <b>{presets[2].name}</b> creates even more complex patterns which remind me of
+            <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://duckduckgo.com/?q=aboriginal+dot+painting&ia=images&iax=images"
+                >Aboriginal dot painting</a
+            >.
+        </p>
+    {:else}
+        <p>
+            Not all patterns have the same level of order. <b>{presets[3].name}</b> creates something
+            a bit less structured than the previous examples.
+        </p>
+    {/if}
+    <div class="section-btns">
+        <ScreenBtn onclick={loadPreset}>{presets[sectionIndex]?.name}</ScreenBtn>
+    </div>
+    <div class="spread-btns">
+        <UniformSpreadButton onClick={() => reSpread('uniform')} />
+        <CenteredCircleButton onClick={() => reSpread('center')} />
+        <RainbowButton onClick={() => reSpread('rainbow')} />
     </div>
 </div>
