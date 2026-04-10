@@ -29,6 +29,7 @@
     import type { Component } from 'svelte';
     import { base } from '$app/paths';
     import type { StoryScreenInstance } from './types';
+    import { goto } from '$app/navigation';
 
     type ScreenConfig = {
         component: Component<any, StoryScreenInstance>;
@@ -174,10 +175,6 @@
             /></svg
         >
     </a>
-    <button class="nav-btn" disabled={isAtStart} onclick={prev}>
-        <span class="nav-label-full">Previous</span>
-        <span class="nav-label-short">←</span>
-    </button>
     <input
         class="nav-slider"
         type="range"
@@ -199,12 +196,14 @@
             }
         }}
     />
-    {#if !isAtEnd}
-        <button class="nav-btn" onclick={next}>
-            <span class="nav-label-full">Next</span>
-            <span class="nav-label-short">→</span>
-        </button>
-    {/if}
+    <button class="nav-btn" disabled={isAtStart} onclick={prev}>
+        <span class="nav-label-full">Previous</span>
+        <span class="nav-label-short">←</span>
+    </button>
+    <button class="nav-btn" disabled={isAtEnd} onclick={next}>
+        <span class="nav-label-full">Next</span>
+        <span class="nav-label-short">→</span>
+    </button>
 </div>
 
 <style>
@@ -358,7 +357,6 @@
     }
 
     .home-btn {
-        position: absolute;
         left: 16px;
         display: flex;
         align-items: center;
