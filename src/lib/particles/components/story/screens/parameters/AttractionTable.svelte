@@ -6,6 +6,7 @@
     import { getZeroedAttractionTable, type AttractionTable } from '$lib/particles/attraction';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
+    import { Media } from '$lib/components/Media';
 
     interface Props {
         simulationComponent: Simulation;
@@ -22,8 +23,8 @@
     type Preset = { label: string; table: { ww: number; wr: number; rw: number; rr: number } };
 
     const presets: Preset[] = [
-        { label: 'White repulses, Red attracts', table: { ww: -1, wr: 0, rw: 0, rr: 1 } },
-        { label: 'Both attract themselves', table: { ww: 1, wr: 0, rw: 0, rr: 1 } },
+        { label: '1', table: { ww: 0.5, wr: -0.3, rw: -0.3, rr: 0.5 } },
+        { label: '2', table: { ww: 0.5, wr: -0.3, rw: 0.3, rr: 0.5 } },
         { label: 'White repulses + attracts Red', table: { ww: -1, wr: 1, rw: 0, rr: 1 } }
     ];
 
@@ -43,8 +44,8 @@
     const selectPreset = (idx: number) => {
         attractionTable = buildTable(presets[idx].table);
         const cfg: SimulationConfig = {
-            horizontalResolution: 3,
-            verticalResolution: 2,
+            horizontalResolution: 10,
+            verticalResolution: 7,
             initialSpreadConfig: 'center',
             colorWeights: { white: 1, red: 1, green: 0, blue: 0 },
             maxAttractionRadius: 32,
@@ -94,23 +95,28 @@
             a matrix showing how each row color reacts when it gets close to a particle of the
             column color.
         </p>
+        <p>
+            Here we have a small self-attraction force for
+            <span class="cw">White</span> and
+            <span class="cr">Red</span> but each species is repulsed by the other.
+        </p>
     {:else if sectionIndex === 1}
         <p>
-            This is the most important setting we have because these conflicting forces are at the
-            heart of any form of motion in our universe. Each force takes a value from
-            <code>-2.0</code> (Strong repulsion) to <code>2.0</code> (Strong attraction).
-            <code>0</code> makes the particles not interact with each other.
+            Now <span class="cr">Red</span> is attracted to
+            <span class="cw">White</span>. Since <span class="cw">White</span>
+            is still repulsed by <span class="cr">Red</span>, an infinite chase takes place.
         </p>
     {:else}
         <p>
             Even with only two species, the number of possible attraction tables is enormous.
-            Cross-species interactions add another dimension of complexity.
+            Cross-species interactions can also stabilized into clusters.
         </p>
+        <div class="illustration">
+            <Media path="/particles-life/story_attraction_table/structures.png" />
+        </div>
     {/if}
     <div class="section-btns">
-        <ScreenBtn onclick={() => selectPreset(sectionIndex)}>
-            {presets[sectionIndex]?.label}
-        </ScreenBtn>
+        <ScreenBtn onclick={() => selectPreset(sectionIndex)}>Restart</ScreenBtn>
     </div>
     <div class="attraction-table-container">
         <AttractionTableComponent {attractionTable} readonly hiddenColors={['green', 'blue']} />
@@ -119,6 +125,10 @@
 
 <style>
     .attraction-table-container {
+        max-width: 400px;
+    }
+
+    .illustration {
         max-width: 400px;
     }
 </style>

@@ -3,12 +3,11 @@
     import Conclusion from './screens/Conclusion.svelte';
     import Introduction from './screens/Introduction.svelte';
     import Parameters_AttractionTable from './screens/parameters/AttractionTable.svelte';
-    import Parameters_ColorProportions from './screens/parameters/ColorProportions.svelte';
-    import Parameters_ColorProportionsDynamic from './screens/parameters/ColorProportionsDynamic.svelte';
     import Parameters_EmptyUniverse from './screens/parameters/EmptyUniverse.svelte';
     import Parameters_Friction from './screens/parameters/Friction.svelte';
     import Parameters_RestartButtons from './screens/parameters/RestartButtons.svelte';
     import Parameters_SelfForces from './screens/parameters/SelfForces.svelte';
+    import Parameters_TwoSpecies from './screens/parameters/TwoSpecies.svelte';
     import Parameters_WorldSize from './screens/parameters/WorldSize.svelte';
     import Demos_Introduction from './screens/demos/Introduction.svelte';
     import Demos_Frontier from './screens/demos/Frontier.svelte';
@@ -29,7 +28,6 @@
     import type { Component } from 'svelte';
     import { base } from '$app/paths';
     import type { StoryScreenInstance } from './types';
-    import { goto } from '$app/navigation';
 
     type ScreenConfig = {
         component: Component<any, StoryScreenInstance>;
@@ -52,9 +50,10 @@
         { component: Parameters_EmptyUniverse },
         { component: Parameters_RestartButtons, cellSize: 5, sectionCount: 2 },
         { component: Parameters_SelfForces, cellSize: 5, sectionCount: 3 },
-        { component: Parameters_Friction, cellSize: 20, sectionCount: 5 },
-        { component: Parameters_ColorProportions, cellSize: 5, sectionCount: 2 },
-        { component: Parameters_ColorProportionsDynamic, sectionCount: 5 },
+        { component: Parameters_Friction, cellSize: 5, sectionCount: 5 },
+        { component: Parameters_TwoSpecies, cellSize: 5, sectionCount: 1 },
+        // { component: Parameters_ColorProportions, cellSize: 5, sectionCount: 2 },
+        // { component: Parameters_ColorProportionsDynamic, sectionCount: 5 },
         { component: Parameters_AttractionTable, sectionCount: 3 },
         { component: Parameters_WorldSize, sectionCount: 3 },
         { component: Demos_Introduction, noSimulation: true },

@@ -1,11 +1,15 @@
 <script lang="ts">
     import { untrack } from 'svelte';
 
-    import type { InitialConfig } from '$lib/particles/universe';
-    import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
-    import type Simulation from '$lib/particles/components/Simulation.svelte';
     import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
+    import {
+        COLORS,
+        generateSimulationParams,
+        PARTICLE_COLORS,
+        type SimulationConfig
+    } from '$lib/particles/engine';
+    import type Simulation from '$lib/particles/components/Simulation.svelte';
 
     interface Props {
         simulationComponent: Simulation;
@@ -20,16 +24,22 @@
     let sectionIndex = $state(0);
 
     const attractionTable = getZeroedAttractionTable();
+    attractionTable.red.red = -0.1;
+    attractionTable.red.white = 0.1;
+    attractionTable.white.red = -0.2;
+    attractionTable.white.white = -0.1;
 
-    const startSim = (config: InitialConfig) => {
+    const colorWeights = { white: 500, red: 500, green: 0, blue: 0 };
+
+    const startSim = () => {
         const cfg: SimulationConfig = {
             horizontalResolution: 30,
             verticalResolution: 20,
-            initialSpreadConfig: config,
-            colorWeights: { white: 1, red: 0, green: 0, blue: 0 },
+            initialSpreadConfig: 'rainbow',
+            colorWeights,
             maxAttractionRadius: 32,
             attractionTable,
-            nbParticles: 2000,
+            nbParticles: 1000,
             friction: 0.5
         };
         simulationComponent?.startSim(generateSimulationParams(cfg));
@@ -37,10 +47,8 @@
 
     $effect(() => {
         if (!simulationComponent) return;
-        const idx = sectionIndex;
         untrack(() => {
-            if (idx === 0) startSim('uniform');
-            else startSim('center');
+            startSim();
         });
     });
 
@@ -49,19 +57,11 @@
     });
 
     export function next() {
-        if (sectionIndex < SECTION_COUNT - 1) {
-            sectionIndex++;
-        } else {
-            onNextScreen?.();
-        }
+        onNextScreen?.();
     }
 
     export function prev() {
-        if (sectionIndex > 0) {
-            sectionIndex--;
-        } else {
-            onPrevScreen?.();
-        }
+        onPrevScreen?.();
     }
 
     export function jumpToSection(idx: number) {
@@ -70,15 +70,9 @@
 </script>
 
 <div class="screen">
-    <h2>Restart Buttons</h2>
-    {#if sectionIndex === 0}
-        <p>Let's add a few particles.</p>
-        <p>
-            Meet our first species: <span class="cw">White</span>. For now it does nothing. That is
-            going to change soon.
-        </p>
-    {:else}
-        <p>Look at what happens when we pack our particles a bit more tightly.</p>
-        <p>We get some motion! Let's zoom in on that.</p>
-    {/if}
+    <h2>Meet <span class="cr">Red</span></h2>
+    <p>
+        <span class="cw">White</span> has a friend now:
+        <span class="cr">Red</span>!
+    </p>
 </div>

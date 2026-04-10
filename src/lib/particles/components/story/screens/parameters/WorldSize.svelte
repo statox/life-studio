@@ -98,9 +98,7 @@
         </p>
     {/if}
     <div class="section-btns">
-        <ScreenBtn onclick={() => loadSize(sectionIndex)}>
-            {sizePresets[sectionIndex]?.name}
-        </ScreenBtn>
+        <ScreenBtn onclick={() => loadSize(sectionIndex)}>Restart</ScreenBtn>
     </div>
     <AttractionTableComponent attractionTable={preset.attractionTable} readonly compact />
 </div>

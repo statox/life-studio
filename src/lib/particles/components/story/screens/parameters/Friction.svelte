@@ -81,71 +81,48 @@
         <p>
             At <b>{frictionPresets[0]}</b> the friction is high and particles quickly find an equilibrium.
         </p>
-        <div class="section-btns">
-            <ScreenBtn
-                active={friction === frictionPresets[0]}
-                onclick={() => startSim(frictionPresets[0])}
-            >
-                {frictionPresets[0]}
-            </ScreenBtn>
-        </div>
     {:else if sectionIndex === 1}
         <p>
             At <b>{frictionPresets[1]}</b> the friction is lower. The particles wiggle a bit longer before
             finding their final position.
         </p>
-        <div class="section-btns">
-            <ScreenBtn
-                active={friction === frictionPresets[1]}
-                onclick={() => startSim(frictionPresets[1])}
-            >
-                {frictionPresets[1]}
-            </ScreenBtn>
-        </div>
     {:else if sectionIndex === 2}
         <p>
             At <b>{frictionPresets[2]}</b> we crossed a threshold where friction is no longer keeping
             the attraction forces in check. The particles keep bouncing into each other in a structure
             which could start looking like something organic.
         </p>
-        <div class="section-btns">
-            <ScreenBtn
-                active={friction === frictionPresets[2]}
-                onclick={() => startSim(frictionPresets[2])}
-            >
-                {frictionPresets[2]}
-            </ScreenBtn>
-        </div>
     {:else if sectionIndex === 3}
         <p>
             Finally, when the friction gets to <b>{frictionPresets[3]}</b> the particles never slow down
             and their motion is bound only by the maximal velocity of the universe. Chaos is created.
         </p>
-        <div class="section-btns">
-            <ScreenBtn
-                active={friction === frictionPresets[3]}
-                onclick={() => startSim(frictionPresets[3])}
-            >
-                {frictionPresets[3]}
-            </ScreenBtn>
-        </div>
     {:else}
         <p>
             Using the slider, can you find the lowest friction which stabilizes the universe in less
             than 10 seconds?
         </p>
-        <div class="slider-row">
-            <label for="friction-slider">Friction:</label>
-            <input
-                id="friction-slider"
-                type="range"
-                bind:value={friction}
-                onchange={() => startSim(friction)}
-                min="0"
-                max="1"
-                step="0.01"
-            />
-            <span class="slider-value">{friction.toFixed(2)}</span>
-        </div>
     {/if}
+    <div class="section-btns">
+        <ScreenBtn onclick={() => startSim(friction)}>Restart</ScreenBtn>
+    </div>
+    <div class="slider-row">
+        <label for="friction-slider">Friction:</label>
+        <input
+            id="friction-slider"
+            type="range"
+            bind:value={friction}
+            onchange={() => startSim(friction)}
+            min="0"
+            max="1"
+            step="0.01"
+        />
+        <span class="slider-value">{friction.toFixed(2)}</span>
+    </div>
 </div>
+
+<style>
+    .slider-row {
+        max-width: 400px;
+    }
+</style>
