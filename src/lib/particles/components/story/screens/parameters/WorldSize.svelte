@@ -9,10 +9,15 @@
 
     interface Props {
         simulationComponent: Simulation;
-        sectionIndex?: number;
+        onNextScreen?: () => void;
+        onPrevScreen?: () => void;
+        onSectionChange?: (sectionIndex: number) => void;
     }
 
-    let { simulationComponent, sectionIndex = 0 }: Props = $props();
+    let { simulationComponent, onNextScreen, onPrevScreen, onSectionChange }: Props = $props();
+
+    const SECTION_COUNT = 3;
+    let sectionIndex = $state(0);
 
     const preset = getUniverseById('4_colors_worms');
 
@@ -39,8 +44,33 @@
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(() => loadSize(sectionIndex));
+        const idx = sectionIndex;
+        untrack(() => loadSize(idx));
     });
+
+    $effect(() => {
+        onSectionChange?.(sectionIndex);
+    });
+
+    export function next() {
+        if (sectionIndex < SECTION_COUNT - 1) {
+            sectionIndex++;
+        } else {
+            onNextScreen?.();
+        }
+    }
+
+    export function prev() {
+        if (sectionIndex > 0) {
+            sectionIndex--;
+        } else {
+            onPrevScreen?.();
+        }
+    }
+
+    export function jumpToSection(idx: number) {
+        if (idx >= 0 && idx < SECTION_COUNT) sectionIndex = idx;
+    }
 </script>
 
 <div class="screen">

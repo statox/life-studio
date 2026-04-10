@@ -8,14 +8,19 @@
 
     interface Props {
         simulationComponent: Simulation;
-        sectionIndex?: number;
+        onNextScreen?: () => void;
+        onPrevScreen?: () => void;
+        onSectionChange?: (sectionIndex: number) => void;
     }
 
-    let { simulationComponent, sectionIndex = 0 }: Props = $props();
+    let { simulationComponent, onNextScreen, onPrevScreen, onSectionChange }: Props = $props();
+
+    const SECTION_COUNT = 3;
+    let sectionIndex = $state(0);
 
     // sectionIndex 0 → force 0 (zoom), 1 → force 1 (attract), 2 → force -1 (repulse)
     const forceForSection = [0, 1, -1] as const;
-    let activeForce: -1 | 0 | 1 = $state(forceForSection[sectionIndex] ?? 0);
+    let activeForce: -1 | 0 | 1 = $derived(forceForSection[sectionIndex]);
 
     const setForce = (val: -1 | 0 | 1) => {
         activeForce = val;
@@ -37,8 +42,33 @@
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(() => setForce(forceForSection[sectionIndex] ?? 0));
+        const idx = sectionIndex;
+        untrack(() => setForce(forceForSection[idx] ?? 0));
     });
+
+    $effect(() => {
+        onSectionChange?.(sectionIndex);
+    });
+
+    export function next() {
+        if (sectionIndex < SECTION_COUNT - 1) {
+            sectionIndex++;
+        } else {
+            onNextScreen?.();
+        }
+    }
+
+    export function prev() {
+        if (sectionIndex > 0) {
+            sectionIndex--;
+        } else {
+            onPrevScreen?.();
+        }
+    }
+
+    export function jumpToSection(idx: number) {
+        if (idx >= 0 && idx < SECTION_COUNT) sectionIndex = idx;
+    }
 </script>
 
 <div class="screen">

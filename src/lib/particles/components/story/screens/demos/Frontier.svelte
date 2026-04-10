@@ -8,10 +8,11 @@
 
     interface Props {
         simulationComponent: Simulation;
-        sectionIndex?: number;
+        onNextScreen?: () => void;
+        onPrevScreen?: () => void;
     }
 
-    let { simulationComponent }: Props = $props();
+    let { simulationComponent, onNextScreen, onPrevScreen }: Props = $props();
 
     const preset = getUniverseById('competing_predators');
 
@@ -25,6 +26,14 @@
         if (!simulationComponent) return;
         untrack(startScreen);
     });
+
+    export function next() {
+        onNextScreen?.();
+    }
+
+    export function prev() {
+        onPrevScreen?.();
+    }
 </script>
 
 <div class="screen">

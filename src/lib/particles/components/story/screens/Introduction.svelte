@@ -1,3 +1,22 @@
+<script lang="ts">
+    interface Props {
+        simulationComponent?: unknown;
+        onNextScreen?: () => void;
+        onPrevScreen?: () => void;
+        initialSectionIndex?: number;
+    }
+
+    let { onNextScreen, onPrevScreen }: Props = $props();
+
+    export function next() {
+        onNextScreen?.();
+    }
+
+    export function prev() {
+        onPrevScreen?.();
+    }
+</script>
+
 <div class="screen">
     <h1>Particle Life</h1>
     <p>

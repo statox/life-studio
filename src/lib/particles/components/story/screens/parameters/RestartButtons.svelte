@@ -9,10 +9,15 @@
 
     interface Props {
         simulationComponent: Simulation;
-        sectionIndex?: number;
+        onNextScreen?: () => void;
+        onPrevScreen?: () => void;
+        onSectionChange?: (sectionIndex: number) => void;
     }
 
-    let { simulationComponent, sectionIndex = 0 }: Props = $props();
+    let { simulationComponent, onNextScreen, onPrevScreen, onSectionChange }: Props = $props();
+
+    const SECTION_COUNT = 2;
+    let sectionIndex = $state(0);
 
     const attractionTable = getZeroedAttractionTable();
     let spreadConfig: InitialConfig = $state('uniform');
@@ -34,11 +39,36 @@
 
     $effect(() => {
         if (!simulationComponent) return;
+        const idx = sectionIndex;
         untrack(() => {
-            if (sectionIndex === 0) startSim('uniform');
+            if (idx === 0) startSim('uniform');
             else startSim('center');
         });
     });
+
+    $effect(() => {
+        onSectionChange?.(sectionIndex);
+    });
+
+    export function next() {
+        if (sectionIndex < SECTION_COUNT - 1) {
+            sectionIndex++;
+        } else {
+            onNextScreen?.();
+        }
+    }
+
+    export function prev() {
+        if (sectionIndex > 0) {
+            sectionIndex--;
+        } else {
+            onPrevScreen?.();
+        }
+    }
+
+    export function jumpToSection(idx: number) {
+        if (idx >= 0 && idx < SECTION_COUNT) sectionIndex = idx;
+    }
 </script>
 
 <div class="screen">

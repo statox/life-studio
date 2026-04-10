@@ -9,10 +9,15 @@
 
     interface Props {
         simulationComponent: Simulation;
-        sectionIndex?: number;
+        onNextScreen?: () => void;
+        onPrevScreen?: () => void;
+        onSectionChange?: (sectionIndex: number) => void;
     }
 
-    let { simulationComponent, sectionIndex = 0 }: Props = $props();
+    let { simulationComponent, onNextScreen, onPrevScreen, onSectionChange }: Props = $props();
+
+    const SECTION_COUNT = 5;
+    let sectionIndex = $state(0);
 
     const universe = getUniverseById('crystal_stripes');
 
@@ -26,9 +31,8 @@
         no_blue: { white: 500, red: 500, green: 500, blue: 0 }
     };
 
-    const initialPreset = presetNames[sectionIndex] ?? 'equal';
-    let currentPreset = $state(initialPreset);
-    let colorWeights: ColorProportions = $state({ ...weightPresets[initialPreset] });
+    let currentPreset = $derived(presetNames[sectionIndex] ?? 'equal');
+    let colorWeights: ColorProportions = $derived({ ...weightPresets[currentPreset] });
 
     const setPreset = (name: PresetName) => {
         currentPreset = name;
@@ -48,8 +52,38 @@
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(startSim);
+        const idx = sectionIndex;
+        untrack(() => {
+            const preset = presetNames[idx] ?? 'equal';
+            currentPreset = preset;
+            colorWeights = { ...weightPresets[preset] };
+            startSim();
+        });
     });
+
+    $effect(() => {
+        onSectionChange?.(sectionIndex);
+    });
+
+    export function next() {
+        if (sectionIndex < SECTION_COUNT - 1) {
+            sectionIndex++;
+        } else {
+            onNextScreen?.();
+        }
+    }
+
+    export function prev() {
+        if (sectionIndex > 0) {
+            sectionIndex--;
+        } else {
+            onPrevScreen?.();
+        }
+    }
+
+    export function jumpToSection(idx: number) {
+        if (idx >= 0 && idx < SECTION_COUNT) sectionIndex = idx;
+    }
 </script>
 
 <div class="screen">

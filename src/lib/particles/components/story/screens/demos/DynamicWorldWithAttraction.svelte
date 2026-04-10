@@ -12,10 +12,12 @@
 
     interface Props {
         simulationComponent: Simulation;
-        sectionIndex?: number;
+        onNextScreen?: () => void;
+        onPrevScreen?: () => void;
+        onSectionChange?: (sectionIndex: number) => void;
     }
 
-    let { simulationComponent, sectionIndex = 0 }: Props = $props();
+    let { simulationComponent, onNextScreen, onPrevScreen, onSectionChange }: Props = $props();
 
     const presets = [
         getUniverseById('4_colors_worms_single_stage'),
@@ -23,15 +25,18 @@
         getUniverseById('blue_islands')
     ];
 
-    let spreadConfig: InitialConfig = $state(
+    const SECTION_COUNT = presets.length;
+    let sectionIndex = $state(0);
+
+    let spreadConfig: InitialConfig = $derived(
         presets[sectionIndex]?.preferredInitialConfig ?? presets[0].preferredInitialConfig
     );
 
-    const loadPreset = () => {
-        spreadConfig = presets[sectionIndex].preferredInitialConfig;
+    const loadPreset = (idx: number) => {
+        spreadConfig = presets[idx].preferredInitialConfig;
         simulationComponent?.startSim(
             generateSimulationParams({
-                ...presets[sectionIndex],
+                ...presets[idx],
                 initialSpreadConfig: spreadConfig
             })
         );
@@ -46,8 +51,33 @@
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(loadPreset);
+        const idx = sectionIndex;
+        untrack(() => loadPreset(idx));
     });
+
+    $effect(() => {
+        onSectionChange?.(sectionIndex);
+    });
+
+    export function next() {
+        if (sectionIndex < SECTION_COUNT - 1) {
+            sectionIndex++;
+        } else {
+            onNextScreen?.();
+        }
+    }
+
+    export function prev() {
+        if (sectionIndex > 0) {
+            sectionIndex--;
+        } else {
+            onPrevScreen?.();
+        }
+    }
+
+    export function jumpToSection(idx: number) {
+        if (idx >= 0 && idx < SECTION_COUNT) sectionIndex = idx;
+    }
 </script>
 
 <div class="screen">
@@ -60,7 +90,8 @@
         <p><b>{presets[sectionIndex]?.name}</b></p>
     {/if}
     <div class="section-btns">
-        <ScreenBtn onclick={loadPreset}>{presets[sectionIndex]?.name}</ScreenBtn>
+        <ScreenBtn onclick={() => loadPreset(sectionIndex)}>{presets[sectionIndex]?.name}</ScreenBtn
+        >
     </div>
     <div class="spread-btns">
         <UniformSpreadButton onClick={() => reSpread('uniform')} />

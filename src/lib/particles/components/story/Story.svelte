@@ -28,99 +28,46 @@
     import { tick } from 'svelte';
     import type { Component } from 'svelte';
     import { base } from '$app/paths';
+    import type { StoryScreenInstance } from './types';
 
     type ScreenConfig = {
-        component: Component<any>;
+        component: Component<any, StoryScreenInstance>;
         noSimulation?: boolean;
         cellSize?: number;
-        sectionIndex?: number;
+        // Number of narrative sections inside this screen component.
+        // Each section advances the global progress slider by one step.
+        // Defaults to 1 when omitted (single-section screens).
+        sectionCount?: number;
     };
 
     let simulationComponent: Simulation | undefined = $state();
     let narrativeEl: HTMLDivElement | undefined = $state();
+    let currentScreenComponent: StoryScreenInstance | undefined = $state();
+    // Section index within the current screen, kept in sync via onSectionChange
+    let currentSectionIndex = $state(0);
 
     const screens: ScreenConfig[] = [
         { component: Introduction, noSimulation: true },
-        // Empty universe
         { component: Parameters_EmptyUniverse },
-        // Restart buttons (2 sections)
-        { component: Parameters_RestartButtons, cellSize: 5, sectionIndex: 0 },
-        { component: Parameters_RestartButtons, cellSize: 5, sectionIndex: 1 },
-        // Self forces (3 sections)
-        { component: Parameters_SelfForces, cellSize: 5, sectionIndex: 0 },
-        { component: Parameters_SelfForces, cellSize: 5, sectionIndex: 1 },
-        { component: Parameters_SelfForces, cellSize: 5, sectionIndex: 2 },
-        // Friction (5 sections)
-        { component: Parameters_Friction, cellSize: 20, sectionIndex: 0 },
-        { component: Parameters_Friction, cellSize: 20, sectionIndex: 1 },
-        { component: Parameters_Friction, cellSize: 20, sectionIndex: 2 },
-        { component: Parameters_Friction, cellSize: 20, sectionIndex: 3 },
-        { component: Parameters_Friction, cellSize: 20, sectionIndex: 4 },
-        // Color proportions (2 sections)
-        { component: Parameters_ColorProportions, cellSize: 5, sectionIndex: 0 },
-        { component: Parameters_ColorProportions, cellSize: 5, sectionIndex: 1 },
-        // Color proportions dynamic (5 sections)
-        { component: Parameters_ColorProportionsDynamic, sectionIndex: 0 },
-        { component: Parameters_ColorProportionsDynamic, sectionIndex: 1 },
-        { component: Parameters_ColorProportionsDynamic, sectionIndex: 2 },
-        { component: Parameters_ColorProportionsDynamic, sectionIndex: 3 },
-        { component: Parameters_ColorProportionsDynamic, sectionIndex: 4 },
-        // Attraction table (3 sections)
-        { component: Parameters_AttractionTable, sectionIndex: 0 },
-        { component: Parameters_AttractionTable, sectionIndex: 1 },
-        { component: Parameters_AttractionTable, sectionIndex: 2 },
-        // World size (3 sections)
-        { component: Parameters_WorldSize, sectionIndex: 0 },
-        { component: Parameters_WorldSize, sectionIndex: 1 },
-        { component: Parameters_WorldSize, sectionIndex: 2 },
+        { component: Parameters_RestartButtons, cellSize: 5, sectionCount: 2 },
+        { component: Parameters_SelfForces, cellSize: 5, sectionCount: 3 },
+        { component: Parameters_Friction, cellSize: 20, sectionCount: 5 },
+        { component: Parameters_ColorProportions, cellSize: 5, sectionCount: 2 },
+        { component: Parameters_ColorProportionsDynamic, sectionCount: 5 },
+        { component: Parameters_AttractionTable, sectionCount: 3 },
+        { component: Parameters_WorldSize, sectionCount: 3 },
         { component: Demos_Introduction, noSimulation: true },
-        // Space paving (4 presets)
-        { component: Demos_SpacePaving, sectionIndex: 0 },
-        { component: Demos_SpacePaving, sectionIndex: 1 },
-        { component: Demos_SpacePaving, sectionIndex: 2 },
-        { component: Demos_SpacePaving, sectionIndex: 3 },
-        // Frontier (1 preset)
+        { component: Demos_SpacePaving, sectionCount: 4 },
         { component: Demos_Frontier },
-        // Clusters (6 presets)
-        { component: Demos_Clusters, sectionIndex: 0 },
-        { component: Demos_Clusters, sectionIndex: 1 },
-        { component: Demos_Clusters, sectionIndex: 2 },
-        { component: Demos_Clusters, sectionIndex: 3 },
-        { component: Demos_Clusters, sectionIndex: 4 },
-        { component: Demos_Clusters, sectionIndex: 5 },
-        // Clusters dynamics (3 presets)
-        { component: Demos_ClustersDynamics, sectionIndex: 0 },
-        { component: Demos_ClustersDynamics, sectionIndex: 1 },
-        { component: Demos_ClustersDynamics, sectionIndex: 2 },
-        // Dynamic worlds (4 presets)
-        { component: Demos_DynamicWorlds, sectionIndex: 0 },
-        { component: Demos_DynamicWorlds, sectionIndex: 1 },
-        { component: Demos_DynamicWorlds, sectionIndex: 2 },
-        { component: Demos_DynamicWorlds, sectionIndex: 3 },
-        // Dynamic world with attraction (3 presets)
-        { component: Demos_DynamicWorldWithAttraction, sectionIndex: 0 },
-        { component: Demos_DynamicWorldWithAttraction, sectionIndex: 1 },
-        { component: Demos_DynamicWorldWithAttraction, sectionIndex: 2 },
-        // Spreading patterns (4 presets)
-        { component: Demos_SpreadingPatterns, sectionIndex: 0 },
-        { component: Demos_SpreadingPatterns, sectionIndex: 1 },
-        { component: Demos_SpreadingPatterns, sectionIndex: 2 },
-        { component: Demos_SpreadingPatterns, sectionIndex: 3 },
-        // Merging moving organisms (2 presets)
-        { component: Demos_MergingMovingOrganisms, sectionIndex: 0 },
-        { component: Demos_MergingMovingOrganisms, sectionIndex: 1 },
-        // Smaller moving organisms (2 presets)
-        { component: Demos_SmallerMovingOrganisms, sectionIndex: 0 },
-        { component: Demos_SmallerMovingOrganisms, sectionIndex: 1 },
-        // Larger moving organisms (5 presets)
-        { component: Demos_LargerMovingOrganisms, sectionIndex: 0 },
-        { component: Demos_LargerMovingOrganisms, sectionIndex: 1 },
-        { component: Demos_LargerMovingOrganisms, sectionIndex: 2 },
-        { component: Demos_LargerMovingOrganisms, sectionIndex: 3 },
-        { component: Demos_LargerMovingOrganisms, sectionIndex: 4 },
-        // Fast moving objects (2 presets)
-        { component: Demos_FastMovingObjects, sectionIndex: 0 },
-        { component: Demos_FastMovingObjects, sectionIndex: 1 },
+        { component: Demos_Clusters, sectionCount: 6 },
+        { component: Demos_ClustersDynamics, sectionCount: 3 },
+        { component: Demos_DynamicWorlds, sectionCount: 4 },
+        { component: Demos_DynamicWorldWithAttraction, sectionCount: 3 },
+        { component: Demos_SpreadingPatterns, sectionCount: 4 },
+        { component: Demos_MergingMovingOrganisms, sectionCount: 2 },
+        { component: Demos_SmallerMovingOrganisms, sectionCount: 2 },
+        { component: Demos_LargerMovingOrganisms, sectionCount: 5 },
+        { component: Demos_FastMovingObjects, sectionCount: 2 },
         { component: Conclusion, noSimulation: true }
     ];
 
@@ -128,35 +75,74 @@
 
     let currentScreen = $derived(screens[currentIndex]);
     let showSimulation = $derived(!currentScreen.noSimulation);
-    let isOnLastScreen = $derived(currentIndex === screens.length - 1);
-    let isOnFirstScreen = $derived(currentIndex === 0);
+
+    // Cumulative step offset for each screen: how many total steps precede it
+    const screenOffsets = $derived.by(() => {
+        const offsets: number[] = [];
+        let offset = 0;
+        for (const screen of screens) {
+            offsets.push(offset);
+            offset += screen.sectionCount ?? 1;
+        }
+        return offsets;
+    });
+
+    const totalSteps = $derived(screens.reduce((sum, s) => sum + (s.sectionCount ?? 1), 0));
+    const currentStep = $derived(screenOffsets[currentIndex] + currentSectionIndex);
+
+    const isAtStart = $derived(currentStep === 0);
+    const isAtEnd = $derived(currentStep === totalSteps - 1);
+
+    // Convert a flat global step to { screenIndex, sectionIdx }
+    const stepToScreenSection = (step: number): { screenIndex: number; sectionIdx: number } => {
+        for (let i = screens.length - 1; i >= 0; i--) {
+            if (step >= screenOffsets[i]) {
+                return { screenIndex: i, sectionIdx: step - screenOffsets[i] };
+            }
+        }
+        return { screenIndex: 0, sectionIdx: 0 };
+    };
 
     const scrollToTop = async () => {
         await tick();
         if (narrativeEl) narrativeEl.scrollTop = 0;
     };
 
-    const prev = () => {
-        if (currentIndex > 0) {
-            currentIndex--;
+    const onSectionChange = (idx: number) => {
+        currentSectionIndex = idx;
+    };
+
+    const goToNextScreen = () => {
+        if (currentIndex < screens.length - 1) {
+            currentIndex++;
+            currentSectionIndex = 0;
             scrollToTop();
         }
     };
 
-    const next = () => {
-        if (currentIndex < screens.length - 1) {
-            currentIndex++;
+    const goToPrevScreen = () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            // Enter the previous screen at its last section
+            const lastSection = (screens[currentIndex].sectionCount ?? 1) - 1;
+            currentSectionIndex = lastSection;
             scrollToTop();
         }
     };
+
+    const next = () => currentScreenComponent?.next();
+    const prev = () => currentScreenComponent?.prev();
 </script>
 
 <div class="page" class:with-simulation={showSimulation}>
     <div class="narrative" bind:this={narrativeEl}>
         {#key currentIndex}
             <currentScreen.component
+                bind:this={currentScreenComponent}
                 {simulationComponent}
-                sectionIndex={currentScreen.sectionIndex ?? 0}
+                {onSectionChange}
+                onNextScreen={goToNextScreen}
+                onPrevScreen={goToPrevScreen}
             />
         {/key}
     </div>
@@ -188,7 +174,7 @@
             /></svg
         >
     </a>
-    <button class="nav-btn" disabled={isOnFirstScreen} onclick={prev}>
+    <button class="nav-btn" disabled={isAtStart} onclick={prev}>
         <span class="nav-label-full">Previous</span>
         <span class="nav-label-short">←</span>
     </button>
@@ -196,14 +182,24 @@
         class="nav-slider"
         type="range"
         min="0"
-        max={screens.length - 1}
-        value={currentIndex}
+        max={totalSteps - 1}
+        value={currentStep}
         oninput={(e) => {
-            currentIndex = parseInt(e.currentTarget.value);
-            scrollToTop();
+            const step = parseInt(e.currentTarget.value);
+            const { screenIndex, sectionIdx } = stepToScreenSection(step);
+            if (screenIndex === currentIndex) {
+                // Same screen: jump directly to the target section
+                currentScreenComponent?.jumpToSection?.(sectionIdx);
+                currentSectionIndex = sectionIdx;
+            } else {
+                // Different screen: remount at the target section
+                currentSectionIndex = sectionIdx;
+                currentIndex = screenIndex;
+                scrollToTop();
+            }
         }}
     />
-    {#if !isOnLastScreen}
+    {#if !isAtEnd}
         <button class="nav-btn" onclick={next}>
             <span class="nav-label-full">Next</span>
             <span class="nav-label-short">→</span>

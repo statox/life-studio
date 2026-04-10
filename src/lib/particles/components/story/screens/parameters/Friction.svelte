@@ -8,18 +8,21 @@
 
     interface Props {
         simulationComponent: Simulation;
-        sectionIndex?: number;
+        onNextScreen?: () => void;
+        onPrevScreen?: () => void;
+        onSectionChange?: (sectionIndex: number) => void;
     }
 
-    let { simulationComponent, sectionIndex = 0 }: Props = $props();
+    let { simulationComponent, onNextScreen, onPrevScreen, onSectionChange }: Props = $props();
+
+    const SECTION_COUNT = 5;
+    let sectionIndex = $state(0);
 
     const attractionTable = getZeroedAttractionTable();
     attractionTable.white.white = 1;
 
     const frictionPresets = [0.8, 0.25, 0.06, 0.0];
-    // sectionIndex 4 is the free-exploration slider
-    const initialFriction = sectionIndex < 4 ? frictionPresets[sectionIndex] : 0.5;
-    let friction = $state(initialFriction);
+    let friction = $derived(sectionIndex < 4 ? frictionPresets[sectionIndex] : 0.5);
 
     const startSim = (f: number) => {
         friction = f;
@@ -38,8 +41,33 @@
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(() => startSim(initialFriction));
+        const idx = sectionIndex;
+        untrack(() => startSim(idx < 4 ? frictionPresets[idx] : 0.5));
     });
+
+    $effect(() => {
+        onSectionChange?.(sectionIndex);
+    });
+
+    export function next() {
+        if (sectionIndex < SECTION_COUNT - 1) {
+            sectionIndex++;
+        } else {
+            onNextScreen?.();
+        }
+    }
+
+    export function prev() {
+        if (sectionIndex > 0) {
+            sectionIndex--;
+        } else {
+            onPrevScreen?.();
+        }
+    }
+
+    export function jumpToSection(idx: number) {
+        if (idx >= 0 && idx < SECTION_COUNT) sectionIndex = idx;
+    }
 </script>
 
 <div class="screen">

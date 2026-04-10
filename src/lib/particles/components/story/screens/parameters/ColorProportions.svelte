@@ -14,10 +14,15 @@
 
     interface Props {
         simulationComponent: Simulation;
-        sectionIndex?: number;
+        onNextScreen?: () => void;
+        onPrevScreen?: () => void;
+        onSectionChange?: (sectionIndex: number) => void;
     }
 
-    let { simulationComponent, sectionIndex = 0 }: Props = $props();
+    let { simulationComponent, onNextScreen, onPrevScreen, onSectionChange }: Props = $props();
+
+    const SECTION_COUNT = 2;
+    let sectionIndex = $state(0);
 
     const attractionTable = getZeroedAttractionTable();
 
@@ -26,8 +31,8 @@
         equal: { white: 500, red: 500, green: 500, blue: 500 }
     };
 
-    let currentPreset = $state(sectionIndex === 0 ? 'all_white' : 'equal');
-    let colorWeights: ColorProportions = $state({ ...presets[currentPreset] });
+    let currentPreset = $derived(sectionIndex === 0 ? 'all_white' : 'equal');
+    let colorWeights: ColorProportions = $derived({ ...presets[currentPreset] });
 
     const setPreset = (name: string) => {
         currentPreset = name;
@@ -51,8 +56,37 @@
 
     $effect(() => {
         if (!simulationComponent) return;
-        untrack(startSim);
+        const idx = sectionIndex;
+        untrack(() => {
+            currentPreset = idx === 0 ? 'all_white' : 'equal';
+            colorWeights = { ...presets[currentPreset] };
+            startSim();
+        });
     });
+
+    $effect(() => {
+        onSectionChange?.(sectionIndex);
+    });
+
+    export function next() {
+        if (sectionIndex < SECTION_COUNT - 1) {
+            sectionIndex++;
+        } else {
+            onNextScreen?.();
+        }
+    }
+
+    export function prev() {
+        if (sectionIndex > 0) {
+            sectionIndex--;
+        } else {
+            onPrevScreen?.();
+        }
+    }
+
+    export function jumpToSection(idx: number) {
+        if (idx >= 0 && idx < SECTION_COUNT) sectionIndex = idx;
+    }
 </script>
 
 <div class="screen">

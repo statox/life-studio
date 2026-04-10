@@ -7,9 +7,12 @@
 
     interface Props {
         simulationComponent: Simulation;
+        onNextScreen?: () => void;
+        onPrevScreen?: () => void;
+        initialSectionIndex?: number;
     }
 
-    let { simulationComponent }: Props = $props();
+    let { simulationComponent, onNextScreen, onPrevScreen }: Props = $props();
 
     const startScreen = () => {
         const config: SimulationConfig = {
@@ -36,6 +39,14 @@
         if (!simulationComponent) return;
         untrack(startScreen);
     });
+
+    export function next() {
+        onNextScreen?.();
+    }
+
+    export function prev() {
+        onPrevScreen?.();
+    }
 </script>
 
 <div class="screen">

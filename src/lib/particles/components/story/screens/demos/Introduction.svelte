@@ -1,3 +1,21 @@
+<script lang="ts">
+    interface Props {
+        simulationComponent?: unknown;
+        onNextScreen?: () => void;
+        onPrevScreen?: () => void;
+    }
+
+    let { onNextScreen, onPrevScreen }: Props = $props();
+
+    export function next() {
+        onNextScreen?.();
+    }
+
+    export function prev() {
+        onPrevScreen?.();
+    }
+</script>
+
 <div class="screen">
     <h1>Now, the good stuff</h1>
     <p>You have seen all of the parameters ruling our universes. They are pretty simple.</p>
