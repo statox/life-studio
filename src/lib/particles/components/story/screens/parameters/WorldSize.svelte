@@ -81,13 +81,13 @@
             amount of particles but vary the size of the "box" they live in.
         </p>
         <p>
-            Start with a <b>Medium</b> size to observe the base behavior: Each color is attracted to the
+            In a <b>Medium</b> sized world we observe the base behavior: Each color is attracted to the
             next one which creates moving worm-like structures. Sometimes the worm eats its own tail.
             When structures get close, they tend to merge and split.
         </p>
     {:else if sectionIndex === 1}
         <p>
-            With a <b>Large</b> world the particles have more room to move. Worms take more time to travel
+            In a <b>Large</b> world the particles have more room to move. Worms take more time to travel
             across the world and interact less often, which allows more of them to form.
         </p>
     {:else}

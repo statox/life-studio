@@ -46,10 +46,10 @@
         moving patterns born ouf of your processor.
     </p>
     <p>
-        Personally I enjoy spending time tweaking the parameters of my universes until I see
-        something interesting happen. I am currently in the process of creating an inventory of the
-        families of patterns I find in my simulations. I found a very simple organism composed of
-        only 15 particles and this is pushing me to find more small but complex patterns. If this is
-        of any interest to you feel free to drop me a message!
+        I enjoy spending time tweaking the parameters of these universes until I see something
+        interesting happen. I am currently in the process of creating an inventory of the families
+        of patterns I find in my simulations. I found a very simple organism composed of only 15
+        particles and this is pushing me to find more small but complex patterns. If this is of any
+        interest to you feel free to drop me a message!
     </p>
 </div>

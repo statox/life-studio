@@ -44,7 +44,7 @@
     "maxAttractionRadius": 32,
     "horizontalResolution": 30,
     "verticalResolution": 20,
-    "friction": 0.5,
+    "friction": 0.3,
     "id": "compact_moving_structures",
     "category": "movers",
     "createdAt": "2026-04-03"

@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { base } from '$app/paths';
+
     interface Props {
         simulationComponent?: unknown;
         onNextScreen?: () => void;
@@ -24,4 +26,10 @@
         through that.
     </p>
     <p>Click the "Next" (→) button at the bottom of each page.</p>
+    <br />
+    <p>
+        If you haven't already, you should check out <a href={base + '/particles-life/infinite'}
+            >this page</a
+        >.
+    </p>
 </div>
