@@ -174,27 +174,27 @@
             /></svg
         >
     </a>
-    <input
-        class="nav-slider"
-        type="range"
-        min="0"
-        max={totalSteps - 1}
-        value={currentStep}
-        oninput={(e) => {
-            const step = parseInt(e.currentTarget.value);
+    <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+    <div
+        class="progress-track"
+        onclick={(e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+            const step = Math.round(ratio * (totalSteps - 1));
             const { screenIndex, sectionIdx } = stepToScreenSection(step);
             if (screenIndex === currentIndex) {
-                // Same screen: jump directly to the target section
                 currentScreenComponent?.jumpToSection?.(sectionIdx);
                 currentSectionIndex = sectionIdx;
             } else {
-                // Different screen: remount at the target section
                 currentSectionIndex = sectionIdx;
                 currentIndex = screenIndex;
                 scrollToTop();
             }
         }}
-    />
+    >
+        <div class="progress-fill" style="width: {(currentStep / (totalSteps - 1)) * 100}%"></div>
+        <div class="progress-dot" style="left: {(currentStep / (totalSteps - 1)) * 100}%"></div>
+    </div>
     <button class="nav-btn" disabled={isAtStart} onclick={prev}>
         <span class="nav-label-full">Previous</span>
         <span class="nav-label-short">←</span>
@@ -291,44 +291,48 @@
         gap: 8px;
         padding: 12px 16px;
         background: #1a2327ee;
-        border-top: 1px solid #37474f;
         backdrop-filter: blur(8px);
         z-index: 20;
     }
 
-    .nav-slider {
-        flex: 1;
-        -webkit-appearance: none;
-        appearance: none;
+    .progress-track {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
         height: 3px;
-        border-radius: 2px;
         background: #37474f;
-        outline: none;
         cursor: pointer;
-        margin: 0 4px;
     }
 
-    .nav-slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        width: 14px;
-        height: 14px;
+    .progress-track:hover {
+        height: 4px;
+    }
+
+    .progress-fill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background: #c3e88d;
+        pointer-events: none;
+        border-radius: 0 2px 2px 0;
+    }
+
+    .progress-dot {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background: #c3e88d;
-        cursor: pointer;
+        pointer-events: none;
         transition: transform 0.1s;
     }
 
-    .nav-slider::-webkit-slider-thumb:hover {
-        transform: scale(1.2);
-    }
-
-    .nav-slider::-moz-range-thumb {
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        background: #c3e88d;
-        border: none;
-        cursor: pointer;
+    .progress-track:hover .progress-dot {
+        transform: translate(-50%, -50%) scale(1.3);
     }
 
     .nav-btn {
