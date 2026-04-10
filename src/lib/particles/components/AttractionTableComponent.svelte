@@ -145,7 +145,7 @@
                             style="background:{valueColor(val)}"
                             title="{selfColor} → {otherColor}: {valueLabel(val)}"
                         >
-                            {valueLabel(val)}
+                            {compact ? ' ' : valueLabel(val)}
                         </div>
                     {:else}
                         <!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -284,6 +284,7 @@
         border: none;
         border-radius: 4px;
         height: 34px;
+        min-height: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
