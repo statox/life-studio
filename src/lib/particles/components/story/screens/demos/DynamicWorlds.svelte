@@ -101,8 +101,7 @@
         <p>The other universes in this page also show a blend of order and chaos.</p>
     {/if}
     <div class="section-btns">
-        <ScreenBtn onclick={() => loadPreset(sectionIndex)}>{presets[sectionIndex]?.name}</ScreenBtn
-        >
+        <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
     </div>
     <div class="spread-btns">
         <UniformSpreadButton onClick={() => reSpread('uniform')} />
