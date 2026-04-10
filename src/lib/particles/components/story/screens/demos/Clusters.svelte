@@ -24,7 +24,6 @@
         getUniverseById('3_colors_stable_islands'),
         getUniverseById('complex_islands'),
         getUniverseById('complex_islands2'),
-        getUniverseById('complex_clusters'),
         getUniverseById('merging_circular_structures'),
         getUniverseById('three_layer_onion')
     ];
@@ -98,14 +97,30 @@
             <b>3 Colors - Stable islands</b> is a good example: The clusters form quickly and stop moving.
         </p>
     {:else if sectionIndex === 1}
-        <div style="max-width: 200px;">
-            <Media path="/particles-life/story_clusters/complex_islands.png" />
-        </div>
         <p>
             In universes like <b>Complex islands</b> the clusters are slower to form and end up being
             more complex. We can also see some moving organisms briefly forming before collapsing into
             clusters.
         </p>
+        <div style="max-width: 200px;">
+            <Media path="/particles-life/story_clusters/complex_islands.png" />
+        </div>
+    {:else if sectionIndex === 2}
+        <p>And this is a similar variation with longer and more structured clusters</p>
+        <div style="max-width: 200px;">
+            <Media path="/particles-life/story_clusters/complex_islands_2_1.png" />
+        </div>
+        <div style="max-width: 200px;">
+            <Media path="/particles-life/story_clusters/complex_islands_2_2.png" />
+        </div>
+    {:else if sectionIndex === 3}
+        <p>Clusters can also remaing circular but with different layers structures.</p>
+        <div style="max-width: 200px;">
+            <Media path="/particles-life/story_clusters/merging_circular_structures_1.png" />
+        </div>
+        <div style="max-width: 200px;">
+            <Media path="/particles-life/story_clusters/merging_circular_structures_2.gif" />
+        </div>
     {:else if sectionIndex === 4}
         <p>
             And complexity can keep increasing like in <b>Merging circular structures</b> where some

@@ -9,6 +9,7 @@
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getUniverseById } from '$lib/particles/universe';
     import type { InitialConfig } from '$lib/particles/universe';
+    import { Media } from '$lib/components/Media';
 
     interface Props {
         simulationComponent: Simulation;
@@ -90,11 +91,20 @@
             core surrounded by a spinning triangular system of <span class="cr">Red</span> pushed by
             <span class="cg">Green</span>.
         </p>
+        <div style="max-width: 200px;">
+            <Media path="/particles-life/story_clusters_dynamics/spinning_structures_1.gif" />
+        </div>
     {:else if sectionIndex === 1}
         <p>
             <b>{presets[1].name}</b> produces fascinating clusters where the outer border seems to oscillate
             with a period of 2. This is one of my favorite universes.
         </p>
+        <div style="max-width: 200px;">
+            <Media path="/particles-life/story_clusters_dynamics/dynamic_islands_1.gif" />
+        </div>
+        <div style="max-width: 200px;">
+            <Media path="/particles-life/story_clusters_dynamics/dynamic_islands_2.gif" />
+        </div>
     {:else}
         <p>
             <b>{presets[2].name}</b> produces configurations that start to move away from simple clusters

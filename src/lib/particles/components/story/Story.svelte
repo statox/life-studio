@@ -214,6 +214,8 @@
         height: calc(100vh - 48px); /* 48px = nav-bar height */
         overflow: hidden;
         box-sizing: border-box;
+        max-width: 900px;
+        margin: 0 auto;
     }
 
     /* ── Narrative strip (top ~1/3) ─────────── */
@@ -224,6 +226,9 @@
         padding: 14px 20px 10px;
         box-sizing: border-box;
         border-bottom: 1px solid #263238;
+
+        max-width: 800px;
+        margin: 0 auto;
         /* Subtle scrollbar */
         scrollbar-width: thin;
         scrollbar-color: #37474f transparent;
