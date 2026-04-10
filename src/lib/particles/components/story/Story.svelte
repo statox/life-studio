@@ -110,6 +110,7 @@
 
     const onSectionChange = (idx: number) => {
         currentSectionIndex = idx;
+        scrollToTop();
     };
 
     const goToNextScreen = () => {
