@@ -5,6 +5,7 @@
     import { generateSimulationParams } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getUniverseById } from '$lib/particles/universe';
+    import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
 
     interface Props {
         simulationComponent: Simulation;
@@ -49,4 +50,5 @@
     <div class="section-btns">
         <RainbowButton onClick={startScreen} />
     </div>
+    <AttractionTableComponent attractionTable={preset.attractionTable} readonly compact />
 </div>

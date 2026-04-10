@@ -9,6 +9,7 @@
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getUniverseById } from '$lib/particles/universe';
     import type { InitialConfig } from '$lib/particles/universe';
+    import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
 
     interface Props {
         simulationComponent: Simulation;
@@ -27,6 +28,7 @@
 
     const SECTION_COUNT = presets.length;
     let sectionIndex = $state(0);
+    let attractionTable = $state(presets[0].attractionTable);
 
     let spreadConfig: InitialConfig = $derived(
         presets[sectionIndex]?.preferredInitialConfig ?? presets[0].preferredInitialConfig
@@ -34,6 +36,7 @@
 
     const loadPreset = (idx: number) => {
         spreadConfig = presets[idx].preferredInitialConfig;
+        attractionTable = presets[idx].attractionTable;
         simulationComponent?.startSim(
             generateSimulationParams({
                 ...presets[idx],
@@ -97,4 +100,5 @@
         <CenteredCircleButton onClick={() => reSpread('center')} />
         <RainbowButton onClick={() => reSpread('rainbow')} />
     </div>
+    <AttractionTableComponent {attractionTable} readonly compact />
 </div>

@@ -19,8 +19,17 @@
     </section>
 
     <div class="cards">
-        <a class="card featured" href="{base}/particles-life/story">
+        <a class="card featured" href="{base}/particles-life/infinite">
             <div class="card-label">Start here</div>
+            <h2>Infinite</h2>
+            <p>
+                Enjoy randomly generated universes infinitely. Once you are done check out the Story
+                page.
+            </p>
+            <span class="card-cta">Be amazed 🌈 →</span>
+        </a>
+
+        <a class="card" href="{base}/particles-life/story">
             <h2>Story</h2>
             <p>Let me show you the universes through an guided demonstration</p>
             <span class="card-cta">Read Story →</span>
@@ -52,12 +61,6 @@
                 what's possible.
             </p>
             <span class="card-cta">Browse universes →</span>
-        </a>
-
-        <a class="card" href="{base}/particles-life/infinite">
-            <h2>Infinite</h2>
-            <p>Enjoy randomly generated universes infinitely</p>
-            <span class="card-cta">Be amazed →</span>
         </a>
 
         <a class="card" href="{base}/particles-life/workbench">
