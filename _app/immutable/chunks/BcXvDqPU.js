@@ -1,0 +1,1 @@
+import{a as e,f as s}from"./BpVl1u3u.js";import{d as i,a as l}from"./J8U1CqTz.js";var p=s('<button class="spread-btn svelte-1xncj24" title="Rainbow spread">≋<span class="spread-btn-text svelte-1xncj24">Rainbow</span></button>');function b(a,n){var t=p();l("click",t,function(...o){n.onClick?.apply(this,o)}),e(a,t)}i(["click"]);export{b as R};
