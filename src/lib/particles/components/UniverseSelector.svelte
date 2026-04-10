@@ -28,7 +28,7 @@
     let fCategory: UniverseCategory | 'all' = $state('all');
 
     // ── Sort ─────────────────────────────────────────────────────────────────
-    type SortKey = 'name' | 'behavior' | 'structure' | 'colors' | 'energy' | 'complexity';
+    type SortKey = 'name' | 'behavior' | 'structure' | 'colors' | 'energy' | 'complexity' | 'date';
     let sortKey: SortKey = $state('complexity');
     let sortAsc = $state(false);
 
@@ -72,15 +72,19 @@
             )
             .sort((a, b) => {
                 let cmp = 0;
-                if (sortKey === 'name') cmp = a.name.localeCompare(b.name);
-                else if (sortKey === 'behavior')
+                if (sortKey === 'behavior')
                     cmp = (BEHAVIOR_ORDER[a.behavior] ?? 0) - (BEHAVIOR_ORDER[b.behavior] ?? 0);
                 else if (sortKey === 'structure')
                     cmp = (STRUCTURE_ORDER[a.structure] ?? 0) - (STRUCTURE_ORDER[b.structure] ?? 0);
                 else if (sortKey === 'colors') cmp = a.activeColors - b.activeColors;
                 else if (sortKey === 'energy')
                     cmp = (ENERGY_ORDER[a.energyLevel] ?? 0) - (ENERGY_ORDER[b.energyLevel] ?? 0);
-                else if (sortKey === 'complexity') cmp = a.complexity - b.complexity;
+                else if (sortKey === 'date') {
+                    cmp = new Date(a.createdAt!).getTime() - new Date(b.createdAt!).getTime();
+                    console.log('comp date', a.createdAt, b.createdAt, cmp);
+                } else if (sortKey === 'complexity') cmp = a.complexity - b.complexity;
+
+                if (cmp === 0) cmp = a.name.localeCompare(b.name);
                 return sortAsc ? cmp : -cmp;
             })
     );
@@ -127,7 +131,8 @@
         { key: 'structure', label: 'Structure' },
         { key: 'colors', label: 'Colors' },
         { key: 'energy', label: 'Energy' },
-        { key: 'complexity', label: 'Complexity' }
+        { key: 'complexity', label: 'Complexity' },
+        { key: 'date', label: 'Creation date' }
     ];
 
     // ── Expanded description ────────────────────────────────────────────────
