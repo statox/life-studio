@@ -121,12 +121,15 @@
         }
     };
 
-    const goToPrevScreen = () => {
+    const goToPrevScreen = async () => {
         if (currentIndex > 0) {
             currentIndex--;
-            // Enter the previous screen at its last section
             const lastSection = (screens[currentIndex].sectionCount ?? 1) - 1;
-            currentSectionIndex = lastSection;
+            // Wait for the new screen to mount before jumping to its last section,
+            // otherwise the screen's onMount effect resets sectionIndex to 0 after we set it.
+            await tick();
+            currentScreenComponent?.jumpToSection?.(lastSection);
+            currentSectionIndex = lastSection; // fallback for screens without jumpToSection
             scrollToTop();
         }
     };
