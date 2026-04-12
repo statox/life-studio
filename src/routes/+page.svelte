@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
     import { base } from '$app/paths';
     import { pageMetadataStore } from '$lib/stores/pageMetadata';
+    import { recordCardClick } from '$lib/api/webStats';
 
     pageMetadataStore.set({ name: 'Life Studio' });
 </script>
@@ -11,7 +12,11 @@
     </section>
 
     <div class="cards">
-        <a class="card" href="{base}/particles-life">
+        <a
+            class="card"
+            href="{base}/particles-life"
+            onclick={() => recordCardClick('/particles-life')}
+        >
             <h2>Particle Life</h2>
             <p>
                 Colored particles attract or repel each other based on simple rules. Clusters,
@@ -21,7 +26,7 @@
             <span class="card-cta">Explore →</span>
         </a>
 
-        <a class="card" href="{base}/gameoflife">
+        <a class="card" href="{base}/gameoflife" onclick={() => recordCardClick('/gameoflife')}>
             <h2>Game of Life</h2>
             <p>
                 Conway's classic cellular automaton running on the GPU. Cells live, die, or are born
@@ -30,7 +35,11 @@
             <span class="card-cta">Explore →</span>
         </a>
 
-        <a class="card" href="{base}/reaction-diffusion">
+        <a
+            class="card"
+            href="{base}/reaction-diffusion"
+            onclick={() => recordCardClick('/reaction-diffusion')}
+        >
             <h2>Reaction-Diffusion</h2>
             <p>
                 The Gray-Scott model simulates two chemicals reacting and diffusing across a
@@ -39,7 +48,7 @@
             <span class="card-cta">Explore →</span>
         </a>
 
-        <a class="card" href="{base}/soft-bodies">
+        <a class="card" href="{base}/soft-bodies" onclick={() => recordCardClick('/soft-bodies')}>
             <h2>Soft bodies</h2>
             <p>A never completed -and really never started- project around soft bodies physics..</p>
             <span class="card-cta">Expect nothing, still get disappointed →</span>
@@ -47,7 +56,7 @@
     </div>
     <br />
     <div class="cards">
-        <a class="card" href="{base}/shaders">
+        <a class="card" href="{base}/shaders" onclick={() => recordCardClick('/shaders')}>
             <h2>Shader tests</h2>
             <p>Me messing up with shaders and webgl before implementing Game of Life on the GPU.</p>
             <span class="card-cta">Explore →</span>

@@ -1,6 +1,7 @@
 <script lang="ts">
     import { base } from '$app/paths';
     import { pageMetadataStore } from '$lib/stores/pageMetadata';
+    import { recordCardClick } from '$lib/api/webStats';
 
     pageMetadataStore.set({ name: 'Particle Life' });
 </script>
@@ -19,7 +20,11 @@
     </section>
 
     <div class="cards">
-        <a class="card featured" href="{base}/particles-life/infinite">
+        <a
+            class="card featured"
+            href="{base}/particles-life/infinite"
+            onclick={() => recordCardClick('/particles-life/infinite')}
+        >
             <div class="card-label">Start here</div>
             <h2>Infinite</h2>
             <p>
@@ -29,13 +34,21 @@
             <span class="card-cta">Be amazed 🌈 →</span>
         </a>
 
-        <a class="card" href="{base}/particles-life/story">
+        <a
+            class="card"
+            href="{base}/particles-life/story"
+            onclick={() => recordCardClick('/particles-life/story')}
+        >
             <h2>Story</h2>
             <p>Let me show you the universes through an guided demonstration</p>
             <span class="card-cta">Read Story →</span>
         </a>
 
-        <a class="card" href="{base}/particles-life/playground">
+        <a
+            class="card"
+            href="{base}/particles-life/playground"
+            onclick={() => recordCardClick('/particles-life/playground')}
+        >
             <h2>Playground</h2>
             <p>
                 An interactive interface allowing you to load preset universes and manipulate them
@@ -44,7 +57,11 @@
             <span class="card-cta">Go play →</span>
         </a>
 
-        <a class="card" href="{base}/particles-life/demo">
+        <a
+            class="card"
+            href="{base}/particles-life/demo"
+            onclick={() => recordCardClick('/particles-life/demo')}
+        >
             <h2>Demonstration</h2>
             <p>
                 A detailed walkthrough of how the simulation works. Explains the mechanics step by
@@ -53,7 +70,11 @@
             <span class="card-cta">Read the guide →</span>
         </a>
 
-        <a class="card" href="{base}/particles-life/gallery">
+        <a
+            class="card"
+            href="{base}/particles-life/gallery"
+            onclick={() => recordCardClick('/particles-life/gallery')}
+        >
             <h2>Gallery</h2>
             <p>
                 Browse all named universes in one place. Each entry is a specific set of rules that
@@ -63,7 +84,11 @@
             <span class="card-cta">Browse universes →</span>
         </a>
 
-        <a class="card" href="{base}/particles-life/workbench">
+        <a
+            class="card"
+            href="{base}/particles-life/workbench"
+            onclick={() => recordCardClick('/particles-life/workbench')}
+        >
             <h2>Workbench</h2>
             <p>
                 A free-form sandbox. Adjust the attraction table, tweak color proportions, change
@@ -77,7 +102,11 @@
             <span class="card-cta">Open sandbox →</span>
         </a>
 
-        <a class="card" href="{base}/particles-life/classifier">
+        <a
+            class="card"
+            href="{base}/particles-life/classifier"
+            onclick={() => recordCardClick('/particles-life/classifier')}
+        >
             <h2>Classifier</h2>
             <p>
                 Review and tag universe presets. Load each universe, watch it simulate, then edit

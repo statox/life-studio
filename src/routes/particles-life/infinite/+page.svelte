@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Infinite from '$lib/particles/components/Infinite.svelte';
     import { pageMetadataStore } from '$lib/stores/pageMetadata';
 

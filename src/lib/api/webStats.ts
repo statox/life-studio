@@ -33,6 +33,14 @@ export const recordNavigation = (path: string): void => {
     record(path, 'navigate');
 };
 
+export const recordPageLeave = (path: string): void => {
+    record(path, 'leave');
+};
+
+export const recordCardClick = (path: string): void => {
+    record(path, 'card-click');
+};
+
 // Tracks the current story position so interactions can be associated with it.
 let currentStoryPath = '/particles-life/story';
 

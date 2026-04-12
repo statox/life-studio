@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import WorkBench from '$lib/particles/components/WorkBench.svelte';
     import { pageMetadataStore } from '$lib/stores/pageMetadata';
 

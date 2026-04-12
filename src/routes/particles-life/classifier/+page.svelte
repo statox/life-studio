@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Classifier from '$lib/particles/components/Classifier.svelte';
     import { pageMetadataStore } from '$lib/stores/pageMetadata';
 

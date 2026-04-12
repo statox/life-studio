@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Demonstration from '$lib/particles/components/Demonstration.svelte';
     import { pageMetadataStore } from '$lib/stores/pageMetadata';
 

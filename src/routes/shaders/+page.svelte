@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Page from '$lib/shaders/components/TestShaders.svelte';
     import { pageMetadataStore } from '$lib/stores/pageMetadata';
 

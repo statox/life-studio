@@ -1,12 +1,30 @@
 <script lang="ts">
+    import { onDestroy } from 'svelte';
     import { base } from '$app/paths';
     import { page } from '$app/stores';
     import { pageMetadataStore } from '$lib/stores/pageMetadata';
+    import { recordNavigation, recordPageLeave } from '$lib/api/webStats';
+
     interface Props {
         children?: import('svelte').Snippet;
     }
 
     let { children }: Props = $props();
+
+    let prevPath: string | null = null;
+
+    $effect(() => {
+        const path = $page.url.pathname;
+        if (prevPath !== null && prevPath !== path) {
+            recordPageLeave(prevPath);
+        }
+        recordNavigation(path);
+        prevPath = path;
+    });
+
+    onDestroy(() => {
+        if (prevPath !== null) recordPageLeave(prevPath);
+    });
 
     const noHeaderPaths = ['/particles-life/story', '/particles-life/infinite'];
 
