@@ -1,4 +1,4 @@
-import{a as V,f as U,c as ut,t as be}from"../chunks/D-vNQCDt.js";import{i as xe}from"../chunks/KznZQxDT.js";import{as as h,aq as ce,ar as ee,at as O,au as K,aH as ve,p as oe,a as re,ab as Q,u as w,av as le,aa as de,ax as $e,ay as Xe}from"../chunks/CDdjPMoP.js";import{T as Ne,a as je,b as we,c as _e}from"../chunks/CAaHpTa5.js";import{s as L,r as Le}from"../chunks/bOfcVGJ9.js";import{b as F}from"../chunks/7T-1GTwu.js";import{_ as he}from"../chunks/CmsKOCeN.js";import{a as se,o as pe}from"../chunks/CymaG_sB.js";import{s as ae}from"../chunks/DLAoHIwK.js";import{d as ue,a as Y,e as me}from"../chunks/BEMjA5ES.js";import{s as Re,b as Te}from"../chunks/RzY-E-HR.js";import{i as Pe}from"../chunks/DwOK4rkq.js";import{P as ge}from"../chunks/wKH77X2V.js";import{R as ye}from"../chunks/CRqdw40p.js";import{e as Ce,i as ze}from"../chunks/HF00-NAr.js";import{b as Fe}from"../chunks/CUXXkoZs.js";import{p as ft}from"../chunks/DXuvaJaW.js";function Ze(t){return function(...o){var e=o[0];return e.preventDefault(),t?.apply(this,o)}}var mt=U(`<h1>Gray-Scott model for Reaction-Diffusion systems</h1> <p>This page contains my experiementations aroud <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Reaction%E2%80%93diffusion_system">reaction-diffusion systems</a>.</p> <p>The system I am considering is a mathematical model of a physical system in which two chemical
+import{a as V,f as U,c as ut,t as be}from"../chunks/D-vNQCDt.js";import{i as xe}from"../chunks/KznZQxDT.js";import{a as se,o as me}from"../chunks/CymaG_sB.js";import{as as h,aq as ce,ar as ee,at as O,au as K,aH as ve,p as oe,a as re,ab as Q,u as w,av as le,aa as pe,ax as $e,ay as Xe}from"../chunks/CDdjPMoP.js";import{T as Ne,a as je,b as we,c as _e}from"../chunks/CAaHpTa5.js";import{s as L,r as Le}from"../chunks/bOfcVGJ9.js";import{b as F}from"../chunks/TGahLE25.js";import{_ as he}from"../chunks/CmsKOCeN.js";import{s as ae}from"../chunks/DLAoHIwK.js";import{d as ue,a as Y,e as de}from"../chunks/BEMjA5ES.js";import{s as Re,b as Te}from"../chunks/RzY-E-HR.js";import{i as Pe}from"../chunks/DwOK4rkq.js";import{P as ge}from"../chunks/eUe4uVnR.js";import{R as ye}from"../chunks/LOZIz6p8.js";import{e as Ce,i as ze}from"../chunks/HF00-NAr.js";import{b as Fe}from"../chunks/CUXXkoZs.js";import{p as ft}from"../chunks/DXuvaJaW.js";import{r as mt}from"../chunks/DBQxHSek.js";function Ze(t){return function(...o){var e=o[0];return e.preventDefault(),t?.apply(this,o)}}var dt=U(`<h1>Gray-Scott model for Reaction-Diffusion systems</h1> <p>This page contains my experiementations aroud <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Reaction%E2%80%93diffusion_system">reaction-diffusion systems</a>.</p> <p>The system I am considering is a mathematical model of a physical system in which two chemical
     substances react with each other while also diffusing in the environment. The simulation allows
     to compute the concentration of these chemical on a virtual grid and visualize these
     concentrations over time. This representation shows how the reactions create various pattern
@@ -118,14 +118,14 @@ import{a as V,f as U,c as ut,t as be}from"../chunks/D-vNQCDt.js";import{i as xe}
     the concentrations of chemicals. So reusing the menu component I created to select f and k, I added
     a bounding box of the values which create the most interesting patterns and then used a noise function
     to make the parameters vary slowly and consistenly over time.</p> <p>Even when changing <code>f</code> and <code>k</code> the chemicals tends to disappear from the system
-    so I have a mecanism which simulates the user clicking on the screen to add more chemical.</p>`,1);function dt(t){var o=mt(),e=h(ce(o),18),n=h(e,4),r=h(n,4),a=h(r,6),i=h(a,2),l=h(i,4),m=h(l,2),g=h(m,2),y=h(g,2),C=h(y,2),d=h(C,10),E=h(d,12),D=h(E,2),T=h(D,2),_=h(T,2),k=h(_,2),B=h(k,12),b=h(B,22),$=h(b,2),I=h($,2),s=h(I,2),c=h(s,2),p=h(c,4),P=h(p,2),u=h(P,2),v=h(u,2),A=h(v,4),R=h(A,2),M=h(R,4),G=h(M,2),f=h(G,42),x=O(f);x.textContent=`precision mediump float;
+    so I have a mecanism which simulates the user clicking on the screen to add more chemical.</p>`,1);function pt(t){var o=dt(),e=h(ce(o),18),n=h(e,4),r=h(n,4),a=h(r,6),i=h(a,2),l=h(i,4),m=h(l,2),g=h(m,2),y=h(g,2),C=h(y,2),d=h(C,10),E=h(d,12),D=h(E,2),T=h(D,2),_=h(T,2),k=h(_,2),B=h(k,12),b=h(B,22),$=h(b,2),I=h($,2),s=h(I,2),c=h(s,2),p=h(c,4),P=h(p,2),u=h(P,2),v=h(u,2),A=h(v,4),R=h(A,2),M=h(R,4),G=h(M,2),f=h(G,42),x=O(f);x.textContent=`precision mediump float;
 uniform sampler2D prevState;    // The state of the simulation to render
 varying vec2 uv;                // The position of the vertex in the simulation texture
 void main() {
     vec2 state = texture2D(prevState, uv).rg;   // Read the red and green channel in the simulation
     gl_FragColor = vec4(state, 0, 1);           // Use them directly in the color
-}`,K(f);var S=h(f,6),z=h(O(S),3);K(S);var H=h(S,28);ve(12),ee(()=>{L(e,"src",`${F??""}/reaction_diffusion_about/fkselector.gif`),L(n,"src",`${F??""}/reaction_diffusion_about/interface.gif`),L(r,"src",`${F??""}/reaction_diffusion_about/settings.png`),L(a,"src",`${F??""}/reaction_diffusion_about/pearsons-parameter-space1.jpg`),L(i,"src",`${F??""}/reaction_diffusion_about/pearsons-parameter-space2.png`),L(l,"src",`${F??""}/reaction_diffusion_about/pattern5.png`),L(m,"src",`${F??""}/reaction_diffusion_about/pattern4.png`),L(g,"src",`${F??""}/reaction_diffusion_about/pattern1.png`),L(y,"src",`${F??""}/reaction_diffusion_about/pattern2.png`),L(C,"src",`${F??""}/reaction_diffusion_about/pattern3.png`),L(d,"src",`${F??""}/reaction_diffusion_about/fkrandomizer.gif`),L(E,"src",`${F??""}/reaction_diffusion_about/parameters_map_timelapse_0.png`),L(D,"src",`${F??""}/reaction_diffusion_about/parameters_map_timelapse_1.png`),L(T,"src",`${F??""}/reaction_diffusion_about/parameters_map_timelapse_2.png`),L(_,"src",`${F??""}/reaction_diffusion_about/parameters_map_timelapse_3.png`),L(k,"src",`${F??""}/reaction_diffusion_about/parameters_map_timelapse_4.png`),L(B,"src",`${F??""}/reaction_diffusion_about/gray-scott-equations.gif`),L(b,"src",`${F??""}/reaction_diffusion_about/gallery/madrepore_museum_spots.JPEG`),L($,"src",`${F??""}/reaction_diffusion_about/gallery/madrepore_simulation_spots.png`),L(I,"src",`${F??""}/reaction_diffusion_about/gallery/madrepore_museum_stripes.png`),L(s,"src",`${F??""}/reaction_diffusion_about/gallery/madrepore_simulation_stripes1.png`),L(c,"src",`${F??""}/reaction_diffusion_about/gallery/madrepore_simulation_stripes2.png`),L(p,"src",`${F??""}/reaction_diffusion_about/gallery/800px-Giant_Puffer_fish_skin_pattern.JPG`),L(P,"src",`${F??""}/reaction_diffusion_about/gallery/Giant_Pufferfish_skin_pattern_detail.jpg`),L(u,"src",`${F??""}/reaction_diffusion_about/gallery/tbd_simulation_stripes.png`),L(v,"src",`${F??""}/reaction_diffusion_about/gallery/tbd_simulation_stripes_spots.png`),L(A,"src",`${F??""}/reaction_diffusion_about/gallery/cells_division.gif`),L(R,"src",`${F??""}/reaction_diffusion_about/gallery/cells_division2.gif`),L(M,"src",`${F??""}/reaction_diffusion_about/gallery/fish_spots.jpg`),L(G,"src",`${F??""}/reaction_diffusion_about/gallery/tbd_simulation_regular_spots.png`),L(z,"href",`${F??""}/gameoflife`),L(H,"src",`${F??""}/parameters_map.png`)}),V(t,o)}const fe=[{name:"KarlSims",type:"Unknown",f:.055,k:.062},{name:"STX 1",type:"N.A",f:.0353,k:.0614},{name:"STX 2",type:"N.A",f:.0201,k:.0602},{name:"STX 2",type:"N.A",f:.0181,k:.0435},{name:"α 1",type:"alpha",f:.01,k:.047},{name:"α 2",type:"alpha",f:.014,k:.053},{name:"β 1",type:"beta",f:.014,k:.039},{name:"β 2",type:"beta",f:.026,k:.051},{name:"δ 1",type:"delta",f:.03,k:.055},{name:"δ 2",type:"delta",f:.042,k:.059},{name:"ε 1",type:"epsilon",f:.018,k:.055},{name:"ε 2",type:"epsilon",f:.022,k:.059},{name:"η 1",type:"eta",f:.034,k:.063},{name:"γ 1",type:"gamma",f:.022,k:.051},{name:"γ 2",type:"gamma",f:.026,k:.055},{name:"ι 1",type:"iota",f:.046,k:.0594},{name:"κ 1",type:"kappa",f:.082,k:.06},{name:"κ 2",type:"kappa",f:.058,k:.063},{name:"λ 1",type:"lambda",f:.026,k:.061},{name:"λ 2",type:"lambda",f:.034,k:.065},{name:"μ 1",type:"mu",f:.046,k:.065},{name:"μ 2",type:"mu",f:.058,k:.065},{name:"ν 2",type:"nu",f:.046,k:.067},{name:"π 1",type:"pi",f:.062,k:.061},{name:"ρ 1",type:"rho",f:.09,k:.059},{name:"ρ 2",type:"rho",f:.102,k:.055},{name:"σ 1",type:"sigma",f:.09,k:.057},{name:"θ 2",type:"sigma",f:.11,k:.0523},{name:"θ 1",type:"theta",f:.03,k:.057},{name:"θ 2",type:"theta",f:.038,k:.061},{name:"ξ 1",type:"xi",f:.01,k:.041},{name:"ξ 2",type:"xi",f:.014,k:.047},{name:"ζ 1",type:"zeta",f:.022,k:.061},{name:"ζ 2",type:"zeta",f:.026,k:.059}];var pt=U(`<div>Modify the change rate to change how fast the selector walks around the parameters space
-            and the change magnitude to change how big each step taken by the selector is.</div> <div><label for="changeMag">changeMag</label> <span id="changeMag"></span> </div> <div><label for="changeRate">changeRate</label> <span id="changeRate"></span> </div> <!>`,1),vt=U('<div id="container"><button class="full-width svelte-10z1gqk" id="toggleButton"> </button> <!></div>');function xt(t,o){oe(o,!0);let e=fe[0],n=le(!0),r=le(1),a=le(100);const i=[0,.12],l=[.03,.07],m={f:.0433,k:.0621},g=[{f:.1045,k:.0553},{f:.0829,k:.0582},{f:.0664,k:.0595},{f:.0511,k:.0594},{f:.0307,k:.0549},{f:.017,k:.0467},{f:.005,k:.0335},{f:.0076,k:.0472},{f:.0166,k:.0594},{f:.0277,k:.0657},{f:.046,k:.0675},{f:.0757,k:.0643},{f:.0949,k:.0594}],y=f=>{const{f:x,k:S}=f,z=s.map(S,l[0],l[1],0,s.width),H=s.map(x,i[0],i[1],s.height,0);return{x:z,y:H}},C=f=>{const{x,y:S}=f,z=s.map(S,s.height,0,i[0],i[1]),H=s.map(x,0,s.width,l[0],l[1]);return{f:z,k:H}},d=f=>{const x=f.mouseX,S=f.mouseY;if(x<0||S<0||x>f.width||S>f.height)return;const{f:z,k:H}=C({x:f.mouseX,y:f.mouseY});e={f:z,k:H,name:"custom",type:"manual"},o.onfkupdated?.(e)},E=f=>{f.noStroke();const x=f.textSize();for(const S of fe){const{x:z,y:H}=y({f:S.f,k:S.k}),W=S.f===e.f&&S.k===e.k;f.circle(z,H,3),f.textSize(W?x*2:x),f.fill(W?[240,240,150]:[255,255,255]),f.text(S.name,z-f.textWidth(S.name)/2,H-10)}},D=f=>{f.noFill(),f.stroke("red"),f.strokeWeight(1);const{x,y:S}=y(e);f.text("F",10,S>10?S-5:S+15),f.line(0,S,f.width,S),f.text("K",x<f.width-10?x+5:x-15,f.height-10),f.line(x,0,x,f.height),f.circle(x,S,10)},T=f=>{const{f:x,k:S}=e,z=`F: ${x.toFixed(4)}`,H=`K: ${S.toFixed(4)}`,W=f.textSize(),q=f.height*.05;f.textStyle(f.BOLD),f.textSize(q),f.fill("white"),f.stroke(0),f.strokeWeight(1),f.text(z,f.width*.05,f.textSize()),f.text(H,f.width*.05,f.textSize()+f.textSize()+6),f.textStyle(f.NORMAL),f.textSize(W)},_=f=>{for(let x=0;x<g.length;x++){const{x:S,y:z}=y(g[x]),{x:H,y:W}=y(g[(x+1)%g.length]);f.fill("white"),f.stroke("white"),f.strokeWeight(1),f.circle(S,z,3),f.circle(H,W,3),f.line(S,z,H,W)}};function k(f,x){let S=!1,z=1/0,H=null;for(let W=0;W<x.length;W++){const q=x[W],te=x[(W+1)%x.length];if(f[0]===q[0]&&f[1]===q[1])return f;q[1]>f[1]!=te[1]>f[1]&&f[0]<(te[0]-q[0])*(f[1]-q[1])/(te[1]-q[1])+q[0]&&(S=!S);const Ie=B(f,q,te);Ie<z&&(z=Ie,H=b(f,q,te))}if(S)return f;if(!H)throw new Error("Now closest point found");return H}function B(f,x,S){const z=[S[0]-x[0],S[1]-x[1]],H=[f[0]-x[0],f[1]-x[1]],W=z[0]*H[0]+z[1]*H[1],q=z[0]*z[0]+z[1]*z[1],te=W/q;let ie;return te<0?ie=x:te>1?ie=S:ie=[x[0]+te*z[0],x[1]+te*z[1]],Math.sqrt((f[0]-ie[0])**2+(f[1]-ie[1])**2)}function b(f,x,S){const z=[S[0]-x[0],S[1]-x[1]],H=[f[0]-x[0],f[1]-x[1]],W=z[0]*H[0]+z[1]*H[1],q=z[0]*z[0]+z[1]*z[1],te=W/q;let ie;return te<0?ie=x:te>1?ie=S:ie=[x[0]+te*z[0],x[1]+te*z[1]],ie}const $=()=>{const f=[e.f,e.k],x=g.map(z=>[z.f,z.k]),S=k(f,x);e.f=S[0],e.k=S[1]},I=()=>{let{f,k:x}=e;const S=s.noise(s.frameCount*.01),z=s.noise(5321+s.frameCount*.01),W=Math.random()<.97?.001:.01;f=f+(z*2-1)*(i[1]-i[0])*W*w(r),x=x+(S*2-1)*(l[1]-l[0])*W*w(r);const q={f:f-m.f,k:x-m.k};f=f-q.f*.001*(w(r)/2),x=x-q.k*.001*(w(r)/2),e={f,k:x,name:"custom",type:"manual"},$(),o.onfkupdated?.(e)};let s,c=le(!1);const p=f=>{s=f;let x,S,z;f.preload=()=>{x=f.loadImage(F+"/parameters_map.png")},f.setup=()=>{f.createCanvas(400,400),f.frameRate(55),S=f.createSlider(0,10,6,0);const H=f.select("#changeMag");if(!H)throw new Error("changeMag slider container not ready");S.parent(H),z=f.createSlider(1,80,30,1);const W=f.select("#changeRate");if(!W)throw new Error("changeRate slider container not ready");z.parent(W)},f.draw=()=>{f.background(255),f.tint(150,190),f.image(x,0,0,f.width,f.height),E(f),_(f),D(f),T(f),f.frameCount%w(a)===0&&I(),Q(c,!1),f.mouseIsPressed&&(d(f),Q(c,!0)),Q(r,Number(S.value()),!0),Q(a,Number(z.value()),!0)}},P=()=>{Q(n,!w(n)),w(n)||s.remove()};se(()=>s?.remove());var u=vt();let v;var A=O(u),R=O(A,!0);K(A);var M=h(A,2);{var G=f=>{var x=pt(),S=h(ce(x),2),z=h(O(S),3,!0);K(S);var H=h(S,2),W=h(O(H),3,!0);K(H);var q=h(H,2);ge(q,{sketch:p}),ee((te,ie)=>{ae(z,te),ae(W,ie)},[()=>w(r).toFixed(2),()=>w(a).toFixed(2)]),V(f,x)};Pe(M,f=>{w(n)&&f(G)})}K(u),ee(()=>{v=Re(u,1,"svelte-10z1gqk",null,v,{"no-cursor":w(c)}),ae(R,w(n)?"Close":"F/K selection")}),Y("click",A,P),V(t,u),re()}ue(["click"]);const ht=`precision mediump float;
+}`,K(f);var S=h(f,6),z=h(O(S),3);K(S);var H=h(S,28);ve(12),ee(()=>{L(e,"src",`${F??""}/reaction_diffusion_about/fkselector.gif`),L(n,"src",`${F??""}/reaction_diffusion_about/interface.gif`),L(r,"src",`${F??""}/reaction_diffusion_about/settings.png`),L(a,"src",`${F??""}/reaction_diffusion_about/pearsons-parameter-space1.jpg`),L(i,"src",`${F??""}/reaction_diffusion_about/pearsons-parameter-space2.png`),L(l,"src",`${F??""}/reaction_diffusion_about/pattern5.png`),L(m,"src",`${F??""}/reaction_diffusion_about/pattern4.png`),L(g,"src",`${F??""}/reaction_diffusion_about/pattern1.png`),L(y,"src",`${F??""}/reaction_diffusion_about/pattern2.png`),L(C,"src",`${F??""}/reaction_diffusion_about/pattern3.png`),L(d,"src",`${F??""}/reaction_diffusion_about/fkrandomizer.gif`),L(E,"src",`${F??""}/reaction_diffusion_about/parameters_map_timelapse_0.png`),L(D,"src",`${F??""}/reaction_diffusion_about/parameters_map_timelapse_1.png`),L(T,"src",`${F??""}/reaction_diffusion_about/parameters_map_timelapse_2.png`),L(_,"src",`${F??""}/reaction_diffusion_about/parameters_map_timelapse_3.png`),L(k,"src",`${F??""}/reaction_diffusion_about/parameters_map_timelapse_4.png`),L(B,"src",`${F??""}/reaction_diffusion_about/gray-scott-equations.gif`),L(b,"src",`${F??""}/reaction_diffusion_about/gallery/madrepore_museum_spots.JPEG`),L($,"src",`${F??""}/reaction_diffusion_about/gallery/madrepore_simulation_spots.png`),L(I,"src",`${F??""}/reaction_diffusion_about/gallery/madrepore_museum_stripes.png`),L(s,"src",`${F??""}/reaction_diffusion_about/gallery/madrepore_simulation_stripes1.png`),L(c,"src",`${F??""}/reaction_diffusion_about/gallery/madrepore_simulation_stripes2.png`),L(p,"src",`${F??""}/reaction_diffusion_about/gallery/800px-Giant_Puffer_fish_skin_pattern.JPG`),L(P,"src",`${F??""}/reaction_diffusion_about/gallery/Giant_Pufferfish_skin_pattern_detail.jpg`),L(u,"src",`${F??""}/reaction_diffusion_about/gallery/tbd_simulation_stripes.png`),L(v,"src",`${F??""}/reaction_diffusion_about/gallery/tbd_simulation_stripes_spots.png`),L(A,"src",`${F??""}/reaction_diffusion_about/gallery/cells_division.gif`),L(R,"src",`${F??""}/reaction_diffusion_about/gallery/cells_division2.gif`),L(M,"src",`${F??""}/reaction_diffusion_about/gallery/fish_spots.jpg`),L(G,"src",`${F??""}/reaction_diffusion_about/gallery/tbd_simulation_regular_spots.png`),L(z,"href",`${F??""}/gameoflife`),L(H,"src",`${F??""}/parameters_map.png`)}),V(t,o)}const fe=[{name:"KarlSims",type:"Unknown",f:.055,k:.062},{name:"STX 1",type:"N.A",f:.0353,k:.0614},{name:"STX 2",type:"N.A",f:.0201,k:.0602},{name:"STX 2",type:"N.A",f:.0181,k:.0435},{name:"α 1",type:"alpha",f:.01,k:.047},{name:"α 2",type:"alpha",f:.014,k:.053},{name:"β 1",type:"beta",f:.014,k:.039},{name:"β 2",type:"beta",f:.026,k:.051},{name:"δ 1",type:"delta",f:.03,k:.055},{name:"δ 2",type:"delta",f:.042,k:.059},{name:"ε 1",type:"epsilon",f:.018,k:.055},{name:"ε 2",type:"epsilon",f:.022,k:.059},{name:"η 1",type:"eta",f:.034,k:.063},{name:"γ 1",type:"gamma",f:.022,k:.051},{name:"γ 2",type:"gamma",f:.026,k:.055},{name:"ι 1",type:"iota",f:.046,k:.0594},{name:"κ 1",type:"kappa",f:.082,k:.06},{name:"κ 2",type:"kappa",f:.058,k:.063},{name:"λ 1",type:"lambda",f:.026,k:.061},{name:"λ 2",type:"lambda",f:.034,k:.065},{name:"μ 1",type:"mu",f:.046,k:.065},{name:"μ 2",type:"mu",f:.058,k:.065},{name:"ν 2",type:"nu",f:.046,k:.067},{name:"π 1",type:"pi",f:.062,k:.061},{name:"ρ 1",type:"rho",f:.09,k:.059},{name:"ρ 2",type:"rho",f:.102,k:.055},{name:"σ 1",type:"sigma",f:.09,k:.057},{name:"θ 2",type:"sigma",f:.11,k:.0523},{name:"θ 1",type:"theta",f:.03,k:.057},{name:"θ 2",type:"theta",f:.038,k:.061},{name:"ξ 1",type:"xi",f:.01,k:.041},{name:"ξ 2",type:"xi",f:.014,k:.047},{name:"ζ 1",type:"zeta",f:.022,k:.061},{name:"ζ 2",type:"zeta",f:.026,k:.059}];var vt=U(`<div>Modify the change rate to change how fast the selector walks around the parameters space
+            and the change magnitude to change how big each step taken by the selector is.</div> <div><label for="changeMag">changeMag</label> <span id="changeMag"></span> </div> <div><label for="changeRate">changeRate</label> <span id="changeRate"></span> </div> <!>`,1),xt=U('<div id="container"><button class="full-width svelte-10z1gqk" id="toggleButton"> </button> <!></div>');function ht(t,o){oe(o,!0);let e=fe[0],n=le(!0),r=le(1),a=le(100);const i=[0,.12],l=[.03,.07],m={f:.0433,k:.0621},g=[{f:.1045,k:.0553},{f:.0829,k:.0582},{f:.0664,k:.0595},{f:.0511,k:.0594},{f:.0307,k:.0549},{f:.017,k:.0467},{f:.005,k:.0335},{f:.0076,k:.0472},{f:.0166,k:.0594},{f:.0277,k:.0657},{f:.046,k:.0675},{f:.0757,k:.0643},{f:.0949,k:.0594}],y=f=>{const{f:x,k:S}=f,z=s.map(S,l[0],l[1],0,s.width),H=s.map(x,i[0],i[1],s.height,0);return{x:z,y:H}},C=f=>{const{x,y:S}=f,z=s.map(S,s.height,0,i[0],i[1]),H=s.map(x,0,s.width,l[0],l[1]);return{f:z,k:H}},d=f=>{const x=f.mouseX,S=f.mouseY;if(x<0||S<0||x>f.width||S>f.height)return;const{f:z,k:H}=C({x:f.mouseX,y:f.mouseY});e={f:z,k:H,name:"custom",type:"manual"},o.onfkupdated?.(e)},E=f=>{f.noStroke();const x=f.textSize();for(const S of fe){const{x:z,y:H}=y({f:S.f,k:S.k}),W=S.f===e.f&&S.k===e.k;f.circle(z,H,3),f.textSize(W?x*2:x),f.fill(W?[240,240,150]:[255,255,255]),f.text(S.name,z-f.textWidth(S.name)/2,H-10)}},D=f=>{f.noFill(),f.stroke("red"),f.strokeWeight(1);const{x,y:S}=y(e);f.text("F",10,S>10?S-5:S+15),f.line(0,S,f.width,S),f.text("K",x<f.width-10?x+5:x-15,f.height-10),f.line(x,0,x,f.height),f.circle(x,S,10)},T=f=>{const{f:x,k:S}=e,z=`F: ${x.toFixed(4)}`,H=`K: ${S.toFixed(4)}`,W=f.textSize(),q=f.height*.05;f.textStyle(f.BOLD),f.textSize(q),f.fill("white"),f.stroke(0),f.strokeWeight(1),f.text(z,f.width*.05,f.textSize()),f.text(H,f.width*.05,f.textSize()+f.textSize()+6),f.textStyle(f.NORMAL),f.textSize(W)},_=f=>{for(let x=0;x<g.length;x++){const{x:S,y:z}=y(g[x]),{x:H,y:W}=y(g[(x+1)%g.length]);f.fill("white"),f.stroke("white"),f.strokeWeight(1),f.circle(S,z,3),f.circle(H,W,3),f.line(S,z,H,W)}};function k(f,x){let S=!1,z=1/0,H=null;for(let W=0;W<x.length;W++){const q=x[W],te=x[(W+1)%x.length];if(f[0]===q[0]&&f[1]===q[1])return f;q[1]>f[1]!=te[1]>f[1]&&f[0]<(te[0]-q[0])*(f[1]-q[1])/(te[1]-q[1])+q[0]&&(S=!S);const Ie=B(f,q,te);Ie<z&&(z=Ie,H=b(f,q,te))}if(S)return f;if(!H)throw new Error("Now closest point found");return H}function B(f,x,S){const z=[S[0]-x[0],S[1]-x[1]],H=[f[0]-x[0],f[1]-x[1]],W=z[0]*H[0]+z[1]*H[1],q=z[0]*z[0]+z[1]*z[1],te=W/q;let ie;return te<0?ie=x:te>1?ie=S:ie=[x[0]+te*z[0],x[1]+te*z[1]],Math.sqrt((f[0]-ie[0])**2+(f[1]-ie[1])**2)}function b(f,x,S){const z=[S[0]-x[0],S[1]-x[1]],H=[f[0]-x[0],f[1]-x[1]],W=z[0]*H[0]+z[1]*H[1],q=z[0]*z[0]+z[1]*z[1],te=W/q;let ie;return te<0?ie=x:te>1?ie=S:ie=[x[0]+te*z[0],x[1]+te*z[1]],ie}const $=()=>{const f=[e.f,e.k],x=g.map(z=>[z.f,z.k]),S=k(f,x);e.f=S[0],e.k=S[1]},I=()=>{let{f,k:x}=e;const S=s.noise(s.frameCount*.01),z=s.noise(5321+s.frameCount*.01),W=Math.random()<.97?.001:.01;f=f+(z*2-1)*(i[1]-i[0])*W*w(r),x=x+(S*2-1)*(l[1]-l[0])*W*w(r);const q={f:f-m.f,k:x-m.k};f=f-q.f*.001*(w(r)/2),x=x-q.k*.001*(w(r)/2),e={f,k:x,name:"custom",type:"manual"},$(),o.onfkupdated?.(e)};let s,c=le(!1);const p=f=>{s=f;let x,S,z;f.preload=()=>{x=f.loadImage(F+"/parameters_map.png")},f.setup=()=>{f.createCanvas(400,400),f.frameRate(55),S=f.createSlider(0,10,6,0);const H=f.select("#changeMag");if(!H)throw new Error("changeMag slider container not ready");S.parent(H),z=f.createSlider(1,80,30,1);const W=f.select("#changeRate");if(!W)throw new Error("changeRate slider container not ready");z.parent(W)},f.draw=()=>{f.background(255),f.tint(150,190),f.image(x,0,0,f.width,f.height),E(f),_(f),D(f),T(f),f.frameCount%w(a)===0&&I(),Q(c,!1),f.mouseIsPressed&&(d(f),Q(c,!0)),Q(r,Number(S.value()),!0),Q(a,Number(z.value()),!0)}},P=()=>{Q(n,!w(n)),w(n)||s.remove()};se(()=>s?.remove());var u=xt();let v;var A=O(u),R=O(A,!0);K(A);var M=h(A,2);{var G=f=>{var x=vt(),S=h(ce(x),2),z=h(O(S),3,!0);K(S);var H=h(S,2),W=h(O(H),3,!0);K(H);var q=h(H,2);ge(q,{sketch:p}),ee((te,ie)=>{ae(z,te),ae(W,ie)},[()=>w(r).toFixed(2),()=>w(a).toFixed(2)]),V(f,x)};Pe(M,f=>{w(n)&&f(G)})}K(u),ee(()=>{v=Re(u,1,"svelte-10z1gqk",null,v,{"no-cursor":w(c)}),ae(R,w(n)?"Close":"F/K selection")}),Y("click",A,P),V(t,u),re()}ue(["click"]);const gt=`precision mediump float;
 attribute vec2 position;
 uniform float zoomLevel;    // 1 full size, 0 max zoom
 uniform vec2 pan;   // in range [0, 1], [0, 0]  is bottom left, [1, 1] top right
@@ -135,7 +135,7 @@ void main() {
     uv = 0.5 * (position + 1.0) * zoomLevel + pan * (1.0 - zoomLevel);
     gl_Position = vec4(position, 0, 1);
 }
-`,gt=`precision mediump float;
+`,yt=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -148,7 +148,7 @@ void main() {
     gl_FragColor = vec4(A, B, 0.0, 1.0);
 }
 
-`,yt=`precision mediump float;
+`,bt=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -165,7 +165,7 @@ void main() {
     }
     gl_FragColor = vec4(A, B, val, 1.0);
 }
-`,bt=`precision mediump float;
+`,wt=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -180,7 +180,7 @@ void main() {
     gl_FragColor = vec4(val, val, val, 1.0);
 }
 
-`,wt=`precision mediump float;
+`,_t=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -194,7 +194,7 @@ void main() {
 
     gl_FragColor = vec4(1.0 - val, 1.0 - val, 1.0 - val, 1.0);
 }
-`,_t=`precision mediump float;
+`,St=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -208,7 +208,7 @@ void main() {
 
     gl_FragColor = vec4(val, val, val, 1.0);
 }
-`,St=`precision mediump float;
+`,Et=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -260,7 +260,7 @@ void main() {
 
     gl_FragColor = vec4(result, 1.0);
 }
-`,Et=`// Colors scheme inspired by Robert Munafo described here:
+`,kt=`// Colors scheme inspired by Robert Munafo described here:
 // https://www.mrob.com/pub/comp/xmorphia/index.html
 // 
 // A is blue
@@ -285,7 +285,7 @@ void main() {
 
     gl_FragColor = vec4(result, 1.0);
 }
-`,kt=`// Colors scheme inspired by Robert Munafo described here:
+`,At=`// Colors scheme inspired by Robert Munafo described here:
 // https://www.mrob.com/pub/comp/xmorphia/index.html
 // 
 // A is blue
@@ -307,7 +307,7 @@ void main() {
 
     gl_FragColor = vec4(result, 1.0);
 }
-`,At=`precision mediump float;
+`,Dt=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -325,7 +325,7 @@ void main() {
         gl_FragColor = vec4(0.0, A, 0.0, 1.0);
     }
 }
-`,Dt=`precision mediump float;
+`,Bt=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -355,7 +355,7 @@ void main() {
     }
 
 }
-`,Bt=`precision mediump float;
+`,Ct=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -393,7 +393,7 @@ void main() {
     }
 
 }
-`,Ct=`precision mediump float;
+`,zt=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -808,7 +808,7 @@ void main() {
         gl_FragColor = vec4(softColor);
     }
 }
-`,zt=`precision mediump float;
+`,$t=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -864,86 +864,6 @@ float colormap_blue(float x) {
 		return (2.06124143164576E+02 * x - 5.78166906665595E+02) * x + 5.26198653917172E+02;
 	} else {
 		return -7.36990769230737E+02 * x + 8.36652307692262E+02;
-	}
-}
-
-vec4 colormap(float x) {
-	float r = clamp(colormap_red(x) / 255.0, 0.0, 1.0);
-	float g = clamp(colormap_green(x) / 255.0, 0.0, 1.0);
-	float b = clamp(colormap_blue(x) / 255.0, 0.0, 1.0);
-	return vec4(r, g, b, 1.0);
-}
-
-void main() {
-    float A = texture2D(prevState, uv).r;
-    float B = texture2D(prevState, uv).g;
-
-    vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
-
-    vec4 softColor = colormap((A-0.4)*(1.0/0.6));
-
-
-    if (A < 0.4) {
-        gl_FragColor = vec4(black);
-    } else {
-        gl_FragColor = vec4(softColor);
-    }
-
-}
-`,$t=`precision mediump float;
-
-uniform sampler2D prevState;
-uniform float iteration;
-varying vec2 uv;
-
-// https://github.com/Polymole/glsl-colormap/blob/master/shaders/IDL_CB-RdYiBu.frag
-float colormap_red(float x) {
-	if (x < 0.09790863520700754) {
-		return 5.14512820512820E+02 * x + 1.64641025641026E+02;
-	} else if (x < 0.2001887081633112) {
-		return 2.83195402298854E+02 * x + 1.87288998357964E+02;
-	} else if (x < 0.3190117539655621) {
-		return 9.27301587301214E+01 * x + 2.25417989417999E+02;
-	} else if (x < 0.500517389125164) {
-		return 255.0;
-	} else if (x < 0.6068377196788788) {
-		return -3.04674876847379E+02 * x + 4.07495073891681E+02;
-	} else if (x < 0.9017468988895416) {
-		return (1.55336390191951E+02 * x - 7.56394659038288E+02) * x + 6.24412733169483E+02;
-	} else {
-		return -1.88350769230735E+02 * x + 2.38492307692292E+02;
-	}
-}
-
-float colormap_green(float x) {
-	if (x < 0.09638568758964539) {
-		return 4.81427692307692E+02 * x + 4.61538461538488E-01;
-	} else if (x < 0.4987066686153412) {
-		return ((((3.25545903568267E+04 * x - 4.24067109461319E+04) * x + 1.83751375886345E+04) * x - 3.19145329617892E+03) * x + 8.08315127034676E+02) * x - 1.44611527812961E+01;
-	} else if (x < 0.6047312345537269) {
-		return -1.18449917898218E+02 * x + 3.14234811165860E+02;
-	} else if (x < 0.7067635953426361) {
-		return -2.70822112753102E+02 * x + 4.06379036672115E+02;
-	} else {
-		return (-4.62308723214883E+02 * x + 2.42936159122279E+02) * x + 2.74203431802418E+02;
-	}
-}
-
-float colormap_blue(float x) {
-	if (x < 0.09982818011951204) {
-		return 1.64123076923076E+01 * x + 3.72646153846154E+01;
-	} else if (x < 0.2958717460833126) {
-		return 2.87014675052409E+02 * x + 1.02508735150248E+01;
-	} else if (x < 0.4900527540014758) {
-		return 4.65475113122167E+02 * x - 4.25505279034673E+01;
-	} else if (x < 0.6017014681258838) {
-		return 5.61032967032998E+02 * x - 8.93789173789407E+01;
-	} else if (x < 0.7015737100463595) {
-		return -1.51655677655728E+02 * x + 3.39446886446912E+02;
-	} else if (x < 0.8237156500567735) {
-		return -2.43405347593559E+02 * x + 4.03816042780725E+02;
-	} else {
-		return -3.00296889157305E+02 * x + 4.50678495922638E+02;
 	}
 }
 
@@ -1036,6 +956,86 @@ vec4 colormap(float x) {
 
 void main() {
     float A = texture2D(prevState, uv).r;
+    float B = texture2D(prevState, uv).g;
+
+    vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
+
+    vec4 softColor = colormap((A-0.4)*(1.0/0.6));
+
+
+    if (A < 0.4) {
+        gl_FragColor = vec4(black);
+    } else {
+        gl_FragColor = vec4(softColor);
+    }
+
+}
+`,Tt=`precision mediump float;
+
+uniform sampler2D prevState;
+uniform float iteration;
+varying vec2 uv;
+
+// https://github.com/Polymole/glsl-colormap/blob/master/shaders/IDL_CB-RdYiBu.frag
+float colormap_red(float x) {
+	if (x < 0.09790863520700754) {
+		return 5.14512820512820E+02 * x + 1.64641025641026E+02;
+	} else if (x < 0.2001887081633112) {
+		return 2.83195402298854E+02 * x + 1.87288998357964E+02;
+	} else if (x < 0.3190117539655621) {
+		return 9.27301587301214E+01 * x + 2.25417989417999E+02;
+	} else if (x < 0.500517389125164) {
+		return 255.0;
+	} else if (x < 0.6068377196788788) {
+		return -3.04674876847379E+02 * x + 4.07495073891681E+02;
+	} else if (x < 0.9017468988895416) {
+		return (1.55336390191951E+02 * x - 7.56394659038288E+02) * x + 6.24412733169483E+02;
+	} else {
+		return -1.88350769230735E+02 * x + 2.38492307692292E+02;
+	}
+}
+
+float colormap_green(float x) {
+	if (x < 0.09638568758964539) {
+		return 4.81427692307692E+02 * x + 4.61538461538488E-01;
+	} else if (x < 0.4987066686153412) {
+		return ((((3.25545903568267E+04 * x - 4.24067109461319E+04) * x + 1.83751375886345E+04) * x - 3.19145329617892E+03) * x + 8.08315127034676E+02) * x - 1.44611527812961E+01;
+	} else if (x < 0.6047312345537269) {
+		return -1.18449917898218E+02 * x + 3.14234811165860E+02;
+	} else if (x < 0.7067635953426361) {
+		return -2.70822112753102E+02 * x + 4.06379036672115E+02;
+	} else {
+		return (-4.62308723214883E+02 * x + 2.42936159122279E+02) * x + 2.74203431802418E+02;
+	}
+}
+
+float colormap_blue(float x) {
+	if (x < 0.09982818011951204) {
+		return 1.64123076923076E+01 * x + 3.72646153846154E+01;
+	} else if (x < 0.2958717460833126) {
+		return 2.87014675052409E+02 * x + 1.02508735150248E+01;
+	} else if (x < 0.4900527540014758) {
+		return 4.65475113122167E+02 * x - 4.25505279034673E+01;
+	} else if (x < 0.6017014681258838) {
+		return 5.61032967032998E+02 * x - 8.93789173789407E+01;
+	} else if (x < 0.7015737100463595) {
+		return -1.51655677655728E+02 * x + 3.39446886446912E+02;
+	} else if (x < 0.8237156500567735) {
+		return -2.43405347593559E+02 * x + 4.03816042780725E+02;
+	} else {
+		return -3.00296889157305E+02 * x + 4.50678495922638E+02;
+	}
+}
+
+vec4 colormap(float x) {
+	float r = clamp(colormap_red(x) / 255.0, 0.0, 1.0);
+	float g = clamp(colormap_green(x) / 255.0, 0.0, 1.0);
+	float b = clamp(colormap_blue(x) / 255.0, 0.0, 1.0);
+	return vec4(r, g, b, 1.0);
+}
+
+void main() {
+    float A = texture2D(prevState, uv).r;
 
     vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
 
@@ -1049,7 +1049,7 @@ void main() {
     }
 
 }
-`,Tt=`precision mediump float;
+`,Rt=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -1130,7 +1130,7 @@ void main() {
     }
 
 }
-`,Rt=`precision mediump float;
+`,Pt=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -1210,7 +1210,7 @@ void main() {
     }
 
 }
-`,j={},Pt=t=>{const o=n=>t.prop(n),e={vert:ht,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{iteration:o("iteration"),zoomLevel:o("zoomLevel"),pan:o("pan"),prevState:o("inputBuffer")}};j.raw=t({frag:gt,...e}),j.A_transform_seismic=t({frag:Tt,...e}),j.A_gradiant1=t({frag:At,...e}),j.A_gradiant2=t({frag:Dt,...e}),j.A_MATLAB_cool=t({frag:Bt,...e}),j.A_MATLAB_parula=t({frag:Ct,...e}),j.A_IDL_CB_RdBu=t({frag:zt,...e}),j.A_IDL_CB_RdYiBu=t({frag:$t,...e}),j.A_IDL_CB_BuYiRd=t({frag:Lt,...e}),j.B_IDL_CB_RdYiBu=t({frag:Rt,...e}),j.grayscale=t({frag:bt,...e}),j.blackwhite=t({frag:wt,...e}),j.whiteblack=t({frag:_t,...e}),j.timebasedblue=t({frag:yt,...e}),j.lerp=t({frag:St,...e}),j.mrob=t({frag:Et,...e}),j.redblue=t({frag:kt,...e})},It=t=>{const{colorMode:o,inputBuffer:e,iteration:n,outputBuffer:r,zoomState:a}=t;(j[o]||j.raw)({inputBuffer:e,iteration:n,outputBuffer:r,pan:[a.panX,a.panY],zoomLevel:a.zoomLevel})},Ft=`precision mediump float;
+`,j={},It=t=>{const o=n=>t.prop(n),e={vert:gt,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{iteration:o("iteration"),zoomLevel:o("zoomLevel"),pan:o("pan"),prevState:o("inputBuffer")}};j.raw=t({frag:yt,...e}),j.A_transform_seismic=t({frag:Rt,...e}),j.A_gradiant1=t({frag:Dt,...e}),j.A_gradiant2=t({frag:Bt,...e}),j.A_MATLAB_cool=t({frag:Ct,...e}),j.A_MATLAB_parula=t({frag:zt,...e}),j.A_IDL_CB_RdBu=t({frag:$t,...e}),j.A_IDL_CB_RdYiBu=t({frag:Lt,...e}),j.A_IDL_CB_BuYiRd=t({frag:Tt,...e}),j.B_IDL_CB_RdYiBu=t({frag:Pt,...e}),j.grayscale=t({frag:wt,...e}),j.blackwhite=t({frag:_t,...e}),j.whiteblack=t({frag:St,...e}),j.timebasedblue=t({frag:bt,...e}),j.lerp=t({frag:Et,...e}),j.mrob=t({frag:kt,...e}),j.redblue=t({frag:At,...e})},Ft=t=>{const{colorMode:o,inputBuffer:e,iteration:n,outputBuffer:r,zoomState:a}=t;(j[o]||j.raw)({inputBuffer:e,iteration:n,outputBuffer:r,pan:[a.panX,a.panY],zoomLevel:a.zoomLevel})},Mt=`precision mediump float;
 
 uniform float radius;
 uniform sampler2D prevState;
@@ -1283,7 +1283,7 @@ void main() {
         gl_FragColor = vec4(newA, newB, 0, 1);
     }
 }
-`,Mt=`precision mediump float;
+`,Kt=`precision mediump float;
 
 uniform vec2 mousePosition; // in range [0, 1] on the zoomed screen
 uniform float zoomLevel;    // 1 full size, 0 max zoom
@@ -1302,7 +1302,7 @@ void main() {
     scaledPenRadius = penRadius * zoomLevel;
     gl_Position = vec4(position, 0, 1);
 }
-`;let Je;const Kt=(t,o)=>{const e=n=>t.prop(n);Je=t({frag:Ft,vert:Mt,attributes:{position:[-4,-4,4,-4,0,4]},count:3,framebuffer:e("outputBuffer"),uniforms:{prevState:e("inputBuffer"),Da:1,Db:.5,f:e("f"),k:e("k"),radius:o,pauseSimulation:e("pauseSimulation"),mousePosition:e("mousePosition"),penRadius:e("penRadius"),penDensity:e("penDensity"),penIsActive:e("penIsActive"),eraserIsActive:e("eraserIsActive"),zoomLevel:e("zoomLevel"),pan:e("pan")}})},Ht=t=>{const{inputBuffer:o,outputBuffer:e,pauseSimulation:n,mouseState:r,simulationParameters:a,worldSize:i}=t;Je({inputBuffer:o,outputBuffer:e,pauseSimulation:n,zoomLevel:r.zoomLevel,pan:[r.panX,r.panY],mousePosition:[r.x,r.y],penRadius:1/2**(i-r.penSize),penDensity:r.penDensity,penIsActive:r.pressedLeft,eraserIsActive:r.pressedRight,...a})},Yt=(t,o)=>t==="randomSpots"?Ot(o,.001):t==="middleCircleAndRandomSpots"?Vt(o,.005,.05):t==="empty"?Gt(o):Ut(o,.02),Vt=(t,o,e)=>{const n=t*e;return Array(t*t).fill(0).map((r,a)=>{const i=Math.floor(a/t),l=a%t;return Math.hypot(t/2-l,t/2-i)<n?[0,1,0,1]:Math.random()<o?[0,1,0,1]:[1,0,0,1]}).flat()},Gt=t=>Array(t*t).fill(0).map(()=>[0,0,0,1]).flat(),Ot=(t,o)=>Array(t*t).fill(0).map(()=>Math.random()<o?[0,1,0,1]:[1,0,0,1]).flat(),Ut=(t,o)=>Array(t*t).fill(0).map((e,n)=>{const r=Math.floor(n/t),a=n%t;return Math.hypot(t/2-a,t/2-r)<o*t?[0,1,0,1]:[1,0,0,1]}).flat(),Wt=`precision highp float;
+`;let Je;const Ht=(t,o)=>{const e=n=>t.prop(n);Je=t({frag:Mt,vert:Kt,attributes:{position:[-4,-4,4,-4,0,4]},count:3,framebuffer:e("outputBuffer"),uniforms:{prevState:e("inputBuffer"),Da:1,Db:.5,f:e("f"),k:e("k"),radius:o,pauseSimulation:e("pauseSimulation"),mousePosition:e("mousePosition"),penRadius:e("penRadius"),penDensity:e("penDensity"),penIsActive:e("penIsActive"),eraserIsActive:e("eraserIsActive"),zoomLevel:e("zoomLevel"),pan:e("pan")}})},Yt=t=>{const{inputBuffer:o,outputBuffer:e,pauseSimulation:n,mouseState:r,simulationParameters:a,worldSize:i}=t;Je({inputBuffer:o,outputBuffer:e,pauseSimulation:n,zoomLevel:r.zoomLevel,pan:[r.panX,r.panY],mousePosition:[r.x,r.y],penRadius:1/2**(i-r.penSize),penDensity:r.penDensity,penIsActive:r.pressedLeft,eraserIsActive:r.pressedRight,...a})},Vt=(t,o)=>t==="randomSpots"?Ut(o,.001):t==="middleCircleAndRandomSpots"?Gt(o,.005,.05):t==="empty"?Ot(o):Wt(o,.02),Gt=(t,o,e)=>{const n=t*e;return Array(t*t).fill(0).map((r,a)=>{const i=Math.floor(a/t),l=a%t;return Math.hypot(t/2-l,t/2-i)<n?[0,1,0,1]:Math.random()<o?[0,1,0,1]:[1,0,0,1]}).flat()},Ot=t=>Array(t*t).fill(0).map(()=>[0,0,0,1]).flat(),Ut=(t,o)=>Array(t*t).fill(0).map(()=>Math.random()<o?[0,1,0,1]:[1,0,0,1]).flat(),Wt=(t,o)=>Array(t*t).fill(0).map((e,n)=>{const r=Math.floor(n/t),a=n%t;return Math.hypot(t/2-a,t/2-r)<o*t?[0,1,0,1]:[1,0,0,1]}).flat(),qt=`precision highp float;
 
 attribute vec2 position;
 
@@ -1315,7 +1315,7 @@ void main() {
     uv = 0.5 * (position + 1.0) * zoomLevel + pan * (1.0 - zoomLevel);
     gl_Position = vec4(position, 0, 1);
 }
-`,qt=`precision highp float;
+`,Xt=`precision highp float;
 
 uniform sampler2D prevState;
 
@@ -1339,7 +1339,7 @@ void main() {
        gl_FragColor = color;
     }
 }
-`;let Qe;const Xt=t=>{const o=e=>t.prop(e);Qe=t({vert:Wt,frag:qt,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{prevState:o("inputBuffer"),zoomLevel:o("zoomLevel"),pan:o("pan")}})},Nt=t=>{const{inputBuffer:o,outputBuffer:e,zoomState:n}=t;Qe({inputBuffer:o,outputBuffer:e,zoomLevel:n.zoomLevel,pan:[n.panX,n.panY]})},jt=`precision mediump float;
+`;let Qe;const Nt=t=>{const o=e=>t.prop(e);Qe=t({vert:qt,frag:Xt,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{prevState:o("inputBuffer"),zoomLevel:o("zoomLevel"),pan:o("pan")}})},jt=t=>{const{inputBuffer:o,outputBuffer:e,zoomState:n}=t;Qe({inputBuffer:o,outputBuffer:e,zoomLevel:n.zoomLevel,pan:[n.panX,n.panY]})},Zt=`precision mediump float;
 
 uniform vec2 mousePosition; // in range [0, 1] on the zoomed screen
 uniform float zoomLevel;    // 1 full size, 0 max zoom
@@ -1353,7 +1353,7 @@ void main() {
     uv = 0.5 * (position + 1.0);
     gl_Position = vec4(position, 0, 1);
 }
-`,Zt=`precision mediump float;
+`,Jt=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform vec2 mousePosition;
@@ -1375,7 +1375,7 @@ void main() {
         gl_FragColor = color;
     }
 }
-`;let et;const Jt=t=>{const o=e=>t.prop(e);et=t({frag:Zt,vert:jt,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{mousePosition:o("mousePosition"),penRadius:o("penRadius"),zoomLevel:o("zoomLevel"),pan:o("pan"),prevState:o("inputBuffer")}})},Qt=t=>{const{inputBuffer:o,mouseState:e,outputBuffer:n,worldSize:r}=t;et({inputBuffer:o,outputBuffer:n,mousePosition:[e.x,e.y],penRadius:1/2**(r-e.penSize),zoomLevel:e.zoomLevel,pan:[e.panX,e.panY]})},tt=t=>{const{controls:o,info:e,mouseState:n,simulationParameters:r}=t,a=document.getElementById("canvas");if(!a)throw new Error("Canvas container not ready");const i=ye({extensions:["OES_texture_float"],canvas:a});e.iteration=0;const l=2**e.worldSize,m=Yt(o.initialConditions,l),g=()=>i.framebuffer({color:i.texture({radius:l,data:m,wrap:"repeat",type:"float"}),depthStencil:!1}),y=Array(2).fill(0).map(g),C=Array(2).fill(0).map(g);return Kt(i,l),Pt(i),Xt(i),Jt(i),i.frame(()=>{o.pause||e.iteration++;let d=y[(e.iteration+1)%2];for(let E=0;E<o.speed;E++){e.iteration++;const D=y[e.iteration%2];d=y[(e.iteration+1)%2],Ht({inputBuffer:D,outputBuffer:d,worldSize:e.worldSize,pauseSimulation:o.pause,mouseState:n,simulationParameters:r})}e0({inputTexture:d,graphicsTextures:C,controls:o,info:e,mouseState:n})}),i},e0=t=>{const{inputTexture:o,graphicsTextures:e,controls:n,info:r,mouseState:a}=t;let i=0;i++;const l=o;let m=e[i%2];if(!n.grid&&!n.pen&&(m=null),It({colorMode:n.colors,inputBuffer:l,iteration:r.iteration,outputBuffer:m,zoomState:a}),n.grid){i++;const g=e[(i+1)%2];let y=e[i%2];n.pen||(y=null),Nt({inputBuffer:g,outputBuffer:y,zoomState:a})}if(n.pen){i++;const g=e[(i+1)%2];Qt({mouseState:a,worldSize:r.worldSize,inputBuffer:g,outputBuffer:null})}};var t0=U('<main><!> <div id="datgui-container" class="svelte-1t8eqx3"></div> <div><label for="worldSize">World Size:</label> <input id="worldSize" type="number" step="1"/> <span> </span></div> <canvas id="canvas" class="svelte-1t8eqx3"></canvas></main>');function n0(t,o){oe(o,!0);const e={width:Math.min(window.innerWidth,window.innerHeight)*.9,height:Math.min(window.innerWidth,window.innerHeight)*.9},n={colors:"A_transform_seismic",initialConditions:"middleCircleAndRandomSpots",reset:()=>E(),pause:!1,grid:!1,pen:!1,speed:50},r={pressedLeft:!1,pressedRight:!1,x:0,y:0,penSize:3,penDensity:.3,zoomLevel:1,panX:.5,panY:.5},a=de({iteration:0,worldSize:8}),i={f:fe[0].f,k:fe[0].k};let l,m;const g=async()=>{const c=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);l=new c.GUI({autoPlace:!1,closeOnTop:!0}),l.domElement.id="datgui";const p=document.getElementById("datgui-container");if(!p)throw new Error("Gui container not ready");p.appendChild(l.domElement),l.add(n,"pause").name("Pause"),l.add(n,"grid").name("Debug grid"),l.add(n,"pen").name("Show pen"),l.add(n,"reset").name("Reset simulation"),l.add(n,"colors",["grayscale","blackwhite","whiteblack","raw","timebasedblue","lerp","mrob","redblue","A_gradiant1","A_gradiant2","A_MATLAB_cool","A_MATLAB_parula","A_IDL_CB_RdBu","A_IDL_CB_RdYiBu","A_IDL_CB_BuYiRd","A_transform_seismic","B_IDL_CB_RdYiBu"]).name("Color scheme");const P={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots",Empty:"empty"};l.add(n,"initialConditions",P).onFinishChange(n.reset).name("Initial conditions");const u=l.add(a,"iteration").listen();u.domElement.style.pointerEvents="none",l.add(n,"speed",1,200).name("Simulation speed").listen(),l.add(r,"penSize",0,a.worldSize).name("Pen size").listen(),l.add(r,"penDensity",0,1).name("Pen density"),l.add(r,"zoomLevel",0,1).name("Zoom level").listen(),l.add(r,"panX",0,1).name("pan x").listen(),l.add(r,"panY",0,1).name("pan y").listen()},y=c=>{if(c.code==="Space"){n.pause=!n.pause,c.preventDefault();return}if(c.code==="KeyR"&&!c.getModifierState("Control")){E(),c.preventDefault();return}};let C;const d=()=>{r.x=Math.random(),r.y=Math.random(),r.penSize=Math.random()*3,r.pressedLeft=!0,setTimeout(()=>r.pressedLeft=!1,500),C=setTimeout(d,Math.random()*5e3)},E=()=>{isNaN(a.worldSize)||(a.worldSize>11&&(a.worldSize=11),a.worldSize<1&&(a.worldSize=1),l&&(document.getElementById(l.domElement.id)?.remove(),l.destroy()),m?.destroy(),g(),m=tt({controls:n,info:a,mouseState:r,simulationParameters:i}),C&&clearTimeout(C),d())},D=c=>{i.f=c.f,i.k=c.k,i.f>.06?n.speed=70:i.f>.03?n.speed=50:n.speed=2};pe(()=>{E()}),se(()=>{l.destroy(),m.destroy()});var T=t0();me("keydown",$e,y);var _=O(T);xt(_,{onfkupdated:D});var k=h(_,4),B=h(O(k),2);Le(B);var b=h(B,2),$=O(b);K(b),K(k);var I=h(k,2),s=Xe(()=>Ze(c=>c));K(T),ee(()=>{ae($,`(${2**a.worldSize} x ${2**a.worldSize} : ${2**(a.worldSize+1)})`),L(I,"width",e.width),L(I,"height",e.height)}),Y("change",B,E),Te(B,()=>a.worldSize,c=>a.worldSize=c),Y("contextmenu",I,function(...c){w(s)?.apply(this,c)}),V(t,T),re()}ue(["change","contextmenu"]);var o0=U("<option> </option>"),r0=U('<div>Select f and k parameters on the map of use a preset</div> <select class="full-width svelte-oovm3e"></select> <!>',1),a0=U('<div id="container"><button class="full-width svelte-oovm3e" id="toggleButton"> </button> <!></div>');function i0(t,o){oe(o,!0);let e=le(de(fe[0])),n=le(!0);const r=[0,.12],a=[.03,.07],i=s=>{const{f:c,k:p}=s,P=d.map(p,a[0],a[1],0,d.width),u=d.map(c,r[0],r[1],d.height,0);return{x:P,y:u}},l=s=>{const{x:c,y:p}=s,P=d.map(p,d.height,0,r[0],r[1]),u=d.map(c,0,d.width,a[0],a[1]);return{f:P,k:u}},m=s=>{const c=s.mouseX,p=s.mouseY;if(c<0||p<0||c>s.width||p>s.height)return;const{f:P,k:u}=l({x:s.mouseX,y:s.mouseY});Q(e,{f:P,k:u,name:"custom",type:"manual"},!0),o.onfkupdated?.(w(e))},g=s=>{s.noStroke();const c=s.textSize();for(const p of fe){const{x:P,y:u}=i({f:p.f,k:p.k}),v=p.f===w(e).f&&p.k===w(e).k;s.circle(P,u,3),s.textSize(v?c*2:c),s.fill(v?[240,240,150]:[255,255,255]),s.text(p.name,P-s.textWidth(p.name)/2,u-10)}},y=s=>{s.noFill(),s.stroke("red");const{x:c,y:p}=i(w(e));s.text("F",10,p>10?p-5:p+15),s.line(0,p,s.width,p),s.text("K",c<s.width-10?c+5:c-15,s.height-10),s.line(c,0,c,s.height),s.circle(c,p,10)},C=s=>{const{f:c,k:p}=w(e),P=`F: ${c.toFixed(4)}`,u=`K: ${p.toFixed(4)}`,v=s.textSize(),A=s.height*.05;s.textStyle(s.BOLD),s.textSize(A),s.fill("white"),s.stroke(0),s.strokeWeight(1),s.text(P,s.width*.05,s.textSize()),s.text(u,s.width*.05,s.textSize()+s.textSize()+6),s.textStyle(s.NORMAL),s.textSize(v)};let d,E=le(!1);const D=s=>{d=s;let c;s.preload=()=>{c=s.loadImage(F+"/parameters_map.png")},s.setup=()=>{s.createCanvas(400,400),s.frameRate(55)},s.draw=()=>{s.background(255),s.tint(150,190),s.image(c,0,0,s.width,s.height),g(s),y(s),C(s),Q(E,!1),s.mouseIsPressed&&(m(s),Q(E,!0))}},T=()=>{Q(n,!w(n)),w(n)||d.remove()};se(()=>d?.remove());var _=a0();let k;var B=O(_),b=O(B,!0);K(B);var $=h(B,2);{var I=s=>{var c=r0(),p=h(ce(c),2);Ce(p,21,()=>fe,ze,(u,v)=>{var A=o0(),R=O(A);K(A);var M={};ee(()=>{ae(R,`${w(v).type??""} - ${w(v).name??""} (f/k ${w(v).f??""} / ${w(v).k??""})`),M!==(M=w(v))&&(A.value=(A.__value=w(v))??"")}),V(u,A)}),K(p);var P=h(p,2);ge(P,{sketch:D}),Y("change",p,()=>o.onfkupdated?.(w(e))),Fe(p,()=>w(e),u=>Q(e,u)),V(s,c)};Pe($,s=>{w(n)&&s(I)})}K(_),ee(()=>{k=Re(_,1,"svelte-oovm3e",null,k,{"no-cursor":w(E)}),ae(b,w(n)?"Close":"F/K selection")}),Y("click",B,T),V(t,_),re()}ue(["click","change"]);const Me=t=>{if(!t.currentTarget)throw new Error("Event has no currentTarget");const o=t.currentTarget,e=o.getBoundingClientRect(),n=t.clientX-e.left,r=t.clientY-e.top,{width:a,height:i}=o,l=n/a,m=(i-r)/i;return{x:l,y:m}};var l0=U('<main class="svelte-1jpwm26"><!> <div id="datgui-container" class="svelte-1jpwm26"></div> <div><label for="worldSize">World Size:</label> <input id="worldSize" type="number" step="1"/> <span> </span></div> <canvas id="canvas" class="svelte-1jpwm26"></canvas></main>');function s0(t,o){oe(o,!0);const e={width:Math.min(window.innerWidth,window.innerHeight)*.9,height:Math.min(window.innerWidth,window.innerHeight)*.9},n={colors:"A_transform_seismic",initialConditions:"middleCircleAndRandomSpots",reset:()=>D(),pause:!1,grid:!1,pen:!0,speed:50},r={pressedLeft:!1,pressedRight:!1,x:0,y:0,penSize:3,penDensity:.3,zoomLevel:1,panX:.5,panY:.5},a=de({iteration:0,worldSize:8}),i={f:fe[0].f,k:fe[0].k};let l,m;const g=async()=>{const c=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);l=new c.GUI({autoPlace:!1,closeOnTop:!0}),l.domElement.id="datgui";const p=document.getElementById("datgui-container");if(!p)throw new Error("Gui container not ready");p.appendChild(l.domElement),l.add(n,"pause").name("Pause"),l.add(n,"grid").name("Debug grid"),l.add(n,"pen").name("Show pen"),l.add(n,"reset").name("Reset simulation"),l.add(n,"colors",["grayscale","blackwhite","whiteblack","raw","timebasedblue","lerp","mrob","redblue","A_gradiant1","A_gradiant2","A_MATLAB_cool","A_MATLAB_parula","A_IDL_CB_RdBu","A_IDL_CB_RdYiBu","A_IDL_CB_BuYiRd","A_transform_seismic","B_IDL_CB_RdYiBu"]).name("Color scheme");const P={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots",Empty:"empty"};l.add(n,"initialConditions",P).onFinishChange(n.reset).name("Initial conditions");const u=l.add(a,"iteration").listen();u.domElement.style.pointerEvents="none",l.add(n,"speed",1,200).name("Simulation speed"),l.add(r,"penSize",0,a.worldSize).name("Pen size"),l.add(r,"penDensity",0,1).name("Pen density"),l.add(r,"zoomLevel",0,1).name("Zoom level").listen(),l.add(r,"panX",0,1).name("pan x").listen(),l.add(r,"panY",0,1).name("pan y").listen()},y=c=>{if(c.code==="Space"){n.pause=!n.pause,c.preventDefault();return}if(c.code==="KeyR"&&!c.getModifierState("Control")){D(),c.preventDefault();return}},C=c=>{if(!c.getModifierState("Control"))return;const p=Me(c);r.panX=p.x,r.panY=p.y,c.deltaY>0?r.zoomLevel*=1+r.zoomLevel/2:r.zoomLevel*=1-r.zoomLevel/2,r.zoomLevel>1&&(r.zoomLevel=1),r.zoomLevel<0&&(r.zoomLevel=0),c.preventDefault()},d=c=>{const p=Me(c);r.x=p.x,r.y=p.y},E=c=>{if(![0,2].includes(c.button)||!["mouseup","mousedown"].includes(c.type))return;let p=c.type==="mousedown";c.button===0&&(r.pressedLeft=p),c.button===2&&(r.pressedRight=p)},D=()=>{isNaN(a.worldSize)||(a.worldSize>11&&(a.worldSize=11),a.worldSize<1&&(a.worldSize=1),l&&(document.getElementById(l.domElement.id)?.remove(),l.destroy()),m?.destroy(),g(),m=tt({controls:n,info:a,mouseState:r,simulationParameters:i}))},T=c=>{i.f=c.f,i.k=c.k};pe(()=>{D()}),se(()=>{l.destroy(),m.destroy()});var _=l0();me("keydown",$e,y);var k=O(_);i0(k,{onfkupdated:T});var B=h(k,4),b=h(O(B),2);Le(b);var $=h(b,2),I=O($);K($),K(B);var s=h(B,2);K(_),ee(()=>{ae(I,`(${2**a.worldSize} x ${2**a.worldSize} : ${2**(a.worldSize+1)})`),L(s,"width",e.width),L(s,"height",e.height)}),Y("change",b,D),Te(b,()=>a.worldSize,c=>a.worldSize=c),Y("mousemove",s,d),Y("mousedown",s,c=>{c.preventDefault(),E(c)}),Y("mouseup",s,E),me("wheel",s,C),Y("keydown",s,c=>{c.preventDefault(),y(c)}),Y("contextmenu",s,c=>c.preventDefault()),V(t,_),re()}ue(["change","mousemove","mousedown","mouseup","keydown","contextmenu"]);const c0=`precision mediump float;
+`;let et;const Qt=t=>{const o=e=>t.prop(e);et=t({frag:Jt,vert:Zt,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{mousePosition:o("mousePosition"),penRadius:o("penRadius"),zoomLevel:o("zoomLevel"),pan:o("pan"),prevState:o("inputBuffer")}})},e0=t=>{const{inputBuffer:o,mouseState:e,outputBuffer:n,worldSize:r}=t;et({inputBuffer:o,outputBuffer:n,mousePosition:[e.x,e.y],penRadius:1/2**(r-e.penSize),zoomLevel:e.zoomLevel,pan:[e.panX,e.panY]})},tt=t=>{const{controls:o,info:e,mouseState:n,simulationParameters:r}=t,a=document.getElementById("canvas");if(!a)throw new Error("Canvas container not ready");const i=ye({extensions:["OES_texture_float"],canvas:a});e.iteration=0;const l=2**e.worldSize,m=Vt(o.initialConditions,l),g=()=>i.framebuffer({color:i.texture({radius:l,data:m,wrap:"repeat",type:"float"}),depthStencil:!1}),y=Array(2).fill(0).map(g),C=Array(2).fill(0).map(g);return Ht(i,l),It(i),Nt(i),Qt(i),i.frame(()=>{o.pause||e.iteration++;let d=y[(e.iteration+1)%2];for(let E=0;E<o.speed;E++){e.iteration++;const D=y[e.iteration%2];d=y[(e.iteration+1)%2],Yt({inputBuffer:D,outputBuffer:d,worldSize:e.worldSize,pauseSimulation:o.pause,mouseState:n,simulationParameters:r})}t0({inputTexture:d,graphicsTextures:C,controls:o,info:e,mouseState:n})}),i},t0=t=>{const{inputTexture:o,graphicsTextures:e,controls:n,info:r,mouseState:a}=t;let i=0;i++;const l=o;let m=e[i%2];if(!n.grid&&!n.pen&&(m=null),Ft({colorMode:n.colors,inputBuffer:l,iteration:r.iteration,outputBuffer:m,zoomState:a}),n.grid){i++;const g=e[(i+1)%2];let y=e[i%2];n.pen||(y=null),jt({inputBuffer:g,outputBuffer:y,zoomState:a})}if(n.pen){i++;const g=e[(i+1)%2];e0({mouseState:a,worldSize:r.worldSize,inputBuffer:g,outputBuffer:null})}};var n0=U('<main><!> <div id="datgui-container" class="svelte-1t8eqx3"></div> <div><label for="worldSize">World Size:</label> <input id="worldSize" type="number" step="1"/> <span> </span></div> <canvas id="canvas" class="svelte-1t8eqx3"></canvas></main>');function o0(t,o){oe(o,!0);const e={width:Math.min(window.innerWidth,window.innerHeight)*.9,height:Math.min(window.innerWidth,window.innerHeight)*.9},n={colors:"A_transform_seismic",initialConditions:"middleCircleAndRandomSpots",reset:()=>E(),pause:!1,grid:!1,pen:!1,speed:50},r={pressedLeft:!1,pressedRight:!1,x:0,y:0,penSize:3,penDensity:.3,zoomLevel:1,panX:.5,panY:.5},a=pe({iteration:0,worldSize:8}),i={f:fe[0].f,k:fe[0].k};let l,m;const g=async()=>{const c=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);l=new c.GUI({autoPlace:!1,closeOnTop:!0}),l.domElement.id="datgui";const p=document.getElementById("datgui-container");if(!p)throw new Error("Gui container not ready");p.appendChild(l.domElement),l.add(n,"pause").name("Pause"),l.add(n,"grid").name("Debug grid"),l.add(n,"pen").name("Show pen"),l.add(n,"reset").name("Reset simulation"),l.add(n,"colors",["grayscale","blackwhite","whiteblack","raw","timebasedblue","lerp","mrob","redblue","A_gradiant1","A_gradiant2","A_MATLAB_cool","A_MATLAB_parula","A_IDL_CB_RdBu","A_IDL_CB_RdYiBu","A_IDL_CB_BuYiRd","A_transform_seismic","B_IDL_CB_RdYiBu"]).name("Color scheme");const P={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots",Empty:"empty"};l.add(n,"initialConditions",P).onFinishChange(n.reset).name("Initial conditions");const u=l.add(a,"iteration").listen();u.domElement.style.pointerEvents="none",l.add(n,"speed",1,200).name("Simulation speed").listen(),l.add(r,"penSize",0,a.worldSize).name("Pen size").listen(),l.add(r,"penDensity",0,1).name("Pen density"),l.add(r,"zoomLevel",0,1).name("Zoom level").listen(),l.add(r,"panX",0,1).name("pan x").listen(),l.add(r,"panY",0,1).name("pan y").listen()},y=c=>{if(c.code==="Space"){n.pause=!n.pause,c.preventDefault();return}if(c.code==="KeyR"&&!c.getModifierState("Control")){E(),c.preventDefault();return}};let C;const d=()=>{r.x=Math.random(),r.y=Math.random(),r.penSize=Math.random()*3,r.pressedLeft=!0,setTimeout(()=>r.pressedLeft=!1,500),C=setTimeout(d,Math.random()*5e3)},E=()=>{isNaN(a.worldSize)||(a.worldSize>11&&(a.worldSize=11),a.worldSize<1&&(a.worldSize=1),l&&(document.getElementById(l.domElement.id)?.remove(),l.destroy()),m?.destroy(),g(),m=tt({controls:n,info:a,mouseState:r,simulationParameters:i}),C&&clearTimeout(C),d())},D=c=>{i.f=c.f,i.k=c.k,i.f>.06?n.speed=70:i.f>.03?n.speed=50:n.speed=2};me(()=>{E()}),se(()=>{l.destroy(),m.destroy()});var T=n0();de("keydown",$e,y);var _=O(T);ht(_,{onfkupdated:D});var k=h(_,4),B=h(O(k),2);Le(B);var b=h(B,2),$=O(b);K(b),K(k);var I=h(k,2),s=Xe(()=>Ze(c=>c));K(T),ee(()=>{ae($,`(${2**a.worldSize} x ${2**a.worldSize} : ${2**(a.worldSize+1)})`),L(I,"width",e.width),L(I,"height",e.height)}),Y("change",B,E),Te(B,()=>a.worldSize,c=>a.worldSize=c),Y("contextmenu",I,function(...c){w(s)?.apply(this,c)}),V(t,T),re()}ue(["change","contextmenu"]);var r0=U("<option> </option>"),a0=U('<div>Select f and k parameters on the map of use a preset</div> <select class="full-width svelte-oovm3e"></select> <!>',1),i0=U('<div id="container"><button class="full-width svelte-oovm3e" id="toggleButton"> </button> <!></div>');function l0(t,o){oe(o,!0);let e=le(pe(fe[0])),n=le(!0);const r=[0,.12],a=[.03,.07],i=s=>{const{f:c,k:p}=s,P=d.map(p,a[0],a[1],0,d.width),u=d.map(c,r[0],r[1],d.height,0);return{x:P,y:u}},l=s=>{const{x:c,y:p}=s,P=d.map(p,d.height,0,r[0],r[1]),u=d.map(c,0,d.width,a[0],a[1]);return{f:P,k:u}},m=s=>{const c=s.mouseX,p=s.mouseY;if(c<0||p<0||c>s.width||p>s.height)return;const{f:P,k:u}=l({x:s.mouseX,y:s.mouseY});Q(e,{f:P,k:u,name:"custom",type:"manual"},!0),o.onfkupdated?.(w(e))},g=s=>{s.noStroke();const c=s.textSize();for(const p of fe){const{x:P,y:u}=i({f:p.f,k:p.k}),v=p.f===w(e).f&&p.k===w(e).k;s.circle(P,u,3),s.textSize(v?c*2:c),s.fill(v?[240,240,150]:[255,255,255]),s.text(p.name,P-s.textWidth(p.name)/2,u-10)}},y=s=>{s.noFill(),s.stroke("red");const{x:c,y:p}=i(w(e));s.text("F",10,p>10?p-5:p+15),s.line(0,p,s.width,p),s.text("K",c<s.width-10?c+5:c-15,s.height-10),s.line(c,0,c,s.height),s.circle(c,p,10)},C=s=>{const{f:c,k:p}=w(e),P=`F: ${c.toFixed(4)}`,u=`K: ${p.toFixed(4)}`,v=s.textSize(),A=s.height*.05;s.textStyle(s.BOLD),s.textSize(A),s.fill("white"),s.stroke(0),s.strokeWeight(1),s.text(P,s.width*.05,s.textSize()),s.text(u,s.width*.05,s.textSize()+s.textSize()+6),s.textStyle(s.NORMAL),s.textSize(v)};let d,E=le(!1);const D=s=>{d=s;let c;s.preload=()=>{c=s.loadImage(F+"/parameters_map.png")},s.setup=()=>{s.createCanvas(400,400),s.frameRate(55)},s.draw=()=>{s.background(255),s.tint(150,190),s.image(c,0,0,s.width,s.height),g(s),y(s),C(s),Q(E,!1),s.mouseIsPressed&&(m(s),Q(E,!0))}},T=()=>{Q(n,!w(n)),w(n)||d.remove()};se(()=>d?.remove());var _=i0();let k;var B=O(_),b=O(B,!0);K(B);var $=h(B,2);{var I=s=>{var c=a0(),p=h(ce(c),2);Ce(p,21,()=>fe,ze,(u,v)=>{var A=r0(),R=O(A);K(A);var M={};ee(()=>{ae(R,`${w(v).type??""} - ${w(v).name??""} (f/k ${w(v).f??""} / ${w(v).k??""})`),M!==(M=w(v))&&(A.value=(A.__value=w(v))??"")}),V(u,A)}),K(p);var P=h(p,2);ge(P,{sketch:D}),Y("change",p,()=>o.onfkupdated?.(w(e))),Fe(p,()=>w(e),u=>Q(e,u)),V(s,c)};Pe($,s=>{w(n)&&s(I)})}K(_),ee(()=>{k=Re(_,1,"svelte-oovm3e",null,k,{"no-cursor":w(E)}),ae(b,w(n)?"Close":"F/K selection")}),Y("click",B,T),V(t,_),re()}ue(["click","change"]);const Me=t=>{if(!t.currentTarget)throw new Error("Event has no currentTarget");const o=t.currentTarget,e=o.getBoundingClientRect(),n=t.clientX-e.left,r=t.clientY-e.top,{width:a,height:i}=o,l=n/a,m=(i-r)/i;return{x:l,y:m}};var s0=U('<main class="svelte-1jpwm26"><!> <div id="datgui-container" class="svelte-1jpwm26"></div> <div><label for="worldSize">World Size:</label> <input id="worldSize" type="number" step="1"/> <span> </span></div> <canvas id="canvas" class="svelte-1jpwm26"></canvas></main>');function c0(t,o){oe(o,!0);const e={width:Math.min(window.innerWidth,window.innerHeight)*.9,height:Math.min(window.innerWidth,window.innerHeight)*.9},n={colors:"A_transform_seismic",initialConditions:"middleCircleAndRandomSpots",reset:()=>D(),pause:!1,grid:!1,pen:!0,speed:50},r={pressedLeft:!1,pressedRight:!1,x:0,y:0,penSize:3,penDensity:.3,zoomLevel:1,panX:.5,panY:.5},a=pe({iteration:0,worldSize:8}),i={f:fe[0].f,k:fe[0].k};let l,m;const g=async()=>{const c=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);l=new c.GUI({autoPlace:!1,closeOnTop:!0}),l.domElement.id="datgui";const p=document.getElementById("datgui-container");if(!p)throw new Error("Gui container not ready");p.appendChild(l.domElement),l.add(n,"pause").name("Pause"),l.add(n,"grid").name("Debug grid"),l.add(n,"pen").name("Show pen"),l.add(n,"reset").name("Reset simulation"),l.add(n,"colors",["grayscale","blackwhite","whiteblack","raw","timebasedblue","lerp","mrob","redblue","A_gradiant1","A_gradiant2","A_MATLAB_cool","A_MATLAB_parula","A_IDL_CB_RdBu","A_IDL_CB_RdYiBu","A_IDL_CB_BuYiRd","A_transform_seismic","B_IDL_CB_RdYiBu"]).name("Color scheme");const P={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots",Empty:"empty"};l.add(n,"initialConditions",P).onFinishChange(n.reset).name("Initial conditions");const u=l.add(a,"iteration").listen();u.domElement.style.pointerEvents="none",l.add(n,"speed",1,200).name("Simulation speed"),l.add(r,"penSize",0,a.worldSize).name("Pen size"),l.add(r,"penDensity",0,1).name("Pen density"),l.add(r,"zoomLevel",0,1).name("Zoom level").listen(),l.add(r,"panX",0,1).name("pan x").listen(),l.add(r,"panY",0,1).name("pan y").listen()},y=c=>{if(c.code==="Space"){n.pause=!n.pause,c.preventDefault();return}if(c.code==="KeyR"&&!c.getModifierState("Control")){D(),c.preventDefault();return}},C=c=>{if(!c.getModifierState("Control"))return;const p=Me(c);r.panX=p.x,r.panY=p.y,c.deltaY>0?r.zoomLevel*=1+r.zoomLevel/2:r.zoomLevel*=1-r.zoomLevel/2,r.zoomLevel>1&&(r.zoomLevel=1),r.zoomLevel<0&&(r.zoomLevel=0),c.preventDefault()},d=c=>{const p=Me(c);r.x=p.x,r.y=p.y},E=c=>{if(![0,2].includes(c.button)||!["mouseup","mousedown"].includes(c.type))return;let p=c.type==="mousedown";c.button===0&&(r.pressedLeft=p),c.button===2&&(r.pressedRight=p)},D=()=>{isNaN(a.worldSize)||(a.worldSize>11&&(a.worldSize=11),a.worldSize<1&&(a.worldSize=1),l&&(document.getElementById(l.domElement.id)?.remove(),l.destroy()),m?.destroy(),g(),m=tt({controls:n,info:a,mouseState:r,simulationParameters:i}))},T=c=>{i.f=c.f,i.k=c.k};me(()=>{D()}),se(()=>{l.destroy(),m.destroy()});var _=s0();de("keydown",$e,y);var k=O(_);l0(k,{onfkupdated:T});var B=h(k,4),b=h(O(B),2);Le(b);var $=h(b,2),I=O($);K($),K(B);var s=h(B,2);K(_),ee(()=>{ae(I,`(${2**a.worldSize} x ${2**a.worldSize} : ${2**(a.worldSize+1)})`),L(s,"width",e.width),L(s,"height",e.height)}),Y("change",b,D),Te(b,()=>a.worldSize,c=>a.worldSize=c),Y("mousemove",s,d),Y("mousedown",s,c=>{c.preventDefault(),E(c)}),Y("mouseup",s,E),de("wheel",s,C),Y("keydown",s,c=>{c.preventDefault(),y(c)}),Y("contextmenu",s,c=>c.preventDefault()),V(t,_),re()}ue(["change","mousemove","mousedown","mouseup","keydown","contextmenu"]);const u0=`precision mediump float;
 attribute vec2 position;
 varying vec2 uv;
 
@@ -1383,7 +1383,7 @@ void main() {
     uv = 0.5 * (position + 1.0);
     gl_Position = vec4(position, 0, 1);
 }
-`,u0=`precision mediump float;
+`,f0=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -1396,7 +1396,7 @@ void main() {
     gl_FragColor = vec4(A, B, 0.0, 1.0);
 }
 
-`,f0=`precision mediump float;
+`,m0=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -1413,7 +1413,7 @@ void main() {
     }
     gl_FragColor = vec4(A, B, val, 1.0);
 }
-`,m0=`precision mediump float;
+`,d0=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -1428,7 +1428,7 @@ void main() {
     gl_FragColor = vec4(val, val, val, 1.0);
 }
 
-`,d0=`precision mediump float;
+`,p0=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -1442,7 +1442,7 @@ void main() {
 
     gl_FragColor = vec4(1.0 - val, 1.0 - val, 1.0 - val, 1.0);
 }
-`,p0=`precision mediump float;
+`,v0=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -1456,7 +1456,7 @@ void main() {
 
     gl_FragColor = vec4(val, val, val, 1.0);
 }
-`,v0=`precision mediump float;
+`,x0=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -1508,7 +1508,7 @@ void main() {
 
     gl_FragColor = vec4(result, 1.0);
 }
-`,x0=`// Colors scheme inspired by Robert Munafo described here:
+`,h0=`// Colors scheme inspired by Robert Munafo described here:
 // https://www.mrob.com/pub/comp/xmorphia/index.html
 // 
 // A is blue
@@ -1533,7 +1533,7 @@ void main() {
 
     gl_FragColor = vec4(result, 1.0);
 }
-`,h0=`// Colors scheme inspired by Robert Munafo described here:
+`,g0=`// Colors scheme inspired by Robert Munafo described here:
 // https://www.mrob.com/pub/comp/xmorphia/index.html
 // 
 // A is blue
@@ -1555,7 +1555,7 @@ void main() {
 
     gl_FragColor = vec4(result, 1.0);
 }
-`,g0=`precision mediump float;
+`,y0=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -1573,7 +1573,7 @@ void main() {
         gl_FragColor = vec4(0.0, A, 0.0, 1.0);
     }
 }
-`,y0=`precision mediump float;
+`,b0=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -1603,7 +1603,7 @@ void main() {
     }
 
 }
-`,b0=`precision mediump float;
+`,w0=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -1641,7 +1641,7 @@ void main() {
     }
 
 }
-`,w0=`precision mediump float;
+`,_0=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -1697,86 +1697,6 @@ float colormap_blue(float x) {
 		return (2.06124143164576E+02 * x - 5.78166906665595E+02) * x + 5.26198653917172E+02;
 	} else {
 		return -7.36990769230737E+02 * x + 8.36652307692262E+02;
-	}
-}
-
-vec4 colormap(float x) {
-	float r = clamp(colormap_red(x) / 255.0, 0.0, 1.0);
-	float g = clamp(colormap_green(x) / 255.0, 0.0, 1.0);
-	float b = clamp(colormap_blue(x) / 255.0, 0.0, 1.0);
-	return vec4(r, g, b, 1.0);
-}
-
-void main() {
-    float A = texture2D(prevState, uv).r;
-    float B = texture2D(prevState, uv).g;
-
-    vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
-
-    vec4 softColor = colormap((A-0.4)*(1.0/0.6));
-
-
-    if (A < 0.4) {
-        gl_FragColor = vec4(black);
-    } else {
-        gl_FragColor = vec4(softColor);
-    }
-
-}
-`,_0=`precision mediump float;
-
-uniform sampler2D prevState;
-uniform float iteration;
-varying vec2 uv;
-
-// https://github.com/Polymole/glsl-colormap/blob/master/shaders/IDL_CB-RdYiBu.frag
-float colormap_red(float x) {
-	if (x < 0.09790863520700754) {
-		return 5.14512820512820E+02 * x + 1.64641025641026E+02;
-	} else if (x < 0.2001887081633112) {
-		return 2.83195402298854E+02 * x + 1.87288998357964E+02;
-	} else if (x < 0.3190117539655621) {
-		return 9.27301587301214E+01 * x + 2.25417989417999E+02;
-	} else if (x < 0.500517389125164) {
-		return 255.0;
-	} else if (x < 0.6068377196788788) {
-		return -3.04674876847379E+02 * x + 4.07495073891681E+02;
-	} else if (x < 0.9017468988895416) {
-		return (1.55336390191951E+02 * x - 7.56394659038288E+02) * x + 6.24412733169483E+02;
-	} else {
-		return -1.88350769230735E+02 * x + 2.38492307692292E+02;
-	}
-}
-
-float colormap_green(float x) {
-	if (x < 0.09638568758964539) {
-		return 4.81427692307692E+02 * x + 4.61538461538488E-01;
-	} else if (x < 0.4987066686153412) {
-		return ((((3.25545903568267E+04 * x - 4.24067109461319E+04) * x + 1.83751375886345E+04) * x - 3.19145329617892E+03) * x + 8.08315127034676E+02) * x - 1.44611527812961E+01;
-	} else if (x < 0.6047312345537269) {
-		return -1.18449917898218E+02 * x + 3.14234811165860E+02;
-	} else if (x < 0.7067635953426361) {
-		return -2.70822112753102E+02 * x + 4.06379036672115E+02;
-	} else {
-		return (-4.62308723214883E+02 * x + 2.42936159122279E+02) * x + 2.74203431802418E+02;
-	}
-}
-
-float colormap_blue(float x) {
-	if (x < 0.09982818011951204) {
-		return 1.64123076923076E+01 * x + 3.72646153846154E+01;
-	} else if (x < 0.2958717460833126) {
-		return 2.87014675052409E+02 * x + 1.02508735150248E+01;
-	} else if (x < 0.4900527540014758) {
-		return 4.65475113122167E+02 * x - 4.25505279034673E+01;
-	} else if (x < 0.6017014681258838) {
-		return 5.61032967032998E+02 * x - 8.93789173789407E+01;
-	} else if (x < 0.7015737100463595) {
-		return -1.51655677655728E+02 * x + 3.39446886446912E+02;
-	} else if (x < 0.8237156500567735) {
-		return -2.43405347593559E+02 * x + 4.03816042780725E+02;
-	} else {
-		return -3.00296889157305E+02 * x + 4.50678495922638E+02;
 	}
 }
 
@@ -1873,6 +1793,86 @@ void main() {
 
     vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
 
+    vec4 softColor = colormap((A-0.4)*(1.0/0.6));
+
+
+    if (A < 0.4) {
+        gl_FragColor = vec4(black);
+    } else {
+        gl_FragColor = vec4(softColor);
+    }
+
+}
+`,E0=`precision mediump float;
+
+uniform sampler2D prevState;
+uniform float iteration;
+varying vec2 uv;
+
+// https://github.com/Polymole/glsl-colormap/blob/master/shaders/IDL_CB-RdYiBu.frag
+float colormap_red(float x) {
+	if (x < 0.09790863520700754) {
+		return 5.14512820512820E+02 * x + 1.64641025641026E+02;
+	} else if (x < 0.2001887081633112) {
+		return 2.83195402298854E+02 * x + 1.87288998357964E+02;
+	} else if (x < 0.3190117539655621) {
+		return 9.27301587301214E+01 * x + 2.25417989417999E+02;
+	} else if (x < 0.500517389125164) {
+		return 255.0;
+	} else if (x < 0.6068377196788788) {
+		return -3.04674876847379E+02 * x + 4.07495073891681E+02;
+	} else if (x < 0.9017468988895416) {
+		return (1.55336390191951E+02 * x - 7.56394659038288E+02) * x + 6.24412733169483E+02;
+	} else {
+		return -1.88350769230735E+02 * x + 2.38492307692292E+02;
+	}
+}
+
+float colormap_green(float x) {
+	if (x < 0.09638568758964539) {
+		return 4.81427692307692E+02 * x + 4.61538461538488E-01;
+	} else if (x < 0.4987066686153412) {
+		return ((((3.25545903568267E+04 * x - 4.24067109461319E+04) * x + 1.83751375886345E+04) * x - 3.19145329617892E+03) * x + 8.08315127034676E+02) * x - 1.44611527812961E+01;
+	} else if (x < 0.6047312345537269) {
+		return -1.18449917898218E+02 * x + 3.14234811165860E+02;
+	} else if (x < 0.7067635953426361) {
+		return -2.70822112753102E+02 * x + 4.06379036672115E+02;
+	} else {
+		return (-4.62308723214883E+02 * x + 2.42936159122279E+02) * x + 2.74203431802418E+02;
+	}
+}
+
+float colormap_blue(float x) {
+	if (x < 0.09982818011951204) {
+		return 1.64123076923076E+01 * x + 3.72646153846154E+01;
+	} else if (x < 0.2958717460833126) {
+		return 2.87014675052409E+02 * x + 1.02508735150248E+01;
+	} else if (x < 0.4900527540014758) {
+		return 4.65475113122167E+02 * x - 4.25505279034673E+01;
+	} else if (x < 0.6017014681258838) {
+		return 5.61032967032998E+02 * x - 8.93789173789407E+01;
+	} else if (x < 0.7015737100463595) {
+		return -1.51655677655728E+02 * x + 3.39446886446912E+02;
+	} else if (x < 0.8237156500567735) {
+		return -2.43405347593559E+02 * x + 4.03816042780725E+02;
+	} else {
+		return -3.00296889157305E+02 * x + 4.50678495922638E+02;
+	}
+}
+
+vec4 colormap(float x) {
+	float r = clamp(colormap_red(x) / 255.0, 0.0, 1.0);
+	float g = clamp(colormap_green(x) / 255.0, 0.0, 1.0);
+	float b = clamp(colormap_blue(x) / 255.0, 0.0, 1.0);
+	return vec4(r, g, b, 1.0);
+}
+
+void main() {
+    float A = texture2D(prevState, uv).r;
+    float B = texture2D(prevState, uv).g;
+
+    vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
+
     vec4 softColor = colormap((B-0.1)*(1.0/0.9));
 
 
@@ -1883,7 +1883,7 @@ void main() {
     }
 
 }
-`,ne={},E0=t=>{const o=n=>t.prop(n),e={vert:c0,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{iteration:o("iteration"),prevState:o("inputBuffer")}};ne.raw=t({frag:u0,...e}),ne.A_gradiant1=t({frag:g0,...e}),ne.A_gradiant2=t({frag:y0,...e}),ne.A_MATLAB_cool=t({frag:b0,...e}),ne.A_IDL_CB_RdBu=t({frag:w0,...e}),ne.A_IDL_CB_RdYiBu=t({frag:_0,...e}),ne.B_IDL_CB_RdYiBu=t({frag:S0,...e}),ne.grayscale=t({frag:m0,...e}),ne.blackwhite=t({frag:d0,...e}),ne.whiteblack=t({frag:p0,...e}),ne.timebasedblue=t({frag:f0,...e}),ne.lerp=t({frag:v0,...e}),ne.mrob=t({frag:x0,...e}),ne.redblue=t({frag:h0,...e})},k0=t=>{const{colorMode:o,inputBuffer:e,iteration:n,outputBuffer:r,zoomState:a}=t;(ne[o]||ne.raw)({inputBuffer:e,iteration:n,outputBuffer:r,pan:[a.panX,a.panY],zoomLevel:a.zoomLevel})},A0=`precision mediump float;
+`,ne={},k0=t=>{const o=n=>t.prop(n),e={vert:u0,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{iteration:o("iteration"),prevState:o("inputBuffer")}};ne.raw=t({frag:f0,...e}),ne.A_gradiant1=t({frag:y0,...e}),ne.A_gradiant2=t({frag:b0,...e}),ne.A_MATLAB_cool=t({frag:w0,...e}),ne.A_IDL_CB_RdBu=t({frag:_0,...e}),ne.A_IDL_CB_RdYiBu=t({frag:S0,...e}),ne.B_IDL_CB_RdYiBu=t({frag:E0,...e}),ne.grayscale=t({frag:d0,...e}),ne.blackwhite=t({frag:p0,...e}),ne.whiteblack=t({frag:v0,...e}),ne.timebasedblue=t({frag:m0,...e}),ne.lerp=t({frag:x0,...e}),ne.mrob=t({frag:h0,...e}),ne.redblue=t({frag:g0,...e})},A0=t=>{const{colorMode:o,inputBuffer:e,iteration:n,outputBuffer:r,zoomState:a}=t;(ne[o]||ne.raw)({inputBuffer:e,iteration:n,outputBuffer:r,pan:[a.panX,a.panY],zoomLevel:a.zoomLevel})},D0=`precision mediump float;
 
 uniform float radius;
 uniform sampler2D prevState;
@@ -1957,7 +1957,7 @@ void main() {
         gl_FragColor = vec4(newA, newB, 0, 1);
     }
 }
-`,D0=`precision mediump float;
+`,B0=`precision mediump float;
 
 uniform vec2 mousePosition; // in range [0, 1] on the zoomed screen
 uniform float penRadius;
@@ -1977,7 +1977,7 @@ void main() {
     scaledPenRadius = penRadius;
     gl_Position = vec4(position, 0, 1);
 }
-`;let nt;const B0=(t,o)=>{const e=n=>t.prop(n);nt=t({frag:A0,vert:D0,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]],fk:(n,r)=>{const{maxF:a,minF:i,maxK:l,minK:m}=r.simulationParameters;return[[i,l],[i,m],[a,l],[a,l],[i,m],[a,m]]}},count:6,framebuffer:e("outputBuffer"),uniforms:{prevState:e("inputBuffer"),Da:1,Db:.5,radius:o,pauseSimulation:e("pauseSimulation"),mousePosition:e("mousePosition"),penRadius:e("penRadius"),penDensity:e("penDensity"),penIsActive:e("penIsActive")}})},C0=t=>{const{inputBuffer:o,outputBuffer:e,simulationParameters:n,pauseSimulation:r,mouseState:a,worldSize:i}=t;nt({inputBuffer:o,outputBuffer:e,pauseSimulation:r,zoomLevel:a.zoomLevel,pan:[a.panX,a.panY],mousePosition:[a.x,a.y],penRadius:1/2**(i-a.penSize),penDensity:a.penDensity,penIsActive:a.pressedLeft,eraserIsActive:a.pressedRight,simulationParameters:n})},z0=(t,o)=>t==="randomSpots"?L0(o,.001):t==="middleCircleAndRandomSpots"?$0(o,.005,.05):t==="empty"||t==="full"?Ke(o):T0(o,.02),$0=(t,o,e)=>{const n=t*e;return Array(t*t).fill(0).map((r,a)=>{const i=Math.floor(a/t),l=a%t;return Math.hypot(t/2-l,t/2-i)<n?[0,1,0,1]:Math.random()<o?[0,1,0,1]:[1,0,0,1]}).flat()},Ke=t=>Array(t*t).fill(0).map(()=>[0,0,0,1]).flat(),L0=(t,o)=>Array(t*t).fill(0).map(()=>Math.random()<o?[0,1,0,1]:[1,0,0,1]).flat(),T0=(t,o)=>Array(t*t).fill(0).map((e,n)=>{const r=Math.floor(n/t),a=n%t;return Math.hypot(t/2-a,t/2-r)<o*t?[0,1,0,1]:[1,0,0,1]}).flat(),R0=t=>{const{controls:o,info:e,mouseState:n,simulationParameters:r}=t,a=document.getElementById("canvas");if(!a)throw new Error("Canvas container not ready");const i=ye({extensions:["OES_texture_float"],canvas:a});e.iteration=0;const l=2**e.worldSize,m=z0(o.initialConditions,l),g=()=>i.framebuffer({color:i.texture({radius:l,data:m,wrap:"repeat",type:"float"}),depthStencil:!1}),y=Array(2).fill(0).map(g);return B0(i,l),E0(i),i.frame(()=>{o.pause||e.iteration++;let C=y[(e.iteration+1)%2];for(let d=0;d<o.speed;d++){e.iteration++;const E=y[e.iteration%2];C=y[(e.iteration+1)%2],C0({inputBuffer:E,outputBuffer:C,worldSize:e.worldSize,pauseSimulation:o.pause,mouseState:n,simulationParameters:r})}k0({colorMode:o.colors,inputBuffer:C,iteration:e.iteration,outputBuffer:null,zoomState:n})}),i},He=t=>{if(!t.currentTarget)throw new Error("Event has no currentTarget");const o=t.currentTarget,e=o.getBoundingClientRect(),n=t.clientX-e.left,r=t.clientY-e.top,{width:a,height:i}=o,l=n/a,m=(i-r)/i;return{x:l,y:m}};var P0=U('<main><div id="datgui-container" class="svelte-1y55lra"></div> <div><label for="worldSize">World Size:</label> <input id="worldSize" type="number" step="1"/></div> <canvas id="canvas" class="svelte-1y55lra"></canvas></main>');function ot(t,o){oe(o,!0);const e={width:Math.min(window.innerWidth,window.innerHeight)*.9,height:Math.min(window.innerWidth,window.innerHeight)*.9},n={colors:"B_IDL_CB_RdYiBu",initialConditions:"full",reset:()=>D(),pause:!1,grid:!1,speed:10},r={pressedLeft:!1,pressedRight:!1,x:0,y:0,penSize:12,penDensity:.3,zoomLevel:1,panX:.5,panY:.5},a=de({iteration:0,worldSize:10}),i={minK:.02,maxK:.07,minF:0,maxF:.12};let l,m;const g=async()=>{const b=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);l=new b.GUI({autoPlace:!1,closeOnTop:!0}),l.domElement.id="datgui";const $=document.getElementById("datgui-container");if(!$)throw new Error("Gui container not ready");$.appendChild(l.domElement),l.add(n,"pause").name("Pause"),l.add(n,"grid").name("Debug grid"),l.add(n,"reset").name("Reset simulation"),l.add(n,"colors",["grayscale","blackwhite","whiteblack","raw","timebasedblue","lerp","mrob","redblue","A_gradiant1","A_gradiant2","A_MATLAB_cool","A_IDL_CB_RdBu","A_IDL_CB_RdYiBu","B_IDL_CB_RdYiBu"]).name("Color scheme");const I={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots",Empty:"empty",Full:"full"};l.add(n,"initialConditions",I).onFinishChange(n.reset).name("Initial conditions");const s=l.add(a,"iteration").listen();s.domElement.style.pointerEvents="none",l.add(n,"speed",1,500).name("Simulation speed"),l.add(r,"penSize",0,a.worldSize).name("Pen size"),l.add(r,"penDensity",0,1).name("Pen density"),l.add(i,"minK",0,i.maxK),l.add(i,"maxK",i.minK,1),l.add(i,"minF",0,i.maxF),l.add(i,"maxF",i.minF,1)},y=b=>{if(b.code==="Space"){n.pause=!n.pause,b.preventDefault();return}if(b.code==="KeyR"&&!b.getModifierState("Control")){D(),b.preventDefault();return}},C=b=>{if(!b.getModifierState("Control"))return;const $=He(b);r.panX=$.x,r.panY=$.y,b.deltaY>0?r.zoomLevel*=1+r.zoomLevel/2:r.zoomLevel*=1-r.zoomLevel/2,r.zoomLevel>1&&(r.zoomLevel=1),r.zoomLevel<0&&(r.zoomLevel=0),b.preventDefault()},d=b=>{const $=He(b);r.x=$.x,r.y=$.y},E=b=>{if(![0,2].includes(b.button)||!["mouseup","mousedown"].includes(b.type))return;let $=b.type==="mousedown";b.button===0&&(r.pressedLeft=$),b.button===2&&(r.pressedRight=$)},D=()=>{isNaN(a.worldSize)||(a.worldSize>12&&(a.worldSize=12),a.worldSize<1&&(a.worldSize=1),l&&(document.getElementById(l.domElement.id)?.remove(),l.destroy()),m?.destroy(),g(),m=R0({controls:n,info:a,mouseState:r,simulationParameters:i}))};pe(()=>{D(),r.pressedLeft=!0,setTimeout(()=>r.pressedLeft=!1,10)}),se(()=>{l.destroy(),m.destroy()});var T=P0();me("keydown",$e,y);var _=h(O(T),2),k=h(O(_),2);Le(k),K(_);var B=h(_,2);K(T),ee(()=>{L(B,"width",e.width),L(B,"height",e.height)}),Y("change",k,D),Te(k,()=>a.worldSize,b=>a.worldSize=b),Y("mousemove",B,d),Y("mousedown",B,b=>{b.preventDefault(),E(b)}),Y("mouseup",B,E),me("wheel",B,C),Y("keydown",B,b=>{b.preventDefault(),y(b)}),Y("contextmenu",B,b=>b.preventDefault()),V(t,T),re()}ue(["change","mousemove","mousedown","mouseup","keydown","contextmenu"]);const I0=t=>{const o=[];for(let i=0;i<t.height;i++){o.push([]);for(let l=0;l<t.width;l++)o[o.length-1].push({A:1,B:0})}const e=5,n=5,r=Math.floor(t.width/2),a=Math.floor(t.height/2);for(let i=a-n;i<a+n;i++)for(let l=r-e;l<r+e;l++)o[i][l].B=1;return o},F0=(t,o)=>{const e={width:t.width/o[0].length,height:t.height/o.length};for(let n=0;n<o.length;n++)for(let r=0;r<o[0].length;r++){const{A:a,B:i}=o[n][r];t.fill(a*255,i*255,0),t.rect(r*e.width,n*e.height,e.width,e.height)}},M0=1,K0=.5,Ye=.055,H0=.062,Y0=t=>{const o=[];for(let e=0;e<t.length;e++){o.push([]);for(let n=0;n<t[0].length;n++){const{A:r,B:a}=t[e][n],i=Ve(t,{x:n,y:e},"A"),l=Ve(t,{x:n,y:e},"B"),m=r+(M0*i-r*a*a+Ye*(1-r)),g=a+(K0*l+r*a*a-(H0+Ye)*a);o[e].push({A:m,B:g})}}return o},Ve=(t,o,e)=>{const n=V0(t,o);let r=0;for(const a of n){const{coord:i,weight:l}=a;r+=t[i.y][i.x][e]*l}return r},V0=(t,o)=>{const{x:e,y:n}=o,r=t[0].length,a=t.length,i={coord:{x:e>0?e-1:r-1,y:n>0?n-1:a-1},weight:.05},l={coord:{x:e,y:n>0?n-1:a-1},weight:.2},m={coord:{x:e<r-1?e+1:0,y:n>0?n-1:a-1},weight:.05},g={coord:{x:e>0?e-1:r-1,y:n},weight:.2},y={coord:{x:e,y:n},weight:-1},C={coord:{x:e<r-1?e+1:0,y:n},weight:.2},d={coord:{x:e>0?e-1:r-1,y:n<a-1?n+1:0},weight:.05},E={coord:{x:e,y:n<a-1?n+1:0},weight:.2},D={coord:{x:e<r-1?e+1:0,y:n<a-1?n+1:0},weight:.05};return[i,l,m,g,y,C,d,E,D]};function G0(t,o){oe(o,!1);const e={width:200,height:200};let n;const r=a=>{let i;a.setup=()=>{n=a,a.createCanvas(500,500),a.noStroke(),i=I0(e)},a.draw=()=>{a.background(0);for(let l=0;l<20;l++)i=Y0(i);F0(n,i)}};xe(),ge(t,{sketch:r}),re()}let X,Se;const O0=t=>{X=[],Se=[];for(let a=0;a<t.height;a++){X.push([]),Se.push([]);for(let i=0;i<t.width;i++)X[X.length-1].push({A:1,B:0}),Se[X.length-1].push({A:1,B:0})}const o=5,e=5,n=Math.floor(t.width/2),r=Math.floor(t.height/2);for(let a=r-e;a<r+e;a++)for(let i=n-o;i<n+o;i++)X[a][i].B=1;return X},U0=t=>{const o={width:t.width/X[0].length,height:t.height/X.length};for(let e=0;e<X.length;e++)for(let n=0;n<X[0].length;n++){const{A:r,B:a}=X[e][n];t.fill(r*255,a*255,0),t.rect(n*o.width,e*o.height,o.width,o.height)}},W0=1,q0=.5,Ge=.055,X0=.062,N0=()=>{for(let o=0;o<X.length;o++)for(let e=0;e<X[0].length;e++){const{A:n,B:r}=X[o][e],a=Oe(X,{x:e,y:o},"A"),i=Oe(X,{x:e,y:o},"B"),l=n+(W0*a-n*r*r+Ge*(1-n)),m=r+(q0*i+n*r*r-(X0+Ge)*r);Se[o][e]={A:l,B:m}}const t=X;return X=Se,Se=t,X},Oe=(t,o,e)=>{const n=j0(t,o);let r=0;for(const a of n){const{coord:i,weight:l}=a;r+=t[i.y][i.x][e]*l}return r},j0=(t,o)=>{const{x:e,y:n}=o,r=t[0].length,a=t.length,i={coord:{x:e>0?e-1:r-1,y:n>0?n-1:a-1},weight:.05},l={coord:{x:e,y:n>0?n-1:a-1},weight:.2},m={coord:{x:e<r-1?e+1:0,y:n>0?n-1:a-1},weight:.05},g={coord:{x:e>0?e-1:r-1,y:n},weight:.2},y={coord:{x:e,y:n},weight:-1},C={coord:{x:e<r-1?e+1:0,y:n},weight:.2},d={coord:{x:e>0?e-1:r-1,y:n<a-1?n+1:0},weight:.05},E={coord:{x:e,y:n<a-1?n+1:0},weight:.2},D={coord:{x:e<r-1?e+1:0,y:n<a-1?n+1:0},weight:.05};return[i,l,m,g,y,C,d,E,D]};function Z0(t,o){oe(o,!1);const e={width:200,height:200};let n;const r=a=>{a.setup=()=>{n=a,a.createCanvas(500,500),a.noStroke(),O0(e)},a.draw=()=>{for(let i=0;i<5;i++)N0();U0(n)}};xe(),ge(t,{sketch:r}),re()}let N,Ee;const J0=t=>{N=[],Ee=[];for(let a=0;a<t.height;a++){N.push([]),Ee.push([]);for(let i=0;i<t.width;i++)N[N.length-1].push({A:1,B:0}),Ee[N.length-1].push({A:1,B:0})}const o=5,e=5,n=Math.floor(t.width/2),r=Math.floor(t.height/2);for(let a=r-e;a<r+e;a++)for(let i=n-o;i<n+o;i++)N[a][i].B=1;return N},Q0=t=>{const o={width:t.width/N[0].length,height:t.height/N.length};for(let e=0;e<N.length;e++)for(let n=0;n<N[0].length;n++){const{A:r,B:a}=N[e][n];t.fill(r*255,a*255,0),t.rect(n*o.width,e*o.height,o.width,o.height)}},en=1,tn=.5,Ue=.055,nn=.062,on=()=>{for(let o=0;o<N.length;o++)for(let e=0;e<N[0].length;e++){const{A:n,B:r}=N[o][e],a=We(N,{x:e,y:o},"A"),i=We(N,{x:e,y:o},"B"),l=n+(en*a-n*r*r+Ue*(1-n)),m=r+(tn*i+n*r*r-(nn+Ue)*r);Ee[o][e]={A:l,B:m}}const t=N;return N=Ee,Ee=t,N},We=(t,o,e)=>{const n=rn(t,o);let r=0;for(const a of n){const{coord:i,weight:l}=a;r+=t[i.y][i.x][e]*l}return r},rn=(t,o)=>{const{x:e,y:n}=o,r=t[0].length,a=t.length,i={coord:{x:e>0?e-1:r-1,y:n>0?n-1:a-1},weight:.05},l={coord:{x:e,y:n>0?n-1:a-1},weight:.2},m={coord:{x:e<r-1?e+1:0,y:n>0?n-1:a-1},weight:.05},g={coord:{x:e>0?e-1:r-1,y:n},weight:.2},y={coord:{x:e,y:n},weight:-1},C={coord:{x:e<r-1?e+1:0,y:n},weight:.2},d={coord:{x:e>0?e-1:r-1,y:n<a-1?n+1:0},weight:.05},E={coord:{x:e,y:n<a-1?n+1:0},weight:.2},D={coord:{x:e<r-1?e+1:0,y:n<a-1?n+1:0},weight:.05};return[i,l,m,g,y,C,d,E,D]};function an(t,o){oe(o,!1);const e={width:200,height:200};let n;const r=a=>{a.setup=()=>{n=a,a.createCanvas(500,500),a.noStroke(),J0(e)},a.draw=()=>{for(let i=0;i<5;i++)on();Q0(n)}};xe(),ge(t,{sketch:r}),re()}var ln=U('<canvas id="canvas" class="svelte-22fe7e"></canvas>');function sn(t,o){oe(o,!1);const e={width:window.innerWidth-50,height:window.innerHeight-10},n=2**10,r=n*.05,a=Array(n*n).fill(0).map((l,m)=>{const g=Math.floor(m/n),y=m%n;return Math.hypot(n/2-y,n/2-g)<r?[0,1,0,1]:Math.random()<.01?[0,1,0,1]:[1,0,0,1]}).flat();pe(()=>{const l=document.getElementById("canvas");if(!l)throw new Error("Canvas container not ready");const m=ye({extensions:["OES_texture_float"],canvas:l}),g=Array(2).fill(0).map(()=>m.framebuffer({color:m.texture({radius:n,data:a,wrap:"repeat",type:"float"}),depthStencil:!1})),y=m({frag:`
+`;let nt;const C0=(t,o)=>{const e=n=>t.prop(n);nt=t({frag:D0,vert:B0,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]],fk:(n,r)=>{const{maxF:a,minF:i,maxK:l,minK:m}=r.simulationParameters;return[[i,l],[i,m],[a,l],[a,l],[i,m],[a,m]]}},count:6,framebuffer:e("outputBuffer"),uniforms:{prevState:e("inputBuffer"),Da:1,Db:.5,radius:o,pauseSimulation:e("pauseSimulation"),mousePosition:e("mousePosition"),penRadius:e("penRadius"),penDensity:e("penDensity"),penIsActive:e("penIsActive")}})},z0=t=>{const{inputBuffer:o,outputBuffer:e,simulationParameters:n,pauseSimulation:r,mouseState:a,worldSize:i}=t;nt({inputBuffer:o,outputBuffer:e,pauseSimulation:r,zoomLevel:a.zoomLevel,pan:[a.panX,a.panY],mousePosition:[a.x,a.y],penRadius:1/2**(i-a.penSize),penDensity:a.penDensity,penIsActive:a.pressedLeft,eraserIsActive:a.pressedRight,simulationParameters:n})},$0=(t,o)=>t==="randomSpots"?T0(o,.001):t==="middleCircleAndRandomSpots"?L0(o,.005,.05):t==="empty"||t==="full"?Ke(o):R0(o,.02),L0=(t,o,e)=>{const n=t*e;return Array(t*t).fill(0).map((r,a)=>{const i=Math.floor(a/t),l=a%t;return Math.hypot(t/2-l,t/2-i)<n?[0,1,0,1]:Math.random()<o?[0,1,0,1]:[1,0,0,1]}).flat()},Ke=t=>Array(t*t).fill(0).map(()=>[0,0,0,1]).flat(),T0=(t,o)=>Array(t*t).fill(0).map(()=>Math.random()<o?[0,1,0,1]:[1,0,0,1]).flat(),R0=(t,o)=>Array(t*t).fill(0).map((e,n)=>{const r=Math.floor(n/t),a=n%t;return Math.hypot(t/2-a,t/2-r)<o*t?[0,1,0,1]:[1,0,0,1]}).flat(),P0=t=>{const{controls:o,info:e,mouseState:n,simulationParameters:r}=t,a=document.getElementById("canvas");if(!a)throw new Error("Canvas container not ready");const i=ye({extensions:["OES_texture_float"],canvas:a});e.iteration=0;const l=2**e.worldSize,m=$0(o.initialConditions,l),g=()=>i.framebuffer({color:i.texture({radius:l,data:m,wrap:"repeat",type:"float"}),depthStencil:!1}),y=Array(2).fill(0).map(g);return C0(i,l),k0(i),i.frame(()=>{o.pause||e.iteration++;let C=y[(e.iteration+1)%2];for(let d=0;d<o.speed;d++){e.iteration++;const E=y[e.iteration%2];C=y[(e.iteration+1)%2],z0({inputBuffer:E,outputBuffer:C,worldSize:e.worldSize,pauseSimulation:o.pause,mouseState:n,simulationParameters:r})}A0({colorMode:o.colors,inputBuffer:C,iteration:e.iteration,outputBuffer:null,zoomState:n})}),i},He=t=>{if(!t.currentTarget)throw new Error("Event has no currentTarget");const o=t.currentTarget,e=o.getBoundingClientRect(),n=t.clientX-e.left,r=t.clientY-e.top,{width:a,height:i}=o,l=n/a,m=(i-r)/i;return{x:l,y:m}};var I0=U('<main><div id="datgui-container" class="svelte-1y55lra"></div> <div><label for="worldSize">World Size:</label> <input id="worldSize" type="number" step="1"/></div> <canvas id="canvas" class="svelte-1y55lra"></canvas></main>');function ot(t,o){oe(o,!0);const e={width:Math.min(window.innerWidth,window.innerHeight)*.9,height:Math.min(window.innerWidth,window.innerHeight)*.9},n={colors:"B_IDL_CB_RdYiBu",initialConditions:"full",reset:()=>D(),pause:!1,grid:!1,speed:10},r={pressedLeft:!1,pressedRight:!1,x:0,y:0,penSize:12,penDensity:.3,zoomLevel:1,panX:.5,panY:.5},a=pe({iteration:0,worldSize:10}),i={minK:.02,maxK:.07,minF:0,maxF:.12};let l,m;const g=async()=>{const b=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);l=new b.GUI({autoPlace:!1,closeOnTop:!0}),l.domElement.id="datgui";const $=document.getElementById("datgui-container");if(!$)throw new Error("Gui container not ready");$.appendChild(l.domElement),l.add(n,"pause").name("Pause"),l.add(n,"grid").name("Debug grid"),l.add(n,"reset").name("Reset simulation"),l.add(n,"colors",["grayscale","blackwhite","whiteblack","raw","timebasedblue","lerp","mrob","redblue","A_gradiant1","A_gradiant2","A_MATLAB_cool","A_IDL_CB_RdBu","A_IDL_CB_RdYiBu","B_IDL_CB_RdYiBu"]).name("Color scheme");const I={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots",Empty:"empty",Full:"full"};l.add(n,"initialConditions",I).onFinishChange(n.reset).name("Initial conditions");const s=l.add(a,"iteration").listen();s.domElement.style.pointerEvents="none",l.add(n,"speed",1,500).name("Simulation speed"),l.add(r,"penSize",0,a.worldSize).name("Pen size"),l.add(r,"penDensity",0,1).name("Pen density"),l.add(i,"minK",0,i.maxK),l.add(i,"maxK",i.minK,1),l.add(i,"minF",0,i.maxF),l.add(i,"maxF",i.minF,1)},y=b=>{if(b.code==="Space"){n.pause=!n.pause,b.preventDefault();return}if(b.code==="KeyR"&&!b.getModifierState("Control")){D(),b.preventDefault();return}},C=b=>{if(!b.getModifierState("Control"))return;const $=He(b);r.panX=$.x,r.panY=$.y,b.deltaY>0?r.zoomLevel*=1+r.zoomLevel/2:r.zoomLevel*=1-r.zoomLevel/2,r.zoomLevel>1&&(r.zoomLevel=1),r.zoomLevel<0&&(r.zoomLevel=0),b.preventDefault()},d=b=>{const $=He(b);r.x=$.x,r.y=$.y},E=b=>{if(![0,2].includes(b.button)||!["mouseup","mousedown"].includes(b.type))return;let $=b.type==="mousedown";b.button===0&&(r.pressedLeft=$),b.button===2&&(r.pressedRight=$)},D=()=>{isNaN(a.worldSize)||(a.worldSize>12&&(a.worldSize=12),a.worldSize<1&&(a.worldSize=1),l&&(document.getElementById(l.domElement.id)?.remove(),l.destroy()),m?.destroy(),g(),m=P0({controls:n,info:a,mouseState:r,simulationParameters:i}))};me(()=>{D(),r.pressedLeft=!0,setTimeout(()=>r.pressedLeft=!1,10)}),se(()=>{l.destroy(),m.destroy()});var T=I0();de("keydown",$e,y);var _=h(O(T),2),k=h(O(_),2);Le(k),K(_);var B=h(_,2);K(T),ee(()=>{L(B,"width",e.width),L(B,"height",e.height)}),Y("change",k,D),Te(k,()=>a.worldSize,b=>a.worldSize=b),Y("mousemove",B,d),Y("mousedown",B,b=>{b.preventDefault(),E(b)}),Y("mouseup",B,E),de("wheel",B,C),Y("keydown",B,b=>{b.preventDefault(),y(b)}),Y("contextmenu",B,b=>b.preventDefault()),V(t,T),re()}ue(["change","mousemove","mousedown","mouseup","keydown","contextmenu"]);const F0=t=>{const o=[];for(let i=0;i<t.height;i++){o.push([]);for(let l=0;l<t.width;l++)o[o.length-1].push({A:1,B:0})}const e=5,n=5,r=Math.floor(t.width/2),a=Math.floor(t.height/2);for(let i=a-n;i<a+n;i++)for(let l=r-e;l<r+e;l++)o[i][l].B=1;return o},M0=(t,o)=>{const e={width:t.width/o[0].length,height:t.height/o.length};for(let n=0;n<o.length;n++)for(let r=0;r<o[0].length;r++){const{A:a,B:i}=o[n][r];t.fill(a*255,i*255,0),t.rect(r*e.width,n*e.height,e.width,e.height)}},K0=1,H0=.5,Ye=.055,Y0=.062,V0=t=>{const o=[];for(let e=0;e<t.length;e++){o.push([]);for(let n=0;n<t[0].length;n++){const{A:r,B:a}=t[e][n],i=Ve(t,{x:n,y:e},"A"),l=Ve(t,{x:n,y:e},"B"),m=r+(K0*i-r*a*a+Ye*(1-r)),g=a+(H0*l+r*a*a-(Y0+Ye)*a);o[e].push({A:m,B:g})}}return o},Ve=(t,o,e)=>{const n=G0(t,o);let r=0;for(const a of n){const{coord:i,weight:l}=a;r+=t[i.y][i.x][e]*l}return r},G0=(t,o)=>{const{x:e,y:n}=o,r=t[0].length,a=t.length,i={coord:{x:e>0?e-1:r-1,y:n>0?n-1:a-1},weight:.05},l={coord:{x:e,y:n>0?n-1:a-1},weight:.2},m={coord:{x:e<r-1?e+1:0,y:n>0?n-1:a-1},weight:.05},g={coord:{x:e>0?e-1:r-1,y:n},weight:.2},y={coord:{x:e,y:n},weight:-1},C={coord:{x:e<r-1?e+1:0,y:n},weight:.2},d={coord:{x:e>0?e-1:r-1,y:n<a-1?n+1:0},weight:.05},E={coord:{x:e,y:n<a-1?n+1:0},weight:.2},D={coord:{x:e<r-1?e+1:0,y:n<a-1?n+1:0},weight:.05};return[i,l,m,g,y,C,d,E,D]};function O0(t,o){oe(o,!1);const e={width:200,height:200};let n;const r=a=>{let i;a.setup=()=>{n=a,a.createCanvas(500,500),a.noStroke(),i=F0(e)},a.draw=()=>{a.background(0);for(let l=0;l<20;l++)i=V0(i);M0(n,i)}};xe(),ge(t,{sketch:r}),re()}let X,Se;const U0=t=>{X=[],Se=[];for(let a=0;a<t.height;a++){X.push([]),Se.push([]);for(let i=0;i<t.width;i++)X[X.length-1].push({A:1,B:0}),Se[X.length-1].push({A:1,B:0})}const o=5,e=5,n=Math.floor(t.width/2),r=Math.floor(t.height/2);for(let a=r-e;a<r+e;a++)for(let i=n-o;i<n+o;i++)X[a][i].B=1;return X},W0=t=>{const o={width:t.width/X[0].length,height:t.height/X.length};for(let e=0;e<X.length;e++)for(let n=0;n<X[0].length;n++){const{A:r,B:a}=X[e][n];t.fill(r*255,a*255,0),t.rect(n*o.width,e*o.height,o.width,o.height)}},q0=1,X0=.5,Ge=.055,N0=.062,j0=()=>{for(let o=0;o<X.length;o++)for(let e=0;e<X[0].length;e++){const{A:n,B:r}=X[o][e],a=Oe(X,{x:e,y:o},"A"),i=Oe(X,{x:e,y:o},"B"),l=n+(q0*a-n*r*r+Ge*(1-n)),m=r+(X0*i+n*r*r-(N0+Ge)*r);Se[o][e]={A:l,B:m}}const t=X;return X=Se,Se=t,X},Oe=(t,o,e)=>{const n=Z0(t,o);let r=0;for(const a of n){const{coord:i,weight:l}=a;r+=t[i.y][i.x][e]*l}return r},Z0=(t,o)=>{const{x:e,y:n}=o,r=t[0].length,a=t.length,i={coord:{x:e>0?e-1:r-1,y:n>0?n-1:a-1},weight:.05},l={coord:{x:e,y:n>0?n-1:a-1},weight:.2},m={coord:{x:e<r-1?e+1:0,y:n>0?n-1:a-1},weight:.05},g={coord:{x:e>0?e-1:r-1,y:n},weight:.2},y={coord:{x:e,y:n},weight:-1},C={coord:{x:e<r-1?e+1:0,y:n},weight:.2},d={coord:{x:e>0?e-1:r-1,y:n<a-1?n+1:0},weight:.05},E={coord:{x:e,y:n<a-1?n+1:0},weight:.2},D={coord:{x:e<r-1?e+1:0,y:n<a-1?n+1:0},weight:.05};return[i,l,m,g,y,C,d,E,D]};function J0(t,o){oe(o,!1);const e={width:200,height:200};let n;const r=a=>{a.setup=()=>{n=a,a.createCanvas(500,500),a.noStroke(),U0(e)},a.draw=()=>{for(let i=0;i<5;i++)j0();W0(n)}};xe(),ge(t,{sketch:r}),re()}let N,Ee;const Q0=t=>{N=[],Ee=[];for(let a=0;a<t.height;a++){N.push([]),Ee.push([]);for(let i=0;i<t.width;i++)N[N.length-1].push({A:1,B:0}),Ee[N.length-1].push({A:1,B:0})}const o=5,e=5,n=Math.floor(t.width/2),r=Math.floor(t.height/2);for(let a=r-e;a<r+e;a++)for(let i=n-o;i<n+o;i++)N[a][i].B=1;return N},en=t=>{const o={width:t.width/N[0].length,height:t.height/N.length};for(let e=0;e<N.length;e++)for(let n=0;n<N[0].length;n++){const{A:r,B:a}=N[e][n];t.fill(r*255,a*255,0),t.rect(n*o.width,e*o.height,o.width,o.height)}},tn=1,nn=.5,Ue=.055,on=.062,rn=()=>{for(let o=0;o<N.length;o++)for(let e=0;e<N[0].length;e++){const{A:n,B:r}=N[o][e],a=We(N,{x:e,y:o},"A"),i=We(N,{x:e,y:o},"B"),l=n+(tn*a-n*r*r+Ue*(1-n)),m=r+(nn*i+n*r*r-(on+Ue)*r);Ee[o][e]={A:l,B:m}}const t=N;return N=Ee,Ee=t,N},We=(t,o,e)=>{const n=an(t,o);let r=0;for(const a of n){const{coord:i,weight:l}=a;r+=t[i.y][i.x][e]*l}return r},an=(t,o)=>{const{x:e,y:n}=o,r=t[0].length,a=t.length,i={coord:{x:e>0?e-1:r-1,y:n>0?n-1:a-1},weight:.05},l={coord:{x:e,y:n>0?n-1:a-1},weight:.2},m={coord:{x:e<r-1?e+1:0,y:n>0?n-1:a-1},weight:.05},g={coord:{x:e>0?e-1:r-1,y:n},weight:.2},y={coord:{x:e,y:n},weight:-1},C={coord:{x:e<r-1?e+1:0,y:n},weight:.2},d={coord:{x:e>0?e-1:r-1,y:n<a-1?n+1:0},weight:.05},E={coord:{x:e,y:n<a-1?n+1:0},weight:.2},D={coord:{x:e<r-1?e+1:0,y:n<a-1?n+1:0},weight:.05};return[i,l,m,g,y,C,d,E,D]};function ln(t,o){oe(o,!1);const e={width:200,height:200};let n;const r=a=>{a.setup=()=>{n=a,a.createCanvas(500,500),a.noStroke(),Q0(e)},a.draw=()=>{for(let i=0;i<5;i++)rn();en(n)}};xe(),ge(t,{sketch:r}),re()}var sn=U('<canvas id="canvas" class="svelte-22fe7e"></canvas>');function cn(t,o){oe(o,!1);const e={width:window.innerWidth-50,height:window.innerHeight-10},n=2**10,r=n*.05,a=Array(n*n).fill(0).map((l,m)=>{const g=Math.floor(m/n),y=m%n;return Math.hypot(n/2-y,n/2-g)<r?[0,1,0,1]:Math.random()<.01?[0,1,0,1]:[1,0,0,1]}).flat();me(()=>{const l=document.getElementById("canvas");if(!l)throw new Error("Canvas container not ready");const m=ye({extensions:["OES_texture_float"],canvas:l}),g=Array(2).fill(0).map(()=>m.framebuffer({color:m.texture({radius:n,data:a,wrap:"repeat",type:"float"}),depthStencil:!1})),y=m({frag:`
 precision mediump float;
 uniform sampler2D prevState;
 varying vec2 uv;
@@ -2040,7 +2040,7 @@ varying vec2 uv;
 void main() {
     uv = 0.5 * (position + 1.0);
     gl_Position = vec4(position, 0, 1);
-}`,attributes:{position:[-4,-4,4,-4,0,4]},uniforms:{prevState:({tick:d})=>g[d%2]},depth:{enable:!1},count:3});m.frame(()=>{C(()=>{m.draw(),y()})})}),xe();var i=ln();ee(()=>{L(i,"width",e.width),L(i,"height",e.height)}),V(t,i),re()}const cn=(t,o,e)=>{const n=t*e;return Array(t*t).fill(0).map((r,a)=>{const i=Math.floor(a/t),l=a%t;return Math.hypot(t/2-l,t/2-i)<n?[0,1,0,1]:Math.random()<o?[0,1,0,1]:[1,0,0,1]}).flat()},un=(t,o)=>Array(t*t).fill(0).map(()=>Math.random()<o?[0,1,0,1]:[1,0,0,1]).flat(),fn=(t,o)=>Array(t*t).fill(0).map((e,n)=>{const r=Math.floor(n/t),a=n%t;return Math.hypot(t/2-a,t/2-r)<o*t?[0,1,0,1]:[1,0,0,1]}).flat(),ke=[{name:"KarlSims",type:"Unknown",f:.055,k:.062},{name:"Alpha 1",type:"alpha",f:.01,k:.047},{name:"Alpha 2",type:"alpha",f:.014,k:.053},{name:"Beta 1",type:"beta",f:.014,k:.039},{name:"Beta 2",type:"beta",f:.026,k:.051},{name:"Epsilon 1",type:"epsilon",f:.018,k:.055},{name:"Epsilon 2",type:"epsilon",f:.022,k:.059},{name:"Epsilon 1",type:"epsilon",f:.034,k:.063},{name:"Gamma 1",type:"gamma",f:.022,k:.051},{name:"Gamma 2",type:"gamma",f:.026,k:.055},{name:"Iota 1",type:"iota",f:.046,k:.0594},{name:"Lambda 1",type:"lambda",f:.026,k:.061},{name:"Lambda 2",type:"lambda",f:.034,k:.065},{name:"Mu 1",type:"mu",f:.046,k:.065},{name:"Mu 2",type:"mu",f:.058,k:.065},{name:"Pi 1",type:"pi",f:.062,k:.061},{name:"Rho 1",type:"rho",f:.09,k:.059},{name:"Rho 2",type:"rho",f:.102,k:.055},{name:"Sigma 1",type:"sigma",f:.09,k:.057},{name:"Sigma 2",type:"sigma",f:.11,k:.0523},{name:"Theta 1",type:"theta",f:.03,k:.057},{name:"Theta 2",type:"theta",f:.038,k:.061},{name:"Xi 1",type:"xi",f:.01,k:.041},{name:"Xi 2",type:"xi",f:.014,k:.047},{name:"Zeta 1",type:"zeta",f:.022,k:.061},{name:"Zeta 2",type:"zeta",f:.026,k:.059}];var mn=U('<canvas id="canvas" class="svelte-k89hd5"></canvas>');function dn(t,o){oe(o,!1);const e={width:window.innerWidth-50,height:window.innerHeight-10},n={presetParams:4,initialConditions:"randomSpots",reset:()=>y(),pause:!1},r={iteration:0},a={f:ke[n.presetParams].f,k:ke[n.presetParams].k};let i,l;const m=async()=>{const d=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);i=new d.GUI,i.domElement.setAttribute("style","background-color: black"),i.add(a,"f").name("Feed rate").listen(),i.add(a,"k").name("Kill rate").listen(),i.add(n,"pause").name("Pause"),i.add(n,"reset").name("Reset simulation");const E=ke.reduce((_,k,B)=>(_[k.name]=B,_),{});i.add(n,"presetParams",E).onFinishChange(()=>{a.f=ke[n.presetParams].f,a.k=ke[n.presetParams].k});const D={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots"};i.add(n,"initialConditions",D).onFinishChange(n.reset);const T=i.add(r,"iteration").listen();T.domElement.style.pointerEvents="none"},g=()=>{document.addEventListener("keydown",d=>{if(d.code==="Space")return n.pause=!n.pause,d.preventDefault();if(d.code==="KeyR")return y(),d.preventDefault()})},y=()=>{const d=document.getElementById("canvas");if(!d)throw new Error("Canvas container not ready");l&&l.destroy(),l=ye({extensions:["OES_texture_float"],canvas:d});const E=b=>l.prop(b);r.iteration=0;const D=2**11;let T;n.initialConditions==="randomSpots"?T=un(D,.001):n.initialConditions==="middleCircleAndRandomSpots"?T=cn(D,.005,.05):T=fn(D,.02);const _=Array(2).fill(0).map(()=>l.framebuffer({color:l.texture({radius:D,data:T,wrap:"repeat",type:"float"}),depthStencil:!1})),k=l({frag:`
+}`,attributes:{position:[-4,-4,4,-4,0,4]},uniforms:{prevState:({tick:d})=>g[d%2]},depth:{enable:!1},count:3});m.frame(()=>{C(()=>{m.draw(),y()})})}),xe();var i=sn();ee(()=>{L(i,"width",e.width),L(i,"height",e.height)}),V(t,i),re()}const un=(t,o,e)=>{const n=t*e;return Array(t*t).fill(0).map((r,a)=>{const i=Math.floor(a/t),l=a%t;return Math.hypot(t/2-l,t/2-i)<n?[0,1,0,1]:Math.random()<o?[0,1,0,1]:[1,0,0,1]}).flat()},fn=(t,o)=>Array(t*t).fill(0).map(()=>Math.random()<o?[0,1,0,1]:[1,0,0,1]).flat(),mn=(t,o)=>Array(t*t).fill(0).map((e,n)=>{const r=Math.floor(n/t),a=n%t;return Math.hypot(t/2-a,t/2-r)<o*t?[0,1,0,1]:[1,0,0,1]}).flat(),ke=[{name:"KarlSims",type:"Unknown",f:.055,k:.062},{name:"Alpha 1",type:"alpha",f:.01,k:.047},{name:"Alpha 2",type:"alpha",f:.014,k:.053},{name:"Beta 1",type:"beta",f:.014,k:.039},{name:"Beta 2",type:"beta",f:.026,k:.051},{name:"Epsilon 1",type:"epsilon",f:.018,k:.055},{name:"Epsilon 2",type:"epsilon",f:.022,k:.059},{name:"Epsilon 1",type:"epsilon",f:.034,k:.063},{name:"Gamma 1",type:"gamma",f:.022,k:.051},{name:"Gamma 2",type:"gamma",f:.026,k:.055},{name:"Iota 1",type:"iota",f:.046,k:.0594},{name:"Lambda 1",type:"lambda",f:.026,k:.061},{name:"Lambda 2",type:"lambda",f:.034,k:.065},{name:"Mu 1",type:"mu",f:.046,k:.065},{name:"Mu 2",type:"mu",f:.058,k:.065},{name:"Pi 1",type:"pi",f:.062,k:.061},{name:"Rho 1",type:"rho",f:.09,k:.059},{name:"Rho 2",type:"rho",f:.102,k:.055},{name:"Sigma 1",type:"sigma",f:.09,k:.057},{name:"Sigma 2",type:"sigma",f:.11,k:.0523},{name:"Theta 1",type:"theta",f:.03,k:.057},{name:"Theta 2",type:"theta",f:.038,k:.061},{name:"Xi 1",type:"xi",f:.01,k:.041},{name:"Xi 2",type:"xi",f:.014,k:.047},{name:"Zeta 1",type:"zeta",f:.022,k:.061},{name:"Zeta 2",type:"zeta",f:.026,k:.059}];var dn=U('<canvas id="canvas" class="svelte-k89hd5"></canvas>');function pn(t,o){oe(o,!1);const e={width:window.innerWidth-50,height:window.innerHeight-10},n={presetParams:4,initialConditions:"randomSpots",reset:()=>y(),pause:!1},r={iteration:0},a={f:ke[n.presetParams].f,k:ke[n.presetParams].k};let i,l;const m=async()=>{const d=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);i=new d.GUI,i.domElement.setAttribute("style","background-color: black"),i.add(a,"f").name("Feed rate").listen(),i.add(a,"k").name("Kill rate").listen(),i.add(n,"pause").name("Pause"),i.add(n,"reset").name("Reset simulation");const E=ke.reduce((_,k,B)=>(_[k.name]=B,_),{});i.add(n,"presetParams",E).onFinishChange(()=>{a.f=ke[n.presetParams].f,a.k=ke[n.presetParams].k});const D={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots"};i.add(n,"initialConditions",D).onFinishChange(n.reset);const T=i.add(r,"iteration").listen();T.domElement.style.pointerEvents="none"},g=()=>{document.addEventListener("keydown",d=>{if(d.code==="Space")return n.pause=!n.pause,d.preventDefault();if(d.code==="KeyR")return y(),d.preventDefault()})},y=()=>{const d=document.getElementById("canvas");if(!d)throw new Error("Canvas container not ready");l&&l.destroy(),l=ye({extensions:["OES_texture_float"],canvas:d});const E=b=>l.prop(b);r.iteration=0;const D=2**11;let T;n.initialConditions==="randomSpots"?T=fn(D,.001):n.initialConditions==="middleCircleAndRandomSpots"?T=un(D,.005,.05):T=mn(D,.02);const _=Array(2).fill(0).map(()=>l.framebuffer({color:l.texture({radius:D,data:T,wrap:"repeat",type:"float"}),depthStencil:!1})),k=l({frag:`
 precision mediump float;
 
 uniform sampler2D prevState;
@@ -2104,7 +2104,7 @@ varying vec2 uv;
 void main() {
     uv = 0.5 * (position + 1.0);
     gl_Position = vec4(position, 0, 1);
-}`,attributes:{position:[-4,-4,4,-4,0,4]},uniforms:{prevState:({tick:b})=>_[b%2]},depth:{enable:!1},count:3});l.frame(()=>{B(()=>{l.draw(),!n.pause&&(r.iteration++,k({Da:1,Db:.5,...a}))})})};pe(()=>{m(),g(),y()}),se(()=>{i.destroy(),l.destroy()}),xe();var C=mn();ee(()=>{L(C,"width",e.width),L(C,"height",e.height)}),V(t,C),re()}const pn=(t,o,e)=>{const n=t*e;return Array(t*t).fill(0).map((r,a)=>{const i=Math.floor(a/t),l=a%t;return Math.hypot(t/2-l,t/2-i)<n?[0,1,0,1]:Math.random()<o?[0,1,0,1]:[1,0,0,1]}).flat()},vn=(t,o)=>Array(t*t).fill(0).map(()=>Math.random()<o?[0,1,0,1]:[1,0,0,1]).flat(),xn=(t,o)=>Array(t*t).fill(0).map((e,n)=>{const r=Math.floor(n/t),a=n%t;return Math.hypot(t/2-a,t/2-r)<o*t?[0,1,0,1]:[1,0,0,1]}).flat(),Ae=[{name:"KarlSims",type:"Unknown",f:.055,k:.062},{name:"Alpha 1",type:"alpha",f:.01,k:.047},{name:"Alpha 2",type:"alpha",f:.014,k:.053},{name:"Beta 1",type:"beta",f:.014,k:.039},{name:"Beta 2",type:"beta",f:.026,k:.051},{name:"Epsilon 1",type:"epsilon",f:.018,k:.055},{name:"Epsilon 2",type:"epsilon",f:.022,k:.059},{name:"Epsilon 1",type:"epsilon",f:.034,k:.063},{name:"Gamma 1",type:"gamma",f:.022,k:.051},{name:"Gamma 2",type:"gamma",f:.026,k:.055},{name:"Iota 1",type:"iota",f:.046,k:.0594},{name:"Lambda 1",type:"lambda",f:.026,k:.061},{name:"Lambda 2",type:"lambda",f:.034,k:.065},{name:"Mu 1",type:"mu",f:.046,k:.065},{name:"Mu 2",type:"mu",f:.058,k:.065},{name:"Pi 1",type:"pi",f:.062,k:.061},{name:"Rho 1",type:"rho",f:.09,k:.059},{name:"Rho 2",type:"rho",f:.102,k:.055},{name:"Sigma 1",type:"sigma",f:.09,k:.057},{name:"Sigma 2",type:"sigma",f:.11,k:.0523},{name:"Theta 1",type:"theta",f:.03,k:.057},{name:"Theta 2",type:"theta",f:.038,k:.061},{name:"Xi 1",type:"xi",f:.01,k:.041},{name:"Xi 2",type:"xi",f:.014,k:.047},{name:"Zeta 1",type:"zeta",f:.022,k:.061},{name:"Zeta 2",type:"zeta",f:.026,k:.059}],hn=`precision mediump float;
+}`,attributes:{position:[-4,-4,4,-4,0,4]},uniforms:{prevState:({tick:b})=>_[b%2]},depth:{enable:!1},count:3});l.frame(()=>{B(()=>{l.draw(),!n.pause&&(r.iteration++,k({Da:1,Db:.5,...a}))})})};me(()=>{m(),g(),y()}),se(()=>{i.destroy(),l.destroy()}),xe();var C=dn();ee(()=>{L(C,"width",e.width),L(C,"height",e.height)}),V(t,C),re()}const vn=(t,o,e)=>{const n=t*e;return Array(t*t).fill(0).map((r,a)=>{const i=Math.floor(a/t),l=a%t;return Math.hypot(t/2-l,t/2-i)<n?[0,1,0,1]:Math.random()<o?[0,1,0,1]:[1,0,0,1]}).flat()},xn=(t,o)=>Array(t*t).fill(0).map(()=>Math.random()<o?[0,1,0,1]:[1,0,0,1]).flat(),hn=(t,o)=>Array(t*t).fill(0).map((e,n)=>{const r=Math.floor(n/t),a=n%t;return Math.hypot(t/2-a,t/2-r)<o*t?[0,1,0,1]:[1,0,0,1]}).flat(),Ae=[{name:"KarlSims",type:"Unknown",f:.055,k:.062},{name:"Alpha 1",type:"alpha",f:.01,k:.047},{name:"Alpha 2",type:"alpha",f:.014,k:.053},{name:"Beta 1",type:"beta",f:.014,k:.039},{name:"Beta 2",type:"beta",f:.026,k:.051},{name:"Epsilon 1",type:"epsilon",f:.018,k:.055},{name:"Epsilon 2",type:"epsilon",f:.022,k:.059},{name:"Epsilon 1",type:"epsilon",f:.034,k:.063},{name:"Gamma 1",type:"gamma",f:.022,k:.051},{name:"Gamma 2",type:"gamma",f:.026,k:.055},{name:"Iota 1",type:"iota",f:.046,k:.0594},{name:"Lambda 1",type:"lambda",f:.026,k:.061},{name:"Lambda 2",type:"lambda",f:.034,k:.065},{name:"Mu 1",type:"mu",f:.046,k:.065},{name:"Mu 2",type:"mu",f:.058,k:.065},{name:"Pi 1",type:"pi",f:.062,k:.061},{name:"Rho 1",type:"rho",f:.09,k:.059},{name:"Rho 2",type:"rho",f:.102,k:.055},{name:"Sigma 1",type:"sigma",f:.09,k:.057},{name:"Sigma 2",type:"sigma",f:.11,k:.0523},{name:"Theta 1",type:"theta",f:.03,k:.057},{name:"Theta 2",type:"theta",f:.038,k:.061},{name:"Xi 1",type:"xi",f:.01,k:.041},{name:"Xi 2",type:"xi",f:.014,k:.047},{name:"Zeta 1",type:"zeta",f:.022,k:.061},{name:"Zeta 2",type:"zeta",f:.026,k:.059}],gn=`precision mediump float;
 attribute vec2 position;
 varying vec2 uv;
 
@@ -2112,7 +2112,7 @@ void main() {
     uv = 0.5 * (position + 1.0);
     gl_Position = vec4(position, 0, 1);
 }
-`,gn=`precision mediump float;
+`,yn=`precision mediump float;
 uniform sampler2D prevState;
 varying vec2 uv;
 
@@ -2120,7 +2120,7 @@ void main() {
     vec2 state = texture2D(prevState, uv).rg;
     gl_FragColor = vec4(state, 0, 1);
 }
-`,yn=`precision mediump float;
+`,bn=`precision mediump float;
 
 uniform float radius;
 uniform sampler2D prevState;
@@ -2185,7 +2185,7 @@ void main() {
         gl_FragColor = vec4(newA, newB, 0, 1);
     }
 }
-`;var bn=U('<canvas id="canvas" class="svelte-jas7es"></canvas>');function wn(t,o){oe(o,!1);const e={width:window.innerWidth-50,height:window.innerHeight-10},n=11,r={presetParams:4,initialConditions:"randomSpots",reset:()=>d(),pause:!1},a={pressedLeft:!1,pressedRight:!1,x:0,y:0,penSize:3},i={iteration:0},l={f:Ae[r.presetParams].f,k:Ae[r.presetParams].k};let m,g;const y=async()=>{const _=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);m=new _.GUI,m.domElement.setAttribute("style","background-color: black"),m.add(l,"f").name("Feed rate").listen(),m.add(l,"k").name("Kill rate").listen(),m.add(r,"pause").name("Pause"),m.add(r,"reset").name("Reset simulation");const k=Ae.reduce(($,I,s)=>($[I.name]=s,$),{});m.add(r,"presetParams",k).onFinishChange(()=>{l.f=Ae[r.presetParams].f,l.k=Ae[r.presetParams].k});const B={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots"};m.add(r,"initialConditions",B).onFinishChange(r.reset);const b=m.add(i,"iteration").listen();b.domElement.style.pointerEvents="none",m.add(a,"penSize",1,n,1).name("Pen size")},C=()=>{document.addEventListener("keydown",_=>{if(_.code==="Space")return r.pause=!r.pause,_.preventDefault();if(_.code==="KeyR")return d(),_.preventDefault()})},d=()=>{const _=document.getElementById("canvas");if(!_)throw new Error("Canvas container not ready");g&&g.destroy(),g=ye({extensions:["OES_texture_float"],canvas:_});const k=c=>g.prop(c);i.iteration=0;const B=2**n;let b;r.initialConditions==="randomSpots"?b=vn(B,.001):r.initialConditions==="middleCircleAndRandomSpots"?b=pn(B,.005,.05):b=xn(B,.02);const $=Array(2).fill(0).map(()=>g.framebuffer({color:g.texture({radius:B,data:b,wrap:"repeat",type:"float"}),depthStencil:!1})),I=g({frag:yn,framebuffer:c=>$[(c.tick+1)%2],uniforms:{Da:k("Da"),Db:k("Db"),f:k("f"),k:k("k"),radius:B,pauseSimulation:k("pauseSimulation"),mousePosition:k("mousePosition"),penRadius:k("penRadius"),penIsActive:k("penIsActive"),eraserIsActive:k("eraserIsActive")}}),s=g({frag:gn,vert:hn,attributes:{position:[-4,-4,4,-4,0,4]},uniforms:{prevState:({tick:c})=>$[c%2]},depth:{enable:!1},count:3});g.frame(()=>{s(()=>{g.draw(),r.pause||i.iteration++,I({Da:1,Db:.5,pauseSimulation:r.pause,mousePosition:[a.x,a.y],penRadius:1/2**(n-a.penSize),penIsActive:a.pressedLeft,eraserIsActive:a.pressedRight,...l})})})},E=_=>{if(!_.currentTarget)throw new Error("No target for the onmousemove event");const k=_.currentTarget;if(!k.width||!k.height)throw new Error("No target dimensions for the onmousemove event target");const{x:B,y:b}=_,{width:$,height:I}=k,s=B/$,c=(I-b)/I;a.x=s,a.y=c},D=_=>{if(![0,2].includes(_.button)||!["mouseup","mousedown"].includes(_.type))return;let k=_.type==="mousedown";_.button===0&&(a.pressedLeft=k),_.button===2&&(a.pressedRight=k)};pe(()=>{y(),C(),d()}),se(()=>{m.destroy(),g.destroy()}),xe();var T=bn();ee(()=>{L(T,"width",e.width),L(T,"height",e.height)}),Y("mousemove",T,E),Y("mousedown",T,_=>{_.preventDefault(),D(_)}),Y("mouseup",T,D),Y("contextmenu",T,_=>_.preventDefault()),V(t,T),re()}ue(["mousemove","mousedown","mouseup","contextmenu"]);const De=[{name:"KarlSims",type:"Unknown",f:.055,k:.062},{name:"STX 1",type:"N.A",f:.0353,k:.0614},{name:"STX 2",type:"N.A",f:.0201,k:.0602},{name:"STX 2",type:"N.A",f:.0181,k:.0435},{name:"α 1",type:"alpha",f:.01,k:.047},{name:"α 2",type:"alpha",f:.014,k:.053},{name:"β 1",type:"beta",f:.014,k:.039},{name:"β 2",type:"beta",f:.026,k:.051},{name:"δ 1",type:"delta",f:.03,k:.055},{name:"δ 2",type:"delta",f:.042,k:.059},{name:"ε 1",type:"epsilon",f:.018,k:.055},{name:"ε 2",type:"epsilon",f:.022,k:.059},{name:"η 1",type:"eta",f:.034,k:.063},{name:"γ 1",type:"gamma",f:.022,k:.051},{name:"γ 2",type:"gamma",f:.026,k:.055},{name:"ι 1",type:"iota",f:.046,k:.0594},{name:"κ 1",type:"kappa",f:.082,k:.06},{name:"κ 2",type:"kappa",f:.058,k:.063},{name:"λ 1",type:"lambda",f:.026,k:.061},{name:"λ 2",type:"lambda",f:.034,k:.065},{name:"μ 1",type:"mu",f:.046,k:.065},{name:"μ 2",type:"mu",f:.058,k:.065},{name:"ν 2",type:"nu",f:.046,k:.067},{name:"π 1",type:"pi",f:.062,k:.061},{name:"ρ 1",type:"rho",f:.09,k:.059},{name:"ρ 2",type:"rho",f:.102,k:.055},{name:"σ 1",type:"sigma",f:.09,k:.057},{name:"θ 2",type:"sigma",f:.11,k:.0523},{name:"θ 1",type:"theta",f:.03,k:.057},{name:"θ 2",type:"theta",f:.038,k:.061},{name:"ξ 1",type:"xi",f:.01,k:.041},{name:"ξ 2",type:"xi",f:.014,k:.047},{name:"ζ 1",type:"zeta",f:.022,k:.061},{name:"ζ 2",type:"zeta",f:.026,k:.059}];var _n=U("<option> </option>"),Sn=U('<div>Select f and k parameters on the map of use a preset</div> <select class="full-width svelte-1olvyu6"></select> <!>',1),En=U('<div id="container"><button class="full-width svelte-1olvyu6" id="toggleButton"> </button> <!></div>');function kn(t,o){oe(o,!0);let e=le(de(De[0])),n=le(!0);const r=[0,.12],a=[.03,.07],i=s=>{const{f:c,k:p}=s,P=d.map(p,a[0],a[1],0,d.width),u=d.map(c,r[0],r[1],d.height,0);return{x:P,y:u}},l=s=>{const{x:c,y:p}=s,P=d.map(p,d.height,0,r[0],r[1]),u=d.map(c,0,d.width,a[0],a[1]);return{f:P,k:u}},m=s=>{const c=s.mouseX,p=s.mouseY;if(c<0||p<0||c>s.width||p>s.height)return;const{f:P,k:u}=l({x:s.mouseX,y:s.mouseY});Q(e,{f:P,k:u,name:"custom",type:"manual"},!0),o.onfkupdated?.(w(e))},g=s=>{s.noStroke();const c=s.textSize();for(const p of De){const{x:P,y:u}=i({f:p.f,k:p.k}),v=p.f===w(e).f&&p.k===w(e).k;s.circle(P,u,3),s.textSize(v?c*2:c),s.fill(v?[240,240,150]:[255,255,255]),s.text(p.name,P-s.textWidth(p.name)/2,u-10)}},y=s=>{s.noFill(),s.stroke("red");const{x:c,y:p}=i(w(e));s.text("F",10,p>10?p-5:p+15),s.line(0,p,s.width,p),s.text("K",c<s.width-10?c+5:c-15,s.height-10),s.line(c,0,c,s.height),s.circle(c,p,10)},C=s=>{const{f:c,k:p}=w(e),P=`F: ${c.toFixed(4)}`,u=`K: ${p.toFixed(4)}`,v=s.textSize(),A=s.height*.05;s.textStyle(s.BOLD),s.textSize(A),s.fill("white"),s.stroke(0),s.strokeWeight(1),s.text(P,s.width*.05,s.textSize()),s.text(u,s.width*.05,s.textSize()+s.textSize()+6),s.textStyle(s.NORMAL),s.textSize(v)};let d,E=le(!1);const D=s=>{d=s;let c;s.preload=()=>{c=s.loadImage(F+"/parameters_map.png")},s.setup=()=>{s.createCanvas(400,400),s.frameRate(55)},s.draw=()=>{s.background(255),s.tint(150,190),s.image(c,0,0,s.width,s.height),g(s),y(s),C(s),Q(E,!1),s.mouseIsPressed&&(m(s),Q(E,!0))}},T=()=>{Q(n,!w(n)),w(n)||d.remove()};se(()=>d?.remove());var _=En();let k;var B=O(_),b=O(B,!0);K(B);var $=h(B,2);{var I=s=>{var c=Sn(),p=h(ce(c),2);Ce(p,21,()=>De,ze,(u,v)=>{var A=_n(),R=O(A);K(A);var M={};ee(()=>{ae(R,`${w(v).type??""} - ${w(v).name??""} (f/k ${w(v).f??""} / ${w(v).k??""})`),M!==(M=w(v))&&(A.value=(A.__value=w(v))??"")}),V(u,A)}),K(p);var P=h(p,2);ge(P,{sketch:D}),Y("change",p,()=>o.onfkupdated?.(w(e))),Fe(p,()=>w(e),u=>Q(e,u)),V(s,c)};Pe($,s=>{w(n)&&s(I)})}K(_),ee(()=>{k=Re(_,1,"svelte-1olvyu6",null,k,{"no-cursor":w(E)}),ae(b,w(n)?"Close":"F/K selection")}),Y("click",B,T),V(t,_),re()}ue(["click","change"]);const An=`precision mediump float;
+`;var wn=U('<canvas id="canvas" class="svelte-jas7es"></canvas>');function _n(t,o){oe(o,!1);const e={width:window.innerWidth-50,height:window.innerHeight-10},n=11,r={presetParams:4,initialConditions:"randomSpots",reset:()=>d(),pause:!1},a={pressedLeft:!1,pressedRight:!1,x:0,y:0,penSize:3},i={iteration:0},l={f:Ae[r.presetParams].f,k:Ae[r.presetParams].k};let m,g;const y=async()=>{const _=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);m=new _.GUI,m.domElement.setAttribute("style","background-color: black"),m.add(l,"f").name("Feed rate").listen(),m.add(l,"k").name("Kill rate").listen(),m.add(r,"pause").name("Pause"),m.add(r,"reset").name("Reset simulation");const k=Ae.reduce(($,I,s)=>($[I.name]=s,$),{});m.add(r,"presetParams",k).onFinishChange(()=>{l.f=Ae[r.presetParams].f,l.k=Ae[r.presetParams].k});const B={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots"};m.add(r,"initialConditions",B).onFinishChange(r.reset);const b=m.add(i,"iteration").listen();b.domElement.style.pointerEvents="none",m.add(a,"penSize",1,n,1).name("Pen size")},C=()=>{document.addEventListener("keydown",_=>{if(_.code==="Space")return r.pause=!r.pause,_.preventDefault();if(_.code==="KeyR")return d(),_.preventDefault()})},d=()=>{const _=document.getElementById("canvas");if(!_)throw new Error("Canvas container not ready");g&&g.destroy(),g=ye({extensions:["OES_texture_float"],canvas:_});const k=c=>g.prop(c);i.iteration=0;const B=2**n;let b;r.initialConditions==="randomSpots"?b=xn(B,.001):r.initialConditions==="middleCircleAndRandomSpots"?b=vn(B,.005,.05):b=hn(B,.02);const $=Array(2).fill(0).map(()=>g.framebuffer({color:g.texture({radius:B,data:b,wrap:"repeat",type:"float"}),depthStencil:!1})),I=g({frag:bn,framebuffer:c=>$[(c.tick+1)%2],uniforms:{Da:k("Da"),Db:k("Db"),f:k("f"),k:k("k"),radius:B,pauseSimulation:k("pauseSimulation"),mousePosition:k("mousePosition"),penRadius:k("penRadius"),penIsActive:k("penIsActive"),eraserIsActive:k("eraserIsActive")}}),s=g({frag:yn,vert:gn,attributes:{position:[-4,-4,4,-4,0,4]},uniforms:{prevState:({tick:c})=>$[c%2]},depth:{enable:!1},count:3});g.frame(()=>{s(()=>{g.draw(),r.pause||i.iteration++,I({Da:1,Db:.5,pauseSimulation:r.pause,mousePosition:[a.x,a.y],penRadius:1/2**(n-a.penSize),penIsActive:a.pressedLeft,eraserIsActive:a.pressedRight,...l})})})},E=_=>{if(!_.currentTarget)throw new Error("No target for the onmousemove event");const k=_.currentTarget;if(!k.width||!k.height)throw new Error("No target dimensions for the onmousemove event target");const{x:B,y:b}=_,{width:$,height:I}=k,s=B/$,c=(I-b)/I;a.x=s,a.y=c},D=_=>{if(![0,2].includes(_.button)||!["mouseup","mousedown"].includes(_.type))return;let k=_.type==="mousedown";_.button===0&&(a.pressedLeft=k),_.button===2&&(a.pressedRight=k)};me(()=>{y(),C(),d()}),se(()=>{m.destroy(),g.destroy()}),xe();var T=wn();ee(()=>{L(T,"width",e.width),L(T,"height",e.height)}),Y("mousemove",T,E),Y("mousedown",T,_=>{_.preventDefault(),D(_)}),Y("mouseup",T,D),Y("contextmenu",T,_=>_.preventDefault()),V(t,T),re()}ue(["mousemove","mousedown","mouseup","contextmenu"]);const De=[{name:"KarlSims",type:"Unknown",f:.055,k:.062},{name:"STX 1",type:"N.A",f:.0353,k:.0614},{name:"STX 2",type:"N.A",f:.0201,k:.0602},{name:"STX 2",type:"N.A",f:.0181,k:.0435},{name:"α 1",type:"alpha",f:.01,k:.047},{name:"α 2",type:"alpha",f:.014,k:.053},{name:"β 1",type:"beta",f:.014,k:.039},{name:"β 2",type:"beta",f:.026,k:.051},{name:"δ 1",type:"delta",f:.03,k:.055},{name:"δ 2",type:"delta",f:.042,k:.059},{name:"ε 1",type:"epsilon",f:.018,k:.055},{name:"ε 2",type:"epsilon",f:.022,k:.059},{name:"η 1",type:"eta",f:.034,k:.063},{name:"γ 1",type:"gamma",f:.022,k:.051},{name:"γ 2",type:"gamma",f:.026,k:.055},{name:"ι 1",type:"iota",f:.046,k:.0594},{name:"κ 1",type:"kappa",f:.082,k:.06},{name:"κ 2",type:"kappa",f:.058,k:.063},{name:"λ 1",type:"lambda",f:.026,k:.061},{name:"λ 2",type:"lambda",f:.034,k:.065},{name:"μ 1",type:"mu",f:.046,k:.065},{name:"μ 2",type:"mu",f:.058,k:.065},{name:"ν 2",type:"nu",f:.046,k:.067},{name:"π 1",type:"pi",f:.062,k:.061},{name:"ρ 1",type:"rho",f:.09,k:.059},{name:"ρ 2",type:"rho",f:.102,k:.055},{name:"σ 1",type:"sigma",f:.09,k:.057},{name:"θ 2",type:"sigma",f:.11,k:.0523},{name:"θ 1",type:"theta",f:.03,k:.057},{name:"θ 2",type:"theta",f:.038,k:.061},{name:"ξ 1",type:"xi",f:.01,k:.041},{name:"ξ 2",type:"xi",f:.014,k:.047},{name:"ζ 1",type:"zeta",f:.022,k:.061},{name:"ζ 2",type:"zeta",f:.026,k:.059}];var Sn=U("<option> </option>"),En=U('<div>Select f and k parameters on the map of use a preset</div> <select class="full-width svelte-1olvyu6"></select> <!>',1),kn=U('<div id="container"><button class="full-width svelte-1olvyu6" id="toggleButton"> </button> <!></div>');function An(t,o){oe(o,!0);let e=le(pe(De[0])),n=le(!0);const r=[0,.12],a=[.03,.07],i=s=>{const{f:c,k:p}=s,P=d.map(p,a[0],a[1],0,d.width),u=d.map(c,r[0],r[1],d.height,0);return{x:P,y:u}},l=s=>{const{x:c,y:p}=s,P=d.map(p,d.height,0,r[0],r[1]),u=d.map(c,0,d.width,a[0],a[1]);return{f:P,k:u}},m=s=>{const c=s.mouseX,p=s.mouseY;if(c<0||p<0||c>s.width||p>s.height)return;const{f:P,k:u}=l({x:s.mouseX,y:s.mouseY});Q(e,{f:P,k:u,name:"custom",type:"manual"},!0),o.onfkupdated?.(w(e))},g=s=>{s.noStroke();const c=s.textSize();for(const p of De){const{x:P,y:u}=i({f:p.f,k:p.k}),v=p.f===w(e).f&&p.k===w(e).k;s.circle(P,u,3),s.textSize(v?c*2:c),s.fill(v?[240,240,150]:[255,255,255]),s.text(p.name,P-s.textWidth(p.name)/2,u-10)}},y=s=>{s.noFill(),s.stroke("red");const{x:c,y:p}=i(w(e));s.text("F",10,p>10?p-5:p+15),s.line(0,p,s.width,p),s.text("K",c<s.width-10?c+5:c-15,s.height-10),s.line(c,0,c,s.height),s.circle(c,p,10)},C=s=>{const{f:c,k:p}=w(e),P=`F: ${c.toFixed(4)}`,u=`K: ${p.toFixed(4)}`,v=s.textSize(),A=s.height*.05;s.textStyle(s.BOLD),s.textSize(A),s.fill("white"),s.stroke(0),s.strokeWeight(1),s.text(P,s.width*.05,s.textSize()),s.text(u,s.width*.05,s.textSize()+s.textSize()+6),s.textStyle(s.NORMAL),s.textSize(v)};let d,E=le(!1);const D=s=>{d=s;let c;s.preload=()=>{c=s.loadImage(F+"/parameters_map.png")},s.setup=()=>{s.createCanvas(400,400),s.frameRate(55)},s.draw=()=>{s.background(255),s.tint(150,190),s.image(c,0,0,s.width,s.height),g(s),y(s),C(s),Q(E,!1),s.mouseIsPressed&&(m(s),Q(E,!0))}},T=()=>{Q(n,!w(n)),w(n)||d.remove()};se(()=>d?.remove());var _=kn();let k;var B=O(_),b=O(B,!0);K(B);var $=h(B,2);{var I=s=>{var c=En(),p=h(ce(c),2);Ce(p,21,()=>De,ze,(u,v)=>{var A=Sn(),R=O(A);K(A);var M={};ee(()=>{ae(R,`${w(v).type??""} - ${w(v).name??""} (f/k ${w(v).f??""} / ${w(v).k??""})`),M!==(M=w(v))&&(A.value=(A.__value=w(v))??"")}),V(u,A)}),K(p);var P=h(p,2);ge(P,{sketch:D}),Y("change",p,()=>o.onfkupdated?.(w(e))),Fe(p,()=>w(e),u=>Q(e,u)),V(s,c)};Pe($,s=>{w(n)&&s(I)})}K(_),ee(()=>{k=Re(_,1,"svelte-1olvyu6",null,k,{"no-cursor":w(E)}),ae(b,w(n)?"Close":"F/K selection")}),Y("click",B,T),V(t,_),re()}ue(["click","change"]);const Dn=`precision mediump float;
 attribute vec2 position;
 uniform float zoomLevel;    // 1 full size, 0 max zoom
 uniform vec2 pan;   // in range [0, 1], [0, 0]  is bottom left, [1, 1] top right
@@ -2195,7 +2195,7 @@ void main() {
     uv = 0.5 * (position + 1.0) * zoomLevel + pan * (1.0 - zoomLevel);
     gl_Position = vec4(position, 0, 1);
 }
-`,Dn=`precision mediump float;
+`,Bn=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -2208,7 +2208,7 @@ void main() {
     gl_FragColor = vec4(A, B, 0.0, 1.0);
 }
 
-`,Bn=`precision mediump float;
+`,Cn=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -2225,7 +2225,7 @@ void main() {
     }
     gl_FragColor = vec4(A, B, val, 1.0);
 }
-`,Cn=`precision mediump float;
+`,zn=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -2240,7 +2240,7 @@ void main() {
     gl_FragColor = vec4(val, val, val, 1.0);
 }
 
-`,zn=`precision mediump float;
+`,$n=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -2254,7 +2254,7 @@ void main() {
 
     gl_FragColor = vec4(1.0 - val, 1.0 - val, 1.0 - val, 1.0);
 }
-`,$n=`precision mediump float;
+`,Ln=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -2268,7 +2268,7 @@ void main() {
 
     gl_FragColor = vec4(val, val, val, 1.0);
 }
-`,Ln=`precision mediump float;
+`,Tn=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -2320,7 +2320,7 @@ void main() {
 
     gl_FragColor = vec4(result, 1.0);
 }
-`,Tn=`// Colors scheme inspired by Robert Munafo described here:
+`,Rn=`// Colors scheme inspired by Robert Munafo described here:
 // https://www.mrob.com/pub/comp/xmorphia/index.html
 // 
 // A is blue
@@ -2345,7 +2345,7 @@ void main() {
 
     gl_FragColor = vec4(result, 1.0);
 }
-`,Rn=`// Colors scheme inspired by Robert Munafo described here:
+`,Pn=`// Colors scheme inspired by Robert Munafo described here:
 // https://www.mrob.com/pub/comp/xmorphia/index.html
 // 
 // A is blue
@@ -2367,7 +2367,7 @@ void main() {
 
     gl_FragColor = vec4(result, 1.0);
 }
-`,Pn=`precision mediump float;
+`,In=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -2385,7 +2385,7 @@ void main() {
         gl_FragColor = vec4(0.0, A, 0.0, 1.0);
     }
 }
-`,In=`precision mediump float;
+`,Fn=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -2415,7 +2415,7 @@ void main() {
     }
 
 }
-`,Fn=`precision mediump float;
+`,Mn=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -2453,7 +2453,7 @@ void main() {
     }
 
 }
-`,Mn=`precision mediump float;
+`,Kn=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -2509,86 +2509,6 @@ float colormap_blue(float x) {
 		return (2.06124143164576E+02 * x - 5.78166906665595E+02) * x + 5.26198653917172E+02;
 	} else {
 		return -7.36990769230737E+02 * x + 8.36652307692262E+02;
-	}
-}
-
-vec4 colormap(float x) {
-	float r = clamp(colormap_red(x) / 255.0, 0.0, 1.0);
-	float g = clamp(colormap_green(x) / 255.0, 0.0, 1.0);
-	float b = clamp(colormap_blue(x) / 255.0, 0.0, 1.0);
-	return vec4(r, g, b, 1.0);
-}
-
-void main() {
-    float A = texture2D(prevState, uv).r;
-    float B = texture2D(prevState, uv).g;
-
-    vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
-
-    vec4 softColor = colormap((A-0.4)*(1.0/0.6));
-
-
-    if (A < 0.4) {
-        gl_FragColor = vec4(black);
-    } else {
-        gl_FragColor = vec4(softColor);
-    }
-
-}
-`,Kn=`precision mediump float;
-
-uniform sampler2D prevState;
-uniform float iteration;
-varying vec2 uv;
-
-// https://github.com/Polymole/glsl-colormap/blob/master/shaders/IDL_CB-RdYiBu.frag
-float colormap_red(float x) {
-	if (x < 0.09790863520700754) {
-		return 5.14512820512820E+02 * x + 1.64641025641026E+02;
-	} else if (x < 0.2001887081633112) {
-		return 2.83195402298854E+02 * x + 1.87288998357964E+02;
-	} else if (x < 0.3190117539655621) {
-		return 9.27301587301214E+01 * x + 2.25417989417999E+02;
-	} else if (x < 0.500517389125164) {
-		return 255.0;
-	} else if (x < 0.6068377196788788) {
-		return -3.04674876847379E+02 * x + 4.07495073891681E+02;
-	} else if (x < 0.9017468988895416) {
-		return (1.55336390191951E+02 * x - 7.56394659038288E+02) * x + 6.24412733169483E+02;
-	} else {
-		return -1.88350769230735E+02 * x + 2.38492307692292E+02;
-	}
-}
-
-float colormap_green(float x) {
-	if (x < 0.09638568758964539) {
-		return 4.81427692307692E+02 * x + 4.61538461538488E-01;
-	} else if (x < 0.4987066686153412) {
-		return ((((3.25545903568267E+04 * x - 4.24067109461319E+04) * x + 1.83751375886345E+04) * x - 3.19145329617892E+03) * x + 8.08315127034676E+02) * x - 1.44611527812961E+01;
-	} else if (x < 0.6047312345537269) {
-		return -1.18449917898218E+02 * x + 3.14234811165860E+02;
-	} else if (x < 0.7067635953426361) {
-		return -2.70822112753102E+02 * x + 4.06379036672115E+02;
-	} else {
-		return (-4.62308723214883E+02 * x + 2.42936159122279E+02) * x + 2.74203431802418E+02;
-	}
-}
-
-float colormap_blue(float x) {
-	if (x < 0.09982818011951204) {
-		return 1.64123076923076E+01 * x + 3.72646153846154E+01;
-	} else if (x < 0.2958717460833126) {
-		return 2.87014675052409E+02 * x + 1.02508735150248E+01;
-	} else if (x < 0.4900527540014758) {
-		return 4.65475113122167E+02 * x - 4.25505279034673E+01;
-	} else if (x < 0.6017014681258838) {
-		return 5.61032967032998E+02 * x - 8.93789173789407E+01;
-	} else if (x < 0.7015737100463595) {
-		return -1.51655677655728E+02 * x + 3.39446886446912E+02;
-	} else if (x < 0.8237156500567735) {
-		return -2.43405347593559E+02 * x + 4.03816042780725E+02;
-	} else {
-		return -3.00296889157305E+02 * x + 4.50678495922638E+02;
 	}
 }
 
@@ -2681,6 +2601,86 @@ vec4 colormap(float x) {
 
 void main() {
     float A = texture2D(prevState, uv).r;
+    float B = texture2D(prevState, uv).g;
+
+    vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
+
+    vec4 softColor = colormap((A-0.4)*(1.0/0.6));
+
+
+    if (A < 0.4) {
+        gl_FragColor = vec4(black);
+    } else {
+        gl_FragColor = vec4(softColor);
+    }
+
+}
+`,Yn=`precision mediump float;
+
+uniform sampler2D prevState;
+uniform float iteration;
+varying vec2 uv;
+
+// https://github.com/Polymole/glsl-colormap/blob/master/shaders/IDL_CB-RdYiBu.frag
+float colormap_red(float x) {
+	if (x < 0.09790863520700754) {
+		return 5.14512820512820E+02 * x + 1.64641025641026E+02;
+	} else if (x < 0.2001887081633112) {
+		return 2.83195402298854E+02 * x + 1.87288998357964E+02;
+	} else if (x < 0.3190117539655621) {
+		return 9.27301587301214E+01 * x + 2.25417989417999E+02;
+	} else if (x < 0.500517389125164) {
+		return 255.0;
+	} else if (x < 0.6068377196788788) {
+		return -3.04674876847379E+02 * x + 4.07495073891681E+02;
+	} else if (x < 0.9017468988895416) {
+		return (1.55336390191951E+02 * x - 7.56394659038288E+02) * x + 6.24412733169483E+02;
+	} else {
+		return -1.88350769230735E+02 * x + 2.38492307692292E+02;
+	}
+}
+
+float colormap_green(float x) {
+	if (x < 0.09638568758964539) {
+		return 4.81427692307692E+02 * x + 4.61538461538488E-01;
+	} else if (x < 0.4987066686153412) {
+		return ((((3.25545903568267E+04 * x - 4.24067109461319E+04) * x + 1.83751375886345E+04) * x - 3.19145329617892E+03) * x + 8.08315127034676E+02) * x - 1.44611527812961E+01;
+	} else if (x < 0.6047312345537269) {
+		return -1.18449917898218E+02 * x + 3.14234811165860E+02;
+	} else if (x < 0.7067635953426361) {
+		return -2.70822112753102E+02 * x + 4.06379036672115E+02;
+	} else {
+		return (-4.62308723214883E+02 * x + 2.42936159122279E+02) * x + 2.74203431802418E+02;
+	}
+}
+
+float colormap_blue(float x) {
+	if (x < 0.09982818011951204) {
+		return 1.64123076923076E+01 * x + 3.72646153846154E+01;
+	} else if (x < 0.2958717460833126) {
+		return 2.87014675052409E+02 * x + 1.02508735150248E+01;
+	} else if (x < 0.4900527540014758) {
+		return 4.65475113122167E+02 * x - 4.25505279034673E+01;
+	} else if (x < 0.6017014681258838) {
+		return 5.61032967032998E+02 * x - 8.93789173789407E+01;
+	} else if (x < 0.7015737100463595) {
+		return -1.51655677655728E+02 * x + 3.39446886446912E+02;
+	} else if (x < 0.8237156500567735) {
+		return -2.43405347593559E+02 * x + 4.03816042780725E+02;
+	} else {
+		return -3.00296889157305E+02 * x + 4.50678495922638E+02;
+	}
+}
+
+vec4 colormap(float x) {
+	float r = clamp(colormap_red(x) / 255.0, 0.0, 1.0);
+	float g = clamp(colormap_green(x) / 255.0, 0.0, 1.0);
+	float b = clamp(colormap_blue(x) / 255.0, 0.0, 1.0);
+	return vec4(r, g, b, 1.0);
+}
+
+void main() {
+    float A = texture2D(prevState, uv).r;
 
     vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
 
@@ -2694,7 +2694,7 @@ void main() {
     }
 
 }
-`,Yn=`precision mediump float;
+`,Vn=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -2775,7 +2775,7 @@ void main() {
     }
 
 }
-`,Vn=`precision mediump float;
+`,Gn=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -2855,7 +2855,7 @@ void main() {
     }
 
 }
-`,Z={},Gn=t=>{const o=n=>t.prop(n),e={vert:An,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{iteration:o("iteration"),zoomLevel:o("zoomLevel"),pan:o("pan"),prevState:o("inputBuffer")}};Z.raw=t({frag:Dn,...e}),Z.A_transform_seismic=t({frag:Yn,...e}),Z.A_gradiant1=t({frag:Pn,...e}),Z.A_gradiant2=t({frag:In,...e}),Z.A_MATLAB_cool=t({frag:Fn,...e}),Z.A_IDL_CB_RdBu=t({frag:Mn,...e}),Z.A_IDL_CB_RdYiBu=t({frag:Kn,...e}),Z.A_IDL_CB_BuYiRd=t({frag:Hn,...e}),Z.B_IDL_CB_RdYiBu=t({frag:Vn,...e}),Z.grayscale=t({frag:Cn,...e}),Z.blackwhite=t({frag:zn,...e}),Z.whiteblack=t({frag:$n,...e}),Z.timebasedblue=t({frag:Bn,...e}),Z.lerp=t({frag:Ln,...e}),Z.mrob=t({frag:Tn,...e}),Z.redblue=t({frag:Rn,...e})},On=t=>{const{colorMode:o,inputBuffer:e,iteration:n,outputBuffer:r,zoomState:a}=t;(Z[o]||Z.raw)({inputBuffer:e,iteration:n,outputBuffer:r,pan:[a.panX,a.panY],zoomLevel:a.zoomLevel})},Un=`precision mediump float;
+`,Z={},On=t=>{const o=n=>t.prop(n),e={vert:Dn,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{iteration:o("iteration"),zoomLevel:o("zoomLevel"),pan:o("pan"),prevState:o("inputBuffer")}};Z.raw=t({frag:Bn,...e}),Z.A_transform_seismic=t({frag:Vn,...e}),Z.A_gradiant1=t({frag:In,...e}),Z.A_gradiant2=t({frag:Fn,...e}),Z.A_MATLAB_cool=t({frag:Mn,...e}),Z.A_IDL_CB_RdBu=t({frag:Kn,...e}),Z.A_IDL_CB_RdYiBu=t({frag:Hn,...e}),Z.A_IDL_CB_BuYiRd=t({frag:Yn,...e}),Z.B_IDL_CB_RdYiBu=t({frag:Gn,...e}),Z.grayscale=t({frag:zn,...e}),Z.blackwhite=t({frag:$n,...e}),Z.whiteblack=t({frag:Ln,...e}),Z.timebasedblue=t({frag:Cn,...e}),Z.lerp=t({frag:Tn,...e}),Z.mrob=t({frag:Rn,...e}),Z.redblue=t({frag:Pn,...e})},Un=t=>{const{colorMode:o,inputBuffer:e,iteration:n,outputBuffer:r,zoomState:a}=t;(Z[o]||Z.raw)({inputBuffer:e,iteration:n,outputBuffer:r,pan:[a.panX,a.panY],zoomLevel:a.zoomLevel})},Wn=`precision mediump float;
 
 uniform float radius;
 uniform sampler2D prevState;
@@ -2928,7 +2928,7 @@ void main() {
         gl_FragColor = vec4(newA, newB, 0, 1);
     }
 }
-`,Wn=`precision mediump float;
+`,qn=`precision mediump float;
 
 uniform vec2 mousePosition; // in range [0, 1] on the zoomed screen
 uniform float zoomLevel;    // 1 full size, 0 max zoom
@@ -2947,7 +2947,7 @@ void main() {
     scaledPenRadius = penRadius * zoomLevel;
     gl_Position = vec4(position, 0, 1);
 }
-`;let rt;const qn=(t,o)=>{const e=n=>t.prop(n);rt=t({frag:Un,vert:Wn,attributes:{position:[-4,-4,4,-4,0,4]},count:3,framebuffer:e("outputBuffer"),uniforms:{prevState:e("inputBuffer"),Da:1,Db:.5,f:e("f"),k:e("k"),radius:o,pauseSimulation:e("pauseSimulation"),mousePosition:e("mousePosition"),penRadius:e("penRadius"),penDensity:e("penDensity"),penIsActive:e("penIsActive"),eraserIsActive:e("eraserIsActive"),zoomLevel:e("zoomLevel"),pan:e("pan")}})},Xn=t=>{const{inputBuffer:o,outputBuffer:e,pauseSimulation:n,mouseState:r,simulationParameters:a,worldSize:i}=t;rt({inputBuffer:o,outputBuffer:e,pauseSimulation:n,zoomLevel:r.zoomLevel,pan:[r.panX,r.panY],mousePosition:[r.x,r.y],penRadius:1/2**(i-r.penSize),penDensity:r.penDensity,penIsActive:r.pressedLeft,eraserIsActive:r.pressedRight,...a})},Nn=(t,o)=>t==="randomSpots"?Jn(o,.001):t==="middleCircleAndRandomSpots"?jn(o,.005,.05):t==="empty"?Zn(o):Qn(o,.02),jn=(t,o,e)=>{const n=t*e;return Array(t*t).fill(0).map((r,a)=>{const i=Math.floor(a/t),l=a%t;return Math.hypot(t/2-l,t/2-i)<n?[0,1,0,1]:Math.random()<o?[0,1,0,1]:[1,0,0,1]}).flat()},Zn=t=>Array(t*t).fill(0).map(()=>[0,0,0,1]).flat(),Jn=(t,o)=>Array(t*t).fill(0).map(()=>Math.random()<o?[0,1,0,1]:[1,0,0,1]).flat(),Qn=(t,o)=>Array(t*t).fill(0).map((e,n)=>{const r=Math.floor(n/t),a=n%t;return Math.hypot(t/2-a,t/2-r)<o*t?[0,1,0,1]:[1,0,0,1]}).flat(),eo=`precision highp float;
+`;let rt;const Xn=(t,o)=>{const e=n=>t.prop(n);rt=t({frag:Wn,vert:qn,attributes:{position:[-4,-4,4,-4,0,4]},count:3,framebuffer:e("outputBuffer"),uniforms:{prevState:e("inputBuffer"),Da:1,Db:.5,f:e("f"),k:e("k"),radius:o,pauseSimulation:e("pauseSimulation"),mousePosition:e("mousePosition"),penRadius:e("penRadius"),penDensity:e("penDensity"),penIsActive:e("penIsActive"),eraserIsActive:e("eraserIsActive"),zoomLevel:e("zoomLevel"),pan:e("pan")}})},Nn=t=>{const{inputBuffer:o,outputBuffer:e,pauseSimulation:n,mouseState:r,simulationParameters:a,worldSize:i}=t;rt({inputBuffer:o,outputBuffer:e,pauseSimulation:n,zoomLevel:r.zoomLevel,pan:[r.panX,r.panY],mousePosition:[r.x,r.y],penRadius:1/2**(i-r.penSize),penDensity:r.penDensity,penIsActive:r.pressedLeft,eraserIsActive:r.pressedRight,...a})},jn=(t,o)=>t==="randomSpots"?Qn(o,.001):t==="middleCircleAndRandomSpots"?Zn(o,.005,.05):t==="empty"?Jn(o):eo(o,.02),Zn=(t,o,e)=>{const n=t*e;return Array(t*t).fill(0).map((r,a)=>{const i=Math.floor(a/t),l=a%t;return Math.hypot(t/2-l,t/2-i)<n?[0,1,0,1]:Math.random()<o?[0,1,0,1]:[1,0,0,1]}).flat()},Jn=t=>Array(t*t).fill(0).map(()=>[0,0,0,1]).flat(),Qn=(t,o)=>Array(t*t).fill(0).map(()=>Math.random()<o?[0,1,0,1]:[1,0,0,1]).flat(),eo=(t,o)=>Array(t*t).fill(0).map((e,n)=>{const r=Math.floor(n/t),a=n%t;return Math.hypot(t/2-a,t/2-r)<o*t?[0,1,0,1]:[1,0,0,1]}).flat(),to=`precision highp float;
 
 attribute vec2 position;
 
@@ -2960,7 +2960,7 @@ void main() {
     uv = 0.5 * (position + 1.0) * zoomLevel + pan * (1.0 - zoomLevel);
     gl_Position = vec4(position, 0, 1);
 }
-`,to=`precision highp float;
+`,no=`precision highp float;
 
 uniform sampler2D prevState;
 
@@ -2984,7 +2984,7 @@ void main() {
        gl_FragColor = color;
     }
 }
-`;let at;const no=t=>{const o=e=>t.prop(e);at=t({vert:eo,frag:to,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{prevState:o("inputBuffer"),zoomLevel:o("zoomLevel"),pan:o("pan")}})},oo=t=>{const{inputBuffer:o,outputBuffer:e,zoomState:n}=t;at({inputBuffer:o,outputBuffer:e,zoomLevel:n.zoomLevel,pan:[n.panX,n.panY]})},ro=`precision mediump float;
+`;let at;const oo=t=>{const o=e=>t.prop(e);at=t({vert:to,frag:no,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{prevState:o("inputBuffer"),zoomLevel:o("zoomLevel"),pan:o("pan")}})},ro=t=>{const{inputBuffer:o,outputBuffer:e,zoomState:n}=t;at({inputBuffer:o,outputBuffer:e,zoomLevel:n.zoomLevel,pan:[n.panX,n.panY]})},ao=`precision mediump float;
 
 uniform vec2 mousePosition; // in range [0, 1] on the zoomed screen
 uniform float zoomLevel;    // 1 full size, 0 max zoom
@@ -2998,7 +2998,7 @@ void main() {
     uv = 0.5 * (position + 1.0);
     gl_Position = vec4(position, 0, 1);
 }
-`,ao=`precision mediump float;
+`,io=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform vec2 mousePosition;
@@ -3020,7 +3020,7 @@ void main() {
         gl_FragColor = color;
     }
 }
-`;let it;const io=t=>{const o=e=>t.prop(e);it=t({frag:ao,vert:ro,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{mousePosition:o("mousePosition"),penRadius:o("penRadius"),zoomLevel:o("zoomLevel"),pan:o("pan"),prevState:o("inputBuffer")}})},lo=t=>{const{inputBuffer:o,mouseState:e,outputBuffer:n,worldSize:r}=t;it({inputBuffer:o,outputBuffer:n,mousePosition:[e.x,e.y],penRadius:1/2**(r-e.penSize),zoomLevel:e.zoomLevel,pan:[e.panX,e.panY]})},so=t=>{const{controls:o,info:e,mouseState:n,simulationParameters:r}=t,a=document.getElementById("canvas");if(!a)throw new Error("Canvas container not ready");const i=ye({extensions:["OES_texture_float"],canvas:a});e.iteration=0;const l=2**e.worldSize,m=Nn(o.initialConditions,l),g=()=>i.framebuffer({color:i.texture({radius:l,data:m,wrap:"repeat",type:"float"}),depthStencil:!1}),y=Array(2).fill(0).map(g),C=Array(2).fill(0).map(g);return qn(i,l),Gn(i),no(i),io(i),i.frame(()=>{o.pause||e.iteration++;let d=y[(e.iteration+1)%2];for(let E=0;E<o.speed;E++){e.iteration++;const D=y[e.iteration%2];d=y[(e.iteration+1)%2],Xn({inputBuffer:D,outputBuffer:d,worldSize:e.worldSize,pauseSimulation:o.pause,mouseState:n,simulationParameters:r})}co({inputTexture:d,graphicsTextures:C,controls:o,info:e,mouseState:n})}),i},co=t=>{const{inputTexture:o,graphicsTextures:e,controls:n,info:r,mouseState:a}=t;let i=0;i++;const l=o,m=e[i%2];if(On({colorMode:n.colors,inputBuffer:l,iteration:r.iteration,outputBuffer:m,zoomState:a}),n.grid){i++;const C=e[(i+1)%2],d=e[i%2];oo({inputBuffer:C,outputBuffer:d,zoomState:a})}i++;const g=e[(i+1)%2];lo({mouseState:a,worldSize:r.worldSize,inputBuffer:g,outputBuffer:null})},qe=t=>{if(!t.currentTarget)throw new Error("Event has no currentTarget");const o=t.currentTarget,e=o.getBoundingClientRect(),n=t.clientX-e.left,r=t.clientY-e.top,{width:a,height:i}=o,l=n/a,m=(i-r)/i;return{x:l,y:m}};var uo=U('<main><!> <div id="datgui-container" class="svelte-64sjur"></div> <div><label for="worldSize">World Size:</label> <input id="worldSize" type="number" step="1"/> <span> </span></div> <canvas id="canvas" class="svelte-64sjur"></canvas></main>');function fo(t,o){oe(o,!0);const e={width:Math.min(window.innerWidth,window.innerHeight)*.9,height:Math.min(window.innerWidth,window.innerHeight)*.9},n={colors:"A_transform_seismic",initialConditions:"middleCircleAndRandomSpots",reset:()=>D(),pause:!1,grid:!1,speed:50},r={pressedLeft:!1,pressedRight:!1,x:0,y:0,penSize:3,penDensity:.3,zoomLevel:1,panX:.5,panY:.5},a=de({iteration:0,worldSize:8}),i={f:De[0].f,k:De[0].k};let l,m;const g=async()=>{const c=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);l=new c.GUI({autoPlace:!1,closeOnTop:!0}),l.domElement.id="datgui";const p=document.getElementById("datgui-container");if(!p)throw new Error("Gui container not ready");p.appendChild(l.domElement),l.add(n,"pause").name("Pause"),l.add(n,"grid").name("Debug grid"),l.add(n,"reset").name("Reset simulation"),l.add(n,"colors",["grayscale","blackwhite","whiteblack","raw","timebasedblue","lerp","mrob","redblue","A_gradiant1","A_gradiant2","A_MATLAB_cool","A_IDL_CB_RdBu","A_IDL_CB_RdYiBu","A_IDL_CB_BuYiRd","A_transform_seismic","B_IDL_CB_RdYiBu"]).name("Color scheme");const P={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots",Empty:"empty"};l.add(n,"initialConditions",P).onFinishChange(n.reset).name("Initial conditions");const u=l.add(a,"iteration").listen();u.domElement.style.pointerEvents="none",l.add(n,"speed",1,200).name("Simulation speed"),l.add(r,"penSize",0,a.worldSize).name("Pen size"),l.add(r,"penDensity",0,1).name("Pen density"),l.add(r,"zoomLevel",0,1).name("Zoom level").listen(),l.add(r,"panX",0,1).name("pan x").listen(),l.add(r,"panY",0,1).name("pan y").listen()},y=c=>{if(c.code==="Space"){n.pause=!n.pause,c.preventDefault();return}if(c.code==="KeyR"&&!c.getModifierState("Control")){D(),c.preventDefault();return}},C=c=>{if(!c.getModifierState("Control"))return;const p=qe(c);r.panX=p.x,r.panY=p.y,c.deltaY>0?r.zoomLevel*=1+r.zoomLevel/2:r.zoomLevel*=1-r.zoomLevel/2,r.zoomLevel>1&&(r.zoomLevel=1),r.zoomLevel<0&&(r.zoomLevel=0),c.preventDefault()},d=c=>{const p=qe(c);r.x=p.x,r.y=p.y},E=c=>{if(![0,2].includes(c.button)||!["mouseup","mousedown"].includes(c.type))return;let p=c.type==="mousedown";c.button===0&&(r.pressedLeft=p),c.button===2&&(r.pressedRight=p)},D=()=>{isNaN(a.worldSize)||(a.worldSize>11&&(a.worldSize=11),a.worldSize<1&&(a.worldSize=1),l&&(document.getElementById(l.domElement.id)?.remove(),l.destroy()),m?.destroy(),g(),m=so({controls:n,info:a,mouseState:r,simulationParameters:i}))},T=c=>{i.f=c.f,i.k=c.k};pe(()=>{D()}),se(()=>{l.destroy(),m.destroy()});var _=uo();me("keydown",$e,y);var k=O(_);kn(k,{onfkupdated:T});var B=h(k,4),b=h(O(B),2);Le(b);var $=h(b,2),I=O($);K($),K(B);var s=h(B,2);K(_),ee(()=>{ae(I,`(${2**a.worldSize} x ${2**a.worldSize} : ${2**(a.worldSize+1)})`),L(s,"width",e.width),L(s,"height",e.height)}),Y("change",b,D),Te(b,()=>a.worldSize,c=>a.worldSize=c),Y("mousemove",s,d),Y("mousedown",s,c=>{c.preventDefault(),E(c)}),Y("mouseup",s,E),me("wheel",s,C),Y("keydown",s,c=>{c.preventDefault(),y(c)}),Y("contextmenu",s,c=>c.preventDefault()),V(t,_),re()}ue(["change","mousemove","mousedown","mouseup","keydown","contextmenu"]);const Be=[{name:"KarlSims",type:"Unknown",f:.055,k:.062},{name:"STX 1",type:"N.A",f:.0353,k:.0614},{name:"STX 2",type:"N.A",f:.0201,k:.0602},{name:"STX 2",type:"N.A",f:.0181,k:.0435},{name:"α 1",type:"alpha",f:.01,k:.047},{name:"α 2",type:"alpha",f:.014,k:.053},{name:"β 1",type:"beta",f:.014,k:.039},{name:"β 2",type:"beta",f:.026,k:.051},{name:"δ 1",type:"delta",f:.03,k:.055},{name:"δ 2",type:"delta",f:.042,k:.059},{name:"ε 1",type:"epsilon",f:.018,k:.055},{name:"ε 2",type:"epsilon",f:.022,k:.059},{name:"η 1",type:"eta",f:.034,k:.063},{name:"γ 1",type:"gamma",f:.022,k:.051},{name:"γ 2",type:"gamma",f:.026,k:.055},{name:"ι 1",type:"iota",f:.046,k:.0594},{name:"κ 1",type:"kappa",f:.082,k:.06},{name:"κ 2",type:"kappa",f:.058,k:.063},{name:"λ 1",type:"lambda",f:.026,k:.061},{name:"λ 2",type:"lambda",f:.034,k:.065},{name:"μ 1",type:"mu",f:.046,k:.065},{name:"μ 2",type:"mu",f:.058,k:.065},{name:"ν 2",type:"nu",f:.046,k:.067},{name:"π 1",type:"pi",f:.062,k:.061},{name:"ρ 1",type:"rho",f:.09,k:.059},{name:"ρ 2",type:"rho",f:.102,k:.055},{name:"σ 1",type:"sigma",f:.09,k:.057},{name:"θ 2",type:"sigma",f:.11,k:.0523},{name:"θ 1",type:"theta",f:.03,k:.057},{name:"θ 2",type:"theta",f:.038,k:.061},{name:"ξ 1",type:"xi",f:.01,k:.041},{name:"ξ 2",type:"xi",f:.014,k:.047},{name:"ζ 1",type:"zeta",f:.022,k:.061},{name:"ζ 2",type:"zeta",f:.026,k:.059}];var mo=U("<option> </option>"),po=U('<div>Select f and k parameters on the map of use a preset</div> <select class="full-width svelte-nnhb0c"></select> <!>',1),vo=U('<div id="container"><button class="full-width svelte-nnhb0c" id="toggleButton"> </button> <!></div>');function xo(t,o){oe(o,!0);let e=le(de(Be[0])),n=le(!0);const r=[0,.12],a=[.03,.07],i=[{f:.1045,k:.0553},{f:.0829,k:.0582},{f:.0664,k:.0595},{f:.0511,k:.0594},{f:.0307,k:.0549},{f:.017,k:.0467},{f:.005,k:.0335},{f:.0076,k:.0472},{f:.0166,k:.0594},{f:.0277,k:.0657},{f:.046,k:.0675},{f:.0757,k:.0643},{f:.0949,k:.0594}],l=u=>{const{f:v,k:A}=u,R=k.map(A,a[0],a[1],0,k.width),M=k.map(v,r[0],r[1],k.height,0);return{x:R,y:M}},m=u=>{u.noStroke();const v=u.textSize();for(const A of Be){const{x:R,y:M}=l({f:A.f,k:A.k}),G=A.f===w(e).f&&A.k===w(e).k;u.circle(R,M,3),u.textSize(G?v*2:v),u.fill(G?[240,240,150]:[255,255,255]),u.text(A.name,R-u.textWidth(A.name)/2,M-10)}},g=u=>{u.noFill(),u.stroke("red"),u.strokeWeight(1);const{x:v,y:A}=l(w(e));u.text("F",10,A>10?A-5:A+15),u.line(0,A,u.width,A),u.text("K",v<u.width-10?v+5:v-15,u.height-10),u.line(v,0,v,u.height),u.circle(v,A,10)},y=u=>{const{f:v,k:A}=w(e),R=`F: ${v.toFixed(4)}`,M=`K: ${A.toFixed(4)}`,G=u.textSize(),f=u.height*.05;u.textStyle(u.BOLD),u.textSize(f),u.fill("white"),u.stroke(0),u.strokeWeight(1),u.text(R,u.width*.05,u.textSize()),u.text(M,u.width*.05,u.textSize()+u.textSize()+6),u.textStyle(u.NORMAL),u.textSize(G)},C=u=>{for(let v=0;v<i.length;v++){const{x:A,y:R}=l(i[v]),{x:M,y:G}=l(i[(v+1)%i.length]);u.fill("white"),u.stroke("white"),u.strokeWeight(1),u.circle(A,R,3),u.circle(M,G,3),u.line(A,R,M,G)}};function d(u,v){let A=!1,R=1/0,M=null;for(let G=0;G<v.length;G++){const f=v[G],x=v[(G+1)%v.length];if(u[0]===f[0]&&u[1]===f[1])return u;f[1]>u[1]!=x[1]>u[1]&&u[0]<(x[0]-f[0])*(u[1]-f[1])/(x[1]-f[1])+f[0]&&(A=!A);const z=E(u,f,x);z<R&&(R=z,M=D(u,f,x))}if(A)return u;if(!M)throw new Error("Now closest point found");return M}function E(u,v,A){const R=[A[0]-v[0],A[1]-v[1]],M=[u[0]-v[0],u[1]-v[1]],G=R[0]*M[0]+R[1]*M[1],f=R[0]*R[0]+R[1]*R[1],x=G/f;let S;return x<0?S=v:x>1?S=A:S=[v[0]+x*R[0],v[1]+x*R[1]],Math.sqrt((u[0]-S[0])**2+(u[1]-S[1])**2)}function D(u,v,A){const R=[A[0]-v[0],A[1]-v[1]],M=[u[0]-v[0],u[1]-v[1]],G=R[0]*M[0]+R[1]*M[1],f=R[0]*R[0]+R[1]*R[1],x=G/f;let S;return x<0?S=v:x>1?S=A:S=[v[0]+x*R[0],v[1]+x*R[1]],S}const T=()=>{const u=[w(e).f,w(e).k],v=i.map(R=>[R.f,R.k]),A=d(u,v);w(e).f=A[0],w(e).k=A[1]},_=()=>{let{f:u,k:v}=w(e);const A=k.noise(k.frameCount*.01),R=k.noise(5321+k.frameCount*.01),G=Math.random()<.97?.001:.01;u=u+(R*2-1)*(r[1]-r[0])*G,v=v+(A*2-1)*(a[1]-a[0])*G,Q(e,{f:u,k:v,name:"custom",type:"manual"},!0),T(),o.onfkupdated?.(w(e))};let k,B=!1;const b=u=>{k=u;let v;u.preload=()=>{v=u.loadImage(F+"/parameters_map.png")},u.setup=()=>{u.createCanvas(400,400),u.frameRate(55)},u.draw=()=>{u.background(255),u.tint(150,190),u.image(v,0,0,u.width,u.height),m(u),C(u),g(u),y(u),_()}},$=()=>{Q(n,!w(n)),w(n)||k.remove()};se(()=>k?.remove());var I=vo();Re(I,1,"svelte-nnhb0c",null,{},{"no-cursor":B});var s=O(I),c=O(s,!0);K(s);var p=h(s,2);{var P=u=>{var v=po(),A=h(ce(v),2);Ce(A,21,()=>Be,ze,(M,G)=>{var f=mo(),x=O(f);K(f);var S={};ee(()=>{ae(x,`${w(G).type??""} - ${w(G).name??""} (f/k ${w(G).f??""} / ${w(G).k??""})`),S!==(S=w(G))&&(f.value=(f.__value=w(G))??"")}),V(M,f)}),K(A);var R=h(A,2);ge(R,{sketch:b}),Y("change",A,()=>o.onfkupdated?.(w(e))),Fe(A,()=>w(e),M=>Q(e,M)),V(u,v)};Pe(p,u=>{w(n)&&u(P)})}K(I),ee(()=>ae(c,w(n)?"Close":"F/K selection")),Y("click",s,$),V(t,I),re()}ue(["click","change"]);const ho=`precision mediump float;
+`;let it;const lo=t=>{const o=e=>t.prop(e);it=t({frag:io,vert:ao,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{mousePosition:o("mousePosition"),penRadius:o("penRadius"),zoomLevel:o("zoomLevel"),pan:o("pan"),prevState:o("inputBuffer")}})},so=t=>{const{inputBuffer:o,mouseState:e,outputBuffer:n,worldSize:r}=t;it({inputBuffer:o,outputBuffer:n,mousePosition:[e.x,e.y],penRadius:1/2**(r-e.penSize),zoomLevel:e.zoomLevel,pan:[e.panX,e.panY]})},co=t=>{const{controls:o,info:e,mouseState:n,simulationParameters:r}=t,a=document.getElementById("canvas");if(!a)throw new Error("Canvas container not ready");const i=ye({extensions:["OES_texture_float"],canvas:a});e.iteration=0;const l=2**e.worldSize,m=jn(o.initialConditions,l),g=()=>i.framebuffer({color:i.texture({radius:l,data:m,wrap:"repeat",type:"float"}),depthStencil:!1}),y=Array(2).fill(0).map(g),C=Array(2).fill(0).map(g);return Xn(i,l),On(i),oo(i),lo(i),i.frame(()=>{o.pause||e.iteration++;let d=y[(e.iteration+1)%2];for(let E=0;E<o.speed;E++){e.iteration++;const D=y[e.iteration%2];d=y[(e.iteration+1)%2],Nn({inputBuffer:D,outputBuffer:d,worldSize:e.worldSize,pauseSimulation:o.pause,mouseState:n,simulationParameters:r})}uo({inputTexture:d,graphicsTextures:C,controls:o,info:e,mouseState:n})}),i},uo=t=>{const{inputTexture:o,graphicsTextures:e,controls:n,info:r,mouseState:a}=t;let i=0;i++;const l=o,m=e[i%2];if(Un({colorMode:n.colors,inputBuffer:l,iteration:r.iteration,outputBuffer:m,zoomState:a}),n.grid){i++;const C=e[(i+1)%2],d=e[i%2];ro({inputBuffer:C,outputBuffer:d,zoomState:a})}i++;const g=e[(i+1)%2];so({mouseState:a,worldSize:r.worldSize,inputBuffer:g,outputBuffer:null})},qe=t=>{if(!t.currentTarget)throw new Error("Event has no currentTarget");const o=t.currentTarget,e=o.getBoundingClientRect(),n=t.clientX-e.left,r=t.clientY-e.top,{width:a,height:i}=o,l=n/a,m=(i-r)/i;return{x:l,y:m}};var fo=U('<main><!> <div id="datgui-container" class="svelte-64sjur"></div> <div><label for="worldSize">World Size:</label> <input id="worldSize" type="number" step="1"/> <span> </span></div> <canvas id="canvas" class="svelte-64sjur"></canvas></main>');function mo(t,o){oe(o,!0);const e={width:Math.min(window.innerWidth,window.innerHeight)*.9,height:Math.min(window.innerWidth,window.innerHeight)*.9},n={colors:"A_transform_seismic",initialConditions:"middleCircleAndRandomSpots",reset:()=>D(),pause:!1,grid:!1,speed:50},r={pressedLeft:!1,pressedRight:!1,x:0,y:0,penSize:3,penDensity:.3,zoomLevel:1,panX:.5,panY:.5},a=pe({iteration:0,worldSize:8}),i={f:De[0].f,k:De[0].k};let l,m;const g=async()=>{const c=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);l=new c.GUI({autoPlace:!1,closeOnTop:!0}),l.domElement.id="datgui";const p=document.getElementById("datgui-container");if(!p)throw new Error("Gui container not ready");p.appendChild(l.domElement),l.add(n,"pause").name("Pause"),l.add(n,"grid").name("Debug grid"),l.add(n,"reset").name("Reset simulation"),l.add(n,"colors",["grayscale","blackwhite","whiteblack","raw","timebasedblue","lerp","mrob","redblue","A_gradiant1","A_gradiant2","A_MATLAB_cool","A_IDL_CB_RdBu","A_IDL_CB_RdYiBu","A_IDL_CB_BuYiRd","A_transform_seismic","B_IDL_CB_RdYiBu"]).name("Color scheme");const P={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots",Empty:"empty"};l.add(n,"initialConditions",P).onFinishChange(n.reset).name("Initial conditions");const u=l.add(a,"iteration").listen();u.domElement.style.pointerEvents="none",l.add(n,"speed",1,200).name("Simulation speed"),l.add(r,"penSize",0,a.worldSize).name("Pen size"),l.add(r,"penDensity",0,1).name("Pen density"),l.add(r,"zoomLevel",0,1).name("Zoom level").listen(),l.add(r,"panX",0,1).name("pan x").listen(),l.add(r,"panY",0,1).name("pan y").listen()},y=c=>{if(c.code==="Space"){n.pause=!n.pause,c.preventDefault();return}if(c.code==="KeyR"&&!c.getModifierState("Control")){D(),c.preventDefault();return}},C=c=>{if(!c.getModifierState("Control"))return;const p=qe(c);r.panX=p.x,r.panY=p.y,c.deltaY>0?r.zoomLevel*=1+r.zoomLevel/2:r.zoomLevel*=1-r.zoomLevel/2,r.zoomLevel>1&&(r.zoomLevel=1),r.zoomLevel<0&&(r.zoomLevel=0),c.preventDefault()},d=c=>{const p=qe(c);r.x=p.x,r.y=p.y},E=c=>{if(![0,2].includes(c.button)||!["mouseup","mousedown"].includes(c.type))return;let p=c.type==="mousedown";c.button===0&&(r.pressedLeft=p),c.button===2&&(r.pressedRight=p)},D=()=>{isNaN(a.worldSize)||(a.worldSize>11&&(a.worldSize=11),a.worldSize<1&&(a.worldSize=1),l&&(document.getElementById(l.domElement.id)?.remove(),l.destroy()),m?.destroy(),g(),m=co({controls:n,info:a,mouseState:r,simulationParameters:i}))},T=c=>{i.f=c.f,i.k=c.k};me(()=>{D()}),se(()=>{l.destroy(),m.destroy()});var _=fo();de("keydown",$e,y);var k=O(_);An(k,{onfkupdated:T});var B=h(k,4),b=h(O(B),2);Le(b);var $=h(b,2),I=O($);K($),K(B);var s=h(B,2);K(_),ee(()=>{ae(I,`(${2**a.worldSize} x ${2**a.worldSize} : ${2**(a.worldSize+1)})`),L(s,"width",e.width),L(s,"height",e.height)}),Y("change",b,D),Te(b,()=>a.worldSize,c=>a.worldSize=c),Y("mousemove",s,d),Y("mousedown",s,c=>{c.preventDefault(),E(c)}),Y("mouseup",s,E),de("wheel",s,C),Y("keydown",s,c=>{c.preventDefault(),y(c)}),Y("contextmenu",s,c=>c.preventDefault()),V(t,_),re()}ue(["change","mousemove","mousedown","mouseup","keydown","contextmenu"]);const Be=[{name:"KarlSims",type:"Unknown",f:.055,k:.062},{name:"STX 1",type:"N.A",f:.0353,k:.0614},{name:"STX 2",type:"N.A",f:.0201,k:.0602},{name:"STX 2",type:"N.A",f:.0181,k:.0435},{name:"α 1",type:"alpha",f:.01,k:.047},{name:"α 2",type:"alpha",f:.014,k:.053},{name:"β 1",type:"beta",f:.014,k:.039},{name:"β 2",type:"beta",f:.026,k:.051},{name:"δ 1",type:"delta",f:.03,k:.055},{name:"δ 2",type:"delta",f:.042,k:.059},{name:"ε 1",type:"epsilon",f:.018,k:.055},{name:"ε 2",type:"epsilon",f:.022,k:.059},{name:"η 1",type:"eta",f:.034,k:.063},{name:"γ 1",type:"gamma",f:.022,k:.051},{name:"γ 2",type:"gamma",f:.026,k:.055},{name:"ι 1",type:"iota",f:.046,k:.0594},{name:"κ 1",type:"kappa",f:.082,k:.06},{name:"κ 2",type:"kappa",f:.058,k:.063},{name:"λ 1",type:"lambda",f:.026,k:.061},{name:"λ 2",type:"lambda",f:.034,k:.065},{name:"μ 1",type:"mu",f:.046,k:.065},{name:"μ 2",type:"mu",f:.058,k:.065},{name:"ν 2",type:"nu",f:.046,k:.067},{name:"π 1",type:"pi",f:.062,k:.061},{name:"ρ 1",type:"rho",f:.09,k:.059},{name:"ρ 2",type:"rho",f:.102,k:.055},{name:"σ 1",type:"sigma",f:.09,k:.057},{name:"θ 2",type:"sigma",f:.11,k:.0523},{name:"θ 1",type:"theta",f:.03,k:.057},{name:"θ 2",type:"theta",f:.038,k:.061},{name:"ξ 1",type:"xi",f:.01,k:.041},{name:"ξ 2",type:"xi",f:.014,k:.047},{name:"ζ 1",type:"zeta",f:.022,k:.061},{name:"ζ 2",type:"zeta",f:.026,k:.059}];var po=U("<option> </option>"),vo=U('<div>Select f and k parameters on the map of use a preset</div> <select class="full-width svelte-nnhb0c"></select> <!>',1),xo=U('<div id="container"><button class="full-width svelte-nnhb0c" id="toggleButton"> </button> <!></div>');function ho(t,o){oe(o,!0);let e=le(pe(Be[0])),n=le(!0);const r=[0,.12],a=[.03,.07],i=[{f:.1045,k:.0553},{f:.0829,k:.0582},{f:.0664,k:.0595},{f:.0511,k:.0594},{f:.0307,k:.0549},{f:.017,k:.0467},{f:.005,k:.0335},{f:.0076,k:.0472},{f:.0166,k:.0594},{f:.0277,k:.0657},{f:.046,k:.0675},{f:.0757,k:.0643},{f:.0949,k:.0594}],l=u=>{const{f:v,k:A}=u,R=k.map(A,a[0],a[1],0,k.width),M=k.map(v,r[0],r[1],k.height,0);return{x:R,y:M}},m=u=>{u.noStroke();const v=u.textSize();for(const A of Be){const{x:R,y:M}=l({f:A.f,k:A.k}),G=A.f===w(e).f&&A.k===w(e).k;u.circle(R,M,3),u.textSize(G?v*2:v),u.fill(G?[240,240,150]:[255,255,255]),u.text(A.name,R-u.textWidth(A.name)/2,M-10)}},g=u=>{u.noFill(),u.stroke("red"),u.strokeWeight(1);const{x:v,y:A}=l(w(e));u.text("F",10,A>10?A-5:A+15),u.line(0,A,u.width,A),u.text("K",v<u.width-10?v+5:v-15,u.height-10),u.line(v,0,v,u.height),u.circle(v,A,10)},y=u=>{const{f:v,k:A}=w(e),R=`F: ${v.toFixed(4)}`,M=`K: ${A.toFixed(4)}`,G=u.textSize(),f=u.height*.05;u.textStyle(u.BOLD),u.textSize(f),u.fill("white"),u.stroke(0),u.strokeWeight(1),u.text(R,u.width*.05,u.textSize()),u.text(M,u.width*.05,u.textSize()+u.textSize()+6),u.textStyle(u.NORMAL),u.textSize(G)},C=u=>{for(let v=0;v<i.length;v++){const{x:A,y:R}=l(i[v]),{x:M,y:G}=l(i[(v+1)%i.length]);u.fill("white"),u.stroke("white"),u.strokeWeight(1),u.circle(A,R,3),u.circle(M,G,3),u.line(A,R,M,G)}};function d(u,v){let A=!1,R=1/0,M=null;for(let G=0;G<v.length;G++){const f=v[G],x=v[(G+1)%v.length];if(u[0]===f[0]&&u[1]===f[1])return u;f[1]>u[1]!=x[1]>u[1]&&u[0]<(x[0]-f[0])*(u[1]-f[1])/(x[1]-f[1])+f[0]&&(A=!A);const z=E(u,f,x);z<R&&(R=z,M=D(u,f,x))}if(A)return u;if(!M)throw new Error("Now closest point found");return M}function E(u,v,A){const R=[A[0]-v[0],A[1]-v[1]],M=[u[0]-v[0],u[1]-v[1]],G=R[0]*M[0]+R[1]*M[1],f=R[0]*R[0]+R[1]*R[1],x=G/f;let S;return x<0?S=v:x>1?S=A:S=[v[0]+x*R[0],v[1]+x*R[1]],Math.sqrt((u[0]-S[0])**2+(u[1]-S[1])**2)}function D(u,v,A){const R=[A[0]-v[0],A[1]-v[1]],M=[u[0]-v[0],u[1]-v[1]],G=R[0]*M[0]+R[1]*M[1],f=R[0]*R[0]+R[1]*R[1],x=G/f;let S;return x<0?S=v:x>1?S=A:S=[v[0]+x*R[0],v[1]+x*R[1]],S}const T=()=>{const u=[w(e).f,w(e).k],v=i.map(R=>[R.f,R.k]),A=d(u,v);w(e).f=A[0],w(e).k=A[1]},_=()=>{let{f:u,k:v}=w(e);const A=k.noise(k.frameCount*.01),R=k.noise(5321+k.frameCount*.01),G=Math.random()<.97?.001:.01;u=u+(R*2-1)*(r[1]-r[0])*G,v=v+(A*2-1)*(a[1]-a[0])*G,Q(e,{f:u,k:v,name:"custom",type:"manual"},!0),T(),o.onfkupdated?.(w(e))};let k,B=!1;const b=u=>{k=u;let v;u.preload=()=>{v=u.loadImage(F+"/parameters_map.png")},u.setup=()=>{u.createCanvas(400,400),u.frameRate(55)},u.draw=()=>{u.background(255),u.tint(150,190),u.image(v,0,0,u.width,u.height),m(u),C(u),g(u),y(u),_()}},$=()=>{Q(n,!w(n)),w(n)||k.remove()};se(()=>k?.remove());var I=xo();Re(I,1,"svelte-nnhb0c",null,{},{"no-cursor":B});var s=O(I),c=O(s,!0);K(s);var p=h(s,2);{var P=u=>{var v=vo(),A=h(ce(v),2);Ce(A,21,()=>Be,ze,(M,G)=>{var f=po(),x=O(f);K(f);var S={};ee(()=>{ae(x,`${w(G).type??""} - ${w(G).name??""} (f/k ${w(G).f??""} / ${w(G).k??""})`),S!==(S=w(G))&&(f.value=(f.__value=w(G))??"")}),V(M,f)}),K(A);var R=h(A,2);ge(R,{sketch:b}),Y("change",A,()=>o.onfkupdated?.(w(e))),Fe(A,()=>w(e),M=>Q(e,M)),V(u,v)};Pe(p,u=>{w(n)&&u(P)})}K(I),ee(()=>ae(c,w(n)?"Close":"F/K selection")),Y("click",s,$),V(t,I),re()}ue(["click","change"]);const go=`precision mediump float;
 attribute vec2 position;
 uniform float zoomLevel;    // 1 full size, 0 max zoom
 uniform vec2 pan;   // in range [0, 1], [0, 0]  is bottom left, [1, 1] top right
@@ -3030,7 +3030,7 @@ void main() {
     uv = 0.5 * (position + 1.0) * zoomLevel + pan * (1.0 - zoomLevel);
     gl_Position = vec4(position, 0, 1);
 }
-`,go=`precision mediump float;
+`,yo=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -3043,7 +3043,7 @@ void main() {
     gl_FragColor = vec4(A, B, 0.0, 1.0);
 }
 
-`,yo=`precision mediump float;
+`,bo=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -3060,7 +3060,7 @@ void main() {
     }
     gl_FragColor = vec4(A, B, val, 1.0);
 }
-`,bo=`precision mediump float;
+`,wo=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -3075,7 +3075,7 @@ void main() {
     gl_FragColor = vec4(val, val, val, 1.0);
 }
 
-`,wo=`precision mediump float;
+`,_o=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -3089,7 +3089,7 @@ void main() {
 
     gl_FragColor = vec4(1.0 - val, 1.0 - val, 1.0 - val, 1.0);
 }
-`,_o=`precision mediump float;
+`,So=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -3103,7 +3103,7 @@ void main() {
 
     gl_FragColor = vec4(val, val, val, 1.0);
 }
-`,So=`precision mediump float;
+`,Eo=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -3155,7 +3155,7 @@ void main() {
 
     gl_FragColor = vec4(result, 1.0);
 }
-`,Eo=`// Colors scheme inspired by Robert Munafo described here:
+`,ko=`// Colors scheme inspired by Robert Munafo described here:
 // https://www.mrob.com/pub/comp/xmorphia/index.html
 // 
 // A is blue
@@ -3180,7 +3180,7 @@ void main() {
 
     gl_FragColor = vec4(result, 1.0);
 }
-`,ko=`// Colors scheme inspired by Robert Munafo described here:
+`,Ao=`// Colors scheme inspired by Robert Munafo described here:
 // https://www.mrob.com/pub/comp/xmorphia/index.html
 // 
 // A is blue
@@ -3202,7 +3202,7 @@ void main() {
 
     gl_FragColor = vec4(result, 1.0);
 }
-`,Ao=`precision mediump float;
+`,Do=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -3220,7 +3220,7 @@ void main() {
         gl_FragColor = vec4(0.0, A, 0.0, 1.0);
     }
 }
-`,Do=`precision mediump float;
+`,Bo=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -3250,7 +3250,7 @@ void main() {
     }
 
 }
-`,Bo=`precision mediump float;
+`,Co=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -3288,7 +3288,7 @@ void main() {
     }
 
 }
-`,Co=`precision mediump float;
+`,zo=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -3344,86 +3344,6 @@ float colormap_blue(float x) {
 		return (2.06124143164576E+02 * x - 5.78166906665595E+02) * x + 5.26198653917172E+02;
 	} else {
 		return -7.36990769230737E+02 * x + 8.36652307692262E+02;
-	}
-}
-
-vec4 colormap(float x) {
-	float r = clamp(colormap_red(x) / 255.0, 0.0, 1.0);
-	float g = clamp(colormap_green(x) / 255.0, 0.0, 1.0);
-	float b = clamp(colormap_blue(x) / 255.0, 0.0, 1.0);
-	return vec4(r, g, b, 1.0);
-}
-
-void main() {
-    float A = texture2D(prevState, uv).r;
-    float B = texture2D(prevState, uv).g;
-
-    vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
-
-    vec4 softColor = colormap((A-0.4)*(1.0/0.6));
-
-
-    if (A < 0.4) {
-        gl_FragColor = vec4(black);
-    } else {
-        gl_FragColor = vec4(softColor);
-    }
-
-}
-`,zo=`precision mediump float;
-
-uniform sampler2D prevState;
-uniform float iteration;
-varying vec2 uv;
-
-// https://github.com/Polymole/glsl-colormap/blob/master/shaders/IDL_CB-RdYiBu.frag
-float colormap_red(float x) {
-	if (x < 0.09790863520700754) {
-		return 5.14512820512820E+02 * x + 1.64641025641026E+02;
-	} else if (x < 0.2001887081633112) {
-		return 2.83195402298854E+02 * x + 1.87288998357964E+02;
-	} else if (x < 0.3190117539655621) {
-		return 9.27301587301214E+01 * x + 2.25417989417999E+02;
-	} else if (x < 0.500517389125164) {
-		return 255.0;
-	} else if (x < 0.6068377196788788) {
-		return -3.04674876847379E+02 * x + 4.07495073891681E+02;
-	} else if (x < 0.9017468988895416) {
-		return (1.55336390191951E+02 * x - 7.56394659038288E+02) * x + 6.24412733169483E+02;
-	} else {
-		return -1.88350769230735E+02 * x + 2.38492307692292E+02;
-	}
-}
-
-float colormap_green(float x) {
-	if (x < 0.09638568758964539) {
-		return 4.81427692307692E+02 * x + 4.61538461538488E-01;
-	} else if (x < 0.4987066686153412) {
-		return ((((3.25545903568267E+04 * x - 4.24067109461319E+04) * x + 1.83751375886345E+04) * x - 3.19145329617892E+03) * x + 8.08315127034676E+02) * x - 1.44611527812961E+01;
-	} else if (x < 0.6047312345537269) {
-		return -1.18449917898218E+02 * x + 3.14234811165860E+02;
-	} else if (x < 0.7067635953426361) {
-		return -2.70822112753102E+02 * x + 4.06379036672115E+02;
-	} else {
-		return (-4.62308723214883E+02 * x + 2.42936159122279E+02) * x + 2.74203431802418E+02;
-	}
-}
-
-float colormap_blue(float x) {
-	if (x < 0.09982818011951204) {
-		return 1.64123076923076E+01 * x + 3.72646153846154E+01;
-	} else if (x < 0.2958717460833126) {
-		return 2.87014675052409E+02 * x + 1.02508735150248E+01;
-	} else if (x < 0.4900527540014758) {
-		return 4.65475113122167E+02 * x - 4.25505279034673E+01;
-	} else if (x < 0.6017014681258838) {
-		return 5.61032967032998E+02 * x - 8.93789173789407E+01;
-	} else if (x < 0.7015737100463595) {
-		return -1.51655677655728E+02 * x + 3.39446886446912E+02;
-	} else if (x < 0.8237156500567735) {
-		return -2.43405347593559E+02 * x + 4.03816042780725E+02;
-	} else {
-		return -3.00296889157305E+02 * x + 4.50678495922638E+02;
 	}
 }
 
@@ -3516,6 +3436,86 @@ vec4 colormap(float x) {
 
 void main() {
     float A = texture2D(prevState, uv).r;
+    float B = texture2D(prevState, uv).g;
+
+    vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
+
+    vec4 softColor = colormap((A-0.4)*(1.0/0.6));
+
+
+    if (A < 0.4) {
+        gl_FragColor = vec4(black);
+    } else {
+        gl_FragColor = vec4(softColor);
+    }
+
+}
+`,Lo=`precision mediump float;
+
+uniform sampler2D prevState;
+uniform float iteration;
+varying vec2 uv;
+
+// https://github.com/Polymole/glsl-colormap/blob/master/shaders/IDL_CB-RdYiBu.frag
+float colormap_red(float x) {
+	if (x < 0.09790863520700754) {
+		return 5.14512820512820E+02 * x + 1.64641025641026E+02;
+	} else if (x < 0.2001887081633112) {
+		return 2.83195402298854E+02 * x + 1.87288998357964E+02;
+	} else if (x < 0.3190117539655621) {
+		return 9.27301587301214E+01 * x + 2.25417989417999E+02;
+	} else if (x < 0.500517389125164) {
+		return 255.0;
+	} else if (x < 0.6068377196788788) {
+		return -3.04674876847379E+02 * x + 4.07495073891681E+02;
+	} else if (x < 0.9017468988895416) {
+		return (1.55336390191951E+02 * x - 7.56394659038288E+02) * x + 6.24412733169483E+02;
+	} else {
+		return -1.88350769230735E+02 * x + 2.38492307692292E+02;
+	}
+}
+
+float colormap_green(float x) {
+	if (x < 0.09638568758964539) {
+		return 4.81427692307692E+02 * x + 4.61538461538488E-01;
+	} else if (x < 0.4987066686153412) {
+		return ((((3.25545903568267E+04 * x - 4.24067109461319E+04) * x + 1.83751375886345E+04) * x - 3.19145329617892E+03) * x + 8.08315127034676E+02) * x - 1.44611527812961E+01;
+	} else if (x < 0.6047312345537269) {
+		return -1.18449917898218E+02 * x + 3.14234811165860E+02;
+	} else if (x < 0.7067635953426361) {
+		return -2.70822112753102E+02 * x + 4.06379036672115E+02;
+	} else {
+		return (-4.62308723214883E+02 * x + 2.42936159122279E+02) * x + 2.74203431802418E+02;
+	}
+}
+
+float colormap_blue(float x) {
+	if (x < 0.09982818011951204) {
+		return 1.64123076923076E+01 * x + 3.72646153846154E+01;
+	} else if (x < 0.2958717460833126) {
+		return 2.87014675052409E+02 * x + 1.02508735150248E+01;
+	} else if (x < 0.4900527540014758) {
+		return 4.65475113122167E+02 * x - 4.25505279034673E+01;
+	} else if (x < 0.6017014681258838) {
+		return 5.61032967032998E+02 * x - 8.93789173789407E+01;
+	} else if (x < 0.7015737100463595) {
+		return -1.51655677655728E+02 * x + 3.39446886446912E+02;
+	} else if (x < 0.8237156500567735) {
+		return -2.43405347593559E+02 * x + 4.03816042780725E+02;
+	} else {
+		return -3.00296889157305E+02 * x + 4.50678495922638E+02;
+	}
+}
+
+vec4 colormap(float x) {
+	float r = clamp(colormap_red(x) / 255.0, 0.0, 1.0);
+	float g = clamp(colormap_green(x) / 255.0, 0.0, 1.0);
+	float b = clamp(colormap_blue(x) / 255.0, 0.0, 1.0);
+	return vec4(r, g, b, 1.0);
+}
+
+void main() {
+    float A = texture2D(prevState, uv).r;
 
     vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
 
@@ -3529,7 +3529,7 @@ void main() {
     }
 
 }
-`,Lo=`precision mediump float;
+`,To=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -3610,7 +3610,7 @@ void main() {
     }
 
 }
-`,To=`precision mediump float;
+`,Ro=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform float iteration;
@@ -3690,7 +3690,7 @@ void main() {
     }
 
 }
-`,J={},Ro=t=>{const o=n=>t.prop(n),e={vert:ho,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{iteration:o("iteration"),zoomLevel:o("zoomLevel"),pan:o("pan"),prevState:o("inputBuffer")}};J.raw=t({frag:go,...e}),J.A_transform_seismic=t({frag:Lo,...e}),J.A_gradiant1=t({frag:Ao,...e}),J.A_gradiant2=t({frag:Do,...e}),J.A_MATLAB_cool=t({frag:Bo,...e}),J.A_IDL_CB_RdBu=t({frag:Co,...e}),J.A_IDL_CB_RdYiBu=t({frag:zo,...e}),J.A_IDL_CB_BuYiRd=t({frag:$o,...e}),J.B_IDL_CB_RdYiBu=t({frag:To,...e}),J.grayscale=t({frag:bo,...e}),J.blackwhite=t({frag:wo,...e}),J.whiteblack=t({frag:_o,...e}),J.timebasedblue=t({frag:yo,...e}),J.lerp=t({frag:So,...e}),J.mrob=t({frag:Eo,...e}),J.redblue=t({frag:ko,...e})},Po=t=>{const{colorMode:o,inputBuffer:e,iteration:n,outputBuffer:r,zoomState:a}=t;(J[o]||J.raw)({inputBuffer:e,iteration:n,outputBuffer:r,pan:[a.panX,a.panY],zoomLevel:a.zoomLevel})},Io=`precision mediump float;
+`,J={},Po=t=>{const o=n=>t.prop(n),e={vert:go,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{iteration:o("iteration"),zoomLevel:o("zoomLevel"),pan:o("pan"),prevState:o("inputBuffer")}};J.raw=t({frag:yo,...e}),J.A_transform_seismic=t({frag:To,...e}),J.A_gradiant1=t({frag:Do,...e}),J.A_gradiant2=t({frag:Bo,...e}),J.A_MATLAB_cool=t({frag:Co,...e}),J.A_IDL_CB_RdBu=t({frag:zo,...e}),J.A_IDL_CB_RdYiBu=t({frag:$o,...e}),J.A_IDL_CB_BuYiRd=t({frag:Lo,...e}),J.B_IDL_CB_RdYiBu=t({frag:Ro,...e}),J.grayscale=t({frag:wo,...e}),J.blackwhite=t({frag:_o,...e}),J.whiteblack=t({frag:So,...e}),J.timebasedblue=t({frag:bo,...e}),J.lerp=t({frag:Eo,...e}),J.mrob=t({frag:ko,...e}),J.redblue=t({frag:Ao,...e})},Io=t=>{const{colorMode:o,inputBuffer:e,iteration:n,outputBuffer:r,zoomState:a}=t;(J[o]||J.raw)({inputBuffer:e,iteration:n,outputBuffer:r,pan:[a.panX,a.panY],zoomLevel:a.zoomLevel})},Fo=`precision mediump float;
 
 uniform float radius;
 uniform sampler2D prevState;
@@ -3763,7 +3763,7 @@ void main() {
         gl_FragColor = vec4(newA, newB, 0, 1);
     }
 }
-`,Fo=`precision mediump float;
+`,Mo=`precision mediump float;
 
 uniform vec2 mousePosition; // in range [0, 1] on the zoomed screen
 uniform float zoomLevel;    // 1 full size, 0 max zoom
@@ -3782,7 +3782,7 @@ void main() {
     scaledPenRadius = penRadius * zoomLevel;
     gl_Position = vec4(position, 0, 1);
 }
-`;let lt;const Mo=(t,o)=>{const e=n=>t.prop(n);lt=t({frag:Io,vert:Fo,attributes:{position:[-4,-4,4,-4,0,4]},count:3,framebuffer:e("outputBuffer"),uniforms:{prevState:e("inputBuffer"),Da:1,Db:.5,f:e("f"),k:e("k"),radius:o,pauseSimulation:e("pauseSimulation"),mousePosition:e("mousePosition"),penRadius:e("penRadius"),penDensity:e("penDensity"),penIsActive:e("penIsActive"),eraserIsActive:e("eraserIsActive"),zoomLevel:e("zoomLevel"),pan:e("pan")}})},Ko=t=>{const{inputBuffer:o,outputBuffer:e,pauseSimulation:n,mouseState:r,simulationParameters:a,worldSize:i}=t;lt({inputBuffer:o,outputBuffer:e,pauseSimulation:n,zoomLevel:r.zoomLevel,pan:[r.panX,r.panY],mousePosition:[r.x,r.y],penRadius:1/2**(i-r.penSize),penDensity:r.penDensity,penIsActive:r.pressedLeft,eraserIsActive:r.pressedRight,...a})},Ho=(t,o)=>t==="randomSpots"?Go(o,.001):t==="middleCircleAndRandomSpots"?Yo(o,.005,.05):t==="empty"?Vo(o):Oo(o,.02),Yo=(t,o,e)=>{const n=t*e;return Array(t*t).fill(0).map((r,a)=>{const i=Math.floor(a/t),l=a%t;return Math.hypot(t/2-l,t/2-i)<n?[0,1,0,1]:Math.random()<o?[0,1,0,1]:[1,0,0,1]}).flat()},Vo=t=>Array(t*t).fill(0).map(()=>[0,0,0,1]).flat(),Go=(t,o)=>Array(t*t).fill(0).map(()=>Math.random()<o?[0,1,0,1]:[1,0,0,1]).flat(),Oo=(t,o)=>Array(t*t).fill(0).map((e,n)=>{const r=Math.floor(n/t),a=n%t;return Math.hypot(t/2-a,t/2-r)<o*t?[0,1,0,1]:[1,0,0,1]}).flat(),Uo=`precision highp float;
+`;let lt;const Ko=(t,o)=>{const e=n=>t.prop(n);lt=t({frag:Fo,vert:Mo,attributes:{position:[-4,-4,4,-4,0,4]},count:3,framebuffer:e("outputBuffer"),uniforms:{prevState:e("inputBuffer"),Da:1,Db:.5,f:e("f"),k:e("k"),radius:o,pauseSimulation:e("pauseSimulation"),mousePosition:e("mousePosition"),penRadius:e("penRadius"),penDensity:e("penDensity"),penIsActive:e("penIsActive"),eraserIsActive:e("eraserIsActive"),zoomLevel:e("zoomLevel"),pan:e("pan")}})},Ho=t=>{const{inputBuffer:o,outputBuffer:e,pauseSimulation:n,mouseState:r,simulationParameters:a,worldSize:i}=t;lt({inputBuffer:o,outputBuffer:e,pauseSimulation:n,zoomLevel:r.zoomLevel,pan:[r.panX,r.panY],mousePosition:[r.x,r.y],penRadius:1/2**(i-r.penSize),penDensity:r.penDensity,penIsActive:r.pressedLeft,eraserIsActive:r.pressedRight,...a})},Yo=(t,o)=>t==="randomSpots"?Oo(o,.001):t==="middleCircleAndRandomSpots"?Vo(o,.005,.05):t==="empty"?Go(o):Uo(o,.02),Vo=(t,o,e)=>{const n=t*e;return Array(t*t).fill(0).map((r,a)=>{const i=Math.floor(a/t),l=a%t;return Math.hypot(t/2-l,t/2-i)<n?[0,1,0,1]:Math.random()<o?[0,1,0,1]:[1,0,0,1]}).flat()},Go=t=>Array(t*t).fill(0).map(()=>[0,0,0,1]).flat(),Oo=(t,o)=>Array(t*t).fill(0).map(()=>Math.random()<o?[0,1,0,1]:[1,0,0,1]).flat(),Uo=(t,o)=>Array(t*t).fill(0).map((e,n)=>{const r=Math.floor(n/t),a=n%t;return Math.hypot(t/2-a,t/2-r)<o*t?[0,1,0,1]:[1,0,0,1]}).flat(),Wo=`precision highp float;
 
 attribute vec2 position;
 
@@ -3795,7 +3795,7 @@ void main() {
     uv = 0.5 * (position + 1.0) * zoomLevel + pan * (1.0 - zoomLevel);
     gl_Position = vec4(position, 0, 1);
 }
-`,Wo=`precision highp float;
+`,qo=`precision highp float;
 
 uniform sampler2D prevState;
 
@@ -3819,7 +3819,7 @@ void main() {
        gl_FragColor = color;
     }
 }
-`;let st;const qo=t=>{const o=e=>t.prop(e);st=t({vert:Uo,frag:Wo,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{prevState:o("inputBuffer"),zoomLevel:o("zoomLevel"),pan:o("pan")}})},Xo=t=>{const{inputBuffer:o,outputBuffer:e,zoomState:n}=t;st({inputBuffer:o,outputBuffer:e,zoomLevel:n.zoomLevel,pan:[n.panX,n.panY]})},No=`precision mediump float;
+`;let st;const Xo=t=>{const o=e=>t.prop(e);st=t({vert:Wo,frag:qo,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{prevState:o("inputBuffer"),zoomLevel:o("zoomLevel"),pan:o("pan")}})},No=t=>{const{inputBuffer:o,outputBuffer:e,zoomState:n}=t;st({inputBuffer:o,outputBuffer:e,zoomLevel:n.zoomLevel,pan:[n.panX,n.panY]})},jo=`precision mediump float;
 
 uniform vec2 mousePosition; // in range [0, 1] on the zoomed screen
 uniform float zoomLevel;    // 1 full size, 0 max zoom
@@ -3833,7 +3833,7 @@ void main() {
     uv = 0.5 * (position + 1.0);
     gl_Position = vec4(position, 0, 1);
 }
-`,jo=`precision mediump float;
+`,Zo=`precision mediump float;
 
 uniform sampler2D prevState;
 uniform vec2 mousePosition;
@@ -3855,8 +3855,8 @@ void main() {
         gl_FragColor = color;
     }
 }
-`;let ct;const Zo=t=>{const o=e=>t.prop(e);ct=t({frag:jo,vert:No,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{mousePosition:o("mousePosition"),penRadius:o("penRadius"),zoomLevel:o("zoomLevel"),pan:o("pan"),prevState:o("inputBuffer")}})},Jo=t=>{const{inputBuffer:o,mouseState:e,outputBuffer:n,worldSize:r}=t;ct({inputBuffer:o,outputBuffer:n,mousePosition:[e.x,e.y],penRadius:1/2**(r-e.penSize),zoomLevel:e.zoomLevel,pan:[e.panX,e.panY]})},Qo=t=>{const{controls:o,info:e,mouseState:n,simulationParameters:r}=t,a=document.getElementById("canvas");if(!a)throw new Error("Canvas container not ready");const i=ye({extensions:["OES_texture_float"],canvas:a});e.iteration=0;const l=2**e.worldSize,m=Ho(o.initialConditions,l),g=()=>i.framebuffer({color:i.texture({radius:l,data:m,wrap:"repeat",type:"float"}),depthStencil:!1}),y=Array(2).fill(0).map(g),C=Array(2).fill(0).map(g);return Mo(i,l),Ro(i),qo(i),Zo(i),i.frame(()=>{o.pause||e.iteration++;let d=y[(e.iteration+1)%2];for(let E=0;E<o.speed;E++){e.iteration++;const D=y[e.iteration%2];d=y[(e.iteration+1)%2],Ko({inputBuffer:D,outputBuffer:d,worldSize:e.worldSize,pauseSimulation:o.pause,mouseState:n,simulationParameters:r})}er({inputTexture:d,graphicsTextures:C,controls:o,info:e,mouseState:n})}),i},er=t=>{const{inputTexture:o,graphicsTextures:e,controls:n,info:r,mouseState:a}=t;let i=0;i++;const l=o;let m=e[i%2];if(!n.grid&&!n.pen&&(m=null),Po({colorMode:n.colors,inputBuffer:l,iteration:r.iteration,outputBuffer:m,zoomState:a}),n.grid){i++;const g=e[(i+1)%2];let y=e[i%2];n.pen||(y=null),Xo({inputBuffer:g,outputBuffer:y,zoomState:a})}if(n.pen){i++;const g=e[(i+1)%2];Jo({mouseState:a,worldSize:r.worldSize,inputBuffer:g,outputBuffer:null})}};var tr=U('<main><!> <div id="datgui-container" class="svelte-xb68ub"></div> <div><label for="worldSize">World Size:</label> <input id="worldSize" type="number" step="1"/> <span> </span></div> <canvas id="canvas" class="svelte-xb68ub"></canvas></main>');function nr(t,o){oe(o,!0);const e={width:Math.min(window.innerWidth,window.innerHeight)*.9,height:Math.min(window.innerWidth,window.innerHeight)*.9},n={colors:"A_transform_seismic",initialConditions:"middleCircleAndRandomSpots",reset:()=>E(),pause:!1,grid:!1,pen:!1,speed:50},r={pressedLeft:!1,pressedRight:!1,x:0,y:0,penSize:3,penDensity:.3,zoomLevel:1,panX:.5,panY:.5},a=de({iteration:0,worldSize:8}),i={f:Be[0].f,k:Be[0].k};let l,m;const g=async()=>{const c=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);l=new c.GUI({autoPlace:!1,closeOnTop:!0}),l.domElement.id="datgui";const p=document.getElementById("datgui-container");if(!p)throw new Error("Gui container not ready");p.appendChild(l.domElement),l.add(n,"pause").name("Pause"),l.add(n,"grid").name("Debug grid"),l.add(n,"pen").name("Show pen"),l.add(n,"reset").name("Reset simulation"),l.add(n,"colors",["grayscale","blackwhite","whiteblack","raw","timebasedblue","lerp","mrob","redblue","A_gradiant1","A_gradiant2","A_MATLAB_cool","A_IDL_CB_RdBu","A_IDL_CB_RdYiBu","A_IDL_CB_BuYiRd","A_transform_seismic","B_IDL_CB_RdYiBu"]).name("Color scheme");const P={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots",Empty:"empty"};l.add(n,"initialConditions",P).onFinishChange(n.reset).name("Initial conditions");const u=l.add(a,"iteration").listen();u.domElement.style.pointerEvents="none",l.add(n,"speed",1,200).name("Simulation speed").listen(),l.add(r,"penSize",0,a.worldSize).name("Pen size").listen(),l.add(r,"penDensity",0,1).name("Pen density"),l.add(r,"zoomLevel",0,1).name("Zoom level").listen(),l.add(r,"panX",0,1).name("pan x").listen(),l.add(r,"panY",0,1).name("pan y").listen()},y=c=>{if(c.code==="Space"){n.pause=!n.pause,c.preventDefault();return}if(c.code==="KeyR"&&!c.getModifierState("Control")){E(),c.preventDefault();return}};let C;const d=()=>{r.x=Math.random(),r.y=Math.random(),r.penSize=Math.random()*3,r.pressedLeft=!0,setTimeout(()=>r.pressedLeft=!1,500),C=setTimeout(d,Math.random()*5e3)},E=()=>{isNaN(a.worldSize)||(a.worldSize>11&&(a.worldSize=11),a.worldSize<1&&(a.worldSize=1),l&&(document.getElementById(l.domElement.id)?.remove(),l.destroy()),m?.destroy(),g(),m=Qo({controls:n,info:a,mouseState:r,simulationParameters:i}),C&&clearTimeout(C),d())},D=c=>{i.f=c.f,i.k=c.k,i.f>.03?n.speed=50:n.speed=2};pe(()=>{E()}),se(()=>{l.destroy(),m.destroy()});var T=tr();me("keydown",$e,y);var _=O(T);xo(_,{onfkupdated:D});var k=h(_,4),B=h(O(k),2);Le(B);var b=h(B,2),$=O(b);K(b),K(k);var I=h(k,2),s=Xe(()=>Ze(c=>c));K(T),ee(()=>{ae($,`(${2**a.worldSize} x ${2**a.worldSize} : ${2**(a.worldSize+1)})`),L(I,"width",e.width),L(I,"height",e.height)}),Y("change",B,E),Te(B,()=>a.worldSize,c=>a.worldSize=c),Y("contextmenu",I,function(...c){w(s)?.apply(this,c)}),V(t,T),re()}ue(["change","contextmenu"]);var or=U("<!> <!>",1),rr=U(`<p>Here is a list of the various iterations I have made before I got the final version of this
+`;let ct;const Jo=t=>{const o=e=>t.prop(e);ct=t({frag:Zo,vert:jo,attributes:{position:[[1,-1],[-1,-1],[1,1],[1,1],[-1,-1],[-1,1]]},count:6,framebuffer:o("outputBuffer"),uniforms:{mousePosition:o("mousePosition"),penRadius:o("penRadius"),zoomLevel:o("zoomLevel"),pan:o("pan"),prevState:o("inputBuffer")}})},Qo=t=>{const{inputBuffer:o,mouseState:e,outputBuffer:n,worldSize:r}=t;ct({inputBuffer:o,outputBuffer:n,mousePosition:[e.x,e.y],penRadius:1/2**(r-e.penSize),zoomLevel:e.zoomLevel,pan:[e.panX,e.panY]})},er=t=>{const{controls:o,info:e,mouseState:n,simulationParameters:r}=t,a=document.getElementById("canvas");if(!a)throw new Error("Canvas container not ready");const i=ye({extensions:["OES_texture_float"],canvas:a});e.iteration=0;const l=2**e.worldSize,m=Yo(o.initialConditions,l),g=()=>i.framebuffer({color:i.texture({radius:l,data:m,wrap:"repeat",type:"float"}),depthStencil:!1}),y=Array(2).fill(0).map(g),C=Array(2).fill(0).map(g);return Ko(i,l),Po(i),Xo(i),Jo(i),i.frame(()=>{o.pause||e.iteration++;let d=y[(e.iteration+1)%2];for(let E=0;E<o.speed;E++){e.iteration++;const D=y[e.iteration%2];d=y[(e.iteration+1)%2],Ho({inputBuffer:D,outputBuffer:d,worldSize:e.worldSize,pauseSimulation:o.pause,mouseState:n,simulationParameters:r})}tr({inputTexture:d,graphicsTextures:C,controls:o,info:e,mouseState:n})}),i},tr=t=>{const{inputTexture:o,graphicsTextures:e,controls:n,info:r,mouseState:a}=t;let i=0;i++;const l=o;let m=e[i%2];if(!n.grid&&!n.pen&&(m=null),Io({colorMode:n.colors,inputBuffer:l,iteration:r.iteration,outputBuffer:m,zoomState:a}),n.grid){i++;const g=e[(i+1)%2];let y=e[i%2];n.pen||(y=null),No({inputBuffer:g,outputBuffer:y,zoomState:a})}if(n.pen){i++;const g=e[(i+1)%2];Qo({mouseState:a,worldSize:r.worldSize,inputBuffer:g,outputBuffer:null})}};var nr=U('<main><!> <div id="datgui-container" class="svelte-xb68ub"></div> <div><label for="worldSize">World Size:</label> <input id="worldSize" type="number" step="1"/> <span> </span></div> <canvas id="canvas" class="svelte-xb68ub"></canvas></main>');function or(t,o){oe(o,!0);const e={width:Math.min(window.innerWidth,window.innerHeight)*.9,height:Math.min(window.innerWidth,window.innerHeight)*.9},n={colors:"A_transform_seismic",initialConditions:"middleCircleAndRandomSpots",reset:()=>E(),pause:!1,grid:!1,pen:!1,speed:50},r={pressedLeft:!1,pressedRight:!1,x:0,y:0,penSize:3,penDensity:.3,zoomLevel:1,panX:.5,panY:.5},a=pe({iteration:0,worldSize:8}),i={f:Be[0].f,k:Be[0].k};let l,m;const g=async()=>{const c=await he(()=>import("../chunks/QkjeJdyK.js"),[],import.meta.url);l=new c.GUI({autoPlace:!1,closeOnTop:!0}),l.domElement.id="datgui";const p=document.getElementById("datgui-container");if(!p)throw new Error("Gui container not ready");p.appendChild(l.domElement),l.add(n,"pause").name("Pause"),l.add(n,"grid").name("Debug grid"),l.add(n,"pen").name("Show pen"),l.add(n,"reset").name("Reset simulation"),l.add(n,"colors",["grayscale","blackwhite","whiteblack","raw","timebasedblue","lerp","mrob","redblue","A_gradiant1","A_gradiant2","A_MATLAB_cool","A_IDL_CB_RdBu","A_IDL_CB_RdYiBu","A_IDL_CB_BuYiRd","A_transform_seismic","B_IDL_CB_RdYiBu"]).name("Color scheme");const P={"Random spots":"randomSpots","Middle spot":"middleSpot","Middle + random":"middleCircleAndRandomSpots",Empty:"empty"};l.add(n,"initialConditions",P).onFinishChange(n.reset).name("Initial conditions");const u=l.add(a,"iteration").listen();u.domElement.style.pointerEvents="none",l.add(n,"speed",1,200).name("Simulation speed").listen(),l.add(r,"penSize",0,a.worldSize).name("Pen size").listen(),l.add(r,"penDensity",0,1).name("Pen density"),l.add(r,"zoomLevel",0,1).name("Zoom level").listen(),l.add(r,"panX",0,1).name("pan x").listen(),l.add(r,"panY",0,1).name("pan y").listen()},y=c=>{if(c.code==="Space"){n.pause=!n.pause,c.preventDefault();return}if(c.code==="KeyR"&&!c.getModifierState("Control")){E(),c.preventDefault();return}};let C;const d=()=>{r.x=Math.random(),r.y=Math.random(),r.penSize=Math.random()*3,r.pressedLeft=!0,setTimeout(()=>r.pressedLeft=!1,500),C=setTimeout(d,Math.random()*5e3)},E=()=>{isNaN(a.worldSize)||(a.worldSize>11&&(a.worldSize=11),a.worldSize<1&&(a.worldSize=1),l&&(document.getElementById(l.domElement.id)?.remove(),l.destroy()),m?.destroy(),g(),m=er({controls:n,info:a,mouseState:r,simulationParameters:i}),C&&clearTimeout(C),d())},D=c=>{i.f=c.f,i.k=c.k,i.f>.03?n.speed=50:n.speed=2};me(()=>{E()}),se(()=>{l.destroy(),m.destroy()});var T=nr();de("keydown",$e,y);var _=O(T);ho(_,{onfkupdated:D});var k=h(_,4),B=h(O(k),2);Le(B);var b=h(B,2),$=O(b);K(b),K(k);var I=h(k,2),s=Xe(()=>Ze(c=>c));K(T),ee(()=>{ae($,`(${2**a.worldSize} x ${2**a.worldSize} : ${2**(a.worldSize+1)})`),L(I,"width",e.width),L(I,"height",e.height)}),Y("change",B,E),Te(B,()=>a.worldSize,c=>a.worldSize=c),Y("contextmenu",I,function(...c){w(s)?.apply(this,c)}),V(t,T),re()}ue(["change","contextmenu"]);var rr=U("<!> <!>",1),ar=U(`<p>Here is a list of the various iterations I have made before I got the final version of this
     project.</p> <div class="warning"><p>Some of the previous versions have a bug and the code is not cleaned up properly when the
         page unload. Which make that when navigating between different versions it is possible to
         end up in a state where several simulation are running in parallel.</p> <p>To avoid this kind of issues make sure the refresh the page each time you select a new
-        version</p></div> <div><!></div>`,1);function ar(t){const o=[{title:"Auto visualizer",component:nr},{title:"V7",component:fo},{title:"Parameters map",component:ot},{title:"V6",component:wn},{title:"V5",component:dn},{title:"V4",component:sn},{title:"V3",component:an},{title:"V2",component:Z0},{title:"V1",component:G0}];var e=rr(),n=h(ce(e),4),r=O(n);Ne(r,{children:(a,i)=>{var l=or(),m=ce(l);je(m,{children:(y,C)=>{var d=ut(),E=ce(d);Ce(E,1,()=>o,ze,(D,T)=>{we(D,{children:(_,k)=>{ve();var B=be();ee(()=>ae(B,w(T).title)),V(_,B)},$$slots:{default:!0}})}),V(y,d)},$$slots:{default:!0}});var g=h(m,2);Ce(g,1,()=>o,ze,(y,C)=>{_e(y,{children:(d,E)=>{w(C).component(d,{})},$$slots:{default:!0}})}),V(a,l)},$$slots:{default:!0}}),K(n),V(t,e)}var ir=U("<!> <!> <!> <!> <!>",1),lr=U("<!> <!> <!> <!> <!> <!>",1),sr=U("<div><!></div>");function cr(t){var o=sr(),e=O(o);Ne(e,{children:(n,r)=>{var a=lr(),i=ce(a);je(i,{children:(d,E)=>{var D=ir(),T=ce(D);we(T,{children:($,I)=>{ve();var s=be("About");V($,s)},$$slots:{default:!0}});var _=h(T,2);we(_,{children:($,I)=>{ve();var s=be("Manual");V($,s)},$$slots:{default:!0}});var k=h(_,2);we(k,{children:($,I)=>{ve();var s=be("Auto");V($,s)},$$slots:{default:!0}});var B=h(k,2);we(B,{children:($,I)=>{ve();var s=be("Parameters map");V($,s)},$$slots:{default:!0}});var b=h(B,2);we(b,{children:($,I)=>{ve();var s=be("Previous versions");V($,s)},$$slots:{default:!0}}),V(d,D)},$$slots:{default:!0}});var l=h(i,2);_e(l,{children:(d,E)=>{dt(d)},$$slots:{default:!0}});var m=h(l,2);_e(m,{children:(d,E)=>{s0(d,{})},$$slots:{default:!0}});var g=h(m,2);_e(g,{children:(d,E)=>{n0(d,{})},$$slots:{default:!0}});var y=h(g,2);_e(y,{children:(d,E)=>{ot(d,{})},$$slots:{default:!0}});var C=h(y,2);_e(C,{children:(d,E)=>{ar(d)},$$slots:{default:!0}}),V(n,a)},$$slots:{default:!0}}),K(o),V(t,o)}function ur(t){cr(t)}function Br(t,o){oe(o,!1),ft.set({name:"Reaction-Diffusion"}),xe(),ur(t),re()}export{Br as component};
+        version</p></div> <div><!></div>`,1);function ir(t){const o=[{title:"Auto visualizer",component:or},{title:"V7",component:mo},{title:"Parameters map",component:ot},{title:"V6",component:_n},{title:"V5",component:pn},{title:"V4",component:cn},{title:"V3",component:ln},{title:"V2",component:J0},{title:"V1",component:O0}];var e=ar(),n=h(ce(e),4),r=O(n);Ne(r,{children:(a,i)=>{var l=rr(),m=ce(l);je(m,{children:(y,C)=>{var d=ut(),E=ce(d);Ce(E,1,()=>o,ze,(D,T)=>{we(D,{children:(_,k)=>{ve();var B=be();ee(()=>ae(B,w(T).title)),V(_,B)},$$slots:{default:!0}})}),V(y,d)},$$slots:{default:!0}});var g=h(m,2);Ce(g,1,()=>o,ze,(y,C)=>{_e(y,{children:(d,E)=>{w(C).component(d,{})},$$slots:{default:!0}})}),V(a,l)},$$slots:{default:!0}}),K(n),V(t,e)}var lr=U("<!> <!> <!> <!> <!>",1),sr=U("<!> <!> <!> <!> <!> <!>",1),cr=U("<div><!></div>");function ur(t){var o=cr(),e=O(o);Ne(e,{children:(n,r)=>{var a=sr(),i=ce(a);je(i,{children:(d,E)=>{var D=lr(),T=ce(D);we(T,{children:($,I)=>{ve();var s=be("About");V($,s)},$$slots:{default:!0}});var _=h(T,2);we(_,{children:($,I)=>{ve();var s=be("Manual");V($,s)},$$slots:{default:!0}});var k=h(_,2);we(k,{children:($,I)=>{ve();var s=be("Auto");V($,s)},$$slots:{default:!0}});var B=h(k,2);we(B,{children:($,I)=>{ve();var s=be("Parameters map");V($,s)},$$slots:{default:!0}});var b=h(B,2);we(b,{children:($,I)=>{ve();var s=be("Previous versions");V($,s)},$$slots:{default:!0}}),V(d,D)},$$slots:{default:!0}});var l=h(i,2);_e(l,{children:(d,E)=>{pt(d)},$$slots:{default:!0}});var m=h(l,2);_e(m,{children:(d,E)=>{c0(d,{})},$$slots:{default:!0}});var g=h(m,2);_e(g,{children:(d,E)=>{o0(d,{})},$$slots:{default:!0}});var y=h(g,2);_e(y,{children:(d,E)=>{ot(d,{})},$$slots:{default:!0}});var C=h(y,2);_e(C,{children:(d,E)=>{ir(d)},$$slots:{default:!0}}),V(n,a)},$$slots:{default:!0}}),K(o),V(t,o)}function fr(t){ur(t)}function zr(t,o){oe(o,!1),ft.set({name:"Reaction-Diffusion"}),me(()=>{mt("/reaction-diffusion")}),xe(),fr(t),re()}export{zr as component};

@@ -1,1 +1,0 @@
-import"../chunks/D-vNQCDt.js";import{i as a}from"../chunks/KznZQxDT.js";import{p as i,a as e}from"../chunks/CDdjPMoP.js";import{I as p}from"../chunks/C2raUJG2.js";import{p as r}from"../chunks/DXuvaJaW.js";function c(t,o){i(o,!1),r.set({name:"Particle Life - Infinite"}),a(),p(t,{disableStoryButton:!0}),e()}export{c as component};
