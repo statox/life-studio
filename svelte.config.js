@@ -23,6 +23,9 @@ const config = {
         }),
         paths: {
             base
+        },
+        alias: {
+            $vendor: 'src/vendor'
         }
     }
 };

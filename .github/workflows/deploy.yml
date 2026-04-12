@@ -48,6 +48,8 @@ jobs:
                   npm run build
               env:
                   ENV: prod
+                  PUBLIC_API_URL: ${{ vars.PUBLIC_API_URL }}
+                  PUBLIC_WEB_STATS_API_KEY: ${{ secrets.PUBLIC_WEB_STATS_API_KEY }}
 
             - name: Deploy to GitHub Pages
               uses: JamesIves/github-pages-deploy-action@v4
