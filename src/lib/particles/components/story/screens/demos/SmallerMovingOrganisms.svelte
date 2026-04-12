@@ -84,13 +84,7 @@
 
 <div class="screen">
     <h2>Smaller Moving Organisms</h2>
-    {#if sectionIndex === 0}
-        <p>
-            If we create smaller worlds we can better observe how these small moving organisms form.
-        </p>
-    {:else}
-        <p><b>{presets[sectionIndex]?.name}</b></p>
-    {/if}
+    <p>If we create smaller worlds we can better observe how these small moving organisms form.</p>
     <div class="section-btns">
         <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
     </div>

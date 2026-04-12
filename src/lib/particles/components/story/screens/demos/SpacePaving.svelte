@@ -23,7 +23,7 @@
     const presets = [
         getUniverseById('crystal'),
         getUniverseById('crystal_stripes'),
-        getUniverseById('faction_civil_war'),
+        getUniverseById('reaction_diffusion'),
         getUniverseById('spatial_repartition')
     ];
 
@@ -105,7 +105,7 @@
         </p>
     {:else if sectionIndex === 2}
         <p>
-            <b>Faction civil war</b> adds a lot of order. <span class="cb">Blue</span> and
+            This attraction table adds a lot of order. <span class="cb">Blue</span> and
             <span class="cg">Green</span> pack together, so do <span class="cw">White</span> and
             <span class="cr">Red</span>, but both clans repel each other creating very organic
             patterns.

@@ -20,10 +20,7 @@
 
     let { simulationComponent, onNextScreen, onPrevScreen, onSectionChange }: Props = $props();
 
-    const presets = [
-        getUniverseById('4_colors_worms_single_stage'),
-        getUniverseById('blue_islands')
-    ];
+    const presets = [getUniverseById('4_colors_worms_single_stage')];
 
     const SECTION_COUNT = presets.length;
     let sectionIndex = $state(0);
@@ -84,13 +81,7 @@
 
 <div class="screen">
     <h2>Dynamic worlds — Attraction</h2>
-    {#if sectionIndex === 0}
-        <p>
-            When we add back attraction we can see more structure emerging in the middle of chaos.
-        </p>
-    {:else}
-        <p><b>{presets[sectionIndex]?.name}</b></p>
-    {/if}
+    <p>When we add back attraction we can see more structure emerging in the middle of chaos.</p>
     <div class="section-btns">
         <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
     </div>

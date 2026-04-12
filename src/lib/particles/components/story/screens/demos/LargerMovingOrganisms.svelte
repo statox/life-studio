@@ -87,15 +87,11 @@
 
 <div class="screen">
     <h2>Larger Moving Organisms</h2>
-    {#if sectionIndex === 0}
-        <p>Our universes can also create larger and more complex moving structures.</p>
-        <p>
-            Some are chaotic and their dynamics are not always easy to understand, while others are
-            much more structured.
-        </p>
-    {:else}
-        <p><b>{presets[sectionIndex]?.name}</b></p>
-    {/if}
+    <p>Our universes can also create larger and more complex moving structures.</p>
+    <p>
+        Some are chaotic and their dynamics are not always easy to understand, while others are much
+        more structured.
+    </p>
     <div class="section-btns">
         <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
     </div>

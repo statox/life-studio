@@ -84,15 +84,11 @@
 
 <div class="screen">
     <h2>Merging Moving Organisms</h2>
-    {#if sectionIndex === 0}
-        <p>
-            When we remove free-floating species we find small and dense moving organisms which
-            wander across the universe and merge with other organisms they meet.
-        </p>
-        <p>They take various forms reminiscent of small living organisms moving in a Petri dish.</p>
-    {:else}
-        <p><b>{presets[sectionIndex]?.name}</b></p>
-    {/if}
+    <p>
+        When we remove free-floating species we find small and dense moving organisms which wander
+        across the universe and merge with other organisms they meet.
+    </p>
+    <p>They take various forms reminiscent of small living organisms moving in a Petri dish.</p>
     <div class="section-btns">
         <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
     </div>

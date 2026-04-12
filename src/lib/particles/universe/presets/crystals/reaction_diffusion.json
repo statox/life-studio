@@ -1,5 +1,5 @@
 {
-    "name": "Faction civil war",
+    "name": "Reaction diffusion",
     "aiGenerated": true,
     "description": "Two factions (white+red vs green+blue) that strongly repel each other across faction lines, creating stable territorial boundaries. Within each faction there is a predator-prey chase: white hunts red and green hunts blue. The faction walls act as mirrors — each territory runs its own independent wave dynamics, with the inter-faction boundary preventing the two chases from ever directly interfering.",
     "preferredInitialConfig": "uniform",
@@ -46,7 +46,7 @@
     "horizontalResolution": 30,
     "verticalResolution": 20,
     "friction": 0.5,
-    "id": "faction_civil_war",
+    "id": "reaction_diffusion",
     "category": "crystals",
     "createdAt": "2026-03-30"
 }

@@ -25,8 +25,7 @@
         getUniverseById('3_colors_stable_islands'),
         getUniverseById('complex_islands'),
         getUniverseById('complex_islands2'),
-        getUniverseById('merging_circular_structures'),
-        getUniverseById('three_layer_onion')
+        getUniverseById('merging_circular_structures')
     ];
 
     const SECTION_COUNT = presets.length;
@@ -124,15 +123,6 @@
         <div style="max-width: 200px;">
             <Media path="/particles-life/story_clusters/merging_circular_structures_2.gif" />
         </div>
-    {:else if sectionIndex === 4}
-        <p>
-            And complexity can keep increasing like in <b>Merging circular structures</b> where some
-            clusters tend to form a triangular <span class="cg">Green</span>-<span class="cb"
-                >Blue</span
-            >
-            core surrounded by a circle of alternating <span class="cr">Red</span> and
-            <span class="cw">White</span> strips.
-        </p>
     {:else}
         <p><b>{presets[sectionIndex]?.name}</b></p>
     {/if}
