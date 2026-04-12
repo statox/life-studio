@@ -10,6 +10,7 @@
     import { getUniverseById } from '$lib/particles/universe';
     import type { InitialConfig } from '$lib/particles/universe';
     import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
+    import { Media } from '$lib/components/Media';
 
     interface Props {
         simulationComponent: Simulation;
@@ -87,7 +88,14 @@
             things begin to move much faster. Clusters are much more dynamic and don't stabilize as
             well as before. And when the right species meet their speed can get pretty high!
         </p>
-    {:else}
+        <div style="max-width: 200px;">
+            <Media path="/particles-life/story_fast_moving_objects/fast_movers.gif" />
+        </div>
+    {:else if sectionIndex === 1}
+        <p>
+            This last preset creates a high energy universe where structures don't have enough bound
+            to stick together more than a few seconds.
+        </p>
         <p><b>{presets[sectionIndex]?.name}</b></p>
     {/if}
     <div class="section-btns">
