@@ -26,19 +26,17 @@
         them!
     </p>
     <p>
-        I created several tools to explore this simulation. You can check out the
+        I created several tools to explore this simulation. If you havent already checked out the <a
+            href="{base}/particles-life/infinie">Infinite universes</a
+        >
+        page you should do it, it shows random universes and it's a good way to discover many different
+        patterns. Then you should try the
 
         <a href="{base}/particles-life/playground">Playground</a>
 
         to find all the interesting universes I have compiled and interact with them. The
-        <a href="{base}/particles-life/demo">Demonstration</a> introduces the settings with more
-        details and allows you to see their effects on different universes (This is still a work in
-        progress). You can also check the readonly
-
-        <a href="{base}/particles-life/gallery">Gallery</a> and my
-        <a href="{base}/particles-life/workbench">Workbench</a>
-
-        that I use to find new interesting universes.
+        <a href="{base}/particles-life/demo">Demonstration</a> introduces the settings with more details
+        and allows you to see their effects on different universes (This is still a work in progress).
     </p>
     <p>You can find all of these tools <a href="{base}/particles-life">on this page</a>.</p>
     <p>

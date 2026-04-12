@@ -109,19 +109,19 @@
             <button class="close-btn" onclick={() => (showInfo = false)}>✕</button>
             <div class="info-content">
                 <p>
-                    This page generates new universes every few seconds. Try to count how many
-                    different patterns you can recognize.
+                    This page generates new universes every few seconds. Try looking at a few
+                    interations and count how many different organisms you can see.
                 </p>
                 <p>
-                    Once you are done <a href="{base}/particles-life/story"
+                    After that you should <a href="{base}/particles-life/story"
                         >read the interactive story →</a
                     >
                 </p>
                 <br />
                 <p style="font-size: small">
                     <em
-                        >You can reopen this window by clicking the button at the bottom of the
-                        screen</em
+                        >You can close this window now and reopen it later by clicking the button at
+                        the bottom of the screen</em
                     >
                 </p>
             </div>

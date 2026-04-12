@@ -23,8 +23,7 @@
     const presets = [
         getUniverseById('4_colors_waves'),
         getUniverseById('rock_paper_scissors'),
-        getUniverseById('competing_predators'),
-        getUniverseById('infinite_moving_mass')
+        getUniverseById('competing_predators')
     ];
 
     const SECTION_COUNT = presets.length;
