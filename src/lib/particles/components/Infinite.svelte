@@ -99,8 +99,6 @@
     }
 
     let { disableStoryButton = false, onStoryClick }: Props = $props();
-
-
 </script>
 
 <div class="infinite-wrap">
