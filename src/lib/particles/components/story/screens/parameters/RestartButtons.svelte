@@ -4,7 +4,6 @@
     import type { InitialConfig } from '$lib/particles/universe';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
-    import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
 
     interface Props {
@@ -70,7 +69,7 @@
 </script>
 
 <div class="screen">
-    <h2>Restart Buttons</h2>
+    <h2>Meet <span class="cw">White</span></h2>
     {#if sectionIndex === 0}
         <p>Let's add a few particles.</p>
         <p>

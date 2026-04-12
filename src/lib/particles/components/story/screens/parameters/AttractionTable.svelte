@@ -104,8 +104,12 @@
         <p>
             Now <span class="cr">Red</span> is attracted to
             <span class="cw">White</span>. Since <span class="cw">White</span>
-            is still repulsed by <span class="cr">Red</span>, an infinite chase takes place.
+            is still repulsed by <span class="cr">Red</span>, in the right conditions we create a
+            moving structure.
         </p>
+        <div class="illustration">
+            <Media path="/particles-life/story_attraction_table/mover.gif" />
+        </div>
     {:else}
         <p>
             Even with only two species, the number of possible attraction tables is enormous.

@@ -78,8 +78,10 @@
     {#if sectionIndex === 0}
         <p>
             The last parameter we can control is the size of our universe. Here we keep the same
-            amount of particles but vary the size of the "box" they live in.
+            amount of particles but vary the size of the "box" they live in. To demonstrate that we
+            now use 4 species and a new attraction table.
         </p>
+        <AttractionTableComponent attractionTable={preset.attractionTable} readonly compact />
         <p>
             In a <b>Medium</b> sized world we observe the base behavior: Each color is attracted to the
             next one which creates moving worm-like structures. Sometimes the worm eats its own tail.
@@ -100,5 +102,4 @@
     <div class="section-btns">
         <ScreenBtn onclick={() => loadSize(sectionIndex)}>Restart</ScreenBtn>
     </div>
-    <AttractionTableComponent attractionTable={preset.attractionTable} readonly compact />
 </div>

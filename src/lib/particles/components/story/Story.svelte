@@ -366,6 +366,7 @@
     }
 
     .home-btn {
+        position: absolute;
         left: 16px;
         display: flex;
         align-items: center;

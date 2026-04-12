@@ -90,7 +90,7 @@
         <p>
             At <b>{frictionPresets[2]}</b> we crossed a threshold where friction is no longer keeping
             the attraction forces in check. The particles keep bouncing into each other in a structure
-            which could start looking like something organic.
+            which make me think of electrons around an atom (in a very physically inaccurate way)
         </p>
     {:else if sectionIndex === 3}
         <p>
@@ -101,6 +101,11 @@
         <p>
             Using the slider, can you find the lowest friction which stabilizes the universe in less
             than 10 seconds?
+        </p>
+        <p>
+            One question I'd like to answer is: Is it possible to prove mathematically that there is
+            a minimum friction value which always allow the universe to become stable? I don't have
+            an answer for now...
         </p>
     {/if}
     <div class="section-btns">
