@@ -92,10 +92,8 @@
         Some are chaotic and their dynamics are not always easy to understand, while others are much
         more structured.
     </p>
-    <div class="section-btns">
-        <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
-    </div>
     <div class="spread-btns">
+        <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
         <UniformSpreadButton onClick={() => reSpread('uniform')} />
         <CenteredCircleButton onClick={() => reSpread('center')} />
         <RainbowButton onClick={() => reSpread('rainbow')} />

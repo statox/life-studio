@@ -82,10 +82,8 @@
 <div class="screen">
     <h2>Dynamic worlds — Attraction</h2>
     <p>When we add back attraction we can see more structure emerging in the middle of chaos.</p>
-    <div class="section-btns">
-        <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
-    </div>
     <div class="spread-btns">
+        <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
         <UniformSpreadButton onClick={() => reSpread('uniform')} />
         <CenteredCircleButton onClick={() => reSpread('center')} />
         <RainbowButton onClick={() => reSpread('rainbow')} />

@@ -98,10 +98,8 @@
         </p>
         <p><b>{presets[sectionIndex]?.name}</b></p>
     {/if}
-    <div class="section-btns">
-        <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
-    </div>
     <div class="spread-btns">
+        <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
         <UniformSpreadButton onClick={() => reSpread('uniform')} />
         <CenteredCircleButton onClick={() => reSpread('center')} />
         <RainbowButton onClick={() => reSpread('rainbow')} />

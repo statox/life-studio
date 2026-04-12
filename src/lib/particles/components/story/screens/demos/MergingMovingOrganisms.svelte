@@ -89,10 +89,8 @@
         across the universe and merge with other organisms they meet.
     </p>
     <p>They take various forms reminiscent of small living organisms moving in a Petri dish.</p>
-    <div class="section-btns">
-        <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
-    </div>
     <div class="spread-btns">
+        <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
         <UniformSpreadButton onClick={() => reSpread('uniform')} />
         <CenteredCircleButton onClick={() => reSpread('center')} />
         <RainbowButton onClick={() => reSpread('rainbow')} />

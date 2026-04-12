@@ -1,11 +1,11 @@
 <script lang="ts">
     import { untrack } from 'svelte';
 
-    import RainbowButton from '$lib/particles/components/buttons/RainbowButton.svelte';
     import { generateSimulationParams } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { getUniverseById } from '$lib/particles/universe';
     import AttractionTableComponent from '$lib/particles/components/AttractionTableComponent.svelte';
+    import ScreenBtn from '../ScreenBtn.svelte';
 
     interface Props {
         simulationComponent: Simulation;
@@ -48,7 +48,7 @@
         <span class="cr">Red</span> will hold?
     </p>
     <div class="section-btns">
-        <RainbowButton onClick={startScreen} />
+        <ScreenBtn onclick={startScreen}>Restart</ScreenBtn>
     </div>
     <AttractionTableComponent attractionTable={preset.attractionTable} readonly compact />
 </div>
