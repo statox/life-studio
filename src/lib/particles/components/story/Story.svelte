@@ -242,8 +242,9 @@
     .page:not(.with-simulation) .narrative {
         height: auto;
         flex: 1;
+        overflow-y: auto;
         display: flex;
-        align-items: center;
+        align-items: safe center;
         justify-content: center;
         border-bottom: none;
         padding: 24px;

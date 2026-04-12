@@ -26,11 +26,11 @@
         them!
     </p>
     <p>
-        I created several tools to explore this simulation. If you havent already checked out the <a
-            href="{base}/particles-life/infinie">Infinite universes</a
+        I created several tools to explore this simulation. <b
+            >Start with the <a href="{base}/particles-life/infinie">Infinite universes</a></b
         >
-        page you should do it, it shows random universes and it's a good way to discover many different
-        patterns. Then you should try the
+        it shows random universes and it's a good way to discover many different patterns. Then you should
+        try the
 
         <a href="{base}/particles-life/playground">Playground</a>
 
@@ -40,8 +40,8 @@
     </p>
     <p>You can find all of these tools <a href="{base}/particles-life">on this page</a>.</p>
     <p>
-        I hope this short demo made you want to learn more about these mini universes creating
-        moving patterns born ouf of your processor.
+        I hope this short demo made you want to learn more about Particles Life and its mini
+        universes which create moving patterns born in your CPU.
     </p>
     <p>
         I enjoy spending time tweaking the parameters of these universes until I see something
