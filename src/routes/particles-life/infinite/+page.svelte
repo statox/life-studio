@@ -5,4 +5,4 @@
     pageMetadataStore.set({ name: 'Particle Life - Infinite' });
 </script>
 
-<Infinite />
+<Infinite disableStoryButton={true} />

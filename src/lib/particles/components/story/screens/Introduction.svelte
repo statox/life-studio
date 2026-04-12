@@ -20,16 +20,30 @@
 </script>
 
 <div class="screen">
-    <h1>Particle Life</h1>
-    <p>
-        Together we are going to create small universes running in your browser. Let me guide you
-        through that.
-    </p>
-    <p>Click the "Next" (→) button at the bottom of each page.</p>
+    <h1>Welcome to Particle Life</h1>
+    <p>Let me show you how this simulation works.</p>
     <br />
     <p>
-        If you haven't already, you should check out <a href={base + '/particles-life/infinite'}
-            >this page</a
-        >.
+        <em>Click the "</em>
+        <i class="nav-label-full">Next</i>
+        <i class="nav-label-short">→</i>
+        <em>" button at the bottom of the page.</em>
     </p>
 </div>
+
+<style>
+    .nav-label-short {
+        display: none;
+    }
+
+    @media (max-width: 480px) {
+        .nav-label-full {
+            display: none;
+        }
+
+        .nav-label-short {
+            display: inline;
+            font-size: 1.1rem;
+        }
+    }
+</style>

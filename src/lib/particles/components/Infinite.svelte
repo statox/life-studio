@@ -3,7 +3,6 @@
 
     import Simulation from '$lib/particles/components/Simulation.svelte';
     import { getRandomAttractionTable } from '$lib/particles/attraction';
-    import { base } from '$app/paths';
     import { getNewCells, largeCenterCellsInPlace } from '$lib/particles/engine/cells';
     import type { SimulationParams } from '../engine';
 
@@ -94,42 +93,23 @@
         clearTimeout(updateTimer);
     });
 
-    let showInfo = $state(true);
+    interface Props {
+        disableStoryButton?: boolean;
+        onStoryClick?: () => void;
+    }
+
+    let { disableStoryButton = false, onStoryClick }: Props = $props();
+
+
 </script>
 
 <div class="infinite-wrap">
     <Simulation bind:this={simulationComponent} fillContainer hideTimeline={true} />
 </div>
 
-{#if showInfo}
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div class="overlay" onclick={() => (showInfo = false)}>
-        <div class="info-frame" onclick={(e) => e.stopPropagation()}>
-            <button class="close-btn" onclick={() => (showInfo = false)}>✕</button>
-            <div class="info-content">
-                <p>
-                    This page generates new universes every few seconds. Try looking at a few
-                    interations and count how many different organisms you can see.
-                </p>
-                <p>
-                    After that you should <a href="{base}/particles-life/story"
-                        >read the interactive story →</a
-                    >
-                </p>
-                <br />
-                <p style="font-size: small">
-                    <em
-                        >You can close this window now and reopen it later by clicking the button at
-                        the bottom of the screen</em
-                    >
-                </p>
-            </div>
-        </div>
-    </div>
+{#if !disableStoryButton}
+    <button class="story-btn" onclick={onStoryClick}>Read the story</button>
 {/if}
-
-<button class="reopen-btn" class:hidden={showInfo} onclick={() => (showInfo = true)}>🛈</button>
 
 <style>
     .infinite-wrap {
@@ -155,84 +135,33 @@
         aspect-ratio: unset !important;
     }
 
-    /* ── Info overlay ─────────────────────── */
-    .overlay {
+    /* ── Story button ─────────────────────── */
+    .story-btn {
         position: fixed;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         z-index: 10;
-        background: rgba(0, 0, 0, 0.45);
-        backdrop-filter: blur(3px);
-    }
-
-    .info-frame {
-        position: relative;
-        background: #1a2327ee;
-        border: 1px solid #37474f;
-        border-radius: 10px;
-        padding: 32px 36px;
-        max-width: 480px;
-        width: calc(100% - 40px);
-        color: #cfd8dc;
-        font-size: 0.95rem;
-        line-height: 1.6;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-    }
-
-    .close-btn {
-        position: absolute;
-        top: 10px;
-        right: 12px;
-        background: none;
-        border: none;
-        color: #546e7a;
-        font-size: 1rem;
-        cursor: pointer;
-        line-height: 1;
-        padding: 4px 6px;
-    }
-
-    .close-btn:hover {
-        color: #cfd8dc;
-    }
-
-    .info-content a {
-        display: inline-block;
-        margin-top: 16px;
+        background: #1a2327dd;
+        border: 1px solid #546e7a;
+        border-radius: 8px;
         color: #c3e88d;
-        text-decoration: none;
-        font-size: 0.9rem;
-    }
-
-    .info-content a:hover {
-        text-decoration: underline;
-    }
-
-    /* ── Reopen button ────────────────────── */
-    .reopen-btn {
-        position: fixed;
-        bottom: 14px;
-        right: 14px;
-        z-index: 10;
-        background: #1a2327cc;
-        border: 1px solid #37474f;
-        border-radius: 6px;
-        color: #cfd8dc;
-        font-size: 1.1rem;
-        padding: 4px 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        padding: 10px 24px;
         cursor: pointer;
-        line-height: 1;
-        opacity: 0.7;
-        transition: opacity 0.15s;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+        transition:
+            background 0.15s,
+            border-color 0.15s,
+            color 0.15s;
     }
 
-    .reopen-btn:hover {
-        opacity: 1;
-    }
-
-    .reopen-btn.hidden {
-        display: none;
+    .story-btn:hover {
+        background: #2e3c43dd;
+        border-color: #c3e88d;
+        color: #eceff1;
     }
 </style>
