@@ -2,7 +2,7 @@
     import { base } from '$app/paths';
     import { pageMetadataStore } from '$lib/stores/pageMetadata';
 
-    pageMetadataStore.set({ name: 'Emergent behaviors' });
+    pageMetadataStore.set({ name: 'Life Studio' });
 </script>
 
 <div class="landing">
