@@ -12,19 +12,36 @@ const getOrCreateClientId = (): string => {
     return id;
 };
 
-export const recordNavigation = (path: string): void => {
+const record = (path: string, action: string): void => {
     const payload = {
         clientTimestamp: Math.floor(Date.now() / 1000),
         app: 'particles-life',
         path,
-        action: 'navigate',
+        action,
         clientId: getOrCreateClientId()
     };
 
     if (dev) {
-        console.log('[webStats] recordNavigation (dev mode, not sent)', payload);
+        console.log('[webStats] record (dev mode, not sent)', payload);
         return;
     }
 
-    apiClient.webStats.record(PUBLIC_WEB_STATS_API_KEY, payload).catch(() => {}); // fire-and-forget, ignore errors
+    apiClient.webStats.record(PUBLIC_WEB_STATS_API_KEY, payload).catch(() => {});
+};
+
+export const recordNavigation = (path: string): void => {
+    record(path, 'navigate');
+};
+
+// Tracks the current story position so interactions can be associated with it.
+let currentStoryPath = '/particles-life/story';
+
+export const recordStoryStep = (screenIndex: number, sectionIndex: number): void => {
+    currentStoryPath = `/particles-life/story/${screenIndex}/${sectionIndex}`;
+    record(currentStoryPath, 'story-step');
+};
+
+export const recordStoryInteraction = (action: string, value?: string | number): void => {
+    const fullAction = value !== undefined ? `${action}:${value}` : action;
+    record(currentStoryPath, fullAction);
 };

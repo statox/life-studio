@@ -28,6 +28,7 @@
     import type { Component } from 'svelte';
     import { base } from '$app/paths';
     import type { StoryScreenInstance } from './types';
+    import { recordStoryStep } from '$lib/api/webStats';
 
     type ScreenConfig = {
         component: Component<any, StoryScreenInstance>;
@@ -136,6 +137,10 @@
 
     const next = () => currentScreenComponent?.next();
     const prev = () => currentScreenComponent?.prev();
+
+    $effect(() => {
+        recordStoryStep(currentIndex, currentSectionIndex);
+    });
 </script>
 
 <div class="page" class:with-simulation={showSimulation}>

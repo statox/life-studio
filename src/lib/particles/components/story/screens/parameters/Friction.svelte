@@ -2,6 +2,7 @@
     import { untrack } from 'svelte';
 
     import ScreenBtn from '../ScreenBtn.svelte';
+    import { recordStoryInteraction } from '$lib/api/webStats';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
     import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
@@ -117,7 +118,11 @@
             id="friction-slider"
             type="range"
             bind:value={friction}
-            onchange={() => startSim(friction)}
+            onchange={(e) => {
+                const v = parseFloat(e.currentTarget.value);
+                recordStoryInteraction('story-friction-change', v.toFixed(2));
+                startSim(v);
+            }}
             min="0"
             max="1"
             step="0.01"

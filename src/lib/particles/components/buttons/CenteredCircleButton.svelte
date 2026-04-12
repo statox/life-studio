@@ -1,12 +1,19 @@
 <script lang="ts">
+    import { recordStoryInteraction } from '$lib/api/webStats';
+
     interface Props {
         onClick: () => void;
     }
 
     let { onClick }: Props = $props();
+
+    const handleClick = () => {
+        recordStoryInteraction('story-spread-center');
+        onClick();
+    };
 </script>
 
-<button class="spread-btn" onclick={onClick} title="Centered circle"
+<button class="spread-btn" onclick={handleClick} title="Centered circle"
     >◎<span class="spread-btn-text"> Centered circle</span></button
 >
 

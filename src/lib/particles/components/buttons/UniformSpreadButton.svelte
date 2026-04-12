@@ -1,12 +1,19 @@
 <script lang="ts">
+    import { recordStoryInteraction } from '$lib/api/webStats';
+
     interface Props {
         onClick: () => void;
     }
 
     let { onClick }: Props = $props();
+
+    const handleClick = () => {
+        recordStoryInteraction('story-spread-uniform');
+        onClick();
+    };
 </script>
 
-<button class="spread-btn" onclick={onClick} title="Uniform spread"
+<button class="spread-btn" onclick={handleClick} title="Uniform spread"
     >↺<span class="spread-btn-text"> Uniform spread</span></button
 >
 

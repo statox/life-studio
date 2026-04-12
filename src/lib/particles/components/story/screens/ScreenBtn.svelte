@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { HTMLButtonAttributes } from 'svelte/elements';
+    import { recordStoryInteraction } from '$lib/api/webStats';
 
     interface Props extends HTMLButtonAttributes {
         active?: boolean;
@@ -10,6 +11,7 @@
     let { active = false, children, onclick }: Props = $props();
 
     const handleClick = () => {
+        recordStoryInteraction('story-restart');
         if (onclick) {
             onclick();
         }

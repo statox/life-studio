@@ -1,12 +1,19 @@
 <script lang="ts">
+    import { recordStoryInteraction } from '$lib/api/webStats';
+
     interface Props {
         onClick: () => void;
     }
 
     let { onClick }: Props = $props();
+
+    const handleClick = () => {
+        recordStoryInteraction('story-spread-rainbow');
+        onClick();
+    };
 </script>
 
-<button class="spread-btn" onclick={onClick} title="Rainbow spread"
+<button class="spread-btn" onclick={handleClick} title="Rainbow spread"
     >≋<span class="spread-btn-text"> Rainbow</span></button
 >
 

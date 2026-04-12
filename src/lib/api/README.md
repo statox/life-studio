@@ -49,10 +49,10 @@ environment variables, which SvelteKit inlines at build time.
 
 In the GitHub repository go to **Settings → Secrets and variables → Actions** and add:
 
-| Type | Name | Value |
-|------|------|-------|
-| Variable | `PUBLIC_API_URL` | `https://api.statox.fr` |
-| Secret | `PUBLIC_WEB_STATS_API_KEY` | `<key>` |
+| Type     | Name                       | Value                   |
+| -------- | -------------------------- | ----------------------- |
+| Variable | `PUBLIC_API_URL`           | `https://api.statox.fr` |
+| Secret   | `PUBLIC_WEB_STATS_API_KEY` | `<key>`                 |
 
 The deploy workflow (`.github/workflows/deploy.yml`) then passes them to the build step:
 
