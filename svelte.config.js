@@ -1,4 +1,4 @@
-import adapter from 'svelte-adapter-github';
+import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 const prod = process.env.ENV === 'prod';
@@ -15,9 +15,7 @@ const config = {
             pages: 'docs',
             assets: 'docs',
             fallback: null,
-            precompress: false,
-            domain: '',
-            jekyll: false
+            precompress: false
         }),
         paths: {
             base

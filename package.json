@@ -14,7 +14,7 @@
     },
     "devDependencies": {
         "@rollup/plugin-node-resolve": "^15.0.1",
-        "@sveltejs/adapter-auto": "^3.0.0",
+        "@sveltejs/adapter-static": "^3.0.10",
         "@sveltejs/kit": "^2.5.27",
         "@sveltejs/vite-plugin-svelte": "^4.0.0",
         "@types/dat.gui": "^0.7.9",
@@ -35,7 +35,6 @@
         "prettier-plugin-svelte": "^3.2.6",
         "regl": "^2.1.0",
         "svelte": "^5.0.0",
-        "svelte-adapter-github": "^1.0.0-next.0",
         "svelte-check": "^4.0.0",
         "svelte-tabs": "^1.1.0",
         "ts-node": "^10.9.1",
