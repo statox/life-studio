@@ -51,6 +51,7 @@
         <img {src} alt={altText} loading={autoplay ? 'eager' : 'lazy'} />
     {/if}
     {#if hasCaption}
+        <!-- svelte-ignore a11y_figcaption_parent -->
         <figcaption>
             {#if showTitle && title}<span class="title">{title}</span>{/if}
             {#if showDescription && description}<span class="description">{description}</span>{/if}

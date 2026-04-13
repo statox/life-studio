@@ -101,7 +101,7 @@
         </div>
     {:else}
         <div class="field">
-            <label>Particles</label>
+            <span class="label">Particles</span>
             <span class="ro-value">{settings.nbParticles}</span>
             {#if !readonly}
                 <div class="preset-btns">
@@ -116,7 +116,7 @@
             {/if}
         </div>
         <div class="field">
-            <label>Grid</label>
+            <span class="label">Grid</span>
             <span class="ro-value"
                 >{settings.horizontalResolution}x{settings.verticalResolution}</span
             >
@@ -220,7 +220,8 @@
         margin-bottom: 0;
     }
 
-    .field label {
+    .field label,
+    .field .label {
         font-size: 0.8rem;
         color: #90a4ae;
         width: 55px;

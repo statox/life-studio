@@ -163,6 +163,8 @@
 
             <div
                 class="control-desc"
+                role="region"
+                aria-label="Restart Buttons"
                 onmouseenter={() => (hoveredControl = 'restart')}
                 onmouseleave={() => (hoveredControl = null)}
             >
@@ -178,6 +180,8 @@
 
             <div
                 class="control-desc"
+                role="region"
+                aria-label="The Attraction Table"
                 onmouseenter={() => (hoveredControl = 'attraction')}
                 onmouseleave={() => (hoveredControl = null)}
             >
@@ -197,6 +201,8 @@
 
             <div
                 class="control-desc"
+                role="region"
+                aria-label="Color Proportions"
                 onmouseenter={() => (hoveredControl = 'proportions')}
                 onmouseleave={() => (hoveredControl = null)}
             >
