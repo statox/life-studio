@@ -9,7 +9,15 @@ const prettier = require('eslint-config-prettier');
 /** @type {import('eslint').Linter.FlatConfig[]} */
 module.exports = [
     {
-        ignores: ['**/.svelte-kit/', '**/node_modules/', '**/build/', '**/*.cjs']
+        ignores: [
+            '**/.svelte-kit/',
+            '**/node_modules/',
+            '**/build/',
+            '**/*.cjs',
+            'src/**/*.d.ts',
+            'static/webglUtils.js',
+            'docs/'
+        ]
     },
     // TypeScript/JavaScript files
     {
