@@ -1,0 +1,112 @@
+# This workflow is used to run the checks when dependabot creates a PR and automatically
+# merge the PR.
+#
+# The build job is used as a Status Check for the PR.
+# The auto-merge-dependabot job approves and enables auto-merge once checks pass.
+
+name: AutoMerge Dependabot PRs
+
+on:
+    pull_request:
+        types: [opened, synchronize]
+        branches: [main]
+
+permissions:
+    # This is needed to approve the PR
+    pull-requests: write
+    # This is needed to merge the PR https://github.com/cli/cli/issues/6695#issuecomment-1348430969
+    contents: write
+
+jobs:
+    checks:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v6
+              with:
+                  ref: ${{ github.head_ref }}
+
+            - name: Cache node and npm
+              uses: actions/setup-node@v6
+              with:
+                  node-version: latest
+                  cache: 'npm'
+
+            - name: Cache node modules
+              id: cache-nodemodules
+              uses: actions/cache@v5
+              env:
+                  cache-name: cache-node-modules
+              with:
+                  path: node_modules
+                  key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-build-${{ env.cache-name }}-
+                      ${{ runner.os }}-build-
+                      ${{ runner.os }}-
+
+            - name: Install Dependencies
+              if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+              run: npm ci
+
+            - name: lint check
+              run: npm run lint
+
+            - name: svelte check
+              run: npm run check
+
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v6
+              with:
+                  ref: ${{ github.head_ref }}
+
+            - name: Cache node and npm
+              uses: actions/setup-node@v6
+              with:
+                  node-version: latest
+                  cache: 'npm'
+
+            - name: Cache node modules
+              id: cache-nodemodules
+              uses: actions/cache@v5
+              env:
+                  cache-name: cache-node-modules
+              with:
+                  path: node_modules
+                  key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-build-${{ env.cache-name }}-
+                      ${{ runner.os }}-build-
+                      ${{ runner.os }}-
+
+            - name: Install Dependencies
+              if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+              run: npm ci
+
+            - name: build
+              run: npm run build
+              env:
+                  PUBLIC_API_URL: ${{ vars.PUBLIC_API_URL }}
+                  # The api key is only used at runtime. Dependabot doesn't have access to repo secrets by default
+                  # So for this job we just set a dummy one
+                  PUBLIC_WEB_STATS_API_KEY: 'dummy'
+
+    auto-merge-dependabot:
+        needs: [checks, build]
+        runs-on: ubuntu-latest
+        if: github.actor == 'dependabot[bot]'
+        steps:
+            - name: Approve the PR
+              run: gh pr review --approve "$PR_URL"
+              env:
+                  PR_URL: ${{github.event.pull_request.html_url}}
+                  GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+            - name: Auto merge the PR
+              run: gh pr merge --rebase --auto "$PR_URL"
+              env:
+                  PR_URL: ${{github.event.pull_request.html_url}}
+                  GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
