@@ -1,14 +1,8 @@
 <script lang="ts">
     import { untrack } from 'svelte';
 
-    import ScreenBtn from '../ScreenBtn.svelte';
     import { getZeroedAttractionTable } from '$lib/particles/attraction';
-    import {
-        COLORS,
-        generateSimulationParams,
-        PARTICLE_COLORS,
-        type SimulationConfig
-    } from '$lib/particles/engine';
+    import { generateSimulationParams, type SimulationConfig } from '$lib/particles/engine';
     import type Simulation from '$lib/particles/components/Simulation.svelte';
 
     interface Props {

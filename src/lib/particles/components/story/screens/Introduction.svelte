@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { base } from '$app/paths';
-
     interface Props {
         simulationComponent?: unknown;
         onNextScreen?: () => void;
