@@ -23,7 +23,7 @@
         "@typescript-eslint/parser": "^5.45.0",
         "ajv": "^8.18.0",
         "dat.gui": "^0.7.9",
-        "eslint": "^8.57.1",
+        "eslint": "^10.2.0",
         "eslint-config-prettier": "^9.1.2",
         "eslint-plugin-svelte": "^3.17.0",
         "json-schema-to-ts": "^3.1.1",
