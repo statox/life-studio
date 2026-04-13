@@ -1,0 +1,1 @@
+export const env={"PUBLIC_WEB_STATS_API_KEY":"aJjcQxQRpom8b95pnefdnTLJ6Kof4ontxTzeDYBGJhPjMmEkCyzCoLFRgektggbdKscniYapgoMPeCLF","PUBLIC_API_URL":"https://api.statox.fr"}
