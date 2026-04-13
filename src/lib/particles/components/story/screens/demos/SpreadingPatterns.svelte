@@ -25,7 +25,7 @@
         getUniverseById('cellular_strips_inner_islands'),
         getUniverseById('cellular_strips2'),
         getUniverseById('stripe_patterns'),
-        getUniverseById('4_colors_spreading_pattern')
+        getUniverseById('reaction_diffusion')
     ];
 
     const SECTION_COUNT = presets.length;
@@ -89,18 +89,25 @@
     <h2>Spreading Patterns</h2>
     {#if sectionIndex === 0}
         <p>
-            When our universes have low energy, strong order can appear and create very organic
-            patterns. These are some of the first patterns I found and some of my favorites — they
-            remind me of patterns from
+            When our universes have low energy, strong order can appear and create organic-looking
+            patterns. Here <span class="cw">White</span> tries to stick together while all other colors
+            follow their natural repulsion creating spots in a multi colored background.
+        </p>
+    {:else if sectionIndex === 1}
+        <p>
+            When the repulsion forces are more equally spread between the species we get 2-color
+            blobs trying to take as much place as possible without touching each other.
+        </p>
+        <p>
+            They remind me of patterns from
             <a target="_blank" rel="noopener noreferrer" href="{base}/reaction-diffusion"
                 >the Gray-Scott reaction-diffusion model</a
             >.
         </p>
-    {:else if sectionIndex === 1}
-        <p><b>{presets[1].name}</b> — another cell-like pattern.</p>
     {:else if sectionIndex === 2}
         <p>
-            <b>{presets[2].name}</b> creates even more complex patterns which remind me of
+            By adding some attraction forces we when up with more complex patterns which remind me
+            of
             <a
                 target="_blank"
                 rel="noopener noreferrer"
@@ -108,12 +115,15 @@
                 >Aboriginal dot painting</a
             >.
         </p>
-    {:else}
+    {:else if sectionIndex === 3}
         <p>
-            Not all patterns have the same level of order. <b>{presets[3].name}</b> creates something
-            a bit less structured than the previous examples.
+            We can even add some motion inside the blobs: <span class="cb">Blue</span> and
+            <span class="cg">Green</span> pack together, so do <span class="cw">White</span> and
+            <span class="cr">Red</span>, but both clans repel each other creating very organic
+            patterns.
         </p>
     {/if}
+
     <div class="spread-btns">
         <ScreenBtn onclick={() => loadPreset(sectionIndex)}>Restart</ScreenBtn>
         <UniformSpreadButton onClick={() => reSpread('uniform')} />

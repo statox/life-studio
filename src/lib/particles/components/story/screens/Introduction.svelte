@@ -19,7 +19,10 @@
 
 <div class="screen">
     <h1>Welcome to Particle Life</h1>
-    <p>Let me show you how this simulation works.</p>
+    <p>
+        Grab a cup of tea, make sure you have 10 minutes ahead of you and let me take you to a
+        fieldtrip in new universes!
+    </p>
     <br />
     <p>
         <em>Click the "</em>

@@ -19,6 +19,22 @@
 
     const SECTION_COUNT = 3;
     let sectionIndex = $state(0);
+    let readonlyAttractionTable = $derived(sectionIndex !== 2);
+
+    const updateAttractionTable = (newTable: AttractionTable) => {
+        attractionTable = newTable;
+        const cfg: SimulationConfig = {
+            horizontalResolution: 10,
+            verticalResolution: 7,
+            initialSpreadConfig: 'center',
+            colorWeights: { white: 1, red: 1, green: 0, blue: 0 },
+            maxAttractionRadius: 32,
+            attractionTable,
+            nbParticles: 500,
+            friction: 0.77
+        };
+        simulationComponent?.startSim(generateSimulationParams(cfg));
+    };
 
     type Preset = { label: string; table: { ww: number; wr: number; rw: number; rr: number } };
 
@@ -118,12 +134,18 @@
         <div class="illustration">
             <Media path="/particles-life/story_attraction_table/structures.png" />
         </div>
+        <p>You can try modifying the attraction table below to see how it impacts the universe.</p>
     {/if}
     <div class="section-btns">
         <ScreenBtn onclick={() => selectPreset(sectionIndex)}>Restart</ScreenBtn>
     </div>
     <div class="attraction-table-container">
-        <AttractionTableComponent {attractionTable} readonly hiddenColors={['green', 'blue']} />
+        <AttractionTableComponent
+            {attractionTable}
+            readonly={readonlyAttractionTable}
+            hiddenColors={['green', 'blue']}
+            onUpdateTable={(t) => updateAttractionTable(t)}
+        />
     </div>
 </div>
 
