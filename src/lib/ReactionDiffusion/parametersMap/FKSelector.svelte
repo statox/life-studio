@@ -82,13 +82,11 @@
     const sketch: Sketch = (p5) => {
         _p5 = p5;
         let background: p5.Image;
-        p5.preload = () => {
-            // Images from https://www.mrob.com
-            // background = p5.loadImage('/pearsons-parameter-map.jpg');
-            background = p5.loadImage(base + '/pearson-space.png');
-        };
 
-        p5.setup = () => {
+        p5.setup = async () => {
+            // Images from https://www.mrob.com
+            // background = await p5.loadImage('/pearsons-parameter-map.jpg');
+            background = await p5.loadImage(base + '/pearson-space.png');
             p5.createCanvas(300, 300);
             p5.frameRate(25);
         };

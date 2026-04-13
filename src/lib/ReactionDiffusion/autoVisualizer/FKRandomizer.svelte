@@ -209,11 +209,9 @@
     const sketch: Sketch = (p5) => {
         _p5 = p5;
         let background: p5.Image;
-        p5.preload = () => {
-            background = p5.loadImage(base + '/parameters_map.png');
-        };
 
-        p5.setup = () => {
+        p5.setup = async () => {
+            background = await p5.loadImage(base + '/parameters_map.png');
             p5.createCanvas(400, 400);
             p5.frameRate(55);
         };

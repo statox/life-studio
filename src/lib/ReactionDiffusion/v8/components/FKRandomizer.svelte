@@ -246,11 +246,9 @@
         let background: p5.Image;
         let changeMagSlider: p5.Element;
         let changeRateSlider: p5.Element;
-        p5.preload = () => {
-            background = p5.loadImage(base + '/parameters_map.png');
-        };
 
-        p5.setup = () => {
+        p5.setup = async () => {
+            background = await p5.loadImage(base + '/parameters_map.png');
             p5.createCanvas(400, 400);
             p5.frameRate(55);
 
