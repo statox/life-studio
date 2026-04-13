@@ -9,7 +9,7 @@ import GlidersByTheDozen from './patterns/glidersbythedozen.rle';
 import GliderLoop from './patterns/gliderloop.rle';
 import Laputa from './patterns/laputa.rle';
 
-const CONFIGURATION_NAMES = [
+const _CONFIGURATION_NAMES = [
     'bigglider',
     'candelabra',
     'climber131c31',
@@ -20,7 +20,7 @@ const CONFIGURATION_NAMES = [
     'gliderLoop',
     'laputa'
 ] as const;
-type ConfigurationNamesTuple = typeof CONFIGURATION_NAMES;
+type ConfigurationNamesTuple = typeof _CONFIGURATION_NAMES;
 export type ConfigurationName = ConfigurationNamesTuple[number];
 
 const configurations: {

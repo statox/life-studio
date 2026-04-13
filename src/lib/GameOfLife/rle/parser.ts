@@ -17,8 +17,8 @@ export const lineToLineItems = (line: string) => {
     }, [] as string[]);
 };
 
-const TAGS = ['o', 'b', '$', '!'] as const;
-type TagTuple = typeof TAGS;
+const _TAGS = ['o', 'b', '$', '!'] as const;
+type TagTuple = typeof _TAGS;
 type Tag = TagTuple[number];
 type Token = {
     count: number;
