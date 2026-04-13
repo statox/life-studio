@@ -620,10 +620,10 @@
         >precision mediump float;
 uniform sampler2D prevState;    // The state of the simulation to render
 varying vec2 uv;                // The position of the vertex in the simulation texture
-void main() {'{'}
+void main() &#123;
     vec2 state = texture2D(prevState, uv).rg;   // Read the red and green channel in the simulation
     gl_FragColor = vec4(state, 0, 1);           // Use them directly in the color
-{'}'}</code
+&#125;</code
     ></pre>
 
 <h3>Adding basic controls to the simulation (v5)</h3>
