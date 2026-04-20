@@ -37,7 +37,7 @@
         "svelte-tabs": "^1.1.0",
         "tslib": "^2.8.1",
         "typescript": "^6.0.3",
-        "vite": "^5.4.4",
+        "vite": "^8.0.9",
         "vite-plugin-plain-text": "^1.4.2",
         "vitest": "^1.0.0"
     },
